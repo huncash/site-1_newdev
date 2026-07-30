@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_SITE_ID: "site-1",
   },
-  serverExternalPackages: ["better-sqlite3"],
 };
 
 export default nextConfig;
