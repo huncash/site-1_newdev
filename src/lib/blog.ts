@@ -5,6 +5,8 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
+import type { AiDisclosureKind } from "@/config/ai-transparency";
+
 export interface PostMeta {
   slug: string;
   title: string;
@@ -13,10 +15,26 @@ export interface PostMeta {
   author?: string;
   category?: string;
   readingTime?: number;
+  /** EU AI Act Art. 50 disclosure for professional publication. */
+  aiDisclosure?: AiDisclosureKind;
+  /** Substantive human editorial review / responsibility (Art. 50(4) exemption). */
+  editorialReview?: boolean;
 }
 
 export interface Post extends PostMeta {
   contentHtml: string;
+}
+
+function parseAiDisclosure(value: unknown): AiDisclosureKind | undefined {
+  if (
+    value === "none" ||
+    value === "assisted" ||
+    value === "generated" ||
+    value === "modified"
+  ) {
+    return value;
+  }
+  return undefined;
 }
 
 const postsDir = resolve(
@@ -29,7 +47,7 @@ export function getPostSlugs(): string[] {
   }
 
   return readdirSync(postsDir)
-    .filter((f) => f.endsWith(".md") || f.endsWith(".mdx"))
+    .filter((f) => (f.endsWith(".md") || f.endsWith(".mdx")) && !f.startsWith("_"))
     .map((f) => basename(f, f.endsWith(".mdx") ? ".mdx" : ".md"));
 }
 
@@ -52,6 +70,8 @@ export function getPostMeta(slug: string): PostMeta | null {
       author: data.author as string | undefined,
       category: data.category as string | undefined,
       readingTime: data.readingTime as number | undefined,
+      aiDisclosure: parseAiDisclosure(data.aiDisclosure),
+      editorialReview: Boolean(data.editorialReview),
     };
   }
 
@@ -76,6 +96,10 @@ export async function getPost(slug: string): Promise<Post | null> {
       description: (data.description as string) ?? "",
       date: (data.date as string) ?? "",
       author: data.author as string | undefined,
+      category: data.category as string | undefined,
+      readingTime: data.readingTime as number | undefined,
+      aiDisclosure: parseAiDisclosure(data.aiDisclosure),
+      editorialReview: Boolean(data.editorialReview),
       contentHtml: processed.toString(),
     };
   }

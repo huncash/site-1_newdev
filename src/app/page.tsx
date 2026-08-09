@@ -1,8 +1,3 @@
-import { Suspense } from "react";
-
-import { authProvider } from "@/auth/auth-provider";
-import { getProducts } from "@/lib/data-provider";
-import { Catalog } from "@/components/Catalog";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { PackagesSection } from "@/components/landing/PackagesSection";
 import { ProcessSection } from "@/components/landing/ProcessSection";
@@ -12,12 +7,7 @@ import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { CONTENT } from "../data/content";
 
 export default function HomePage() {
-  const products = getProducts().map((p) => ({
-    ...p,
-    editable: authProvider.isAdmin(),
-  }));
-
-  const { hero, segments, services, testimonials, process, packages, catalog } = CONTENT;
+  const { hero, segments, services, testimonials, process, packages } = CONTENT;
 
   return (
     <>
@@ -50,18 +40,6 @@ export default function HomePage() {
         disclaimer={packages.disclaimer}
         items={packages.items}
       />
-
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-        <h2 className="text-center text-xl font-semibold sm:text-2xl md:text-3xl">
-          {catalog.heading}
-        </h2>
-        <div className="section-rule" />
-        <div className="mt-10">
-          <Suspense>
-            <Catalog products={products} />
-          </Suspense>
-        </div>
-      </section>
     </>
   );
 }

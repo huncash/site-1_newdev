@@ -1,6 +1,5 @@
 "use client";
 
-import { COMPANY_INFO } from "@/config/company-data";
 import { SITE_CONFIG } from "@/config/site-config";
 import { cn } from "@/lib/utils";
 
@@ -27,6 +26,8 @@ const DEFAULT_LINKS: FooterLink[] = [
   { label: "Kapcsolat", href: `mailto:${SITE_CONFIG.publicEmail}` },
   { label: "Partner belépés", href: "/partner/login" },
   { label: "ÁSZF", href: "/aszf" },
+  { label: "Adatvédelem", href: "/adatvedelem" },
+  { label: "AI átláthatóság", href: "/ai-atlathatosag" },
 ];
 
 const SOCIAL_LINKS = {
@@ -67,9 +68,6 @@ export function Footer({
           <p className="mt-2 text-sm opacity-80">{description}</p>
           {brandTagline ? <p className="mt-2 text-sm opacity-70">{brandTagline}</p> : null}
           {brandSubline ? <p className="mt-1 text-xs opacity-60">{brandSubline}</p> : null}
-          <p className="mt-4 text-xs opacity-60">
-            {COMPANY_INFO.name} · {COMPANY_INFO.address}
-          </p>
         </div>
         <div>
           <div className="text-sm font-semibold uppercase tracking-wider">Oldalak</div>
@@ -91,6 +89,10 @@ export function Footer({
             <span>© Copyright {foundedYear} - {year}</span>
             <span aria-hidden="true">|</span>
             <span>Minden jog fenntartva.</span>
+            <span aria-hidden="true">|</span>
+            <a href="/ai-atlathatosag" className="hover:underline">
+              AI Act 50. cikk — átláthatóság
+            </a>
             <span aria-hidden="true">|</span>
             <a href={`mailto:${SITE_CONFIG.publicEmail}`} className="hover:underline">
               Kérdésed van? Írj nekünk!

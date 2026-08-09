@@ -39,36 +39,36 @@ export interface ContentPackage {
 
 export const CONTENT = {
   hero: {
-    badge: "Enterprise Digital Twin",
-    title: "Hektáros területek egyetlen virtuális túrában",
+    badge: "Bejárható 3D fotózás",
+    title: "Növeld hatékonyságodat a VR segítségével",
     subtitle:
-      "Extra nagy egyesített túra — több különálló Matterport-szken egyetlen bejárásban, akár fizikailag különálló helyszínek összekapcsolásával. Kampuszok, gyártócsarnokok és portfóliók digitális ikre, BIM-export és Property Intelligence támogatással.",
-    proof: "Bizonyított: 7 hektár, 4 szken, 1 összefüggő túra.",
-    ctaPrimary: { label: "Csomag és időpont igénylése", href: "mailto:info@vrgo.hu?subject=Csomag%20%C3%A9s%20id%C5%91pont%20ig%C3%A9nyl%C3%A9s" },
+      "Immerzív 3D bemutató belső és külső terekről — babaház nézet, belső séta, felülnézeti kép, megosztható link és beágyazható kód. Üzleti felhasználásra, akár 48 órás átfutással.",
+    proof: "Alapszolgáltatás: 3D épületszkennelés, gömbpanoráma, 12 havi online elérés.",
+    ctaPrimary: { label: "Ajánlatot kérek", href: "mailto:info@vrgo.hu?subject=Aj%C3%A1nlatk%C3%A9r%C3%A9s" },
     ctaSecondary: { label: "Csomagok megnézése", href: "/#csomagok" },
   },
 
   segments: {
-    heading: "Célszegmens-megoldások",
+    heading: "Hol használható a VRGO",
     items: [
       {
-        title: "Oktatás · Kampusz",
-        description: "Egyetem, iskola, labor — egyesített túrában a teljes kampusz.",
+        title: "Ingatlan · Ügynökségek",
+        description: "Lakás, ház, iroda — virtuális bemutató az érdeklődőknek, kevesebb felesleges helyszíni megtekintéssel.",
         href: "/#szegmensek",
       },
       {
-        title: "Ipar · IoT · BIM",
-        description: "Gyár, csarnok, BIM-export, Defects AI, IoT-integráció.",
+        title: "Lakóparkok · Szállás",
+        description: "Típuslakások, közösségi terek, apartmanok és szállodák bejárható 3D bemutatója.",
         href: "/#szegmensek",
       },
       {
-        title: "Facility Management",
-        description: "Bérbeadás, karbantartás, ESG, biztosítás portfólió-szinten.",
+        title: "Iroda · Kereskedelem",
+        description: "Irodaházak és üzlethelyiségek — több helyszín bemutatása egyetlen VR élményben.",
         href: "/#szegmensek",
       },
       {
-        title: "Egyesített túra",
-        description: "7+ ha egyetlen bejárható túrában — akár különálló helyszínek egyben.",
+        title: "Ipar · Nagyvállalat",
+        description: "Üzembejárás, belső oktatás, munkakörnyezet bemutatása távoli partnereknek és munkavállalóknak.",
         href: "/#szolgaltatasok",
       },
     ] satisfies ContentSegment[],
@@ -193,9 +193,5 @@ export const CONTENT = {
         image: "/packages/csomag-c.jpg",
       },
     ] satisfies ContentPackage[],
-  },
-
-  catalog: {
-    heading: "Termékkatalógus",
   },
 } as const;
