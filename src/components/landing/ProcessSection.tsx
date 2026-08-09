@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 export interface ProcessStep {
@@ -35,11 +37,14 @@ export function ProcessSection({
         <div className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-10">
           {steps.map((step, index) => (
             <div key={index} className="text-center">
-              <img
+              <Image
                 src={step.image}
                 alt=""
+                width={180}
+                height={140}
+                sizes="(max-width: 640px) 140px, 180px"
                 loading="lazy"
-                className="mx-auto h-auto w-[140px] rounded-sm object-cover sm:w-[180px]"
+                className="mx-auto h-auto w-[140px] rounded-sm object-contain sm:w-[180px]"
               />
               <p className="mt-4 text-sm font-medium">{step.text}</p>
             </div>

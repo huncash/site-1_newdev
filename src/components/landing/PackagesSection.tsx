@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 export interface PackageItem {
@@ -9,6 +11,7 @@ export interface PackageItem {
   priceOnce: string;
   priceRecurring: string;
   cta: string;
+  image: string;
 }
 
 export interface PackagesSectionProps {
@@ -46,6 +49,17 @@ export function PackagesSection({
               key={item.tier}
               className="flex flex-col rounded-md border border-white/10 bg-section-dark/40 p-6 shadow-sm"
             >
+              <div className="mb-4 overflow-hidden rounded-sm bg-white/5">
+                <Image
+                  src={item.image}
+                  alt={item.tier}
+                  width={320}
+                  height={200}
+                  sizes="(max-width: 1024px) 100vw, 320px"
+                  loading="lazy"
+                  className="h-40 w-full object-cover"
+                />
+              </div>
               <p className="text-xs font-semibold uppercase tracking-wider text-brand">
                 {item.tier}
               </p>

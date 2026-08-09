@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { MENU_ITEMS } from "@/config/menu";
 import { SITE_CONFIG } from "@/config/site-config";
@@ -18,12 +19,17 @@ export function Navbar({ logoHref = "/", className }: { logoHref?: string; class
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <a
           href={logoHref}
-          className="flex items-center gap-2"
+          className="flex items-center"
           aria-label={`${SITE_CONFIG.name} – főoldal`}
         >
-          <span className="rounded bg-white/15 px-2.5 py-1 text-lg font-bold tracking-[0.14em]">
-            {SITE_CONFIG.name}
-          </span>
+          <Image
+            src="/vrgo-logo.jpg"
+            alt="VRGO"
+            width={160}
+            height={40}
+            priority
+            className="h-9 w-auto sm:h-10"
+          />
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Főmenü">

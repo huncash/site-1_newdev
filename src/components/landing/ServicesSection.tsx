@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 export interface ServiceItem {
@@ -33,15 +35,16 @@ export function ServicesSection({
         </h2>
         <div className="section-rule" />
         <div className="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
-          {items.map((item) => (
+          {items.map((item, index) => (
             <article key={item.title} className="text-center">
-              <img
+              <Image
                 src={item.image}
                 alt={item.title}
                 width={200}
                 height={157}
-                loading="lazy"
-                className="mx-auto h-auto w-[160px] rounded-sm object-cover sm:w-[200px]"
+                sizes="(max-width: 640px) 160px, 200px"
+                priority={index < 3}
+                className="mx-auto h-auto w-[160px] rounded-sm object-contain sm:w-[200px]"
               />
               <h3 className="mt-4 text-lg font-semibold text-section-dark-foreground">
                 {item.title}

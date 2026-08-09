@@ -34,6 +34,7 @@ export interface ContentPackage {
   priceOnce: string;
   priceRecurring: string;
   cta: string;
+  image: string;
 }
 
 export const CONTENT = {
@@ -79,38 +80,38 @@ export const CONTENT = {
       {
         title: "Valódi 3D túrázás",
         description: "Tükrözd a valóságot egy 3D sétával, akár külső és belső helyszínekről is.",
-        image: "https://vrgo.hu/wp-content/uploads/3D-fotoyas.jpg",
+        image: "/icons/3d-valoban.jpg",
         icon: "3D",
       },
       {
         title: "Virtuális valóság (VR)",
         description:
           "Rekonstruáljuk a környezeteket az augmentált és virtuális valóság használatához, bármilyen eszközön.",
-        image: "https://vrgo.hu/wp-content/uploads/upload.jpg",
+        image: "/icons/vr-mode.jpg",
         icon: "VR",
       },
       {
         title: "Google Utcakép",
         description: "Az ingatlanod a Google keresőjéből és térképéből is bejárható lesz.",
-        image: "https://vrgo.hu/wp-content/uploads/megosztas.jpg",
+        image: "/icons/gsv.jpg",
         icon: "GSV",
       },
       {
         title: "2D-s sematikus alaprajzok",
         description: "Az ingatlan 3D fotói alapján pontos műszaki rajz is kérhető.",
-        image: "https://vrgo.hu/wp-content/uploads/3D-fotoyas.jpg",
+        image: "/icons/felulnezet.jpg",
         icon: "2D",
       },
       {
         title: "360° panoráma képek",
         description: "A kimagasló, nagy felbontás miatt a 3 dimenziós fotók felnagyíthatóak.",
-        image: "https://vrgo.hu/wp-content/uploads/upload.jpg",
+        image: "/icons/360.png",
         icon: "360",
       },
       {
         title: "Beágyazható",
         description: "Online elérhető, könnyedén megosztható, vagy beágyazható honlapodra.",
-        image: "https://vrgo.hu/wp-content/uploads/megosztas.jpg",
+        image: "/icons/embed.png",
         icon: "EMBED",
       },
     ] satisfies ContentService[],
@@ -142,15 +143,15 @@ export const CONTENT = {
     steps: [
       {
         text: "Egyeztetett időpontban a helyszíni munkálatok elvégzése.",
-        image: "https://vrgo.hu/wp-content/uploads/3D-fotoyas.jpg",
+        image: "/process/fotozas.jpg",
       },
       {
         text: "Kívánt tartalmakkal a túra feltöltése a felhőbe.",
-        image: "https://vrgo.hu/wp-content/uploads/upload.jpg",
+        image: "/process/upload.jpg",
       },
       {
         text: "Kész túra megosztási linkjének átadása.",
-        image: "https://vrgo.hu/wp-content/uploads/megosztas.jpg",
+        image: "/process/megosztas.jpg",
       },
     ] satisfies ContentProcessStep[],
     cta: { label: "3D fotózás csomagjaink", href: "/#csomagok" },
@@ -169,6 +170,7 @@ export const CONTENT = {
         priceOnce: "350 – 700 eFt egyszeri",
         priceRecurring: "Hosting opcionálisan, ~30–80 eFt / év",
         cta: "CLASSIC igénylése",
+        image: "/packages/csomag-a.jpg",
       },
       {
         tier: "TWIN",
@@ -178,6 +180,7 @@ export const CONTENT = {
         priceOnce: "1,2 – 3,5 M Ft egyszeri",
         priceRecurring: "Felhő-fenntartás ~80 – 250 eFt / év",
         cta: "TWIN igénylése",
+        image: "/packages/csomag-b.jpg",
       },
       {
         tier: "ENTERPRISE",
@@ -187,6 +190,7 @@ export const CONTENT = {
         priceOnce: "3,5 – 12 M Ft egyszeri (m²-arányos)",
         priceRecurring: "Felhő-fenntartás ~200 – 600 eFt / év",
         cta: "ENTERPRISE igénylése",
+        image: "/packages/csomag-c.jpg",
       },
     ] satisfies ContentPackage[],
   },
