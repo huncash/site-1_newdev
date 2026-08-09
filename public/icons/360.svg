@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="360 degree view">
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <text x="256" y="230" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700" fill="#FBBC05">360°</text>
+    <!-- circular arrow -->
+    <path d="M140 300 C148 360 196 402 256 402 C316 402 364 360 372 300" stroke="#4285F4" stroke-width="14"/>
+    <path d="M348 318 L372 300 L390 322" stroke="#4285F4" stroke-width="14"/>
+    <path d="M372 300 C364 248 316 210 256 210" stroke="#34A853" stroke-width="12" opacity="0.85"/>
+    <text x="256" y="455" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="600" fill="#EA4335">360° View</text>
+  </g>
+</svg>

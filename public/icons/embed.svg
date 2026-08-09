@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="Embeddable">
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- browser frame -->
+    <rect x="96" y="120" width="320" height="272" rx="18" stroke="#FBBC05" stroke-width="14"/>
+    <path d="M96 178 H416" stroke="#FBBC05" stroke-width="12"/>
+    <!-- window dots -->
+    <circle cx="132" cy="149" r="8" fill="#EA4335"/>
+    <circle cx="160" cy="149" r="8" fill="#FBBC05"/>
+    <circle cx="188" cy="149" r="8" fill="#34A853"/>
+    <!-- code symbol </> -->
+    <path d="M210 250 L170 296 L210 342" stroke="#4285F4" stroke-width="16"/>
+    <path d="M302 250 L342 296 L302 342" stroke="#4285F4" stroke-width="16"/>
+    <path d="M278 236 L234 356" stroke="#EA4335" stroke-width="14"/>
+  </g>
+</svg>

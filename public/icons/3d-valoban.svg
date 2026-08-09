@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="3D cube">
+  <!-- Unified Google palette line icon  transparent bg blends with section -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- isometric cube -->
+    <path d="M256 148 L360 208 L360 308 L256 368 L152 308 L152 208 Z" stroke="#FBBC05" stroke-width="14"/>
+    <path d="M256 148 L256 248" stroke="#EA4335" stroke-width="14"/>
+    <path d="M152 208 L256 248 L360 208" stroke="#4285F4" stroke-width="14"/>
+    <path d="M256 248 L256 368" stroke="#34A853" stroke-width="14"/>
+    <!-- XYZ axis arrows -->
+    <path d="M256 148 L256 88" stroke="#EA4335" stroke-width="12"/>
+    <path d="M244 108 L256 88 L268 108" stroke="#EA4335" stroke-width="12"/>
+    <path d="M152 208 L104 180" stroke="#4285F4" stroke-width="12"/>
+    <path d="M112 196 L104 180 L128 176" stroke="#4285F4" stroke-width="12"/>
+    <path d="M360 208 L408 180" stroke="#34A853" stroke-width="12"/>
+    <path d="M384 176 L408 180 L400 196" stroke="#34A853" stroke-width="12"/>
+  </g>
+</svg>
