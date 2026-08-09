@@ -43,8 +43,8 @@ export const CONTENT = {
     subtitle:
       "Extra nagy egyesített túra — több különálló Matterport-szken egyetlen bejárásban, akár fizikailag különálló helyszínek összekapcsolásával. Kampuszok, gyártócsarnokok és portfóliók digitális ikre, BIM-export és Property Intelligence támogatással.",
     proof: "Bizonyított: 7 hektár, 4 szken, 1 összefüggő túra.",
-    ctaPrimary: { label: "Csomag és időpont igénylése", href: "/csomagok/megrendeles" },
-    ctaSecondary: { label: "Csomagok megtekintése", href: "/csomagok" },
+    ctaPrimary: { label: "Csomag és időpont igénylése", href: "mailto:info@vrgo.hu?subject=Csomag%20%C3%A9s%20id%C5%91pont%20ig%C3%A9nyl%C3%A9s" },
+    ctaSecondary: { label: "Csomagok megnézése", href: "/#csomagok" },
   },
 
   segments: {
@@ -53,22 +53,22 @@ export const CONTENT = {
       {
         title: "Oktatás · Kampusz",
         description: "Egyetem, iskola, labor — egyesített túrában a teljes kampusz.",
-        href: "/megoldasok/oktatas",
+        href: "/#szegmensek",
       },
       {
         title: "Ipar · IoT · BIM",
         description: "Gyár, csarnok, BIM-export, Defects AI, IoT-integráció.",
-        href: "/megoldasok/ipari-iot",
+        href: "/#szegmensek",
       },
       {
         title: "Facility Management",
         description: "Bérbeadás, karbantartás, ESG, biztosítás portfólió-szinten.",
-        href: "/megoldasok/facility",
+        href: "/#szegmensek",
       },
       {
         title: "Egyesített túra",
         description: "7+ ha egyetlen bejárható túrában — akár különálló helyszínek egyben.",
-        href: "/egyesitett-tura",
+        href: "/#szolgaltatasok",
       },
     ] satisfies ContentSegment[],
   },
@@ -79,39 +79,39 @@ export const CONTENT = {
       {
         title: "Valódi 3D túrázás",
         description: "Tükrözd a valóságot egy 3D sétával, akár külső és belső helyszínekről is.",
-        image: "/icons/3d-valoban.jpg",
-        icon: "🏠",
+        image: "https://vrgo.hu/wp-content/uploads/3D-fotoyas.jpg",
+        icon: "3D",
       },
       {
         title: "Virtuális valóság (VR)",
         description:
           "Rekonstruáljuk a környezeteket az augmentált és virtuális valóság használatához, bármilyen eszközön.",
-        image: "/icons/vr-mode.jpg",
-        icon: "🥽",
+        image: "https://vrgo.hu/wp-content/uploads/upload.jpg",
+        icon: "VR",
       },
       {
         title: "Google Utcakép",
         description: "Az ingatlanod a Google keresőjéből és térképéből is bejárható lesz.",
-        image: "/icons/gsv.jpg",
-        icon: "📍",
+        image: "https://vrgo.hu/wp-content/uploads/megosztas.jpg",
+        icon: "GSV",
       },
       {
         title: "2D-s sematikus alaprajzok",
         description: "Az ingatlan 3D fotói alapján pontos műszaki rajz is kérhető.",
-        image: "/icons/felulnezet.jpg",
-        icon: "📐",
+        image: "https://vrgo.hu/wp-content/uploads/3D-fotoyas.jpg",
+        icon: "2D",
       },
       {
         title: "360° panoráma képek",
         description: "A kimagasló, nagy felbontás miatt a 3 dimenziós fotók felnagyíthatóak.",
-        image: "/icons/360.png",
-        icon: "🔄",
+        image: "https://vrgo.hu/wp-content/uploads/upload.jpg",
+        icon: "360",
       },
       {
         title: "Beágyazható",
         description: "Online elérhető, könnyedén megosztható, vagy beágyazható honlapodra.",
-        image: "/icons/embed.png",
-        icon: "🔗",
+        image: "https://vrgo.hu/wp-content/uploads/megosztas.jpg",
+        icon: "EMBED",
       },
     ] satisfies ContentService[],
   },
@@ -125,7 +125,7 @@ export const CONTENT = {
         text: "A VRGO-tól egy olyan profi szolgáltatást kaptunk, aminek köszönhetően üzletünk online jelenléte jóval színvonalasabb lett. Megbízhatóságuk, profizmusuk és lelkiismeretességük miatt bátran ajánljuk őket bárkinek!",
       },
       {
-        name: "Paráczay László",
+        name: "Paróczay László",
         company: "Galéria Optika",
         text: "Mindenkinek ajánljuk a VRGO virtuális felvétel szolgáltatását. Gyors, zökkenőmentes volt a felvételek elkészítése, profi munkát végeztek, minden kérésünket megvalósították. A szolgáltatás ár-érték aránya a legjobb.",
       },
@@ -145,7 +145,7 @@ export const CONTENT = {
         image: "https://vrgo.hu/wp-content/uploads/3D-fotoyas.jpg",
       },
       {
-        text: "Kért tartalmakkal a túra feltöltése a felhőbe.",
+        text: "Kívánt tartalmakkal a túra feltöltése a felhőbe.",
         image: "https://vrgo.hu/wp-content/uploads/upload.jpg",
       },
       {
@@ -153,7 +153,7 @@ export const CONTENT = {
         image: "https://vrgo.hu/wp-content/uploads/megosztas.jpg",
       },
     ] satisfies ContentProcessStep[],
-    cta: { label: "3D fotózás csomagjaink", href: "/csomagok" },
+    cta: { label: "3D fotózás csomagjaink", href: "/#csomagok" },
   },
 
   packages: {

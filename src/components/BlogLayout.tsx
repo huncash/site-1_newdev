@@ -27,10 +27,10 @@ export function BlogLayout({ post, className }: BlogLayoutProps) {
       <div
         className={cn(
           "prose prose-sm max-w-none",
-          "prose-headings:font-bold prose-headings:tracking-tight",
-          "prose-a:text-primary prose-a:underline",
+          "prose-headings:font-semibold prose-headings:tracking-tight",
+          "prose-a:text-brand prose-a:underline",
           "prose-code:rounded prose-code:bg-muted prose-code:px-1 prose-code:text-sm",
-          "prose-img:rounded-xl prose-img:shadow",
+          "prose-img:rounded-md prose-img:shadow",
           "prose-table:text-sm"
         )}
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}

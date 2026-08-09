@@ -51,7 +51,7 @@ export function BlogIndex({
             <li key={post.slug} className="py-8">
               <article>
                 {post.category ? (
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-primary">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-brand">
                     {post.category}
                   </p>
                 ) : null}
@@ -59,7 +59,7 @@ export function BlogIndex({
                 <h2 className="mb-2 text-xl font-bold leading-snug md:text-2xl">
                   <a
                     href={`${basePath}/${post.slug}`}
-                    className="hover:text-primary transition-colors"
+                    className="transition-colors hover:text-brand"
                   >
                     {post.title}
                   </a>
@@ -84,7 +84,7 @@ export function BlogIndex({
 
                   <a
                     href={`${basePath}/${post.slug}`}
-                    className="text-xs font-medium text-primary hover:underline shrink-0"
+                    className="shrink-0 text-xs font-semibold uppercase tracking-wider text-brand hover:underline"
                   >
                     Olvasom →
                   </a>

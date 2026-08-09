@@ -5,6 +5,15 @@ export const themeConfig = {
     ring: "hsl(var(--ring))",
     background: "hsl(var(--background))",
     foreground: "hsl(var(--foreground))",
+    brand: {
+      DEFAULT: "hsl(var(--brand))",
+      foreground: "hsl(var(--brand-foreground))",
+      dark: "hsl(var(--brand-dark))",
+    },
+    "section-dark": {
+      DEFAULT: "hsl(var(--section-dark))",
+      foreground: "hsl(var(--section-dark-foreground))",
+    },
     primary: {
       DEFAULT: "hsl(var(--primary))",
       foreground: "hsl(var(--primary-foreground))",
@@ -37,5 +46,6 @@ export const themeConfig = {
   },
   fonts: {
     base: '"Open Sans", ui-sans-serif, system-ui, sans-serif',
+    display: '"Open Sans", ui-sans-serif, system-ui, sans-serif',
   },
 } as const;

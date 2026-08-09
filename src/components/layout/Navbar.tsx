@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MENU_ITEMS } from "@/config/menu";
+import { SITE_CONFIG } from "@/config/site-config";
 import { cn } from "@/lib/utils";
 
 export function Navbar({ logoHref = "/", className }: { logoHref?: string; className?: string }) {
@@ -10,62 +11,62 @@ export function Navbar({ logoHref = "/", className }: { logoHref?: string; class
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur",
+        "sticky top-0 z-50 bg-brand text-brand-foreground shadow-sm",
         className
       )}
     >
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <a
           href={logoHref}
-          className="text-lg font-bold tracking-tight text-foreground hover:text-primary"
+          className="flex items-center gap-2"
+          aria-label={`${SITE_CONFIG.name} – főoldal`}
         >
-          VRGO
+          <span className="rounded bg-white/15 px-2.5 py-1 text-lg font-bold tracking-[0.14em]">
+            {SITE_CONFIG.name}
+          </span>
         </a>
 
-        <ul className="hidden gap-6 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Főmenü">
           {MENU_ITEMS.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            </li>
+            <a
+              key={`${item.href}-${item.label}`}
+              href={item.href}
+              className="text-xs font-semibold uppercase tracking-wider text-brand-foreground/95 transition hover:underline hover:underline-offset-8"
+            >
+              {item.label}
+            </a>
           ))}
-        </ul>
+        </nav>
 
         <button
           type="button"
           aria-label="Menü"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 items-center justify-center rounded-md border border-input md:hidden"
+          className="flex h-9 w-9 items-center justify-center lg:hidden"
         >
-          <span className="flex flex-col gap-1.5">
-            <span className={cn("block h-0.5 w-5 bg-foreground transition-transform duration-200", open && "translate-y-2 rotate-45")} />
-            <span className={cn("block h-0.5 w-5 bg-foreground transition-opacity duration-200", open && "opacity-0")} />
-            <span className={cn("block h-0.5 w-5 bg-foreground transition-transform duration-200", open && "-translate-y-2 -rotate-45")} />
-          </span>
+          <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2">
+            {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M3 6h18M3 12h18M3 18h18" />}
+          </svg>
         </button>
-      </nav>
+      </div>
 
       {open ? (
-        <div className="border-t bg-background px-4 pb-4 md:hidden">
-          <ul className="flex flex-col gap-1 pt-2">
+        <nav className="border-t border-white/20 bg-brand lg:hidden" aria-label="Mobil menü">
+          <ul className="mx-auto max-w-6xl px-4 py-2">
             {MENU_ITEMS.map((item) => (
-              <li key={item.href}>
+              <li key={`${item.href}-${item.label}`}>
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
+                  className="block py-3 text-sm font-semibold uppercase tracking-wider"
                 >
                   {item.label}
                 </a>
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
       ) : null}
     </header>
   );

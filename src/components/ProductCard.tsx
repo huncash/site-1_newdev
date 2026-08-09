@@ -77,7 +77,7 @@ export function ProductCard({
       </CardHeader>
 
       <CardContent className="pb-3 pt-0">
-        <p className="text-lg font-bold text-primary">{formattedPrice}</p>
+        <p className="text-lg font-bold text-brand">{formattedPrice}</p>
       </CardContent>
 
       <CardFooter className="pt-0 flex gap-2">
