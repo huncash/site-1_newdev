@@ -20,14 +20,15 @@ export interface FooterProps {
 }
 
 const DEFAULT_LINKS: FooterLink[] = [
-  { label: "Főoldal", href: "/" },
   { label: "Csomagok", href: "/csomagok" },
   { label: "Egyesített túra", href: "/egyesitett-tura" },
   { label: "GYIK", href: "/gyik" },
   { label: "Blog", href: "/blog" },
-  { label: "Kapcsolat / ajánlat", href: "/ajanlat" },
-  { label: "Megrendelő űrlap", href: "/csomagok/megrendeles" },
+  { label: "Kapcsolat", href: "/ajanlat" },
   { label: "Partner belépés", href: "/partner/login" },
+];
+
+const LEGAL_LINKS: FooterLink[] = [
   { label: "ÁSZF", href: "/aszf" },
   { label: "Adatvédelem", href: "/adatvedelem" },
   { label: "AI átláthatóság", href: "/ai-atlathatosag" },
@@ -76,6 +77,16 @@ export function Footer({
           <div className="text-sm font-semibold uppercase tracking-wider">Oldalak</div>
           <ul className="mt-3 space-y-2 text-sm opacity-90">
             {links.map((item) => (
+              <li key={`${item.href}-${item.label}`}>
+                <a href={item.href} className="hover:underline">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-5 text-sm font-semibold uppercase tracking-wider">Jogi szekció</div>
+          <ul className="mt-3 space-y-2 text-sm opacity-90">
+            {LEGAL_LINKS.map((item) => (
               <li key={`${item.href}-${item.label}`}>
                 <a href={item.href} className="hover:underline">
                   {item.label}

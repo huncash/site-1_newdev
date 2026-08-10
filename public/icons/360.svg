@@ -1,17 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="360">
-  <g stroke="#FBBC05" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="256" cy="256" r="148" stroke-width="14"/>
-    <path d="M372 220 L404 256 L372 292" stroke-width="14"/>
-  </g>
+  <!-- Clockwise wraparound arrow: open at top, solid triangular tip -->
+  <path
+    d="M 353.7 139.6 A 152 152 0 1 1 180.0 124.4"
+    stroke="#FBBC05"
+    stroke-width="18"
+    stroke-linecap="butt"
+    fill="none"
+  />
+  <path
+    d="M 218.1 106.6 L 192.7 151.6 L 167.3 97.2 Z"
+    fill="#FBBC05"
+  />
   <text
     x="256"
-    y="256"
+    y="278"
     text-anchor="middle"
     dominant-baseline="central"
     font-family="Arial, Helvetica, sans-serif"
-    font-size="88"
+    font-size="80"
     font-weight="700"
     fill="#FBBC05"
-    stroke="none"
   >360&#176;</text>
 </svg>
