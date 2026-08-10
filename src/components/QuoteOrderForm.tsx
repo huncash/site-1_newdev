@@ -23,8 +23,7 @@ const PACKAGES = [
   {
     id: "ENTERPRISE" as const,
     name: "ENTERPRISE",
-    blurb:
-      "Hektáros területek egyesített túrában (akár különálló helyszínek összekapcsolva), integrációkkal, dedikált pilottal.",
+    blurb: "Nagy területek, több épület, integrációk, dedikált projektvezetés.",
     range: "> 3000 m² vagy több épület",
   },
 ];
@@ -39,12 +38,6 @@ const SEGMENTS = [
   { id: "egyeb", label: "Egyéb" },
 ] as const;
 
-const TIME_WINDOWS = [
-  { id: "de", label: "Délelőtt" },
-  { id: "du", label: "Délután" },
-  { id: "egesz", label: "Egész nap" },
-] as const;
-
 const inputCls =
   "w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand";
 
@@ -53,12 +46,6 @@ function recommendTier(area: number | undefined): "CLASSIC" | "TWIN" | "ENTERPRI
   if (area <= 500) return "CLASSIC";
   if (area <= 3000) return "TWIN";
   return "ENTERPRISE";
-}
-
-function todayPlus(days: number): string {
-  const d = new Date();
-  d.setDate(d.getDate() + days);
-  return d.toISOString().slice(0, 10);
 }
 
 function Field({
@@ -115,18 +102,12 @@ export function QuoteOrderForm({
     : "CLASSIC";
   const source = searchParams.get("forras") || defaultSource;
 
-  const minDate = todayPlus(2);
-
   const [pkg, setPkg] = useState<"CLASSIC" | "TWIN" | "ENTERPRISE">(startPkg);
   const [area, setArea] = useState("");
   const [segment, setSegment] = useState("");
   const [siteAddress, setSiteAddress] = useState("");
   const [siteCity, setSiteCity] = useState("");
   const [siteNotes, setSiteNotes] = useState("");
-  const [date1, setDate1] = useState("");
-  const [date2, setDate2] = useState("");
-  const [date3, setDate3] = useState("");
-  const [timeWindow, setTimeWindow] = useState("egesz");
   const [needsBim, setNeedsBim] = useState(false);
   const [needsIntel, setNeedsIntel] = useState(false);
   const [needsFloorplan, setNeedsFloorplan] = useState(false);
@@ -154,7 +135,6 @@ export function QuoteOrderForm({
     if (!pkg) next.package_tier = "Válassz csomagot";
     if (!segment) next.segment = "Válassz célszegmenst";
     if (!siteAddress.trim()) next.site_address = "Add meg a helyszín címét";
-    if (!date1) next.preferred_date_1 = "Adj meg legalább egy időpontot";
     if (contactName.trim().length < 2) next.contact_name = "Add meg a neved";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
       next.email = "Érvénytelen e-mail cím";
@@ -177,8 +157,6 @@ export function QuoteOrderForm({
       `Helyszín: ${siteAddress}${siteCity ? `, ${siteCity}` : ""}`,
       area ? `Becsült terület: ${area} m²` : null,
       siteNotes ? `Helyszíni megjegyzés: ${siteNotes}` : null,
-      `Időpontjavaslatok: ${[date1, date2, date3].filter(Boolean).join(" · ")}`,
-      `Napszak: ${TIME_WINDOWS.find((t) => t.id === timeWindow)?.label ?? timeWindow}`,
       `Kiegészítők: ${[
         needsBim && "BIM-export",
         needsIntel && "Property Intelligence",
@@ -234,9 +212,8 @@ export function QuoteOrderForm({
         <div className="rounded-lg border border-brand/40 bg-brand/5 p-8">
           <h2 className="text-2xl font-bold sm:text-3xl">Köszönjük, megkaptuk a kérelmedet!</h2>
           <p className="mt-4 text-foreground/85">
-            1 munkanapon belül a megadott e-mail címre küldünk egy ajánlatot vagy egy
-            időpont-megerősítést. Ha a 3 javasolt időpont közül egyik sem felel meg időközben, csak
-            válaszolj az e-mailre.
+            1 munkanapon belül a megadott e-mail címre küldünk ajánlatot. A helyszíni szkennelés
+            időpontját a folyamat szükségletei és egyeztetés alapján rögzítjük.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
@@ -360,69 +337,9 @@ export function QuoteOrderForm({
         </Field>
       </fieldset>
 
-      <fieldset className="space-y-4">
-        <legend className="text-sm font-semibold uppercase tracking-wider text-brand">
-          3. Időpontok
-        </legend>
-        <p className="text-xs text-muted-foreground">
-          Adj meg legalább egy javasolt dátumot — ha többet jelölsz, gyorsabban tudunk időpontot
-          megerősíteni.
-        </p>
-        <div className="grid gap-3 sm:grid-cols-3">
-          <Field label="1. javasolt dátum *" error={errors.preferred_date_1}>
-            <input
-              name="preferred_date_1"
-              type="date"
-              min={minDate}
-              value={date1}
-              onChange={(e) => setDate1(e.target.value)}
-              className={inputCls}
-            />
-          </Field>
-          <Field label="2. dátum">
-            <input
-              type="date"
-              min={minDate}
-              value={date2}
-              onChange={(e) => setDate2(e.target.value)}
-              className={inputCls}
-            />
-          </Field>
-          <Field label="3. dátum">
-            <input
-              type="date"
-              min={minDate}
-              value={date3}
-              onChange={(e) => setDate3(e.target.value)}
-              className={inputCls}
-            />
-          </Field>
-        </div>
-        <Field label="Preferált napszak">
-          <div className="flex flex-wrap gap-2">
-            {TIME_WINDOWS.map((tw) => (
-              <button
-                key={tw.id}
-                type="button"
-                onClick={() => setTimeWindow(tw.id)}
-                className={cn(
-                  "rounded-md border px-4 py-1.5 text-sm transition",
-                  timeWindow === tw.id
-                    ? "border-brand bg-brand text-brand-foreground"
-                    : "border-border hover:border-brand/50"
-                )}
-              >
-                {tw.label}
-              </button>
-            ))}
-          </div>
-          <input type="hidden" name="preferred_time_window" value={timeWindow} />
-        </Field>
-      </fieldset>
-
       <fieldset className="space-y-3">
         <legend className="text-sm font-semibold uppercase tracking-wider text-brand">
-          4. Igények (opcionális)
+          3. Igények (opcionális)
         </legend>
         <div className="grid gap-2 sm:grid-cols-2">
           <Checkbox
@@ -446,7 +363,7 @@ export function QuoteOrderForm({
 
       <fieldset className="space-y-4">
         <legend className="text-sm font-semibold uppercase tracking-wider text-brand">
-          5. Kapcsolat
+          4. Kapcsolat
         </legend>
         <Field label="Név *" error={errors.contact_name}>
           <input
@@ -486,7 +403,7 @@ export function QuoteOrderForm({
 
       <fieldset className="space-y-4">
         <legend className="text-sm font-semibold uppercase tracking-wider text-brand">
-          6. Tervezett felhasználás és üzenet
+          5. Tervezett felhasználás és üzenet
         </legend>
         <Field label="Mire használnád a túrát?">
           <textarea

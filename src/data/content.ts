@@ -41,9 +41,9 @@ export const CONTENT = {
     badge: "Enterprise Digital Twin",
     title: "Hektáros területek egyetlen virtuális túrában",
     subtitle:
-      "Extra nagy egyesített túra — több különálló Matterport-szken egyetlen bejárásban, akár fizikailag különálló helyszínek összekapcsolásával. Kampuszok, gyártócsarnokok és portfóliók digitális ikre, BIM-export és Property Intelligence támogatással.",
-    proof: "Bizonyított: 7 hektár, 4 szken, 1 összefüggő túra.",
-    ctaPrimary: { label: "Csomag és időpont igénylése", href: "/csomagok/megrendeles" },
+      "Kampuszok, gyártócsarnokok és portfóliók digitális ikre — Matterport alapú bejárható 3D, BIM-export és Property Intelligence támogatással.",
+    proof: "Bizonyított: 7 hektár, 8 szken, 1 összefüggő túra — Pannon Egyetem Zalaegerszeg.",
+    ctaPrimary: { label: "Ajánlatkérés", href: "/ajanlat" },
     ctaSecondary: { label: "Csomagok megnézése", href: "/csomagok" },
   },
 
@@ -52,7 +52,7 @@ export const CONTENT = {
     items: [
       {
         title: "Oktatás · Kampusz",
-        description: "Egyetem, iskola, labor — egyesített túrában a teljes kampusz.",
+        description: "Egyetem, iskola, labor — a teljes kampusz bejárható digitális ikerként.",
         href: "/megoldasok/oktatas",
       },
       {
@@ -64,11 +64,6 @@ export const CONTENT = {
         title: "Facility Management",
         description: "Bérbeadás, karbantartás, ESG, biztosítás portfólió-szinten.",
         href: "/megoldasok/facility",
-      },
-      {
-        title: "Egyesített túra",
-        description: "7+ ha egyetlen bejárható túrában — akár különálló helyszínek egyben.",
-        href: "/egyesitett-tura",
       },
     ] satisfies ContentSegment[],
   },

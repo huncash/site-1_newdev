@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 import { QuoteOrderForm } from "@/components/QuoteOrderForm";
 
 export const metadata: Metadata = {
-  title: "Csomag és időpont igénylése — VRGO",
+  title: "Ajánlatkérés — VRGO",
   description:
-    "Strukturált megrendelő űrlap: válassz csomagot (CLASSIC / TWIN / ENTERPRISE), add meg a helyszínt és három javasolt időpontot. 1 munkanapon belül e-mailben válaszolunk.",
+    "Strukturált ajánlatkérő űrlap: válassz csomagot (CLASSIC / TWIN / ENTERPRISE), add meg a helyszínt és az igényeket.",
 };
 
 export default function MegrendelesPage() {
@@ -15,14 +15,14 @@ export default function MegrendelesPage() {
       <section className="bg-section-dark py-12 text-section-dark-foreground sm:py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <span className="inline-block rounded-full border border-brand/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
-            Strukturált megrendelés
+            Ajánlatkérés
           </span>
           <h1 className="mt-4 text-2xl font-bold sm:text-3xl md:text-4xl">
-            Csomag és időpont igénylése
+            Csomag és ajánlat igénylése
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-sm opacity-90 sm:text-base">
-            Egyetlen űrlap: csomag, terület, kiegészítők, 3 időpontjavaslat. 1 munkanapon belül
-            visszaigazolás — felesleges egyeztető körök nélkül.
+            Csomag, terület, kiegészítők — 1 munkanapon belül visszajelzés. A helyszíni időpontot a
+            szkennelési folyamat alapján egyeztetjük.
           </p>
         </div>
       </section>

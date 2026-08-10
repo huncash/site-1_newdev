@@ -21,7 +21,6 @@ export interface FooterProps {
 
 const DEFAULT_LINKS: FooterLink[] = [
   { label: "Csomagok", href: "/csomagok" },
-  { label: "Egyesített túra", href: "/egyesitett-tura" },
   { label: "GYIK", href: "/gyik" },
   { label: "Blog", href: "/blog" },
   { label: "Kapcsolat", href: "/ajanlat" },

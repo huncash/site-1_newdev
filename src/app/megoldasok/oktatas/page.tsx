@@ -64,10 +64,10 @@ export default function OktatasPage() {
               Kampusz felmérés igénylése
             </Link>
             <Link
-              href="/egyesitett-tura"
+              href="/#esettanulmany"
               className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-section-dark"
             >
-              Egyesített túra részletei
+              Pannon esettanulmány
             </Link>
           </div>
         </div>
@@ -139,13 +139,13 @@ export default function OktatasPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Kérje árajánlatát</h2>
           <p className="mt-3 opacity-90">
-            Töltse ki a strukturált csomag-űrlapot 3 időpontjavaslattal. 24 órán belül visszaigazolunk.
+            Töltse ki a strukturált ajánlatkérő űrlapot. 24 órán belül visszajelzünk.
           </p>
           <Link
             href="/csomagok/megrendeles"
             className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
           >
-            Időpont és csomag igénylése
+            Ajánlatkérés
           </Link>
         </div>
       </section>

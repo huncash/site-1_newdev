@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-/** Korábbi szegmens-URL → a valódi egyesített túra oldal. */
+/** Ideiglenesen archiválva az egyesített túrával együtt. */
 export default function LegacyEgyesitettSegmentRedirect() {
-  redirect("/egyesitett-tura");
+  redirect("/");
 }

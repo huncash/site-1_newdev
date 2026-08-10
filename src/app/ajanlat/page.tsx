@@ -6,7 +6,7 @@ import { QuoteOrderForm } from "@/components/QuoteOrderForm";
 export const metadata: Metadata = {
   title: "Ajánlatkérés — VRGO",
   description:
-    "Strukturált ajánlatkérő űrlap: csomag, helyszín, időpontjavaslatok. Legfeljebb 24 órán belüli visszajelzés.",
+    "Strukturált ajánlatkérő űrlap: csomag, helyszín, igények. Legfeljebb 24 órán belüli visszajelzés.",
 };
 
 export default function AjanlatPage() {
@@ -17,12 +17,10 @@ export default function AjanlatPage() {
           <span className="inline-block rounded-full border border-brand/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
             Ajánlatkérés
           </span>
-          <h1 className="mt-4 text-2xl font-bold sm:text-3xl md:text-4xl">
-            Csomag és időpont igénylése
-          </h1>
+          <h1 className="mt-4 text-2xl font-bold sm:text-3xl md:text-4xl">Ajánlatkérés</h1>
           <p className="mx-auto mt-3 max-w-xl text-sm opacity-90 sm:text-base">
-            Egyetlen űrlap: csomag, terület, kiegészítők, 3 időpontjavaslat. 1 munkanapon belül
-            visszaigazolás — felesleges egyeztető körök nélkül.
+            Csomag, helyszín és igények — az ajánlat legfeljebb 24 órán belül megérkezik. A helyszíni
+            szkennelés időpontját egyeztetjük.
           </p>
         </div>
       </section>

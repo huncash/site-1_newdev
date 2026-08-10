@@ -167,8 +167,8 @@ export default function FacilityPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Strukturált igénylés</h2>
           <p className="mt-3 opacity-90">
-            Egyetlen űrlap: csomag, terület, BIM/IoT igények, 3 időpontjavaslat. 24 órán belül
-            visszaigazolás — telefonálás nélkül.
+            Egyetlen űrlap: csomag, terület, BIM/IoT igények. 24 órán belül visszajelzés — a
+            helyszíni időpontot egyeztetjük.
           </p>
           <Link
             href="/csomagok/megrendeles"

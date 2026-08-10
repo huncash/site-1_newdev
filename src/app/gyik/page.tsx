@@ -47,7 +47,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Hogyan tudok időpontot kérni — kell telefonálni?",
-    a: "Nem. A megrendelő űrlap kitöltése (csomag, helyszín, terület, igények, 3 javasolt időpont) után 1 munkanapon belül e-mailben küldünk árajánlatot vagy időpont-megerősítést. Egyetlen strukturált csatorna, felesleges egyeztető körök nélkül.",
+    a: "Nem. Az ajánlatkérő űrlap kitöltése (csomag, helyszín, terület, igények) után 1 munkanapon belül e-mailben küldünk árajánlatot. A helyszíni szkennelés időpontját a folyamat szükségletei és egyeztetés alapján rögzítjük.",
   },
 ];
 
@@ -108,14 +108,14 @@ export default function FaqPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Nem találtad a választ?</h2>
           <p className="mt-3 opacity-90">
-            Töltsd ki a strukturált megrendelő űrlapot — 1 munkanapon belül személyre szabott
-            ajánlattal és időpont-javaslattal válaszolunk.
+            Töltsd ki az ajánlatkérő űrlapot — 1 munkanapon belül személyre szabott ajánlattal
+            válaszolunk.
           </p>
           <Link
-            href="/csomagok/megrendeles"
+            href="/ajanlat"
             className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
           >
-            Megrendelő űrlap megnyitása
+            Ajánlatkérés
           </Link>
         </div>
       </section>

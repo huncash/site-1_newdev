@@ -20,7 +20,6 @@ export const MENU_ITEMS: readonly MenuItem[] = [
       { label: "Facility", href: "/megoldasok/facility" },
     ],
   },
-  { label: "Egyesített túra", href: "/egyesitett-tura" },
   { label: "Csomagok", href: "/csomagok" },
   { label: "Blog", href: "/blog" },
   { label: "GYIK", href: "/gyik" },

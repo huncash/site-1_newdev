@@ -248,16 +248,16 @@ export default function PackagesPage() {
       {/* CTA */}
       <section className="bg-section-dark py-12 text-section-dark-foreground sm:py-16">
         <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Strukturált megrendelés, nem telefonálás</h2>
+          <h2 className="text-2xl font-semibold sm:text-3xl">Ajánlatkérés</h2>
           <p className="mt-3 opacity-90">
-            Egyetlen űrlap: csomag, terület, kiegészítők, 3 időpontjavaslat. 24 órán belül
-            visszaigazolás és konkrét ajánlat — felesleges egyeztető körök nélkül.
+            Egyetlen űrlap: csomag, terület, kiegészítők. 24 órán belül visszajelzés és konkrét
+            ajánlat — a helyszíni szkennelés időpontját egyeztetjük.
           </p>
           <Link
             href="/csomagok/megrendeles"
             className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
           >
-            Megrendelő űrlap megnyitása
+            Ajánlatkérő űrlap
           </Link>
         </div>
       </section>

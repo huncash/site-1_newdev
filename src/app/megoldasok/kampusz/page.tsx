@@ -147,10 +147,10 @@ export default function KampuszPage() {
             egyaránt használt digitális iker.
           </p>
           <Link
-            href="/egyesitett-tura"
+            href="/#esettanulmany"
             className="mt-6 inline-flex items-center justify-center rounded-md border-2 border-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand hover:bg-brand hover:text-brand-foreground"
           >
-            Egyesített túra részletei
+            Pannon esettanulmány
           </Link>
         </div>
       </section>
@@ -159,9 +159,8 @@ export default function KampuszPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Strukturált kampusz-igénylés</h2>
           <p className="mt-3 opacity-90">
-            Egyetlen űrlap: épületszám, terület, BIM-export és infópont igények, 3
-            időpontjavaslat. 24 órán belül visszaigazolás és konkrét projekttervezet —
-            telefonálás nélkül.
+            Egyetlen űrlap: épületszám, terület, BIM-export és infópont igények. 24 órán belül
+            visszaigazolás és konkrét projekttervezet — a helyszíni időpontot egyeztetjük.
           </p>
           <Link
             href="/csomagok/megrendeles"

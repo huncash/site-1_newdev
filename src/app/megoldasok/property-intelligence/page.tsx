@@ -107,8 +107,8 @@ export default function PropertyIntelligencePage() {
             Portfólió-szintű digitális iker — egy űrlapon
           </h2>
           <p className="mt-3 opacity-90">
-            Ingatlanszám, terület, integrációs igények (SAP / ServiceNow / CMMS), 3
-            időpontjavaslat. 24 órán belül visszaigazolás és KPI-tervezet.
+            Ingatlanszám, terület, integrációs igények (SAP / ServiceNow / CMMS). 24 órán belül
+            visszajelzés és KPI-tervezet.
           </p>
           <Link
             href="/csomagok/megrendeles"
