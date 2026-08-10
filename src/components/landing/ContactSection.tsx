@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 
-import { ContactForm } from "@/components/ContactForm";
+import { QuoteOrderForm } from "@/components/QuoteOrderForm";
 import { cn } from "@/lib/utils";
 
 export interface ContactSectionProps {
@@ -21,7 +21,7 @@ export function ContactSection({
       id="ajanlat"
       className={cn("scroll-mt-20 bg-background py-12 sm:py-16", className)}
     >
-      <div className="mx-auto max-w-xl px-4 sm:max-w-2xl sm:px-6">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <h2 className="text-center text-lg font-semibold sm:text-xl md:text-2xl">{heading}</h2>
         <div className="section-rule" />
         {subheading ? (
@@ -35,7 +35,7 @@ export function ContactSection({
               <p className="text-sm text-muted-foreground">Űrlap betöltése…</p>
             }
           >
-            <ContactForm defaultSource="fooldal-ajanlat" />
+            <QuoteOrderForm defaultSource="fooldal-ajanlat" />
           </Suspense>
         </div>
       </div>

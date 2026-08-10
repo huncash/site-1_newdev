@@ -34,21 +34,21 @@ export function ServicesSection({
         </h2>
         <div className="section-rule" />
         {/* 2×2 / 2×3 csempe mobilon; asztalin 3 oszlop */}
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+        <div className="mt-8 grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-8 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-10">
           {items.map((item) => (
             <article
               key={item.title}
-              className="flex flex-col items-center rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-4 text-center sm:px-4 sm:py-5"
+              className="flex flex-col items-center bg-transparent px-1 text-center sm:px-2"
             >
-              {/* Egységes ikonkeret: GSV = alaprajz méret */}
-              <div className="flex h-14 w-14 items-center justify-center sm:h-16 sm:w-16">
+              {/* Egységes ikonkeret — minden piktogram ugyanakkora */}
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center sm:h-16 sm:w-16">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={item.image}
                   alt=""
                   width={64}
                   height={64}
-                  className="max-h-full max-w-full object-contain"
+                  className="h-full w-full object-contain"
                   loading="lazy"
                   decoding="async"
                 />

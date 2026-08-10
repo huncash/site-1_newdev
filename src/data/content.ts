@@ -31,45 +31,44 @@ export interface ContentPackage {
   tier: string;
   title: string;
   audience: string;
-  priceOnce: string;
-  priceRecurring: string;
   cta: string;
   image: string;
 }
 
+/** Lovable / vrgo-main elfogadott főoldal-tartalom. */
 export const CONTENT = {
   hero: {
-    badge: "Bejárható 3D fotózás",
-    title: "Növeld hatékonyságodat a VR segítségével",
+    badge: "Enterprise Digital Twin",
+    title: "Hektáros területek egyetlen virtuális túrában",
     subtitle:
-      "Immerzív 3D bemutató belső és külső terekről — babaház nézet, belső séta, felülnézeti kép, megosztható link és beágyazható kód. Üzleti felhasználásra, akár 48 órás átfutással.",
-    proof: "Alapszolgáltatás: 3D épületszkennelés, gömbpanoráma, 12 havi online elérés.",
-    ctaPrimary: { label: "Ajánlatot kérek", href: "/ajanlat?forras=hero" },
-    ctaSecondary: { label: "Csomagok megnézése", href: "/#csomagok" },
+      "Extra nagy egyesített túra — több különálló Matterport-szken egyetlen bejárásban, akár fizikailag különálló helyszínek összekapcsolásával. Kampuszok, gyártócsarnokok és portfóliók digitális ikre, BIM-export és Property Intelligence támogatással.",
+    proof: "Bizonyított: 7 hektár, 4 szken, 1 összefüggő túra.",
+    ctaPrimary: { label: "Csomag és időpont igénylése", href: "/csomagok/megrendeles" },
+    ctaSecondary: { label: "Csomagok megnézése", href: "/csomagok" },
   },
 
   segments: {
-    heading: "Hol használható a VRGO",
+    heading: "Célszegmens-megoldások",
     items: [
       {
-        title: "Ingatlan · Ügynökségek",
-        description: "Lakás, ház, iroda — virtuális bemutató az érdeklődőknek, kevesebb felesleges helyszíni megtekintéssel.",
-        href: "/szegmens/ingatlan",
+        title: "Oktatás · Kampusz",
+        description: "Egyetem, iskola, labor — egyesített túrában a teljes kampusz.",
+        href: "/megoldasok/oktatas",
       },
       {
-        title: "Lakóparkok · Szállás",
-        description: "Típuslakások, közösségi terek, apartmanok és szállodák bejárható 3D bemutatója.",
-        href: "/szegmens/lakoparkok-szallas",
+        title: "Ipar · IoT · BIM",
+        description: "Gyár, csarnok, BIM-export, Defects AI, IoT-integráció.",
+        href: "/megoldasok/ipari-iot",
       },
       {
-        title: "Iroda · Kereskedelem",
-        description: "Irodaházak és üzlethelyiségek — több helyszín bemutatása egyetlen VR élményben.",
-        href: "/szegmens/iroda-kereskedelem",
+        title: "Facility Management",
+        description: "Bérbeadás, karbantartás, ESG, biztosítás portfólió-szinten.",
+        href: "/megoldasok/facility",
       },
       {
-        title: "Ipar · Nagyvállalat",
-        description: "Üzembejárás, belső oktatás, munkakörnyezet bemutatása távoli partnereknek és munkavállalóknak.",
-        href: "/szegmens/ipar-iot",
+        title: "Egyesített túra",
+        description: "7+ ha egyetlen bejárható túrában — akár különálló helyszínek egyben.",
+        href: "/egyesitett-tura",
       },
     ] satisfies ContentSegment[],
   },
@@ -87,7 +86,7 @@ export const CONTENT = {
         title: "Virtuális valóság (VR)",
         description:
           "Rekonstruáljuk a környezeteket az augmentált és virtuális valóság használatához, bármilyen eszközön.",
-        image: "/icons/vr-mode.png",
+        image: "/icons/vr-mode.svg",
         icon: "VR",
       },
       {
@@ -105,13 +104,13 @@ export const CONTENT = {
       {
         title: "360° panoráma képek",
         description: "A kimagasló, nagy felbontás miatt a 3 dimenziós fotók felnagyíthatóak.",
-        image: "/icons/360.png",
+        image: "/icons/360.svg",
         icon: "360",
       },
       {
         title: "Beágyazható",
         description: "Online elérhető, könnyedén megosztható, vagy beágyazható honlapodra.",
-        image: "/icons/embed.png",
+        image: "/icons/embed.svg",
         icon: "EMBED",
       },
     ] satisfies ContentService[],
@@ -154,7 +153,7 @@ export const CONTENT = {
         image: "/process/megosztas.jpg",
       },
     ] satisfies ContentProcessStep[],
-    cta: { label: "3D fotózás csomagjaink", href: "/#csomagok" },
+    cta: { label: "3D fotózás csomagjaink", href: "/csomagok" },
   },
 
   packages: {
@@ -167,8 +166,6 @@ export const CONTENT = {
         title: "Bérbeadás- és értékesítés-gyorsító",
         audience:
           "Iroda-, retail-, raktár- és prémium szálláshely portfóliókat kezelő üzemeltetők, ingatlanforgalmazók, franchise-hálózatok.",
-        priceOnce: "Egyedi ajánlat alapján",
-        priceRecurring: "Hosting / fenntartás az ajánlatban",
         cta: "CLASSIC igénylése",
         image: "/packages/csomag-a.jpg",
       },
@@ -177,8 +174,6 @@ export const CONTENT = {
         title: "Létesítmény-üzemeltetés és portfólió-iker",
         audience:
           "Facility management cégek, irodaház- és bevásárlóközpont-üzemeltetők, többtelephelyes vállalatok, biztosítók, ESG-jelentésre kötelezett cégek.",
-        priceOnce: "Egyedi ajánlat alapján",
-        priceRecurring: "Hosting / fenntartás az ajánlatban",
         cta: "TWIN igénylése",
         image: "/packages/csomag-b.jpg",
       },
@@ -187,8 +182,6 @@ export const CONTENT = {
         title: "Kampusz, ipari telephely, hektáros digitális iker",
         audience:
           "Egyetemek és kutatóhelyek, gyártó- és logisztikai vállalatok, energetikai és infrastruktúra-üzemeltetők, generálkivitelezők.",
-        priceOnce: "Egyedi ajánlat alapján",
-        priceRecurring: "Hosting / fenntartás az ajánlatban",
         cta: "ENTERPRISE igénylése",
         image: "/packages/csomag-c.jpg",
       },

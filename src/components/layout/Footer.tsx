@@ -21,9 +21,12 @@ export interface FooterProps {
 
 const DEFAULT_LINKS: FooterLink[] = [
   { label: "Főoldal", href: "/" },
-  { label: "Csomagok", href: "/#csomagok" },
+  { label: "Csomagok", href: "/csomagok" },
+  { label: "Egyesített túra", href: "/egyesitett-tura" },
+  { label: "GYIK", href: "/gyik" },
   { label: "Blog", href: "/blog" },
-  { label: "Ajánlatkérés", href: "/ajanlat" },
+  { label: "Kapcsolat / ajánlat", href: "/ajanlat" },
+  { label: "Megrendelő űrlap", href: "/csomagok/megrendeles" },
   { label: "Partner belépés", href: "/partner/login" },
   { label: "ÁSZF", href: "/aszf" },
   { label: "Adatvédelem", href: "/adatvedelem" },

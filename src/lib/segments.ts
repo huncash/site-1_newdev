@@ -108,23 +108,6 @@ export const SEGMENTS: SegmentPage[] = [
     ],
     ctaLabel: "Ajánlatot kérek facility megoldásra",
   },
-  {
-    slug: "egyesitett-tura",
-    title: "Egyesített túra",
-    menuLabel: "Egyesített túra",
-    summary:
-      "Külső és belső terek, alaprajz, 360° és megosztható link egy szolgáltatásban — üzleti felhasználásra.",
-    paragraphs: [
-      "Az egyesített túra a VRGO alapszolgáltatásainak összehangolt csomagja: 3D séta, panoráma, megosztás és beágyazás.",
-      "Ha nem vagy biztos a csomagválasztásban, az ajánlatkérő űrlapon röviden írd le a helyszínt — 24 órán belül visszajelzünk.",
-    ],
-    bullets: [
-      "3D séta + 360° panoráma",
-      "Megosztható link és beágyazás",
-      "Igény szerint alaprajz / GSV",
-    ],
-    ctaLabel: "Ajánlatot kérek egyesített túrára",
-  },
 ];
 
 export function getSegmentBySlug(slug: string): SegmentPage | undefined {

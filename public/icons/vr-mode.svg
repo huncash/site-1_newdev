@@ -1,9 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="VR Mode">
-  <g stroke="#FBBC05" stroke-linecap="round" stroke-linejoin="round">
-    <text x="256" y="150" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700" fill="#FBBC05">VR Mode</text>
-    <path d="M118 250 H394 C414 250 428 266 428 286 V330 C428 350 414 366 394 366 H320 C308 366 298 358 294 346 L284 318 C280 308 270 302 260 302 H252 C242 302 232 308 228 318 L218 346 C214 358 204 366 192 366 H118 C98 366 84 350 84 330 V286 C84 266 98 250 118 250 Z" stroke-width="14"/>
-    <circle cx="196" cy="300" r="36" stroke-width="12"/>
-    <circle cx="316" cy="300" r="36" stroke-width="12"/>
-    <path d="M232 318 C242 308 270 308 280 318" stroke-width="10"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="VR">
+  <g stroke="#FBBC05" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 40)">
+    <path d="M118 210 H394 C414 210 428 226 428 246 V290 C428 310 414 326 394 326 H320 C308 326 298 318 294 306 L284 278 C280 268 270 262 260 262 H252 C242 262 232 268 228 278 L218 306 C214 318 204 326 192 326 H118 C98 326 84 310 84 290 V246 C84 226 98 210 118 210 Z" stroke-width="14"/>
+    <circle cx="196" cy="260" r="36" stroke-width="12"/>
+    <circle cx="316" cy="260" r="36" stroke-width="12"/>
+    <path d="M232 278 C242 268 270 268 280 278" stroke-width="10"/>
   </g>
 </svg>

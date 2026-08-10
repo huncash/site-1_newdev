@@ -8,8 +8,6 @@ export interface PackageItem {
   tier: string;
   title: string;
   audience: string;
-  priceOnce: string;
-  priceRecurring: string;
   cta: string;
   image: string;
 }
@@ -66,12 +64,8 @@ export function PackagesSection({
               <p className="mt-3 flex-1 text-sm text-section-dark-foreground/80">
                 {item.audience}
               </p>
-              <div className="mt-5 space-y-1 border-t border-white/10 pt-4 text-sm">
-                <p className="font-medium">{item.priceOnce}</p>
-                <p className="text-section-dark-foreground/70">{item.priceRecurring}</p>
-              </div>
               <a
-                href={`/ajanlat?csomag=${encodeURIComponent(item.tier)}&forras=csomag-${item.tier.toLowerCase()}`}
+                href={`/csomagok/megrendeles?csomag=${encodeURIComponent(item.tier)}`}
                 className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-foreground transition hover:bg-brand-dark"
               >
                 {item.cta}
