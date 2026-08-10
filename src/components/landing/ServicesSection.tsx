@@ -23,33 +23,40 @@ export function ServicesSection({
     <section
       id="szolgaltatasok"
       className={cn(
-        "scroll-mt-20 bg-section-dark py-12 text-section-dark-foreground sm:py-16",
+        "scroll-mt-20 bg-[#33373D] py-10 text-section-dark-foreground sm:py-14",
         className
       )}
+      style={{ backgroundImage: "none" }}
     >
-      <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-center text-xl font-semibold text-brand sm:text-2xl md:text-3xl">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <h2 className="mx-auto max-w-xl text-center text-lg font-semibold text-brand sm:max-w-2xl sm:text-xl md:text-2xl">
           {heading}
         </h2>
         <div className="section-rule" />
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+        {/* 2×2 / 2×3 csempe mobilon; asztalin 3 oszlop */}
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {items.map((item) => (
-            <article key={item.title} className="text-center">
-              {/* SVG icons: transparent bg blends into section-dark (#33373D) */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.image}
-                alt={item.title}
-                width={200}
-                height={200}
-                className="mx-auto h-auto w-[140px] object-contain sm:w-[180px] md:w-[200px]"
-                loading="lazy"
-                decoding="async"
-              />
-              <h3 className="mt-4 text-lg font-semibold text-section-dark-foreground">
+            <article
+              key={item.title}
+              className="flex flex-col items-center rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-4 text-center sm:px-4 sm:py-5"
+            >
+              {/* Egységes ikonkeret: GSV = alaprajz méret */}
+              <div className="flex h-14 w-14 items-center justify-center sm:h-16 sm:w-16">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.image}
+                  alt=""
+                  width={64}
+                  height={64}
+                  className="max-h-full max-w-full object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <h3 className="mt-3 text-sm font-semibold leading-snug text-section-dark-foreground sm:text-base">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm text-section-dark-foreground/85">
+              <p className="mt-1.5 text-xs leading-relaxed text-section-dark-foreground/80 sm:text-sm">
                 {item.description}
               </p>
             </article>

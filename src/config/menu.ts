@@ -1,10 +1,11 @@
+/** Primary nav — every item must resolve to a real page/section. */
 export const MENU_ITEMS = [
   { label: "Főoldal", href: "/" },
-  { label: "Oktatás", href: "/#szegmensek" },
-  { label: "Ipar / IoT", href: "/#szegmensek" },
-  { label: "Facility", href: "/#szegmensek" },
-  { label: "Egyesített túra", href: "/#szolgaltatasok" },
-  { label: "Csomagok", href: "/#folyamat" },
+  { label: "Oktatás", href: "/szegmens/oktatas" },
+  { label: "Ipar / IoT", href: "/szegmens/ipar-iot" },
+  { label: "Facility", href: "/szegmens/facility" },
+  { label: "Egyesített túra", href: "/szegmens/egyesitett-tura" },
+  { label: "Csomagok", href: "/#csomagok" },
   { label: "Blog", href: "/blog" },
-  { label: "Kapcsolat", href: "mailto:info@vrgo.hu" },
+  { label: "Ajánlatkérés", href: "/ajanlat" },
 ] as const;

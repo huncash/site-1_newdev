@@ -1,0 +1,21 @@
+---
+description: site-1 MUST always use port 3000 — never 3001 or any other port
+alwaysApply: true
+---
+
+# Port 3000 only (site-1 / VRGO)
+
+This project (`site-1`) **must always** run on **port 3000**.
+
+## Hard rules for the agent
+
+- `package.json` scripts `dev` and `start` must keep `--port 3000`.
+- `.env` / `.env.example` must keep `PORT=3000`.
+- Never start, suggest, or document `localhost:3001` (or any port other than 3000) for this project.
+- If port 3000 is busy (`EADDRINUSE`): **kill the process on 3000**, then restart on 3000. Do **not** fall back to 3001.
+- If any command, script, or prior habit would use another port, **override it to 3000** before running.
+- Browser checks, deploys notes, and user-facing URLs for local dev: always `http://localhost:3000`.
+
+## Why
+
+Port 3001 was a temporary workaround when 3000 was occupied. That is forbidden going forward.

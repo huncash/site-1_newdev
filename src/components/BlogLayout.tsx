@@ -51,8 +51,10 @@ export function BlogLayout({ post, className }: BlogLayoutProps) {
 
       <div
         className={cn(
-          "prose prose-sm max-w-none",
-          "prose-headings:font-semibold prose-headings:tracking-tight",
+          "prose prose-sm max-w-none leading-relaxed",
+          "prose-p:my-4 prose-p:leading-relaxed",
+          "prose-headings:mt-8 prose-headings:mb-3 prose-headings:font-semibold prose-headings:tracking-tight",
+          "prose-ul:my-4 prose-ol:my-4 prose-li:my-1",
           "prose-a:text-brand prose-a:underline",
           "prose-code:rounded prose-code:bg-muted prose-code:px-1 prose-code:text-sm",
           "prose-img:rounded-md prose-img:shadow",
@@ -60,6 +62,18 @@ export function BlogLayout({ post, className }: BlogLayoutProps) {
         )}
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
       />
+
+      <div className="mt-12 rounded-md border border-border bg-muted/40 p-6 text-center">
+        <p className="text-sm font-medium text-foreground">
+          Bejárható 3D túra kell a projektedhez?
+        </p>
+        <a
+          href={`/ajanlat?forras=blog-${encodeURIComponent(post.slug)}`}
+          className="mt-4 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground transition hover:bg-brand-dark"
+        >
+          Ajánlatot kérek
+        </a>
+      </div>
     </article>
   );
 }

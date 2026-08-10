@@ -7,22 +7,20 @@ import type { Product } from "@/lib/types";
 import { ProductCard } from "./ProductCard";
 import { cn } from "@/lib/utils";
 
-type SortKey = "name-asc" | "name-desc" | "price-asc" | "price-desc";
+type SortKey = "name-asc" | "name-desc";
 
 const SORT_OPTIONS: { value: SortKey; label: string }[] = [
   { value: "name-asc", label: "Név (A–Z)" },
   { value: "name-desc", label: "Név (Z–A)" },
-  { value: "price-asc", label: "Ár (növekvő)" },
-  { value: "price-desc", label: "Ár (csökkenő)" },
 ];
 
 function applySort(products: Product[], sort: SortKey): Product[] {
   const copy = [...products];
   switch (sort) {
-    case "name-asc":  return copy.sort((a, b) => a.name.localeCompare(b.name, "hu"));
-    case "name-desc": return copy.sort((a, b) => b.name.localeCompare(a.name, "hu"));
-    case "price-asc": return copy.sort((a, b) => a.price - b.price);
-    case "price-desc":return copy.sort((a, b) => b.price - a.price);
+    case "name-asc":
+      return copy.sort((a, b) => a.name.localeCompare(b.name, "hu"));
+    case "name-desc":
+      return copy.sort((a, b) => b.name.localeCompare(a.name, "hu"));
   }
 }
 
@@ -57,7 +55,10 @@ export function Catalog({ products, basePath = "/product", className }: CatalogP
 
   const q    = searchParams.get("q") ?? "";
   const cat  = searchParams.get("cat") ?? "";
-  const sort = (searchParams.get("sort") ?? "name-asc") as SortKey;
+  const rawSort = searchParams.get("sort") ?? "name-asc";
+  const sort: SortKey = SORT_OPTIONS.some((o) => o.value === rawSort)
+    ? (rawSort as SortKey)
+    : "name-asc";
 
   const setParam = useCallback(
     (key: string, value: string) => {
@@ -122,16 +123,17 @@ export function Catalog({ products, basePath = "/product", className }: CatalogP
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {result.map((product) => (
-            <a key={product.id} href={`${basePath}/${product.id}`} className="block">
-              <ProductCard
-                title={product.name}
-                price={product.price}
-                imageUrl={product.imageUrl}
-                description={product.description}
-                badge={product.badge}
-                editable={product.editable}
-              />
-            </a>
+            <ProductCard
+              key={product.id}
+              title={product.name}
+              price={product.price}
+              imageUrl={product.imageUrl}
+              description={product.description}
+              badge={product.badge}
+              editable={product.editable}
+              actionLabel="Részletek"
+              onAction={() => router.push(`${basePath}/${product.id}`)}
+            />
           ))}
         </div>
       )}

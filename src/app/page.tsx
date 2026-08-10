@@ -1,3 +1,4 @@
+import { ContactSection } from "@/components/landing/ContactSection";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { PackagesSection } from "@/components/landing/PackagesSection";
 import { ProcessSection } from "@/components/landing/ProcessSection";
@@ -40,6 +41,8 @@ export default function HomePage() {
         disclaimer={packages.disclaimer}
         items={packages.items}
       />
+
+      <ContactSection />
     </>
   );
 }

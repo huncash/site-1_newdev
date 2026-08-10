@@ -23,7 +23,7 @@ const DEFAULT_LINKS: FooterLink[] = [
   { label: "Főoldal", href: "/" },
   { label: "Csomagok", href: "/#csomagok" },
   { label: "Blog", href: "/blog" },
-  { label: "Kapcsolat", href: `mailto:${SITE_CONFIG.publicEmail}` },
+  { label: "Ajánlatkérés", href: "/ajanlat" },
   { label: "Partner belépés", href: "/partner/login" },
   { label: "ÁSZF", href: "/aszf" },
   { label: "Adatvédelem", href: "/adatvedelem" },
@@ -94,8 +94,8 @@ export function Footer({
               AI Act 50. cikk — átláthatóság
             </a>
             <span aria-hidden="true">|</span>
-            <a href={`mailto:${SITE_CONFIG.publicEmail}`} className="hover:underline">
-              Kérdésed van? Írj nekünk!
+            <a href="/ajanlat?forras=footer" className="hover:underline">
+              Kérdésed van? Ajánlatot kérek
             </a>
           </div>
           <div className="flex items-center gap-3">

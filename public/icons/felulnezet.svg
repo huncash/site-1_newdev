@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="Floor plan">
-  <g stroke-linecap="round" stroke-linejoin="round">
-    <rect x="112" y="120" width="168" height="140" rx="8" stroke="#FBBC05" stroke-width="14"/>
-    <rect x="280" y="120" width="120" height="140" rx="8" stroke="#4285F4" stroke-width="14"/>
-    <rect x="112" y="260" width="120" height="132" rx="8" stroke="#34A853" stroke-width="14"/>
-    <rect x="232" y="260" width="168" height="132" rx="8" stroke="#EA4335" stroke-width="14"/>
-    <path d="M196 120 V260" stroke="#FBBC05" stroke-width="10"/>
-    <path d="M112 190 H280" stroke="#4285F4" stroke-width="10"/>
-    <path d="M232 260 V392" stroke="#EA4335" stroke-width="10"/>
-    <path d="M280 300 H400" stroke="#34A853" stroke-width="10"/>
+  <g stroke="#FBBC05" stroke-linecap="round" stroke-linejoin="round" stroke-width="14">
+    <!-- outer walls -->
+    <path d="M120 120 H392 V300 H300 V392 H120 V120 Z"/>
+    <!-- interior wall: vertical -->
+    <path d="M256 120 V300"/>
+    <!-- interior wall: horizontal with doorway gap -->
+    <path d="M120 240 H210"/>
+    <path d="M256 240 H392"/>
+    <!-- doorway swing / entrance accent -->
+    <path d="M300 392 L360 452" stroke-width="12"/>
   </g>
 </svg>

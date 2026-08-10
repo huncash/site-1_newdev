@@ -1,7 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+
 import type { Product } from "@/lib/types";
+import { buildAjanlatHref } from "@/lib/conversion";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 
@@ -21,18 +24,10 @@ export function ProductDetail({
   onRequestQuote,
 }: ProductDetailProps) {
   const [activeTab, setActiveTab] = useState<Tab>("description");
-
-  const formattedPriceNet = new Intl.NumberFormat("hu-HU", {
-    style: "currency",
-    currency: "HUF",
-    maximumFractionDigits: 0,
-  }).format(product.price);
-
-  const formattedPriceGross = new Intl.NumberFormat("hu-HU", {
-    style: "currency",
-    currency: "HUF",
-    maximumFractionDigits: 0,
-  }).format(product.price * 1.27);
+  const quoteHref = buildAjanlatHref({
+    termek: String(product.id),
+    forras: "product-detail",
+  });
 
   const specs = product.specs ? Object.entries(product.specs) : [];
 
@@ -93,20 +88,31 @@ export function ProductDetail({
           ) : null}
 
           <div className="rounded-lg border bg-card p-4">
-            <p className="text-2xl font-bold text-primary">{formattedPriceNet}</p>
-            <p className="text-xs text-muted-foreground">+ ÁFA / db</p>
+            <p className="text-lg font-semibold text-primary">Egyedi ajánlat alapján</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Bruttó: {formattedPriceGross} / db
+              Nagyságrendi képet és pontos árat ajánlatadás útján adunk.
             </p>
           </div>
 
           <div className="flex flex-col gap-2">
-            <Button className="w-full" onClick={onRequestQuote} type="button">
-              Ajánlatot kérek erre a termékre
-            </Button>
-            <Button variant="outline" className="w-full" onClick={onAddToCart} type="button">
-              Kosárba teszem
-            </Button>
+            {onRequestQuote ? (
+              <Button className="w-full" onClick={onRequestQuote} type="button">
+                Ajánlatot kérek erre a termékre
+              </Button>
+            ) : (
+              <Button className="w-full" asChild>
+                <Link href={quoteHref}>Ajánlatot kérek erre a termékre</Link>
+              </Button>
+            )}
+            {onAddToCart ? (
+              <Button variant="outline" className="w-full" onClick={onAddToCart} type="button">
+                Kosárba teszem
+              </Button>
+            ) : (
+              <Button variant="outline" className="w-full" asChild>
+                <Link href={quoteHref}>Tovább az ajánlatkérőhöz</Link>
+              </Button>
+            )}
           </div>
         </section>
       </div>
@@ -181,12 +187,8 @@ export function ProductDetail({
                 </div>
                 <div className="p-3">
                   <p className="text-sm font-medium leading-tight">{rel.name}</p>
-                  <p className="mt-1 text-sm text-primary font-semibold">
-                    {new Intl.NumberFormat("hu-HU", {
-                      style: "currency",
-                      currency: "HUF",
-                      maximumFractionDigits: 0,
-                    }).format(rel.price)}
+                  <p className="mt-1 text-sm font-semibold text-primary">
+                    Egyedi ajánlat alapján
                   </p>
                 </div>
               </div>

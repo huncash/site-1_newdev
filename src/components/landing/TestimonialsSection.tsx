@@ -24,12 +24,12 @@ export function TestimonialsSection({
       id="velemenyek"
       className={cn("scroll-mt-20 bg-background py-12 sm:py-16", className)}
     >
-      <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-center text-xl font-semibold sm:text-2xl md:text-3xl">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <h2 className="mx-auto max-w-xl text-center text-lg font-semibold sm:text-xl md:text-2xl">
           {heading}
         </h2>
         <div className="section-rule" />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {items.map((item) => (
             <figure
               key={item.name}

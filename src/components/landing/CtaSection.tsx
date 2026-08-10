@@ -15,7 +15,7 @@ export function CtaSection({
   heading,
   subheading,
   ctaLabel = "Kapcsolatfelvétel",
-  ctaHref = "mailto:info@vrgo.hu",
+  ctaHref = "/ajanlat",
   variant = "default",
   className,
 }: CtaSectionProps) {

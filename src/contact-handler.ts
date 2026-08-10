@@ -50,15 +50,25 @@ export function processContactPayload(body: unknown): ContactResult {
     return { status: 400, body: { error: "Cart too large" } };
   }
 
+  const pkg = asTrimmedString(data.package, 80) ?? "";
+  const segment = asTrimmedString(data.segment, 80) ?? "";
+  const product = asTrimmedString(data.product, 80) ?? "";
+  const source = asTrimmedString(data.source, 120) ?? "";
+
   console.log(
     JSON.stringify({
       event: "contact_received",
       siteId: "site-1",
+      conversion: "quote_form_submit",
       cartItemCount: cart.length,
       hasName: true,
       hasEmail: true,
       hasPhone: phone.length > 0,
       hasMessage: message.length > 0,
+      package: pkg || undefined,
+      segment: segment || undefined,
+      product: product || undefined,
+      source: source || undefined,
     })
   );
 

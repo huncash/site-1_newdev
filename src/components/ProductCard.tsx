@@ -35,20 +35,36 @@ export function ProductCard({
   imageAlt,
   description,
   badge,
-  actionLabel = "Kosárba",
+  actionLabel = "Részletek",
   onAction,
   editable = false,
   onEdit,
   className,
 }: ProductCardProps) {
-  const formattedPrice = new Intl.NumberFormat("hu-HU", {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-  }).format(price);
+  void price;
+  void currency;
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <Card
+      className={cn(
+        "overflow-hidden",
+        onAction ? "cursor-pointer transition hover:border-brand/60" : null,
+        className
+      )}
+      onClick={onAction}
+      role={onAction ? "link" : undefined}
+      tabIndex={onAction ? 0 : undefined}
+      onKeyDown={
+        onAction
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onAction();
+              }
+            }
+          : undefined
+      }
+    >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
         {imageUrl && !imageUrl.includes("feltoltes-alatt") ? (
           <img
@@ -77,15 +93,29 @@ export function ProductCard({
       </CardHeader>
 
       <CardContent className="pb-3 pt-0">
-        <p className="text-lg font-bold text-brand">{formattedPrice}</p>
+        <p className="text-sm font-medium text-brand">Egyedi ajánlat alapján</p>
       </CardContent>
 
       <CardFooter className="pt-0 flex gap-2">
-        <Button className="w-full" onClick={onAction} type="button">
+        <Button
+          className="w-full"
+          onClick={(e) => {
+            e.stopPropagation();
+            onAction?.();
+          }}
+          type="button"
+        >
           {actionLabel}
         </Button>
         {editable ? (
-          <Button variant="outline" onClick={onEdit} type="button">
+          <Button
+            variant="outline"
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit?.();
+            }}
+            type="button"
+          >
             Szerkesztés
           </Button>
         ) : null}

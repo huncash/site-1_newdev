@@ -35,15 +35,12 @@ export function PackagesSection({
         className
       )}
     >
-      <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-center text-xl font-semibold text-brand sm:text-2xl md:text-3xl">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <h2 className="mx-auto max-w-xl text-center text-lg font-semibold text-brand sm:max-w-2xl sm:text-xl md:text-2xl">
           {heading}
         </h2>
         <div className="section-rule" />
-        <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-section-dark-foreground/75">
-          {disclaimer}
-        </p>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:gap-5 lg:grid-cols-3">
           {items.map((item) => (
             <article
               key={item.tier}
@@ -57,7 +54,7 @@ export function PackagesSection({
                   height={200}
                   sizes="(max-width: 1024px) 100vw, 320px"
                   loading="lazy"
-                  className="h-40 w-full object-cover"
+                  className="h-28 w-full object-cover sm:h-36"
                 />
               </div>
               <p className="text-xs font-semibold uppercase tracking-wider text-brand">
@@ -74,7 +71,7 @@ export function PackagesSection({
                 <p className="text-section-dark-foreground/70">{item.priceRecurring}</p>
               </div>
               <a
-                href={`mailto:info@vrgo.hu?subject=${encodeURIComponent(item.cta)}`}
+                href={`/ajanlat?csomag=${encodeURIComponent(item.tier)}&forras=csomag-${item.tier.toLowerCase()}`}
                 className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-foreground transition hover:bg-brand-dark"
               >
                 {item.cta}
@@ -82,6 +79,9 @@ export function PackagesSection({
             </article>
           ))}
         </div>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-section-dark-foreground/75">
+          {disclaimer}
+        </p>
       </div>
     </section>
   );
