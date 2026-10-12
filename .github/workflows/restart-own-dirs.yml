@@ -1,0 +1,49 @@
+name: Restart site-1..4 from own dirs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  restart:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 195.228.152.141
+          username: deploy
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script_stop: false
+          command_timeout: 8m
+          script: |
+            set -uo pipefail
+            git config --global --add safe.directory /var/www/site-1 || true
+            git config --global --add safe.directory /var/www/site-2 || true
+            git config --global --add safe.directory /var/www/site-3 || true
+            git config --global --add safe.directory /var/www/site-4 || true
+            start_one() {
+              local n="$1" port="$2"
+              local d="/var/www/site-$n"
+              echo "========== site-$n $d port=$port =========="
+              ls -ld "$d" "$d/.next" 2>/dev/null || true
+              cd "$d" || return 0
+              pm2 delete "site-$n" || true
+              PORT="$port" HOST=127.0.0.1 pm2 start npm --name "site-$n" --cwd "$d" -- start
+              sleep 2
+              pm2 describe "site-$n" | sed -n '1,40p' || true
+              echo "---- logs ----"
+              pm2 logs "site-$n" --lines 30 --nostream || true
+              echo -n "curl :$port "
+              curl -sI -m 4 "http://127.0.0.1:$port/" | head -n 1 || echo fail
+            }
+            start_one 1 3000
+            start_one 2 3001
+            start_one 3 3002
+            start_one 4 3003
+            pm2 save || true
+            pm2 status
+            ss -lptn | grep -E ':300[0-3]\b' || echo "no 300x listeners"
+            echo "==== nginx enabled ===="
+            ls /etc/nginx/sites-enabled 2>/dev/null || true
+            grep -RIn --include='*.conf' -E 'server_name|proxy_pass' /etc/nginx/sites-enabled /etc/nginx/conf.d 2>/dev/null | head -n 60 || true
