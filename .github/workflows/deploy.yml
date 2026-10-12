@@ -31,9 +31,24 @@ jobs:
             set -euo pipefail
             APP_DIR=/var/www/site-1
             APP_NAME=site-1
+            ORIGIN=https://github.com/huncash/site-1_newdev.git
             test -d "$APP_DIR"
             cd "$APP_DIR"
-            git remote set-url origin https://github.com/huncash/site-1_newdev.git
+            echo "user=$(id) pwd=$(pwd)"
+            stat -c '%n %U:%G %a' . .git .git/config 2>/dev/null || true
+            if [[ ! -w .git ]]; then
+              echo "Repairing ownership of $APP_DIR for $(id -un)"
+              sudo -n chown -R "$(id -un):$(id -gn)" "$APP_DIR"
+            fi
+            rm -f .git/config.lock 2>/dev/null || sudo -n rm -f .git/config.lock
+            git config --global --add safe.directory "$APP_DIR" || true
+            current="$(git remote get-url origin 2>/dev/null || true)"
+            if [[ "$current" != "$ORIGIN" ]]; then
+              git remote set-url origin "$ORIGIN" || {
+                sudo -n chown -R "$(id -un):$(id -gn)" "$APP_DIR"
+                git remote set-url origin "$ORIGIN"
+              }
+            fi
             git fetch origin
             git reset --hard origin/main
             npm install
