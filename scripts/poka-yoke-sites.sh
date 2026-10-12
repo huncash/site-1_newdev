@@ -1,30 +1,15 @@
 #!/bin/bash
-# Portfolio site-1..4 only. Never touch /var/www/szcenario or site-5 keys.
+# Portfolio site-1..4 only. Never touch /var/www/szcenario.
+# Runs as vmvrgohu (owns the trees). No sudo required.
 set -uo pipefail
-echo "==== START $(date -Is) user=$(id) pwd=$(pwd) ===="
-echo "sudo-n=$(sudo -n true && echo yes || echo no)"
+echo "==== START $(date -Is) user=$(id) ===="
 
-GUARD=/home/deploy/bin/site-guard.sh
-AUTH=/home/deploy/.ssh/authorized_keys
-BACKUP="/home/deploy/.ssh/authorized_keys.bak.poka.$(date +%Y%m%d%H%M%S)"
+GUARD="$HOME/bin/site-guard.sh"
+AUTH="$HOME/.ssh/authorized_keys"
+mkdir -p "$HOME/bin" "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
 
-write_file() {
-  local dest="$1"
-  local mode="$2"
-  local owner="$3"
-  if [ -w "$(dirname "$dest")" ] && { [ ! -e "$dest" ] || [ -w "$dest" ]; }; then
-    cat > "$dest"
-    chmod "$mode" "$dest" || true
-  else
-    sudo -n tee "$dest" >/dev/null
-    sudo -n chmod "$mode" "$dest" || true
-    sudo -n chown "$owner" "$dest" || true
-  fi
-}
-
-echo "==== write site-guard ===="
-sudo -n mkdir -p /home/deploy/bin 2>/dev/null || mkdir -p /home/deploy/bin
-write_file "$GUARD" 755 deploy:deploy << 'GUARD'
+cat > "$GUARD" << 'GUARD'
 #!/bin/bash
 set -euo pipefail
 SITE="${1:-}"
@@ -58,25 +43,20 @@ pm2 start npm --name "$SITE" --cwd "$APP_DIR" -- start
 pm2 save
 ss -lptn | grep -E ":${PORT}\\b" || true
 GUARD
-ls -la "$GUARD" || sudo -n ls -la "$GUARD"
+chmod 755 "$GUARD"
+ls -la "$GUARD"
 
-echo "==== authorized_keys ===="
-sudo -n mkdir -p /home/deploy/.ssh
-sudo -n chmod 700 /home/deploy/.ssh || true
-sudo -n chown deploy:deploy /home/deploy/.ssh || true
-sudo -n touch "$AUTH"
-sudo -n chmod 600 "$AUTH" || true
-sudo -n chown deploy:deploy "$AUTH" || true
-if [ -f "$AUTH" ] || sudo -n test -f "$AUTH"; then
-  sudo -n cp -a "$AUTH" "$BACKUP" && echo "backup $BACKUP" || echo "WARN: no backup"
-fi
+cp -a "$AUTH" "$AUTH.bak.poka.$(date +%Y%m%d%H%M%S)" 2>/dev/null || true
+touch "$AUTH"
+chmod 600 "$AUTH"
 
 install_one() {
   local site="$1"
   local pub="$2"
-  local line="command=\"/home/deploy/bin/site-guard.sh ${site}\",no-agent-forwarding,no-port-forwarding,no-pty,no-X11-forwarding ${pub}"
-  sudo -n grep -F " ${site}-vps-deploy" "$AUTH" >/dev/null 2>&1 && sudo -n sed -i "/ ${site}-vps-deploy/d" "$AUTH"
-  printf '%s\n' "$line" | sudo -n tee -a "$AUTH" >/dev/null && echo "installed $site" || echo "FAIL install $site"
+  local line="command=\"$HOME/bin/site-guard.sh ${site}\",no-agent-forwarding,no-port-forwarding,no-pty,no-X11-forwarding ${pub}"
+  grep -F " ${site}-vps-deploy" "$AUTH" >/dev/null 2>&1 && sed -i "/ ${site}-vps-deploy/d" "$AUTH"
+  printf '%s\n' "$line" >> "$AUTH"
+  echo "installed $site"
 }
 
 install_one site-1 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0nW/Ey5hOcpb0WEcsUJ33rUs0opuSEFSSu3sqVOmPK site-1-vps-deploy"
@@ -84,61 +64,48 @@ install_one site-2 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPAtw0zTjIzBHMupTI0ZMDmp
 install_one site-3 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMBBrXI1gvIyrWnNV6aZYmCL+b6pgs2xoMf7XXks8E7c site-3-vps-deploy"
 install_one site-4 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHhCUUTL4qTTjrwy5awzq5/9sgDGhEP1Z4ZCUV2Yx9tM site-4-vps-deploy"
 
-echo "==== authorized_keys comments ===="
-sudo -n awk '{print $NF}' "$AUTH" || awk '{print $NF}' "$AUTH" || true
-if sudo -n grep -E 'site-5|scenario' "$AUTH" >/dev/null 2>&1; then
-  echo "site-5 key: KEEP"
-else
-  echo "WARN: site-5 key not found in authorized_keys"
-fi
+echo "==== authorized_keys comments (vmvrgohu) ===="
+awk '{print $NF}' "$AUTH"
+echo "key count=$(grep -c '^' "$AUTH" || true)"
 
-echo "==== perms site-1..4 (skip szcenario) ===="
+echo "==== perms + bins site-1..4 ===="
 for s in 1 2 3 4; do
   d="/var/www/site-$s"
-  if [ ! -d "$d" ]; then
-    echo "MISSING $d"
-    continue
-  fi
   echo "-- $d $(stat -c '%U:%G %a' "$d")"
-  sudo -n setfacl -R -m u:deploy:rwx -m u:vmvrgohu:rwx -m d:u:deploy:rwx -m d:u:vmvrgohu:rwx "$d" 2>/dev/null || true
-  chmod -R ug+rwX "$d" 2>/dev/null || sudo -n chmod -R ug+rwX "$d" || true
-  if [ -d "$d/node_modules/.bin" ]; then
-    find "$d/node_modules/.bin" -type f -exec chmod a+x {} + 2>/dev/null || sudo -n find "$d/node_modules/.bin" -type f -exec chmod a+x {} + || true
-  fi
   git config --global --add safe.directory "$d" || true
-  sudo -n -u deploy git config --global --add safe.directory "$d" || true
+  if [ -d "$d/node_modules/.bin" ]; then
+    find "$d/node_modules/.bin" -type f -exec chmod a+x {} + 2>/dev/null || true
+    ls -la "$d/node_modules/.bin/next" 2>/dev/null || echo "no next bin"
+  else
+    echo "no node_modules/.bin"
+  fi
+  ls -ld "$d/.next" 2>/dev/null || echo "no .next"
 done
 
-echo "==== processes / pm2 ===="
-ps -eo user,pid,cmd | grep -E '[n]ode|[p]m2|[n]ext' || true
-echo "-- pm2 as $(whoami) --"
-pm2 status || true
-echo "-- pm2 as deploy --"
-sudo -n -u deploy bash -lc 'pm2 status' || true
-
-echo "==== nginx map ===="
-ls -la /etc/nginx/sites-enabled || true
-sudo -n grep -RIn --include='*.conf' -E 'server_name|proxy_pass|3000|3001|3002|3003' /etc/nginx/sites-enabled /etc/nginx/conf.d 2>/dev/null | head -n 80 || true
+echo "==== nginx (read-only) ===="
+grep -RIn --include='*' -E 'server_name|proxy_pass' /etc/nginx/sites-enabled 2>/dev/null | head -n 40 || true
 
 restart_one() {
   local s="$1"
   local d="/var/www/site-$s"
   echo "===== restart site-$s from $d ====="
-  if ! sudo -n -u deploy bash -lc "cd '$d' && pm2 delete site-$s || true; pm2 start npm --name site-$s --cwd '$d' -- start"; then
-    echo "deploy pm2 failed — try $(whoami)"
-    (cd "$d" && pm2 delete "site-$s" || true
-     pm2 start npm --name "site-$s" --cwd "$d" -- start) || true
-  fi
+  cd "$d" || return 1
+  find node_modules/.bin -type f -exec chmod a+x {} + 2>/dev/null || true
+  pm2 delete "site-$s" || true
+  pm2 start npm --name "site-$s" --cwd "$d" -- start
+  sleep 4
+  echo "-- logs site-$s --"
+  pm2 logs "site-$s" --lines 25 --nostream || true
 }
 
 for s in 1 2 3 4; do
   restart_one "$s"
 done
-sudo -n -u deploy bash -lc 'pm2 save' || pm2 save || true
+pm2 save || true
+sleep 4
 
-sleep 3
 echo "==== pm2 after ===="
-sudo -n -u deploy bash -lc 'pm2 status' || pm2 status || true
+pm2 status || true
 echo "==== listening ===="
 ss -lptn | grep -E ':300[0-3]\b|:5100\b' || true
 echo "==== local curl ===="
