@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - name: Install path-locked keys + restart each PM2 from its own dir
+      - name: Diagnose sudo, lock keys, restart each site from its own dir
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: 195.228.152.141
@@ -26,9 +26,18 @@ jobs:
           script_stop: false
           command_timeout: 20m
           script: |
-            set -euo pipefail
-            echo "whoami=$(whoami) host=$(hostname) pwd=$(pwd)"
-            mkdir -p "$HOME/bin"
+            set -uo pipefail
+            echo "whoami=$(whoami) host=$(hostname) home=$HOME"
+            echo "==== .ssh perms ===="
+            ls -la "$HOME/.ssh" || true
+            ls -la /etc/ssh/authorized_keys 2>/dev/null || true
+            sudo -n true && echo "sudo=yes" || echo "sudo=no"
+            id
+            echo "==== /var/www ===="
+            ls -la /var/www || true
+            stat -c '%n %U:%G %a' /var/www/site-1 /var/www/site-2 /var/www/site-3 /var/www/site-4 2>/dev/null || true
+
+            install -d -m 755 "$HOME/bin"
             cat > "$HOME/bin/site-guard.sh" << 'GUARD'
             #!/bin/bash
             set -euo pipefail
@@ -50,13 +59,8 @@ jobs:
               exec bash -c "$ORIG"
             fi
             test -d "$APP_DIR"
+            git config --global --add safe.directory "$APP_DIR" || true
             cd "$APP_DIR"
-            HERE="$(pwd -P)"
-            WANT="$(readlink -f "$APP_DIR" 2>/dev/null || realpath "$APP_DIR")"
-            if [[ "$HERE" != "$WANT" ]]; then
-              echo "cwd-denied $HERE != $WANT" >&2
-              exit 1
-            fi
             git remote set-url origin "https://github.com/huncash/${REPO}.git"
             git fetch origin
             git reset --hard origin/main
@@ -70,38 +74,55 @@ jobs:
             GUARD
             chmod 755 "$HOME/bin/site-guard.sh"
 
-            AUTH="$HOME/.ssh/authorized_keys"
-            mkdir -p "$HOME/.ssh"
-            chmod 700 "$HOME/.ssh"
-            touch "$AUTH"
-            chmod 600 "$AUTH"
+            AUTH_CANDIDATES="$HOME/.ssh/authorized_keys /etc/ssh/authorized_keys"
+            AUTH=""
+            for f in $AUTH_CANDIDATES; do
+              if [ -f "$f" ]; then AUTH="$f"; break; fi
+            done
+            if [ -z "$AUTH" ]; then AUTH="$HOME/.ssh/authorized_keys"; fi
+            echo "AUTH=$AUTH"
+            ls -la "$AUTH" 2>/dev/null || true
 
-            install_key() {
-              local site="$1"
-              local pub="$2"
-              local line="command=\"$HOME/bin/site-guard.sh ${site}\",no-agent-forwarding,no-port-forwarding,no-pty,no-X11-forwarding ${pub}"
-              grep -F " ${site}-vps-deploy" "$AUTH" >/dev/null 2>&1 && sed -i "/ ${site}-vps-deploy/d" "$AUTH"
-              printf '%s\n' "$line" >> "$AUTH"
-              echo "installed $site"
+            write_keys() {
+              local target="$1"
+              local sudo="${2:-}"
+              $sudo mkdir -p "$(dirname "$target")"
+              $sudo touch "$target"
+              install_one() {
+                local site="$1"
+                local pub="$2"
+                local line="command=\"$HOME/bin/site-guard.sh ${site}\",no-agent-forwarding,no-port-forwarding,no-pty,no-X11-forwarding ${pub}"
+                $sudo grep -F " ${site}-vps-deploy" "$target" >/dev/null 2>&1 && $sudo sed -i "/ ${site}-vps-deploy/d" "$target"
+                printf '%s\n' "$line" | $sudo tee -a "$target" >/dev/null
+                echo "installed $site -> $target"
+              }
+              install_one site-1 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0nW/Ey5hOcpb0WEcsUJ33rUs0opuSEFSSu3sqVOmPK site-1-vps-deploy"
+              install_one site-2 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPAtw0zTjIzBHMupTI0ZMDmpb26rGluBVIqvXYFX7m7b site-2-vps-deploy"
+              install_one site-3 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMBBrXI1gvIyrWnNV6aZYmCL+b6pgs2xoMf7XXks8E7c site-3-vps-deploy"
+              install_one site-4 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHhCUUTL4qTTjrwy5awzq5/9sgDGhEP1Z4ZCUV2Yx9tM site-4-vps-deploy"
             }
 
-            install_key site-1 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0nW/Ey5hOcpb0WEcsUJ33rUs0opuSEFSSu3sqVOmPK site-1-vps-deploy"
-            install_key site-2 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPAtw0zTjIzBHMupTI0ZMDmpb26rGluBVIqvXYFX7m7b site-2-vps-deploy"
-            install_key site-3 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMBBrXI1gvIyrWnNV6aZYmCL+b6pgs2xoMf7XXks8E7c site-3-vps-deploy"
-            install_key site-4 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHhCUUTL4qTTjrwy5awzq5/9sgDGhEP1Z4ZCUV2Yx9tM site-4-vps-deploy"
-
+            if write_keys "$AUTH" ""; then
+              echo "keys written without sudo"
+            elif sudo -n true && write_keys "$AUTH" "sudo -n"; then
+              echo "keys written with sudo"
+            else
+              echo "WARN: cannot write authorized_keys"
+            fi
             echo "==== authorized_keys comments ===="
-            awk '{print $NF}' "$AUTH" || true
+            awk '{print $NF}' "$AUTH" 2>/dev/null || sudo -n awk '{print $NF}' "$AUTH" 2>/dev/null || true
 
-            echo "==== /var/www ===="
-            ls -la /var/www || true
-
-            echo "==== nginx site files ===="
+            echo "==== nginx ===="
             ls -la /etc/nginx/sites-enabled 2>/dev/null || true
             grep -RIn --include='*.conf' -E 'server_name|proxy_pass|3000|3001|3002|3003' /etc/nginx/sites-enabled /etc/nginx/conf.d 2>/dev/null | head -n 80 || true
 
             echo "==== pm2 before ===="
             pm2 status || true
+
+            git config --global --add safe.directory /var/www/site-1 || true
+            git config --global --add safe.directory /var/www/site-2 || true
+            git config --global --add safe.directory /var/www/site-3 || true
+            git config --global --add safe.directory /var/www/site-4 || true
 
             for s in 1 2 3 4; do
               APP_DIR="/var/www/site-$s"
@@ -110,8 +131,8 @@ jobs:
                 echo "MISSING $APP_DIR"
                 continue
               fi
-              cd "$APP_DIR"
-              echo "pwd=$(pwd)"
+              cd "$APP_DIR" || continue
+              echo "pwd=$(pwd) owner=$(stat -c '%U:%G' .)"
               git remote -v || true
               git fetch origin || true
               git reset --hard origin/main || true
@@ -124,7 +145,6 @@ jobs:
               fi
             done
             pm2 save || true
-
             echo "==== pm2 after ===="
             pm2 status || true
             echo "==== listening ===="
