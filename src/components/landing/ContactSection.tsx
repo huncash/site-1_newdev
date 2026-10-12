@@ -14,7 +14,7 @@ export interface ContactSectionProps {
 export function ContactSection({
   className,
   heading = "Ajánlatkérés",
-  subheading = "Töltsd ki az űrlapot — a projekt jellemzői alapján legfeljebb 24 órán belül visszajelzünk.",
+  subheading = "Töltsd ki az űrlapot — 1 munkanapon belül visszajelzünk.",
 }: ContactSectionProps) {
   return (
     <section

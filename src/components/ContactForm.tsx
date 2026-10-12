@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 
+import { RecaptchaField } from "@/components/RecaptchaField";
 import { Button } from "@/components/ui/button";
 import { trackConversion } from "@/lib/conversion";
 import { cn } from "@/lib/utils";
@@ -52,6 +53,8 @@ export function ContactForm({
   const [message, setMessage] = useState("");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaReset, setCaptchaReset] = useState(0);
   const [done, setDone] = useState(false);
   const seeded = useRef(false);
 
@@ -74,6 +77,14 @@ export function ContactForm({
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
+    if (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
+      setError("Az ellenőrzés jelenleg nem elérhető. Próbáld újra később.");
+      return;
+    }
+    if (!captchaToken) {
+      setError("Jelöld be, hogy nem vagy robot.");
+      return;
+    }
     setPending(true);
     try {
       const res = await fetch("/api/contact", {
@@ -88,12 +99,23 @@ export function ContactForm({
           segment: szegmens || undefined,
           product: termek || undefined,
           source: forras || "ajanlat-form",
+          recaptchaToken: captchaToken,
         }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
         trackConversion("quote_form_submit_error", { reason: data.error ?? "http" });
-        setError(data.error === "Invalid email" ? "Érvénytelen e-mail cím." : "Küldés sikertelen. Próbáld újra.");
+        if (data.error === "recaptcha" || data.error === "unavailable") {
+          setCaptchaToken("");
+          setCaptchaReset((value) => value + 1);
+        }
+        setError(
+          data.error === "Invalid email"
+            ? "Érvénytelen e-mail cím."
+            : data.error === "recaptcha"
+              ? "Az ellenőrzés lejárt vagy nem sikerült. Jelöld be újra."
+              : "Küldés sikertelen. Jelöld be újra az ellenőrzést, majd próbáld meg még egyszer."
+        );
         return;
       }
       trackConversion("quote_form_submit_success", {
@@ -104,7 +126,9 @@ export function ContactForm({
       setDone(true);
     } catch {
       trackConversion("quote_form_submit_error", { reason: "network" });
-      setError("Hálózati hiba. Próbáld újra.");
+      setCaptchaToken("");
+      setCaptchaReset((value) => value + 1);
+      setError("Hálózati hiba. Jelöld be újra az ellenőrzést, majd próbáld meg még egyszer.");
     } finally {
       setPending(false);
     }
@@ -121,7 +145,7 @@ export function ContactForm({
       >
         <p className="text-base font-semibold text-foreground">Köszönjük az ajánlatkérést.</p>
         <p className="mt-2 text-muted-foreground">
-          Hamarosan felvesszük veled a kapcsolatot — jellemzően 24 órán belül.
+          Hamarosan felvesszük veled a kapcsolatot — 1 munkanapon belül.
         </p>
       </div>
     );
@@ -187,6 +211,14 @@ export function ContactForm({
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         />
       </label>
+
+      <div className="space-y-2">
+        <p className="text-sm font-medium">Ellenőrzés</p>
+        <p className="text-sm text-muted-foreground">
+          Az elküldés előtt igazold, hogy nem automata küldi az ajánlatkérést.
+        </p>
+        <RecaptchaField onToken={setCaptchaToken} resetKey={captchaReset} />
+      </div>
 
       {error ? (
         <p className="text-sm text-red-600" role="alert">

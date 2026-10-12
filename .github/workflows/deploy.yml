@@ -37,6 +37,9 @@ jobs:
             git fetch origin
             git reset --hard origin/main
             npm install
+            if [[ ! -f .env.local ]] || ! grep -q '^QUOTE_INBOX_EMAIL=.' .env.local || ! grep -q '^SMTP_HOST=.' .env.local || ! grep -q '^RECAPTCHA_SECRET_KEY=.' .env.local || ! grep -q '^NEXT_PUBLIC_RECAPTCHA_SITE_KEY=.' .env.local; then
+              echo "WARNING: quote mail or reCAPTCHA is not fully set in .env.local; quote emails will not be sent"
+            fi
             rm -rf .next
             npm run build
             pm2 delete "$APP_NAME" || true

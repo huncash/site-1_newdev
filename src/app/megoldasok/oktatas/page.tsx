@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const usecases = [
   {
     title: "Felvételi és nyílt nap online",
-    desc: "A jelentkezők bárhonnan bejárhatják a kampuszt — többszörös konverzió a hagyományos fotó-galériához képest.",
+    desc: "A jelentkezők a kampuszt a helyszínre utazás nélkül is bejárhatják.",
   },
   {
     title: "Labor- és műhelybemutató",
@@ -21,22 +21,21 @@ const usecases = [
   },
   {
     title: "Alumni és nemzetközi kapcsolatok",
-    desc: "Külföldi hallgatók, partneregyetemek, ERASMUS jelentkezők számára full-immersion bemutató — angol nyelvű címkékkel.",
+    desc: "Külföldi hallgatók és partnerek számára bejárható bemutató, angol nyelvű címkékkel, ha a megrendelés kéri.",
   },
   {
     title: "Facility és karbantartás",
-    desc: "Tantermek, gépészet és infrastruktúra állapotrögzítés — átadás-átvétel és kárrendezés gyorsítva.",
+    desc: "Tantermek, gépészet és infrastruktúra állapota időbélyeggel rögzíthető.",
   },
   {
     title: "Időszaki rendezvények, kiállítások",
-    desc: "Konferencia, projektzáró, hallgatói kiállítás digitális dokumentációja — örökre megőrizve.",
+    desc: "Konferencia, projektzáró vagy hallgatói kiállítás dokumentálható. A túra a tárhely előfizetésének ideje alatt érhető el.",
   },
 ];
 
 const proof = [
-  { metric: "7+ ha", label: "Egyetlen összefűzött túra — Pannon Egyetem, Zalaegerszegi Kampusz" },
-  { metric: "8 → 1", label: "Nyolc különálló szken egyetlen hivatkozással bejárható túrává fűzve" },
-  { metric: "4 Pro slot", label: "Felhő-tárhely, 0–24 elérhető" },
+  { metric: "7+ ha", label: "Saját projektadat: Pannon Egyetem, Zalaegerszegi Kampusz, 2024 ősz" },
+  { metric: "8 → 1", label: "Nyolc különálló szken egy hivatkozásra fűzve. Független mérés nem készült." },
 ];
 
 export default function OktatasPage() {
@@ -92,7 +91,7 @@ export default function OktatasPage() {
 
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2">
             {proof.map((p) => (
               <div key={p.label} className="rounded-md border border-border bg-card p-6 text-center shadow-sm">
                 <div className="text-3xl font-bold text-brand">{p.metric}</div>
@@ -120,17 +119,15 @@ export default function OktatasPage() {
 
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Bizonyított: 7+ hektár, 8 szken, 1 hivatkozás</h2>
+          <h2 className="text-2xl font-semibold sm:text-3xl">Saját projekt: 7+ hektár, 8 szken, 1 hivatkozás</h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
             A Pannon Egyetem Zalaegerszegi Kampuszán 2024 őszén, 4 munkanap alatt 8 különálló
-            Matterport-szken készült, amelyeket az „Összefűzés" kiegészítő szolgáltatással egyetlen,
-            több mint 7 hektáros összefüggő digitális ikerré fűztem össze. A felhőben mindössze
-            4 Pro túra tárhelyét foglalja — 0–24 elérhető a felvételi, FM, akkreditáció és
-            nemzetközi kommunikáció számára.
+            Matterport-szken készült. Ezeket egyetlen, több mint 7 hektáros összefüggő túrává
+            fűztük össze. A számok a VRGO saját projektadatai, nem független mérés.
           </p>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Az intézménynek hivatkozható, mérhető, bővíthető digitális vagyontárgya lesz. Más
-            egyetemeknek is érdemes megfontolniuk.
+            A túra egy linken érhető el felvételi bemutatóra és üzemeltetési mellékletnek, amíg
+            a tárhely előfizetése él.
           </p>
         </div>
       </section>
@@ -139,7 +136,7 @@ export default function OktatasPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Kérje árajánlatát</h2>
           <p className="mt-3 opacity-90">
-            Töltse ki a strukturált ajánlatkérő űrlapot. 24 órán belül visszajelzünk.
+            Töltse ki a strukturált ajánlatkérő űrlapot. 1 munkanapon belül visszajelzünk.
           </p>
           <Link
             href="/csomagok/megrendeles"

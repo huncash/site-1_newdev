@@ -4,7 +4,7 @@ import { Term } from "@/components/Term";
 
 export const metadata: Metadata = {
   title: 'BIM-koordináció és as-built dokumentáció 3D szkenből | VRGO',
-  description: 'MatterPak export (E57 pontfelhő, OBJ mesh, XYZ, méretezett alaprajz) a BIM-koordinációhoz és as-built dokumentációhoz. A tervezett és megvalósult állapot összevetése órák alatt.',
+  description: 'MatterPak export (E57 pontfelhő, OBJ mesh, XYZ, méretezett alaprajz) a BIM-koordinációhoz és as-built dokumentációhoz. A tervezett és a megvalósult állapot egymás mellé tehető.',
 };
 
 const usecases = [
@@ -22,7 +22,7 @@ const usecases = [
         <Term k="as-built">As-built</Term> vs. terv összevetés
       </>
     ),
-    desc: "A megvalósult állapot pontfelhője a tervezői modell mellett — eltérés-detektálás órák, nem hetek alatt. Generálkivitelező és műszaki ellenőr közös nézete.",
+    desc: "A megvalósult állapot pontfelhője a tervezői modell mellé tehető. Az eltérést a tervező vagy a műszaki ellenőr olvassa ki; automatikus eltérés-listát nem adunk.",
   },
   {
     title: (
@@ -33,8 +33,8 @@ const usecases = [
     desc: "A 3D bejárható túra URL-jei és Mattertag-jei a BIM-modell nézetéből hivatkozhatók — a tervező és a kivitelező egyetlen vizuális forráson dolgozik.",
   },
   {
-    title: "Felmérési idő töredékére csökken",
-    desc: "Egy nap szken pótolja a több hét manuális felmérést. A pontfelhő és mesh export még aznap a tervező asztalán.",
+    title: "Felmérés pontfelhőből",
+    desc: "A szken pontfelhőt, mesh-t és — ha a csomag tartalmazza — méretezett alaprajzot ad. A feldolgozás ideje a projekt méretétől függ, az átadási határidő az ajánlatban szerepel.",
   },
   {
     title: "Műemlék- és átalakítás-tervezés",
@@ -42,7 +42,7 @@ const usecases = [
   },
   {
     title: "Átadás-átvétel dokumentum",
-    desc: "Időbélyegzett 3D állapot az átadáskor — későbbi szavatossági vita esetén objektív, vizuális bizonyíték.",
+    desc: "Időbélyegzett 3D állapot az átadáskor. Később visszakereshető képi állapot; a jogi értékelést nem mi adjuk.",
   },
 ];
 
@@ -117,8 +117,8 @@ export default function BimAsBuiltPage() {
               pontkoordináták egyedi feldolgozáshoz.
             </li>
             <li>
-              <strong className="text-foreground">Méretezett alaprajz</strong> — PDF és
-              DWG-kompatibilis vektor, helyiséglista, négyzetméter.
+              <strong className="text-foreground">Méretezett alaprajz</strong> — PDF, ha a
+              csomag tartalmazza. DWG és helyiséglista csak akkor, ha az ajánlat külön kéri.
             </li>
             <li>
               <strong className="text-foreground">Bejárható 3D URL</strong> — a tervező a
@@ -133,7 +133,7 @@ export default function BimAsBuiltPage() {
           <h2 className="text-2xl font-semibold sm:text-3xl">BIM-export rendelés</h2>
           <p className="mt-3 opacity-90">
             Épülettípus, négyzetméter, megrendelő (építész / generálkivitelező / FM), kívánt
-            export-formátumok. 24 órán belül visszaigazolás és határidő.
+            export-formátumok. 1 munkanapon belül visszaigazolás és határidő.
           </p>
           <Link
             href="/csomagok/megrendeles"

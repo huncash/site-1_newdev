@@ -24,11 +24,11 @@ export function CaseStudySection({ className }: { className?: string }) {
             ráadásul a beltér és a kültér is egyetlen, összefüggő bejárást igényelt.
           </p>
           <p>
-            <strong className="text-foreground">Megoldás:</strong> 4 munkanap alatt 8 különálló,
-            gondosan kalibrált Matterport-szken készült a kampusz eltérő zónáiról. Ezeket egyetlen,
-            folyamatos <strong className="text-foreground">digitális ikerré</strong> illesztettük
-            össze — beleértve a teljes külső homlokzatokat és a napelempark felmérést is. A
-            végeredmény a Matterport felhőben mindössze 4 Pro túra tárhelyét foglalja.
+            <strong className="text-foreground">Megoldás:</strong> 4 munkanap alatt 8 különálló
+            Matterport-szken készült a kampusz eltérő zónáiról. Ezeket egyetlen, folyamatos{" "}
+            <strong className="text-foreground">túrává</strong> illesztettük össze — a külső
+            homlokzatokkal és a napelempark látható felületével együtt. A számok a VRGO saját
+            projektadatai, nem független mérés. A túra alább megnyitható.
           </p>
         </div>
 
@@ -47,7 +47,13 @@ export function CaseStudySection({ className }: { className?: string }) {
             />
           </div>
           <p className="mt-3 text-center text-xs text-muted-foreground">
-            Referencia: Pannon Egyetem — Zalaegerszegi Kampusz (8 szken → 1 túra)
+            Referencia: Pannon Egyetem — Zalaegerszegi Kampusz (8 szken → 1 túra).{" "}
+            <a
+              href="https://bim.vrgo.hu/referenciak"
+              className="font-semibold text-brand underline underline-offset-2"
+            >
+              Teljes esettanulmány
+            </a>
           </p>
         </div>
       </div>

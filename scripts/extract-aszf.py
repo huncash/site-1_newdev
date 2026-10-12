@@ -72,7 +72,7 @@ def normalize(raw: str) -> str:
         ("fogadja el.Kelt:", "fogadja el.\n\nKelt:"),
         ("napjánADP-TOP", "napján\nADP-TOP"),
         ("előnézetet2.9.2.", "előnézetet.\n\n2.9.2."),
-        ("Mobil: (+36-30-941-4 706", "Mobil: +36-30-941-4706"),
+        ("Mobil: (+36-30-941-4 706", ""),
         ("7.1.Szolgáltató", "7.1. Szolgáltató"),
         ("7.2.Fizetési", "7.2. Fizetési"),
         ("7.3.A Megrendelő", "7.3. A Megrendelő"),
@@ -116,6 +116,14 @@ def main() -> None:
     # collapse accidental duplicate blank-separated headings
     cleaned: list[str] = []
     for line in lines:
+        if line == "1096 Budapest, Sobieski u. 33.":
+            continue
+        if line.startswith("Üzlethelyiség címe:"):
+            continue
+        if "941-4706" in line or "941-4 706" in line:
+            continue
+        if line == "Telefon: +36-30-667-2510":
+            line = "Mobil: +36-30-667-2510"
         if cleaned and cleaned[-1] == line and line in HEADINGS:
             continue
         cleaned.append(line)

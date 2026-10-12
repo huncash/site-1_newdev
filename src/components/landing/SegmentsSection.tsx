@@ -32,10 +32,13 @@ export function SegmentsSection({
         </h2>
         <div className="section-rule" />
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-          {items.map((item) => (
+          {items.map((item) => {
+            const external = item.href.startsWith("http");
+            return (
             <Link
               key={item.title}
               href={item.href}
+              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="group flex flex-col rounded-md border border-border bg-card p-4 shadow-sm transition hover:border-brand hover:shadow-md sm:p-5"
             >
               <h3 className="text-base font-semibold transition group-hover:text-brand sm:text-lg">
@@ -46,7 +49,8 @@ export function SegmentsSection({
                 Részletek →
               </span>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

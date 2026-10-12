@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: 'GYIK — digitális iker, BIM-export, Property Intelligence | VRGO',
-  description: 'Gyakori kérdések a Matterport-alapú digitális ikerről: kampusz-szintű túra, BIM/MatterPak export, Defects AI, ESG ingatlanjelentés, IoT és CMMS integráció, biztosítási kárrendezés 3D-ben.',
+  description: 'Gyakori kérdések a Matterport-alapú digitális ikerről: kampusz-túra, BIM-export, kézi hibajelölés, ESG-melléklet és káresemény előtti állapotrögzítés.',
 };
 
 type Faq = { q: string; a: string };
@@ -11,7 +11,7 @@ type Faq = { q: string; a: string };
 const faqs: Faq[] = [
   {
     q: "Mi a különbség egy 3D virtuális túra és egy digitális iker (digital twin) között?",
-    a: "A virtuális túra egy egyszeri vizuális élmény. A digitális iker egy folyamatosan frissíthető, mérési adattal, dokumentációval, IoT-szenzorral, karbantartási előzménnyel és audit-trail-lel összekötött 3D mása az épületnek. A VRGO TWIN és ENTERPRISE csomag már digitális ikret szállít, nem csak túrát.",
+    a: "A virtuális túra bejárható 3D állapot. Digitális ikernek akkor hívjuk, ha ehhez a megrendelés szerint dokumentum, kézi jelölés vagy ismételt szken is tartozik. Élő IoT-szenzor és automatikus audit nem része az alapszolgáltatásnak.",
   },
   {
     q: "Több hektáros területet vagy több épületet is meg tudtok jeleníteni egyetlen túrában?",
@@ -19,27 +19,27 @@ const faqs: Faq[] = [
   },
   {
     q: "Milyen BIM-export formátumokat tudtok adni a Matterport-modellből?",
-    a: "MatterPak csomagban E57 pontfelhőt, OBJ mesh-t, XYZ-t és méretezett 2D alaprajzot szállítunk — ezekből generálkivitelező és tervezőiroda képes IFC/Revit/ArchiCAD as-built dokumentációt előállítani BIM-koordinációhoz.",
+    a: "MatterPak csomagban E57 pontfelhőt, OBJ mesh-t, XYZ-t és méretezett 2D alaprajzot szállítunk. Ezekből modellezéssel készülhet IFC; ezt partnerrel végezzük (https://bim.vrgo.hu).",
   },
   {
-    q: "Mi az a Property Intelligence és milyen KPI-okat lát egy portfólió-vezető?",
-    a: "Portfólió-szintű döntéstámogató adatréteg a digitális iker fölött: bérbeadási idő, SLA-teljesülés, karbantartási hibajegy-átfutás, akadálymentesítési megfelelés, ESG audit-trail, energetikai eltérés, biztosítási kockázat — egyetlen leaderboard nézetben.",
+    q: "Mi az a Property Intelligence, és vannak közzétett KPI-eredményeink?",
+    a: "Egy nézet, amelybe a megrendelő saját adatai tehetők: bérbeadási idő, karbantartási előzmény, káresemény előtti állapot, méretek. Közzétett mérési eredmény nincs.",
   },
   {
-    q: "Mit tud a Defects AI és hogyan használjátok kivitelezésnél?",
-    a: "Gépi képi elemzés a Matterport-szkenek fölött: kivitelezési hibákat, eltéréseket, hiányzó elemeket ismer fel és időbélyegzett vizuális bizonyítékot ad — generálkivitelező és tulajdonos közötti viták minimalizálására, minőségbiztosítási (QM) audit-trail építésére.",
+    q: "Felismeritek automatikusan a kivitelezési hibákat?",
+    a: "A szabványos szolgáltatás időbélyegzett szken és a modellen kézzel elhelyezett Mattertag. Automatikus repedés-, korrózió- vagy szivárgás-felismerést nem végzünk. A jelölés a kivitelező és a megrendelő közös, visszakereshető dokumentuma.",
   },
   {
-    q: "Milyen IoT, CMMS és vállalati rendszer-integrációkat támogattok?",
-    a: "A digitális iker pontjaira Mattertaggel köthető IoT-szenzor adat (hőmérséklet, energia, légminőség), CMMS hibajegy (planned maintenance, eszközleltár), valamint SAP és ServiceNow workflow. A bérlő, üzemeltető és befektető más-más jogosultsági nézetet kap.",
+    q: "Milyen IoT-, CMMS- és vállalati rendszer-integrációt szállítotok?",
+    a: "A túra URL-je és a Mattertag hivatkozása beilleszthető, ha a másik rendszer külső linket fogad. Élő szenzor-adatfolyamot és tanúsított SAP- vagy ServiceNow-csatlakozót nem szállítunk. Jogosultsági szintek a Matterport-fiók beállításai szerint kérhetők.",
   },
   {
     q: "Hogyan használható a digitális iker biztosítási kárrendezésnél?",
-    a: "A káresemény előtti, időbélyegzett 3D állapotrögzítés gyorsabb és vitamentes kárrendezést tesz lehetővé. A biztosító távolról bejárja a helyszínt, a dokumentáció auditálható, a kárrendezési átfutási idő tapasztalataink szerint akár 60%-kal rövidül.",
+    a: "A káresemény előtti, időbélyegzett 3D állapotrögzítést a biztosító távolról bejárhatja. A dokumentáció a szken időpontjához kötött. A kárrendezés időtartamát nem mérjük összesítve.",
   },
   {
     q: "Akadálymentesítési és ESG ingatlanjelentéshez használható a 3D modell?",
-    a: "Igen. A méretezett alaprajz, küszöb- és lejtésmérés akadálymentesítési auditot támogat, az energetikai audit a 3D modellből ellenőrizhető (gépészet, homlokzat, napelempark), és az ESG riportokhoz auditálható vizuális bizonyítékot ad.",
+    a: "Mellékletként igen: méretezett alaprajz, küszöb és lejtő a modellben mérhető, a homlokzat és a látható gépészet képen rögzíthető. Energetikai tanúsítványt, hőhídmérést, jogszabályi akadálymentesítési auditot és EU-taxonómia-igazolást nem helyettesít.",
   },
   {
     q: "Lakást vagy családi házat is szkenneltek?",
@@ -73,14 +73,14 @@ export default function FaqPage() {
       <section className="bg-section-dark py-14 text-section-dark-foreground sm:py-20">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <span className="inline-block rounded-full border border-brand/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
-            GYIK · 10. éve a Matterport-piacon
+            GYIK · 2016 óta
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">
             Gyakori kérdések
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base opacity-90 sm:text-lg">
-            Digitális iker, BIM-export, Property Intelligence, Defects AI, IoT/CMMS-integráció,
-            ESG és biztosítási felhasználás — a leggyakoribb döntés-előkészítő kérdések.
+            Digitális iker, BIM-export, kézi hibajelölés, ESG-melléklet és káresemény előtti
+            állapotrögzítés — a leggyakoribb kérdések.
           </p>
         </div>
       </section>

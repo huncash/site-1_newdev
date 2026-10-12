@@ -4,7 +4,7 @@ import { Term } from "@/components/Term";
 
 export const metadata: Metadata = {
   title: 'ESG ingatlanjelentés és energetikai audit 3D modellből | VRGO',
-  description: 'ESG fenntarthatósági jelentés, energetikai audit, akadálymentesítési megfelelőség egyetlen 3D digitális ikerből. Audit-trail, vizuális bizonyíték, EU-taxonómia-konform dokumentáció.',
+  description: '3D digitális iker vizuális mellékletnek: homlokzat, terek, gépészet helye. Nem energetikai tanúsítvány és nem EU-taxonómia-igazolás.',
 };
 
 const usecases = [
@@ -14,15 +14,15 @@ const usecases = [
         <Term k="ESG">ESG</Term> ingatlanjelentés vizuális alapja
       </>
     ),
-    desc: "Befektetői és EU-taxonómia szerinti fenntarthatósági jelentés bizonyító anyaga — nem szöveg, hanem időbélyegzett 3D. A könyvvizsgáló és az auditor ugyanazt látja.",
+    desc: "Időbélyegzett 3D melléklet, amelyet a jelentés készítője hivatkozhat. A modell önmagában nem ESG-jelentés és nem EU-taxonómia-igazolás.",
   },
   {
     title: "Energetikai audit 3D modellből",
-    desc: "Homlokzat, nyílászárók, gépészet, hőhídak rögzítése méretezetten — energetikai tanúsítvány és felújítási tervezés vizuális forrása.",
+    desc: "Homlokzat, nyílászárók és látható gépészet képi rögzítése. Hőhidat nem mérünk, energetikai tanúsítványt nem állítunk ki.",
   },
   {
     title: "Akadálymentesítés-megfelelőség",
-    desc: "Küszöbök, lejtők, mosdók, vészkijáratok pontos méretezése — jogszabályi audit a 3D modellből, helyszíni séta nélkül.",
+    desc: "Küszöb, lejtő és közlekedő a modellben mérhető. Jogszabályi akadálymentesítési auditot nem helyettesít.",
   },
   {
     title: "Audit-trail és változás-követés",
@@ -30,11 +30,11 @@ const usecases = [
   },
   {
     title: "Napelempark és gépészet",
-    desc: "Tetőszerkezet, napelem-elhelyezés, hőszivattyú, légtechnika — ESG-jelentésben hivatkozható, méretezett vizuális dokumentáció.",
+    desc: "Tető, napelem, hőszivattyú és légtechnika látható elhelyezése rögzíthető. A jelentés szövegét és számítását nem mi készítjük.",
   },
   {
     title: "Bérlői ESG-elvárások kielégítése",
-    desc: "Multinacionális bérlők egyre gyakrabban követelik az épület fenntarthatósági adatait — a digitális iker gyors, audit-kompatibilis válasz.",
+    desc: "A bérlő vagy az auditor ugyanazt a 3D mellékletet nézheti meg. Azt, hogy ez kielégíti-e a bérlői elvárást, a jelentés készítője dönti el.",
   },
 ];
 
@@ -47,13 +47,13 @@ export default function EsgPage() {
             ESG · Energetika · Akadálymentesítés
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">
-            ESG ingatlanjelentés és energetikai audit egyetlen 3D modellből
+            3D melléklet ESG- és energetikai anyagokhoz
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
-            A <Term k="digitális iker">digitális iker (digital twin)</Term> az ESG-jelentés
-            vizuális bizonyítéka: energetika, akadálymentesítés, fenntarthatósági audit-trail
-            egyetlen, időbélyegzett forrásból. A könyvvizsgáló és az auditor ugyanazt a 3D
-            állapotot látja, amit a facility-csapat.
+            A <Term k="digitális iker">digitális iker (digital twin)</Term> időbélyegzett képi
+            állapot: homlokzat, terek, látható gépészet. A könyvvizsgáló és a facility-csapat
+            ugyanazt a modellt nézheti. Energetikai tanúsítványt, hőhídmérést és
+            EU-taxonómia-igazolást nem helyettesít.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link
@@ -92,25 +92,25 @@ export default function EsgPage() {
       <section className="bg-secondary py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-center text-2xl font-semibold sm:text-3xl">
-            Miért gyorsabb a 3D modellből készült ESG-jelentés?
+            Mire használható a 3D modell egy ESG-mellékletben?
           </h2>
           <div className="mx-auto mt-4 h-px w-24 bg-brand/60" />
           <div className="mt-8 space-y-5 text-sm text-muted-foreground sm:text-base">
             <p>
               <strong className="text-foreground">Egyszer szkennelünk, többször hivatkozunk.</strong>{" "}
-              A modellből az energetikai szakértő, az akadálymentesítési auditor, az
-              ESG-tanácsadó és a könyvvizsgáló ugyanabból a forrásból dolgozik — nincs
-              párhuzamos helyszíni séta.
+              A modellből az energetikai szakértő, az akadálymentesítési auditor és a
+              jelentés készítője ugyanazt a képi állapotot nézheti. A mérést és a
+              jelentést ők készítik, nem a szken.
             </p>
             <p>
-              <strong className="text-foreground">Audit-trail mint vizuális bizonyíték.</strong>{" "}
-              Évről évre, vagy negyedévről negyedévre rögzített állapot — a változás (felújítás,
-              eszközcsere, beruházás) nem csak számadat, hanem 3D-ben is bizonyítható.
+              <strong className="text-foreground">Ismételt szken.</strong>{" "}
+              Ismételt szkennél a korábbi és az új állapot egymás mellett megnézhető. Ez
+              képi összevetés, nem auditált mérési jegyzőkönyv.
             </p>
             <p>
-              <strong className="text-foreground">EU-taxonómia és bérlői elvárás.</strong> A
-              fenntarthatósági jelentés nem opció, hanem belépő — a digitális iker szabványos
-              válasz.
+              <strong className="text-foreground">Amit a modell nem helyettesít.</strong> Az
+              EU-taxonómia, az energetikai tanúsítvány és a jogszabályi audit külön szakértői
+              munka. A 3D túra ezekhez melléklet lehet.
             </p>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function EsgPage() {
           <h2 className="text-2xl font-semibold sm:text-3xl">ESG-felmérés űrlap</h2>
           <p className="mt-3 opacity-90">
             Épület(ek) száma, terület, jelenlegi tanúsítvány (BREEAM / LEED / DGNB),
-            jelentési kötelezettség típusa. 24 órán belül visszajelzés.
+            jelentési kötelezettség típusa. 1 munkanapon belül visszajelzés.
           </p>
           <Link
             href="/csomagok/megrendeles"

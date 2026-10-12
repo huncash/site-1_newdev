@@ -30,7 +30,7 @@ const SECTIONS = [
     body: [
       "Kapcsolatfelvételkor: név, e-mail-cím, telefonszám (ha megadja), cégnév / szervezet (ha releváns), üzenet tartalma, valamint a kérés teljesítéséhez elengedhetetlen egyéb adat.",
       "Nem gyűjtünk marketingprofilozáshoz vagy harmadik félnek történő értékesítéshez személyes adatokat.",
-      "Nem használunk jelenleg analitikai vagy reklám cookie-kat; ha ez a jövőben változna, előzetes, külön hozzájárulást kérünk.",
+      "Nem használunk analitikai vagy reklám cookie-kat. Az ajánlatkérő űrlap Google reCAPTCHA ellenőrzése biztonsági célú, nem marketing.",
     ],
   },
   {
@@ -53,6 +53,7 @@ const SECTIONS = [
     title: "6. Adattovábbítás, adatfeldolgozók",
     body: [
       "Személyes adatot csak a szolgáltatás nyújtásához szükséges mértékben, megbízható adatfeldolgozók (pl. tárhely, e-mail) felé továbbítunk, szerződéses garanciák mellett.",
+      "Az ajánlatkérő űrlap beküldése előtt Google reCAPTCHA ellenőrzés fut, hogy az automatikus, kéretlen beküldéseket kiszűrjük. A böngésző ehhez a Google szolgáltatását hívja.",
       "Harmadik országba történő adattovábbítás csak megfelelő garanciák (pl. megfelelőségi határozat / standard szerződéses klauzulák) mellett történhet.",
     ],
   },

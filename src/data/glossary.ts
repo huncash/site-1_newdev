@@ -15,7 +15,7 @@ export const glossary = {
   CAPEX: "Capital Expenditure — egyszeri beruházási költség.",
   OPEX: "Operating Expenditure — folyamatos működési költség.",
   "digitális iker":
-    "Digital twin — egy fizikai épület vagy telephely élő, folyamatosan frissíthető 3D mása, amelyhez mérési adat, dokumentáció, IoT-szenzor, karbantartási és audit-előzmény köthető. Több, mint egy 3D virtuális túra.",
+    "Digital twin — a VRGO szóhasználatában bejárható 3D állapot, amelyhez dokumentum, kézi jelölés vagy ismételt szken köthető. Élő IoT-szenzor nem része az alapszolgáltatásnak.",
   Mattertag:
     "Interaktív infópont a Matterport-modellben — szöveg, fotó, PDF, link vagy videó köthető egy konkrét térponthoz (pl. tűzcsap, mérőóra, hibajegy).",
   MatterPak:
@@ -25,7 +25,7 @@ export const glossary = {
   "Property Intelligence":
     "Ingatlanportfólió-szintű döntéstámogató adatréteg a digitális iker fölött — bérbeadási, karbantartási, energetikai, akadálymentesítési és káresemény-KPI-k egy nézetben.",
   "Defects AI":
-    "Gépi képi elemzés a Matterport-szkenek fölött — kivitelezési hibák, eltérések, hiányzó elemek automatikus felismerése időbélyegzett vizuális bizonyítékkal.",
+    "A honlap korábbi neve a hibajelölésre. A szolgáltatás időbélyegzett szken és kézi Mattertag. Automatikus repedés-, korrózió- vagy szivárgás-felismerés nincs benne.",
   QM:
     "Quality Management — minőségbiztosítási folyamat. Digitális ikerre építve: ütemezett szken-körök, eltéréselemzés, audit-trail, jegyzőkönyv-export.",
 } as const;

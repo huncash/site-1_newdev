@@ -1,3 +1,5 @@
+import { clientIp, sendQuoteEmail, verifyRecaptcha, type QuoteDelivery } from "@/lib/quote-delivery";
+
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
 const MAX_PHONE = 40;
@@ -18,6 +20,7 @@ function asTrimmedString(value: unknown, max: number): string | null {
 export interface ContactResult {
   status: number;
   body: { status: string } | { error: string };
+  delivery?: QuoteDelivery;
 }
 
 export function processContactPayload(body: unknown): ContactResult {
@@ -72,7 +75,32 @@ export function processContactPayload(body: unknown): ContactResult {
     })
   );
 
-  return { status: 200, body: { status: "ok" } };
+  const text = [
+    "Ajánlatkérés érkezett a weboldal űrlapjáról.",
+    "",
+    `Név: ${name}`,
+    `E-mail: ${email}`,
+    phone ? `Telefon: ${phone}` : null,
+    pkg ? `Csomag: ${pkg}` : null,
+    segment ? `Szegmens: ${segment}` : null,
+    product ? `Termék: ${product}` : null,
+    source ? `Forrás: ${source}` : null,
+    "",
+    "Üzenet:",
+    message || "—",
+  ]
+    .filter((line): line is string => line !== null)
+    .join("\n");
+
+  return {
+    status: 200,
+    body: { status: "ok" },
+    delivery: {
+      subject: `Ajánlatkérés – ${name.replace(/[\r\n]+/g, " ").slice(0, 120)}`,
+      text,
+      replyTo: email,
+    },
+  };
 }
 
 export async function handleContactPost(request: Request): Promise<Response> {
@@ -84,5 +112,23 @@ export async function handleContactPost(request: Request): Promise<Response> {
   }
 
   const result = processContactPayload(body);
+  if (result.status !== 200 || !result.delivery) {
+    return Response.json(result.body, { status: result.status });
+  }
+
+  const token =
+    typeof body === "object" && body !== null && !Array.isArray(body)
+      ? (body as Record<string, unknown>).recaptchaToken
+      : undefined;
+  const human = await verifyRecaptcha(token, clientIp(request));
+  if (!human) {
+    return Response.json({ error: "recaptcha" }, { status: 400 });
+  }
+
+  const sent = await sendQuoteEmail(result.delivery);
+  if (!sent) {
+    return Response.json({ error: "unavailable" }, { status: 503 });
+  }
+
   return Response.json(result.body, { status: result.status });
 }

@@ -41,8 +41,9 @@ export const CONTENT = {
     badge: "Enterprise Digital Twin",
     title: "Hektáros területek egyetlen virtuális túrában",
     subtitle:
-      "Kampuszok, gyártócsarnokok és portfóliók digitális ikre — Matterport alapú bejárható 3D, BIM-export és Property Intelligence támogatással.",
-    proof: "Bizonyított: 7 hektár, 8 szken, 1 összefüggő túra — Pannon Egyetem Zalaegerszeg.",
+      "Kampuszok, gyártócsarnokok és portfóliók digitális ikre — Matterport alapú bejárható 3D, E57/OBJ-export és BIM-alapadat. BIM- és állami projektekhez: bim.vrgo.hu",
+    proof:
+      "Saját projekt: Pannon Egyetem, Zalaegerszegi Kampusz — több mint 7 hektár, 8 szken, 1 összefüggő túra (2024 ősz). Független mérés nem készült.",
     ctaPrimary: { label: "Ajánlatkérés", href: "/ajanlat" },
     ctaSecondary: { label: "Csomagok megnézése", href: "/csomagok" },
   },
@@ -57,8 +58,8 @@ export const CONTENT = {
       },
       {
         title: "Ipar · IoT · BIM",
-        description: "Gyár, csarnok, BIM-export, Defects AI, IoT-integráció.",
-        href: "/megoldasok/ipari-iot",
+        description: "As-built rögzítés, BIM-alapadat, hibakövetés.",
+        href: "https://bim.vrgo.hu/kivitelezes",
       },
       {
         title: "Facility Management",
@@ -92,13 +93,13 @@ export const CONTENT = {
       },
       {
         title: "2D-s sematikus alaprajzok",
-        description: "Az ingatlan 3D fotói alapján pontos műszaki rajz is kérhető.",
+        description: "A 3D modellből méretezett alaprajz is kérhető, ha a csomag tartalmazza.",
         image: "/icons/alaprajz.png",
         icon: "2D",
       },
       {
         title: "360° panoráma képek",
-        description: "A kimagasló, nagy felbontás miatt a 3 dimenziós fotók felnagyíthatóak.",
+        description: "A 360° panoráma a túrán belül nagyítható.",
         image: "/icons/360.svg",
         icon: "360",
       },
@@ -133,7 +134,7 @@ export const CONTENT = {
   },
 
   process: {
-    heading: "Gyors munkavégzés akár 48 órás átfutási idővel",
+    heading: "A helyszíni rögzítéstől a megosztható túráig",
     steps: [
       {
         text: "Egyeztetett időpontban a helyszíni munkálatok elvégzése.",
@@ -154,11 +155,11 @@ export const CONTENT = {
   packages: {
     heading: "Három csomag — három üzleti probléma, megoldva",
     disclaimer:
-      "Árajánlatot a projekt egyedi jellemzői szerint az ajánlatkérő űrlap + szükség esetén telefonos egyeztetés/ helyszín bejárása után legfeljebb 24 órán belül adunk. A helyszín rögzítéstől a digitális iker átadásáig jellemző átfutási időnk általában 12-24 óra.",
+      "Árajánlatot az űrlap alapján 1 munkanapon belül küldünk. A digitális iker átadási határidejét az ajánlat tartalmazza; ha külön határidő nincs benne, az ÁSZF szerinti határidő érvényes.",
     items: [
       {
         tier: "CLASSIC",
-        title: "Bérbeadás- és értékesítés-gyorsító",
+        title: "Bérbeadás- és értékesítés-bemutató",
         audience:
           "Iroda-, retail-, raktár- és prémium szálláshely portfóliókat kezelő üzemeltetők, ingatlanforgalmazók, franchise-hálózatok.",
         cta: "CLASSIC igénylése",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 
+import { RecaptchaField } from "@/components/RecaptchaField";
 import { trackConversion } from "@/lib/conversion";
 import { cn } from "@/lib/utils";
 
@@ -119,6 +120,8 @@ export function QuoteOrderForm({
   const [intendedUse, setIntendedUse] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaReset, setCaptchaReset] = useState(0);
   const [pending, setPending] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
@@ -139,12 +142,17 @@ export function QuoteOrderForm({
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
       next.email = "Érvénytelen e-mail cím";
     }
+    if (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
+      next.recaptcha = "Az ellenőrzés jelenleg nem elérhető. Próbáld újra később.";
+    } else if (!captchaToken) {
+      next.recaptcha = "Jelöld be, hogy nem vagy robot.";
+    }
     if (Object.keys(next).length) {
       setErrors(next);
       const first = Object.keys(next)[0];
-      document
-        .querySelector(`[name="${first}"]`)
-        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      const target =
+        document.querySelector(`[name="${first}"]`) ?? document.getElementById(first);
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
     setErrors({});
@@ -183,12 +191,25 @@ export function QuoteOrderForm({
           package: pkg,
           segment,
           source,
+          recaptchaToken: captchaToken,
         }),
       });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
-        trackConversion("quote_form_submit_error", { reason: "http" });
+        trackConversion("quote_form_submit_error", { reason: data.error ?? "http" });
+        if (data.error === "recaptcha" || data.error === "unavailable") {
+          setCaptchaToken("");
+          setCaptchaReset((value) => value + 1);
+        }
+        if (data.error === "recaptcha") {
+          setErrors({ recaptcha: "Az ellenőrzés lejárt vagy nem sikerült. Jelöld be újra." });
+          document.getElementById("recaptcha")?.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
         setServerError(
-          "Sajnos a beküldés most nem sikerült. Kérjük, próbáld újra néhány perc múlva."
+          data.error === "unavailable"
+            ? "Sajnos a beküldés most nem sikerült. Jelöld be újra az ellenőrzést, majd próbáld meg még egyszer."
+            : "Sajnos a beküldés most nem sikerült. Kérjük, próbáld újra néhány perc múlva."
         );
         return;
       }
@@ -200,7 +221,9 @@ export function QuoteOrderForm({
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
       trackConversion("quote_form_submit_error", { reason: "network" });
-      setServerError("Hálózati hiba. Próbáld újra.");
+      setCaptchaToken("");
+      setCaptchaReset((value) => value + 1);
+      setServerError("Hálózati hiba. Jelöld be újra az ellenőrzést, majd próbáld meg még egyszer.");
     } finally {
       setPending(false);
     }
@@ -424,25 +447,42 @@ export function QuoteOrderForm({
         </Field>
       </fieldset>
 
-      {serverError ? (
-        <div className="rounded-md border border-red-500/40 bg-red-500/5 p-3 text-sm text-red-700">
-          {serverError}
-        </div>
-      ) : null}
-
-      <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-muted-foreground">
-          A beküldéssel hozzájárulsz ahhoz, hogy az ajánlatadás céljából felvegyük veled a
-          kapcsolatot e-mailben. Adataidat nem osztjuk meg harmadik féllel.
+      <fieldset id="recaptcha" className="space-y-3">
+        <legend className="text-sm font-semibold uppercase tracking-wider text-brand">
+          6. Ellenőrzés
+        </legend>
+        <p className="text-sm text-muted-foreground">
+          Az elküldés előtt igazold, hogy nem automata küldi az ajánlatkérést.
         </p>
-        <button
-          type="submit"
-          disabled={pending}
-          className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark disabled:opacity-60"
-        >
-          {pending ? "Küldés…" : "Kérelem küldése"}
-        </button>
-      </div>
+        <RecaptchaField onToken={setCaptchaToken} resetKey={captchaReset} />
+        {errors.recaptcha ? (
+          <p className="text-xs text-red-600">{errors.recaptcha}</p>
+        ) : null}
+      </fieldset>
+
+      <fieldset className="space-y-4">
+        <legend className="text-sm font-semibold uppercase tracking-wider text-brand">
+          7. Beküldés
+        </legend>
+        {serverError ? (
+          <div className="rounded-md border border-red-500/40 bg-red-500/5 p-3 text-sm text-red-700">
+            {serverError}
+          </div>
+        ) : null}
+        <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-muted-foreground">
+            A beküldéssel hozzájárulsz ahhoz, hogy az ajánlatadás céljából felvegyük veled a
+            kapcsolatot e-mailben. Adataidat nem osztjuk meg harmadik féllel.
+          </p>
+          <button
+            type="submit"
+            disabled={pending}
+            className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark disabled:opacity-60"
+          >
+            {pending ? "Küldés…" : "Kérelem küldése"}
+          </button>
+        </div>
+      </fieldset>
     </form>
   );
 }

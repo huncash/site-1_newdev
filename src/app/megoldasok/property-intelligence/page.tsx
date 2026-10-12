@@ -22,12 +22,12 @@ const usecases = [
     desc: "Hibajegyek, planned maintenance, garanciák Mattertaggel a 3D-ben — a kontextus nem vész el két karbantartó között.",
   },
   {
-    title: "Bérbeadási konverzió-mérés",
-    desc: "Mely tour-pontoknál akadt meg az érdeklődő, hány nap alatt zárult a bérleti szerződés — bérbeadási menedzsment adatra alapozva.",
+    title: "Bérbeadási adatok a túra mellett",
+    desc: "Ha a bérbeadó megadja a saját látogatási és szerződéskötési adatait, azok a túra mellé tehetők. Konverziós százalékot nem közlünk.",
   },
   {
     title: "Káresemény-állapot időbélyegzéssel",
-    desc: "Minden szken-kör egy verzió. Káresemény után percek alatt visszanézhető a leadási vagy előző állapot — biztosítási kárrendezés napokkal gyorsabb.",
+    desc: "Minden szken-kör egy verzió. A korábbi állapot a túrában visszanyitható. A kárrendezés időtartamát nem összesítjük.",
   },
   {
     title: (
@@ -35,11 +35,11 @@ const usecases = [
         <Term k="ESG">ESG</Term> és energetikai jelentés
       </>
     ),
-    desc: "Energetikai audit, fenntarthatósági jelentés, akadálymentesítési megfelelőség — egyetlen vizuális forrásból, audit-trail-lel.",
+    desc: "Homlokzat, terek és látható gépészet egy nézetben, mellékletnek. Energetikai tanúsítványt és jogszabályi auditot nem helyettesít.",
   },
   {
     title: "Enterprise integrációk",
-    desc: "SAP, ServiceNow, MS Dynamics, IBM TRIRIGA — a digitális iker URL-jei és infópontjai a meglévő FM/ERP rendszerből hívhatók.",
+    desc: "A túra URL-je és a Mattertag hivatkozása beilleszthető, ha a meglévő rendszer külső linket fogad. Tanúsított SAP-, ServiceNow- vagy TRIRIGA-csatlakozót nem szállítunk.",
   },
 ];
 
@@ -49,23 +49,22 @@ export default function PropertyIntelligencePage() {
       <section className="bg-section-dark text-section-dark-foreground">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
           <span className="inline-block rounded-full border border-brand/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
-            Property Intelligence · Portfólió-szintű KPI
+            Property Intelligence · saját adatok egy nézetben
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">
-            A digitális iker önmagában nem elég — adatra alapozott döntés kell
+            A nézet a megrendelő saját adatait mutatja
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
-            A <Term k="digitális iker">digitális iker (digital twin)</Term> akkor válik
-            üzleti eszközzé, ha portfólió-szintű KPI-k épülnek fölé: bérbeadás, karbantartás,
-            energetika, akadálymentesítés, kárrendezés. Egy nézet — ingatlanportfólió-vezetők,
-            facility-igazgatók, befektetők számára.
+            A <Term k="digitális iker">digitális iker (digital twin)</Term> mellé a megrendelő
+            saját számai tehetők: bérbeadás, karbantartás, káresemény előtti állapot, méretek.
+            Közzétett mérési eredmény nincs.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/csomagok/megrendeles"
               className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
             >
-              Property Intelligence demó
+              Property Intelligence igénylése
             </Link>
             <Link
               href="/megoldasok/facility"
@@ -107,7 +106,7 @@ export default function PropertyIntelligencePage() {
             Portfólió-szintű digitális iker — egy űrlapon
           </h2>
           <p className="mt-3 opacity-90">
-            Ingatlanszám, terület, integrációs igények (SAP / ServiceNow / CMMS). 24 órán belül
+            Ingatlanszám, terület, hivatkozási igények. 1 munkanapon belül
             visszajelzés és KPI-tervezet.
           </p>
           <Link

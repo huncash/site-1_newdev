@@ -3,18 +3,18 @@ import Link from "next/link";
 import { Term } from "@/components/Term";
 
 export const metadata: Metadata = {
-  title: 'Minőségbiztosítás (QM) és Defects AI a digitális ikerben | VRGO',
-  description: 'Kivitelezési minőségbiztosítás 3D szkennel: Defects AI hibadetektálás, ütemezett szken-körök, eltérés-elemzés, audit-trail és jegyzőkönyv-export — generálkivitelezőnek, műszaki ellenőrnek, beruházónak.',
+  title: 'Minőségbiztosítás (QM) időbélyegzett 3D állapotból | VRGO',
+  description: 'Kivitelezési állapot 3D szkennel: időbélyegzett körök, kézi hibajelölés, pontfelhő a terv mellé. Automatikus hibafelismerés nincs a csomagban.',
 };
 
 const usecases = [
   {
     title: (
       <>
-        <Term k="Defects AI">Defects AI</Term> hibadetektálás
+        Időbélyegzett hibajelölés
       </>
     ),
-    desc: "Gépi képi elemzés a szkenek fölött — kivitelezési hibák, eltérések, hiányzó elemek automatikus felismerése időbélyegzett vizuális bizonyítékkal.",
+    desc: "A szken rögzíti az állapotot. Hibát, eltérést vagy hiányzó elemet a modellen kézi Mattertaggel jelölünk. Automatikus felismerés nincs a csomagban.",
   },
   {
     title: (
@@ -26,7 +26,7 @@ const usecases = [
   },
   {
     title: "Eltérés-elemzés terv vs. megvalósulás",
-    desc: "Az as-built pontfelhő összevetése a tervezői BIM-modellel — geometria-eltérés, pozícióhiba, hiányzó nyílászáró azonnal látszik.",
+    desc: "Az as-built pontfelhő a tervezői modell mellé tehető. Az eltérést a tervező vagy a műszaki ellenőr állapítja meg.",
   },
   {
     title: "Hibajegy és audit-trail",
@@ -34,11 +34,11 @@ const usecases = [
   },
   {
     title: "Átadás-átvétel jegyzőkönyv",
-    desc: "Exportálható PDF-jegyzőkönyv a teljes QM-ciklusról — műszaki átadás, garanciaidőszak, későbbi vita esetén perdöntő anyag.",
+    desc: "PDF-jegyzőkönyv a rögzített állapotról és a kézi jelölésekről, ha a megrendelés tartalmazza. Bírósági bizonyító erőről nem nyilatkozunk.",
   },
   {
     title: "Garanciaidőszaki minőségfelügyelet",
-    desc: "Az átadás után 1, 3, 5 éves szken-kör — a garanciális hibák objektív, időbélyegzett rögzítése. Nincs „ez már akkor is ilyen volt” vita.",
+    desc: "Az átadás után ismételt szken kérhető, például 1, 3 vagy 5 év múlva. A korábbi állapot időbélyeggel visszakereshető.",
   },
 ];
 
@@ -48,17 +48,16 @@ export default function QmPage() {
       <section className="bg-section-dark text-section-dark-foreground">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
           <span className="inline-block rounded-full border border-brand/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
-            QM · Defects AI · Audit-trail
+            QM · időbélyegzett állapot · kézi jelölés
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">
-            Minőségbiztosítás és hibadetektálás a digitális ikerben
+            Minőségbiztosítás időbélyegzett 3D állapotból
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
             A <Term k="digitális iker">digitális iker (digital twin)</Term> mint a
-            kivitelezési <Term k="QM">minőségbiztosítás (QM)</Term> objektív platformja:
-            <Term k="Defects AI"> Defects AI</Term> hibadetektálás, ütemezett szken-körök,
-            eltérés-elemzés és exportálható jegyzőkönyv. Egyetlen időbélyegzett forrás
-            beruházónak, generálkivitelezőnek, műszaki ellenőrnek.
+            kivitelezési <Term k="QM">minőségbiztosítás (QM)</Term> képi alapja:
+            ütemezett szken-körök, kézi hibajelölés és — ha a megrendelés kéri —
+            PDF-jegyzőkönyv. Automatikus hibafelismerést nem végzünk.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link
@@ -106,9 +105,9 @@ export default function QmPage() {
               szakaszhatáron (szerkezetkész, gépészet, finiselés) rögzített 3D állapot.
             </p>
             <p>
-              <strong className="text-foreground">2. Defects AI futtatás.</strong> A modell
-              fölött gépi elemzés — eltérés, hiányzó elem, kivitelezési hiba jelölése
-              időbélyeggel és pozícióval.
+              <strong className="text-foreground">2. Kézi jelölés.</strong> A modellen
+              Mattertaggel rögzítjük az eltérést, a hiányzó elemet vagy a kivitelezési
+              hibát, időbélyeggel és pozícióval.
             </p>
             <p>
               <strong className="text-foreground">3. Hibajegy és lezárás.</strong> Mattertag a
@@ -128,7 +127,7 @@ export default function QmPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">QM csomag igénylése</h2>
           <p className="mt-3 opacity-90">
-            Projekttípus, négyzetméter, kivitelezési szakasz, kívánt szken-körök száma. 24 órán
+            Projekttípus, négyzetméter, kivitelezési szakasz, kívánt szken-körök száma. 1 munkanapon
             belül visszajelzés és QM-tervezet.
           </p>
           <Link

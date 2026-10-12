@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Term } from "@/components/Term";
 
 export const metadata: Metadata = {
-  title: 'B2B csomagok — digitális iker bérbeadáshoz, üzemeltetéshez, kampuszhoz | VRGO',
-  description: 'Három célzott B2B csomag: bérbeadás-marketing (CLASSIC), létesítmény-üzemeltetés (TWIN) és kampusz/ipari digitális iker (ENTERPRISE). Strukturált megrendelés.',
+  title: 'B2B csomagok — digitális iker és BIM-alapadat, ENTERPRISE | VRGO',
+  description: 'CLASSIC és TWIN bemutató és üzemeltetés. ENTERPRISE: E57/OBJ/XYZ export, BIM-modellezés partnerrel (IFC), kampusz és ipari terület.',
 };
 
 type Package = {
@@ -22,18 +22,18 @@ const packages: Package[] = [
   {
     img: "/packages/csomag-a.jpg",
     tier: "CLASSIC",
-    title: "Bérbeadás- és értékesítés-gyorsító",
+    title: "Bérbeadás- és értékesítés-bemutató",
     audience:
       "Iroda-, retail-, raktár- és prémium szálláshely portfóliókat kezelő üzemeltetők, ingatlanforgalmazók, franchise-hálózatok.",
     problem:
-      "A potenciális bérlő/vevő nem akar 3-4 helyszínt végigjárni, mielőtt szűkíti a listát. A klasszikus fotó és alaprajz kevés a döntéshez, a felesleges helyszíni séta pedig drága mindenkinek.",
+      "A potenciális bérlő vagy vevő több helyszínt néz meg, mielőtt szűkíti a listát. A fotó és az alaprajz mellett a tér a találkozó előtt is bejárható.",
     outcome:
-      "Egyetlen linkről bejárható, méretezhető 3D túra — a komoly érdeklődő már a helyszíni találkozó előtt eldönti, hogy a hely megfelel-e neki.",
+      "Egyetlen linkről bejárható 3D túra, a modellben mérhető méretekkel. A túra a helyszíni találkozó előtt megosztható.",
     benefits: [
-      "Rövidebb bérbeadási / értékesítési ciklus, kevesebb felesleges helyszíni mutatás",
+      "A túra a helyszíni mutatás előtt elküldhető",
       "Megosztható egy linkkel — döntéshozó kollégák, befektetők, külföldi partnerek számára is",
       "Beágyazható a saját honlapba, tárgyalási anyagba, exposéba",
-      "Pontos belső méretek, alaprajzi nézet — az ajánlatkéréshez nem kell visszamenni",
+      "Belső méretek a modellből mérhetők; geodéziai tanúsítvány csak akkor készül, ha az ajánlat külön kéri",
       "Google Térkép / Utcakép integráció (bolti, vendéglátós, retail egységeknél)",
       "Egyszeri felvétel, hosszú távon hasznosul",
     ],
@@ -46,17 +46,17 @@ const packages: Package[] = [
     audience:
       "Facility management cégek, irodaház- és bevásárlóközpont-üzemeltetők, többtelephelyes vállalatok, biztosítók, ESG-jelentésre kötelezett cégek.",
     problem:
-      "A karbantartás, akadálymentesítés, biztosítási dokumentáció és bérlőváltás ma is papír alapú vagy szétszórt fotókban él. Egy káresemény után hetekig tart bizonyítani, mi volt az állapot előtte.",
+      "A karbantartás, az akadálymentesítés, a biztosítási dokumentáció és a bérlőváltás gyakran papíron vagy szétszórt fotókon van. Káresemény után a korábbi állapotot ezekből kell összerakni.",
     outcome:
-      "Egyetlen, mindig elérhető digitális iker az épületről — a kollégák távolról is látják a kontextust, a karbantartás és a biztosítási kárrendezés napokkal gyorsabb.",
+      "Egy digitális iker az épületről: a kollégák távolról látják a teret, a karbantartási jelölés és a káresemény előtti állapot egy felületen kereshető.",
     benefits: [
-      "Hibajegyek és planned maintenance Mattertaggel a 3D-modellben — CMMS karbantartás-koordináció, opcionális SAP / ServiceNow integráció",
-      "Akadálymentesítés-audit (küszöb, lejtő, méret) és műszaki dokumentum a digitális iker alapján",
-      "Biztosítási kárrendezés 3D-ben — időbélyegzett állapotrögzítés, vitamentes és gyors elszámolás",
-      "Bérlőváltáskor nincs többé 'ki rongálta el' vita: a leadási állapot rögzítve van",
-      "ESG ingatlanjelentés és energetikai audit 3D modellből — gépészet, homlokzat, alaprajz egy nézetben",
-      "IoT-integráció Matterport-túrában — szenzoradat (hőmérséklet, energia, légminőség) a térponton",
-      "Jogosultsági szintek — bérlő, üzemeltető, befektető más-más nézetet kap",
+      "Hibajegy és planned maintenance Mattertaggel a 3D-modellben. A túra linkje beilleszthető, ha a CMMS külső hivatkozást fogad",
+      "Küszöb, lejtő és méret a modellből mérhető. Jogszabályi akadálymentesítési auditot nem helyettesít",
+      "Káresemény előtti, időbélyegzett állapotrögzítés. Az elszámolás idejéről és kimeneteléről nem nyilatkozunk",
+      "Bérlőváltáskor a leadási állapot időbélyeggel rögzíthető",
+      "Homlokzat, látható gépészet és alaprajz egy nézetben, ESG-mellékletnek. Energetikai tanúsítványt nem állítunk ki",
+      "A térponthoz hivatkozás köthető. Élő szenzor-adatfolyamot nem szállítunk",
+      "Jogosultsági szintek a Matterport-fiók beállításai szerint",
     ],
     cta: "TWIN igénylése",
   },
@@ -67,16 +67,16 @@ const packages: Package[] = [
     audience:
       "Egyetemek és kutatóhelyek, gyártó- és logisztikai vállalatok, energetikai és infrastruktúra-üzemeltetők, generálkivitelezők.",
     problem:
-      "A több épületből, csarnokból, külső területből álló telephely egyetlen szkenneléssel lefedhetetlen. A BIM-tervek és a megvalósult állapot között sokszor hónapok és milliós hibák vannak.",
+      "A több épületből, csarnokból, külső területből álló telephely egyetlen szkenneléssel lefedhetetlen. A BIM-tervek és a megvalósult állapot között gyakran jelentős eltérés van.",
     outcome:
-      "A teljes kampusz vagy ipari terület — beleértve a homlokzatokat, parkolókat, napelemparkot — egyetlen, folyamatosan bejárható digitális ikerként, BIM- és IoT-integrációra felkészítve.",
+      "A kampusz vagy ipari terület — homlokzat, parkoló, napelempark látható felülete — egy összefüggő, bejárható túraként, a megrendelt exportokkal.",
     benefits: [
       "Több hektár, több épület — különálló terek egyetlen, folytonosan bejárható túrába illesztve",
-      "MatterPak export (E57, OBJ, XYZ, alaprajz) — BIM-koordináció as-built dokumentációhoz, generálkivitelezőnek",
-      "Defects AI — kivitelezési hibák felismerése időbélyegzett vizuális bizonyítékkal, QM minőségbiztosítási audit-trail",
-      "Property Intelligence KPI-leaderboard: bérbeadás, SLA, ESG, energetika, kárrendezés egy nézetben",
+      "E57/OBJ/XYZ export, BIM-modellezés partnerrel (IFC)",
+      "Kivitelezési állapot időbélyegzett szkennelése, hibák kézi jelölése a modellen",
+      "Mutatólista a megrendelő saját adataiból. Közzétett KPI-eredmény nincs",
       "Kampusz digitalizáció — felvételi, akkreditációs, befektetői és sajtóanyag egyetlen URL-ről",
-      "Energetikai audit 3D modellből (napelempark, gépészet) és környezetvédelmi dokumentáció alapja",
+      "Napelempark és látható gépészet képi rögzítése. Energetikai számítást és környezetvédelmi dokumentációt nem készítünk",
       "Referencia: Pannon Egyetem Zalaegerszeg — 7+ ha, 8 szken → 1 túra, 4 munkanap",
     ],
     cta: "ENTERPRISE igénylése",
@@ -86,7 +86,7 @@ const packages: Package[] = [
 const niches = [
   {
     title: "Iroda, coworking, retail",
-    desc: "Bérbeadási idő 18–32%-os csökkenése, kevesebb felesleges helyszíni mutatás.",
+    desc: "A túra a helyszíni mutatás előtt megosztható.",
     pkg: "CLASSIC / TWIN",
   },
   {
@@ -136,14 +136,14 @@ export default function PackagesPage() {
       <section className="bg-section-dark py-14 text-section-dark-foreground sm:py-20">
         <div className="mx-auto max-w-5xl px-4 text-center">
           <span className="inline-block rounded-full border border-brand/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
-            B2B csomagok · 10. éve a piacon
+            B2B csomagok · 2016 óta
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">
             Három csomag — három üzleti probléma, megoldva
           </h1>
           <p className="mx-auto mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
-            Nem fotózást adunk el. Bérbeadási ciklust rövidítünk, üzemeltetési kockázatot csökkentünk
-            és kampusz-léptékű digitális ikret szállítunk. Válaszd a problémádhoz illő csomagot.
+            Bejárható 3D túrát, portfólió-ikret és kampusz-léptékű, összefűzött túrát szállítunk.
+            Válaszd a feladathoz illő csomagot.
           </p>
         </div>
       </section>
@@ -216,9 +216,9 @@ export default function PackagesPage() {
         </div>
 
         <p className="mx-auto mt-8 max-w-3xl px-4 text-center text-sm text-muted-foreground">
-          Árajánlatot a projekt egyedi jellemzői szerint az ajánlatkérő űrlap + szükség esetén
-          telefonos egyeztetés/ helyszín bejárása után legfeljebb 24 órán belül adunk. A helyszín
-          rögzítéstől a digitális iker átadásáig jellemző átfutási időnk általában 12-24 óra.
+          Árajánlatot az űrlap alapján 1 munkanapon belül küldünk. A digitális iker átadási
+          határidejét az ajánlat tartalmazza; ha külön határidő nincs benne, az ÁSZF szerinti
+          határidő érvényes.
         </p>
       </section>
 
@@ -250,7 +250,7 @@ export default function PackagesPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Ajánlatkérés</h2>
           <p className="mt-3 opacity-90">
-            Egyetlen űrlap: csomag, terület, kiegészítők. 24 órán belül visszajelzés és konkrét
+            Egyetlen űrlap: csomag, terület, kiegészítők. 1 munkanapon belül visszajelzés és konkrét
             ajánlat — a helyszíni szkennelés időpontját egyeztetjük.
           </p>
           <Link

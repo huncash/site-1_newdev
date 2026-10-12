@@ -1,6 +1,7 @@
 "use client";
 
 import { AI_DISCLOSURE_COPY } from "@/config/ai-transparency";
+import { isArchivePost } from "@/lib/archive-post";
 import type { PostMeta } from "@/lib/blog";
 import { cn } from "@/lib/utils";
 
@@ -42,6 +43,16 @@ export function BlogIndex({
         {subtitle ? (
           <p className="max-w-xl text-muted-foreground">{subtitle}</p>
         ) : null}
+        <p className="mt-4 max-w-xl text-sm text-muted-foreground">
+          A 2016–2017-es bejegyzések archív anyagok. Az állami BIM-rendeletről szóló
+          cikkek:{" "}
+          <a
+            href="https://bim.vrgo.hu/cikkek"
+            className="font-semibold text-brand underline underline-offset-2"
+          >
+            bim.vrgo.hu/cikkek
+          </a>
+        </p>
       </header>
 
       {posts.length === 0 ? (
@@ -52,6 +63,11 @@ export function BlogIndex({
             <li key={post.slug} className="py-8">
               <article>
                 <div className="mb-2 flex flex-wrap items-center gap-2">
+                  {isArchivePost(post.date) ? (
+                    <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                      Archív
+                    </span>
+                  ) : null}
                   {post.category ? (
                     <p className="text-xs font-semibold uppercase tracking-widest text-brand">
                       {post.category}

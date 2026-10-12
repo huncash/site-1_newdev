@@ -44,10 +44,6 @@ export const ASZF_BLOCKS: AszfBlock[] = [
   },
   {
     "kind": "p",
-    "text": "1096 Budapest, Sobieski u. 33."
-  },
-  {
-    "kind": "p",
     "text": "Számlaszám: 11600006-00000000-19591098"
   },
   {
@@ -56,11 +52,7 @@ export const ASZF_BLOCKS: AszfBlock[] = [
   },
   {
     "kind": "p",
-    "text": "Telefon: +36-30-667-2510"
-  },
-  {
-    "kind": "p",
-    "text": "Mobil: +36-30-941-4706"
+    "text": "Mobil: +36-30-667-2510"
   },
   {
     "kind": "p",
@@ -69,10 +61,6 @@ export const ASZF_BLOCKS: AszfBlock[] = [
   {
     "kind": "p",
     "text": "Általános információ, ügyfélszolgálat: info@vrgo.hu"
-  },
-  {
-    "kind": "p",
-    "text": "Üzlethelyiség címe: 1096 Budapest, Sobieski u. 33."
   },
   {
     "kind": "p",

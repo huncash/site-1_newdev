@@ -1,6 +1,7 @@
 "use client";
 
 import { AiContentLabel } from "@/components/legal/AiContentLabel";
+import { isArchivePost } from "@/lib/archive-post";
 import type { Post } from "@/lib/blog";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +31,11 @@ export function BlogLayout({ post, className }: BlogLayoutProps) {
       data-ai-disclosure={disclosure ?? "none"}
     >
       <header className="mb-8">
+        {isArchivePost(post.date) ? (
+          <p className="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+            Archív · 2016–2017
+          </p>
+        ) : null}
         <h1 className="mb-3 text-3xl font-extrabold leading-tight tracking-tight">
           {post.title}
         </h1>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
@@ -8,14 +9,16 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: "VRGO — Bejárható 3D fotózás és virtuális túra üzleti felhasználásra",
   description:
-    "Tükrözd a valóságot egy 3D sétával. Virtuális túra, Google Utcakép, VR és 360° panoráma — akár 48 órás átfutási idővel.",
+    "Tükrözd a valóságot egy 3D sétával. Virtuális túra, Google Utcakép, VR és 360° panoráma. Az átadási határidő az ajánlatban szerepel.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isBim = (await headers()).get("x-vrgo-site") === "bim";
+
   return (
     <html lang="hu">
       <head>
@@ -28,9 +31,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#6AB5EE" />
       </head>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
-        <Navbar />
+        {isBim ? null : <Navbar />}
         <main className="flex-1">{children}</main>
-        <Footer />
+        {isBim ? null : <Footer />}
         <ConsentBanner />
       </body>
     </html>

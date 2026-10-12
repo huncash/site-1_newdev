@@ -14,31 +14,31 @@ const usecases = [
   },
   {
     title: "Bérbeadás-marketing (B2B)",
-    desc: "Iroda, raktár, retail egység bejárható túra — bérbeadási idő rövidül, nincs felesleges helyszíni séta.",
+    desc: "Iroda, raktár, retail egység bejárható túra — a helyszíni bemutatás előtt megosztható.",
   },
   {
     title: "CMMS karbantartás-koordináció",
-    desc: "Hibajegyek, planned maintenance és eszközleltár Mattertaggel a 3D-modellben — opcionális SAP / ServiceNow integráció.",
+    desc: "Hibajegy, planned maintenance és eszközleltár Mattertaggel a 3D-modellben. A link beilleszthető, ha a másik rendszer külső hivatkozást fogad.",
   },
   {
-    title: "Akadálymentesítés-audit",
-    desc: "Pontos méretek, küszöbök, lejtők — törvényi megfelelőségi dokumentáció és audit-trail a digitális iker alapján.",
+    title: "Méret a modellből",
+    desc: "Küszöb, lejtő és távolság a modellben mérhető. Törvényi megfelelőségi dokumentációt és hivatalos auditot nem helyettesít.",
   },
   {
     title: "Biztosítási kárrendezés 3D-ben",
-    desc: "Időbélyegzett állapotrögzítés káresemény előtt — a kárrendezési átfutás akár 60%-kal rövidül, viták minimalizálódnak.",
+    desc: "Időbélyegzett állapotrögzítés káresemény előtt. A kárrendezés idejét a biztosító eljárása határozza meg; összesített átfutást nem közlünk.",
   },
   {
-    title: "ESG ingatlanjelentés és energetikai audit 3D modellből",
-    desc: "Méretezett alaprajz, gépészet, homlokzat, napelempark — ESG és energetikai audit auditálható vizuális bizonyítékkal.",
+    title: "Vizuális melléklet jelentéshez",
+    desc: "Méretezett alaprajz, látható gépészet, homlokzat, napelempark. Melléklet egy jelentéshez; energetikai tanúsítványt nem helyettesít.",
   },
   {
-    title: "IoT integráció Matterport-túrában",
-    desc: "Hőmérséklet-, energia- és légminőség-szenzor adat a térponton — operatív platformként, nem egyszeri fotózásként.",
+    title: "Hivatkozás a térponton",
+    desc: "Mattertaggel szöveg, dokumentum vagy külső link köthető egy ponthoz. Élő szenzor-adatfolyamot nem szállítunk.",
   },
   {
     title: "BIM-koordináció as-built",
-    desc: "MatterPak export (E57 pontfelhő, OBJ, XYZ, alaprajz) generálkivitelezőnek és tervezőirodának, IFC/Revit/ArchiCAD munkafolyamathoz.",
+    desc: "MatterPak export (E57, OBJ, XYZ, alaprajz), ha a csomag tartalmazza. A tervező akkor olvassa be, ha a szoftvere ezt a formátumot fogadja.",
   },
 ];
 
@@ -136,12 +136,10 @@ export default function FacilityPage() {
         <div className="mx-auto max-w-4xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Miért éri meg portfólió-szinten?</h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            Az északi (NL, SE, DK) és DACH FM-piac best practice-e: a digitális iker nem egy egyszeri
-            fotózás, hanem operatív platform. A bérbeadási idő 18–32%-kal csökken, a karbantartási
-            koordinációs költség 22–40%-kal, a kárrendezési idő pedig akár 60%-kal rövidül.
-          </p>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Részletes nemzetközi best practice elemzés a stratégiai briefben.
+            A digitális iker itt operatív eszköz: bérbeadási túra, karbantartási jelölés és
+            káresemény előtti, időbélyegzett állapotrögzítés egy felületen. Azt, hogy ez mennyivel
+            rövidíti az átfutást, csak a megrendelő saját adatai mutatnák — összesített számot nem
+            közlünk.
           </p>
         </div>
       </section>
@@ -149,8 +147,8 @@ export default function FacilityPage() {
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4">
           <PropertyKpiLeaderboard
-            title="Property Intelligence — referencia-portfólió KPI-k"
-            subtitle="Mit lát egy ingatlanportfólió-vezető a digitális iker fölött"
+            title="Property Intelligence — milyen mutatók férnek egy nézetbe"
+            subtitle="A számokat a megrendelő saját nyilvántartása adja. Összesített ügyféleredményt nem közlünk."
           />
           <div className="mt-6 text-center">
             <Link
@@ -167,7 +165,7 @@ export default function FacilityPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Strukturált igénylés</h2>
           <p className="mt-3 opacity-90">
-            Egyetlen űrlap: csomag, terület, BIM/IoT igények. 24 órán belül visszajelzés — a
+            Egyetlen űrlap: csomag, terület, BIM/IoT igények. 1 munkanapon belül visszajelzés — a
             helyszíni időpontot egyeztetjük.
           </p>
           <Link

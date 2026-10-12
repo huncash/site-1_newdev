@@ -33,8 +33,8 @@ const usecases = [
     desc: (
       <>
         <Term k="MatterPak">MatterPak</Term> export (E57, OBJ, XYZ, méretezett alaprajz) a{" "}
-        <Term k="BIM">BIM</Term>-koordinációhoz — a tervezett és megvalósult állapot összevetése
-        órák, nem hetek alatt.
+        <Term k="BIM">BIM</Term>-koordinációhoz — a tervezett és a megvalósult állapot pontfelhője
+        egymás mellé tehető.
       </>
     ),
   },
@@ -139,12 +139,10 @@ export default function KampuszPage() {
 
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Bizonyított eset: Pannon Egyetem Zalaegerszeg</h2>
+          <h2 className="text-2xl font-semibold sm:text-3xl">Saját projekt: Pannon Egyetem Zalaegerszeg</h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            7+ hektár, 8 különálló szken egyetlen folyamatos túrává illesztve, 4 munkanap
-            alatt. A campus minden épülete, parkolója és külső területe egyetlen URL-ről
-            bejárható — felvételi marketingre, akkreditációs anyagra és belső üzemeltetésre
-            egyaránt használt digitális iker.
+            2024 ősz, 4 munkanap, 8 különálló szken, egy összefüggő túra, több mint 7 hektár.
+            Ezek a VRGO saját projektadatai, nem független mérés. A túra egy URL-ről bejárható.
           </p>
           <Link
             href="/#esettanulmany"
@@ -159,7 +157,7 @@ export default function KampuszPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Strukturált kampusz-igénylés</h2>
           <p className="mt-3 opacity-90">
-            Egyetlen űrlap: épületszám, terület, BIM-export és infópont igények. 24 órán belül
+            Egyetlen űrlap: épületszám, terület, BIM-export és infópont igények. 1 munkanapon belül
             visszaigazolás és konkrét projekttervezet — a helyszíni időpontot egyeztetjük.
           </p>
           <Link

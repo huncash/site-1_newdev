@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: 'Ipari digitális iker — gyár, csarnok, IoT integráció | VRGO',
-  description: 'Gyártócsarnokok, raktárak, ipari telephelyek 3D digitális ikre BIM- és IoT-export támogatással. Defects AI, Property Intelligence, mérhető alaprajz.',
+  description: 'Gyártócsarnokok, raktárak, ipari telephelyek 3D digitális ikre. E57, OBJ és XYZ export, ha a csomag tartalmazza. Kész IoT-csatlakozót nem szállítunk.',
 };
 
 const usecases = [
@@ -12,12 +12,12 @@ const usecases = [
     desc: "E57, OBJ, XYZ pontfelhő export — Revit, ArchiCAD, Navisworks workflow. Tervezett és a megvalósult állapot összehasonlítása.",
   },
   {
-    title: "Defects AI és minőségellenőrzés",
-    desc: "Matterport AI automatikusan detektálja a hibákat (repedés, korrózió, szivárgás) — időbélyegzett vizuális bizonyíték.",
+    title: "Állapot és hibajelölés",
+    desc: "Időbélyegzett szken. Repedés, korrózió vagy szivárgás a modellen kézi Mattertaggel jelölhető. Automatikus hibafelismerés nincs a csomagban.",
   },
   {
     title: "Property Intelligence és mérhetőség",
-    desc: "Pontos területek, magasságok, ferdeszögek — közvetlenül a 3D-modellből, mérnöki pontossággal.",
+    desc: "Terület, magasság és távolság a 3D-modellből mérhető. Geodéziai pontossági tanúsítvány csak akkor készül, ha az ajánlat külön kéri.",
   },
   {
     title: "Beüzemelés és átadás-átvétel",
@@ -25,21 +25,21 @@ const usecases = [
   },
   {
     title: "Karbantartás, üzemeltetés (CMMS)",
-    desc: "Mattertaggel jelölt eszközök karbantartási előzménye, kapcsolódó IoT-szenzor adatok, dokumentáció.",
+    desc: "Mattertaggel jelölt eszközök, kézi karbantartási megjegyzés és csatolt dokumentum. Élő szenzor-adatfolyamot nem szállítunk.",
   },
   {
     title: "Biztosítási kárrendezés",
-    desc: "Tűz/víz/földrengés előtti állapot rögzítése — kárrendezés napokkal hamarabb, vita nélkül.",
+    desc: "Káresemény előtti állapot rögzítése, időbélyeggel. A kárrendezés menetét a biztosító eljárása határozza meg.",
   },
 ];
 
-const integrations = [
-  "Autodesk Revit / Navisworks",
-  "Graphisoft ArchiCAD (BIMx)",
-  "Procore, PlanGrid",
-  "Microsoft Azure IoT Hub",
-  "AWS IoT TwinMaker",
-  "ServiceNow / SAP PM",
+const exports = [
+  "E57 pontfelhő — ha a megrendelt Matterport-csomag tartalmazza",
+  "XYZ pontfelhő",
+  "OBJ mesh",
+  "Méretezett alaprajz PDF-ben, ha a csomag tartalmazza",
+  "Bejárható túra URL-je, külső rendszerbe linkelhető",
+  "Mattertag: kézi jelölés szöveggel, fotóval vagy hivatkozással",
 ];
 
 export default function IpariPage() {
@@ -54,8 +54,8 @@ export default function IpariPage() {
             Gyár, csarnok, telephely — digitális ikerben
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
-            Ipar 4.0 alapinfrastruktúra: pontos 3D-felmérés, BIM-export, Defects AI hibadetektálás,
-            IoT-integrációhoz alkalmas pontfelhő. Egyszer lézerszkenneljük, sokszor használja.
+            3D-felmérés és BIM-export (E57, OBJ, XYZ), ha a csomag tartalmazza. A pontfelhő
+            fájlként átadható. Kész Azure- vagy AWS-csatlakozót nem szállítunk.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link
@@ -122,17 +122,18 @@ export default function IpariPage() {
 
       <section className="bg-secondary py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-center text-2xl font-semibold sm:text-3xl">Integrációk és export-formátumok</h2>
+          <h2 className="text-center text-2xl font-semibold sm:text-3xl">Amit a szkenből átadunk</h2>
           <div className="mx-auto mt-4 h-px w-24 bg-brand/60" />
           <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {integrations.map((i) => (
+            {exports.map((i) => (
               <li key={i} className="rounded-md border border-border bg-card px-4 py-3 text-sm font-medium">
                 {i}
               </li>
             ))}
           </ul>
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            Pontfelhő-formátumok: E57, XYZ, OBJ, FBX, USDZ, Reality Capture.
+            Revit, ArchiCAD vagy más BIM-szoftver akkor tudja beolvasni a fájlt, ha az adott
+            program az exportált formátumot fogadja. Tanúsított csatlakozót nem szállítunk.
           </p>
         </div>
       </section>
@@ -141,7 +142,7 @@ export default function IpariPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">ENTERPRISE projekt</h2>
           <p className="mt-3 opacity-90">
-            Több ezer m² ipari terület, BIM + Defects AI + Property Intelligence. Strukturált űrlapon
+            Ipari terület, BIM-export és kézi hibajelölés. Strukturált űrlapon
             kérheti.
           </p>
           <Link
