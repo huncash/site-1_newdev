@@ -74,3 +74,15 @@ jobs:
           script: |
             bash /tmp/poka-yoke-sites.sh
             echo "vmvrgohu_exit=$?"
+            echo "==== site-4 nginx is :3004 — bind next there ===="
+            pm2 delete site-4 || true
+            cd /var/www/site-4
+            find node_modules/.bin -type f -exec chmod a+x {} + 2>/dev/null || true
+            pm2 start ./node_modules/.bin/next --name site-4 --cwd /var/www/site-4 -- start --port 3004
+            pm2 save
+            sleep 3
+            ss -lptn | grep -E ':300[0-4]\b|:5100\b' || true
+            echo -n "127.0.0.1:3004 "
+            curl -sI -m 8 http://127.0.0.1:3004/ | head -n 1 || echo fail
+            echo -n "rendezvenyarnyekolas.hu "
+            curl -sI -m 12 -k https://rendezvenyarnyekolas.hu/ | head -n 1 || echo fail

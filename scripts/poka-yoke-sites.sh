@@ -17,7 +17,7 @@ case "$SITE" in
   site-1) PORT=3000; REPO=site-1_newdev ;;
   site-2) PORT=3001; REPO=site-2_newdev ;;
   site-3) PORT=3002; REPO=site-3_newdev ;;
-  site-4) PORT=3003; REPO=site-4_newdev ;;
+  site-4) PORT=3004; REPO=site-4_newdev ;;
   *) echo "denied site=$SITE" >&2; exit 1 ;;
 esac
 APP_DIR="/var/www/$SITE"
