@@ -1,0 +1,136 @@
+name: Isolate site-1..4 deploy keys
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/isolate-site-keys.yml"
+
+concurrency:
+  group: isolate-site-keys
+  cancel-in-progress: false
+
+jobs:
+  install-guards-and-restart:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Install path-locked keys + restart each PM2 from its own dir
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 195.228.152.141
+          username: deploy
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script_stop: false
+          command_timeout: 20m
+          script: |
+            set -euo pipefail
+            echo "whoami=$(whoami) host=$(hostname) pwd=$(pwd)"
+            mkdir -p "$HOME/bin"
+            cat > "$HOME/bin/site-guard.sh" << 'GUARD'
+            #!/bin/bash
+            set -euo pipefail
+            SITE="${1:-}"
+            case "$SITE" in
+              site-1) PORT=3000; REPO=site-1_newdev ;;
+              site-2) PORT=3001; REPO=site-2_newdev ;;
+              site-3) PORT=3002; REPO=site-3_newdev ;;
+              site-4) PORT=3003; REPO=site-4_newdev ;;
+              *) echo "denied site=$SITE" >&2; exit 1 ;;
+            esac
+            APP_DIR="/var/www/$SITE"
+            ORIG="${SSH_ORIGINAL_COMMAND:-}"
+            if [[ "$ORIG" == rsync\ * || "$ORIG" == scp\ * ]]; then
+              if [[ "$ORIG" != *"$APP_DIR"* ]]; then
+                echo "path-denied $SITE: $ORIG" >&2
+                exit 1
+              fi
+              exec bash -c "$ORIG"
+            fi
+            test -d "$APP_DIR"
+            cd "$APP_DIR"
+            HERE="$(pwd -P)"
+            WANT="$(readlink -f "$APP_DIR" 2>/dev/null || realpath "$APP_DIR")"
+            if [[ "$HERE" != "$WANT" ]]; then
+              echo "cwd-denied $HERE != $WANT" >&2
+              exit 1
+            fi
+            git remote set-url origin "https://github.com/huncash/${REPO}.git"
+            git fetch origin
+            git reset --hard origin/main
+            npm install
+            rm -rf .next
+            npm run build
+            pm2 delete "$SITE" || true
+            pm2 start npm --name "$SITE" --cwd "$APP_DIR" -- start
+            pm2 save
+            ss -lptn | grep -E ":${PORT}\\b" || true
+            GUARD
+            chmod 755 "$HOME/bin/site-guard.sh"
+
+            AUTH="$HOME/.ssh/authorized_keys"
+            mkdir -p "$HOME/.ssh"
+            chmod 700 "$HOME/.ssh"
+            touch "$AUTH"
+            chmod 600 "$AUTH"
+
+            install_key() {
+              local site="$1"
+              local pub="$2"
+              local line="command=\"$HOME/bin/site-guard.sh ${site}\",no-agent-forwarding,no-port-forwarding,no-pty,no-X11-forwarding ${pub}"
+              grep -F " ${site}-vps-deploy" "$AUTH" >/dev/null 2>&1 && sed -i "/ ${site}-vps-deploy/d" "$AUTH"
+              printf '%s\n' "$line" >> "$AUTH"
+              echo "installed $site"
+            }
+
+            install_key site-1 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0nW/Ey5hOcpb0WEcsUJ33rUs0opuSEFSSu3sqVOmPK site-1-vps-deploy"
+            install_key site-2 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPAtw0zTjIzBHMupTI0ZMDmpb26rGluBVIqvXYFX7m7b site-2-vps-deploy"
+            install_key site-3 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMBBrXI1gvIyrWnNV6aZYmCL+b6pgs2xoMf7XXks8E7c site-3-vps-deploy"
+            install_key site-4 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHhCUUTL4qTTjrwy5awzq5/9sgDGhEP1Z4ZCUV2Yx9tM site-4-vps-deploy"
+
+            echo "==== authorized_keys comments ===="
+            awk '{print $NF}' "$AUTH" || true
+
+            echo "==== /var/www ===="
+            ls -la /var/www || true
+
+            echo "==== nginx site files ===="
+            ls -la /etc/nginx/sites-enabled 2>/dev/null || true
+            grep -RIn --include='*.conf' -E 'server_name|proxy_pass|3000|3001|3002|3003' /etc/nginx/sites-enabled /etc/nginx/conf.d 2>/dev/null | head -n 80 || true
+
+            echo "==== pm2 before ===="
+            pm2 status || true
+
+            for s in 1 2 3 4; do
+              APP_DIR="/var/www/site-$s"
+              echo "========== restart site-$s from $APP_DIR =========="
+              if [ ! -d "$APP_DIR" ]; then
+                echo "MISSING $APP_DIR"
+                continue
+              fi
+              cd "$APP_DIR"
+              echo "pwd=$(pwd)"
+              git remote -v || true
+              git fetch origin || true
+              git reset --hard origin/main || true
+              if npm install && rm -rf .next && npm run build; then
+                pm2 delete "site-$s" || true
+                pm2 start npm --name "site-$s" --cwd "$APP_DIR" -- start || true
+              else
+                echo "BUILD FAILED site-$s — pm2 restart only"
+                pm2 restart "site-$s" || pm2 start npm --name "site-$s" --cwd "$APP_DIR" -- start || true
+              fi
+            done
+            pm2 save || true
+
+            echo "==== pm2 after ===="
+            pm2 status || true
+            echo "==== listening ===="
+            ss -lptn | grep -E ':300[0-3]\b|:5100\b' || true
+            echo "==== local curl ===="
+            for p in 3000 3001 3002 3003; do
+              echo -n "127.0.0.1:$p "
+              curl -sI -m 5 "http://127.0.0.1:$p/" | head -n 1 || echo fail
+            done
