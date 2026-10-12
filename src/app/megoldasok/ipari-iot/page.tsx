@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { bimLink } from "@/lib/links";
+
 export const metadata: Metadata = {
   title: 'Ipari digitális iker — gyár, csarnok, IoT integráció | VRGO',
   description: 'Gyártócsarnokok, raktárak, ipari telephelyek 3D digitális ikre. E57, OBJ és XYZ export, ha a csomag tartalmazza. Kész IoT-csatlakozót nem szállítunk.',
@@ -10,6 +12,7 @@ const usecases = [
   {
     title: "BIM koordináció és as-built dokumentáció",
     desc: "E57, OBJ, XYZ pontfelhő export — Revit, ArchiCAD, Navisworks workflow. Tervezett és a megvalósult állapot összehasonlítása.",
+    href: bimLink("/", "ipar-csempe"),
   },
   {
     title: "Állapot és hibajelölés",
@@ -110,12 +113,33 @@ export default function IpariPage() {
           <h2 className="text-center text-2xl font-semibold sm:text-3xl">Hat ipari felhasználás</h2>
           <div className="mx-auto mt-4 h-px w-24 bg-brand/60" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {usecases.map((u) => (
-              <article key={u.title} className="rounded-md border border-border bg-card p-6 shadow-sm">
-                <h3 className="text-lg font-semibold">{u.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{u.desc}</p>
-              </article>
-            ))}
+            {usecases.map((u) => {
+              const body = (
+                <>
+                  <h3 className="text-lg font-semibold">{u.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{u.desc}</p>
+                  {"href" in u && u.href ? (
+                    <span className="mt-3 block text-xs font-semibold text-brand">Részletek a BIM-oldalon →</span>
+                  ) : null}
+                </>
+              );
+              if ("href" in u && u.href) {
+                return (
+                  <a
+                    key={u.title}
+                    href={u.href}
+                    className="block rounded-md border border-border bg-card p-6 shadow-sm transition hover:border-brand hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                  >
+                    {body}
+                  </a>
+                );
+              }
+              return (
+                <article key={u.title} className="rounded-md border border-border bg-card p-6 shadow-sm">
+                  {body}
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

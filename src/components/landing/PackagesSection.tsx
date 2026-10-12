@@ -10,6 +10,8 @@ export interface PackageItem {
   audience: string;
   cta: string;
   image: string;
+  secondaryCta?: string;
+  secondaryHref?: string;
 }
 
 export interface PackagesSectionProps {
@@ -66,10 +68,18 @@ export function PackagesSection({
               </p>
               <a
                 href={`/csomagok/megrendeles?csomag=${encodeURIComponent(item.tier)}`}
-                className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-foreground transition hover:bg-brand-dark"
+                className="mt-auto inline-flex items-center justify-center rounded-md bg-brand px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-foreground transition hover:bg-brand-dark"
               >
                 {item.cta}
               </a>
+              {item.secondaryHref ? (
+                <a
+                  href={item.secondaryHref}
+                  className="mt-2 inline-flex items-center justify-center rounded-md border border-brand px-4 py-2.5 text-xs font-semibold text-brand transition hover:bg-brand/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                >
+                  {item.secondaryCta}
+                </a>
+              ) : null}
             </article>
           ))}
         </div>

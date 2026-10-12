@@ -3,10 +3,15 @@
 import { AI_DISCLOSURE_COPY } from "@/config/ai-transparency";
 import { isArchivePost } from "@/lib/archive-post";
 import type { PostMeta } from "@/lib/blog";
+import { bimLink } from "@/lib/links";
 import { cn } from "@/lib/utils";
 
+export interface BlogIndexPost extends PostMeta {
+  href?: string;
+}
+
 export interface BlogIndexProps {
-  posts: PostMeta[];
+  posts: BlogIndexPost[];
   title?: string;
   subtitle?: string;
   basePath?: string;
@@ -53,14 +58,22 @@ export function BlogIndex({
             bim.vrgo.hu/cikkek
           </a>
         </p>
+        <a
+          href={bimLink("/cikkek", "blog")}
+          className="mt-6 block max-w-xl rounded-md border border-brand/40 bg-brand/5 px-4 py-3 text-sm font-semibold text-brand underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+        >
+          BIM-cikkek az állami szabályozásról →
+        </a>
       </header>
 
       {posts.length === 0 ? (
         <p className="text-muted-foreground">Nincs elérhető bejegyzés.</p>
       ) : (
         <ul className="flex flex-col divide-y">
-          {posts.map((post) => (
-            <li key={post.slug} className="py-8">
+          {posts.map((post) => {
+            const href = post.href ?? `${basePath}/${post.slug}`;
+            return (
+            <li key={href} className="py-8">
               <article>
                 <div className="mb-2 flex flex-wrap items-center gap-2">
                   {isArchivePost(post.date) ? (
@@ -82,10 +95,7 @@ export function BlogIndex({
                 </div>
 
                 <h2 className="mb-2 text-xl font-bold leading-snug md:text-2xl">
-                  <a
-                    href={`${basePath}/${post.slug}`}
-                    className="transition-colors hover:text-brand"
-                  >
+                  <a href={href} className="transition-colors hover:text-brand">
                     {post.title}
                   </a>
                 </h2>
@@ -108,7 +118,7 @@ export function BlogIndex({
                   </div>
 
                   <a
-                    href={`${basePath}/${post.slug}`}
+                    href={href}
                     className="shrink-0 text-xs font-semibold uppercase tracking-wider text-brand hover:underline"
                   >
                     Olvasom →
@@ -116,7 +126,8 @@ export function BlogIndex({
                 </div>
               </article>
             </li>
-          ))}
+            );
+          })}
         </ul>
       )}
     </div>

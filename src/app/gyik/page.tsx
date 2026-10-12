@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { bimLink } from "@/lib/links";
+
 export const metadata: Metadata = {
   title: 'GYIK — digitális iker, BIM-export, Property Intelligence | VRGO',
   description: 'Gyakori kérdések a Matterport-alapú digitális ikerről: kampusz-túra, BIM-export, kézi hibajelölés, ESG-melléklet és káresemény előtti állapotrögzítés.',
@@ -98,7 +100,20 @@ export default function FaqPage() {
                 </span>
                 {f.q}
               </summary>
-              <p className="mt-3 pl-6 text-sm text-foreground/85">{f.a}</p>
+              <p className="mt-3 pl-6 text-sm text-foreground/85">
+                {f.a}
+                {f.q.startsWith("Milyen BIM-export") ? (
+                  <>
+                    {" "}
+                    <a
+                      href={bimLink("/pontossag-es-formatumok", "gyik")}
+                      className="font-semibold text-brand underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                    >
+                      Részletek: Pontosság és formátumok →
+                    </a>
+                  </>
+                ) : null}
+              </p>
             </details>
           ))}
         </div>

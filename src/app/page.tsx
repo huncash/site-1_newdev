@@ -8,6 +8,7 @@ import { SegmentsSection } from "@/components/landing/SegmentsSection";
 import { ServicesSection } from "@/components/landing/ServicesSection";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { CONTENT } from "../data/content";
+import { bimLink } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "VRGO — Bejárható 3D, virtuális túra és BIM-alapadat",
@@ -27,7 +28,7 @@ export default function HomePage() {
           <>
             Kampuszok, gyártócsarnokok és portfóliók digitális ikre — Matterport alapú
             bejárható 3D, E57/OBJ-export és BIM-alapadat. BIM- és állami projektekhez:{" "}
-            <a href="https://bim.vrgo.hu" className="underline underline-offset-2">
+            <a href={bimLink("/", "hero-alcim")} className="underline underline-offset-2">
               bim.vrgo.hu
             </a>
           </>
@@ -37,6 +38,8 @@ export default function HomePage() {
         ctaHref={hero.ctaPrimary.href}
         secondaryLabel={hero.ctaSecondary.label}
         secondaryHref={hero.ctaSecondary.href}
+        noteLabel="Állami BIM-projekt? Nézd a BIM-oldalt →"
+        noteHref={bimLink("/", "hero")}
       />
 
       <SegmentsSection heading={segments.heading} items={segments.items} />
@@ -47,7 +50,7 @@ export default function HomePage() {
             Állami létesítmények BIM-határidői: 31/2024. ÉKM rendelet.
           </p>
           <a
-            href="https://bim.vrgo.hu"
+            href={bimLink("/", "sav-fooldal")}
             className="inline-flex items-center justify-center rounded-md bg-brand px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
           >
             bim.vrgo.hu
@@ -67,6 +70,17 @@ export default function HomePage() {
         ctaLabel={process.cta.label}
         ctaHref={process.cta.href}
       />
+
+      <section className="bg-secondary py-8 sm:py-10">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <a
+            href={bimLink("/ekm-rendelet", "sav")}
+            className="text-sm font-semibold text-foreground underline underline-offset-2 hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:text-base"
+          >
+            Állami létesítmények BIM-határidői: 31/2024. ÉKM rendelet → bim.vrgo.hu/ekm-rendelet
+          </a>
+        </div>
+      </section>
 
       <PackagesSection
         heading={packages.heading}

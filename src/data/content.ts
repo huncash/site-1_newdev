@@ -1,3 +1,5 @@
+import { bimLink } from "@/lib/links";
+
 export interface ContentLink {
   label: string;
   href: string;
@@ -14,6 +16,8 @@ export interface ContentSegment {
   title: string;
   description: string;
   href: string;
+  asideLabel?: string;
+  asideHref?: string;
 }
 
 export interface ContentTestimonial {
@@ -33,6 +37,8 @@ export interface ContentPackage {
   audience: string;
   cta: string;
   image: string;
+  secondaryCta?: string;
+  secondaryHref?: string;
 }
 
 /** Lovable / vrgo-main elfogadott főoldal-tartalom. */
@@ -55,16 +61,22 @@ export const CONTENT = {
         title: "Oktatás · Kampusz",
         description: "Egyetem, iskola, labor — a teljes kampusz bejárható digitális ikerként.",
         href: "/megoldasok/oktatas",
+        asideLabel: "Meglévő állami épületek →",
+        asideHref: bimLink("/meglevo-allami-epuletek", "szegmens-oktatas"),
       },
       {
         title: "Ipar · IoT · BIM",
         description: "As-built rögzítés, BIM-alapadat, hibakövetés.",
         href: "https://bim.vrgo.hu/kivitelezes",
+        asideLabel: "BIM és állami projektek →",
+        asideHref: bimLink("/", "szegmens-ipar"),
       },
       {
         title: "Facility Management",
         description: "Bérbeadás, karbantartás, ESG, biztosítás portfólió-szinten.",
         href: "/megoldasok/facility",
+        asideLabel: "Üzemeltetés →",
+        asideHref: bimLink("/uzemeltetes", "szegmens-facility"),
       },
     ] satisfies ContentSegment[],
   },
@@ -180,6 +192,8 @@ export const CONTENT = {
           "Egyetemek és kutatóhelyek, gyártó- és logisztikai vállalatok, energetikai és infrastruktúra-üzemeltetők, generálkivitelezők.",
         cta: "ENTERPRISE igénylése",
         image: "/packages/csomag-c.jpg",
+        secondaryCta: "BIM és állami projektek",
+        secondaryHref: bimLink("/", "enterprise"),
       },
     ] satisfies ContentPackage[],
   },

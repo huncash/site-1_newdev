@@ -71,7 +71,7 @@ export default function BimFaqPage() {
         ))}
         <p className="text-xs text-muted-foreground">
           Jogforrás:{" "}
-          <a href={NJT_URL} className="underline">
+          <a href={NJT_URL} className="underline" target="_blank" rel="noopener noreferrer">
             Nemzeti Jogszabálytár
           </a>
           , 2026.01.01. Utolsó ellenőrzés: {DECREE_CHECKED}. Adatkezelés:{" "}

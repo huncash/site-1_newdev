@@ -13,6 +13,8 @@ export interface HeroSectionProps {
   ctaHref?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  noteLabel?: string;
+  noteHref?: string;
   className?: string;
 }
 
@@ -25,6 +27,8 @@ export function HeroSection({
   ctaHref = "/ajanlat?forras=hero",
   secondaryLabel = "Csomagok megnézése",
   secondaryHref = "/#csomagok",
+  noteLabel,
+  noteHref,
   className,
 }: HeroSectionProps) {
   return (
@@ -70,6 +74,14 @@ export function HeroSection({
             {secondaryLabel}
           </a>
         </div>
+        {noteHref ? (
+          <a
+            href={noteHref}
+            className="mt-4 text-sm text-section-dark-foreground underline underline-offset-2 hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          >
+            {noteLabel}
+          </a>
+        ) : null}
       </div>
     </section>
   );

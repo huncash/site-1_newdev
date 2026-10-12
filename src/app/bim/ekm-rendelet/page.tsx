@@ -130,7 +130,7 @@ export default function EkmPage() {
         <footer className="border-t border-border pt-6 text-xs">
           <p>
             Forrás:{" "}
-            <a href={NJT_URL} className="underline">
+            <a href={NJT_URL} className="underline" target="_blank" rel="noopener noreferrer">
               Nemzeti Jogszabálytár
             </a>
             , hatályos szöveg 2026.01.01. Az oldal tájékoztató, nem jogi tanácsadás.

@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
-import { isMenuGroup, MENU_ITEMS } from "@/config/menu";
+import { isMenuGroup, MENU_ITEMS, type MenuItem } from "@/config/menu";
 import { SITE_CONFIG } from "@/config/site-config";
 import { cn } from "@/lib/utils";
 
@@ -86,9 +87,39 @@ function DesktopDropdown({
   );
 }
 
-export function Navbar({ logoHref = "/", className }: { logoHref?: string; className?: string }) {
+function hrefOf(href: string, linkPrefix: string) {
+  if (!linkPrefix || /^(https?:|mailto:|tel:|#)/.test(href)) return href;
+  return href === "/" ? linkPrefix : `${linkPrefix}${href}`;
+}
+
+export function Navbar({
+  logoHref = "/",
+  className,
+  items = MENU_ITEMS,
+  linkPrefix = "",
+  cta,
+  quietLink,
+  logoLabel,
+}: {
+  logoHref?: string;
+  className?: string;
+  items?: readonly MenuItem[];
+  linkPrefix?: string;
+  cta?: { label: string; href: string };
+  quietLink?: { label: string; href: string; newTab?: boolean };
+  logoLabel?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [mobileGroupOpen, setMobileGroupOpen] = useState<string | null>(null);
+  const pathname = usePathname() ?? "";
+  const onBlog = pathname === "/blog" || pathname.startsWith("/blog/");
+  const homeInNewTab = onBlog && (logoHref === "/" || logoHref === "https://vrgo.hu" || logoHref === "https://vrgo.hu/");
+  const navItems = items.map((item) =>
+    isMenuGroup(item)
+      ? { ...item, children: item.children.map((child) => ({ ...child, href: hrefOf(child.href, linkPrefix) })) }
+      : { ...item, href: hrefOf(item.href, linkPrefix) }
+  );
+  const ctaHref = cta ? hrefOf(cta.href, linkPrefix) : "";
 
   return (
     <header
@@ -101,7 +132,9 @@ export function Navbar({ logoHref = "/", className }: { logoHref?: string; class
         <Link
           href={logoHref}
           className="flex shrink-0 items-center"
-          aria-label={`${SITE_CONFIG.name} – főoldal`}
+          aria-label={logoLabel ?? `${SITE_CONFIG.name} – főoldal`}
+          target={homeInNewTab ? "_blank" : undefined}
+          rel={homeInNewTab ? "noopener noreferrer" : undefined}
           onClick={() => setOpen(false)}
         >
           <Image
@@ -118,7 +151,7 @@ export function Navbar({ logoHref = "/", className }: { logoHref?: string; class
           className="hidden items-center gap-x-3 gap-y-1 lg:flex xl:gap-x-4"
           aria-label="Főmenü"
         >
-          {MENU_ITEMS.map((item) =>
+          {navItems.map((item) =>
             isMenuGroup(item) ? (
               <DesktopDropdown key={item.label} label={item.label} items={item.children} />
             ) : (
@@ -131,6 +164,24 @@ export function Navbar({ logoHref = "/", className }: { logoHref?: string; class
               </Link>
             )
           )}
+          {cta ? (
+            <Link
+              href={ctaHref}
+              className="inline-flex items-center whitespace-nowrap rounded-md border border-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-brand-foreground transition hover:bg-white hover:text-section-dark"
+            >
+              {cta.label}
+            </Link>
+          ) : null}
+          {quietLink ? (
+            <a
+              href={quietLink.href}
+              target={quietLink.newTab ? "_blank" : undefined}
+              rel={quietLink.newTab ? "noopener noreferrer" : undefined}
+              className="whitespace-nowrap text-[11px] font-medium normal-case tracking-normal text-brand-foreground/70 hover:underline"
+            >
+              {quietLink.label}
+            </a>
+          ) : null}
         </nav>
 
         <button
@@ -149,7 +200,7 @@ export function Navbar({ logoHref = "/", className }: { logoHref?: string; class
       {open ? (
         <nav className="border-t border-white/20 bg-brand lg:hidden" aria-label="Mobil menü">
           <ul className="mx-auto max-w-6xl px-4 py-2">
-            {MENU_ITEMS.map((item) => {
+            {navItems.map((item) => {
               if (isMenuGroup(item)) {
                 const expanded = mobileGroupOpen === item.label;
                 return (
@@ -202,6 +253,29 @@ export function Navbar({ logoHref = "/", className }: { logoHref?: string; class
                 </li>
               );
             })}
+            {cta ? (
+              <li>
+                <Link
+                  href={ctaHref}
+                  onClick={() => setOpen(false)}
+                  className="my-2 inline-flex items-center rounded-md border border-white px-3 py-2 text-sm font-semibold uppercase tracking-wider"
+                >
+                  {cta.label}
+                </Link>
+              </li>
+            ) : null}
+            {quietLink ? (
+              <li>
+                <a
+                  href={quietLink.href}
+                  target={quietLink.newTab ? "_blank" : undefined}
+                  rel={quietLink.newTab ? "noopener noreferrer" : undefined}
+                  className="block py-3 text-sm font-medium normal-case tracking-normal text-brand-foreground/70"
+                >
+                  {quietLink.label}
+                </a>
+              </li>
+            ) : null}
           </ul>
         </nav>
       ) : null}

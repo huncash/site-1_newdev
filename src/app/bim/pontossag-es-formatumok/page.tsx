@@ -76,7 +76,7 @@ export default function AccuracyPage() {
         </section>
         <p className="text-xs">
           Forrás a jogszabályi mondatokhoz:{" "}
-          <a href={NJT_URL} className="underline">
+          <a href={NJT_URL} className="underline" target="_blank" rel="noopener noreferrer">
             Nemzeti Jogszabálytár
           </a>
           , 2026.01.01. Utolsó ellenőrzés: {DECREE_CHECKED}. Az oldal tájékoztató, nem jogi

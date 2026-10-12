@@ -1,11 +1,13 @@
 "use client";
 
+import { bimLink } from "@/lib/links";
 import { SITE_CONFIG } from "@/config/site-config";
 import { cn } from "@/lib/utils";
 
 export interface FooterLink {
   label: string;
   href: string;
+  newTab?: boolean;
 }
 
 export interface FooterProps {
@@ -17,6 +19,9 @@ export interface FooterProps {
   foundedYear?: number;
   catalogLinks?: FooterLink[];
   aboutLinks?: FooterLink[];
+  variant?: "main" | "bim";
+  linkPrefix?: string;
+  ctaHref?: string;
 }
 
 const DEFAULT_LINKS: FooterLink[] = [
@@ -25,6 +30,7 @@ const DEFAULT_LINKS: FooterLink[] = [
   { label: "Blog", href: "/blog" },
   { label: "Kapcsolat", href: "/ajanlat" },
   { label: "Partner belépés", href: "/partner/login" },
+  { label: "BIM (állami projektek)", href: bimLink("/", "footer") },
 ];
 
 const LEGAL_LINKS: FooterLink[] = [
@@ -32,6 +38,32 @@ const LEGAL_LINKS: FooterLink[] = [
   { label: "Adatvédelem", href: "/adatvedelem" },
   { label: "AI átláthatóság", href: "/ai-atlathatosag" },
 ];
+
+const BIM_LEGAL_LINKS: FooterLink[] = [
+  { label: "ÁSZF", href: "https://vrgo.hu/aszf" },
+  { label: "Adatvédelem", href: "https://vrgo.hu/adatvedelem" },
+  { label: "AI átláthatóság", href: "https://vrgo.hu/ai-atlathatosag" },
+];
+
+function prefixed(path: string, linkPrefix: string) {
+  if (!linkPrefix || /^(https?:|mailto:|tel:|#)/.test(path)) return path;
+  const q = path.indexOf("?");
+  const pathname = q === -1 ? path : path.slice(0, q);
+  const search = q === -1 ? "" : path.slice(q);
+  const base = pathname === "/" ? linkPrefix : `${linkPrefix}${pathname}`;
+  return `${base}${search}`;
+}
+
+function BIM_PAGE_LINKS(linkPrefix: string, quoteHref: string): FooterLink[] {
+  return [
+    { label: "Csomagok", href: "https://vrgo.hu/csomagok" },
+    { label: "GYIK", href: prefixed("/gyik", linkPrefix) },
+    { label: "Blog", href: "https://vrgo.hu/blog", newTab: true },
+    { label: "Kapcsolat", href: quoteHref },
+    { label: "Partner belépés", href: "https://vrgo.hu/partner/login" },
+    { label: "vrgo.hu főoldal", href: "https://vrgo.hu", newTab: true },
+  ];
+}
 
 const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/vrgo.hu",
@@ -56,12 +88,22 @@ export function Footer({
   foundedYear = 2016,
   catalogLinks = [],
   aboutLinks = DEFAULT_LINKS,
+  variant = "main",
+  linkPrefix = "",
+  ctaHref,
 }: FooterProps) {
   const year = new Date().getFullYear();
-  const links =
-    catalogLinks.length > 0
+  const bim = variant === "bim";
+  const quoteHref =
+    ctaHref ??
+    (bim ? prefixed("/ajanlatkeres?forras=footer", linkPrefix) : "/ajanlat?forras=footer");
+  const aiHref = bim ? "https://vrgo.hu/ai-atlathatosag" : "/ai-atlathatosag";
+  const links = bim
+    ? BIM_PAGE_LINKS(linkPrefix, quoteHref)
+    : catalogLinks.length > 0
       ? [...aboutLinks, ...catalogLinks]
       : aboutLinks;
+  const legal = bim ? BIM_LEGAL_LINKS : LEGAL_LINKS;
 
   return (
     <footer className={cn("bg-section-dark text-section-dark-foreground", className)}>
@@ -77,7 +119,12 @@ export function Footer({
           <ul className="mt-3 space-y-2 text-sm opacity-90">
             {links.map((item) => (
               <li key={`${item.href}-${item.label}`}>
-                <a href={item.href} className="hover:underline">
+                <a
+                  href={item.href}
+                  className="hover:underline"
+                  target={item.newTab ? "_blank" : undefined}
+                  rel={item.newTab ? "noopener noreferrer" : undefined}
+                >
                   {item.label}
                 </a>
               </li>
@@ -85,9 +132,14 @@ export function Footer({
           </ul>
           <div className="mt-5 text-sm font-semibold uppercase tracking-wider">Jogi szekció</div>
           <ul className="mt-3 space-y-2 text-sm opacity-90">
-            {LEGAL_LINKS.map((item) => (
+            {legal.map((item) => (
               <li key={`${item.href}-${item.label}`}>
-                <a href={item.href} className="hover:underline">
+                <a
+                  href={item.href}
+                  className="hover:underline"
+                  target={item.newTab ? "_blank" : undefined}
+                  rel={item.newTab ? "noopener noreferrer" : undefined}
+                >
                   {item.label}
                 </a>
               </li>
@@ -103,11 +155,11 @@ export function Footer({
             <span aria-hidden="true">|</span>
             <span>Minden jog fenntartva.</span>
             <span aria-hidden="true">|</span>
-            <a href="/ai-atlathatosag" className="hover:underline">
+            <a href={aiHref} className="hover:underline">
               AI Act 50. cikk — átláthatóság
             </a>
             <span aria-hidden="true">|</span>
-            <a href="/ajanlat?forras=footer" className="hover:underline">
+            <a href={quoteHref} className="hover:underline">
               Kérdésed van? Ajánlatot kérek
             </a>
           </div>

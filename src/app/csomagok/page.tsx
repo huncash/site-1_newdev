@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Term } from "@/components/Term";
+import { bimLink } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: 'B2B csomagok — digitális iker és BIM-alapadat, ENTERPRISE | VRGO',
@@ -111,7 +112,7 @@ const niches = [
     title: "Gyár, raktár, logisztikai központ",
     desc: (
       <>
-        <Term k="BIM">BIM</Term> <Term k="as-built">as-built</Term>, beüzemelés, karbantartás,
+        <Term k="BIM" moreHref={bimLink("/mi-az-a-bim", "fogalom")}>BIM</Term> <Term k="as-built">as-built</Term>, beüzemelés, karbantartás,
         biztosítási dokumentáció.
       </>
     ),
@@ -207,10 +208,18 @@ export default function PackagesPage() {
 
               <Link
                 href={`/csomagok/megrendeles?csomag=${encodeURIComponent(p.tier)}`}
-                className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
+                className="mt-auto inline-flex items-center justify-center rounded-md bg-brand px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
               >
                 {p.cta}
               </Link>
+              {p.tier === "ENTERPRISE" ? (
+                <a
+                  href={bimLink("/", "enterprise")}
+                  className="mt-2 inline-flex items-center justify-center rounded-md border border-brand px-4 py-2.5 text-sm font-semibold text-brand hover:bg-brand/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                >
+                  BIM és állami projektek
+                </a>
+              ) : null}
             </article>
           ))}
         </div>

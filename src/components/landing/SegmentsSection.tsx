@@ -8,6 +8,8 @@ export interface SegmentItem {
   title: string;
   description: string;
   href: string;
+  asideLabel?: string;
+  asideHref?: string;
 }
 
 export interface SegmentsSectionProps {
@@ -35,20 +37,32 @@ export function SegmentsSection({
           {items.map((item) => {
             const external = item.href.startsWith("http");
             return (
-            <Link
+            <div
               key={item.title}
-              href={item.href}
-              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="group flex flex-col rounded-md border border-border bg-card p-4 shadow-sm transition hover:border-brand hover:shadow-md sm:p-5"
+              className="flex flex-col rounded-md border border-border bg-card shadow-sm transition hover:border-brand hover:shadow-md"
             >
-              <h3 className="text-base font-semibold transition group-hover:text-brand sm:text-lg">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-xs text-muted-foreground sm:text-sm">{item.description}</p>
-              <span className="mt-4 text-xs font-semibold uppercase tracking-wider text-brand">
-                Részletek →
-              </span>
-            </Link>
+              <Link
+                href={item.href}
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="group flex flex-1 flex-col p-4 sm:p-5"
+              >
+                <h3 className="text-base font-semibold transition group-hover:text-brand sm:text-lg">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-xs text-muted-foreground sm:text-sm">{item.description}</p>
+                <span className="mt-4 text-xs font-semibold uppercase tracking-wider text-brand">
+                  Részletek →
+                </span>
+              </Link>
+              {item.asideHref ? (
+                <a
+                  href={item.asideHref}
+                  className="px-4 pb-4 text-xs font-semibold text-brand underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:px-5"
+                >
+                  {item.asideLabel}
+                </a>
+              ) : null}
+            </div>
             );
           })}
         </div>
