@@ -22,7 +22,7 @@ jobs:
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: 195.228.152.141
-          username: deploy
+          username: vmvrgohu
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
           script_stop: true
@@ -40,7 +40,7 @@ jobs:
             rm -rf .next
             npm run build
             pm2 delete "$APP_NAME" || true
-            pm2 start npm --name "$APP_NAME" -- start
+            pm2 start npm --name "$APP_NAME" --cwd "$APP_DIR" -- start
             pm2 save
             ss -lptn | grep -E ':3000\b' || true
             pm2 status
