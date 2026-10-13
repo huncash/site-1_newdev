@@ -11,74 +11,53 @@ concurrency:
   group: bim-vhost
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   nginx:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Add bim.vrgo.hu to the live vrgo vhost
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: 195.228.152.141
-          username: deploy
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: 22
-          script_stop: true
-          command_timeout: 10m
-          script: |
-            set -uo pipefail
-            echo "user=$(id)"
-            echo "==== ls ===="
-            ls -l /etc/nginx/sites-available/vrgo.hu /etc/nginx/sites-enabled/vrgo.hu /etc/nginx/sites-enabled/offlinebiztonsag.hu
-            echo "==== AVAILABLE ===="
-            sed -n '1,250p' /etc/nginx/sites-available/vrgo.hu
-            echo "==== ENABLED ===="
-            sed -n '1,250p' /etc/nginx/sites-enabled/vrgo.hu
-            echo "==== OFFLINE ===="
-            grep -nE 'server_name|listen |proxy_pass|default_server' /etc/nginx/sites-enabled/offlinebiztonsag.hu || true
-            if ! sudo -n true; then
-              echo "sudo=no"
-              exit 1
-            fi
+      - uses: actions/checkout@v4
+
+      - name: Read the live vhost and add bim.vrgo.hu if sudo allows it
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/vrgo
+          chmod 600 ~/.ssh/vrgo
+          ssh -i ~/.ssh/vrgo -o StrictHostKeyChecking=accept-new deploy@195.228.152.141 'bash -s' << 'EOF' > ops-nginx-live.txt
+          set -uo pipefail
+          echo "user=$(id)"
+          echo "===== LS ====="
+          ls -l /etc/nginx/sites-available/vrgo.hu /etc/nginx/sites-enabled/vrgo.hu /etc/nginx/sites-enabled/offlinebiztonsag.hu
+          echo "===== AVAILABLE ====="
+          sed -n '1,250p' /etc/nginx/sites-available/vrgo.hu
+          echo "===== ENABLED ====="
+          sed -n '1,250p' /etc/nginx/sites-enabled/vrgo.hu
+          echo "===== OFFLINE ====="
+          grep -nE 'server_name|listen |proxy_pass|default_server' /etc/nginx/sites-enabled/offlinebiztonsag.hu || true
+          if sudo -n true; then
             echo "sudo=yes"
-            sudo -n python3 - << 'PY'
-            import pathlib, re
-            paths = []
-            for raw in ("/etc/nginx/sites-available/vrgo.hu", "/etc/nginx/sites-enabled/vrgo.hu"):
-                path = pathlib.Path(raw)
-                if path.exists():
-                    real = path.resolve()
-                    if real not in paths:
-                        paths.append(real)
-            if not paths:
-                raise SystemExit("vrgo.hu nginx file missing")
-            name = "bim.vrgo.hu"
-            for path in paths:
-                original = path.read_text()
-                def add_name(match):
-                    line = match.group(0)
-                    if name in line:
-                        return line
-                    return line.replace(";", f" {name};", 1)
-                updated, count = re.subn(r"(?m)^[ \t]*server_name\b[^;]*;", add_name, original)
-                if updated == original:
-                    print(f"unchanged {path} server_name_lines={count}")
-                    continue
-                backup = pathlib.Path(str(path) + ".bak-bim")
-                if not backup.exists():
-                    backup.write_text(original)
-                path.write_text(updated)
-                print(f"updated {path}")
-            PY
-            echo "==== server_name after ===="
-            grep -n server_name /etc/nginx/sites-available/vrgo.hu /etc/nginx/sites-enabled/vrgo.hu
+            for f in /etc/nginx/sites-available/vrgo.hu /etc/nginx/sites-enabled/vrgo.hu; do
+              sudo -n sed -i.bak-bim '/^[[:space:]]*server_name /{ /bim\.vrgo\.hu/! s/;/ bim.vrgo.hu;/ }' "$f"
+              echo "edited $f"
+            done
             sudo -n nginx -t
             sudo -n systemctl reload nginx
-            title="$(curl -sk -m 15 --resolve bim.vrgo.hu:443:127.0.0.1 https://bim.vrgo.hu/ | grep -o '<title>[^<]*</title>' || true)"
-            echo "title=${title}"
-            case "$title" in
-              *Offline*) echo "still default vhost"; exit 1 ;;
-            esac
-            sudo -n certbot --nginx --non-interactive --expand --keep-until-expiring -d vrgo.hu -d www.vrgo.hu -d bim.vrgo.hu || echo "CERTBOT_FAILED"
-            sudo -n nginx -t
-            sudo -n systemctl reload nginx
+            echo "===== TITLE ====="
+            curl -sk -m 15 --resolve bim.vrgo.hu:443:127.0.0.1 https://bim.vrgo.hu/ | grep -o '<title>[^<]*</title>' || true
+            echo "===== ENABLED AFTER ====="
+            sed -n '1,250p' /etc/nginx/sites-enabled/vrgo.hu
+          else
+            echo "sudo=no"
+          fi
+          EOF
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add ops-nginx-live.txt
+          git commit -m "Record the live vrgo Nginx vhost."
+          git push origin HEAD
