@@ -82,12 +82,29 @@ jobs:
             sudo -n nginx -t
             sudo -n systemctl reload nginx
             echo "==== origin check ===="
-            curl -sk -m 15 --resolve bim.vrgo.hu:443:127.0.0.1 https://bim.vrgo.hu/ | grep -o '<title>[^<]*</title>' || true
-            if sudo -n certbot --nginx --non-interactive --expand --keep-until-expiring --redirect -d vrgo.hu -d www.vrgo.hu -d bim.vrgo.hu; then
-              sudo -n nginx -t
-              sudo -n systemctl reload nginx
-              echo "certbot=ok"
-            else
-              echo "CERTBOT_FAILED vhost reload already done"
-              exit 1
+            title="$(curl -sk -m 15 --resolve bim.vrgo.hu:443:127.0.0.1 https://bim.vrgo.hu/ | grep -o '<title>[^<]*</title>' || true)"
+            echo "$title"
+            certbot_status=ok
+            if ! sudo -n certbot --nginx --non-interactive --expand --keep-until-expiring --redirect -d vrgo.hu -d www.vrgo.hu -d bim.vrgo.hu; then
+              certbot_status=failed
             fi
+            sudo -n nginx -t
+            sudo -n systemctl reload nginx
+            title_after="$(curl -sk -m 15 --resolve bim.vrgo.hu:443:127.0.0.1 https://bim.vrgo.hu/ | grep -o '<title>[^<]*</title>' || true)"
+            report=/var/www/site-1/public/_bim_vhost_report.txt
+            {
+              echo "title_before=${title}"
+              echo "title_after=${title_after}"
+              echo "certbot=${certbot_status}"
+              echo "==== enabled vrgo ===="
+              sed -n '1,260p' /etc/nginx/sites-enabled/vrgo.hu
+              echo "==== available vrgo ===="
+              sed -n '1,260p' /etc/nginx/sites-available/vrgo.hu
+              echo "==== enabled offline ===="
+              sed -n '1,220p' /etc/nginx/sites-enabled/offlinebiztonsag.hu
+              echo "==== nginx -T names ===="
+              sudo -n nginx -T 2>/dev/null | grep -nE 'server_name|listen |proxy_pass|default_server|bim\.vrgo|vrgo\.hu|offlinebiztonsag'
+            } > "$report"
+            chmod 644 "$report"
+            echo "certbot=${certbot_status} title_after=${title_after}"
+            test "$certbot_status" = ok
