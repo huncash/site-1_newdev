@@ -2,6 +2,10 @@ name: Route bim.vrgo.hu to site-1
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/bim-vhost.yml"
 
 concurrency:
   group: bim-vhost
@@ -12,66 +16,62 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Point bim.vrgo.hu at site-1
+      - name: Add bim.vrgo.hu to the live vrgo vhost
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: 195.228.152.141
-          username: vmvrgohu
+          username: deploy
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
           script_stop: true
           command_timeout: 10m
           script: |
-            set -euo pipefail
-            sudo -n true
+            set -uo pipefail
+            echo "user=$(id)"
+            echo "==== ls ===="
+            ls -l /etc/nginx/sites-available/vrgo.hu /etc/nginx/sites-enabled/vrgo.hu /etc/nginx/sites-enabled/offlinebiztonsag.hu
+            echo "==== AVAILABLE ===="
+            sed -n '1,250p' /etc/nginx/sites-available/vrgo.hu
+            echo "==== ENABLED ===="
+            sed -n '1,250p' /etc/nginx/sites-enabled/vrgo.hu
+            echo "==== OFFLINE ===="
+            grep -nE 'server_name|listen |proxy_pass|default_server' /etc/nginx/sites-enabled/offlinebiztonsag.hu || true
+            if ! sudo -n true; then
+              echo "sudo=no"
+              exit 1
+            fi
+            echo "sudo=yes"
             sudo -n python3 - << 'PY'
             import pathlib, re
-            enabled = pathlib.Path("/etc/nginx/sites-enabled")
-            vrgo = (enabled / "vrgo.hu").read_text()
-            cert = re.search(r"ssl_certificate\s+([^;]+);", vrgo)
-            key = re.search(r"ssl_certificate_key\s+([^;]+);", vrgo)
-            if not cert or not key:
-                raise SystemExit("vrgo.hu has no ssl_certificate")
-            include = ""
-            for line in vrgo.splitlines():
-                stripped = line.strip()
-                if stripped.startswith("include ") and ("options-ssl" in stripped or "ssl-dhparams" in stripped):
-                    include += "    " + stripped + "\n"
-            block = f"""server {{
-                listen 80;
-                listen [::]:80;
-                listen 443 ssl;
-                listen [::]:443 ssl;
-                server_name bim.vrgo.hu;
-                ssl_certificate {cert.group(1)};
-                ssl_certificate_key {key.group(1)};
-            {include}
-                location / {{
-                    proxy_pass http://127.0.0.1:3000;
-                    proxy_http_version 1.1;
-                    proxy_set_header Host $host;
-                    proxy_set_header X-Real-IP $remote_addr;
-                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                    proxy_set_header X-Forwarded-Proto $scheme;
-                    proxy_set_header Upgrade $http_upgrade;
-                    proxy_set_header Connection "upgrade";
-                }}
-            }}
-            """
-            target = enabled / "bim.vrgo.hu"
-            target.write_text(block)
-            print(f"wrote {target}")
-            for path in list(enabled.iterdir()) + list(pathlib.Path("/etc/nginx/sites-available").glob("*")):
-                if not path.is_file() or path.name == "bim.vrgo.hu":
+            paths = []
+            for raw in ("/etc/nginx/sites-available/vrgo.hu", "/etc/nginx/sites-enabled/vrgo.hu"):
+                path = pathlib.Path(raw)
+                if path.exists():
+                    real = path.resolve()
+                    if real not in paths:
+                        paths.append(real)
+            if not paths:
+                raise SystemExit("vrgo.hu nginx file missing")
+            name = "bim.vrgo.hu"
+            for path in paths:
+                original = path.read_text()
+                def add_name(match):
+                    line = match.group(0)
+                    if name in line:
+                        return line
+                    return line.replace(";", f" {name};", 1)
+                updated, count = re.subn(r"(?m)^[ \t]*server_name\b[^;]*;", add_name, original)
+                if updated == original:
+                    print(f"unchanged {path} server_name_lines={count}")
                     continue
-                text = path.read_text(errors="replace")
-                if "bim.vrgo.hu" not in text or path.resolve() == target.resolve():
-                    continue
-                updated = re.sub(r"[ \t]+bim\.vrgo\.hu", "", text)
-                if updated != text:
-                    path.write_text(updated)
-                    print(f"removed duplicate name from {path}")
+                backup = pathlib.Path(str(path) + ".bak-bim")
+                if not backup.exists():
+                    backup.write_text(original)
+                path.write_text(updated)
+                print(f"updated {path}")
             PY
+            echo "==== server_name after ===="
+            grep -n server_name /etc/nginx/sites-available/vrgo.hu /etc/nginx/sites-enabled/vrgo.hu
             sudo -n nginx -t
             sudo -n systemctl reload nginx
             title="$(curl -sk -m 15 --resolve bim.vrgo.hu:443:127.0.0.1 https://bim.vrgo.hu/ | grep -o '<title>[^<]*</title>' || true)"
