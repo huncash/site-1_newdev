@@ -16,33 +16,47 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Add bim.vrgo.hu to the site-1 vhost and reload nginx
+      - name: Point bim.vrgo.hu at site-1
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: 195.228.152.141
-          username: deploy
+          username: vmvrgohu
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
           script_stop: true
           command_timeout: 10m
           script: |
-            set -euo pipefail
-            sudo -n true
-            echo "==== before ===="
-            sudo -n grep -RIn --include='*' -E 'server_name|proxy_pass' /etc/nginx/sites-available /etc/nginx/sites-enabled /etc/nginx/conf.d || true
+            set -uo pipefail
+            echo "user=$(id)"
+            echo "==== vrgo.hu ===="
+            sed -n '1,220p' /etc/nginx/sites-available/vrgo.hu /etc/nginx/sites-enabled/vrgo.hu 2>/dev/null || true
+            echo "==== offline server_name ===="
+            grep -n "server_name\|listen \|proxy_pass\|default_server" /etc/nginx/sites-enabled/offlinebiztonsag.hu /etc/nginx/sites-available/offlinebiztonsag.hu 2>/dev/null || true
+            if ! sudo -n true; then
+              echo "sudo=no"
+              exit 1
+            fi
+            echo "sudo=yes"
             sudo -n python3 - << 'PY'
             import pathlib, re, sys
-            roots = [pathlib.Path("/etc/nginx/sites-available"), pathlib.Path("/etc/nginx/conf.d")]
+            roots = [pathlib.Path("/etc/nginx/sites-available"), pathlib.Path("/etc/nginx/sites-enabled")]
             proxy = re.compile(r"proxy_pass\s+https?://(?:127\.0\.0\.1|localhost):3000\b")
+            seen = set()
             files = []
             for root in roots:
                 if not root.is_dir():
                     continue
-                for path in root.rglob("*"):
+                for path in root.iterdir():
+                    if not path.is_file():
+                        path = path.resolve() if path.is_symlink() else path
                     if not path.is_file() or path.suffix == ".bak-bim":
+                        continue
+                    real = path.resolve()
+                    if real in seen:
                         continue
                     text = path.read_text(errors="replace")
                     if "vrgo.hu" in text and proxy.search(text):
+                        seen.add(real)
                         files.append(path)
             if not files:
                 sys.exit("no site-1 vhost proxies to 127.0.0.1:3000")
@@ -57,14 +71,14 @@ jobs:
                 if updated == original:
                     print(f"already set {path}")
                     continue
-                backup = path.with_name(path.name + ".bak-bim")
+                backup = pathlib.Path(str(path) + ".bak-bim")
                 if not backup.exists():
                     backup.write_text(original)
                 path.write_text(updated)
                 print(f"updated {path}")
             PY
             echo "==== server_name ===="
-            sudo -n grep -RIn "server_name" /etc/nginx/sites-available /etc/nginx/sites-enabled /etc/nginx/conf.d || true
+            grep -n "server_name" /etc/nginx/sites-enabled/vrgo.hu /etc/nginx/sites-available/vrgo.hu
             sudo -n nginx -t
             sudo -n systemctl reload nginx
             echo "==== origin check ===="
