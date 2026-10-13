@@ -26,85 +26,63 @@ jobs:
           script_stop: true
           command_timeout: 10m
           script: |
-            set -uo pipefail
-            echo "user=$(id)"
-            echo "==== vrgo.hu ===="
-            sed -n '1,220p' /etc/nginx/sites-available/vrgo.hu /etc/nginx/sites-enabled/vrgo.hu 2>/dev/null || true
-            echo "==== offline server_name ===="
-            grep -n "server_name\|listen \|proxy_pass\|default_server" /etc/nginx/sites-enabled/offlinebiztonsag.hu /etc/nginx/sites-available/offlinebiztonsag.hu 2>/dev/null || true
-            if ! sudo -n true; then
-              echo "sudo=no"
-              exit 1
-            fi
-            echo "sudo=yes"
+            set -euo pipefail
+            sudo -n true
             sudo -n python3 - << 'PY'
-            import pathlib, re, sys
-            roots = [pathlib.Path("/etc/nginx/sites-available"), pathlib.Path("/etc/nginx/sites-enabled")]
-            proxy = re.compile(r"proxy_pass\s+https?://(?:127\.0\.0\.1|localhost):3000\b")
-            seen = set()
-            files = []
-            for root in roots:
-                if not root.is_dir():
+            import pathlib, re
+            enabled = pathlib.Path("/etc/nginx/sites-enabled")
+            vrgo = (enabled / "vrgo.hu").read_text()
+            cert = re.search(r"ssl_certificate\s+([^;]+);", vrgo)
+            key = re.search(r"ssl_certificate_key\s+([^;]+);", vrgo)
+            if not cert or not key:
+                raise SystemExit("vrgo.hu has no ssl_certificate")
+            include = ""
+            for line in vrgo.splitlines():
+                stripped = line.strip()
+                if stripped.startswith("include ") and ("options-ssl" in stripped or "ssl-dhparams" in stripped):
+                    include += "    " + stripped + "\n"
+            block = f"""server {{
+                listen 80;
+                listen [::]:80;
+                listen 443 ssl;
+                listen [::]:443 ssl;
+                server_name bim.vrgo.hu;
+                ssl_certificate {cert.group(1)};
+                ssl_certificate_key {key.group(1)};
+            {include}
+                location / {{
+                    proxy_pass http://127.0.0.1:3000;
+                    proxy_http_version 1.1;
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto $scheme;
+                    proxy_set_header Upgrade $http_upgrade;
+                    proxy_set_header Connection "upgrade";
+                }}
+            }}
+            """
+            target = enabled / "bim.vrgo.hu"
+            target.write_text(block)
+            print(f"wrote {target}")
+            for path in list(enabled.iterdir()) + list(pathlib.Path("/etc/nginx/sites-available").glob("*")):
+                if not path.is_file() or path.name == "bim.vrgo.hu":
                     continue
-                for path in root.iterdir():
-                    if not path.is_file():
-                        path = path.resolve() if path.is_symlink() else path
-                    if not path.is_file() or path.suffix == ".bak-bim":
-                        continue
-                    real = path.resolve()
-                    if real in seen:
-                        continue
-                    text = path.read_text(errors="replace")
-                    if "vrgo.hu" in text and proxy.search(text):
-                        seen.add(real)
-                        files.append(path)
-            if not files:
-                sys.exit("no site-1 vhost proxies to 127.0.0.1:3000")
-            for path in files:
-                original = path.read_text()
-                def add_name(match):
-                    line = match.group(0)
-                    if "bim.vrgo.hu" in line or "vrgo.hu" not in line:
-                        return line
-                    return line.replace(";", " bim.vrgo.hu;", 1)
-                updated, _ = re.subn(r"(?m)^[ \t]*server_name\b[^;]*;", add_name, original)
-                if updated == original:
-                    print(f"already set {path}")
+                text = path.read_text(errors="replace")
+                if "bim.vrgo.hu" not in text or path.resolve() == target.resolve():
                     continue
-                backup = pathlib.Path(str(path) + ".bak-bim")
-                if not backup.exists():
-                    backup.write_text(original)
-                path.write_text(updated)
-                print(f"updated {path}")
+                updated = re.sub(r"[ \t]+bim\.vrgo\.hu", "", text)
+                if updated != text:
+                    path.write_text(updated)
+                    print(f"removed duplicate name from {path}")
             PY
-            echo "==== server_name ===="
-            grep -n "server_name" /etc/nginx/sites-enabled/vrgo.hu /etc/nginx/sites-available/vrgo.hu
             sudo -n nginx -t
             sudo -n systemctl reload nginx
-            echo "==== origin check ===="
             title="$(curl -sk -m 15 --resolve bim.vrgo.hu:443:127.0.0.1 https://bim.vrgo.hu/ | grep -o '<title>[^<]*</title>' || true)"
-            echo "$title"
-            certbot_status=ok
-            if ! sudo -n certbot --nginx --non-interactive --expand --keep-until-expiring --redirect -d vrgo.hu -d www.vrgo.hu -d bim.vrgo.hu; then
-              certbot_status=failed
-            fi
+            echo "title=${title}"
+            case "$title" in
+              *Offline*) echo "still default vhost"; exit 1 ;;
+            esac
+            sudo -n certbot --nginx --non-interactive --expand --keep-until-expiring -d vrgo.hu -d www.vrgo.hu -d bim.vrgo.hu || echo "CERTBOT_FAILED"
             sudo -n nginx -t
             sudo -n systemctl reload nginx
-            title_after="$(curl -sk -m 15 --resolve bim.vrgo.hu:443:127.0.0.1 https://bim.vrgo.hu/ | grep -o '<title>[^<]*</title>' || true)"
-            report=/var/www/site-1/public/_bim_vhost_report.txt
-            {
-              echo "title_before=${title}"
-              echo "title_after=${title_after}"
-              echo "certbot=${certbot_status}"
-              echo "==== enabled vrgo ===="
-              sed -n '1,260p' /etc/nginx/sites-enabled/vrgo.hu
-              echo "==== available vrgo ===="
-              sed -n '1,260p' /etc/nginx/sites-available/vrgo.hu
-              echo "==== enabled offline ===="
-              sed -n '1,220p' /etc/nginx/sites-enabled/offlinebiztonsag.hu
-              echo "==== nginx -T names ===="
-              sudo -n nginx -T 2>/dev/null | grep -nE 'server_name|listen |proxy_pass|default_server|bim\.vrgo|vrgo\.hu|offlinebiztonsag'
-            } > "$report"
-            chmod 644 "$report"
-            echo "certbot=${certbot_status} title_after=${title_after}"
-            test "$certbot_status" = ok
