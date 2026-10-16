@@ -1,4 +1,5 @@
-import { clientIp, sendQuoteEmail, verifyRecaptcha, type QuoteDelivery } from "@/lib/quote-delivery";
+import { verifySumAnswer } from "@/lib/sum-check";
+import { sendQuoteEmail, type QuoteDelivery } from "@/lib/quote-delivery";
 
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
@@ -116,13 +117,12 @@ export async function handleContactPost(request: Request): Promise<Response> {
     return Response.json(result.body, { status: result.status });
   }
 
-  const token =
+  const fields =
     typeof body === "object" && body !== null && !Array.isArray(body)
-      ? (body as Record<string, unknown>).recaptchaToken
-      : undefined;
-  const human = await verifyRecaptcha(token, clientIp(request));
-  if (!human) {
-    return Response.json({ error: "recaptcha" }, { status: 400 });
+      ? (body as Record<string, unknown>)
+      : {};
+  if (!verifySumAnswer(fields.sumToken, fields.sumAnswer)) {
+    return Response.json({ error: "sum" }, { status: 400 });
   }
 
   const sent = await sendQuoteEmail(result.delivery);

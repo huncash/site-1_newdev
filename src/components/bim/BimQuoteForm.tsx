@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 
-import { RecaptchaField } from "@/components/RecaptchaField";
+import { SumCheckField } from "@/components/SumCheckField";
 import { QUOTE_USE_CASE_CODES, USE_CASES } from "@/lib/bim-site";
 
 const ORG_TYPES = [
@@ -21,20 +21,21 @@ const quoteCases = USE_CASES.filter(([code]) =>
 export function BimQuoteForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
   const [error, setError] = useState("");
-  const [captchaToken, setCaptchaToken] = useState("");
-  const [captchaReset, setCaptchaReset] = useState(0);
+  const [sumAnswer, setSumAnswer] = useState("");
+  const [sumToken, setSumToken] = useState("");
+  const [sumReset, setSumReset] = useState(0);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
-    if (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
+    if (!sumToken) {
       setStatus("error");
-      setError("Az ellenőrzés jelenleg nem elérhető. Próbáld újra később.");
+      setError("Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbáld újra.");
       return;
     }
-    if (!captchaToken) {
+    if (!/^\d{1,3}$/.test(sumAnswer.trim())) {
       setStatus("error");
-      setError("Jelöld be, hogy nem vagy robot.");
+      setError("Írd be az eredményt számmal a kérdés alatti sorba.");
       return;
     }
     setStatus("sending");
@@ -68,7 +69,8 @@ export function BimQuoteForm() {
       source,
       consent: data.get("consent") === "on",
       message: String(data.get("message") ?? ""),
-      recaptchaToken: captchaToken,
+      sumToken,
+      sumAnswer: sumAnswer.trim(),
     };
 
     try {
@@ -79,25 +81,21 @@ export function BimQuoteForm() {
       });
       const result = (await response.json().catch(() => ({}))) as { error?: string };
       if (!response.ok) {
-        if (result.error === "recaptcha" || result.error === "unavailable") {
-          setCaptchaToken("");
-          setCaptchaReset((value) => value + 1);
-        }
+        if (result.error === "sum") setSumReset((value) => value + 1);
         setStatus("error");
         setError(
-          result.error === "recaptcha"
-            ? "Az ellenőrzés lejárt vagy nem sikerült. Jelöld be újra."
-            : "Az űrlapot nem sikerült elküldeni. Ellenőrizd a mezőket, majd jelöld be újra az ellenőrzést."
+          result.error === "sum"
+            ? "Az eredmény nem helyes. Új kérdést kaptál, írd be az eredményt."
+            : "Az űrlapot nem sikerült elküldeni. Ellenőrizd a mezőket, majd írd be újra az eredményt."
         );
         return;
       }
       setStatus("ok");
       form.reset();
     } catch {
-      setCaptchaToken("");
-      setCaptchaReset((value) => value + 1);
+      setSumReset((value) => value + 1);
       setStatus("error");
-      setError("Az űrlapot nem sikerült elküldeni. Jelöld be újra az ellenőrzést.");
+      setError("Az űrlapot nem sikerült elküldeni. Írd be újra az eredményt.");
     }
   }
 
@@ -231,10 +229,13 @@ export function BimQuoteForm() {
       </label>
       <fieldset className="space-y-2 text-sm">
         <legend className="font-medium">Ellenőrzés</legend>
-        <p className="text-muted-foreground">
-          Az elküldés előtt igazold, hogy nem automata küldi az ajánlatkérést.
-        </p>
-        <RecaptchaField onToken={setCaptchaToken} resetKey={captchaReset} />
+        <SumCheckField
+          resetKey={sumReset}
+          answer={sumAnswer}
+          onAnswer={setSumAnswer}
+          onToken={setSumToken}
+          inputClassName="mt-1 w-full rounded-md border border-border px-3 py-2"
+        />
       </fieldset>
       <label className="flex gap-2 text-sm">
         <input type="checkbox" name="consent" required />

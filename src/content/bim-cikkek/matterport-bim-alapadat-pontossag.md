@@ -60,7 +60,7 @@ Földmérői ellenőrző mérés, drón, ha a feladat pontossági osztálya vagy
 
 ## Geodéziai ellenőrző mérés
 
-A szkennelés nem helyettesíti a 11. § (2) szerinti geodéziai ellenőrző mérést. Ha a megrendelőnek nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele együtt végezni.
+A szkennelés nem helyettesíti a 11. § (2) szerinti geodéziai ellenőrző mérést. Ha a megrendelőnek nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele projekt alapon együtt végezni.
 
 ## Kapcsolódó
 

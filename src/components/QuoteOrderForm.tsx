@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 
-import { RecaptchaField } from "@/components/RecaptchaField";
+import { SumCheckField } from "@/components/SumCheckField";
 import { trackConversion } from "@/lib/conversion";
 import { cn } from "@/lib/utils";
 
@@ -120,8 +120,9 @@ export function QuoteOrderForm({
   const [intendedUse, setIntendedUse] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [captchaToken, setCaptchaToken] = useState("");
-  const [captchaReset, setCaptchaReset] = useState(0);
+  const [sumAnswer, setSumAnswer] = useState("");
+  const [sumToken, setSumToken] = useState("");
+  const [sumReset, setSumReset] = useState(0);
   const [pending, setPending] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
@@ -142,10 +143,10 @@ export function QuoteOrderForm({
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
       next.email = "Érvénytelen e-mail cím";
     }
-    if (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
-      next.recaptcha = "Az ellenőrzés jelenleg nem elérhető. Próbáld újra később.";
-    } else if (!captchaToken) {
-      next.recaptcha = "Jelöld be, hogy nem vagy robot.";
+    if (!sumToken) {
+      next.sum = "Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbáld újra.";
+    } else if (!/^\d{1,3}$/.test(sumAnswer.trim())) {
+      next.sum = "Írd be az eredményt számmal a kérdés alatti sorba.";
     }
     if (Object.keys(next).length) {
       setErrors(next);
@@ -191,26 +192,20 @@ export function QuoteOrderForm({
           package: pkg,
           segment,
           source,
-          recaptchaToken: captchaToken,
+          sumToken,
+          sumAnswer: sumAnswer.trim(),
         }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
         trackConversion("quote_form_submit_error", { reason: data.error ?? "http" });
-        if (data.error === "recaptcha" || data.error === "unavailable") {
-          setCaptchaToken("");
-          setCaptchaReset((value) => value + 1);
-        }
-        if (data.error === "recaptcha") {
-          setErrors({ recaptcha: "Az ellenőrzés lejárt vagy nem sikerült. Jelöld be újra." });
-          document.getElementById("recaptcha")?.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (data.error === "sum") {
+          setSumReset((value) => value + 1);
+          setErrors({ sum: "Az eredmény nem helyes. Új kérdést kaptál, írd be az eredményt." });
+          document.getElementById("sum-check")?.scrollIntoView({ behavior: "smooth", block: "center" });
           return;
         }
-        setServerError(
-          data.error === "unavailable"
-            ? "Sajnos a beküldés most nem sikerült. Jelöld be újra az ellenőrzést, majd próbáld meg még egyszer."
-            : "Sajnos a beküldés most nem sikerült. Kérjük, próbáld újra néhány perc múlva."
-        );
+        setServerError("Sajnos a beküldés most nem sikerült. Kérjük, próbáld újra néhány perc múlva.");
         return;
       }
       trackConversion("quote_form_submit_success", {
@@ -221,9 +216,8 @@ export function QuoteOrderForm({
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
       trackConversion("quote_form_submit_error", { reason: "network" });
-      setCaptchaToken("");
-      setCaptchaReset((value) => value + 1);
-      setServerError("Hálózati hiba. Jelöld be újra az ellenőrzést, majd próbáld meg még egyszer.");
+      setSumReset((value) => value + 1);
+      setServerError("Hálózati hiba. Írd be újra az eredményt, majd próbáld meg még egyszer.");
     } finally {
       setPending(false);
     }
@@ -447,17 +441,18 @@ export function QuoteOrderForm({
         </Field>
       </fieldset>
 
-      <fieldset id="recaptcha" className="space-y-3">
+      <fieldset id="sum-check" className="space-y-3">
         <legend className="text-sm font-semibold uppercase tracking-wider text-brand">
           6. Ellenőrzés
         </legend>
-        <p className="text-sm text-muted-foreground">
-          Az elküldés előtt igazold, hogy nem automata küldi az ajánlatkérést.
-        </p>
-        <RecaptchaField onToken={setCaptchaToken} resetKey={captchaReset} />
-        {errors.recaptcha ? (
-          <p className="text-xs text-red-600">{errors.recaptcha}</p>
-        ) : null}
+        <SumCheckField
+          resetKey={sumReset}
+          answer={sumAnswer}
+          onAnswer={setSumAnswer}
+          onToken={setSumToken}
+          inputClassName={inputCls}
+        />
+        {errors.sum ? <p className="text-xs text-red-600">{errors.sum}</p> : null}
       </fieldset>
 
       <fieldset className="space-y-4">

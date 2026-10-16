@@ -65,13 +65,13 @@ export default function AccuracyPage() {
           <p className="mt-2">
             A szkennelés nem helyettesíti a 11. § (2) szerinti geodéziai ellenőrző mérést. Ha a
             megrendelőnek nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele
-            együtt végezni.
+            projekt alapon együtt végezni.
           </p>
           <h3 className="mt-4 font-semibold text-foreground">Vállaljuk</h3>
           <ul className="mt-2 list-disc space-y-2 pl-5">
             <li>Bejárható 3D és pontfelhő. Matterport rendszert is használunk.</li>
             <li>
-              Az EIR szerinti ellenőrző mérés és bekötés, ha földmérővel együtt dolgozunk: E57, OBJ,
+              Az EIR szerinti ellenőrző mérés és bekötés, ha földmérővel projekt alapon együtt dolgozunk: E57, OBJ,
               XYZ, alaprajz, mérési jegyzőkönyv.
             </li>
             <li>IFC-modell modellezési partnerrel, külön ajánlati tétel.</li>

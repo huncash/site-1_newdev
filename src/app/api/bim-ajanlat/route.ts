@@ -1,5 +1,6 @@
 import { QUOTE_USE_CASE_CODES } from "@/lib/bim-site";
-import { clientIp, sendQuoteEmail, verifyRecaptcha } from "@/lib/quote-delivery";
+import { sendQuoteEmail } from "@/lib/quote-delivery";
+import { verifySumAnswer } from "@/lib/sum-check";
 
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
@@ -74,9 +75,8 @@ export async function POST(request: Request): Promise<Response> {
     ? data.useCases.filter((code): code is string => typeof code === "string" && allowed.has(code))
     : [];
 
-  const human = await verifyRecaptcha(data.recaptchaToken, clientIp(request));
-  if (!human) {
-    return Response.json({ error: "recaptcha" }, { status: 400 });
+  if (!verifySumAnswer(data.sumToken, data.sumAnswer)) {
+    return Response.json({ error: "sum" }, { status: 400 });
   }
 
   console.log(

@@ -40,7 +40,7 @@ export default function DesignersPage() {
             Alvállalkozói szerződés. Az ár négyzetméter-alapú vagy projektár, a végleges összeget
             az épület jellege szerint az ajánlat tartalmazza. Díjtételt ezen az oldalon nem
             közlünk. A szkennelés és az EIR szerinti ellenőrző mérés egy ajánlatban kérhető: ha
-            nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele együtt végezni.
+            nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele projekt alapon együtt végezni.
           </p>
         </section>
         <div className="flex flex-col gap-3 sm:flex-row">

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 
-import { RecaptchaField } from "@/components/RecaptchaField";
+import { SumCheckField } from "@/components/SumCheckField";
 import { Button } from "@/components/ui/button";
 import { trackConversion } from "@/lib/conversion";
 import { cn } from "@/lib/utils";
@@ -53,8 +53,9 @@ export function ContactForm({
   const [message, setMessage] = useState("");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [captchaToken, setCaptchaToken] = useState("");
-  const [captchaReset, setCaptchaReset] = useState(0);
+  const [sumAnswer, setSumAnswer] = useState("");
+  const [sumToken, setSumToken] = useState("");
+  const [sumReset, setSumReset] = useState(0);
   const [done, setDone] = useState(false);
   const seeded = useRef(false);
 
@@ -77,12 +78,12 @@ export function ContactForm({
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
-    if (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
-      setError("Az ellenőrzés jelenleg nem elérhető. Próbáld újra később.");
+    if (!sumToken) {
+      setError("Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbáld újra.");
       return;
     }
-    if (!captchaToken) {
-      setError("Jelöld be, hogy nem vagy robot.");
+    if (!/^\d{1,3}$/.test(sumAnswer.trim())) {
+      setError("Írd be az eredményt számmal a kérdés alatti sorba.");
       return;
     }
     setPending(true);
@@ -99,22 +100,20 @@ export function ContactForm({
           segment: szegmens || undefined,
           product: termek || undefined,
           source: forras || "ajanlat-form",
-          recaptchaToken: captchaToken,
+          sumToken,
+          sumAnswer: sumAnswer.trim(),
         }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
         trackConversion("quote_form_submit_error", { reason: data.error ?? "http" });
-        if (data.error === "recaptcha" || data.error === "unavailable") {
-          setCaptchaToken("");
-          setCaptchaReset((value) => value + 1);
-        }
+        if (data.error === "sum") setSumReset((value) => value + 1);
         setError(
           data.error === "Invalid email"
             ? "Érvénytelen e-mail cím."
-            : data.error === "recaptcha"
-              ? "Az ellenőrzés lejárt vagy nem sikerült. Jelöld be újra."
-              : "Küldés sikertelen. Jelöld be újra az ellenőrzést, majd próbáld meg még egyszer."
+            : data.error === "sum"
+              ? "Az eredmény nem helyes. Új kérdést kaptál, írd be az eredményt."
+              : "Küldés sikertelen. Írd be újra az eredményt, majd próbáld meg még egyszer."
         );
         return;
       }
@@ -126,9 +125,8 @@ export function ContactForm({
       setDone(true);
     } catch {
       trackConversion("quote_form_submit_error", { reason: "network" });
-      setCaptchaToken("");
-      setCaptchaReset((value) => value + 1);
-      setError("Hálózati hiba. Jelöld be újra az ellenőrzést, majd próbáld meg még egyszer.");
+      setSumReset((value) => value + 1);
+      setError("Hálózati hiba. Írd be újra az eredményt, majd próbáld meg még egyszer.");
     } finally {
       setPending(false);
     }
@@ -214,10 +212,13 @@ export function ContactForm({
 
       <div className="space-y-2">
         <p className="text-sm font-medium">Ellenőrzés</p>
-        <p className="text-sm text-muted-foreground">
-          Az elküldés előtt igazold, hogy nem automata küldi az ajánlatkérést.
-        </p>
-        <RecaptchaField onToken={setCaptchaToken} resetKey={captchaReset} />
+        <SumCheckField
+          resetKey={sumReset}
+          answer={sumAnswer}
+          onAnswer={setSumAnswer}
+          onToken={setSumToken}
+          inputClassName="h-10 w-full rounded-md border border-input bg-background px-3 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        />
       </div>
 
       {error ? (

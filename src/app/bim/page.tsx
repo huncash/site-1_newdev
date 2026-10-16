@@ -130,7 +130,7 @@ export default function BimHomePage() {
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
             A bejárható 3D rögzítés gyors és áttekinthető, de nem helyettesíti a geodéziai
             ellenőrző mérést (11. § (2)). Ha a megrendelőnek nincs saját földmérője, tudunk
-            földmérőt ajánlani, és a mérést vele együtt végezni. Az IFC modell a pontfelhőből
+            földmérőt ajánlani, és a mérést vele projekt alapon együtt végezni. Az IFC modell a pontfelhőből
             modellezéssel készül. A pontossági szintet
             minden projektnél az EIR-hez mérjük, és előre megmondjuk, ha a feladathoz más módszer
             kell.
