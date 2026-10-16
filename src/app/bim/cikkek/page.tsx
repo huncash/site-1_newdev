@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const articles = listBimArticles();
-  const published = articles.filter((article) => isBimArticlePublished(article.date));
+  const published = articles.filter((article) => isBimArticlePublished(article));
   if (published.length === 0) {
     const start = articles[0] ? formatHuDate(articles[0].date, articles[0].time) : "2026. október 12.";
     return bimMetadata(
@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function ArticlesPage() {
   const articles = listBimArticles();
-  const published = articles.filter((article) => isBimArticlePublished(article.date));
+  const published = articles.filter((article) => isBimArticlePublished(article));
   const upcoming = articles.find((article) => !isBimArticlePublished(article));
 
   return (
