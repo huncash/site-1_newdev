@@ -100,6 +100,9 @@ export function Navbar({
   cta,
   quietLink,
   logoLabel,
+  logoSrc = "/vrgo-logo.png",
+  logoWidth = 335,
+  logoHeight = 100,
 }: {
   logoHref?: string;
   className?: string;
@@ -108,6 +111,9 @@ export function Navbar({
   cta?: { label: string; href: string };
   quietLink?: { label: string; href: string; newTab?: boolean };
   logoLabel?: string;
+  logoSrc?: string;
+  logoWidth?: number;
+  logoHeight?: number;
 }) {
   const [open, setOpen] = useState(false);
   const [mobileGroupOpen, setMobileGroupOpen] = useState<string | null>(null);
@@ -138,10 +144,10 @@ export function Navbar({
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/vrgo-logo.jpg"
+            src={logoSrc}
             alt="VRGO"
-            width={160}
-            height={40}
+            width={logoWidth}
+            height={logoHeight}
             priority
             className="h-8 w-auto sm:h-10"
           />

@@ -38,7 +38,7 @@ export function HeroSection({
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(106,181,238,0.18),_transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(108,185,241,0.18),_transparent_55%)]" />
       <div className="relative mx-auto flex max-w-5xl flex-col items-center px-5 py-12 text-center sm:px-6 sm:py-16 md:py-20">
         {badge ? (
           <span className="animate-fade-up mb-3 inline-block rounded-full border border-brand/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-brand sm:text-xs">

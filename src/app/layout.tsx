@@ -28,7 +28,7 @@ export default async function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
-        <meta name="theme-color" content="#6AB5EE" />
+        <meta name="theme-color" content="#6cb9f1" />
       </head>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
         {isBim ? null : <Navbar />}

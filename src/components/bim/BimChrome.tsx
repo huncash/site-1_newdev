@@ -49,6 +49,9 @@ export function BimChrome({
       <Navbar
         logoHref={prefix ? "/bim" : "/"}
         logoLabel="VRGO BIM – kezdőlap"
+        logoSrc="/bim-logo.png"
+        logoWidth={412}
+        logoHeight={103}
         items={BIM_MENU}
         linkPrefix={linkPrefix}
         cta={{ label: "Ajánlatkérés", href: "/ajanlatkeres" }}
