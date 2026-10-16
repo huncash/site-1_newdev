@@ -60,8 +60,8 @@ export default function ConstructionPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Része, ha kérik</h2>
           <p className="mt-2">
-            Geodéziai ellenőrző mérés és bekötés az EIR szerint. Ha nincs saját földmérője, projekt
-            alapon tudunk földmérőt ajánlani. Állandó földmérő partnerünk jelenleg nincs.
+            Geodéziai ellenőrző mérés és bekötés az EIR szerint. Ha nincs saját földmérője, tudunk
+            földmérőt ajánlani, és a mérést vele együtt végezni.
           </p>
         </section>
         <section>

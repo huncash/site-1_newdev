@@ -32,13 +32,13 @@ export default function AccuracyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Mit mondhatunk a pontosságról</h2>
+          <h2 className="text-xl font-semibold text-foreground">Ajánlati szintek</h2>
           <p className="mt-2">
-            Általános milliméteres vagy százalékos ígéretet nem teszünk. Projektenként a gyártó
-            akkor aktuális adatlapját és, ha készült, a saját ellenőrző mérés eredményét adjuk meg.
-            Amíg összehasonlító mérési jegyzőkönyv nincs, számszerű pontosság nem szerepel az
-            oldalon.
+            Gyors felmérés, standard, pontos. A szintet a feladat pontossági igénye és az EIR
+            határozza meg; ezt az ajánlat előtt közösen tisztázzuk. A szintekhez tartozó eltérést
+            és feldolgozási időt csak az összehasonlító mérés után közöljük.
           </p>
+          <p className="mt-2">Matterport rendszert is használunk.</p>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Formátumok</h2>
@@ -54,37 +54,22 @@ export default function AccuracyPage() {
           </table>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Eszközpark</h2>
-          <ul className="mt-2 list-disc space-y-2 pl-5">
-            <li>Matterport Pro3 — alapeszköz. LiDAR-alapú rögzítés.</li>
-            <li>Leica BLK360 — nagyobb pontosságú részletekhez.</li>
-            <li>Matterport Pro1 — gyors előfelméréshez.</li>
-          </ul>
-          <p className="mt-3">
-            Három ajánlati szint: gyors felmérés, standard, pontos. A szintet a feladat pontossági
-            igénye és az EIR határozza meg; ezt az ajánlat előtt közösen tisztázzuk. A szintekhez
-            tartozó eltérést és feldolgozási időt csak az összehasonlító mérés után közöljük.
-          </p>
-        </section>
-        <section>
           <h2 className="text-xl font-semibold text-foreground">Mikor ajánlunk más módszert</h2>
           <p className="mt-2">
-            Földmérői ellenőrző mérés, a BLK360 vagy hasonló terepi lézerszkenner a Pro3 helyett
-            vagy mellett, illetve drón, ha a feladat pontossági osztálya vagy a bekötés ezt kéri. A
-            különbség a pontossági osztály és a bekötés, nem az, hogy a Pro3 ne lenne LiDAR-alapú.
+            Földmérői ellenőrző mérés, drón, ha a feladat pontossági osztálya vagy a bekötés ezt
+            kéri.
           </p>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Geodéziai ellenőrző mérés</h2>
           <p className="mt-2">
             A szkennelés nem helyettesíti a 11. § (2) szerinti geodéziai ellenőrző mérést. Ha a
-            megrendelőnek nincs saját földmérője, projekt alapon tudunk földmérőt ajánlani, és a
-            mérést vele együtt végezni. Állandó földmérő partnerünk jelenleg nincs, nevet ezért nem
-            írunk ki.
+            megrendelőnek nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele
+            együtt végezni.
           </p>
           <h3 className="mt-4 font-semibold text-foreground">Vállaljuk</h3>
           <ul className="mt-2 list-disc space-y-2 pl-5">
-            <li>Bejárható 3D és pontfelhő: Matterport Pro3, Leica BLK360, Pro1 belső terekre.</li>
+            <li>Bejárható 3D és pontfelhő. Matterport rendszert is használunk.</li>
             <li>
               Az EIR szerinti ellenőrző mérés és bekötés, ha földmérővel együtt dolgozunk: E57, OBJ,
               XYZ, alaprajz, mérési jegyzőkönyv.

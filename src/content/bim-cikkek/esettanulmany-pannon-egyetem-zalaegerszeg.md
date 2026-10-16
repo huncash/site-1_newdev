@@ -2,7 +2,8 @@
 title: "Esettanulmány: kampusz szkennelt részei egy bejárható modellben"
 seoTitle: "Pannon Egyetem Zalaegerszeg: kampusz digitális iker"
 description: "A Pannon Egyetem zalaegerszegi kampuszának szkennelt részei: 8 külön modell, 891 szkennelési pont, egy bejárható digitális iker, 4 munkanap."
-date: 2026-11-30
+date: 2026-11-07
+time: "18:00"
 author: VRGO
 category: "Egyetemek, kampuszok"
 keywords: "kampusz digitális iker, Pannon Egyetem Zalaegerszeg, bejárható modell, meglévő állapot rögzítése"

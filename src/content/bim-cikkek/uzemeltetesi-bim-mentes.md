@@ -2,7 +2,8 @@
 title: "Üzemeltetési BIM-mentés: december 31-i állapot, március 15-i határidő"
 seoTitle: "BIM mentés üzemeltetés: dec. 31. és márc. 15."
 description: "A 31/2024. ÉKM rendelet évente kér mentést az üzemeltetett állami létesítmények BIM-jéről. Mi tartozik bele és ki felel érte?"
-date: 2026-11-09
+date: 2026-11-03
+time: "09:00"
 author: VRGO
 category: "Üzemeltetők"
 keywords: "BIM mentés üzemeltetés, december 31, március 15, 14. §"

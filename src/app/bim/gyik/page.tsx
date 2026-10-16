@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Helyettesíti a Matterport a geodéziai felmérést?",
-    a: "Nem. A megvalósulási dokumentációt geodéziai ellenőrző mérések alapján kell elkészíteni (11. § (2)); a Matterport kiegészítő rögzítés. Ha nincs saját földmérője, projekt alapon tudunk földmérőt ajánlani. Ingatlan-nyilvántartási földmérést, telekalakítást és kitűzést nem vállalunk.",
+    a: "Nem. A megvalósulási dokumentációt geodéziai ellenőrző mérések alapján kell elkészíteni (11. § (2)); a Matterport kiegészítő rögzítés. Ha nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele együtt végezni. Ingatlan-nyilvántartási földmérést, telekalakítást és kitűzést nem vállalunk.",
   },
   {
     q: "Tudtok IFC-t adni?",
@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "Vállaltok földmérést (telekalakítás, kitűzés)?",
-    a: "Nem. Jelenleg az EIR szerinti ellenőrző méréshez tudunk kapcsolódni: ha nincs saját földmérője, projekt alapon ajánlunk földmérőt, és vele együtt dolgozunk. Állandó földmérő partnerünk nincs. Telekalakítást, kitűzést és ingatlan-nyilvántartási munkát nem vállalunk.",
+    a: "Nem. Az EIR szerinti ellenőrző méréshez tudunk kapcsolódni: ha nincs saját földmérője, földmérőt ajánlunk, és vele együtt dolgozunk. Telekalakítást, kitűzést és ingatlan-nyilvántartási munkát nem vállalunk.",
   },
   {
     q: "Mi történik, ha lejár a Matterport-előfizetés?",

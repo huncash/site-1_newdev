@@ -29,12 +29,12 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
   const canonical = `${BIM_ORIGIN}/cikkek/${article.slug}`;
   const preview = isDevPreview((await searchParams).elonezet);
-  const published = isBimArticlePublished(article.date);
+  const published = isBimArticlePublished(article);
 
   if (!published || preview) {
     return {
       title: { absolute: `${article.seoTitle} | VRGO BIM` },
-      description: `Ez a cikk ${formatHuDate(article.date)} napon jelenik meg a bim.vrgo.hu oldalon.`,
+      description: `Ez a cikk ${formatHuDate(article.date, article.time)}-kor jelenik meg a bim.vrgo.hu oldalon.`,
       robots: { index: false, follow: false },
     };
   }
@@ -64,9 +64,9 @@ export default async function BimArticlePage({ params, searchParams }: Props) {
   const meta = getBimArticleMeta(slug);
   if (!meta) notFound();
 
-  const published = isBimArticlePublished(meta.date);
+  const published = isBimArticlePublished(meta);
   if (!published && !preview) {
-    return <BimArticleUpcoming title={meta.title} date={meta.date} />;
+    return <BimArticleUpcoming title={meta.title} date={meta.date} time={meta.time} />;
   }
 
   const article = await getBimArticle(slug);

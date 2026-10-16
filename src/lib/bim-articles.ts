@@ -15,6 +15,8 @@ export interface BimArticleMeta {
   description: string;
   /** Közzététel napja, Europe/Budapest, YYYY-MM-DD. */
   date: string;
+  /** Közzététel órája, Europe/Budapest, HH:mm. Üres vagy 00:00: a nap elején. */
+  time: string;
   author: string;
   category: string;
   keywords: string[];
@@ -41,12 +43,26 @@ function asString(value: unknown, field: string, slug: string): string {
 
 function asIsoDate(value: unknown, slug: string): string {
   if (value instanceof Date && !Number.isNaN(value.getTime())) {
-    return value.toISOString().slice(0, 10);
+    const year = value.getFullYear();
+    const month = String(value.getMonth() + 1).padStart(2, "0");
+    const day = String(value.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   }
   if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}/.test(value.trim())) {
     return value.trim().slice(0, 10);
   }
   throw new Error(`A ${slug} cikk dátuma nem YYYY-MM-DD.`);
+}
+
+function asClock(value: unknown, slug: string): string {
+  if (value == null || value === "") return "00:00";
+  const text = String(value).trim();
+  const match = /^(\d{1,2}):(\d{2})$/.exec(text);
+  if (!match) throw new Error(`A ${slug} cikk időpontja nem HH:mm.`);
+  const hour = Number(match[1]);
+  const minute = Number(match[2]);
+  if (hour > 23 || minute > 59) throw new Error(`A ${slug} cikk időpontja nem HH:mm.`);
+  return `${String(hour).padStart(2, "0")}:${match[2]}`;
 }
 
 function readingMinutes(markdown: string): number {
@@ -73,6 +89,7 @@ function metaFromFile(slug: string, raw: string): { meta: BimArticleMeta; conten
       seoTitle: asString(data.seoTitle, "seoTitle", slug),
       description: asString(data.description, "description", slug),
       date: asIsoDate(data.date, slug),
+      time: asClock(data.time, slug),
       author: asString(data.author, "author", slug),
       category: asString(data.category, "category", slug),
       keywords,
@@ -89,25 +106,43 @@ function metaFromFile(slug: string, raw: string): { meta: BimArticleMeta; conten
 }
 
 export function budapestToday(now = new Date()): string {
-  return new Intl.DateTimeFormat("en-CA", {
+  return budapestNow(now).slice(0, 10);
+}
+
+/** YYYY-MM-DDTHH:mm, Europe/Budapest. */
+export function budapestNow(now = new Date()): string {
+  const parts = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Europe/Budapest",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-  }).format(now);
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(now);
+  const value = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((part) => part.type === type)?.value ?? "";
+  return `${value("year")}-${value("month")}-${value("day")}T${value("hour")}:${value("minute")}`;
 }
 
-export function isBimArticlePublished(date: string, today = budapestToday()): boolean {
-  return date <= today;
+export function isBimArticlePublished(
+  article: { date: string; time?: string },
+  now = budapestNow()
+): boolean {
+  const time = article.time && article.time !== "00:00" ? article.time : "00:00";
+  return `${article.date}T${time}` <= now;
 }
 
-export function formatHuDate(isoDate: string): string {
-  return new Date(`${isoDate}T12:00:00`).toLocaleDateString("hu-HU", {
+export function formatHuDate(isoDate: string, time = "00:00"): string {
+  const day = new Date(`${isoDate}T12:00:00`).toLocaleDateString("hu-HU", {
     timeZone: "Europe/Budapest",
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+  if (!time || time === "00:00") return day;
+  const [hour, minute] = time.split(":");
+  return `${day}, ${Number(hour)}:${minute}`;
 }
 
 export function bimArticleSlugs(): string[] {
@@ -127,11 +162,25 @@ export function listBimArticles(): BimArticleMeta[] {
   return bimArticleSlugs()
     .map((slug) => getBimArticleMeta(slug))
     .filter((article): article is BimArticleMeta => article !== null)
-    .sort((a, b) => a.date.localeCompare(b.date) || a.slug.localeCompare(b.slug));
+    .sort(
+      (a, b) =>
+        a.date.localeCompare(b.date) || a.time.localeCompare(b.time) || a.slug.localeCompare(b.slug)
+    );
 }
 
-export function listPublishedBimArticles(today = budapestToday()): BimArticleMeta[] {
-  return listBimArticles().filter((article) => isBimArticlePublished(article.date, today));
+export function listPublishedBimArticles(now = budapestNow()): BimArticleMeta[] {
+  return listBimArticles().filter((article) => isBimArticlePublished(article, now));
+}
+
+function holdUnpublishedArticleLinks(html: string, now = budapestNow()): string {
+  return html.replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi, (full, attrs: string, inner: string) => {
+    const href = /\bhref="([^"]+)"/i.exec(attrs)?.[1] ?? "";
+    const match = href.match(/^(?:https?:\/\/(?:www\.)?bim\.vrgo\.hu)?\/cikkek\/([a-z0-9-]+)\/?(?:[?#].*)?$/i);
+    if (!match) return full;
+    const target = getBimArticleMeta(match[1]);
+    if (!target || isBimArticlePublished(target, now)) return full;
+    return inner;
+  });
 }
 
 const OWN_SITE_HOSTS = new Set(["vrgo.hu", "www.vrgo.hu", "bim.vrgo.hu"]);
@@ -179,7 +228,8 @@ export async function getBimArticle(slug: string): Promise<BimArticle | null> {
   if (!existsSync(fullPath)) return null;
   const { meta, content } = metaFromFile(slug, readFileSync(fullPath, "utf8"));
   const processed = await remark().use(remarkGfm).use(remarkHtml).process(content);
-  return { ...meta, contentHtml: openExternalLinksInNewTab(processed.toString()) };
+  const html = holdUnpublishedArticleLinks(openExternalLinksInNewTab(processed.toString()));
+  return { ...meta, contentHtml: html };
 }
 
 /** Local /bim prefix: article links stay on the BIM routes. */

@@ -2,7 +2,8 @@
 title: "EIR, pre-BEP, BEP: ki mit készít és mikor? Útmutató az állami BIM-dokumentumokhoz"
 seoTitle: "EIR, pre-BEP, BEP magyarul: ki mit készít?"
 description: "Az EIR a megbízó követelményei, a pre-BEP és a BEP a vállalkozó terve. Mikor és mi kerül bele? A 31/2024. ÉKM rendelet 17–18. § alapján."
-date: 2026-10-26
+date: 2026-10-20
+time: "09:00"
 author: VRGO
 category: "Tervezők, kivitelezők"
 keywords: "EIR BEP magyarul, pre-BEP, információcsere-követelmények, 17. §, 18. §"

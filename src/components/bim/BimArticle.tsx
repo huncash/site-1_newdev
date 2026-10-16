@@ -47,7 +47,15 @@ export function bimArticleJsonLd(article: BimArticle) {
   };
 }
 
-export function BimArticleUpcoming({ title, date }: { title: string; date: string }) {
+export function BimArticleUpcoming({
+  title,
+  date,
+  time = "00:00",
+}: {
+  title: string;
+  date: string;
+  time?: string;
+}) {
   return (
     <article className="bg-background">
       <section className="bg-section-dark py-14 text-section-dark-foreground">
@@ -60,8 +68,7 @@ export function BimArticleUpcoming({ title, date }: { title: string; date: strin
       </section>
       <div className="mx-auto max-w-3xl px-4 py-12 text-sm text-muted-foreground sm:text-base">
         <p>
-          Ez a cikk <time dateTime={date}>{formatHuDate(date)}</time> napon jelenik meg. A
-          szöveg addig nem olvasható.
+          Ez a cikk <time dateTime={time === "00:00" ? date : `${date}T${time}`}>{formatHuDate(date, time)}</time>{"-kor jelenik meg. A szöveg addig nem olvasható."}
         </p>
         <p className="mt-6">
           <BimLink href="/cikkek" className="font-semibold text-brand underline">
@@ -98,7 +105,9 @@ export function BimArticleView({
           </h1>
           <p className="mt-4 text-base opacity-90">{article.description}</p>
           <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs opacity-80">
-            <time dateTime={article.date}>{formatHuDate(article.date)}</time>
+            <time dateTime={article.time === "00:00" ? article.date : `${article.date}T${article.time}`}>
+              {formatHuDate(article.date, article.time)}
+            </time>
             <span>{article.readingTime} perc</span>
             <span>{article.author}</span>
           </p>
@@ -108,8 +117,8 @@ export function BimArticleView({
       <div className="mx-auto max-w-3xl px-4 py-12">
         {preview ? (
           <p className="mb-8 rounded-md border border-border bg-muted px-4 py-3 text-sm text-foreground">
-            Előnézet. A cikk <time dateTime={article.date}>{formatHuDate(article.date)}</time>{" "}
-            napon jelenik meg. Ez a nézet csak a helyi fejlesztői oldalon érhető el.
+            Előnézet. A cikk{" "}
+            <time dateTime={`${article.date}T${article.time}`}>{formatHuDate(article.date, article.time)}</time>{"-kor jelenik meg. Ez a nézet csak a helyi fejlesztői oldalon érhető el."}
           </p>
         ) : null}
 

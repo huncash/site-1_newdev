@@ -6,6 +6,7 @@ import {
   isBimArticlePublished,
   listBimArticles,
 } from "@/lib/bim-articles";
+import { BIM_PUBLISH_RHYTHM_NOTE } from "@/lib/bim-publish-rhythm";
 import { bimMetadata, MAIN_ORIGIN } from "@/lib/bim-site";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const articles = listBimArticles();
   const published = articles.filter((article) => isBimArticlePublished(article.date));
   if (published.length === 0) {
-    const start = articles[0] ? formatHuDate(articles[0].date) : "2026. október 12.";
+    const start = articles[0] ? formatHuDate(articles[0].date, articles[0].time) : "2026. október 12.";
     return bimMetadata(
       "/cikkek",
       "Cikkek | VRGO BIM",
@@ -31,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function ArticlesPage() {
   const articles = listBimArticles();
   const published = articles.filter((article) => isBimArticlePublished(article.date));
-  const upcoming = articles.find((article) => !isBimArticlePublished(article.date));
+  const upcoming = articles.find((article) => !isBimArticlePublished(article));
 
   return (
     <article className="bg-background">
@@ -41,6 +42,7 @@ export default function ArticlesPage() {
           <p className="mt-4 opacity-90">
             A 31/2024. ÉKM rendeletről: határidők, EIR és az átadandó adatállomány.
           </p>
+          <p className="mt-3 text-sm opacity-80">{BIM_PUBLISH_RHYTHM_NOTE}</p>
         </div>
       </section>
       <div className="mx-auto max-w-3xl px-4 py-12">
@@ -48,7 +50,7 @@ export default function ArticlesPage() {
           <p className="text-sm text-muted-foreground sm:text-base">
             A cikksorozat{" "}
             <time dateTime={articles[0]?.date ?? "2026-10-12"}>
-              {articles[0] ? formatHuDate(articles[0].date) : "2026. október 12."}
+              {articles[0] ? formatHuDate(articles[0].date, articles[0].time) : "2026. október 12."}
             </time>{" "}
             napon indul. A megjelenés napjáig a cikkek szövege nem olvasható.
           </p>
@@ -66,7 +68,9 @@ export default function ArticlesPage() {
                 </h2>
                 <p className="mt-3 text-muted-foreground">{article.description}</p>
                 <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                  <time dateTime={article.date}>{formatHuDate(article.date)}</time>
+                  <time dateTime={article.time === "00:00" ? article.date : `${article.date}T${article.time}`}>
+                    {formatHuDate(article.date, article.time)}
+                  </time>
                   <span>{article.readingTime} perc</span>
                   <BimLink
                     href={`/cikkek/${article.slug}`}
@@ -82,8 +86,8 @@ export default function ArticlesPage() {
 
         {published.length > 0 && upcoming ? (
           <p className="mt-8 text-sm text-muted-foreground">
-            A következő cikk <time dateTime={upcoming.date}>{formatHuDate(upcoming.date)}</time>{" "}
-            napon jelenik meg.
+            A következő cikk{" "}
+            <time dateTime={`${upcoming.date}T${upcoming.time}`}>{formatHuDate(upcoming.date, upcoming.time)}</time>{"-kor jelenik meg."}
           </p>
         ) : null}
 

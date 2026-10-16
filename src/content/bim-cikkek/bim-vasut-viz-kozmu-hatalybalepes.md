@@ -2,7 +2,8 @@
 title: "Vasút, víz, közmű: lépcsőzetesen lép hatályba a BIM-szabályozás – mire készüljön a szektor?"
 seoTitle: "BIM vasútépítés 2026: víz és közmű határidők"
 description: "A 31/2024. ÉKM rendelet szabályait vasútépítésnél 2026. július 1-jétől, víznél 2027, közműnél 2028 július 1-jétől kell alkalmazni. Összefoglaló."
-date: 2026-11-23
+date: 2026-10-31
+time: "18:00"
 author: VRGO
 category: "Infra-szektor"
 keywords: "BIM vasútépítés 2026, vízépítés BIM, közműépítés BIM, 22. §"

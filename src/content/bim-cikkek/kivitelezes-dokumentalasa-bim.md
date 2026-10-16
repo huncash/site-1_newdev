@@ -2,7 +2,8 @@
 title: "Kivitelezés dokumentálása: előrehaladás, elszámolás és hibakövetés a BIM felhasználási esetei szerint"
 seoTitle: "Kivitelezés BIM dokumentálás: 150, 170, 180"
 description: "A rendelet 150, 170 és 180-as felhasználási esetei a kivitelezés követéséről, elszámolásról, hibakövetésről szólnak. Hogyan segít a rendszeres 3D rögzítés?"
-date: 2026-11-16
+date: 2026-10-27
+time: "09:00"
 author: VRGO
 category: "Kivitelezők, lebonyolítók"
 keywords: "kivitelezés BIM dokumentálás, felhasználási eset 150, felhasználási eset 170, felhasználási eset 180"

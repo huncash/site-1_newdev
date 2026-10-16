@@ -82,7 +82,7 @@ export default function OktatasPage() {
               className="h-[260px] w-full object-cover sm:h-[420px]"
             />
             <figcaption className="absolute bottom-3 left-3 rounded bg-black/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
-              Labor · QA — bejárható, Mattertaggel jelölt eszközpark
+              Labor · QA — bejárható dokumentáció, jelölt pontokkal
             </figcaption>
           </figure>
         </div>

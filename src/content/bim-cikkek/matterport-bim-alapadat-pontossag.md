@@ -2,7 +2,8 @@
 title: "Mit tud és mit nem tud a Matterport BIM-alapadatként? Pontosság, E57, IFC és a geodéziai ellenőrző mérés"
 seoTitle: "Matterport BIM pontosság: mire jó, mire nem"
 description: "A Matterport gyors, bejárható rögzítést ad, de az ÉKM rendelet geodéziai ellenőrzést és IFC leadást vár. Őszinte összefoglaló arról, mire jó és mire nem."
-date: 2026-11-02
+date: 2026-10-24
+time: "18:00"
 author: VRGO
 category: "Tervezők, BIM-esek"
 keywords: "Matterport BIM pontosság, E57, IFC, geodéziai ellenőrző mérés"
@@ -15,7 +16,7 @@ imageLicense: CC BY-SA 2.0
 imageLicenseUrl: https://creativecommons.org/licenses/by-sa/2.0
 ---
 
-Ez a cikk szándékosan őszinte: a Matterport kiváló eszköz, de nem mindenre alkalmas, és az állami BIM-projekteknél fontos tudni, hol a határ. A meglévő épületek 2035-ös határidejéről a [2. cikk](/cikkek/meglevo-allami-epuletek-bim-2035), az EIR pontossági szintjéről a [3. cikk](/cikkek/eir-pre-bep-bep) szól. A gyakorlati lépések: [pontosság és formátumok](/pontossag-es-formatumok).
+Matterport rendszert is használunk. Nem minden feladatra ez a megfelelő módszer, és az állami BIM-projekteknél a határt az EIR pontossági igénye húzza meg. A meglévő épületek 2035-ös határidejéről a [2. cikk](/cikkek/meglevo-allami-epuletek-bim-2035), az EIR pontossági szintjéről a [3. cikk](/cikkek/eir-pre-bep-bep) szól. A gyakorlati lépések: [pontosság és formátumok](/pontossag-es-formatumok).
 
 ## Amit a rendelet kér
 
@@ -25,7 +26,7 @@ Ez a cikk szándékosan őszinte: a Matterport kiváló eszköz, de nem mindenre
 
 ## Amit a Matterport ad
 
-- Gyors, teljes körű, bejárható rögzítést: egy szkennelés kb. 20 másodperc a gyártó közlése szerint.
+- Gyors, teljes körű, bejárható rögzítést.
 - Exportokat (a Matterport csomagjában E57 pontfelhő, OBJ, XYZ, alaprajz).
 - A gyártó saját scan-to-BIM szolgáltatást is kínál, amely IFC, RVT vagy DWG fájlokat állít elő. *A szolgáltatás magyarországi elérhetőségét a megrendelés előtt ellenőrizni kell.*
 
@@ -37,7 +38,7 @@ Ez a cikk szándékosan őszinte: a Matterport kiváló eszköz, de nem mindenre
 | Falzárás előtti dokumentálás | Nagyon jó | gyors, időbélyegzett |
 | Kivitelezési előrehaladás követése (150) | Jó | ismételt felvételekkel |
 | Üzemeltetési digitális iker, hibajegyek (200) | Jó | Mattertag, hozzáférési szintek |
-| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | **Nem helyettesíti** | nem a lézeres rögzítés hiányzik, hanem a földmérői bekötés és mérési dokumentáció |
+| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | **Nem helyettesíti** | földmérői bekötés és mérési dokumentáció kell |
 | IFC modell közvetlenül | **Nem közvetlen** | modellezés szükséges a pontfelhőből |
 
 ## Hogyan lesz belőle az EIR által kért adatállomány?
@@ -49,11 +50,17 @@ Ez a cikk szándékosan őszinte: a Matterport kiváló eszköz, de nem mindenre
 
 A kivitelezés közbeni rögzítésről a [dokumentálási cikk](/cikkek/kivitelezes-dokumentalasa-bim) ír.
 
-## Mikor érdemes más eszközt is bevonni?
+## Ajánlati szintek
 
-A Matterport Pro3 maga is LiDAR-alapú rögzítést használ, ahogy a terepi lézerszkennerek (például a Leica BLK360) is. A különbség a pontossági osztály, a mérési adatok minősége és a dokumentáció: ha az EIR a Pro3 gyártói adatlapjánál szigorúbb pontosságot kér, vagy nagy kiterjedésű, részletgazdag ipari környezetet kell felmérni, akkor nagyobb pontosságú terepi szkenner és földmérői bekötés kell. A Matterport ilyenkor gyors, bejárható kiegészítő dokumentációként értékes, és a két eszköz azonos területen is használható.
+Gyors felmérés, standard, pontos. A szintet a feladat pontossági igénye és az EIR határozza meg; ezt az ajánlat előtt közösen tisztázzuk. A szintekhez tartozó eltérést és feldolgozási időt csak az összehasonlító mérés után közöljük.
 
-*A pontosság számszerű értékét mindig a gyártó aktuális adatlapja és a saját kalibrációs tapasztalatunk alapján adjuk meg az ajánlatban, nem általános ígéretként.*
+## Mikor ajánlunk más módszert
+
+Földmérői ellenőrző mérés, drón, ha a feladat pontossági osztálya vagy a bekötés ezt kéri.
+
+## Geodéziai ellenőrző mérés
+
+A szkennelés nem helyettesíti a 11. § (2) szerinti geodéziai ellenőrző mérést. Ha a megrendelőnek nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele együtt végezni.
 
 ## Kapcsolódó
 

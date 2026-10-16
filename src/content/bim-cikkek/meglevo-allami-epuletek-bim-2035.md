@@ -2,7 +2,8 @@
 title: "2035. december 31.: mit jelent a meglévő állami épületek BIM-határideje a vagyonkezelőknek?"
 seoTitle: "Meglévő épület BIM 2035: a határidő"
 description: "A 31/2024. ÉKM rendelet szerint a BIM nélküli állami létesítményeknél 2035. december 31-ig kell létrehozni a modellt. Mit jelent ez a gyakorlatban?"
-date: 2026-10-19
+date: 2026-10-17
+time: "18:00"
 author: VRGO
 category: "Vagyonkezelők, üzemeltetők"
 keywords: "meglévő épület BIM 2035, állami létesítmény BIM, vagyonkezelés, 22. §"

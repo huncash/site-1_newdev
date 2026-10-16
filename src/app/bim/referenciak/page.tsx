@@ -9,7 +9,7 @@ const facts = [
   ["Helyszíni munka", "4 munkanap, 2024 ősz"],
   [
     "Rögzítés",
-    "Matterport Pro3; 8 külön rögzített modell egyetlen bejárható modellé összefűzve; 891 szkennelési pont",
+    "Matterport rendszer; 8 külön rögzített modell egyetlen bejárható modellé összefűzve; 891 szkennelési pont",
   ],
   ["Rögzített tartalom", "Oktatási épületek belső terei, a külső homlokzatok, napelempark"],
 ] as const;

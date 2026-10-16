@@ -1,10 +1,11 @@
-import { budapestToday } from "@/lib/bim-articles";
+import { getBimArticleMeta, isBimArticlePublished } from "@/lib/bim-articles";
 import { bimLink } from "@/lib/links";
 import { cn } from "@/lib/utils";
 
 export function CaseStudySection({ className }: { className?: string }) {
+  const study = getBimArticleMeta("esettanulmany-pannon-egyetem-zalaegerszeg");
   const studyHref =
-    budapestToday() >= "2027-01-14"
+    study && isBimArticlePublished(study)
       ? bimLink("/cikkek/esettanulmany-pannon-egyetem-zalaegerszeg", "fooldal-esettanulmany")
       : bimLink("/referenciak", "fooldal-esettanulmany");
 
