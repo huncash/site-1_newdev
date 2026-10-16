@@ -33,7 +33,17 @@ export async function POST(request: Request): Promise<Response> {
   const area = text(data.area, 80);
   const location = text(data.location, MAX_SHORT);
   const deadline = text(data.deadline, 80);
-  const eir = data.eir === "igen" || data.eir === "nem" ? data.eir : null;
+  const eir = data.eir === "igen" || data.eir === "nem" || data.eir === "nem tudom" ? data.eir : null;
+  const phone = data.phone == null || data.phone === "" ? "" : text(data.phone, 40);
+  const spaces = data.spaces == null || data.spaces === "" ? "" : text(data.spaces, 40);
+  const survey = data.survey == null || data.survey === "" ? "" : text(data.survey, 20);
+  const eirLevel = data.eirLevel == null || data.eirLevel === "" ? "" : text(data.eirLevel, 160);
+  const source = data.source == null || data.source === "" ? "" : text(data.source, 80);
+  const organization = data.organization == null || data.organization === "" ? "" : text(data.organization, MAX_SHORT);
+  const formatAllowed = new Set(["E57", "OBJ", "XYZ", "alaprajz", "IFC"]);
+  const formats = Array.isArray(data.formats)
+    ? data.formats.filter((item): item is string => typeof item === "string" && formatAllowed.has(item))
+    : [];
   const message =
     data.message == null || data.message === "" ? "" : text(data.message, MAX_MESSAGE);
 
@@ -47,6 +57,12 @@ export async function POST(request: Request): Promise<Response> {
     !location ||
     !deadline ||
     !eir ||
+    phone === null ||
+    spaces === null ||
+    survey === null ||
+    eirLevel === null ||
+    source === null ||
+    organization === null ||
     message === null ||
     data.consent !== true
   ) {
@@ -88,13 +104,20 @@ export async function POST(request: Request): Promise<Response> {
       "",
       `Név: ${name}`,
       `E-mail: ${email}`,
+      `Telefon: ${phone || "—"}`,
+      `Szervezet: ${organization || "—"}`,
       `Szervezet típusa: ${organizationType}`,
       `Épület vagy létesítmény: ${buildingType}`,
       `Alapterület: ${area}`,
       `Helyszín: ${location}`,
+      `Belső vagy külső terek: ${spaces || "—"}`,
       `Határidő: ${deadline}`,
       `EIR: ${eir}`,
+      `EIR pontossági szint: ${eirLevel || "—"}`,
+      `Geodéziai ellenőrző mérés: ${survey || "—"}`,
+      `Formátumok: ${formats.join(", ") || "—"}`,
       `Felhasználási esetek: ${useCases.join(", ") || "—"}`,
+      `Forrás: ${source || "—"}`,
       "",
       "Megjegyzés:",
       message || "—",

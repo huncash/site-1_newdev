@@ -43,7 +43,7 @@ export default function ConstructionPage() {
             <li>150 Kivitelezés előrehaladásának követése</li>
             <li>170 Építőipari kivitelezési tevékenység teljesítésének elszámolása — a felvétel kiegészítő dokumentáció, nem a mennyiségi igazolás</li>
             <li>180 Hibakövetés</li>
-            <li>190 Megvalósulási dokumentáció előállítása — a geodéziai ellenőrző mérés nélkül</li>
+            <li>190 Megvalósulási dokumentáció előállítása — a geodéziai ellenőrző mérés külön tétel</li>
           </ul>
         </section>
         <section>
@@ -58,10 +58,17 @@ export default function ConstructionPage() {
           </div>
         </section>
         <section>
+          <h2 className="text-xl font-semibold text-foreground">Része, ha kérik</h2>
+          <p className="mt-2">
+            Geodéziai ellenőrző mérés és bekötés az EIR szerint. Ha nincs saját földmérője, projekt
+            alapon tudunk földmérőt ajánlani. Állandó földmérő partnerünk jelenleg nincs.
+          </p>
+        </section>
+        <section>
           <h2 className="text-xl font-semibold text-foreground">Nem része</h2>
           <p className="mt-2">
-            A 11. § (2) szerinti geodéziai ellenőrző mérés. Az elszámolás mennyiségi igazolása az
-            EIR és a szerződés szerint készül, nem ebből a rögzítésből.
+            Ingatlan-nyilvántartási földmérés, telekalakítás és kitűzés. Az elszámolás mennyiségi
+            igazolása az EIR és a szerződés szerint készül, nem ebből a rögzítésből.
           </p>
         </section>
         <BimLink

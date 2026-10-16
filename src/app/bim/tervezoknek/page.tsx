@@ -39,7 +39,8 @@ export default function DesignersPage() {
           <p className="mt-2">
             Alvállalkozói szerződés. Az ár négyzetméter-alapú vagy projektár, a végleges összeget
             az épület jellege szerint az ajánlat tartalmazza. Díjtételt ezen az oldalon nem
-            közlünk.
+            közlünk. A szkennelés és az EIR szerinti ellenőrző mérés egy ajánlatban kérhető: ha
+            nincs saját földmérője, projekt alapon tudunk földmérőt ajánlani.
           </p>
         </section>
         <div className="flex flex-col gap-3 sm:flex-row">

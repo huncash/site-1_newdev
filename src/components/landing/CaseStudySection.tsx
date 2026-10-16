@@ -1,6 +1,13 @@
+import { budapestToday } from "@/lib/bim-articles";
+import { bimLink } from "@/lib/links";
 import { cn } from "@/lib/utils";
 
 export function CaseStudySection({ className }: { className?: string }) {
+  const studyHref =
+    budapestToday() >= "2027-01-14"
+      ? bimLink("/cikkek/esettanulmany-pannon-egyetem-zalaegerszeg", "fooldal-esettanulmany")
+      : bimLink("/referenciak", "fooldal-esettanulmany");
+
   return (
     <section
       id="esettanulmany"
@@ -18,17 +25,17 @@ export function CaseStudySection({ className }: { className?: string }) {
             Kampusz. <span className="text-foreground">Helyszíni munka:</span> 2024 ősz, 4 munkanap.
           </p>
           <p>
-            <strong className="text-foreground">Kihívás:</strong> Több mint 7 hektáros, többépületes
-            kampusz — oktatási épületek teljes külső homlokzatokkal, közlekedési útvonalak,
-            sportpálya és kiépített napelempark. Egyetlen Matterport-szken léptékben kezelhetetlen,
-            ráadásul a beltér és a kültér is egyetlen, összefüggő bejárást igényelt.
+            <strong className="text-foreground">Kihívás:</strong> Több épületből és külső területből
+            álló kampusz — oktatási épületek, külső homlokzatok, közlekedési útvonalak, sportpálya
+            és napelempark. A kampusz területe több mint 7 hektár. Egyetlen felvételi egységben nem
+            rögzíthető, a beltér és a kültér egy összefüggő bejárást igényelt.
           </p>
           <p>
-            <strong className="text-foreground">Megoldás:</strong> 4 munkanap alatt 8 különálló
-            Matterport-szken készült a kampusz eltérő zónáiról. Ezeket egyetlen, folyamatos{" "}
+            <strong className="text-foreground">Megoldás:</strong> 4 munkanap alatt 8 külön modell
+            készült a kampusz eltérő zónáiról. Ezeket egyetlen, folyamatos{" "}
             <strong className="text-foreground">túrává</strong> illesztettük össze — a külső
-            homlokzatokkal és a napelempark látható felületével együtt. A számok a VRGO saját
-            projektadatai, nem független mérés. A túra alább megnyitható.
+            homlokzatokkal és a napelempark látható felületével együtt. Az összefűzött modell 891
+            szkennelési pontot tartalmaz. A túra alább megnyitható.
           </p>
         </div>
 
@@ -47,12 +54,12 @@ export function CaseStudySection({ className }: { className?: string }) {
             />
           </div>
           <p className="mt-3 text-center text-xs text-muted-foreground">
-            Referencia: Pannon Egyetem — Zalaegerszegi Kampusz (8 szken → 1 túra).{" "}
+            Referencia: Pannon Egyetem — Zalaegerszegi Kampusz (8 külön modell, egy túra).{" "}
             <a
-              href="https://bim.vrgo.hu/referenciak"
+              href={studyHref}
               className="font-semibold text-brand underline underline-offset-2"
             >
-              Teljes esettanulmány
+              Részletes esettanulmány →
             </a>
           </p>
         </div>

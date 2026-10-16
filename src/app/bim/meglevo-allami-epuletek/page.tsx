@@ -4,7 +4,7 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/meglevo-allami-epuletek",
   "Meglévő állami épületek felmérése a 2035-ös határidőhöz | VRGO BIM",
-  "Bejárható digitális iker, E57 pontfelhő és partneres IFC meglévő állami épületekhez. Geodéziai ellenőrző mérés és EIR-írás nem része."
+  "Bejárható digitális iker, E57 pontfelhő és partneres IFC meglévő állami épületekhez. A geodéziai ellenőrző mérést a szkennelés nem helyettesíti."
 );
 
 export default function ExistingBuildingsPage() {
@@ -13,7 +13,7 @@ export default function ExistingBuildingsPage() {
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Meglévő állami épületek: bejárható alapfelmérés a 2035-ös határidőhöz
+            Meglévő állami épületek: gyors, bejárható alapfelmérés a 2035-ös határidőhöz
           </h1>
         </div>
       </section>
@@ -51,17 +51,25 @@ export default function ExistingBuildingsPage() {
           </p>
         </section>
         <section>
+          <h2 className="text-xl font-semibold text-foreground">Része, ha kérik</h2>
+          <p className="mt-2">
+            Az EIR szerinti geodéziai ellenőrző mérés és bekötés, mérési jegyzőkönyvvel. Ha nincs
+            saját földmérője, projekt alapon tudunk földmérőt ajánlani, és a mérést vele együtt
+            végezni. Állandó földmérő partnerünk jelenleg nincs.
+          </p>
+        </section>
+        <section>
           <h2 className="text-xl font-semibold text-foreground">Nem része</h2>
           <p className="mt-2">
-            Geodéziai ellenőrző mérés. Földmérő partner igény esetén külön egyeztethető. A
-            közbeszerzési EIR megírása sem része.
+            Ingatlan-nyilvántartási földmérés, telekalakítás, kitűzés, geodéziai tervezés és
+            szakvélemény. A közbeszerzési EIR megírása és a jogi tanácsadás sem része.
           </p>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Referencia</h2>
           <p className="mt-2">
-            Kampusz, több mint 7 hektár, 4 helyszíni munkanap. Saját projektadat, nem független
-            mérés.{" "}
+            Egyetemi kampusz szkennelt részei egy modellben, 8 külön rögzített modellből, 4
+            munkanap.{" "}
             <BimLink href="/referenciak" className="font-semibold text-brand">
               Részletek
             </BimLink>

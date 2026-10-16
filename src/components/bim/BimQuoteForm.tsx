@@ -44,16 +44,28 @@ export function BimQuoteForm() {
       .map(([code]) => code)
       .filter((code) => data.get(`usecase-${code}`) === "on");
 
+    const formats = ["E57", "OBJ", "XYZ", "alaprajz", "IFC"].filter(
+      (code) => data.get(`format-${code}`) === "on"
+    );
+    const source = new URLSearchParams(window.location.search).get("forras") ?? "";
+
     const payload = {
       name: String(data.get("name") ?? ""),
       email: String(data.get("email") ?? ""),
+      phone: String(data.get("phone") ?? ""),
+      organization: String(data.get("organization") ?? ""),
       organizationType: String(data.get("organizationType") ?? ""),
       buildingType: String(data.get("buildingType") ?? ""),
       area: String(data.get("area") ?? ""),
       location: String(data.get("location") ?? ""),
+      spaces: String(data.get("spaces") ?? ""),
       deadline: String(data.get("deadline") ?? ""),
       eir: String(data.get("eir") ?? ""),
+      eirLevel: String(data.get("eirLevel") ?? ""),
+      survey: String(data.get("survey") ?? ""),
+      formats,
       useCases,
+      source,
       consent: data.get("consent") === "on",
       message: String(data.get("message") ?? ""),
       recaptchaToken: captchaToken,
@@ -108,6 +120,14 @@ export function BimQuoteForm() {
         <input name="email" type="email" required maxLength={254} className="mt-1 w-full rounded-md border border-border px-3 py-2" />
       </label>
       <label className="block text-sm">
+        Telefon
+        <input name="phone" type="tel" maxLength={40} className="mt-1 w-full rounded-md border border-border px-3 py-2" />
+      </label>
+      <label className="block text-sm">
+        Szervezet neve
+        <input name="organization" required maxLength={160} className="mt-1 w-full rounded-md border border-border px-3 py-2" />
+      </label>
+      <label className="block text-sm">
         Szervezet típusa
         <select name="organizationType" required className="mt-1 w-full rounded-md border border-border px-3 py-2">
           <option value="">Válassz</option>
@@ -129,6 +149,15 @@ export function BimQuoteForm() {
       <label className="block text-sm">
         Helyszín
         <input name="location" required maxLength={160} className="mt-1 w-full rounded-md border border-border px-3 py-2" />
+      </label>
+      <label className="block text-sm">
+        Belső vagy külső terek
+        <select name="spaces" required className="mt-1 w-full rounded-md border border-border px-3 py-2">
+          <option value="">Válassz</option>
+          <option value="belső">Belső</option>
+          <option value="külső">Külső</option>
+          <option value="mindkettő">Mindkettő</option>
+        </select>
       </label>
       <fieldset className="text-sm">
         <legend className="font-medium">Kívánt felhasználási esetek</legend>
@@ -154,6 +183,42 @@ export function BimQuoteForm() {
             <input type="radio" name="eir" value="nem" />
             Nem
           </label>
+          <label className="flex gap-2">
+            <input type="radio" name="eir" value="nem tudom" />
+            Nem tudom
+          </label>
+        </div>
+      </fieldset>
+      <label className="block text-sm">
+        EIR pontossági szintje, ha ismert
+        <input name="eirLevel" maxLength={160} className="mt-1 w-full rounded-md border border-border px-3 py-2" />
+      </label>
+      <fieldset className="text-sm">
+        <legend className="font-medium">Szükséges geodéziai ellenőrző mérés?</legend>
+        <div className="mt-2 flex flex-wrap gap-4">
+          {["igen", "nem", "nem tudom"].map((value) => (
+            <label key={value} className="flex gap-2">
+              <input type="radio" name="survey" value={value} required />
+              {value}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <fieldset className="text-sm">
+        <legend className="font-medium">Kért formátumok</legend>
+        <div className="mt-2 space-y-2">
+          {[
+            ["E57", "E57"],
+            ["OBJ", "OBJ"],
+            ["XYZ", "XYZ"],
+            ["alaprajz", "Alaprajz"],
+            ["IFC", "IFC modellezéssel"],
+          ].map(([code, label]) => (
+            <label key={code} className="flex gap-2">
+              <input type="checkbox" name={`format-${code}`} />
+              <span>{label}</span>
+            </label>
+          ))}
         </div>
       </fieldset>
       <label className="block text-sm">

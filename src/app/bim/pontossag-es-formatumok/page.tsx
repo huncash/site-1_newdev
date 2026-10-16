@@ -74,6 +74,30 @@ export default function AccuracyPage() {
             különbség a pontossági osztály és a bekötés, nem az, hogy a Pro3 ne lenne LiDAR-alapú.
           </p>
         </section>
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Geodéziai ellenőrző mérés</h2>
+          <p className="mt-2">
+            A szkennelés nem helyettesíti a 11. § (2) szerinti geodéziai ellenőrző mérést. Ha a
+            megrendelőnek nincs saját földmérője, projekt alapon tudunk földmérőt ajánlani, és a
+            mérést vele együtt végezni. Állandó földmérő partnerünk jelenleg nincs, nevet ezért nem
+            írunk ki.
+          </p>
+          <h3 className="mt-4 font-semibold text-foreground">Vállaljuk</h3>
+          <ul className="mt-2 list-disc space-y-2 pl-5">
+            <li>Bejárható 3D és pontfelhő: Matterport Pro3, Leica BLK360, Pro1 belső terekre.</li>
+            <li>
+              Az EIR szerinti ellenőrző mérés és bekötés, ha földmérővel együtt dolgozunk: E57, OBJ,
+              XYZ, alaprajz, mérési jegyzőkönyv.
+            </li>
+            <li>IFC-modell modellezési partnerrel, külön ajánlati tétel.</li>
+          </ul>
+          <h3 className="mt-4 font-semibold text-foreground">Jelenleg nem vállaljuk</h3>
+          <ul className="mt-2 list-disc space-y-2 pl-5">
+            <li>Ingatlan-nyilvántartási földmérést, változási vázrajzot, telekalakítást, kitűzést.</li>
+            <li>Geodéziai tervezést és geodéziai szakvéleményt.</li>
+            <li>A közbeszerzési EIR elkészítését és a jogi tanácsadást.</li>
+          </ul>
+        </section>
         <p className="text-xs">
           Forrás a jogszabályi mondatokhoz:{" "}
           <a href={NJT_URL} className="underline" target="_blank" rel="noopener noreferrer">

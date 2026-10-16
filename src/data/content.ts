@@ -45,11 +45,11 @@ export interface ContentPackage {
 export const CONTENT = {
   hero: {
     badge: "Enterprise Digital Twin",
-    title: "Hektáros területek egyetlen virtuális túrában",
+    title: "Kampuszok és telephelyek egyetlen bejárható digitális ikerben",
     subtitle:
       "Kampuszok, gyártócsarnokok és portfóliók digitális ikre — Matterport alapú bejárható 3D, E57/OBJ-export és BIM-alapadat. BIM- és állami projektekhez: bim.vrgo.hu",
     proof:
-      "Saját projekt: Pannon Egyetem, Zalaegerszegi Kampusz — több mint 7 hektár, 8 szken, 1 összefüggő túra (2024 ősz). Független mérés nem készült.",
+      "Bizonyított: a Pannon Egyetem kampuszának szkennelt részei egyetlen összefüggő túrában, 4 munkanap alatt.",
     ctaPrimary: { label: "Ajánlatkérés", href: "/ajanlat" },
     ctaSecondary: { label: "Csomagok megnézése", href: "/csomagok" },
   },
@@ -187,7 +187,7 @@ export const CONTENT = {
       },
       {
         tier: "ENTERPRISE",
-        title: "Kampusz, ipari telephely, hektáros digitális iker",
+        title: "Kampusz, ipari telephely, több épület egy digitális ikerben",
         audience:
           "Egyetemek és kutatóhelyek, gyártó- és logisztikai vállalatok, energetikai és infrastruktúra-üzemeltetők, generálkivitelezők.",
         cta: "ENTERPRISE igénylése",

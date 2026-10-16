@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const usecases = [
   {
-    title: "Több hektár — egyetlen folytonos túra",
+    title: "Több épület — egyetlen folytonos túra",
     desc: "Külön rögzített szkenek egy közös térbe illesztve, a látogató szakadásmentesen sétál épületről épületre, kintről beltérre.",
   },
   {
@@ -61,7 +61,7 @@ export default function KampuszPage() {
             Kampusz digitalizáció · Multi-épület digitális iker
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">
-            Több hektár, több épület — egyetlen bejárható túra
+            Több épület és külső terület — egyetlen bejárható túra
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
             Egyetemi kampuszok, ipari telephelyek, kórház-komplexumok és többépületes
@@ -114,7 +114,7 @@ export default function KampuszPage() {
               <strong className="text-foreground">1. Felmérés és szken-terv.</strong> A
               telephely alaprajza alapján kijelöljük a szken-pontokat úgy, hogy a külön napokon
               vagy külön csapatokkal készült felvételek később hézagmentesen összekapcsolhatók
-              legyenek. Több hektár, egyenetlen terep, kül- és beltér átmenetek tervezett
+              legyenek. Nagy terület, egyenetlen terep, kül- és beltér átmenetek tervezett
               kezelése.
             </p>
             <p>
@@ -141,8 +141,8 @@ export default function KampuszPage() {
         <div className="mx-auto max-w-4xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Saját projekt: Pannon Egyetem Zalaegerszeg</h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            2024 ősz, 4 munkanap, 8 különálló szken, egy összefüggő túra, több mint 7 hektár.
-            Ezek a VRGO saját projektadatai, nem független mérés. A túra egy URL-ről bejárható.
+            2024 ősz, 4 munkanap, 8 külön modell, egy összefüggő túra. A kampusz területe több mint
+            7 hektár; a modell a szkennelt részeket fedi le. A túra egy URL-ről bejárható.
           </p>
           <Link
             href="/#esettanulmany"

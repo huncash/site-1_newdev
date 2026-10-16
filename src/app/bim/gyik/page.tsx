@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Helyettesíti a Matterport a geodéziai felmérést?",
-    a: "Nem. A megvalósulási dokumentációt digitális geodéziai felmérések ellenőrző mérései alapján kell elkészíteni (11. § (2)). A Matterport-rögzítés kiegészítő állapotfelvétel.",
+    a: "Nem. A megvalósulási dokumentációt geodéziai ellenőrző mérések alapján kell elkészíteni (11. § (2)); a Matterport kiegészítő rögzítés. Ha nincs saját földmérője, projekt alapon tudunk földmérőt ajánlani. Ingatlan-nyilvántartási földmérést, telekalakítást és kitűzést nem vállalunk.",
   },
   {
     q: "Tudtok IFC-t adni?",
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "Mennyi idő alatt készül el?",
-    a: "A helyszíni rögzítés a Pannon Egyetem saját projektjében 7 hektár felett 4 munkanap volt. Ez nem általános vállalás. A modellezés a részletezettségtől és a területtől függ; a határidőt az ajánlat rögzíti.",
+    a: "A helyszíni rögzítés általában napokban mérhető. A Pannon Egyetem kampuszán a szkennelt részek 4 munkanap alatt készültek el. Ez nem általános vállalás. A modellezés a részletezettségtől és a területtől függ; a határidőt az ajánlat rögzíti.",
   },
   {
     q: "Mi az az EIR?",
@@ -34,6 +34,10 @@ const faqs = [
   {
     q: "Hogyan kezelitek az adatokat?",
     a: "Az ajánlatkérés adatait az adatvédelmi tájékoztató szerint kezeljük. A felvételek tulajdonjogát és tárolását a szerződés rögzíti.",
+  },
+  {
+    q: "Vállaltok földmérést (telekalakítás, kitűzés)?",
+    a: "Nem. Jelenleg az EIR szerinti ellenőrző méréshez tudunk kapcsolódni: ha nincs saját földmérője, projekt alapon ajánlunk földmérőt, és vele együtt dolgozunk. Állandó földmérő partnerünk nincs. Telekalakítást, kitűzést és ingatlan-nyilvántartási munkát nem vállalunk.",
   },
   {
     q: "Mi történik, ha lejár a Matterport-előfizetés?",

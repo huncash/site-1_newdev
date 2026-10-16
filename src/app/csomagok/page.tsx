@@ -64,7 +64,7 @@ const packages: Package[] = [
   {
     img: "/packages/csomag-c.jpg",
     tier: "ENTERPRISE",
-    title: "Kampusz, ipari telephely, hektáros digitális iker",
+    title: "Kampusz, ipari telephely, több épület egy digitális ikerben",
     audience:
       "Egyetemek és kutatóhelyek, gyártó- és logisztikai vállalatok, energetikai és infrastruktúra-üzemeltetők, generálkivitelezők.",
     problem:
@@ -72,13 +72,13 @@ const packages: Package[] = [
     outcome:
       "A kampusz vagy ipari terület — homlokzat, parkoló, napelempark látható felülete — egy összefüggő, bejárható túraként, a megrendelt exportokkal.",
     benefits: [
-      "Több hektár, több épület — különálló terek egyetlen, folytonosan bejárható túrába illesztve",
-      "E57/OBJ/XYZ export, BIM-modellezés partnerrel (IFC)",
+      "Több épület és külső terület egyetlen, folytonosan bejárható túrába illesztve",
+      "E57/OBJ/XYZ export, BIM-modellezés partnerrel (IFC); geodéziai ellenőrző mérés földmérő ajánlásával, ha nincs saját földmérő",
       "Kivitelezési állapot időbélyegzett szkennelése, hibák kézi jelölése a modellen",
       "Mutatólista a megrendelő saját adataiból. Közzétett KPI-eredmény nincs",
       "Kampusz digitalizáció — felvételi, akkreditációs, befektetői és sajtóanyag egyetlen URL-ről",
       "Napelempark és látható gépészet képi rögzítése. Energetikai számítást és környezetvédelmi dokumentációt nem készítünk",
-      "Referencia: Pannon Egyetem Zalaegerszeg — 7+ ha, 8 szken → 1 túra, 4 munkanap",
+      "Referencia: Pannon Egyetem, Zalaegerszeg — egyetemi kampusz szkennelt részei egy modellben, 4 munkanap",
     ],
     cta: "ENTERPRISE igénylése",
   },
@@ -103,7 +103,10 @@ const niches = [
     title: "Felsőoktatás és kutatóhely",
     desc: (
       <>
-        Felvételi marketing, akkreditáció, <Term k="FM">létesítménygazdálkodás</Term> egy linken.
+        Felvételi marketing, akkreditáció, <Term k="FM">létesítménygazdálkodás</Term> egy linken.{" "}
+        <a href={bimLink("/meglevo-allami-epuletek", "csomagok-felsooktatas")} className="font-semibold text-brand underline">
+          Meglévő állami épületek felmérése →
+        </a>
       </>
     ),
     pkg: "ENTERPRISE",
@@ -113,7 +116,10 @@ const niches = [
     desc: (
       <>
         <Term k="BIM" moreHref={bimLink("/mi-az-a-bim", "fogalom")}>BIM</Term> <Term k="as-built">as-built</Term>, beüzemelés, karbantartás,
-        biztosítási dokumentáció.
+        biztosítási dokumentáció.{" "}
+        <a href={bimLink("/kivitelezes", "csomagok-ipar")} className="font-semibold text-brand underline">
+          As-built rögzítés és hibakövetés →
+        </a>
       </>
     ),
     pkg: "ENTERPRISE",
@@ -125,7 +131,14 @@ const niches = [
   },
   {
     title: "Egészségügy, klinika, idősellátás",
-    desc: "Akadálymentesítési audit, betegtájékoztatás, hozzátartozói transzparencia.",
+    desc: (
+      <>
+        Akadálymentesítési melléklet, betegtájékoztatás.{" "}
+        <a href={bimLink("/meglevo-allami-epuletek", "csomagok-egeszsegugy")} className="font-semibold text-brand underline">
+          Meglévő állami épületek →
+        </a>
+      </>
+    ),
     pkg: "TWIN",
   },
 ];
@@ -212,6 +225,14 @@ export default function PackagesPage() {
               >
                 {p.cta}
               </Link>
+              {p.tier === "TWIN" ? (
+                <a
+                  href={bimLink("/uzemeltetes", "csomagok-twin")}
+                  className="mt-2 inline-flex items-center justify-center rounded-md border border-brand px-4 py-2.5 text-sm font-semibold text-brand hover:bg-brand/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                >
+                  Állami üzemeltetés: éves BIM-mentés →
+                </a>
+              ) : null}
               {p.tier === "ENTERPRISE" ? (
                 <a
                   href={bimLink("/", "enterprise")}

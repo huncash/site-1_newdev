@@ -16,12 +16,16 @@ const faqs: Faq[] = [
     a: "A virtuális túra bejárható 3D állapot. Digitális ikernek akkor hívjuk, ha ehhez a megrendelés szerint dokumentum, kézi jelölés vagy ismételt szken is tartozik. Élő IoT-szenzor és automatikus audit nem része az alapszolgáltatásnak.",
   },
   {
-    q: "Több hektáros területet vagy több épületet is meg tudtok jeleníteni egyetlen túrában?",
-    a: "Igen. Külön rögzített Matterport-szkeneket egyetlen, folytonosan bejárható túrává illesztünk össze — kampusz, ipari telephely, gyár vagy kórház esetén is. A Pannon Egyetem Zalaegerszeg referenciánkban 7+ hektár, 8 különálló szken egyetlen URL alatt érhető el.",
+    q: "Több épületet vagy külső területet is meg tudtok jeleníteni egyetlen túrában?",
+    a: "Igen. Külön rögzített modelleket egyetlen, folytonosan bejárható túrává illesztünk össze — kampusz, ipari telephely, gyár vagy kórház esetén is. A Pannon Egyetem kampuszán a szkennelt részek egyetlen URL alatt érhetők el.",
   },
   {
     q: "Milyen BIM-export formátumokat tudtok adni a Matterport-modellből?",
     a: "MatterPak csomagban E57 pontfelhőt, OBJ mesh-t, XYZ-t és méretezett 2D alaprajzot szállítunk. Ezekből modellezéssel készülhet IFC; ezt partnerrel végezzük (https://bim.vrgo.hu).",
+  },
+  {
+    q: "Mi az a BIM?",
+    a: "A BIM (építményinformációs modellezés) az épület adatokkal ellátott digitális modellje. A 3D szkennelés ennek a modellnek az alapadata, nem maga a BIM. A részletes magyarázat a bim.vrgo.hu Mi az a BIM? oldalán van.",
   },
   {
     q: "Mi az a Property Intelligence, és vannak közzétett KPI-eredményeink?",
@@ -110,6 +114,17 @@ export default function FaqPage() {
                       className="font-semibold text-brand underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                     >
                       Részletek: Pontosság és formátumok →
+                    </a>
+                  </>
+                ) : null}
+                {f.q === "Mi az a BIM?" ? (
+                  <>
+                    {" "}
+                    <a
+                      href={bimLink("/mi-az-a-bim", "gyik-mi-a-bim")}
+                      className="font-semibold text-brand underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                    >
+                      Mi az a BIM? →
                     </a>
                   </>
                 ) : null}

@@ -1,10 +1,13 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { listPublishedBimArticles } from "@/lib/bim-articles";
 import { bimMetadata } from "@/lib/bim-site";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = bimMetadata(
   "/",
   "Meglévő épületek digitális felmérése az ÉKM BIM-rendelethez | VRGO BIM",
-  "Bejárható 3D rögzítés és BIM-alapadat állami létesítményekhez. E57, IFC modellező partnerrel, a 31/2024. ÉKM rendelet felhasználási esetei szerint. 2016 óta."
+  "Bejárható 3D rögzítés és BIM-alapadat állami létesítményekhez. E57, IFC-partnerrel, a 31/2024. ÉKM rendelet felhasználási esetei szerint. 10 éve a Matterport-piacon."
 );
 
 const areas = [
@@ -21,7 +24,7 @@ const steps = [
   },
   {
     title: "Helyszíni rögzítés",
-    text: "Matterport Pro3. Kampuszon több szkennelési zóna, egyetlen összefüggő modell.",
+    text: "Matterport Pro3. Kampuszon több külön modell, egyetlen összefüggő bejárás.",
   },
   {
     title: "Feldolgozás",
@@ -34,6 +37,8 @@ const steps = [
 ] as const;
 
 export default function BimHomePage() {
+  const latest = listPublishedBimArticles().slice(-3).reverse();
+
   return (
     <>
       <section className="bg-section-dark text-section-dark-foreground">
@@ -123,10 +128,12 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Őszinte határok</h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            A bejárható 3D rögzítés áttekinthető állapotot ad, de nem helyettesíti a megvalósulási
-            dokumentációhoz előírt digitális geodéziai ellenőrző mérést (11. § (2)). Az IFC modell
-            a pontfelhőből modellezéssel készül. A pontossági szintet minden projektnél az EIR-hez
-            mérjük, és előre megmondjuk, ha a feladathoz más módszer kell.
+            A bejárható 3D rögzítés gyors és áttekinthető, de nem helyettesíti a geodéziai
+            ellenőrző mérést (11. § (2)). Ha a megrendelőnek nincs saját földmérője, projekt alapon
+            tudunk földmérőt ajánlani, és a mérést vele együtt végezni. Állandó földmérő partnerünk
+            jelenleg nincs. Az IFC modell a pontfelhőből modellezéssel készül. A pontossági szintet
+            minden projektnél az EIR-hez mérjük, és előre megmondjuk, ha a feladathoz más módszer
+            kell.
           </p>
           <BimLink href="/pontossag-es-formatumok" className="mt-4 inline-block text-sm font-semibold text-brand">
             Részletek: pontosság és formátumok
@@ -138,9 +145,9 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Referencia</h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            Pannon Egyetem, Zalaegerszegi Kampusz: több mint 7 hektár, 8 szkennelés, 1 összefüggő
-            modell, 4 helyszíni munkanap (2024 ősz). Ezek a VRGO saját projektadatai, nem független
-            mérés.
+            Pannon Egyetem, Zalaegerszegi Kampusz: a kampusz szkennelt részei egyetlen összefüggő,
+            bejárható modellben. 8 külön rögzített modell, 891 szkennelési pont, 4 helyszíni
+            munkanap (2024 ősz). A több mint 7 hektár a kampusz területe, nem a modell alapterülete.
           </p>
           <BimLink href="/referenciak" className="mt-4 inline-block text-sm font-semibold text-brand">
             Esettanulmány
@@ -151,9 +158,21 @@ export default function BimHomePage() {
       <section className="bg-secondary py-12">
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Cikkek</h2>
-          <p className="mt-4 text-sm text-muted-foreground">
-            A bim.vrgo.hu cikkei még nincsenek közzétéve.
-          </p>
+          {latest.length > 0 ? (
+            <ul className="mt-4 space-y-3 text-sm sm:text-base">
+              {latest.map((article) => (
+                <li key={article.slug}>
+                  <BimLink href={`/cikkek/${article.slug}`} className="font-semibold text-brand">
+                    {article.title}
+                  </BimLink>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-4 text-sm text-muted-foreground">
+              A következő cikk a közzétételi napon jelenik meg.
+            </p>
+          )}
           <BimLink href="/cikkek" className="mt-4 inline-block text-sm font-semibold text-brand">
             Cikkek oldala
           </BimLink>

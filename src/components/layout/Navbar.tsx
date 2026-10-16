@@ -100,9 +100,9 @@ export function Navbar({
   cta,
   quietLink,
   logoLabel,
-  logoSrc = "/vrgo-logo.png",
-  logoWidth = 335,
-  logoHeight = 100,
+  logoSrc = "/vrgo-logo.jpg",
+  logoWidth = 412,
+  logoHeight = 103,
 }: {
   logoHref?: string;
   className?: string;
@@ -149,6 +149,7 @@ export function Navbar({
             width={logoWidth}
             height={logoHeight}
             priority
+            unoptimized
             className="h-8 w-auto sm:h-10"
           />
         </Link>
