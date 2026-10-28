@@ -147,11 +147,11 @@ export default function BimHomePage() {
           </ul>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
             A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző
-            mérést (11. § (2)). Hivatalban eljárásra jogosult földmérővel együtt dolgozva alakítjuk
-            ki a workflow-t. Ha a megrendelőnek nincs saját földmérője, partneri alapon tudunk
-            földmérőt ajánlani, és a mérést vele együtt végezzük. Az IFC-modell a pontfelhőből
-            precíz modellezéssel készül. A pontossági szintet minden projektnél az EIR-hez mérjük,
-            és előre jelezzük, ha a feladathoz más módszer szükséges.
+            mérést (11. § (2)). Dedikált, hivatalban eljárásra jogosult földmérő partnerrel
+            dolgozunk együtt, összehangolt, stabil workflow-val és folyamatosan bővülő közös
+            referenciákkal. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan
+            együttműködünk vele is. Az IFC-modell a pontfelhőből precíz modellezéssel készül, az
+            EIR-hez mért pontossági szinttel.
           </p>
         </div>
       </section>

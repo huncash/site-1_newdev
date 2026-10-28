@@ -44,7 +44,7 @@ export default function ConstructionPage() {
             <li>150 Kivitelezés előrehaladásának követése</li>
             <li>170 Építőipari kivitelezési tevékenység teljesítésének elszámolása — a rögzítés a dokumentáció, a mennyiségi igazolás az EIR és a szerződés szerint készül</li>
             <li>180 Hibakövetés</li>
-            <li>190 Megvalósulási dokumentáció előállítása — a 11. § (2) szerinti ellenőrző mérést hivatalban eljárásra jogosult földmérővel együtt végezzük</li>
+            <li>190 Megvalósulási dokumentáció előállítása — a 11. § (2) szerinti ellenőrző mérést dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük</li>
           </ul>
         </section>
         <section>

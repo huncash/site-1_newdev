@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Ki végzi a geodéziai ellenőrző mérést?",
-    a: "A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző mérést (11. § (2)). Hivatalban eljárásra jogosult földmérővel együtt dolgozunk. Ha a megrendelőnek nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani, és a mérést vele együtt végezzük.",
+    a: "A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző mérést (11. § (2)). Dedikált, hivatalban eljárásra jogosult földmérő partnerrel dolgozunk együtt, összehangolt, stabil workflow-val. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is.",
   },
   {
     q: "Tudtok IFC-t adni?",
@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "Ki végzi a bekötést, a telekalakítást és a kitűzést?",
-    a: "A bekötést és a 11. § (2) szerinti ellenőrző mérést hivatalban eljárásra jogosult földmérővel együtt végezzük, mérési jegyzőkönyvvel. Ha nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani. A telekalakítás, a kitűzés és az ingatlan-nyilvántartási földmérés a Pontosság és formátumok oldal „Első körben nem vállalt” listáján szerepel.",
+    a: "A bekötést és a 11. § (2) szerinti ellenőrző mérést dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük, mérési jegyzőkönyvvel. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is. A telekalakítás, a kitűzés és az ingatlan-nyilvántartási földmérés a Pontosság és formátumok oldal „Első körben nem vállalt” listáján szerepel.",
   },
   {
     q: "Mi történik, ha lejár a hosztolt modell előfizetése?",

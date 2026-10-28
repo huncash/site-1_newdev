@@ -117,7 +117,7 @@ export default function EkmPage() {
           <h2 className="text-xl font-semibold text-foreground">Amit ebből a VRGO vállal</h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li>Bejárható 3D rögzítés és E57, OBJ, XYZ, alaprajz, ha a megrendelés tartalmazza.</li>
-            <li>A 11. § (2) szerinti geodéziai ellenőrző mérés és bekötés: hivatalban eljárásra jogosult földmérővel, mérési jegyzőkönyvvel. A 3D rögzítés ezt nem helyettesíti.</li>
+            <li>A 11. § (2) szerinti geodéziai ellenőrző mérés és bekötés: dedikált, hivatalban eljárásra jogosult földmérő partnerrel, mérési jegyzőkönyvvel. A 3D rögzítés ezt nem helyettesíti.</li>
             <li>IFC, BCF és natív formátum: a pontfelhőből precíz modellezéssel, az EIR szerinti részletezettségben.</li>
           </ul>
           <div className="mt-4">

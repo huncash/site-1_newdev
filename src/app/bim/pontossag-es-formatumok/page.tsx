@@ -37,17 +37,17 @@ export default function AccuracyPage() {
           <p className="mt-2">
             A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai
             ellenőrző mérést (11. § (2)). A helyszíni felmérést Leica RTC360 és Leica BLK360
-            eszközzel végezzük. Hivatalban eljárásra jogosult földmérővel együtt dolgozva, az
-            esethez leginkább optimális eszközparkkal alakítjuk ki a workflow-t. Ha a megrendelőnek
-            nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani, és a mérést vele
-            együtt végezzük. Az IFC-modell a pontfelhőből precíz modellezéssel készül. Igény esetén
-            drónos kollégánkat is bevonjuk; elsődlegesen drón nélkül dolgozunk, mert ez gyorsabb és
-            olcsóbb módszer.
+            eszközzel végezzük. Dedikált, hivatalban eljárásra jogosult földmérő partnerrel
+            dolgozunk együtt, összehangolt, stabil workflow-val és folyamatosan bővülő közös
+            referenciákkal. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan
+            együttműködünk vele is. Az IFC-modell a pontfelhőből precíz modellezéssel készül, az
+            EIR-hez mért pontossági szinttel. Igény esetén drónos kollégánkat is bevonjuk;
+            elsődlegesen drón nélkül dolgozunk, mert ez gyorsabb és olcsóbb módszer.
           </p>
           <ul className="mt-4 list-disc space-y-2 pl-5">
             <li>Leica RTC360: nagyteljesítményű, nagy sebességű 3D lézerszkenner bonyolult ipari környezethez, homlokzathoz és nagy belső térhez.</li>
             <li>Leica BLK360: ultrahordozható képalkotó lézerszkenner szűkebb vagy gyors átfutású építészeti és belsőépítészeti felméréshez.</li>
-            <li>Geodéziai ellenőrző mérés, bekötés, mérési jegyzőkönyv: hivatalban eljárásra jogosult földmérővel, az EIR szerinti pontossági osztályban (11. § (3)).</li>
+            <li>Geodéziai ellenőrző mérés, bekötés, mérési jegyzőkönyv: dedikált, hivatalban eljárásra jogosult földmérő partnerrel, az EIR szerinti pontossági osztályban (11. § (3)). A megrendelő saját földmérőjével is együttműködünk.</li>
             <li>Pontfelhő, E57, OBJ, XYZ, alaprajz: VRGO, ha a megrendelés tartalmazza.</li>
             <li>IFC, BCF és natív formátum: a pontfelhőből precíz modellezéssel, modellezési partnerünktől, az EIR szerint.</li>
           </ul>
@@ -83,8 +83,9 @@ export default function AccuracyPage() {
           <h2 className="text-xl font-semibold text-foreground">Geodéziai ellenőrző mérés</h2>
           <p className="mt-2">
             A 11. § (2) szerinti hivatalos geodéziai ellenőrző mérést a 3D rögzítés nem helyettesíti.
-            Hivatalban eljárásra jogosult földmérővel együtt végezzük, mérési jegyzőkönyvvel. Ha a
-            megrendelőnek nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani.
+            Dedikált, hivatalban eljárásra jogosult földmérő partnerrel dolgozunk együtt, mérési
+            jegyzőkönyvvel. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan
+            együttműködünk vele is.
           </p>
         </section>
         <section>

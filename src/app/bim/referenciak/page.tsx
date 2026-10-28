@@ -6,7 +6,7 @@ const deliverables = [
   ["Pontfelhő", "E57, OBJ és XYZ, a megrendelés szerint."],
   ["2D állomány", "Alaprajz és metszet a feldolgozott pontfelhőből."],
   ["BIM", "Az IFC-modell a pontfelhőből precíz modellezéssel készül, az EIR szerint."],
-  ["Geodézia", "A 11. § (2) szerinti ellenőrző mérést hivatalban eljárásra jogosult földmérővel végezzük."],
+  ["Geodézia", "A 11. § (2) szerinti ellenőrző mérést dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük."],
 ] as const;
 
 export const metadata = bimMetadata(

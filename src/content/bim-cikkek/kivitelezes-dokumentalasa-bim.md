@@ -42,7 +42,7 @@ A burkolatok és álmennyezetek mögé kerülő gépészeti, villamos és vízve
 
 ## Határok
 
-A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a 11. § (2) szerinti hivatalos geodéziai ellenőrző mérést. Az elszámolási mennyiségeket az EIR és a szerződés szabályai szerint kell igazolni; a felvétel ehhez a dokumentáció.
+A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a 11. § (2) szerinti hivatalos geodéziai ellenőrző mérést. Azt dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is. Az elszámolási mennyiségeket az EIR és a szerződés szabályai szerint kell igazolni; a felvétel ehhez a dokumentáció.
 
 ## Mit érdemes az ajánlatban rögzíteni?
 

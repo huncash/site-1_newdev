@@ -38,12 +38,12 @@ A helyszíni felméréshez a feladat pontossági igényéhez illeszkedő eszköz
 | Falzárás előtti dokumentálás | VRGO | időbélyegzett felvétel |
 | Kivitelezési előrehaladás követése (150) | VRGO | ismételt felvételekkel |
 | Üzemeltetési digitális iker, hibajegyek (200) | VRGO | kézi jelölés, hozzáférési szintek |
-| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | Hivatalban eljárásra jogosult földmérő | a 3D rögzítés a 11. § (2) szerinti mérést nem helyettesíti |
+| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | Dedikált földmérő partner | a 3D rögzítés a 11. § (2) szerinti mérést nem helyettesíti; a megrendelő saját földmérőjével is együttműködünk |
 | IFC-modell | Modellezési partnerünk | a pontfelhőből precíz modellezéssel, az EIR szerint |
 
 ## Hogyan lesz belőle az EIR által kért adatállomány?
 
-1. Helyszíni adatgyűjtés Leica RTC360 vagy BLK360 eszközzel. A 11. § (2) szerinti ellenőrző mérést hivatalban eljárásra jogosult földmérővel együtt végezzük. Ha a megrendelőnek nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani.
+1. Helyszíni adatgyűjtés Leica RTC360 vagy BLK360 eszközzel. A 11. § (2) szerinti ellenőrző mérést dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is.
 2. Pontfelhő (E57) feldolgozása.
 3. Szakági modellezés Revitben vagy ArchiCAD-ben.
 4. IFC, BCF és natív formátum leadása az EIR szerint.
@@ -60,7 +60,7 @@ Először drón nélkül dolgozunk, ez gyorsabb és olcsóbb. Ha a feladat légi
 
 ## Geodéziai ellenőrző mérés
 
-A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző mérést (11. § (2)). Hivatalban eljárásra jogosult földmérővel együtt dolgozva, az esethez leginkább optimális eszközparkkal alakítjuk ki a workflow-t. Ha a megrendelőnek nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani, és a mérést vele együtt végezzük. Az IFC-modell a pontfelhőből precíz modellezéssel készül. A részletes vállalási keret a [pontosság és formátumok](/pontossag-es-formatumok) oldalon van.
+A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző mérést (11. § (2)). Dedikált, hivatalban eljárásra jogosult földmérő partnerrel dolgozunk együtt, összehangolt, stabil workflow-val és folyamatosan bővülő közös referenciákkal. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is. Az IFC-modell a pontfelhőből precíz modellezéssel készül, az EIR-hez mért pontossági szinttel. A részletes vállalási keret a [pontosság és formátumok](/pontossag-es-formatumok) oldalon van.
 
 ## Kapcsolódó
 

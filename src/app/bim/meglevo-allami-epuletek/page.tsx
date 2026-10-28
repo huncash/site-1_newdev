@@ -47,7 +47,7 @@ export default function ExistingBuildingsPage() {
           <h2 className="text-xl font-semibold text-foreground">Felhasználási esetek</h2>
           <p className="mt-2">
             010 Meglévő állapot és környezet rögzítése · 190 Megvalósulási dokumentáció előállítása
-            · 200 Üzemeltetés és karbantartás. A 190-es eset geodéziai részét hivatalban eljárásra jogosult földmérővel együtt állítjuk ki.
+            · 200 Üzemeltetés és karbantartás. A 190-es eset geodéziai részét dedikált, hivatalban eljárásra jogosult földmérő partnerrel állítjuk ki.
           </p>
         </section>
         <section>
