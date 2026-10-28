@@ -1,10 +1,11 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/kivitelezes",
   "Kivitelezés dokumentálása: előrehaladás és hibakövetés | VRGO BIM",
-  "Időbélyegzett, bejárható dokumentáció kivitelezéshez. Kézi hibajelölés Mattertaggel. Geodéziai ellenőrző mérés és mennyiségi elszámolás nem része."
+  "Időbélyegzett, bejárható dokumentáció kivitelezéshez. A geodéziai ellenőrző mérést földmérő partnerünk végzi, egy ajánlatban."
 );
 
 const packages = [
@@ -41,9 +42,9 @@ export default function ConstructionPage() {
           <h2 className="text-xl font-semibold text-foreground">Felhasználási esetek</h2>
           <ul className="mt-2 list-disc space-y-2 pl-5">
             <li>150 Kivitelezés előrehaladásának követése</li>
-            <li>170 Építőipari kivitelezési tevékenység teljesítésének elszámolása — a felvétel kiegészítő dokumentáció, nem a mennyiségi igazolás</li>
+            <li>170 Építőipari kivitelezési tevékenység teljesítésének elszámolása — a rögzítés a dokumentáció, a mennyiségi igazolás az EIR és a szerződés szerint készül</li>
             <li>180 Hibakövetés</li>
-            <li>190 Megvalósulási dokumentáció előállítása — a geodéziai ellenőrző mérés külön tétel</li>
+            <li>190 Megvalósulási dokumentáció előállítása — a geodéziai ellenőrző mérést földmérő partnerünk végzi, egy ajánlatban</li>
           </ul>
         </section>
         <section>
@@ -58,24 +59,16 @@ export default function ConstructionPage() {
           </div>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Része, ha kérik</h2>
-          <p className="mt-2">
-            Geodéziai ellenőrző mérés és bekötés az EIR szerint. Ha nincs saját földmérője, tudunk
-            földmérőt ajánlani, és a mérést vele projekt alapon együtt végezni.
-          </p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Nem része</h2>
-          <p className="mt-2">
-            Ingatlan-nyilvántartási földmérés, telekalakítás és kitűzés. Az elszámolás mennyiségi
-            igazolása az EIR és a szerződés szerint készül, nem ebből a rögzítésből.
-          </p>
+          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
+          <div className="mt-2">
+            <BimScopeNote />
+          </div>
         </section>
         <BimLink
           href="/ajanlatkeres"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
         >
-          Ajánlatot kérek
+          1 munkanapon belül módszert és árat javaslunk
         </BimLink>
       </div>
     </article>

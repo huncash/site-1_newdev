@@ -1,7 +1,7 @@
 ---
-title: "Mit tud és mit nem tud a Matterport BIM-alapadatként? Pontosság, E57, IFC és a geodéziai ellenőrző mérés"
-seoTitle: "Matterport BIM pontosság: mire jó, mire nem"
-description: "A Matterport gyors, bejárható rögzítést ad, de az ÉKM rendelet geodéziai ellenőrzést és IFC leadást vár. Őszinte összefoglaló arról, mire jó és mire nem."
+title: "Matterport BIM-alapadatként: pontosság, E57, IFC és a geodéziai ellenőrző mérés"
+seoTitle: "Matterport BIM pontosság: rögzítés, E57 és IFC"
+description: "A helyszíni rögzítést mi végezzük, a 11. § (2) szerinti geodéziai ellenőrző mérést földmérő partnerünk, az IFC-modellt modellezési partnerünk."
 date: 2026-10-24
 time: "18:00"
 author: VRGO
@@ -30,20 +30,20 @@ Matterport rendszert is használunk. Nem minden feladatra ez a megfelelő módsz
 - Exportokat (a Matterport csomagjában E57 pontfelhő, OBJ, XYZ, alaprajz).
 - A gyártó saját scan-to-BIM szolgáltatást is kínál, amely IFC, RVT vagy DWG fájlokat állít elő. *A szolgáltatás magyarországi elérhetőségét a megrendelés előtt ellenőrizni kell.*
 
-## Mire jó, és mire nem?
+## Melyik feladatot ki végzi?
 
-| Feladat | Matterport | Megjegyzés |
+| Feladat | Ki | Megjegyzés |
 | --- | --- | --- |
-| Meglévő állapot gyors rögzítése (010) | Jól használható | a pontossági szintet az EIR-hez kell mérni |
-| Falzárás előtti dokumentálás | Nagyon jó | gyors, időbélyegzett |
-| Kivitelezési előrehaladás követése (150) | Jó | ismételt felvételekkel |
-| Üzemeltetési digitális iker, hibajegyek (200) | Jó | Mattertag, hozzáférési szintek |
-| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | **Nem helyettesíti** | földmérői bekötés és mérési dokumentáció kell |
-| IFC modell közvetlenül | **Nem közvetlen** | modellezés szükséges a pontfelhőből |
+| Meglévő állapot gyors rögzítése (010) | VRGO | a pontossági osztályt az EIR rögzíti |
+| Falzárás előtti dokumentálás | VRGO | időbélyegzett felvétel |
+| Kivitelezési előrehaladás követése (150) | VRGO | ismételt felvételekkel |
+| Üzemeltetési digitális iker, hibajegyek (200) | VRGO | Mattertag, hozzáférési szintek |
+| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | Földmérő partnerünk | bekötés és mérési jegyzőkönyv, egy ajánlatban |
+| IFC-modell | Modellezési partnerünk | a pontfelhőből, az EIR szerint |
 
 ## Hogyan lesz belőle az EIR által kért adatállomány?
 
-1. Rögzítés Matterporttal (és szükség esetén kiegészítő geodéziai mérés).
+1. Helyszíni rögzítés. A geodéziai ellenőrző mérést földmérő partnerünk végzi, egy ajánlatban.
 2. Pontfelhő (E57) feldolgozása.
 3. Szakági modellezés Revitben vagy ArchiCAD-ben.
 4. IFC, BCF és natív formátum leadása az EIR szerint.
@@ -52,15 +52,15 @@ A kivitelezés közbeni rögzítésről a [dokumentálási cikk](/cikkek/kivitel
 
 ## Ajánlati szintek
 
-Gyors felmérés, standard, pontos. A szintet a feladat pontossági igénye és az EIR határozza meg; ezt az ajánlat előtt közösen tisztázzuk. A szintekhez tartozó eltérést és feldolgozási időt csak az összehasonlító mérés után közöljük.
+Gyors, standard, pontos. A pontossági osztályt az EIR rögzíti; ehhez választjuk a módszert. A szintekhez tartozó eltérést és feldolgozási időt csak az összehasonlító mérés után közöljük.
 
-## Mikor ajánlunk más módszert
+## Drón
 
-Földmérői ellenőrző mérés, drón, ha a feladat pontossági osztálya vagy a bekötés ezt kéri.
+Először drón nélkül dolgozunk, ez gyorsabb és olcsóbb. Ha a feladat légi felvételt kíván, drónos kollégánkat bevonjuk.
 
 ## Geodéziai ellenőrző mérés
 
-A szkennelés nem helyettesíti a 11. § (2) szerinti geodéziai ellenőrző mérést. Ha a megrendelőnek nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele projekt alapon együtt végezni.
+A 11. § (2) szerinti digitális geodéziai ellenőrző mérést földmérő partnerünk végzi, a rögzítéssel egy ajánlatban, egy ütemben, mérési jegyzőkönyvvel. Az IFC-modellt modellezési partnerünk készíti. A részletes vállalási keret a [pontosság és formátumok](/pontossag-es-formatumok) oldalon van.
 
 ## Kapcsolódó
 

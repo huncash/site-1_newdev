@@ -1,4 +1,5 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { DECREE_CHECKED, NJT_URL, USE_CASES, bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
@@ -116,14 +117,17 @@ export default function EkmPage() {
           <h2 className="text-xl font-semibold text-foreground">Amit ebből a VRGO vállal</h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li>Bejárható 3D rögzítés és E57, OBJ, XYZ, alaprajz, ha a megrendelés tartalmazza.</li>
-            <li>IFC a modellező partnerrel, külön ajánlati tételként, az EIR szerinti részletezettségben.</li>
-            <li>
-              Nem vállaljuk a 11. § (2) szerinti digitális geodéziai ellenőrző mérést és a
-              közbeszerzési EIR megírását.
-            </li>
+            <li>A 11. § (2) szerinti geodéziai ellenőrző mérés és bekötés: földmérő partnerünk, mérési jegyzőkönyvvel.</li>
+            <li>IFC, BCF és natív formátum: modellezési partnerünk, az EIR szerinti részletezettségben.</li>
           </ul>
-          <BimLink href="/pontossag-es-formatumok" className="mt-4 inline-block font-semibold text-brand">
-            Pontosság és formátumok
+          <div className="mt-4">
+            <BimScopeNote />
+          </div>
+          <BimLink
+            href="/ajanlatkeres"
+            className="mt-6 inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
+          >
+            Küldje el az EIR-t
           </BimLink>
         </section>
 

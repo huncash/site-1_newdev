@@ -42,7 +42,7 @@ A burkolatok és álmennyezetek mögé kerülő gépészeti, villamos és vízve
 
 ## Határok
 
-A rögzítés nem helyettesíti a geodéziai ellenőrző méréseket (11. § (2)), és az elszámolási mennyiségeket az EIR és a szerződés szabályai szerint kell igazolni. A felvétel kiegészítő bizonyíték.
+A 11. § (2) szerinti geodéziai ellenőrző mérést földmérő partnerünk végzi. Az elszámolási mennyiségeket az EIR és a szerződés szabályai szerint kell igazolni; a felvétel ehhez a dokumentáció.
 
 ## Mit érdemes az ajánlatban rögzíteni?
 

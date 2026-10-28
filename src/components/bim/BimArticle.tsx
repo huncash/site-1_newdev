@@ -159,7 +159,7 @@ export function BimArticleView({
 
         <div className="mt-12 rounded-md border border-border bg-muted/40 p-6 text-center">
           <p className="text-sm font-medium text-foreground">
-            Bejárható 3D felmérés kell a projekthez?
+            Bejárható 3D rögzítés kell a projekthez?
           </p>
           <BimLink
             href="/ajanlatkeres"

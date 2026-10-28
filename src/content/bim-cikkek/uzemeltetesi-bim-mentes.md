@@ -36,7 +36,7 @@ A mentésnek tartalmaznia kell minden, a létesítmény üzemeltetése szempontj
 
 ## Hol segít a bejárható digitális iker?
 
-Az üzemeltetési felhasználási eset (200) mellett a karbantartási hibajegyek, akadálymentesítési felmérések és a káresemények előtti állapot rögzítése is gyakori igény. Egy éves újrafelvétel jól mutatja a változásokat. *Az éves felvétel formátumát és részletezettségét az EIR-hez kell igazítani; az éves mentés nem azonos egy Matterport-túra tárolásával.*
+Az üzemeltetési felhasználási eset (200) mellett a karbantartási hibajegyek, akadálymentesítési felmérések és a káresemények előtti állapot rögzítése is gyakori igény. Egy éves újrafelvétel jól mutatja a változásokat. *Az éves bejárható felvételt mi készítjük. A 14. § (3) c) szerinti mentés formátumát és tartalmát az EIR írja elő; az IFC- és BCF-állományt a modellezési partnerünk adja.*
 
 ## Kapcsolódó
 

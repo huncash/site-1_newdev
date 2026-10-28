@@ -1,10 +1,11 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/meglevo-allami-epuletek",
-  "Meglévő állami épületek felmérése a 2035-ös határidőhöz | VRGO BIM",
-  "Bejárható digitális iker, E57 pontfelhő és partneres IFC meglévő állami épületekhez. A geodéziai ellenőrző mérést a szkennelés nem helyettesíti."
+  "Meglévő állami épületek rögzítése a 2035-ös határidőhöz | VRGO BIM",
+  "Bejárható digitális iker, E57 pontfelhő és IFC egy ajánlatban, a 2035. december 31-i határidőhöz."
 );
 
 export default function ExistingBuildingsPage() {
@@ -13,7 +14,7 @@ export default function ExistingBuildingsPage() {
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Meglévő állami épületek: gyors, bejárható alapfelmérés a 2035-ös határidőhöz
+            Meglévő állami épületek: bejárható rögzítés a 2035. december 31-i határidőhöz
           </h1>
         </div>
       </section>
@@ -30,8 +31,8 @@ export default function ExistingBuildingsPage() {
           <p className="mt-2">
             Meglévő épületről a dokumentáció gyakran hiányos. A rendelet hatálybalépésekor már
             állami tulajdonú, BIM nélküli létesítménynél a modellt legkésőbb 2035. december 31-ig
-            kell létrehozni (22. § (2)). A megvalósulási dokumentációhoz a rendelet digitális
-            geodéziai ellenőrző mérést ír elő (11. § (2)); azt ez a felmérés nem helyettesíti.
+            kell létrehozni (22. § (2)). A 11. § (2) szerinti ellenőrző mérést földmérő partnerünk
+            végzi, a rögzítéssel egy ajánlatban.
           </p>
         </section>
         <section>
@@ -39,30 +40,21 @@ export default function ExistingBuildingsPage() {
           <ul className="mt-2 list-disc space-y-2 pl-5">
             <li>Bejárható modell, belső és külső terekkel, ha a helyszíni rögzítés mindkettőt magában foglalja.</li>
             <li>E57 pontfelhő, OBJ, XYZ, méretezett alaprajz, ha a csomag tartalmazza.</li>
-            <li>IFC a modellező partnerünkkel, az EIR szerinti részletezettségben. Külön ajánlati tétel.</li>
+            <li>IFC és BCF a modellezési partnerünktől, az EIR szerinti részletezettségben.</li>
           </ul>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Felhasználási esetek</h2>
           <p className="mt-2">
             010 Meglévő állapot és környezet rögzítése · 190 Megvalósulási dokumentáció előállítása
-            · 200 Üzemeltetés és karbantartás. A 190-es eset dokumentációjának geodéziai részét nem
-            mi állítjuk ki.
+            · 200 Üzemeltetés és karbantartás. A 190-es eset geodéziai részét földmérő partnerünk állítja ki.
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Része, ha kérik</h2>
-          <p className="mt-2">
-            Az EIR szerinti geodéziai ellenőrző mérés és bekötés, mérési jegyzőkönyvvel. Ha nincs
-            saját földmérője, tudunk földmérőt ajánlani, és a mérést vele projekt alapon együtt végezni.
-          </p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Nem része</h2>
-          <p className="mt-2">
-            Ingatlan-nyilvántartási földmérés, telekalakítás, kitűzés, geodéziai tervezés és
-            szakvélemény. A közbeszerzési EIR megírása és a jogi tanácsadás sem része.
-          </p>
+          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
+          <div className="mt-2">
+            <BimScopeNote />
+          </div>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Referencia</h2>
@@ -78,7 +70,7 @@ export default function ExistingBuildingsPage() {
           href="/ajanlatkeres"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
         >
-          Pilot épület felmérése
+          Küldje el a feladat leírását
         </BimLink>
         <p>A pilot feltételeit az ajánlatban közöljük. Százalékos kedvezményt ezen az oldalon nem hirdetünk.</p>
       </div>

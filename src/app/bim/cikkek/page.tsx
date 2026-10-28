@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import {
   formatHuDate,
   isBimArticlePublished,
@@ -91,6 +92,9 @@ export default function ArticlesPage() {
           </p>
         ) : null}
 
+        <div className="mt-10 text-sm text-muted-foreground sm:text-base">
+          <BimScopeNote />
+        </div>
         <p className="mt-8 text-sm text-muted-foreground">
           A vrgo.hu blog 2016–2017-es anyagai archívak:{" "}
           <a

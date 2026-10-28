@@ -1,15 +1,16 @@
+import { BimLink } from "@/components/bim/BimChrome";
 import { DECREE_CHECKED, NJT_URL, bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/pontossag-es-formatumok",
   "Pontosság és formátumok | VRGO BIM",
-  "E57, OBJ, XYZ és alaprajz a szolgáltatás része. IFC, RVT, DWG és BCF modellezéssel, partnerrel. Általános pontossági ígéret nincs."
+  "Egy csapat, egy ajánlat: helyszíni rögzítés, geodéziai ellenőrző mérés és IFC. A pontossági osztályt az EIR rögzíti."
 );
 
 const formats = [
   ["E57, OBJ, XYZ, alaprajz", "A rögzítésből átadható, ha a megrendelés tartalmazza."],
-  ["IFC, RVT, DWG", "Modellezéssel, partnerrel, külön ajánlati tétel."],
-  ["BCF", "A modellezési fázis része, nem a nyers Matterport-export."],
+  ["IFC, RVT, DWG", "Modellezési partnerünktől, az EIR szerint."],
+  ["BCF", "Modellezési partnerünktől, a modellezési fázisban."],
 ];
 
 export default function AccuracyPage() {
@@ -32,13 +33,33 @@ export default function AccuracyPage() {
           </p>
         </section>
         <section>
+          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
+          <p className="mt-2">
+            Egy csapat, egy ajánlat: a helyszíni rögzítést mi végezzük (Matterport Pro3, Leica
+            BLK360, beltéren Pro1), a geodéziai ellenőrző mérést és a bekötést jogosultsággal
+            rendelkező földmérő partnerünk, az IFC-modellt modellezési partnerünk készíti. Igény
+            esetén drónos kollégánkat is bevonjuk; elsődlegesen drón nélkül dolgozunk, mert ez
+            gyorsabb és olcsóbb módszer.
+          </p>
+          <ul className="mt-4 list-disc space-y-2 pl-5">
+            <li>Rögzítés, VRGO: Pro3 bel- és kültér, gyors. BLK360 bel- és kültér, lassabb, részletes. Pro1 csak beltér, a leggyorsabb beltéri rögzítés.</li>
+            <li>Geodéziai ellenőrző mérés, bekötés, mérési jegyzőkönyv: földmérő partnerünk, az EIR szerinti pontossági osztályban (11. § (3)).</li>
+            <li>Pontfelhő, E57, OBJ, XYZ, alaprajz: VRGO, ha a megrendelés tartalmazza.</li>
+            <li>IFC, BCF és natív formátum: modellezési partnerünk, az EIR szerint, külön ajánlati tétel.</li>
+          </ul>
+          <h3 className="mt-4 font-semibold text-foreground">Első körben nem vállalt</h3>
+          <p className="mt-2">
+            Ingatlan-nyilvántartási földmérés, telekalakítás, kitűzés, geodéziai tervezés és
+            szakvélemény, a közbeszerzési EIR megírása, jogi tanácsadás.
+          </p>
+        </section>
+        <section>
           <h2 className="text-xl font-semibold text-foreground">Ajánlati szintek</h2>
           <p className="mt-2">
-            Gyors felmérés, standard, pontos. A szintet a feladat pontossági igénye és az EIR
-            határozza meg; ezt az ajánlat előtt közösen tisztázzuk. A szintekhez tartozó eltérést
-            és feldolgozási időt csak az összehasonlító mérés után közöljük.
+            Gyors, standard, pontos. A szintet a feladat pontossági igénye és az EIR határozza meg;
+            ezt az ajánlat előtt közösen tisztázzuk. A szintekhez tartozó eltérést és feldolgozási
+            időt csak az összehasonlító mérés után közöljük.
           </p>
-          <p className="mt-2">Matterport rendszert is használunk.</p>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Formátumok</h2>
@@ -54,35 +75,26 @@ export default function AccuracyPage() {
           </table>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Mikor ajánlunk más módszert</h2>
+          <h2 className="text-xl font-semibold text-foreground">Geodéziai ellenőrző mérés</h2>
           <p className="mt-2">
-            Földmérői ellenőrző mérés, drón, ha a feladat pontossági osztálya vagy a bekötés ezt
-            kéri.
+            A 11. § (2) szerinti digitális geodéziai ellenőrző mérést földmérő partnerünk végzi; a
+            rögzítéssel egy ajánlatban, egy ütemben.
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Geodéziai ellenőrző mérés</h2>
+          <h2 className="text-xl font-semibold text-foreground">Drón</h2>
           <p className="mt-2">
-            A szkennelés nem helyettesíti a 11. § (2) szerinti geodéziai ellenőrző mérést. Ha a
-            megrendelőnek nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele
-            projekt alapon együtt végezni.
+            Először drón nélkül dolgozunk, ez gyorsabb és olcsóbb. Ha a feladat légi felvételt
+            kíván, drónos kollégánkat bevonjuk.
           </p>
-          <h3 className="mt-4 font-semibold text-foreground">Vállaljuk</h3>
-          <ul className="mt-2 list-disc space-y-2 pl-5">
-            <li>Bejárható 3D és pontfelhő. Matterport rendszert is használunk.</li>
-            <li>
-              Az EIR szerinti ellenőrző mérés és bekötés, ha földmérővel projekt alapon együtt dolgozunk: E57, OBJ,
-              XYZ, alaprajz, mérési jegyzőkönyv.
-            </li>
-            <li>IFC-modell modellezési partnerrel, külön ajánlati tétel.</li>
-          </ul>
-          <h3 className="mt-4 font-semibold text-foreground">Jelenleg nem vállaljuk</h3>
-          <ul className="mt-2 list-disc space-y-2 pl-5">
-            <li>Ingatlan-nyilvántartási földmérést, változási vázrajzot, telekalakítást, kitűzést.</li>
-            <li>Geodéziai tervezést és geodéziai szakvéleményt.</li>
-            <li>A közbeszerzési EIR elkészítését és a jogi tanácsadást.</li>
-          </ul>
         </section>
+        <p>
+          Küldje el az EIR-t vagy a feladat leírását, 1 munkanapon belül módszert és árat
+          javaslunk.{" "}
+          <BimLink href="/ajanlatkeres" className="font-semibold text-brand">
+            Ajánlatkérés
+          </BimLink>
+        </p>
         <p className="text-xs">
           Forrás a jogszabályi mondatokhoz:{" "}
           <a href={NJT_URL} className="underline" target="_blank" rel="noopener noreferrer">

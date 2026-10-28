@@ -1,4 +1,5 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { listPublishedBimArticles } from "@/lib/bim-articles";
 import { bimMetadata } from "@/lib/bim-site";
 
@@ -6,34 +7,21 @@ export const dynamic = "force-dynamic";
 
 export const metadata = bimMetadata(
   "/",
-  "Meglévő épületek digitális felmérése az ÉKM BIM-rendelethez | VRGO BIM",
-  "Bejárható 3D rögzítés és BIM-alapadat állami létesítményekhez. E57, IFC-partnerrel, a 31/2024. ÉKM rendelet felhasználási esetei szerint. 10 éve a Matterport-piacon."
+  "Meglévő épületek digitális rögzítése az ÉKM BIM-rendelethez | VRGO BIM",
+  "As-built adatrögzítés a 31/2024. (VIII. 22.) ÉKM rendelethez: helyszíni rögzítés, geodéziai ellenőrző mérés és IFC-átadás egy csapattól, egy ajánlatban. Matterport-szolgáltató 2016 óta."
 );
 
 const areas = [
-  { href: "/meglevo-allami-epuletek", title: "Meglévő állami épületek felmérése" },
+  { href: "/meglevo-allami-epuletek", title: "Meglévő állami épületek rögzítése" },
   { href: "/kivitelezes", title: "Kivitelezés dokumentálása" },
   { href: "/uzemeltetes", title: "Üzemeltetés, éves digitális iker" },
   { href: "/tervezoknek", title: "Partnerség tervezőknek" },
 ] as const;
 
-const steps = [
-  {
-    title: "Egyeztetés",
-    text: "Az EIR vagy a megrendelő elvárásainak áttekintése: részletezettség, pontosság, felhasználási esetek.",
-  },
-  {
-    title: "Helyszíni rögzítés",
-    text: "Matterport rendszer. Kampuszon több külön modell, egyetlen összefüggő bejárás.",
-  },
-  {
-    title: "Feldolgozás",
-    text: "E57 pontfelhő, alaprajz, bejárható modell. Az IFC-modellezés a szakági partner külön tétele.",
-  },
-  {
-    title: "Átadás",
-    text: "A megrendelés szerinti formátumok: E57, OBJ, XYZ, alaprajz. IFC a modellezett állapotról, ha az ajánlat tartalmazza.",
-  },
+const roles = [
+  ["Rögzítés", "VRGO", "Pro3 (bel- és kültér, gyors) · BLK360 (bel- és kültér, lassabb, részletes) · Pro1 (csak beltér, leggyorsabb beltéri)"],
+  ["Geodéziai ellenőrző mérés", "Földmérő partner", "Bekötés és mérési jegyzőkönyv, az EIR szerinti pontossági osztályban"],
+  ["IFC / BCF", "Modellezési partner", "IFC, BCF és natív formátum az EIR szerint"],
 ] as const;
 
 export default function BimHomePage() {
@@ -44,12 +32,14 @@ export default function BimHomePage() {
       <section className="bg-section-dark text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4 py-16">
           <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Meglévő épületek digitális felmérése az állami BIM-szabályozáshoz
+            Meglévő épületek digitális rögzítése az állami BIM-szabályozáshoz
           </h1>
           <p className="mt-4 text-base opacity-90 sm:text-lg">
-            Bejárható 3D rögzítés, E57 pontfelhő és IFC-átadás partnerrel, a 31/2024. ÉKM
-            rendelet felhasználási esetei szerint. Egyetemeknek, üzemeltetőknek, kivitelezőknek
-            és tervezőknek.
+            As-built adatrögzítés a 31/2024. (VIII. 22.) ÉKM rendelethez: helyszíni rögzítés,
+            geodéziai ellenőrző mérés és IFC-átadás egy csapattól, egy ajánlatban.
+          </p>
+          <p className="mt-3 text-sm opacity-80">
+            Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <BimLink
@@ -110,34 +100,31 @@ export default function BimHomePage() {
 
       <section className="bg-background py-12">
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Hogyan dolgozunk</h2>
-          <ol className="mt-4 space-y-4 text-sm text-muted-foreground sm:text-base">
-            {steps.map((step, index) => (
-              <li key={step.title}>
-                <strong className="text-foreground">
-                  {index + 1}. {step.title}.
-                </strong>{" "}
-                {step.text}
+          <h2 className="text-2xl font-semibold">Egy csapat, egy ajánlat</h2>
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+            Matterport-szolgáltató 2016 óta. A pontossági osztályt az EIR rögzíti; ehhez választjuk
+            a módszert.
+          </p>
+          <ul className="mt-6 space-y-4 text-sm text-muted-foreground sm:text-base">
+            {roles.map(([task, who, how]) => (
+              <li key={task}>
+                <strong className="text-foreground">{task}.</strong> {who}. {how}
               </li>
             ))}
-          </ol>
+          </ul>
+          <p className="mt-4 text-sm text-muted-foreground sm:text-base">
+            Igény esetén drónos kollégánkat bevonjuk; elsődlegesen drón nélkül dolgozunk, mert ez
+            gyorsabb és olcsóbb módszer.
+          </p>
         </div>
       </section>
 
       <section className="bg-secondary py-12">
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Őszinte határok</h2>
-          <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            A bejárható 3D rögzítés gyors és áttekinthető, de nem helyettesíti a geodéziai
-            ellenőrző mérést (11. § (2)). Ha a megrendelőnek nincs saját földmérője, tudunk
-            földmérőt ajánlani, és a mérést vele projekt alapon együtt végezni. Az IFC modell a pontfelhőből
-            modellezéssel készül. A pontossági szintet
-            minden projektnél az EIR-hez mérjük, és előre megmondjuk, ha a feladathoz más módszer
-            kell.
-          </p>
-          <BimLink href="/pontossag-es-formatumok" className="mt-4 inline-block text-sm font-semibold text-brand">
-            Részletek: pontosság és formátumok
-          </BimLink>
+          <h2 className="text-2xl font-semibold">Mit vállalunk</h2>
+          <div className="mt-4 text-sm text-muted-foreground sm:text-base">
+            <BimScopeNote />
+          </div>
         </div>
       </section>
 
@@ -145,9 +132,9 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Referencia</h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            Pannon Egyetem, Zalaegerszegi Kampusz: a kampusz szkennelt részei egyetlen összefüggő,
-            bejárható modellben. 8 külön rögzített modell, 891 szkennelési pont, 4 helyszíni
-            munkanap (2024 ősz). A több mint 7 hektár a kampusz területe, nem a modell alapterülete.
+            Pannon Egyetem, Zalaegerszegi Kampusz: 8 külön modell, egyetlen bejárható modellben
+            egyesítve, 891 szkennelési pont, 4 helyszíni munkanap (2024 ősz). A több mint 7 hektár a
+            kampusz területe, nem a rögzített alapterület.
           </p>
           <BimLink href="/referenciak" className="mt-4 inline-block text-sm font-semibold text-brand">
             Esettanulmány
@@ -182,7 +169,7 @@ export default function BimHomePage() {
       <section className="bg-section-dark py-12 text-section-dark-foreground">
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold text-section-dark-foreground">Mondja el, melyik épületről van szó.</h2>
-          <p className="mt-3 opacity-90">1 munkanapon belül jelentkezünk.</p>
+          <p className="mt-3 opacity-90">1 munkanapon belül módszert és árat javaslunk.</p>
           <BimLink
             href="/ajanlatkeres"
             className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"

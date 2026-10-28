@@ -1,10 +1,11 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/uzemeltetes",
   "Üzemeltetés: éves digitális iker és BIM-mentés | VRGO BIM",
-  "Éves újrafelvétel és kézi jelölés üzemeltetőknek. A Matterport-túra tárolása nem azonos a rendelet szerinti BIM-mentéssel."
+  "Éves újrafelvétel és kézi jelölés üzemeltetőknek. A rendelet szerinti BIM-mentés formátumát az EIR írja elő."
 );
 
 export default function OperationsPage() {
@@ -40,12 +41,17 @@ export default function OperationsPage() {
           </ul>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Határ</h2>
+          <h2 className="text-xl font-semibold text-foreground">BIM-mentés</h2>
           <p className="mt-2">
-            A Matterport-túra tárolása nem azonos a rendelet szerinti BIM-mentéssel. A mentés
-            formátumát és tartalmát az EIR írja elő. Az IFC- és BCF-állomány a modellezési fázis
-            része, külön ajánlati tétel.
+            A 14. § (3) c) szerinti mentés formátumát és tartalmát az EIR írja elő. Az éves
+            bejárható felvételt mi készítjük; az IFC- és BCF-állományt a modellezési partnerünk adja.
           </p>
+        </section>
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
+          <div className="mt-2">
+            <BimScopeNote />
+          </div>
         </section>
         <BimLink
           href="/ajanlatkeres"

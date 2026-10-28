@@ -1,10 +1,11 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/mi-az-a-bim",
   "Mit jelent a BIM? Magyarázat és fogalomtár | VRGO BIM",
-  "Mi az a BIM, mit jelent az IFC, EIR, BEP és CDE, és mi köze a meglévő épületek felméréséhez? Rövid magyarázat az állami BIM-szabályozáshoz."
+  "Mi az a BIM, mit jelent az IFC, EIR, BEP és CDE, és mi köze a meglévő épületek rögzítéséhez? Rövid magyarázat az állami BIM-szabályozáshoz."
 );
 
 const terms: readonly [string, string][] = [
@@ -75,12 +76,14 @@ export default function MiAzABimPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Mi köze ennek a felméréshez?</h2>
+          <h2 className="text-xl font-semibold text-foreground">Mi köze ennek a rögzítéshez?</h2>
           <p className="mt-3">
-            A meglévő épületek modellezése mért állapotból indul. A bejárható 3D rögzítés gyors
-            alapot ad, de nem helyettesíti a geodéziai ellenőrző mérést (31/2024. ÉKM rendelet
-            11. § (2)).
+            A meglévő épületek modellezése mért állapotból indul. A bejárható 3D rögzítést mi
+            végezzük, a 11. § (2) szerinti geodéziai ellenőrző mérést földmérő partnerünk.
           </p>
+          <div className="mt-3">
+            <BimScopeNote />
+          </div>
           <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold">
             <BimLink href="/ekm-rendelet" className="text-brand underline underline-offset-2">
               ÉKM rendelet

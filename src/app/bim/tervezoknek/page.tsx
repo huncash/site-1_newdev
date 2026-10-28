@@ -1,10 +1,11 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { bimMetadata, MAIN_ORIGIN } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/tervezoknek",
-  "Szkennelés alvállalkozóként tervezőknek | VRGO BIM",
-  "Helyszíni rögzítés tervezőirodáknak és BIM-modellezőknek. E57, OBJ, XYZ és alaprajz. Az átfutási idő és az ár az ajánlatban van."
+  "Helyszíni rögzítés tervezőknek | VRGO BIM",
+  "Helyszíni rögzítés tervezőirodáknak és BIM-modellezőknek, egy ajánlatban a geodéziai ellenőrző méréssel és az IFC-vel."
 );
 
 export default function DesignersPage() {
@@ -13,7 +14,7 @@ export default function DesignersPage() {
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Szkennelés alvállalkozóként tervezőknek és BIM-modellezőknek
+            Helyszíni rögzítés tervezőknek és BIM-modellezőknek
           </h1>
         </div>
       </section>
@@ -37,11 +38,16 @@ export default function DesignersPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Üzleti modell</h2>
           <p className="mt-2">
-            Alvállalkozói szerződés. Az ár négyzetméter-alapú vagy projektár, a végleges összeget
-            az épület jellege szerint az ajánlat tartalmazza. Díjtételt ezen az oldalon nem
-            közlünk. A szkennelés és az EIR szerinti ellenőrző mérés egy ajánlatban kérhető: ha
-            nincs saját földmérője, tudunk földmérőt ajánlani, és a mérést vele projekt alapon együtt végezni.
+            A szerződést az adott projektre kötjük. Az ár négyzetméter-alapú vagy projektár, a
+            végleges összeget az épület jellege szerint az ajánlat tartalmazza. Díjtételt ezen az
+            oldalon nem közlünk.
           </p>
+        </section>
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
+          <div className="mt-2">
+            <BimScopeNote />
+          </div>
         </section>
         <div className="flex flex-col gap-3 sm:flex-row">
           <a

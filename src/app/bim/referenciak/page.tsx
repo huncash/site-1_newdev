@@ -1,5 +1,6 @@
 import { MatterportEmbed } from "@/components/bim/MatterportEmbed";
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { bimMetadata } from "@/lib/bim-site";
 
 const TOUR = "https://my.matterport.com/show/?m=pruUjt76nQU";
@@ -9,7 +10,7 @@ const facts = [
   ["Helyszíni munka", "4 munkanap, 2024 ősz"],
   [
     "Rögzítés",
-    "Matterport rendszer; 8 külön rögzített modell egyetlen bejárható modellé összefűzve; 891 szkennelési pont",
+    "8 külön modell, egyetlen bejárható modellben egyesítve, 891 szkennelési pont",
   ],
   ["Rögzített tartalom", "Oktatási épületek belső terei, a külső homlokzatok, napelempark"],
 ] as const;
@@ -62,7 +63,7 @@ export default function ReferencesPage() {
             A kampusz különböző zónáiról 8 külön modell készült négy munkanap alatt. A rögzítés az
             üzemelő kampusz használati rendjéhez igazodva, külön ütemekben történt (belső és külső
             terek, eltérő kiindulási pontok). Ezeket egyetlen, folyamatosan bejárható digitális
-            ikerré illesztettük, a külső homlokzatokkal és a napelempark felmérésével együtt. Az
+            ikerré illesztettük, a külső homlokzatokkal és a napelempark rögzítésével együtt. Az
             összefűzött modell 891 szkennelési pontot tartalmaz.
           </p>
         </section>
@@ -79,8 +80,8 @@ export default function ReferencesPage() {
           <h2 className="text-xl font-semibold text-foreground">Kapcsolat a 31/2024. ÉKM rendelettel</h2>
           <p className="mt-2">
             A felvétel a 010 – Meglévő állapot és környezet rögzítése felhasználási esethez nyújt
-            gyors, bejárható alapot. Nem BIM-modell, és nem helyettesíti a geodéziai ellenőrző
-            mérést (11. § (2)).
+            gyors, bejárható alapot. A 11. § (2) szerinti geodéziai ellenőrző mérést földmérő
+            partnerünk végzi, az IFC-modellt modellezési partnerünk.
           </p>
         </section>
 
@@ -90,13 +91,14 @@ export default function ReferencesPage() {
           openHref={TOUR}
         />
 
+        <BimScopeNote />
         <p className="text-xs">Az adatok a VRGO projektdokumentációjából származnak.</p>
 
         <BimLink
           href="/ajanlatkeres"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
         >
-          Hasonló projektet tervez? Kérjen ajánlatot.
+          Küldje el a feladat leírását
         </BimLink>
       </div>
     </article>
