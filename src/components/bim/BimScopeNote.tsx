@@ -3,11 +3,13 @@ import { BimLink } from "@/components/bim/BimChrome";
 export function BimScopeNote() {
   return (
     <p>
-      Egy csapat, egy ajánlat: a helyszíni rögzítést mi végezzük, a 31/2024. (VIII. 22.) ÉKM
-      rendelet 11. § (2) szerinti geodéziai ellenőrző mérést és a bekötést földmérő partnerünk, az
-      IFC-modellt modellezési partnerünk.{" "}
+      A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző
+      mérést (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2)). Hivatalban eljárásra jogosult
+      földmérővel együtt dolgozva, az esethez leginkább optimális eszközparkkal alakítjuk ki a
+      workflow-t. Ha a megrendelőnek nincs saját földmérője, partneri alapon tudunk földmérőt
+      ajánlani, és a mérést vele együtt végezzük.{" "}
       <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
-        Mit vállalunk
+        Pontosság és formátumok
       </BimLink>
     </p>
   );

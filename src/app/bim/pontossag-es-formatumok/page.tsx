@@ -4,12 +4,12 @@ import { DECREE_CHECKED, NJT_URL, bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/pontossag-es-formatumok",
   "Pontosság és formátumok | VRGO BIM",
-  "Egy csapat, egy ajánlat: helyszíni rögzítés, geodéziai ellenőrző mérés és IFC. A pontossági osztályt az EIR rögzíti."
+  "Leica RTC360 és Leica BLK360 felmérés, geodéziai ellenőrző mérés és IFC. A pontossági osztályt az EIR rögzíti; ehhez választjuk a módszert."
 );
 
 const formats = [
   ["E57, OBJ, XYZ, alaprajz", "A rögzítésből átadható, ha a megrendelés tartalmazza."],
-  ["IFC, RVT, DWG", "Modellezési partnerünktől, az EIR szerint."],
+  ["IFC, RVT, DWG", "A pontfelhőből precíz modellezéssel, modellezési partnerünktől, az EIR szerint."],
   ["BCF", "Modellezési partnerünktől, a modellezési fázisban."],
 ];
 
@@ -35,17 +35,21 @@ export default function AccuracyPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
           <p className="mt-2">
-            Egy csapat, egy ajánlat: a helyszíni rögzítést mi végezzük (Matterport Pro3, Leica
-            BLK360, beltéren Pro1), a geodéziai ellenőrző mérést és a bekötést jogosultsággal
-            rendelkező földmérő partnerünk, az IFC-modellt modellezési partnerünk készíti. Igény
-            esetén drónos kollégánkat is bevonjuk; elsődlegesen drón nélkül dolgozunk, mert ez
-            gyorsabb és olcsóbb módszer.
+            A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai
+            ellenőrző mérést (11. § (2)). A helyszíni felmérést Leica RTC360 és Leica BLK360
+            eszközzel végezzük. Hivatalban eljárásra jogosult földmérővel együtt dolgozva, az
+            esethez leginkább optimális eszközparkkal alakítjuk ki a workflow-t. Ha a megrendelőnek
+            nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani, és a mérést vele
+            együtt végezzük. Az IFC-modell a pontfelhőből precíz modellezéssel készül. Igény esetén
+            drónos kollégánkat is bevonjuk; elsődlegesen drón nélkül dolgozunk, mert ez gyorsabb és
+            olcsóbb módszer.
           </p>
           <ul className="mt-4 list-disc space-y-2 pl-5">
-            <li>Rögzítés, VRGO: Pro3 bel- és kültér, gyors. BLK360 bel- és kültér, lassabb, részletes. Pro1 csak beltér, a leggyorsabb beltéri rögzítés.</li>
-            <li>Geodéziai ellenőrző mérés, bekötés, mérési jegyzőkönyv: földmérő partnerünk, az EIR szerinti pontossági osztályban (11. § (3)).</li>
+            <li>Leica RTC360: nagyteljesítményű, nagy sebességű 3D lézerszkenner bonyolult ipari környezethez, homlokzathoz és nagy belső térhez.</li>
+            <li>Leica BLK360: ultrahordozható képalkotó lézerszkenner szűkebb vagy gyors átfutású építészeti és belsőépítészeti felméréshez.</li>
+            <li>Geodéziai ellenőrző mérés, bekötés, mérési jegyzőkönyv: hivatalban eljárásra jogosult földmérővel, az EIR szerinti pontossági osztályban (11. § (3)).</li>
             <li>Pontfelhő, E57, OBJ, XYZ, alaprajz: VRGO, ha a megrendelés tartalmazza.</li>
-            <li>IFC, BCF és natív formátum: modellezési partnerünk, az EIR szerint, külön ajánlati tétel.</li>
+            <li>IFC, BCF és natív formátum: a pontfelhőből precíz modellezéssel, modellezési partnerünktől, az EIR szerint.</li>
           </ul>
           <h3 className="mt-4 font-semibold text-foreground">Első körben nem vállalt</h3>
           <p className="mt-2">
@@ -56,9 +60,10 @@ export default function AccuracyPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Ajánlati szintek</h2>
           <p className="mt-2">
-            Gyors, standard, pontos. A szintet a feladat pontossági igénye és az EIR határozza meg;
-            ezt az ajánlat előtt közösen tisztázzuk. A szintekhez tartozó eltérést és feldolgozási
-            időt csak az összehasonlító mérés után közöljük.
+            Gyors, standard, pontos. A pontossági szintet minden projektnél az EIR-hez (Employer&apos;s
+            Information Requirements) mérjük, és előre jelezzük, ha a feladathoz más módszer
+            szükséges. A szintekhez tartozó eltérést és feldolgozási időt csak az összehasonlító
+            mérés után közöljük.
           </p>
         </section>
         <section>
@@ -77,8 +82,9 @@ export default function AccuracyPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Geodéziai ellenőrző mérés</h2>
           <p className="mt-2">
-            A 11. § (2) szerinti digitális geodéziai ellenőrző mérést földmérő partnerünk végzi; a
-            rögzítéssel egy ajánlatban, egy ütemben.
+            A 11. § (2) szerinti hivatalos geodéziai ellenőrző mérést a 3D rögzítés nem helyettesíti.
+            Hivatalban eljárásra jogosult földmérővel együtt végezzük, mérési jegyzőkönyvvel. Ha a
+            megrendelőnek nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani.
           </p>
         </section>
         <section>

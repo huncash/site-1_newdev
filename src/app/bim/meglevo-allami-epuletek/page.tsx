@@ -31,8 +31,8 @@ export default function ExistingBuildingsPage() {
           <p className="mt-2">
             Meglévő épületről a dokumentáció gyakran hiányos. A rendelet hatálybalépésekor már
             állami tulajdonú, BIM nélküli létesítménynél a modellt legkésőbb 2035. december 31-ig
-            kell létrehozni (22. § (2)). A 11. § (2) szerinti ellenőrző mérést földmérő partnerünk
-            végzi, a rögzítéssel egy ajánlatban.
+            kell létrehozni (22. § (2)). A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a
+            11. § (2) szerinti hivatalos geodéziai ellenőrző mérést.
           </p>
         </section>
         <section>
@@ -47,7 +47,7 @@ export default function ExistingBuildingsPage() {
           <h2 className="text-xl font-semibold text-foreground">Felhasználási esetek</h2>
           <p className="mt-2">
             010 Meglévő állapot és környezet rögzítése · 190 Megvalósulási dokumentáció előállítása
-            · 200 Üzemeltetés és karbantartás. A 190-es eset geodéziai részét földmérő partnerünk állítja ki.
+            · 200 Üzemeltetés és karbantartás. A 190-es eset geodéziai részét hivatalban eljárásra jogosult földmérővel együtt állítjuk ki.
           </p>
         </section>
         <section>
@@ -59,8 +59,7 @@ export default function ExistingBuildingsPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Referencia</h2>
           <p className="mt-2">
-            Egyetemi kampusz szkennelt részei egy modellben, 8 külön rögzített modellből, 4
-            munkanap.{" "}
+            Meglévő állami létesítmény felmérése georeferált pontfelhővé és BIM-modellé.{" "}
             <BimLink href="/referenciak" className="font-semibold text-brand">
               Részletek
             </BimLink>

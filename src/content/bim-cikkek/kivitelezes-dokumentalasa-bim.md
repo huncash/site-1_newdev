@@ -16,7 +16,7 @@ imageLicense: CC0
 imageLicenseUrl: https://creativecommons.org/publicdomain/zero/1.0/deed.hu
 ---
 
-A 2. melléklet több felhasználási esete kapcsolódik közvetlenül a kivitelezéshez. Az EIR-ben ezeket a megbízó jelöli ki; erről az [EIR, pre-BEP, BEP cikk](/cikkek/eir-pre-bep-bep) szól. A felmérés határairól a [Matterport-cikk](/cikkek/matterport-bim-alapadat-pontossag), a kivitelezői oldalról a [kivitelezés](/kivitelezes) oldal.
+A 2. melléklet több felhasználási esete kapcsolódik közvetlenül a kivitelezéshez. Az EIR-ben ezeket a megbízó jelöli ki; erről az [EIR, pre-BEP, BEP cikk](/cikkek/eir-pre-bep-bep) szól. A felmérés határairól a [pontossági cikk](/cikkek/leica-rtc360-blk360-bim-alapadat), a kivitelezői oldalról a [kivitelezés](/kivitelezes) oldal.
 
 - **150 – Kivitelezés előrehaladásának követése**
 - **170 – Építőipari kivitelezési tevékenység teljesítésének elszámolása**
@@ -42,7 +42,7 @@ A burkolatok és álmennyezetek mögé kerülő gépészeti, villamos és vízve
 
 ## Határok
 
-A 11. § (2) szerinti geodéziai ellenőrző mérést földmérő partnerünk végzi. Az elszámolási mennyiségeket az EIR és a szerződés szabályai szerint kell igazolni; a felvétel ehhez a dokumentáció.
+A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a 11. § (2) szerinti hivatalos geodéziai ellenőrző mérést. Az elszámolási mennyiségeket az EIR és a szerződés szabályai szerint kell igazolni; a felvétel ehhez a dokumentáció.
 
 ## Mit érdemes az ajánlatban rögzíteni?
 
@@ -51,7 +51,7 @@ Felvételi gyakoriság, a rögzített területek, a pontossági elvárás, a hoz
 ## Kapcsolódó
 
 - [EIR, pre-BEP, BEP](/cikkek/eir-pre-bep-bep)
-- [Matterport BIM-alapadatként](/cikkek/matterport-bim-alapadat-pontossag)
+- [Lézerszkennelés BIM-alapadatként](/cikkek/leica-rtc360-blk360-bim-alapadat)
 - [Kivitelezés](/kivitelezes)
 
 > *A cikk általános tájékoztatás, nem jogi tanácsadás. A hivatkozott szabályozás szövege: 31/2024. (VIII. 22.) ÉKM rendelet ([njt.jog.gov.hu](https://njt.jog.gov.hu/jogszabaly/2024-31-20-8X)). Konkrét projektnél mindig az adott közbeszerzés EIR dokumentációja és a szerződés az irányadó.*

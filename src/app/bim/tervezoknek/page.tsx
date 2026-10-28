@@ -31,8 +31,9 @@ export default function DesignersPage() {
             Helyszíni rögzítés a megadott szempontok szerint. Ha az EIR tartalmazza, a
             koordináta-rendszert és a fájlnevezést az 1. melléklet 3.3–3.4 pontjai szerint vesszük
             figyelembe. Átadjuk az E57, OBJ, XYZ fájlt és az alaprajzot, ha a megrendelés
-            tartalmazza. Az átfutási időt az ajánlat rögzíti; általános napra szóló ígéretet nem
-            teszünk.
+            tartalmazza. Az IFC-modell a pontfelhőből precíz modellezéssel készül. A pontossági
+            szintet az EIR-hez mérjük, és előre jelezzük, ha a feladathoz más módszer szükséges. Az
+            átfutási időt az ajánlat rögzíti.
           </p>
         </section>
         <section>

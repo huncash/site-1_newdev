@@ -5,7 +5,7 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/kivitelezes",
   "Kivitelezés dokumentálása: előrehaladás és hibakövetés | VRGO BIM",
-  "Időbélyegzett, bejárható dokumentáció kivitelezéshez. A geodéziai ellenőrző mérést földmérő partnerünk végzi, egy ajánlatban."
+  "Időbélyegzett dokumentáció kivitelezéshez. A 11. § (2) szerinti geodéziai ellenőrző mérést a 3D rögzítés nem helyettesíti."
 );
 
 const packages = [
@@ -19,7 +19,7 @@ const packages = [
   },
   {
     title: "Hibakövetési felvétel",
-    text: "Időbélyegzett, bejárható dokumentáció a kifogásolt területekről. A jelölés kézi Mattertag. Automatikus hibafelismerést nem végzünk.",
+    text: "Időbélyegzett, bejárható dokumentáció a kifogásolt területekről. A jelölést kézzel helyezzük el a modellen.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function ConstructionPage() {
             <li>150 Kivitelezés előrehaladásának követése</li>
             <li>170 Építőipari kivitelezési tevékenység teljesítésének elszámolása — a rögzítés a dokumentáció, a mennyiségi igazolás az EIR és a szerződés szerint készül</li>
             <li>180 Hibakövetés</li>
-            <li>190 Megvalósulási dokumentáció előállítása — a geodéziai ellenőrző mérést földmérő partnerünk végzi, egy ajánlatban</li>
+            <li>190 Megvalósulási dokumentáció előállítása — a 11. § (2) szerinti ellenőrző mérést hivatalban eljárásra jogosult földmérővel együtt végezzük</li>
           </ul>
         </section>
         <section>

@@ -1,13 +1,7 @@
-import { getBimArticleMeta, isBimArticlePublished } from "@/lib/bim-articles";
-import { bimLink } from "@/lib/links";
 import { cn } from "@/lib/utils";
 
 export function CaseStudySection({ className }: { className?: string }) {
-  const study = getBimArticleMeta("esettanulmany-pannon-egyetem-zalaegerszeg");
-  const studyHref =
-    study && isBimArticlePublished(study)
-      ? bimLink("/cikkek/esettanulmany-pannon-egyetem-zalaegerszeg", "fooldal-esettanulmany")
-      : bimLink("/referenciak", "fooldal-esettanulmany");
+  const studyHref = "/megoldasok/kampusz";
 
   return (
     <section

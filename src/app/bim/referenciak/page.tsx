@@ -1,24 +1,18 @@
-import { MatterportEmbed } from "@/components/bim/MatterportEmbed";
 import { BimLink } from "@/components/bim/BimChrome";
 import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { bimMetadata } from "@/lib/bim-site";
 
-const TOUR = "https://my.matterport.com/show/?m=pruUjt76nQU";
-
-const facts = [
-  ["Helyszín", "Pannon Egyetem, Zalaegerszegi Kampusz (a kampusz területe több mint 7 hektár)"],
-  ["Helyszíni munka", "4 munkanap, 2024 ősz"],
-  [
-    "Rögzítés",
-    "8 külön modell, egyetlen bejárható modellben egyesítve, 891 szkennelési pont",
-  ],
-  ["Rögzített tartalom", "Oktatási épületek belső terei, a külső homlokzatok, napelempark"],
+const deliverables = [
+  ["Pontfelhő", "E57, OBJ és XYZ, a megrendelés szerint."],
+  ["2D állomány", "Alaprajz és metszet a feldolgozott pontfelhőből."],
+  ["BIM", "Az IFC-modell a pontfelhőből precíz modellezéssel készül, az EIR szerint."],
+  ["Geodézia", "A 11. § (2) szerinti ellenőrző mérést hivatalban eljárásra jogosult földmérővel végezzük."],
 ] as const;
 
 export const metadata = bimMetadata(
   "/referenciak",
-  "Referencia: Pannon Egyetem, Zalaegerszeg | VRGO BIM",
-  "A Pannon Egyetem zalaegerszegi kampuszának szkennelt részei egy bejárható modellben. 8 külön modell, 891 szkennelési pont, 4 munkanap, 2024 ősz."
+  "Geodéziai lézerszkennelés és BIM-pontfelhő | VRGO BIM",
+  "Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése Leica RTC360 és BLK360 eszközzel. Georeferált pontfelhő és szabványos BIM-állomány."
 );
 
 export default function ReferencesPage() {
@@ -26,73 +20,53 @@ export default function ReferencesPage() {
     <article className="bg-background">
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">Referencia</h1>
+          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
+            Geodéziai lézerszkennelés és BIM-pontfelhő
+          </h1>
+          <p className="mt-4 opacity-90">
+            Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése Leica RTC360 és
+            Leica BLK360 eszközzel.
+          </p>
         </div>
       </section>
       <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 text-sm text-muted-foreground sm:text-base">
-        <header>
-          <h2 className="text-2xl font-semibold text-foreground">
-            Pannon Egyetem, Zalaegerszegi Kampusz
-          </h2>
-          <p className="mt-2">
-            Egyetemi kampusz szkennelt részei egyetlen, összefüggő bejárható modellben.
-          </p>
-        </header>
-
-        <dl className="grid gap-4 sm:grid-cols-2">
-          {facts.map(([label, value]) => (
-            <div key={label} className="rounded-md border border-border bg-card p-4">
-              <dt className="text-xs font-semibold uppercase tracking-wider text-foreground">{label}</dt>
-              <dd className="mt-2">{value}</dd>
-            </div>
-          ))}
-        </dl>
+        <p>
+          A helyszíni adatgyűjtést a feladat pontossági igényéhez választjuk. A feldolgozás
+          georeferált pontfelhőt ad, a modellezési partnerünk ebből szabványos BIM-állományt készít.
+        </p>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Kihívás</h2>
-          <p className="mt-2">
-            A több épületből és külső területből álló kampusz egyetlen felvételi egységben nem
-            rögzíthető. A belső és a külső tereket egyetlen, összefüggő bejárásban kellett
-            elérhetővé tenni.
-          </p>
+          <h2 className="text-xl font-semibold text-foreground">Mit adunk át</h2>
+          <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+            {deliverables.map(([label, value]) => (
+              <div key={label} className="rounded-md border border-border bg-card p-4">
+                <dt className="text-xs font-semibold uppercase tracking-wider text-foreground">{label}</dt>
+                <dd className="mt-2">{value}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Megoldás</h2>
-          <p className="mt-2">
-            A kampusz különböző zónáiról 8 külön modell készült négy munkanap alatt. A rögzítés az
-            üzemelő kampusz használati rendjéhez igazodva, külön ütemekben történt (belső és külső
-            terek, eltérő kiindulási pontok). Ezeket egyetlen, folyamatosan bejárható digitális
-            ikerré illesztettük, a külső homlokzatokkal és a napelempark rögzítésével együtt. Az
-            összefűzött modell 891 szkennelési pontot tartalmaz.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Eredmény</h2>
-          <p className="mt-2">
-            Egyetlen linkről bejárható és megosztható modell, amelyben a méretek mérhetők. A
-            rögzítésből igény esetén alaprajz és E57 pontfelhő is kiadható.
-          </p>
+          <h2 className="text-xl font-semibold text-foreground">Munkafolyamat</h2>
+          <ol className="mt-4 list-decimal space-y-2 pl-5">
+            <li>A cél tisztázása: BIM, CAD, dokumentáció vagy megvalósulási állapot.</li>
+            <li>Helyszíni lézerszkennelés Leica RTC360 vagy BLK360 eszközzel, geodéziai kontrollal.</li>
+            <li>Pontfelhő regisztrációja és tisztítása, majd 2D állomány vagy BIM-modell.</li>
+            <li>Szabványos formátumok átadása a tervezőnek, a kivitelezőnek és az üzemeltetőnek.</li>
+          </ol>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-foreground">Kapcsolat a 31/2024. ÉKM rendelettel</h2>
           <p className="mt-2">
-            A felvétel a 010 – Meglévő állapot és környezet rögzítése felhasználási esethez nyújt
-            gyors, bejárható alapot. A 11. § (2) szerinti geodéziai ellenőrző mérést földmérő
-            partnerünk végzi, az IFC-modellt modellezési partnerünk.
+            A felvétel a 010 – Meglévő állapot és környezet rögzítése felhasználási esethez ad
+            mérnöki alapadatot. A 3D rögzítés nem helyettesíti a 11. § (2) szerinti hivatalos
+            geodéziai ellenőrző mérést. Az IFC-modell a pontfelhőből precíz modellezéssel készül.
           </p>
         </section>
 
-        <MatterportEmbed
-          src={`${TOUR}&ts=1`}
-          title="Pannon Egyetem Zalaegerszeg — Matterport túra"
-          openHref={TOUR}
-        />
-
         <BimScopeNote />
-        <p className="text-xs">Az adatok a VRGO projektdokumentációjából származnak.</p>
 
         <BimLink
           href="/ajanlatkeres"

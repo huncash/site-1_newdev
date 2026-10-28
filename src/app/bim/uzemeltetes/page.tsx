@@ -36,8 +36,8 @@ export default function OperationsPage() {
           <ul className="mt-2 list-disc space-y-2 pl-5">
             <li>Éves újrafelvétel. A helyszíni ablakot és a leadást az ajánlat rögzíti; decemberi felvétel és január–februári átadás kérhető.</li>
             <li>Az előző évi felvétel és az új felvétel egymás mellett megnézhető. Automatikus változáslistát nem adunk.</li>
-            <li>Mattertaggel jelölt eszközök, hibajegyek és akadálymentesítési megfigyelések. A jelölés kézi.</li>
-            <li>Hozzáférési szintek a Matterport-fiók beállításai szerint, ha a megrendelés kéri.</li>
+            <li>Kézzel jelölt eszközök, hibajegyek és akadálymentesítési megfigyelések.</li>
+            <li>Hozzáférési szintek a megrendelés szerint.</li>
           </ul>
         </section>
         <section>

@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic";
 
 export const metadata = bimMetadata(
   "/",
-  "Meglévő épületek digitális rögzítése az ÉKM BIM-rendelethez | VRGO BIM",
-  "As-built adatrögzítés a 31/2024. (VIII. 22.) ÉKM rendelethez: helyszíni rögzítés, geodéziai ellenőrző mérés és IFC-átadás egy csapattól, egy ajánlatban. Matterport-szolgáltató 2016 óta."
+  "Pontos térbeli adatok és BIM modellek | VRGO BIM",
+  "Leica BLK360 és Leica RTC360 felmérés a tervezéshez, kivitelezéshez és üzemeltetéshez: pontfelhő, BIM-modell és a feladathoz igazított mérnöki workflow."
 );
 
 const areas = [
@@ -18,10 +18,22 @@ const areas = [
   { href: "/tervezoknek", title: "Partnerség tervezőknek" },
 ] as const;
 
-const roles = [
-  ["Rögzítés", "VRGO", "Pro3 (bel- és kültér, gyors) · BLK360 (bel- és kültér, lassabb, részletes) · Pro1 (csak beltér, leggyorsabb beltéri)"],
-  ["Geodéziai ellenőrző mérés", "Földmérő partner", "Bekötés és mérési jegyzőkönyv, az EIR szerinti pontossági osztályban"],
-  ["IFC / BCF", "Modellezési partner", "IFC, BCF és natív formátum az EIR szerint"],
+const scanners = [
+  {
+    name: "Leica RTC360",
+    text: "Nagyteljesítményű, nagy sebességű 3D lézerszkenner, amely milliméter pontos adatgyűjtést biztosít bonyolult ipari környezetekben, homlokzatokon és nagy belső terekben is.",
+  },
+  {
+    name: "Leica BLK360",
+    text: "Ultrahordozható, gyors és precíz képalkotó lézerszkenner, amely ideális a rugalmas, szűkebb vagy gyors átfutást igénylő belsőépítészeti és építészeti felmérésekhez.",
+  },
+] as const;
+
+const workflow = [
+  ["Igényfelmérés és stratégia", "A projekt céljának meghatározása: BIM, CAD, vizualizáció vagy dokumentáció."],
+  ["Helyszíni adatgyűjtés", "Professzionális lézerszkennelés Leica RTC360 vagy BLK360 eszközzel, geodéziai kontrollal."],
+  ["Feldolgozás és modellalkotás", "Pontfelhők regisztrációja és tisztítása, BIM-modell Revitben vagy ArchiCAD-ben, illetve 2D alaprajz és metszet."],
+  ["Átadás", "Használatra kész, szabványos formátumok a tervezők, kivitelezők és üzemeltetők számára."],
 ] as const;
 
 export default function BimHomePage() {
@@ -32,11 +44,13 @@ export default function BimHomePage() {
       <section className="bg-section-dark text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4 py-16">
           <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Meglévő épületek digitális rögzítése az állami BIM-szabályozáshoz
+            Pontos térbeli adatok, mérnöki pontosságú BIM modellek és 3D valóságmodellek az
+            építőipar és az ipari létesítmények számára.
           </h1>
           <p className="mt-4 text-base opacity-90 sm:text-lg">
-            As-built adatrögzítés a 31/2024. (VIII. 22.) ÉKM rendelethez: helyszíni rögzítés,
-            geodéziai ellenőrző mérés és IFC-átadás egy csapattól, egy ajánlatban.
+            A legfejlettebb geodéziai mérőeszközökkel (Leica BLK360, Leica RTC360) és optimalizált
+            workflow-val támogatjuk a tervezési, kivitelezési és üzemeltetési folyamatokat a
+            felméréstől a pontfelhő feldolgozásig.
           </p>
           <p className="mt-3 text-sm opacity-80">
             Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
@@ -60,6 +74,25 @@ export default function BimHomePage() {
 
       <section className="bg-background py-12">
         <div className="mx-auto max-w-4xl px-4">
+          <h2 className="text-2xl font-semibold">Rólunk</h2>
+          <div className="mt-4 space-y-4 text-sm text-muted-foreground sm:text-base">
+            <p>
+              A mai építőipari és létesítménygazdálkodási projektek alapja a milliméter pontos
+              téradat. A vrgo.hu szakmai hátterével és több mint egy évtizedes térszkennelési
+              tapasztalatunkkal a feladat bonyolultságához és pontossági igényéhez leginkább
+              illeszkedő technológiai workflow-t választjuk meg.
+            </p>
+            <p>
+              Nem sablonmegoldásokban, hanem mérnöki precizitásban gondolkodunk: a gyors, középnagy
+              terekre optimalizált eszközöktől egészen a legnagyobb hatótávolságú, ipari kategóriás
+              lézerszkennerekig a legmegfelelőbb eszközt vetjük be a sikeres projekt érdekében.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-secondary py-12">
+        <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Miért most?</h2>
           <ul className="mt-4 list-disc space-y-3 pl-5 text-sm text-muted-foreground sm:text-base">
             <li>
@@ -74,14 +107,14 @@ export default function BimHomePage() {
             </li>
             <li>
               A tervező és a vállalkozó kivitelező szerződésszerű teljesítésének adatállománya IFC,
-              BCF és natív formátumot tartalmaz (20. §). A Matterport-export önmagában E57, OBJ, XYZ
-              és alaprajz.
+              BCF és natív formátumot tartalmaz (20. §). A helyszíni felmérésből pontfelhő és
+              alaprajz készül; az IFC-modellt modellezési partnerünk állítja elő.
             </li>
           </ul>
         </div>
       </section>
 
-      <section className="bg-secondary py-12">
+      <section className="bg-background py-12">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-2xl font-semibold">Négy terület, ahol dolgozunk</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -98,28 +131,32 @@ export default function BimHomePage() {
         </div>
       </section>
 
-      <section className="bg-background py-12">
+      <section className="bg-secondary py-12">
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Egy csapat, egy ajánlat</h2>
+          <h2 className="text-2xl font-semibold">Milyen eszközökkel dolgozunk?</h2>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Matterport-szolgáltató 2016 óta. A pontossági osztályt az EIR rögzíti; ehhez választjuk
-            a módszert.
+            A BIM-integrációhoz és a pontfelhő-alapú tervezéshez professzionális ipari szkennereket
+            alkalmazunk. A projekt céljához és követelményeihez választunk eszközt.
           </p>
           <ul className="mt-6 space-y-4 text-sm text-muted-foreground sm:text-base">
-            {roles.map(([task, who, how]) => (
-              <li key={task}>
-                <strong className="text-foreground">{task}.</strong> {who}. {how}
+            {scanners.map((item) => (
+              <li key={item.name}>
+                <strong className="text-foreground">{item.name}.</strong> {item.text}
               </li>
             ))}
           </ul>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            Igény esetén drónos kollégánkat bevonjuk; elsődlegesen drón nélkül dolgozunk, mert ez
-            gyorsabb és olcsóbb módszer.
+            A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző
+            mérést (11. § (2)). Hivatalban eljárásra jogosult földmérővel együtt dolgozva alakítjuk
+            ki a workflow-t. Ha a megrendelőnek nincs saját földmérője, partneri alapon tudunk
+            földmérőt ajánlani, és a mérést vele együtt végezzük. Az IFC-modell a pontfelhőből
+            precíz modellezéssel készül. A pontossági szintet minden projektnél az EIR-hez mérjük,
+            és előre jelezzük, ha a feladathoz más módszer szükséges.
           </p>
         </div>
       </section>
 
-      <section className="bg-secondary py-12">
+      <section className="bg-background py-12">
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Mit vállalunk</h2>
           <div className="mt-4 text-sm text-muted-foreground sm:text-base">
@@ -128,16 +165,37 @@ export default function BimHomePage() {
         </div>
       </section>
 
+      <section className="bg-secondary py-12">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="text-2xl font-semibold">Munkafolyamat</h2>
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+            Minden projekt egyedi. Szakértő csapatunk az Ön céljainak, a helyszín adottságainak és
+            a megkövetelt pontossági szintnek megfelelően választja ki az optimalizált felmérési
+            workflow-t.
+          </p>
+          <ol className="mt-6 space-y-4 text-sm text-muted-foreground sm:text-base">
+            {workflow.map(([title, text], index) => (
+              <li key={title}>
+                <strong className="text-foreground">
+                  {index + 1}. {title}.
+                </strong>{" "}
+                {text}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <section className="bg-background py-12">
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Referencia</h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            Pannon Egyetem, Zalaegerszegi Kampusz: 8 külön modell, egyetlen bejárható modellben
-            egyesítve, 891 szkennelési pont, 4 helyszíni munkanap (2024 ősz). A több mint 7 hektár a
-            kampusz területe, nem a rögzített alapterület.
+            Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése Leica RTC360 és
+            Leica BLK360 eszközzel. A helyszíni adat georeferált pontfelhővé és BIM-kompatibilis
+            modellé áll össze.
           </p>
           <BimLink href="/referenciak" className="mt-4 inline-block text-sm font-semibold text-brand">
-            Esettanulmány
+            Részletek
           </BimLink>
         </div>
       </section>

@@ -13,7 +13,7 @@ export const BIM_NAV = [
   { href: "/uzemeltetes", label: "Üzemeltetés" },
   { href: "/tervezoknek", label: "Tervezőknek" },
   { href: "/pontossag-es-formatumok", label: "Pontosság" },
-  { href: "/referenciak", label: "Referencia" },
+  { href: "/referenciak", label: "Bemutató" },
   { href: "/cikkek", label: "Cikkek" },
   { href: "/gyik", label: "GYIK" },
   { href: "/ajanlatkeres", label: "Ajánlat" },

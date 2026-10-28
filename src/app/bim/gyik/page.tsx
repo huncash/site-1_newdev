@@ -13,19 +13,19 @@ const faqs = [
   },
   {
     q: "Ki végzi a geodéziai ellenőrző mérést?",
-    a: "A 11. § (2) szerinti digitális geodéziai ellenőrző mérést földmérő partnerünk végzi, a rögzítéssel egy ajánlatban, egy ütemben, mérési jegyzőkönyvvel. A helyszíni rögzítést mi végezzük.",
+    a: "A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző mérést (11. § (2)). Hivatalban eljárásra jogosult földmérővel együtt dolgozunk. Ha a megrendelőnek nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani, és a mérést vele együtt végezzük.",
   },
   {
     q: "Tudtok IFC-t adni?",
-    a: "Igen, modellezési partnerünkkel, az EIR szerinti részletezettségben, BCF-fel és natív formátummal együtt. A helyszíni rögzítésből E57, OBJ, XYZ és alaprajz készül.",
+    a: "Igen. Az IFC-modell a pontfelhőből precíz modellezéssel készül, modellezési partnerünkkel, az EIR szerinti részletezettségben, BCF-fel és natív formátummal együtt. A helyszíni felmérésből E57, OBJ, XYZ és alaprajz készül.",
   },
   {
     q: "Mennyi idő alatt készül el?",
-    a: "A Pannon Egyetem Zalaegerszegi Kampuszán a helyszíni rögzítés 4 munkanap volt (2024 ősz, 8 külön modell, 891 szkennelési pont). Ez ennek a feladatnak az adata, nem általános vállalás. A határidőt az ajánlat rögzíti.",
+    a: "A helyszíni munkaidőt a feladat méretéhez és a megkövetelt pontossági szinthez igazítjuk. A határidőt az ajánlat rögzíti; általános napra szóló vállalást nem teszünk.",
   },
   {
     q: "Mi az az EIR?",
-    a: "Az információcsere-követelmények dokumentuma: a megbízó elvárásai a BIM-mel szemben (3. § 8. pont, 17–18. §, 1. melléklet). Az EIR megírása a Pontosság és formátumok oldalon van a nem vállalt tételek között. A kapott EIR-hez módszert és árat javaslunk.",
+    a: "Az információcsere-követelmények dokumentuma (Employer's Information Requirements): a megbízó elvárásai a BIM-mel szemben (3. § 8. pont, 17–18. §, 1. melléklet). A pontossági szintet minden projektnél az EIR-hez mérjük, és előre jelezzük, ha a feladathoz más módszer szükséges. Az EIR megírása a Pontosság és formátumok oldalon van a nem vállalt tételek között.",
   },
   {
     q: "Dolgoztok közbeszerzésben?",
@@ -37,11 +37,11 @@ const faqs = [
   },
   {
     q: "Ki végzi a bekötést, a telekalakítást és a kitűzést?",
-    a: "A geodéziai ellenőrző mérést és a bekötést földmérő partnerünk végzi, mérési jegyzőkönyvvel. A telekalakítás, a kitűzés és az ingatlan-nyilvántartási földmérés a Pontosság és formátumok oldal „Első körben nem vállalt” listáján szerepel.",
+    a: "A bekötést és a 11. § (2) szerinti ellenőrző mérést hivatalban eljárásra jogosult földmérővel együtt végezzük, mérési jegyzőkönyvvel. Ha nincs saját földmérője, partneri alapon tudunk földmérőt ajánlani. A telekalakítás, a kitűzés és az ingatlan-nyilvántartási földmérés a Pontosság és formátumok oldal „Első körben nem vállalt” listáján szerepel.",
   },
   {
-    q: "Mi történik, ha lejár a Matterport-előfizetés?",
-    a: "A hosztolt modell elérhetősége az azt tároló előfizetéshez kötött. Ezért a leadáskor a megrendelt fájlokat (E57, OBJ és a csomagban lévő további exportokat) is átadjuk. A fiók pontos feltétele a Matterport érvényes előfizetésében és a szerződésben van.",
+    q: "Mi történik, ha lejár a hosztolt modell előfizetése?",
+    a: "A hosztolt modell elérhetősége az azt tároló előfizetéshez kötött. A leadáskor a megrendelt fájlokat (E57, OBJ és a csomagban lévő további exportokat) is átadjuk. A pontos feltétel a szerződésben van.",
   },
 ];
 
