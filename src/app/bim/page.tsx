@@ -37,9 +37,9 @@ export default function BimHomePage() {
             építőipar és az ipari létesítmények számára.
           </h1>
           <p className="mt-4 text-base opacity-90 sm:text-lg">
-            Professzionális Leica mérőműszerekkel és optimalizált workflow-val támogatjuk a
+            Professzionális Leica mérőműszerekkel és optimalizált munkafolyamattal támogatjuk a
             tervezési, kivitelezési és üzemeltetési folyamatokat a felméréstől a pontfelhő
-            feldolgozásig és a BIM modellalkotásig.
+            feldolgozáson át a BIM modellalkotásig.
           </p>
           <p className="mt-3 text-sm opacity-80">
             Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.
