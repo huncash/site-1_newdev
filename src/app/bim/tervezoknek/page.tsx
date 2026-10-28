@@ -40,8 +40,7 @@ export default function DesignersPage() {
           <h2 className="text-xl font-semibold text-foreground">Üzleti modell</h2>
           <p className="mt-2">
             A szerződést az adott projektre kötjük. Az ár négyzetméter-alapú vagy projektár, a
-            végleges összeget az épület jellege szerint az ajánlat tartalmazza. Díjtételt ezen az
-            oldalon nem közlünk.
+            végleges összeget az épület jellege szerint az ajánlat tartalmazza.
           </p>
         </section>
         <section>

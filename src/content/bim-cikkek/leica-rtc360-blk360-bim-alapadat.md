@@ -1,7 +1,7 @@
 ---
 title: "Lézerszkennelés BIM-alapadatként: pontosság, E57, IFC és a geodéziai ellenőrző mérés"
 seoTitle: "Leica RTC360 és BLK360: pontosság, E57 és IFC"
-description: "A 3D rögzítés nem helyettesíti a 11. § (2) szerinti geodéziai ellenőrző mérést. Az IFC-modell a pontfelhőből precíz modellezéssel készül, az EIR-hez mérve."
+description: "A nagy tömegű 3D lézerszkennelés és a hivatalos geodéziai hitelesítés együtt adja a mérnöki pontosságot. Az IFC-modell a pontfelhőből precíz modellezéssel készül."
 date: 2026-10-24
 time: "18:00"
 author: VRGO
@@ -26,9 +26,9 @@ A helyszíni felméréshez a feladat pontossági igényéhez illeszkedő eszköz
 
 ## Amit a felmérés ad
 
-- Bejárható 3D valóságmodellt és milliméter pontos pontfelhőt a választott eszközzel.
-- E57 pontfelhőt, OBJ és XYZ exportot, valamint alaprajzot, ha a megrendelés tartalmazza.
-- BIM-modellt (Revit vagy ArchiCAD), IFC-t és BCF-et. Az IFC-modell a pontfelhőből precíz modellezéssel készül, az EIR szerint.
+- Milliméter pontos pontfelhőt Leica RTC360 vagy BLK360 eszközzel.
+- Pontfelhő exportot (E57, XYZ), valamint georeferált CAD alaprajzot és metszetet.
+- Szabványos BIM-modellt (IFC és natív formátum) pontfelhő alapú precíz modellezéssel, az EIR szerint.
 
 ## Melyik feladatot ki végzi?
 
@@ -38,12 +38,12 @@ A helyszíni felméréshez a feladat pontossági igényéhez illeszkedő eszköz
 | Falzárás előtti dokumentálás | VRGO | időbélyegzett felvétel |
 | Kivitelezési előrehaladás követése (150) | VRGO | ismételt felvételekkel |
 | Üzemeltetési digitális iker, hibajegyek (200) | VRGO | kézi jelölés, hozzáférési szintek |
-| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | Dedikált földmérő partner | a 3D rögzítés a 11. § (2) szerinti mérést nem helyettesíti; a megrendelő saját földmérőjével is együttműködünk |
+| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | Dedikált földmérő partner | szabványos georeferálás és hivatalos ellenőrző mérés; a megrendelő saját földmérőjével is együttműködünk |
 | IFC-modell | Modellezési partnerünk | a pontfelhőből precíz modellezéssel, az EIR szerint |
 
 ## Hogyan lesz belőle az EIR által kért adatállomány?
 
-1. Helyszíni adatgyűjtés Leica RTC360 vagy BLK360 eszközzel. A 11. § (2) szerinti ellenőrző mérést dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is.
+1. Helyszíni adatgyűjtés Leica RTC360 vagy BLK360 eszközzel. A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja. Amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is.
 2. Pontfelhő (E57) feldolgozása.
 3. Szakági modellezés Revitben vagy ArchiCAD-ben.
 4. IFC, BCF és natív formátum leadása az EIR szerint.
@@ -52,15 +52,13 @@ A kivitelezés közbeni rögzítésről a [dokumentálási cikk](/cikkek/kivitel
 
 ## Ajánlati szintek
 
-Gyors, standard, pontos. A pontossági szintet minden projektnél az EIR-hez (Employer's Information Requirements) mérjük, és előre jelezzük, ha a feladathoz más módszer szükséges. A szintekhez tartozó eltérést és feldolgozási időt csak az összehasonlító mérés után közöljük.
-
-## Drón
-
-Először drón nélkül dolgozunk, ez gyorsabb és olcsóbb. Ha a feladat légi felvételt kíván, drónos kollégánkat bevonjuk.
+A pontossági szintet minden projektnél szigorúan az EIR (Employer's Information Requirements) követelményeihez mérjük. Előre egyeztetett, transzparens mérnöki szintekkel és dedikált feldolgozási ütemezéssel dolgozunk.
 
 ## Geodéziai ellenőrző mérés
 
-A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző mérést (11. § (2)). Dedikált, hivatalban eljárásra jogosult földmérő partnerrel dolgozunk együtt, összehangolt, stabil workflow-val és folyamatosan bővülő közös referenciákkal. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is. Az IFC-modell a pontfelhőből precíz modellezéssel készül, az EIR-hez mért pontossági szinttel. A részletes vállalási keret a [pontosság és formátumok](/pontossag-es-formatumok) oldalon van.
+A költséghatékony, nagy tömegű 3D lézerszkennelés (volumen- és téradatgyűjtés) és a hivatalos geodéziai hitelesítés kombinációjával biztosítjuk a tökéletes mérnöki pontosságot. A 3D szkenner gyűjti össze a részletes térbeli adatokat a modellalkotáshoz, míg a dedikált, eljárásra jogosult földmérő partnerünk biztosítja a szabványos georeferálást és a hivatalos ellenőrző méréseket.
+
+A projektjeinket ezen az optimalizált, bejáratott mérnöki workflow-kon keresztül szállítjuk. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is. A részletes vállalási keret a [pontosság és formátumok](/pontossag-es-formatumok) oldalon van.
 
 ## Kapcsolódó
 

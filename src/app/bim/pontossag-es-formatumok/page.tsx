@@ -4,13 +4,13 @@ import { DECREE_CHECKED, NJT_URL, bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/pontossag-es-formatumok",
   "Pontosság és formátumok | VRGO BIM",
-  "Leica RTC360 és Leica BLK360 felmérés, geodéziai ellenőrző mérés és IFC. A pontossági osztályt az EIR rögzíti; ehhez választjuk a módszert."
+  "Pontfelhő (E57, XYZ), georeferált CAD és szabványos BIM (IFC, natív). A pontossági szintet az EIR-hez mérjük."
 );
 
 const formats = [
-  ["E57, OBJ, XYZ, alaprajz", "A rögzítésből átadható, ha a megrendelés tartalmazza."],
-  ["IFC, RVT, DWG", "A pontfelhőből precíz modellezéssel, modellezési partnerünktől, az EIR szerint."],
-  ["BCF", "Modellezési partnerünktől, a modellezési fázisban."],
+  ["Pontfelhő exportok", "E57, XYZ."],
+  ["CAD", "Georeferált alaprajzok és metszetek."],
+  ["BIM", "IFC és natív formátumok, pontfelhő alapú precíz modellezéssel."],
 ];
 
 export default function AccuracyPage() {
@@ -33,41 +33,43 @@ export default function AccuracyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
+          <h2 className="text-xl font-semibold text-foreground">Technológiai alapok</h2>
           <p className="mt-2">
-            A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai
-            ellenőrző mérést (11. § (2)). A helyszíni felmérést Leica RTC360 és Leica BLK360
-            eszközzel végezzük. Dedikált, hivatalban eljárásra jogosult földmérő partnerrel
-            dolgozunk együtt, összehangolt, stabil workflow-val és folyamatosan bővülő közös
-            referenciákkal. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan
-            együttműködünk vele is. Az IFC-modell a pontfelhőből precíz modellezéssel készül, az
-            EIR-hez mért pontossági szinttel. Igény esetén drónos kollégánkat is bevonjuk;
-            elsődlegesen drón nélkül dolgozunk, mert ez gyorsabb és olcsóbb módszer.
+            Ipari szintű 3D lézerszkennelés dedikált, csúcskategóriás eszközparkkal.
           </p>
           <ul className="mt-4 list-disc space-y-2 pl-5">
-            <li>Leica RTC360: nagyteljesítményű, nagy sebességű 3D lézerszkenner bonyolult ipari környezethez, homlokzathoz és nagy belső térhez.</li>
-            <li>Leica BLK360: ultrahordozható képalkotó lézerszkenner szűkebb vagy gyors átfutású építészeti és belsőépítészeti felméréshez.</li>
-            <li>Geodéziai ellenőrző mérés, bekötés, mérési jegyzőkönyv: dedikált, hivatalban eljárásra jogosult földmérő partnerrel, az EIR szerinti pontossági osztályban (11. § (3)). A megrendelő saját földmérőjével is együttműködünk.</li>
-            <li>Pontfelhő, E57, OBJ, XYZ, alaprajz: VRGO, ha a megrendelés tartalmazza.</li>
-            <li>IFC, BCF és natív formátum: a pontfelhőből precíz modellezéssel, modellezési partnerünktől, az EIR szerint.</li>
+            <li>Leica RTC360: nagy teljesítményű, nagy sebességű 3D lézerszkenner komplex ipari létesítmények, épülethomlokzatok és nagyméretű belső terek milliméter pontos rögzítéséhez.</li>
+            <li>Leica BLK360: ultrahordozható, gyors képalkotó lézerszkenner szűkebb terek és gyorsabb átfutású építészeti felmérések optimalizált megvalósításához.</li>
           </ul>
-          <h3 className="mt-4 font-semibold text-foreground">Első körben nem vállalt</h3>
+        </section>
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Geodéziai háttér</h2>
+          <div className="mt-2 space-y-3">
+            <p>
+              A költséghatékony, nagy tömegű 3D lézerszkennelés (volumen- és téradatgyűjtés) és a
+              hivatalos geodéziai hitelesítés kombinációjával biztosítjuk a tökéletes mérnöki
+              pontosságot. A 3D szkenner gyűjti össze a részletes térbeli adatokat a
+              modellalkotáshoz, míg a dedikált, eljárásra jogosult földmérő partnerünk biztosítja a
+              szabványos georeferálást és a hivatalos ellenőrző méréseket.
+            </p>
+            <p>
+              A projektjeinket ezen az optimalizált, bejáratott mérnöki workflow-kon keresztül
+              szállítjuk. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik,
+              készséggel és rugalmasan együttműködünk vele is.
+            </p>
+          </div>
+        </section>
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Ajánlati szintek és EIR</h2>
           <p className="mt-2">
-            Ingatlan-nyilvántartási földmérés, telekalakítás, kitűzés, geodéziai tervezés és
-            szakvélemény, a közbeszerzési EIR megírása, jogi tanácsadás.
+            A pontossági szintet minden projektnél szigorúan az EIR (Employer&apos;s Information
+            Requirements) követelményeihez mérjük. Előre egyeztetett, transzparens mérnöki szintekkel
+            és dedikált feldolgozási ütemezéssel dolgozunk.
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Ajánlati szintek</h2>
-          <p className="mt-2">
-            Gyors, standard, pontos. A pontossági szintet minden projektnél az EIR-hez (Employer&apos;s
-            Information Requirements) mérjük, és előre jelezzük, ha a feladathoz más módszer
-            szükséges. A szintekhez tartozó eltérést és feldolgozási időt csak az összehasonlító
-            mérés után közöljük.
-          </p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Formátumok</h2>
+          <h2 className="text-xl font-semibold text-foreground">Adatok és formátumok</h2>
+          <p className="mt-2">A projekthez igazodó, szabványos kimeneti formátumok.</p>
           <table className="mt-4 w-full border-collapse text-left text-sm">
             <tbody>
               {formats.map(([name, note]) => (
@@ -78,22 +80,6 @@ export default function AccuracyPage() {
               ))}
             </tbody>
           </table>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Geodéziai ellenőrző mérés</h2>
-          <p className="mt-2">
-            A 11. § (2) szerinti hivatalos geodéziai ellenőrző mérést a 3D rögzítés nem helyettesíti.
-            Dedikált, hivatalban eljárásra jogosult földmérő partnerrel dolgozunk együtt, mérési
-            jegyzőkönyvvel. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan
-            együttműködünk vele is.
-          </p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Drón</h2>
-          <p className="mt-2">
-            Először drón nélkül dolgozunk, ez gyorsabb és olcsóbb. Ha a feladat légi felvételt
-            kíván, drónos kollégánkat bevonjuk.
-          </p>
         </section>
         <p>
           Küldje el az EIR-t vagy a feladat leírását, 1 munkanapon belül módszert és árat

@@ -13,11 +13,11 @@ const faqs = [
   },
   {
     q: "Ki végzi a geodéziai ellenőrző mérést?",
-    a: "A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző mérést (11. § (2)). Dedikált, hivatalban eljárásra jogosult földmérő partnerrel dolgozunk együtt, összehangolt, stabil workflow-val. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is.",
+    a: "A költséghatékony, nagy tömegű 3D lézerszkennelés (volumen- és téradatgyűjtés) és a hivatalos geodéziai hitelesítés kombinációjával biztosítjuk a tökéletes mérnöki pontosságot. A 3D szkenner gyűjti össze a részletes térbeli adatokat a modellalkotáshoz, míg a dedikált, eljárásra jogosult földmérő partnerünk biztosítja a szabványos georeferálást és a hivatalos ellenőrző méréseket. A projektjeinket ezen az optimalizált, bejáratott mérnöki workflow-kon keresztül szállítjuk. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is.",
   },
   {
     q: "Tudtok IFC-t adni?",
-    a: "Igen. Az IFC-modell a pontfelhőből precíz modellezéssel készül, modellezési partnerünkkel, az EIR szerinti részletezettségben, BCF-fel és natív formátummal együtt. A helyszíni felmérésből E57, OBJ, XYZ és alaprajz készül.",
+    a: "Igen. A szabványos BIM-modell (IFC és natív formátum) a pontfelhőből, precíz modellezéssel készül, az EIR szerinti részletezettségben. A helyszíni felmérésből E57 és XYZ pontfelhő, valamint georeferált CAD alaprajz és metszet készül.",
   },
   {
     q: "Mennyi idő alatt készül el?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "Mi az az EIR?",
-    a: "Az információcsere-követelmények dokumentuma (Employer's Information Requirements): a megbízó elvárásai a BIM-mel szemben (3. § 8. pont, 17–18. §, 1. melléklet). A pontossági szintet minden projektnél az EIR-hez mérjük, és előre jelezzük, ha a feladathoz más módszer szükséges. Az EIR megírása a Pontosság és formátumok oldalon van a nem vállalt tételek között.",
+    a: "Az információcsere-követelmények dokumentuma (Employer's Information Requirements): a megbízó elvárásai a BIM-mel szemben (3. § 8. pont, 17–18. §, 1. melléklet). A pontossági szintet minden projektnél szigorúan az EIR követelményeihez mérjük. Előre egyeztetett, transzparens mérnöki szintekkel és dedikált feldolgozási ütemezéssel dolgozunk.",
   },
   {
     q: "Dolgoztok közbeszerzésben?",
@@ -36,12 +36,12 @@ const faqs = [
     a: "Az ajánlatkérés adatait az adatvédelmi tájékoztató szerint kezeljük. A felvételek tulajdonjogát és tárolását a szerződés rögzíti.",
   },
   {
-    q: "Ki végzi a bekötést, a telekalakítást és a kitűzést?",
-    a: "A bekötést és a 11. § (2) szerinti ellenőrző mérést dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük, mérési jegyzőkönyvvel. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is. A telekalakítás, a kitűzés és az ingatlan-nyilvántartási földmérés a Pontosság és formátumok oldal „Első körben nem vállalt” listáján szerepel.",
+    q: "Ki végzi a bekötést és a geodéziai ellenőrző mérést?",
+    a: "A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja. A projektjeinket ezen az optimalizált, bejáratott mérnöki workflow-kon keresztül szállítjuk. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is.",
   },
   {
-    q: "Mi történik, ha lejár a hosztolt modell előfizetése?",
-    a: "A hosztolt modell elérhetősége az azt tároló előfizetéshez kötött. A leadáskor a megrendelt fájlokat (E57, OBJ és a csomagban lévő további exportokat) is átadjuk. A pontos feltétel a szerződésben van.",
+    q: "Milyen állományokat adnak át?",
+    a: "Pontfelhő exportot (E57, XYZ), georeferált CAD alaprajzot és metszetet, valamint szabványos BIM-modellt (IFC és natív formátum) pontfelhő alapú precíz modellezéssel.",
   },
 ];
 

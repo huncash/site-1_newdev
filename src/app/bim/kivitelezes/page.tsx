@@ -1,11 +1,12 @@
 import { BimLink } from "@/components/bim/BimChrome";
 import { BimScopeNote } from "@/components/bim/BimScopeNote";
+import { BimUseCaseList } from "@/components/bim/BimUseCaseList";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/kivitelezes",
   "Kivitelezés dokumentálása: előrehaladás és hibakövetés | VRGO BIM",
-  "Időbélyegzett dokumentáció kivitelezéshez. A 11. § (2) szerinti geodéziai ellenőrző mérést a 3D rögzítés nem helyettesíti."
+  "Időbélyegzett dokumentáció kivitelezéshez. A téradatot 3D lézerszkenneléssel gyűjtjük, a hivatalos ellenőrző mérést dedikált földmérő partnerünk végzi."
 );
 
 const packages = [
@@ -19,7 +20,7 @@ const packages = [
   },
   {
     title: "Hibakövetési felvétel",
-    text: "Időbélyegzett, bejárható dokumentáció a kifogásolt területekről. A jelölést kézzel helyezzük el a modellen.",
+    text: "Időbélyegzett pontfelhő a kifogásolt területekről. A jelölést a modellen helyezzük el.",
   },
 ];
 
@@ -40,12 +41,20 @@ export default function ConstructionPage() {
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Felhasználási esetek</h2>
-          <ul className="mt-2 list-disc space-y-2 pl-5">
-            <li>150 Kivitelezés előrehaladásának követése</li>
-            <li>170 Építőipari kivitelezési tevékenység teljesítésének elszámolása — a rögzítés a dokumentáció, a mennyiségi igazolás az EIR és a szerződés szerint készül</li>
-            <li>180 Hibakövetés</li>
-            <li>190 Megvalósulási dokumentáció előállítása — a 11. § (2) szerinti ellenőrző mérést dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük</li>
-          </ul>
+          <BimUseCaseList
+            items={[
+              { code: "150" },
+              {
+                code: "170",
+                note: "A rögzítés a dokumentáció. A mennyiségi igazolás az EIR és a szerződés szerint készül.",
+              },
+              { code: "180" },
+              {
+                code: "190",
+                note: "A hivatalos ellenőrző mérést és a szabványos georeferálást dedikált, eljárásra jogosult földmérő partnerünk biztosítja.",
+              },
+            ]}
+          />
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Csomagok</h2>

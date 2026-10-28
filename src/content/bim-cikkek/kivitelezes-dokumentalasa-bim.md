@@ -25,7 +25,7 @@ A 2. melléklet több felhasználási esete kapcsolódik közvetlenül a kivitel
 
 ## Rendszeres rögzítés, ellenőrizhető állapot
 
-Az időbélyegzett, bejárható felvétel ugyanazt az állapotot mutatja a kivitelezőnek, a lebonyolítónak és az építtetőnek. Ez a vitás kérdéseket gyorsabban tisztázhatóvá teszi.
+Az időbélyegzett pontfelhő ugyanazt az állapotot mutatja a kivitelezőnek, a lebonyolítónak és az építtetőnek. Ez a vitás kérdéseket gyorsabban tisztázhatóvá teszi.
 
 ## A legnagyobb haszon: a falzárás előtti dokumentálás
 
@@ -40,9 +40,11 @@ A burkolatok és álmennyezetek mögé kerülő gépészeti, villamos és vízve
 | Burkolás, felületképzés előtt | ellenőrző felvétel |
 | Műszaki átadás-átvétel | záró felvétel, mentés (14. § (3) b) bb)) |
 
-## Határok
+## Szkennelés és geodézia
 
-A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a 11. § (2) szerinti hivatalos geodéziai ellenőrző mérést. Azt dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan együttműködünk vele is. Az elszámolási mennyiségeket az EIR és a szerződés szabályai szerint kell igazolni; a felvétel ehhez a dokumentáció.
+A költséghatékony, nagy tömegű 3D lézerszkennelés (volumen- és téradatgyűjtés) és a hivatalos geodéziai hitelesítés kombinációjával biztosítjuk a tökéletes mérnöki pontosságot. A 3D szkenner gyűjti össze a részletes térbeli adatokat a modellalkotáshoz, míg a dedikált, eljárásra jogosult földmérő partnerünk biztosítja a szabványos georeferálást és a hivatalos ellenőrző méréseket.
+
+A projektjeinket ezen az optimalizált, bejáratott mérnöki workflow-kon keresztül szállítjuk. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is. Az elszámolási mennyiségeket az EIR és a szerződés szabályai szerint kell igazolni; a felvétel ehhez a dokumentáció.
 
 ## Mit érdemes az ajánlatban rögzíteni?
 

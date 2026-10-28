@@ -2,15 +2,22 @@ import { BimLink } from "@/components/bim/BimChrome";
 
 export function BimScopeNote() {
   return (
-    <p>
-      A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző
-      mérést (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2)). A projektek során dedikált, hivatalban
-      eljárásra jogosult földmérő partnerrel dolgozunk együtt, összehangolt, stabil workflow-val és
-      folyamatosan bővülő közös referenciákkal. Ha a megrendelőnek saját földmérője van, készségesen
-      és rugalmasan együttműködünk vele is.{" "}
-      <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
-        Pontosság és formátumok
-      </BimLink>
-    </p>
+    <div className="space-y-3">
+      <p>
+        A költséghatékony, nagy tömegű 3D lézerszkennelés (volumen- és téradatgyűjtés) és a
+        hivatalos geodéziai hitelesítés kombinációjával biztosítjuk a tökéletes mérnöki pontosságot.
+        A 3D szkenner gyűjti össze a részletes térbeli adatokat a modellalkotáshoz, míg a dedikált,
+        eljárásra jogosult földmérő partnerünk biztosítja a szabványos georeferálást és a hivatalos
+        ellenőrző méréseket.
+      </p>
+      <p>
+        A projektjeinket ezen az optimalizált, bejáratott mérnöki workflow-kon keresztül szállítjuk.
+        Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és
+        rugalmasan együttműködünk vele is.{" "}
+        <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
+          Pontosság és formátumok
+        </BimLink>
+      </p>
+    </div>
   );
 }

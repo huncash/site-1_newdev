@@ -1,5 +1,6 @@
 import { BimLink } from "@/components/bim/BimChrome";
 import { BimScopeNote } from "@/components/bim/BimScopeNote";
+import { BimUseCaseList } from "@/components/bim/BimUseCaseList";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
@@ -32,10 +33,14 @@ export default function OperationsPage() {
           </p>
         </section>
         <section>
+          <h2 className="text-xl font-semibold text-foreground">Felhasználási esetek</h2>
+          <BimUseCaseList items={[{ code: "200" }]} />
+        </section>
+        <section>
           <h2 className="text-xl font-semibold text-foreground">Amit nyújtunk</h2>
           <ul className="mt-2 list-disc space-y-2 pl-5">
             <li>Éves újrafelvétel. A helyszíni ablakot és a leadást az ajánlat rögzíti; decemberi felvétel és január–februári átadás kérhető.</li>
-            <li>Az előző évi felvétel és az új felvétel egymás mellett megnézhető. Automatikus változáslistát nem adunk.</li>
+            <li>Az előző évi és az új pontfelhő egymás mellett áttekinthető.</li>
             <li>Kézzel jelölt eszközök, hibajegyek és akadálymentesítési megfigyelések.</li>
             <li>Hozzáférési szintek a megrendelés szerint.</li>
           </ul>
@@ -44,7 +49,7 @@ export default function OperationsPage() {
           <h2 className="text-xl font-semibold text-foreground">BIM-mentés</h2>
           <p className="mt-2">
             A 14. § (3) c) szerinti mentés formátumát és tartalmát az EIR írja elő. Az éves
-            bejárható felvételt mi készítjük; az IFC- és BCF-állományt a modellezési partnerünk adja.
+            pontfelhő-felvételt mi készítjük; az IFC-állomány pontfelhő alapú precíz modellezéssel készül.
           </p>
         </section>
         <section>

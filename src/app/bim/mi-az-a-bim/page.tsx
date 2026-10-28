@@ -78,9 +78,8 @@ export default function MiAzABimPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Mi köze ennek a rögzítéshez?</h2>
           <p className="mt-3">
-            A meglévő épületek modellezése mért állapotból indul. A 3D rögzítés gyors és
-            áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző mérést (11. § (2)).
-            Az IFC-modell a pontfelhőből precíz modellezéssel készül.
+            A meglévő épületek modellezése mért állapotból indul. Az IFC-modell a pontfelhőből,
+            precíz modellezéssel készül.
           </p>
           <div className="mt-3">
             <BimScopeNote />

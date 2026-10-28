@@ -34,9 +34,9 @@ A mentésnek tartalmaznia kell minden, a létesítmény üzemeltetése szempontj
 3. **Hozzáférések:** ki szerkeszthet, ki olvashat (jogosultsági szintek).
 4. **Ellenőrzés:** a mentés tényleges visszaállíthatóságának tesztelése.
 
-## Hol segít a bejárható digitális iker?
+## Hol segít az éves pontfelhő?
 
-Az üzemeltetési felhasználási eset (200) mellett a karbantartási hibajegyek, akadálymentesítési felmérések és a káresemények előtti állapot rögzítése is gyakori igény. Egy éves újrafelvétel jól mutatja a változásokat. *Az éves bejárható felvételt mi készítjük. A 14. § (3) c) szerinti mentés formátumát és tartalmát az EIR írja elő; az IFC- és BCF-állományt a modellezési partnerünk adja.*
+Az üzemeltetési felhasználási eset (200) mellett a karbantartási hibajegyek, akadálymentesítési felmérések és a káresemények előtti állapot rögzítése is gyakori igény. Egy éves újrafelvétel jól mutatja a változásokat. *Az éves pontfelhő-felvételt mi készítjük. A 14. § (3) c) szerinti mentés formátumát és tartalmát az EIR írja elő; az IFC-állomány pontfelhő alapú precíz modellezéssel készül.*
 
 ## Kapcsolódó
 

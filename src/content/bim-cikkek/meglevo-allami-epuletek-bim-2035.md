@@ -22,7 +22,7 @@ A rendelet 22. § (2) bekezdése szerint a rendelet hatálybalépésekor a magya
 
 - A meglévő épületekről gyakran csak hiányos, papíralapú vagy régi CAD-dokumentáció van. A modell alapja a tényleges, mért állapot.
 - Az üzemeltetésre vonatkozó szabályok (9. § (1) b)) és az éves mentési kötelezettség (14. § (3) c)) azt jelentik, hogy a modellnek *élő* adatállománynak kell lennie, nem egyszeri dokumentumnak.
-- A 2035-ös határidő a portfóliók léptékében sok épületet jelent. A rendszeres, ütemezett felmérés olcsóbb és kiszámíthatóbb, mint a határidő előtti tömeges felmérés.
+- A 2035-ös határidő a portfóliók léptékében sok épületet jelent. A rendszeres, ütemezett felmérés kiszámítható ütemet ad a határidőig.
 
 ## Hogyan lehet belefogni?
 
@@ -32,9 +32,14 @@ A rendelet 22. § (2) bekezdése szerint a rendelet hatálybalépésekor a magya
 4. **Modellezés:** a felméréshez szakági modellező csapat kell, a leadás IFC-ben történik (20. §).
 5. **Üzemeltetési adatok:** a modell már a kezdetektől hordozzon üzemeltetési szempontból hasznos információt.
 
-## Mit tud a bejárható 3D felmérés ebben a folyamatban?
+## Mit ad a pontfelhő ebben a folyamatban?
 
-A rendelet felhasználási esetei között szerepel a *010 – Meglévő állapot és környezet rögzítése* és a *190 – Megvalósulási dokumentáció előállítása*. A gyors, bejárható digitális rögzítés a felmérés első lépéseként jól használható, de a konkrét pontossági igényt mindig az adott EIR határozza meg.
+A rendelet ezeket a felhasználási eseteket rendeli a meglévő állományhoz:
+
+- **010** — Meglévő állapot és környezet rögzítése
+- **190** — Megvalósulási dokumentáció előállítása
+
+Az ipari lézerszkennelés a felmérés mérnöki alapadata. A pontossági szintet az EIR rögzíti.
 
 *Nem tudjuk, hogy az adott intézményre pontosan milyen ütemterv vonatkozik; ezt a tulajdonosi joggyakorló és a jogi tanácsadó tudja eldönteni.*
 

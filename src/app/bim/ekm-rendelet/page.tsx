@@ -1,5 +1,6 @@
 import { BimLink } from "@/components/bim/BimChrome";
 import { BimScopeNote } from "@/components/bim/BimScopeNote";
+import { BimUseCaseList } from "@/components/bim/BimUseCaseList";
 import { DECREE_CHECKED, NJT_URL, USE_CASES, bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
@@ -86,38 +87,19 @@ export default function EkmPage() {
 
         <section>
           <h2 className="text-xl font-semibold text-foreground">Felhasználási esetek</h2>
-          <p className="mt-3">2. melléklet. A 230–250 kód a magasépítési állami beruházások további esetei.</p>
-          <div className="mt-4 overflow-x-auto">
-            <table className="w-full border-collapse text-left text-sm">
-              <thead>
-                <tr className="border-b border-border text-foreground">
-                  <th className="py-2 pr-4">Kód</th>
-                  <th className="py-2">Megnevezés</th>
-                </tr>
-              </thead>
-              <tbody>
-                {general.map(([code, name]) => (
-                  <tr key={code} className="border-t border-border">
-                    <td className="py-2 pr-4 font-semibold text-foreground">{code}</td>
-                    <td className="py-2">{name}</td>
-                  </tr>
-                ))}
-                {highrise.map(([code, name]) => (
-                  <tr key={code} className="border-t border-border">
-                    <td className="py-2 pr-4 font-semibold text-foreground">{code}</td>
-                    <td className="py-2">{name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <p className="mt-3">2. melléklet.</p>
+          <BimUseCaseList items={general.map(([code]) => ({ code }))} />
+          <h3 className="mt-8 text-base font-semibold text-foreground">
+            Magasépítési állami beruházások további esetei
+          </h3>
+          <BimUseCaseList items={highrise.map(([code]) => ({ code }))} />
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-foreground">Amit ebből a VRGO vállal</h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
-            <li>Bejárható 3D rögzítés és E57, OBJ, XYZ, alaprajz, ha a megrendelés tartalmazza.</li>
-            <li>A 11. § (2) szerinti geodéziai ellenőrző mérés és bekötés: dedikált, hivatalban eljárásra jogosult földmérő partnerrel, mérési jegyzőkönyvvel. A 3D rögzítés ezt nem helyettesíti.</li>
+            <li>Ipari 3D lézerszkennelés, E57 és XYZ pontfelhő, georeferált CAD alaprajz és metszet.</li>
+            <li>A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja.</li>
             <li>IFC, BCF és natív formátum: a pontfelhőből precíz modellezéssel, az EIR szerinti részletezettségben.</li>
           </ul>
           <div className="mt-4">

@@ -21,11 +21,11 @@ const areas = [
 const scanners = [
   {
     name: "Leica RTC360",
-    text: "Nagyteljesítményű, nagy sebességű 3D lézerszkenner, amely milliméter pontos adatgyűjtést biztosít bonyolult ipari környezetekben, homlokzatokon és nagy belső terekben is.",
+    text: "Nagy teljesítményű, nagy sebességű 3D lézerszkenner komplex ipari létesítmények, épülethomlokzatok és nagyméretű belső terek milliméter pontos rögzítéséhez.",
   },
   {
     name: "Leica BLK360",
-    text: "Ultrahordozható, gyors és precíz képalkotó lézerszkenner, amely ideális a rugalmas, szűkebb vagy gyors átfutást igénylő belsőépítészeti és építészeti felmérésekhez.",
+    text: "Ultrahordozható, gyors képalkotó lézerszkenner szűkebb terek és gyorsabb átfutású építészeti felmérések optimalizált megvalósításához.",
   },
 ] as const;
 
@@ -83,9 +83,9 @@ export default function BimHomePage() {
               illeszkedő technológiai workflow-t választjuk meg.
             </p>
             <p>
-              Nem sablonmegoldásokban, hanem mérnöki precizitásban gondolkodunk: a gyors, középnagy
-              terekre optimalizált eszközöktől egészen a legnagyobb hatótávolságú, ipari kategóriás
-              lézerszkennerekig a legmegfelelőbb eszközt vetjük be a sikeres projekt érdekében.
+              Ipari szintű 3D lézerszkennelést végzünk dedikált, csúcskategóriás eszközparkkal. A
+              feladathoz a Leica RTC360 vagy a Leica BLK360 illeszkedik, a pontossági szintet az
+              EIR határozza meg.
             </p>
           </div>
         </div>
@@ -107,8 +107,9 @@ export default function BimHomePage() {
             </li>
             <li>
               A tervező és a vállalkozó kivitelező szerződésszerű teljesítésének adatállománya IFC,
-              BCF és natív formátumot tartalmaz (20. §). A helyszíni felmérésből pontfelhő és
-              alaprajz készül; az IFC-modellt modellezési partnerünk állítja elő.
+              BCF és natív formátumot tartalmaz (20. §). A helyszíni felmérésből E57 és XYZ
+              pontfelhő, georeferált CAD alaprajz és metszet készül. A BIM-modell a pontfelhőből,
+              precíz modellezéssel áll elő.
             </li>
           </ul>
         </div>
@@ -133,10 +134,9 @@ export default function BimHomePage() {
 
       <section className="bg-secondary py-12">
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Milyen eszközökkel dolgozunk?</h2>
+          <h2 className="text-2xl font-semibold">Technológiai alapok</h2>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            A BIM-integrációhoz és a pontfelhő-alapú tervezéshez professzionális ipari szkennereket
-            alkalmazunk. A projekt céljához és követelményeihez választunk eszközt.
+            Ipari szintű 3D lézerszkennelés dedikált, csúcskategóriás eszközparkkal.
           </p>
           <ul className="mt-6 space-y-4 text-sm text-muted-foreground sm:text-base">
             {scanners.map((item) => (
@@ -145,14 +145,20 @@ export default function BimHomePage() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a hivatalos geodéziai ellenőrző
-            mérést (11. § (2)). Dedikált, hivatalban eljárásra jogosult földmérő partnerrel
-            dolgozunk együtt, összehangolt, stabil workflow-val és folyamatosan bővülő közös
-            referenciákkal. Ha a megrendelőnek saját földmérője van, készségesen és rugalmasan
-            együttműködünk vele is. Az IFC-modell a pontfelhőből precíz modellezéssel készül, az
-            EIR-hez mért pontossági szinttel.
-          </p>
+          <div className="mt-4 space-y-3 text-sm text-muted-foreground sm:text-base">
+            <p>
+              A költséghatékony, nagy tömegű 3D lézerszkennelés (volumen- és téradatgyűjtés) és a
+              hivatalos geodéziai hitelesítés kombinációjával biztosítjuk a tökéletes mérnöki
+              pontosságot. A 3D szkenner gyűjti össze a részletes térbeli adatokat a
+              modellalkotáshoz, míg a dedikált, eljárásra jogosult földmérő partnerünk biztosítja a
+              szabványos georeferálást és a hivatalos ellenőrző méréseket.
+            </p>
+            <p>
+              A projektjeinket ezen az optimalizált, bejáratott mérnöki workflow-kon keresztül
+              szállítjuk. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik,
+              készséggel és rugalmasan együttműködünk vele is.
+            </p>
+          </div>
         </div>
       </section>
 

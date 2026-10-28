@@ -37,7 +37,7 @@ A rendelet 6. § (5) bekezdése az előkészítési szinteknél a vonalas létes
 
 ## Hol tudunk segíteni?
 
-Műtárgyak, gépházak, szivattyúházak, állomásépületek és egyéb zárt terek bejárható rögzítésében. Hosszú vonalas szakaszokhoz más felmérési módszer (földmérés, nagy hatótávú terepi lézerszkennelés, drón) szükséges; ilyenkor partnerrel dolgozunk.
+Műtárgyak, gépházak, szivattyúházak, állomásépületek és egyéb zárt terek pontfelhő alapú rögzítésében. Hosszú vonalas szakaszokhoz a feladatra optimalizált terepi lézerszkennelést alkalmazzuk. A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja.
 
 ## Kapcsolódó
 

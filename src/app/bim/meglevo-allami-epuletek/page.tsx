@@ -1,11 +1,12 @@
 import { BimLink } from "@/components/bim/BimChrome";
 import { BimScopeNote } from "@/components/bim/BimScopeNote";
+import { BimUseCaseList } from "@/components/bim/BimUseCaseList";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/meglevo-allami-epuletek",
   "Meglévő állami épületek rögzítése a 2035-ös határidőhöz | VRGO BIM",
-  "Bejárható digitális iker, E57 pontfelhő és IFC egy ajánlatban, a 2035. december 31-i határidőhöz."
+  "Ipari lézerszkennelés, E57 pontfelhő és IFC a 2035. december 31-i határidőhöz."
 );
 
 export default function ExistingBuildingsPage() {
@@ -14,7 +15,7 @@ export default function ExistingBuildingsPage() {
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Meglévő állami épületek: bejárható rögzítés a 2035. december 31-i határidőhöz
+            Meglévő állami épületek: pontfelhő és BIM a 2035. december 31-i határidőhöz
           </h1>
         </div>
       </section>
@@ -31,24 +32,31 @@ export default function ExistingBuildingsPage() {
           <p className="mt-2">
             Meglévő épületről a dokumentáció gyakran hiányos. A rendelet hatálybalépésekor már
             állami tulajdonú, BIM nélküli létesítménynél a modellt legkésőbb 2035. december 31-ig
-            kell létrehozni (22. § (2)). A 3D rögzítés gyors és áttekinthető, de nem helyettesíti a
-            11. § (2) szerinti hivatalos geodéziai ellenőrző mérést.
+            kell létrehozni (22. § (2)). A részletes téradatot 3D lézerszkenneléssel gyűjtjük, a
+            szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult
+            földmérő partnerünk biztosítja.
           </p>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Amit szállítunk</h2>
           <ul className="mt-2 list-disc space-y-2 pl-5">
-            <li>Bejárható modell, belső és külső terekkel, ha a helyszíni rögzítés mindkettőt magában foglalja.</li>
+            <li>Pontfelhő export (E57, XYZ) belső és külső terekről, ha a helyszíni rögzítés mindkettőt magában foglalja.</li>
             <li>E57 pontfelhő, OBJ, XYZ, méretezett alaprajz, ha a csomag tartalmazza.</li>
             <li>IFC és BCF a modellezési partnerünktől, az EIR szerinti részletezettségben.</li>
           </ul>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Felhasználási esetek</h2>
-          <p className="mt-2">
-            010 Meglévő állapot és környezet rögzítése · 190 Megvalósulási dokumentáció előállítása
-            · 200 Üzemeltetés és karbantartás. A 190-es eset geodéziai részét dedikált, hivatalban eljárásra jogosult földmérő partnerrel állítjuk ki.
-          </p>
+          <BimUseCaseList
+            items={[
+              { code: "010" },
+              {
+                code: "190",
+                note: "A szabványos georeferálást és a hivatalos ellenőrző mérést dedikált, eljárásra jogosult földmérő partnerünk biztosítja.",
+              },
+              { code: "200" },
+            ]}
+          />
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>

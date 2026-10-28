@@ -6,7 +6,7 @@ const deliverables = [
   ["Pontfelhő", "E57, OBJ és XYZ, a megrendelés szerint."],
   ["2D állomány", "Alaprajz és metszet a feldolgozott pontfelhőből."],
   ["BIM", "Az IFC-modell a pontfelhőből precíz modellezéssel készül, az EIR szerint."],
-  ["Geodézia", "A 11. § (2) szerinti ellenőrző mérést dedikált, hivatalban eljárásra jogosult földmérő partnerrel végezzük."],
+  ["Geodézia", "A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja."],
 ] as const;
 
 export const metadata = bimMetadata(
@@ -61,8 +61,7 @@ export default function ReferencesPage() {
           <h2 className="text-xl font-semibold text-foreground">Kapcsolat a 31/2024. ÉKM rendelettel</h2>
           <p className="mt-2">
             A felvétel a 010 – Meglévő állapot és környezet rögzítése felhasználási esethez ad
-            mérnöki alapadatot. A 3D rögzítés nem helyettesíti a 11. § (2) szerinti hivatalos
-            geodéziai ellenőrző mérést. Az IFC-modell a pontfelhőből precíz modellezéssel készül.
+            mérnöki alapadatot. Az IFC-modell a pontfelhőből precíz modellezéssel készül.
           </p>
         </section>
 
