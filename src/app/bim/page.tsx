@@ -39,10 +39,10 @@ export default function BimHomePage() {
           <p className="mt-4 text-base opacity-90 sm:text-lg">
             Professzionális Leica mérőműszerekkel és optimalizált workflow-val támogatjuk a
             tervezési, kivitelezési és üzemeltetési folyamatokat a felméréstől a pontfelhő
-            feldolgozásig.
+            feldolgozásig és a BIM modellalkotásig.
           </p>
           <p className="mt-3 text-sm opacity-80">
-            Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
+            Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <BimLink
@@ -217,7 +217,7 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold text-section-dark-foreground">Mondja el, melyik épületről van szó.</h2>
           <p className="mt-3 opacity-90">
-            Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
+            Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.
           </p>
           <BimLink
             href="/ajanlatkeres"

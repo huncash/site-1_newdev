@@ -161,7 +161,7 @@ export function Footer({
             <span aria-hidden="true">|</span>
             <a href={quoteHref} className="hover:underline">
               {bim
-                ? "Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk."
+                ? "Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk."
                 : "Kérdésed van? Ajánlatot kérek"}
             </a>
           </div>

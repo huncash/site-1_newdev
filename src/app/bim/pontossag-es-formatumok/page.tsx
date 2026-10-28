@@ -82,7 +82,7 @@ export default function AccuracyPage() {
           </table>
         </section>
         <p>
-          Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.{" "}
+          Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.{" "}
           <BimLink href="/ajanlatkeres" className="font-semibold text-brand">
             Ajánlatkérés
           </BimLink>

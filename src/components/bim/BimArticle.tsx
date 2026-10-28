@@ -159,7 +159,7 @@ export function BimArticleView({
 
         <div className="mt-12 rounded-md border border-border bg-muted/40 p-6 text-center">
           <p className="text-sm font-medium text-foreground">
-            Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
+            Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.
           </p>
           <BimLink
             href="/ajanlatkeres"

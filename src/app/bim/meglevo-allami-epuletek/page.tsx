@@ -77,7 +77,7 @@ export default function ExistingBuildingsPage() {
           href="/ajanlatkeres"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
         >
-          Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
+          Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.
         </BimLink>
         <p>A pilot feltételeit az ajánlatban közöljük.</p>
       </div>
