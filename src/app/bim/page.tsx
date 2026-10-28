@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const metadata = bimMetadata(
   "/",
   "Pontos térbeli adatok és BIM modellek | VRGO BIM",
-  "Leica BLK360 és Leica RTC360 felmérés a tervezéshez, kivitelezéshez és üzemeltetéshez: pontfelhő, BIM-modell és a feladathoz igazított mérnöki workflow."
+  "Professzionális Leica 3D lézerszkennelés a tervezéshez, kivitelezéshez és üzemeltetéshez: pontfelhő, BIM-modell és a feladathoz igazított mérnöki workflow."
 );
 
 const areas = [
@@ -18,20 +18,9 @@ const areas = [
   { href: "/tervezoknek", title: "Partnerség tervezőknek" },
 ] as const;
 
-const scanners = [
-  {
-    name: "Leica RTC360",
-    text: "Nagy teljesítményű, nagy sebességű 3D lézerszkenner komplex ipari létesítmények, épülethomlokzatok és nagyméretű belső terek milliméter pontos rögzítéséhez.",
-  },
-  {
-    name: "Leica BLK360",
-    text: "Ultrahordozható, gyors képalkotó lézerszkenner szűkebb terek és gyorsabb átfutású építészeti felmérések optimalizált megvalósításához.",
-  },
-] as const;
-
 const workflow = [
   ["Igényfelmérés és stratégia", "A projekt céljának meghatározása: BIM, CAD, vizualizáció vagy dokumentáció."],
-  ["Helyszíni adatgyűjtés", "Professzionális lézerszkennelés Leica RTC360 vagy BLK360 eszközzel, geodéziai kontrollal."],
+  ["Helyszíni adatgyűjtés", "Professzionális lézerszkennelés Leica 3D lézerszkenner eszközökkel, geodéziai kontrollal."],
   ["Feldolgozás és modellalkotás", "Pontfelhők regisztrációja és tisztítása, BIM-modell Revitben vagy ArchiCAD-ben, illetve 2D alaprajz és metszet."],
   ["Átadás", "Használatra kész, szabványos formátumok a tervezők, kivitelezők és üzemeltetők számára."],
 ] as const;
@@ -48,9 +37,9 @@ export default function BimHomePage() {
             építőipar és az ipari létesítmények számára.
           </h1>
           <p className="mt-4 text-base opacity-90 sm:text-lg">
-            A legfejlettebb geodéziai mérőeszközökkel (Leica BLK360, Leica RTC360) és optimalizált
-            workflow-val támogatjuk a tervezési, kivitelezési és üzemeltetési folyamatokat a
-            felméréstől a pontfelhő feldolgozásig.
+            Professzionális Leica mérőműszerekkel és optimalizált workflow-val támogatjuk a
+            tervezési, kivitelezési és üzemeltetési folyamatokat a felméréstől a pontfelhő
+            feldolgozásig.
           </p>
           <p className="mt-3 text-sm opacity-80">
             Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
@@ -83,9 +72,8 @@ export default function BimHomePage() {
               illeszkedő technológiai workflow-t választjuk meg.
             </p>
             <p>
-              Ipari szintű 3D lézerszkennelést végzünk dedikált, csúcskategóriás eszközparkkal. A
-              feladathoz a Leica RTC360 vagy a Leica BLK360 illeszkedik, a pontossági szintet az
-              EIR határozza meg.
+              Ipari szintű 3D lézerszkennelést végzünk professzionális Leica 3D lézerszkenner
+              eszközökkel. A pontossági szintet az EIR határozza meg.
             </p>
           </div>
         </div>
@@ -136,15 +124,10 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Technológiai alapok</h2>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Ipari szintű 3D lézerszkennelés dedikált, csúcskategóriás eszközparkkal.
+            Ipari szintű 3D lézerszkennelés professzionális Leica 3D lézerszkenner eszközökkel:
+            komplex ipari létesítmények, épülethomlokzatok, nagyméretű belső terek és szűkebb
+            építészeti felmérések.
           </p>
-          <ul className="mt-6 space-y-4 text-sm text-muted-foreground sm:text-base">
-            {scanners.map((item) => (
-              <li key={item.name}>
-                <strong className="text-foreground">{item.name}.</strong> {item.text}
-              </li>
-            ))}
-          </ul>
           <div className="mt-4 space-y-3 text-sm text-muted-foreground sm:text-base">
             <p>
               A költséghatékony, nagy tömegű 3D lézerszkennelés (volumen- és téradatgyűjtés) és a
@@ -196,9 +179,9 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Referencia</h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése Leica RTC360 és
-            Leica BLK360 eszközzel. A helyszíni adat georeferált pontfelhővé és BIM-kompatibilis
-            modellé áll össze.
+            Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése professzionális
+            Leica 3D lézerszkenner eszközökkel. A helyszíni adat georeferált pontfelhővé és
+            BIM-kompatibilis modellé áll össze.
           </p>
           <BimLink href="/referenciak" className="mt-4 inline-block text-sm font-semibold text-brand">
             Részletek
@@ -233,12 +216,14 @@ export default function BimHomePage() {
       <section className="bg-section-dark py-12 text-section-dark-foreground">
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold text-section-dark-foreground">Mondja el, melyik épületről van szó.</h2>
-          <p className="mt-3 opacity-90">1 munkanapon belül módszert és árat javaslunk.</p>
+          <p className="mt-3 opacity-90">
+            Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
+          </p>
           <BimLink
             href="/ajanlatkeres"
             className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
           >
-            Űrlap
+            Ajánlatot kérek
           </BimLink>
         </div>
       </section>

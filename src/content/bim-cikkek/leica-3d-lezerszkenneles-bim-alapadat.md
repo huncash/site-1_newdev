@@ -1,12 +1,12 @@
 ---
 title: "Lézerszkennelés BIM-alapadatként: pontosság, E57, IFC és a geodéziai ellenőrző mérés"
-seoTitle: "Leica RTC360 és BLK360: pontosság, E57 és IFC"
+seoTitle: "Leica 3D lézerszkennelés: pontosság, E57 és IFC"
 description: "A nagy tömegű 3D lézerszkennelés és a hivatalos geodéziai hitelesítés együtt adja a mérnöki pontosságot. Az IFC-modell a pontfelhőből precíz modellezéssel készül."
 date: 2026-10-24
 time: "18:00"
 author: VRGO
 category: "Tervezők, BIM-esek"
-keywords: "Leica RTC360, Leica BLK360, E57, IFC, geodéziai ellenőrző mérés"
+keywords: "Leica 3D lézerszkennelés, E57, IFC, geodéziai ellenőrző mérés"
 image: /blog/bim/scan-to-bim-gepeszet.jpg
 imageAlt: "Gépészeti helyiség pontfelhőből készült háromdimenziós modellje."
 imageCaption: "Pontfelhőből modellezett gépészeti helyiség. Illusztráció egy egyetemi kutatási példáról, nem magyar közbeszerzési projektről."
@@ -16,7 +16,7 @@ imageLicense: CC BY-SA 2.0
 imageLicenseUrl: https://creativecommons.org/licenses/by-sa/2.0
 ---
 
-A helyszíni felméréshez a feladat pontossági igényéhez illeszkedő eszközt választunk: Leica RTC360-at nagy terekhez és ipari környezethez, Leica BLK360-at gyorsabb, szűkebb építészeti felméréshez. Az állami BIM-projekteknél a pontossági osztályt az EIR rögzíti. A meglévő épületek 2035-ös határidejéről a [2. cikk](/cikkek/meglevo-allami-epuletek-bim-2035), az EIR pontossági szintjéről a [3. cikk](/cikkek/eir-pre-bep-bep) szól. A gyakorlati lépések: [pontosság és formátumok](/pontossag-es-formatumok).
+A helyszíni felmérés professzionális Leica 3D lézerszkenner eszközökkel készül, a feladat pontossági igényéhez illesztve. Az állami BIM-projekteknél a pontossági osztályt az EIR rögzíti. A meglévő épületek 2035-ös határidejéről a [2. cikk](/cikkek/meglevo-allami-epuletek-bim-2035), az EIR pontossági szintjéről a [3. cikk](/cikkek/eir-pre-bep-bep) szól. A gyakorlati lépések: [pontosság és formátumok](/pontossag-es-formatumok).
 
 ## Amit a rendelet kér
 
@@ -26,7 +26,7 @@ A helyszíni felméréshez a feladat pontossági igényéhez illeszkedő eszköz
 
 ## Amit a felmérés ad
 
-- Milliméter pontos pontfelhőt Leica RTC360 vagy BLK360 eszközzel.
+- Milliméter pontos pontfelhőt professzionális Leica 3D lézerszkenner eszközökkel.
 - Pontfelhő exportot (E57, XYZ), valamint georeferált CAD alaprajzot és metszetet.
 - Szabványos BIM-modellt (IFC és natív formátum) pontfelhő alapú precíz modellezéssel, az EIR szerint.
 
@@ -43,7 +43,7 @@ A helyszíni felméréshez a feladat pontossági igényéhez illeszkedő eszköz
 
 ## Hogyan lesz belőle az EIR által kért adatállomány?
 
-1. Helyszíni adatgyűjtés Leica RTC360 vagy BLK360 eszközzel. A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja. Amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is.
+1. Helyszíni adatgyűjtés professzionális Leica 3D lézerszkenner eszközökkel. A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja. Amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is.
 2. Pontfelhő (E57) feldolgozása.
 3. Szakági modellezés Revitben vagy ArchiCAD-ben.
 4. IFC, BCF és natív formátum leadása az EIR szerint.

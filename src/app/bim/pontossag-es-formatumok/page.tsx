@@ -35,11 +35,11 @@ export default function AccuracyPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Technológiai alapok</h2>
           <p className="mt-2">
-            Ipari szintű 3D lézerszkennelés dedikált, csúcskategóriás eszközparkkal.
+            Ipari szintű 3D lézerszkennelés professzionális Leica 3D lézerszkenner eszközökkel.
           </p>
           <ul className="mt-4 list-disc space-y-2 pl-5">
-            <li>Leica RTC360: nagy teljesítményű, nagy sebességű 3D lézerszkenner komplex ipari létesítmények, épülethomlokzatok és nagyméretű belső terek milliméter pontos rögzítéséhez.</li>
-            <li>Leica BLK360: ultrahordozható, gyors képalkotó lézerszkenner szűkebb terek és gyorsabb átfutású építészeti felmérések optimalizált megvalósításához.</li>
+            <li>Komplex ipari létesítmények, épülethomlokzatok és nagyméretű belső terek milliméter pontos rögzítése.</li>
+            <li>Szűkebb terek és gyorsabb átfutású építészeti felmérések ugyanazzal az eszközparkkal.</li>
           </ul>
         </section>
         <section>
@@ -82,8 +82,7 @@ export default function AccuracyPage() {
           </table>
         </section>
         <p>
-          Küldje el az EIR-t vagy a feladat leírását, 1 munkanapon belül módszert és árat
-          javaslunk.{" "}
+          Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.{" "}
           <BimLink href="/ajanlatkeres" className="font-semibold text-brand">
             Ajánlatkérés
           </BimLink>

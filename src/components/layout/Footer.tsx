@@ -160,7 +160,9 @@ export function Footer({
             </a>
             <span aria-hidden="true">|</span>
             <a href={quoteHref} className="hover:underline">
-              Kérdésed van? Ajánlatot kérek
+              {bim
+                ? "Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk."
+                : "Kérdésed van? Ajánlatot kérek"}
             </a>
           </div>
           <div className="flex items-center gap-3">

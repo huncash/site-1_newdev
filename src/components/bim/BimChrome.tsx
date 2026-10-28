@@ -58,7 +58,11 @@ export function BimChrome({
         quietLink={{ label: "← vrgo.hu", href: MAIN_ORIGIN, newTab: true }}
       />
       <div className="flex-1">{children}</div>
-      <Footer variant="bim" linkPrefix={linkPrefix} />
+      <Footer
+        variant="bim"
+        linkPrefix={linkPrefix}
+        description="Professzionális Leica 3D lézerszkennelés, pontfelhő és BIM-modell az építőipar és az ipari létesítmények számára."
+      />
     </PrefixContext.Provider>
   );
 }

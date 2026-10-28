@@ -58,9 +58,9 @@ export default function DesignersPage() {
           </a>
           <BimLink
             href="/ajanlatkeres"
-            className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
+            className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-center text-sm font-semibold text-brand-foreground"
           >
-            Beszélgessünk egy közös pilotról
+            Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
           </BimLink>
         </div>
         <p className="text-xs">A partnerbelépés a vrgo.hu oldalon van.</p>

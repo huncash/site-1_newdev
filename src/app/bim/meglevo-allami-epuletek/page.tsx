@@ -75,11 +75,11 @@ export default function ExistingBuildingsPage() {
         </section>
         <BimLink
           href="/ajanlatkeres"
-          className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
+          className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
         >
-          Küldje el a feladat leírását
+          Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
         </BimLink>
-        <p>A pilot feltételeit az ajánlatban közöljük. Százalékos kedvezményt ezen az oldalon nem hirdetünk.</p>
+        <p>A pilot feltételeit az ajánlatban közöljük.</p>
       </div>
     </article>
   );

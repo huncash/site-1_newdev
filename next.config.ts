@@ -15,12 +15,22 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/cikkek/matterport-bim-alapadat-pontossag",
-        destination: "/cikkek/leica-rtc360-blk360-bim-alapadat",
+        destination: "/cikkek/leica-3d-lezerszkenneles-bim-alapadat",
         permanent: true,
       },
       {
         source: "/bim/cikkek/matterport-bim-alapadat-pontossag",
-        destination: "/bim/cikkek/leica-rtc360-blk360-bim-alapadat",
+        destination: "/bim/cikkek/leica-3d-lezerszkenneles-bim-alapadat",
+        permanent: true,
+      },
+      {
+        source: "/cikkek/leica-rtc360-blk360-bim-alapadat",
+        destination: "/cikkek/leica-3d-lezerszkenneles-bim-alapadat",
+        permanent: true,
+      },
+      {
+        source: "/bim/cikkek/leica-rtc360-blk360-bim-alapadat",
+        destination: "/bim/cikkek/leica-3d-lezerszkenneles-bim-alapadat",
         permanent: true,
       },
       {

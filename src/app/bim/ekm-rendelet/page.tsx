@@ -107,9 +107,9 @@ export default function EkmPage() {
           </div>
           <BimLink
             href="/ajanlatkeres"
-            className="mt-6 inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
+            className="mt-6 inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
           >
-            Küldje el az EIR-t
+            Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
           </BimLink>
         </section>
 

@@ -28,7 +28,7 @@ A rendelet 22. § (2) bekezdése szerint a rendelet hatálybalépésekor a magya
 
 1. **Leltár:** mely létesítmények nem rendelkeznek BIM-mel, és melyek a legfontosabbak (kockázat, felújítási terv, üzemeltetési költség).
 2. **Prioritás:** a közelgő felújítások és az engedélyköteles átépítések első helyre kerülnek, mert ott a BIM úgyis szükséges (9. § (1) a)).
-3. **Mérési módszer kiválasztása:** az EIR-ben megadott részletezettségi és pontossági szint dönti el, mely felmérési technológia elegendő (lásd a [4. cikket](/cikkek/leica-rtc360-blk360-bim-alapadat) a Leica RTC360 és BLK360 workflow-ról).
+3. **Mérési módszer kiválasztása:** az EIR-ben megadott részletezettségi és pontossági szint dönti el, mely felmérési technológia elegendő (lásd a [4. cikket](/cikkek/leica-3d-lezerszkenneles-bim-alapadat) a professzionális Leica lézerszkennelésről).
 4. **Modellezés:** a felméréshez szakági modellező csapat kell, a leadás IFC-ben történik (20. §).
 5. **Üzemeltetési adatok:** a modell már a kezdetektől hordozzon üzemeltetési szempontból hasznos információt.
 
@@ -46,7 +46,7 @@ Az ipari lézerszkennelés a felmérés mérnöki alapadata. A pontossági szint
 ## Kapcsolódó
 
 - [Mit ír elő a 31/2024. ÉKM rendelet?](/cikkek/ekm-rendelet-osszefoglalo)
-- [Lézerszkennelés BIM-alapadatként](/cikkek/leica-rtc360-blk360-bim-alapadat)
+- [Lézerszkennelés BIM-alapadatként](/cikkek/leica-3d-lezerszkenneles-bim-alapadat)
 - [Meglévő állami épületek](/meglevo-allami-epuletek)
 
 > *A cikk általános tájékoztatás, nem jogi tanácsadás. A hivatkozott szabályozás szövege: 31/2024. (VIII. 22.) ÉKM rendelet ([njt.jog.gov.hu](https://njt.jog.gov.hu/jogszabaly/2024-31-20-8X)). Konkrét projektnél mindig az adott közbeszerzés EIR dokumentációja és a szerződés az irányadó.*

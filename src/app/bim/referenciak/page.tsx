@@ -12,7 +12,7 @@ const deliverables = [
 export const metadata = bimMetadata(
   "/referenciak",
   "Geodéziai lézerszkennelés és BIM-pontfelhő | VRGO BIM",
-  "Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése Leica RTC360 és BLK360 eszközzel. Georeferált pontfelhő és szabványos BIM-állomány."
+  "Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése professzionális Leica 3D lézerszkenner eszközökkel. Georeferált pontfelhő és szabványos BIM-állomány."
 );
 
 export default function ReferencesPage() {
@@ -24,8 +24,8 @@ export default function ReferencesPage() {
             Geodéziai lézerszkennelés és BIM-pontfelhő
           </h1>
           <p className="mt-4 opacity-90">
-            Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése Leica RTC360 és
-            Leica BLK360 eszközzel.
+            Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése professzionális
+            Leica 3D lézerszkenner eszközökkel.
           </p>
         </div>
       </section>
@@ -51,7 +51,7 @@ export default function ReferencesPage() {
           <h2 className="text-xl font-semibold text-foreground">Munkafolyamat</h2>
           <ol className="mt-4 list-decimal space-y-2 pl-5">
             <li>A cél tisztázása: BIM, CAD, dokumentáció vagy megvalósulási állapot.</li>
-            <li>Helyszíni lézerszkennelés Leica RTC360 vagy BLK360 eszközzel, geodéziai kontrollal.</li>
+            <li>Helyszíni lézerszkennelés professzionális Leica 3D lézerszkenner eszközökkel, geodéziai kontrollal.</li>
             <li>Pontfelhő regisztrációja és tisztítása, majd 2D állomány vagy BIM-modell.</li>
             <li>Szabványos formátumok átadása a tervezőnek, a kivitelezőnek és az üzemeltetőnek.</li>
           </ol>
@@ -69,9 +69,9 @@ export default function ReferencesPage() {
 
         <BimLink
           href="/ajanlatkeres"
-          className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
+          className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
         >
-          Küldje el a feladat leírását
+          Küldje el a feladat leírását vagy az EIR-t, módszert és árat javasolunk.
         </BimLink>
       </div>
     </article>
