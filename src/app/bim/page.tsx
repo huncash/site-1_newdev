@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic";
 
 export const metadata = bimMetadata(
   "/",
-  "Pontos térbeli adatok és BIM modellek | VRGO BIM",
-  "Professzionális Leica 3D lézerszkennelés a tervezéshez, kivitelezéshez és üzemeltetéshez: pontfelhő, BIM-modell és a feladathoz igazított mérnöki workflow."
+  "Milliméter pontos 3D téradatok és Scan-to-BIM | VRGO BIM",
+  "Hitelesített Scan-to-BIM modellalkotás szigorú EIR-tűréssel és hivatalos EOV georeferálással, a terepi méréstől a BIM modellalkotásig."
 );
 
 const areas = [
@@ -33,13 +33,15 @@ export default function BimHomePage() {
       <section className="bg-section-dark text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4 py-16">
           <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Pontos térbeli adatok, mérnöki pontosságú BIM modellek és 3D valóságmodellek az
-            építőipar és az ipari létesítmények számára.
+            Milliméter pontos 3D téradatok és hitelesített Scan-to-BIM modellalkotás építőipari és
+            ipari létesítmények számára.
           </h1>
           <p className="mt-4 text-base opacity-90 sm:text-lg">
-            Professzionális Leica mérőműszerekkel és optimalizált munkafolyamattal támogatjuk a
-            tervezési, kivitelezési és üzemeltetési folyamatokat a felméréstől a pontfelhő
-            feldolgozáson át a BIM modellalkotásig.
+            A tervezési, kivitelezési és üzemeltetési folyamatokat szigorú tűrési határok (EIR
+            konformitás) és szabványos geodéziai ellenőrző mérések mellett támogatjuk. A nagytömegű
+            3D lézerszkennelés és a hivatalos EOV georeferálás kombinációjával biztosítjuk, hogy a
+            pontfelhő ne csak vizuális illúzió, hanem jogilag és metrikailag is hiteles mérnöki
+            alapanyag legyen.
           </p>
           <p className="mt-3 text-sm opacity-80">
             Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.
@@ -69,7 +71,7 @@ export default function BimHomePage() {
               A mai építőipari és létesítménygazdálkodási projektek alapja a milliméter pontos
               téradat. A vrgo.hu szakmai hátterével és több mint egy évtizedes térszkennelési
               tapasztalatunkkal a feladat bonyolultságához és pontossági igényéhez leginkább
-              illeszkedő technológiai workflow-t választjuk meg.
+              illeszkedő munkafolyamatot választjuk meg.
             </p>
             <p>
               Ipari szintű 3D lézerszkennelést végzünk professzionális Leica 3D lézerszkenner
@@ -128,20 +130,6 @@ export default function BimHomePage() {
             komplex ipari létesítmények, épülethomlokzatok, nagyméretű belső terek és szűkebb
             építészeti felmérések.
           </p>
-          <div className="mt-4 space-y-3 text-sm text-muted-foreground sm:text-base">
-            <p>
-              A költséghatékony, nagy tömegű 3D lézerszkennelés (volumen- és téradatgyűjtés) és a
-              hivatalos geodéziai hitelesítés kombinációjával biztosítjuk a tökéletes mérnöki
-              pontosságot. A 3D szkenner gyűjti össze a részletes térbeli adatokat a
-              modellalkotáshoz, míg a dedikált, eljárásra jogosult földmérő partnerünk biztosítja a
-              szabványos georeferálást és a hivatalos ellenőrző méréseket.
-            </p>
-            <p>
-              A projektjeinket ezen az optimalizált, bejáratott mérnöki workflow-kon keresztül
-              szállítjuk. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik,
-              készséggel és rugalmasan együttműködünk vele is.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -158,9 +146,11 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Munkafolyamat</h2>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Minden projekt egyedi. Szakértő csapatunk az Ön céljainak, a helyszín adottságainak és
-            a megkövetelt pontossági szintnek megfelelően választja ki az optimalizált felmérési
-            workflow-t.
+            Optimalizált munkafolyamatunk ötvözi a gyors, nagy pontosságú lézerszkennelést a jogosult
+            földmérő partnerünk által végzett hivatalos alappont-meghatározással és bekötéssel
+            (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2) szerinti megfelelés). A terepi méréstől a
+            pontfelhő feldolgozáson át a szabványos BIM modellalkotásig egy kézből szállítjuk az
+            eredményt.
           </p>
           <ol className="mt-6 space-y-4 text-sm text-muted-foreground sm:text-base">
             {workflow.map(([title, text], index) => (
