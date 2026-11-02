@@ -17,24 +17,30 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isBim = (await headers()).get("x-vrgo-site") === "bim";
+  const headerList = await headers();
+  const isBim = headerList.get("x-vrgo-site") === "bim";
+  const isListing = headerList.get("x-listing-site") === "1";
 
   return (
     <html lang="hu">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <meta name="theme-color" content="#6cb9f1" />
+        {isListing ? null : (
+          <>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+              rel="stylesheet"
+            />
+          </>
+        )}
+        <meta name="theme-color" content={isListing ? "#14221b" : "#6cb9f1"} />
       </head>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
-        {isBim ? null : <Navbar />}
+        {isBim || isListing ? null : <Navbar />}
         <main className="flex-1">{children}</main>
-        {isBim ? null : <Footer />}
-        <ConsentBanner />
+        {isBim || isListing ? null : <Footer />}
+        {isListing ? null : <ConsentBanner />}
       </body>
     </html>
   );
