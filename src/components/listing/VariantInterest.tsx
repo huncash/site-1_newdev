@@ -1,12 +1,7 @@
 import Link from "next/link";
 
 import { EnquiryForm } from "@/components/listing/EnquiryForm";
-import {
-  ListingPhoneProvider,
-  ListingSellerCard,
-  ListingSellerStrip,
-  ListingStickyCta,
-} from "@/components/listing/ListingContact";
+import { ListingPhoneProvider, ListingSellerCard } from "@/components/listing/ListingContact";
 import { VARIANT_OFFER, type ListingVariant } from "@/lib/listing";
 
 const GDPR =
@@ -19,7 +14,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
 
   return (
     <ListingPhoneProvider>
-      <div className="min-h-screen bg-[#efe8db] pb-24 text-[#241f18]">
+      <div className="min-h-screen bg-[#efe8db] text-[#241f18]">
         <header className="border-b border-[#d4c9b5] bg-[#efe8db]/95">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
             <p className="text-sm font-semibold tracking-wide">Kismaros · Börzsönyliget</p>
@@ -27,9 +22,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
               Vissza a hirdetéshez
             </Link>
           </div>
-          <ListingSellerStrip />
         </header>
-        <ListingStickyCta />
 
         <main className="mx-auto max-w-6xl px-4 py-12">
           <p className="text-sm uppercase tracking-[0.16em] text-[#6b6154]">Érdeklődés · {selected.short}</p>
@@ -136,7 +129,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
               <h2 className="text-2xl font-medium">Kapcsolatfelvétel</h2>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
                 Az űrlap a {selected.short.toLowerCase()} érdeklődést jelöli. Vagy jelenítse meg a telefonszámot
-                spamvédelemmel.
+                spamvédelemmel, illetve írjon emailt.
               </p>
               <ListingSellerCard />
             </div>

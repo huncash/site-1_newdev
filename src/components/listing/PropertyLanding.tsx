@@ -6,10 +6,9 @@ import { useEffect, useState, type ReactNode } from "react";
 
 import { EnquiryForm } from "@/components/listing/EnquiryForm";
 import {
+  ListingMobileContact,
   ListingPhoneProvider,
   ListingSellerCard,
-  ListingSellerStrip,
-  ListingStickyCta,
   trackListingCta,
 } from "@/components/listing/ListingContact";
 import { HERO_IMAGE, PHOTO_STATE, PHOTOS, TOUR_URL, UTILITY_PHOTOS, VARIANT_OFFER } from "@/lib/listing";
@@ -95,7 +94,7 @@ export function PropertyLanding() {
 
   return (
     <ListingPhoneProvider>
-    <div className="bg-[#efe8db] pb-24 text-[#241f18]">
+    <div className="bg-[#efe8db] text-[#241f18]">
       <header className="sticky top-0 z-40 border-b border-[#d4c9b5] bg-[#efe8db]/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
           <p className="text-sm font-semibold tracking-wide">Kismaros · Börzsönyliget</p>
@@ -148,12 +147,10 @@ export function PropertyLanding() {
                 </li>
               ))}
             </ul>
+            <ListingMobileContact onNavigate={closeMenu} />
           </nav>
         ) : null}
-        <ListingSellerStrip />
       </header>
-
-      <ListingStickyCta />
 
       <section className="relative min-h-[78vh] overflow-hidden bg-[#0f2e1f] text-white">
         <img
@@ -339,9 +336,12 @@ export function PropertyLanding() {
           </MapFrame>
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
-              <h3 className="text-lg font-medium">Utolsó állandóan lakott ingatlan a soron</h3>
+              <h3 className="text-lg font-medium">Ideális egyensúly a szomszédságban</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                A Hörcsög utcában ezen az oldalon ez az ingatlan az utolsó állandóan lakott ház. A szomszédos telkek tulajdonosai csak évente néhány alkalommal, főleg nyáron tartózkodnak kint, így a telek kimagasló privát szférát és csendet biztosít.
+                A Hörcsög utcában ezen az oldalon ez az ingatlan kiváló elhelyezkedésű: az előtte lévő szomszédban
+                állandó lakó él, míg a telek után lévő további két ingatlan tulajdonosai tartózkodnak csak kint évente
+                néhány alkalommal, főleg nyáron. Ez a felállás ideális egyensúlyt teremt: biztosítja a nyugalmat és a
+                privát szférát, nem jelent izolációt.
               </p>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
@@ -643,7 +643,7 @@ export function PropertyLanding() {
             <p className="mt-3 text-lg font-medium text-[#e8b84a]">Keresem jövőbeni szomszédomat.</p>
             <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/90 sm:text-base">
               Általános kérdéshez ez az űrlap. Ha már tudja, melyik utat nézi, válassza az A vagy B gombot. Közvetlen
-              híváshoz / WhatsApphoz a szám megjelenítése után (spamvédelem).
+              híváshoz a szám megjelenítése után (spamvédelem), vagy küldjön emailt.
             </p>
             <ListingSellerCard tone="dark" />
           </div>

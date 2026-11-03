@@ -112,7 +112,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         Beküldéssel elfogadod, hogy az adataidat csak az érdeklődés miatti kapcsolattartásra használom (lásd az oldal alján).
       </p>
       {status === "invalid" ? <p className="text-sm text-[#8a3a1a]">Kérlek, töltsd ki a nevet, az elérhetőséget és az üzenetet.</p> : null}
-      {status === "error" ? <p className="text-sm text-[#8a3a1a]">Az üzenetet most nem sikerült elküldeni. Próbáld meg később, vagy hívj / írj WhatsAppra.</p> : null}
+      {status === "error" ? <p className="text-sm text-[#8a3a1a]">Az üzenetet most nem sikerült elküldeni. Próbáld meg később, vagy hívj / írj emailt.</p> : null}
       <button
         type="submit"
         disabled={status === "sending"}

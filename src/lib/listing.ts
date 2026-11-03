@@ -14,15 +14,11 @@ export const HERO_IMAGE = {
 
 /**
  * Személyes kapcsolat — a telefonszám NEM itt van plain textben.
- * Összerakás: ListingContact (csak „Nem vagyok robot” / megjelenítés után).
- * Fotó: public/hirdetes/elado-portre.jpg
+ * Összerakás: ListingContact (csak megjelenítés után). Nincs avatar / WhatsApp.
  */
 export const LISTING_SELLER = {
   name: "Patrik",
   role: "Tulajdonos · közvetlen kapcsolat",
-  photoSrc: "/hirdetes/elado-portre.jpg",
-  whatsappPrefill:
-    "Szia Patrik! A börzsönyligeti telek (eladoingatlan.vrgo.hu) ügyében írok.",
 } as const;
 
 export type ListingVariant = "a" | "b";
