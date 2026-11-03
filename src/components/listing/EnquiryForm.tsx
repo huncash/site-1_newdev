@@ -64,7 +64,8 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
   if (status === "sent") {
     return (
       <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-5 py-6 text-sm leading-relaxed">
-        Megkaptuk az érdeklődést{variant ? ` (${variant.toUpperCase()} változat)` : ""}. Hamarosan jelentkezem a megadott
+        Megkaptuk az érdeklődést
+        {variant ? ` (${variant === "a" ? "1. opció" : "2. opció"})` : ""}. Hamarosan jelentkezem a megadott
         elérhetőségen.
       </p>
     );
@@ -74,7 +75,8 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
     <form onSubmit={onSubmit} className="space-y-4" noValidate>
       {variant ? (
         <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-3 py-2 text-sm">
-          Érdeklődés: <span className="font-semibold">{variant.toUpperCase()} változat</span>
+          Érdeklődés:{" "}
+          <span className="font-semibold">{variant === "a" ? "1. opció — magáncélú, nyugalom" : "2. opció — szabad / üzleti"}</span>
         </p>
       ) : null}
       <label className="block text-sm">

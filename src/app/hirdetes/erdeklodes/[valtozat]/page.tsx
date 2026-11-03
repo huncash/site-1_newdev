@@ -17,8 +17,8 @@ export function generateMetadata({ params }: { params: Promise<{ valtozat: strin
       return { title: { absolute: "Érdeklődés" }, robots: { index: false, follow: false } };
     }
     return {
-      title: { absolute: `Érdeklődés — ${code.toUpperCase()} út` },
-      description: "Irányár, összehasonlítás és kapcsolatfelvétel a kiválasztott adásvételi úthoz.",
+      title: { absolute: `Érdeklődés — ${code === "a" ? "1. opció" : "2. opció"}` },
+      description: "Irányár, összehasonlítás és kapcsolatfelvétel a kiválasztott használati konstrukcióhoz.",
       robots: { index: false, follow: false },
     };
   });

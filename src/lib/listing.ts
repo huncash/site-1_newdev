@@ -26,29 +26,31 @@ export type ListingVariant = "a" | "b";
 export const VARIANT_OFFER = {
   a: {
     code: "a" as const,
-    title: "A változat: magáncél, nyugalom",
-    short: "Magáncél · nyugalom",
+    optionLabel: "1. opció",
+    title: "1. opció: magáncélú, nyugalmat őrző használat",
+    short: "Magáncélú · nyugalom",
     listPrice: "33 M Ft",
-    bandNote: "Kedvezményes irányár · kb. 10%-kal kedvezőbb a standard útnál",
+    bandNote: "Kedvezményes irányár · kb. 10%-kal kedvezőbb a standard konstrukciónál",
     perSqm: "kb. 31,5 ezer Ft/m² az irányárból",
     summary:
-      "Annak, aki a zsákutca csendjét őrizné: vállalja, hogy nem alakít ki rövid távú szálláshelyet, és nem indít a helyi lakosságot terhelő, forgalomhozó üzleti tevékenységet. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad. A kedvezményes irányár a békés szomszédságot támogatja — nem büntetés, hanem közös nyugalom.",
+      "Kedvezményes irányár azoknak, akik vállalják a zsákutca csendjének megőrzését: nem alakítanak ki rövid távú szálláshelyet, és nem indítanak a helyi lakosságot terhelő, forgalomhozó üzleti tevékenységet. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad. A kedvezmény a békés szomszédságot támogatja.",
   },
   b: {
     code: "b" as const,
-    title: "B változat: üzleti hasznosítás",
-    short: "Üzleti · szabadabb keret",
+    optionLabel: "2. opció",
+    title: "2. opció: szabad felhasználású / üzleti hasznosítás",
+    short: "Szabad felhasználás · üzleti",
     listPrice: "36,5 M Ft",
-    bandNote: "Standard irányár · +3,5 M Ft a szabadabb használatért",
+    bandNote: "Standard piaci ár · +3,5 M Ft felár az alapárhoz képest",
     perSqm: "kb. 34,9 ezer Ft/m² az irányárból",
     summary:
-      "Ha üzleti hasznosítást és korlátlanabb szabadságot kér: a B út a standard, magasabb irányár. A +3,5 M Ft a szabad felhasználású, kereskedelmi célú konstrukció reális piaci ellenértéke — a vételár része, nem kártérítés. A hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek.",
+      "Standard piaci irányár korlátlanabb, szabad felhasználási kerettel. A +3,5 M Ft az alapárhoz képest a szabad felhasználású / kereskedelmi célú konstrukció reális piaci ellenértéke — a vételár része, nem kártérítés. A hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek.",
   },
   plotSqm: 1046,
   premiumDiff: "3,5 M Ft",
   discountNote: "kb. 10%",
   premiumNote:
-    "A két út pozitív keretben: a nyugalom-orientált A út kedvezményes irányárral támogatja a békés szomszédságot; a B út +3,5 M Ft-tal a szabadabb / üzleti hasznosítás standard piaci ára (a felár a vételár része).",
+    "Két használati konstrukció: az 1. opció kedvezményes irányárral a zsákutca nyugalmát őrzi; a 2. opció +3,5 M Ft-tal a szabadabb / üzleti hasznosítás standard piaci ára (a felár a vételár része).",
   marketNote:
     "A Börzsöny–Dunakanyar térségében a kínálat gyakran a jogi státusz, a beépíthetőség és a közművesítettség szerint szóródik. A változtatási tilalommal érintett porták másképp pozicionálódnak, mint a tiszta lakóövezeti, azonnal használható felépítménnyel rendelkező telkek. Ez az ingatlan Lke-4, a tilalmi listán kívül, 1046 m² hivatalos telekkel.",
 } as const;

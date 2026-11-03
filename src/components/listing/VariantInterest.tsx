@@ -25,11 +25,13 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
         </header>
 
         <main className="mx-auto max-w-6xl px-4 py-12">
-          <p className="text-sm uppercase tracking-[0.16em] text-[#6b6154]">Érdeklődés · {selected.short}</p>
+          <p className="text-sm uppercase tracking-[0.16em] text-[#6b6154]">
+            Érdeklődés · {selected.optionLabel} · {selected.short}
+          </p>
           <h1 className="mt-2 max-w-3xl text-3xl font-medium sm:text-4xl">{selected.title}</h1>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-            Ugyanaz a telek ({VARIANT_OFFER.plotSqm} m²) és ugyanaz a felépítmény. Pozitív keret: nyugalom kedvezményes
-            irányárral, vagy szabadabb / üzleti út standard áron.
+            Ugyanaz a telek ({VARIANT_OFFER.plotSqm} m²) és ugyanaz a felépítmény. Két használati konstrukció: nyugalom
+            kedvezményes irányárral, vagy szabadabb / üzleti csomag standard áron.
           </p>
 
           <section className="mt-10 grid gap-4 lg:grid-cols-3">
@@ -69,14 +71,14 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
 
           <section className="mt-8 overflow-hidden rounded-lg border border-[#d4c9b5] bg-[#f7f1e6]">
             <div className="border-b border-[#d4c9b5] px-5 py-4">
-              <h2 className="text-xl font-medium">A két út számszerűen</h2>
+              <h2 className="text-xl font-medium">A két konstrukció számszerűen</h2>
               <p className="mt-1 text-sm text-[#5a5146]">{VARIANT_OFFER.premiumNote}</p>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[480px] text-left text-sm">
                 <thead className="bg-[#efe8db] text-xs uppercase tracking-wide text-[#6b6154]">
                   <tr>
-                    <th className="px-5 py-3 font-medium">Út</th>
+                    <th className="px-5 py-3 font-medium">Opció</th>
                     <th className="px-5 py-3 font-medium">Irányár</th>
                     <th className="px-5 py-3 font-medium">Lényeg</th>
                   </tr>
@@ -84,7 +86,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                 <tbody>
                   <tr className={variant === "a" ? "bg-[#f5edd4]" : ""}>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium">
-                      A) magáncél · nyugalom{variant === "a" ? " · Ön ezt nézi" : ""}
+                      1) magáncélú · nyugalom{variant === "a" ? " · Ön ezt nézi" : ""}
                     </td>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium text-[#d4a017]">
                       {VARIANT_OFFER.a.listPrice}
@@ -95,7 +97,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                   </tr>
                   <tr className={variant === "b" ? "bg-[#f5edd4]" : ""}>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium">
-                      B) üzleti · szabadabb{variant === "b" ? " · Ön ezt nézi" : ""}
+                      2) szabad felhasználás · üzleti{variant === "b" ? " · Ön ezt nézi" : ""}
                     </td>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium text-[#d4a017]">
                       {VARIANT_OFFER.b.listPrice}
@@ -118,7 +120,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
           </section>
 
           <p className="mt-4 text-sm text-[#5a5146]">
-            A másik ág:{" "}
+            A másik konstrukció:{" "}
             <Link href={`/hirdetes/erdeklodes/${other}`} className="font-semibold underline">
               {otherOffer.title} ({otherOffer.listPrice})
             </Link>
@@ -128,15 +130,15 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
             <div>
               <h2 className="text-2xl font-medium">Kapcsolatfelvétel</h2>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
-                Az űrlap a {selected.short.toLowerCase()} érdeklődést jelöli. Vagy jelenítse meg a telefonszámot
-                spamvédelemmel, illetve írjon emailt.
+                Az űrlap a {selected.optionLabel} ({selected.short.toLowerCase()}) érdeklődést jelöli. Vagy jelenítse meg
+                a telefonszámot spamvédelemmel, illetve írjon emailt.
               </p>
               <ListingSellerCard />
             </div>
             <div className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5 sm:p-6">
               <EnquiryForm
                 variant={variant}
-                defaultMessage={`Érdeklődöm a ${variant.toUpperCase()} változatra (${selected.short.toLowerCase()}, irányár ${selected.listPrice}).`}
+                defaultMessage={`Érdeklődöm a ${selected.optionLabel}ra (${selected.short.toLowerCase()}, irányár ${selected.listPrice}).`}
               />
             </div>
           </section>

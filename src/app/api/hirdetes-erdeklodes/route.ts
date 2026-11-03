@@ -47,12 +47,13 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "invalid" }, { status: 400 });
   }
 
-  const variantLine = variant ? `Változat: ${variant}` : "Változat: nem jelölt";
+  const optionLabel = variant === "A" ? "1. opció" : variant === "B" ? "2. opció" : null;
+  const variantLine = optionLabel ? `Konstrukció: ${optionLabel}` : "Konstrukció: nem jelölt";
   const replyTo = email ?? undefined;
   const sent = await sendQuoteEmail({
     inboxEnv: "LISTING_INBOX_EMAIL",
-    subject: variant
-      ? `Érdeklődés (${variant}): Kismaros, Börzsönyliget`
+    subject: optionLabel
+      ? `Érdeklődés (${optionLabel}): Kismaros, Börzsönyliget`
       : "Érdeklődés: Kismaros, Börzsönyliget",
     replyTo,
     text: [

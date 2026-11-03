@@ -598,15 +598,17 @@ export function PropertyLanding() {
 
       <section className="border-t border-[#d4c9b5] bg-[#f7f1e6] py-16" id="valtozatok">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-medium">Két út — közös nyugalom vagy szabadabb keret</h2>
+          <h2 className="text-3xl font-medium">Két használati konstrukció</h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-            Ugyanaz a telek, két pozitív keret: a zsákutca csendjét őrző magáncélú út kedvezményes irányárral, vagy a
-            szabadabb / üzleti hasznosítás standard áron. {VARIANT_OFFER.premiumNote}
+            Ugyanaz a telek, két csomag: magáncélú nyugalom kedvezményes irányárral, vagy szabadabb / üzleti hasznosítás
+            standard áron. {VARIANT_OFFER.premiumNote}
           </p>
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             <article className="flex flex-col rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-6">
-              <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">Kedvezményes irányár</p>
-              <h3 className="mt-1 text-xl font-medium">A út: magáncél · nyugalom</h3>
+              <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">
+                {VARIANT_OFFER.a.optionLabel} · kedvezményes irányár
+              </p>
+              <h3 className="mt-1 text-xl font-medium">Magáncélú, nyugalmat őrző használat</h3>
               <p className="mt-2 text-3xl font-medium text-[#d4a017]">{VARIANT_OFFER.a.listPrice}</p>
               <p className="mt-1 text-xs uppercase tracking-wide text-[#6b6154]">{VARIANT_OFFER.a.bandNote}</p>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{VARIANT_OFFER.a.summary}</p>
@@ -615,12 +617,14 @@ export function PropertyLanding() {
                 onClick={() => trackListingCta("variant_a")}
                 className="mt-6 inline-flex rounded-md bg-[#e8b84a] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
               >
-                Érdeklődöm az A útra
+                Érdeklődöm az 1. opcióra
               </Link>
             </article>
             <article className="flex flex-col rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#d4a017] bg-[#efe8db] p-6">
-              <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">Standard / magasabb irányár</p>
-              <h3 className="mt-1 text-xl font-medium">B út: üzleti hasznosítás</h3>
+              <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">
+                {VARIANT_OFFER.b.optionLabel} · standard piaci ár
+              </p>
+              <h3 className="mt-1 text-xl font-medium">Szabad felhasználású / üzleti hasznosítás</h3>
               <p className="mt-2 text-3xl font-medium text-[#d4a017]">{VARIANT_OFFER.b.listPrice}</p>
               <p className="mt-1 text-xs uppercase tracking-wide text-[#6b6154]">{VARIANT_OFFER.b.bandNote}</p>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{VARIANT_OFFER.b.summary}</p>
@@ -629,7 +633,7 @@ export function PropertyLanding() {
                 onClick={() => trackListingCta("variant_b")}
                 className="mt-6 inline-flex rounded-md bg-[#d4a017] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
               >
-                Érdeklődöm a B útra
+                Érdeklődöm a 2. opcióra
               </Link>
             </article>
           </div>
@@ -642,8 +646,8 @@ export function PropertyLanding() {
             <h2 className="text-3xl font-medium text-[#f7f1e6]">Kapcsolatfelvétel</h2>
             <p className="mt-3 text-lg font-medium text-[#e8b84a]">Keresem jövőbeni szomszédomat.</p>
             <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/90 sm:text-base">
-              Általános kérdéshez ez az űrlap. Ha már tudja, melyik utat nézi, válassza az A vagy B gombot. Közvetlen
-              híváshoz a szám megjelenítése után (spamvédelem), vagy küldjön emailt.
+              Általános kérdéshez ez az űrlap. Ha már tudja, melyik konstrukciót nézi, válassza az 1. vagy 2. opciót.
+              Közvetlen híváshoz a szám megjelenítése után (spamvédelem), vagy küldjön emailt.
             </p>
             <ListingSellerCard tone="dark" />
           </div>
