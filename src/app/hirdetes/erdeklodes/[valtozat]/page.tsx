@@ -18,7 +18,7 @@ export function generateMetadata({ params }: { params: Promise<{ valtozat: strin
     }
     return {
       title: {
-        absolute: `Érdeklődés — ${code === "a" ? "2027-es birtokbaadás" : "2026 végéig tartó birtokbaadás"}`,
+        absolute: `Érdeklődés — ${code === "a" ? "2027-es birtokbaadás" : "Azonnali birtokbaadás"}`,
       },
       description: "Fix vételár, birtokbaadási időzítés és kapcsolatfelvétel a kiválasztott konstrukcióhoz.",
       robots: { index: false, follow: false },

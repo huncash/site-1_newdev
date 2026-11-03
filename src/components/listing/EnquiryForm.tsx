@@ -65,7 +65,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
     return (
       <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-5 py-6 text-sm leading-relaxed">
         Megkaptuk az érdeklődést
-        {variant ? ` (${variant === "a" ? "2027-es birtokbaadás" : "2026 végéig tartó birtokbaadás"})` : ""}.
+        {variant ? ` (${variant === "a" ? "2027-es birtokbaadás" : "azonnali birtokbaadás"})` : ""}.
         Hamarosan jelentkezem a megadott elérhetőségen.
       </p>
     );
@@ -77,7 +77,9 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-3 py-2 text-sm">
           Érdeklődés:{" "}
           <span className="font-semibold">
-            {variant === "a" ? "2027-es birtokbaadás — 32,2 M Ft" : "2026 végéig tartó birtokbaadás — 33 M Ft"}
+            {variant === "a"
+              ? "2027-es birtokbaadás — 32,2 M Ft"
+              : "Azonnali birtokbaadás — 33 M Ft (legkorábban nov. 10.)"}
           </span>
         </p>
       ) : null}

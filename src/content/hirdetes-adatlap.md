@@ -13,7 +13,7 @@ Nyilvános oldalon **megjelenhet** a fix vételár (birtokbaadási időzítés s
 Kétágú konstrukció (publikus, fix árak, jutalék nélkül):
 
 - **A:** 2027-es birtokbaadás — **32,2 M Ft** (10% foglaló a szerződéskötéskor)
-- **B:** 2026 végéig tartó birtokbaadás — **33 M Ft**
+- **B:** azonnali birtokbaadás — **33 M Ft** (legkorábban **2026. november 10.**)
 - A különbség kizárólag a birtokbaadás időpontja; nem alku tárgya
 
 Hivatalos telek: 1046 m². A 4 °C, a Natura 2000 és a többi helyleírás a hirdetés szövege.

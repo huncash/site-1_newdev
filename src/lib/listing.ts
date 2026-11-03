@@ -28,7 +28,7 @@ export const LISTING_SELLER = {
 
 export type ListingVariant = "a" | "b";
 
-/** a = 2027-es birtokbaadás · b = 2026 végéig tartó birtokbaadás */
+/** a = 2027-es birtokbaadás · b = azonnali birtokbaadás (legkorábban nov. 10.) */
 export const VARIANT_OFFER = {
   a: {
     code: "a" as const,
@@ -45,16 +45,16 @@ export const VARIANT_OFFER = {
   },
   b: {
     code: "b" as const,
-    optionLabel: "2026 végéig tartó birtokbaadás",
-    title: "2026 végéig tartó birtokbaadás — 33 M Ft",
-    short: "2026. december 31-ig",
+    optionLabel: "Azonnali birtokbaadás",
+    title: "Azonnali birtokbaadás — 33 M Ft",
+    short: "Legkorábban 2026. november 10.",
     listPrice: "33 M Ft",
     deposit: "Szerződés szerint",
-    possession: "2026. december 31-ig",
-    bandNote: "2026 végéig tartó birtokbaadással",
+    possession: "Azonnali — legkorábban 2026. november 10.",
+    bandNote: "Azonnali birtokbaadással (legkorábban 2026. november 10.)",
     perSqm: "kb. 31,5 ezer Ft/m² az irányárból",
     summary:
-      "Ugyanaz az ingatlan, korábbi birtokbaadással. A ház azonnal használható; a birtokbaadás 2026 végéig megtörténik.",
+      "Ugyanaz az ingatlan, azonnali birtokbaadással. A ház azonnal használható; a birtokbaadás legkorábban 2026. november 10-től lehetséges.",
   },
   plotSqm: 1046,
   priceDiff: "0,8 M Ft",
@@ -80,7 +80,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Azonnal beköltözhetek?",
-    a: "A ház azonnal használható. A 33 M Ft-os opciónál a birtokbaadás 2026 végéig megtörténik.",
+    a: "A ház azonnal használható. A 33 M Ft-os opciónál a birtokbaadás azonnali; legkorábban 2026. november 10-től lehetséges.",
   },
   {
     q: "Van közvetítői jutalék?",
@@ -99,7 +99,7 @@ export const PROCESS_STEPS = [
   },
   {
     title: "Döntés",
-    body: "Kiválasztod az időzítést (2027-es kedvezményes vagy 2026 végéig tartó birtokbaadás).",
+    body: "Kiválasztod az időzítést (2027-es kedvezményes vagy azonnali birtokbaadás, legkorábban november 10-től).",
   },
   {
     title: "Szerződéskötés",

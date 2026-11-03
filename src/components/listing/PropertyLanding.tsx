@@ -240,7 +240,7 @@ export function PropertyLanding() {
                 </a>
                 <a
                   href="#azaras"
-                  onClick={() => trackListingCta("hero_price_2026")}
+                  onClick={() => trackListingCta("hero_price_immediate")}
                   className="rounded-md border border-[#e8b84a]/70 bg-[#1a4530]/55 px-4 py-3 text-left"
                 >
                   <p className="text-xl font-medium text-[#e8b84a]">{VARIANT_OFFER.b.listPrice}</p>
@@ -706,7 +706,7 @@ export function PropertyLanding() {
                   onClick={() => trackListingCta("variant_b")}
                   className="mt-6 inline-flex justify-center rounded-md bg-[#d4a017] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
                 >
-                  Érdeklődöm a 2026-os opcióra
+                  Érdeklődöm az azonnali birtokbaadásra
                 </Link>
               </article>
             </div>
@@ -766,7 +766,7 @@ export function PropertyLanding() {
               <p className="mt-3 text-lg font-medium text-[#e8b84a]">Megtekintést egyeztetünk.</p>
               <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/90 sm:text-base">
                 Írj az űrlapon, vagy — adatkezelés elfogadása után — hívd a védett számot, illetve küldj közvetlen
-                emailt. Ha már tudod az időzítést, válaszd a 2027-es vagy a 2026-os konstrukciót az árazásnál.
+                emailt. Ha már tudod az időzítést, válaszd a 2027-es vagy az azonnali birtokbaadást az árazásnál.
               </p>
               <ListingSellerCard tone="dark" />
             </div>

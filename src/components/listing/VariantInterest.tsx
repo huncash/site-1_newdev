@@ -112,7 +112,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                   </tr>
                   <tr className={variant === "b" ? "bg-[#f5edd4]" : ""}>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium">
-                      2026 végéig{variant === "b" ? " · Ön ezt nézi" : ""}
+                      Azonnali{variant === "b" ? " · Ön ezt nézi" : ""}
                     </td>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium text-[#d4a017]">
                       {VARIANT_OFFER.b.listPrice}
