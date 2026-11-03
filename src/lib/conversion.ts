@@ -4,7 +4,13 @@ export type ConversionEvent =
   | "quote_form_view"
   | "quote_form_submit_success"
   | "quote_form_submit_error"
-  | "quote_cta_click";
+  | "quote_cta_click"
+  | "listing_phone_click"
+  | "listing_whatsapp_click"
+  | "listing_phone_reveal"
+  | "listing_cta_click"
+  | "listing_enquiry_submit_success"
+  | "listing_enquiry_submit_error";
 
 declare global {
   interface Window {

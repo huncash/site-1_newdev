@@ -2,19 +2,19 @@
 
 ## Nyilvános szabály (kötelező)
 
-A nyilvános hirdetésoldalon és az A/B érdeklődő oldalakon **tilos**:
+Nyilvános oldalon **megjelenhet** az irányár (A/B) a komoly érdeklődők szűrésére.
 
-- vételár, irányár, padlóár, Ft/m², ársáv
-- kötbérösszeg, felmentési díj vagy bármely szerződéses összeg
-- belső határidő, alkutér, eladási kényszert sugalló adat
-- saját belső számítások vagy tárgyalási háttér
+**Tilos** továbbra is:
 
-A nyilvános felületen **csak** a kétágú konstrukció elve szerepelhet:
+- belső padlóár / eladási kényszer / deadline szöveges kiírása
+- kötbérösszeg, felmentési díj nyilvános kiírása
+- belső tárgyalási háttér és „csak az eladónak” számítás
 
-- **A változat:** szerződéses használati korlátozással (magáncél / nyugalom; nincs rövid távú vagy kereskedelmi szállásadás; lakhatás, pihenés, home office, hosszú távú bérbeadás szabad)
-- **B változat:** eladói használati korlátozás nélkül (a hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek)
+Kétágú konstrukció (publikus):
 
-Minden konkrét összeg, jogkövetkezmény és ajánlati feltétel **offline**, ügyvéddel — soha nem a repo vagy a publikus UI része.
+- **A:** korlátozással — irányár **33 M Ft** (tárgyalási sáv kb. 31,5 M Ft-tól)
+- **B:** korlátozás nélkül — **36,5 M Ft** (= A + **3,5 M Ft** felár)
+- A B felár **nem kártérítés**, hanem a szabad felhasználás ellenértéke (a vételár része)
 
 Hivatalos telek: 1046 m². A 4 °C, a Natura 2000 és a többi helyleírás a hirdetés szövege.
 

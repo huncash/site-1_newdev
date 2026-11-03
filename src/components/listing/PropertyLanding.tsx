@@ -1,11 +1,18 @@
 "use client";
 
-import { Fence, FileText, House, MapPin, Menu, Route, Ruler, Thermometer, Trees, X, Zap } from "lucide-react";
+import { Droplets, Fence, FileText, House, MapPin, Menu, Route, Ruler, Thermometer, Trees, X, Zap } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { EnquiryForm } from "@/components/listing/EnquiryForm";
-import { HERO_IMAGE, PHOTO_STATE, PHOTOS, TOUR_URL, UTILITY_PHOTOS } from "@/lib/listing";
+import {
+  ListingPhoneProvider,
+  ListingSellerCard,
+  ListingSellerStrip,
+  ListingStickyCta,
+  trackListingCta,
+} from "@/components/listing/ListingContact";
+import { HERO_IMAGE, PHOTO_STATE, PHOTOS, TOUR_URL, UTILITY_PHOTOS, VARIANT_OFFER } from "@/lib/listing";
 
 const NAV = [
   { href: "#elhelyezkedes", label: "Elhelyezkedés & Mikroklíma" },
@@ -17,15 +24,16 @@ const NAV = [
 ] as const;
 
 const facts = [
-  { icon: Ruler, label: "Hivatalos telek", value: "1046 m². A telek előtt, az utcáig, kb. 150 m² önkormányzati, használati rész ad helyet a tágas kocsibeállónak és a kiskapuhoz vezető lépcsőnek." },
-  { icon: Trees, label: "Besorolás", value: "Lke-4, kertvárosias lakóterület. 30% beépíthetőség, új lakóház építésére alkalmas." },
-  { icon: House, label: "Felépítmény", value: "Azonnal használható felvonulási épület, az ingatlan-nyilvántartásban feltüntetve. Épült 1980 körül. A belső burkolatok és a berendezés tiszta lapként az új tulajdonosra várnak." },
-  { icon: Zap, label: "Infrastruktúra", value: "Bekötött villany, a mérőhely után a rendszer cserélve. Biztosított vízellátás. Szennyvíz: saját emésztő." },
-  { icon: MapPin, label: "Környezet", value: "Duna–Ipoly Nemzeti Park vonzáskörzete, Ipoly Erdő Zrt. gazdálkodása, ősfás tölgyerdő, gazdag vadállomány. Nyáron 4 °C-kal hűvösebb a Duna-partnál; napos hegyoldal: napelemre, veteményesre, wallipinire is alkalmas." },
-  { icon: FileText, label: "Jogi helyzet", value: "Tiszta státusz: változtatási tilalom nem érinti. Tehermentes, birtokba adás megegyezés szerint." },
+  { icon: Ruler, label: "Hivatalos telek", value: "1046 m² (+ kb. 150 m² önkormányzati/használati sáv a telek előtt kocsibeállónak és a kiskapu lépcsőjének). A HÉSZ szerinti övezeti telekminimum 1200 m² — a meglévő állapot és a hatályos keretek érvényesek." },
+  { icon: Trees, label: "Besorolás (Lke-4)", value: "Szabadonálló beépítés, max. 30% beépíthetőség, legfeljebb 4,5 m építménymagasság. Új lakóházra / felújításra / átépítésre alkalmas keret a helyi szabályzat szerint." },
+  { icon: House, label: "Felépítmény", value: "Azonnal használható felvonulási épület / hétvégi ház, az ingatlan-nyilvántartásban feltüntetve (kb. 1980). Mellékhelyiség átalakítva (nem a konyhából nyílik); cserépkályha-fűtés előkészítve szakemberrel; belső burkolás és berendezés tiszta lap." },
+  { icon: Zap, label: "Villany", value: "Bekötött villany. A mérőhely után a belső rendszer cserélve (új kismegszakítók a mérő felett — a fotón látható). A névleges szerződéses teljesítmény a szolgáltatónál / a mérőn ellenőrizhető." },
+  { icon: Droplets, label: "Víz & szennyvíz", value: "Vezetékes vízbekötés, folyó víz a csapokon. Börzsönyligetre vonatkozó részleges közmű; szennyvíz: zárt szennyvíztároló / saját emésztő (HÉSZ 42. § keretében)." },
+  { icon: MapPin, label: "Környezet", value: "Duna–Ipoly Nemzeti Park vonzáskörzete, Ipoly Erdő Zrt., ősfás tölgyerdő, gazdag vadállomány. Nyáron 4 °C-kal hűvösebb a Duna-partnál; napos hegyoldal: napelemre és veteményesre is alkalmas." },
+  { icon: FileText, label: "Jogi helyzet", value: "Változtatási tilalom nem érinti (8/2025. rendelet tilalmi listáján kívül). Tehermentes, birtokba adás megegyezés szerint." },
   { icon: Route, label: "Megközelítés", value: "Aszfaltozott főútról, szilárd burkolatú úton. Távol a zajos vasúttól." },
   { icon: Fence, label: "Telekhatár", value: "A 2026. szeptember 2-i képeken drótkerítés, kőkosaras támfal és kapuk látszanak." },
-  { icon: Thermometer, label: "Fűtés", value: "A fűtési infrastruktúra előkészítve. A cserépkályha üzembe helyezésére megbeszélt szakember áll rendelkezésre, így télen azzal is hatékonyan fűthető." },
+  { icon: Thermometer, label: "Fűtés", value: "A fűtési infrastruktúra előkészítve. A cserépkályha üzembe helyezésére megbeszélt szakember áll rendelkezésre." },
 ] as const;
 
 type Lightbox =
@@ -86,7 +94,8 @@ export function PropertyLanding() {
   }
 
   return (
-    <div className="bg-[#efe8db] text-[#241f18]">
+    <ListingPhoneProvider>
+    <div className="bg-[#efe8db] pb-24 text-[#241f18]">
       <header className="sticky top-0 z-40 border-b border-[#d4c9b5] bg-[#efe8db]/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
           <p className="text-sm font-semibold tracking-wide">Kismaros · Börzsönyliget</p>
@@ -141,7 +150,10 @@ export function PropertyLanding() {
             </ul>
           </nav>
         ) : null}
+        <ListingSellerStrip />
       </header>
+
+      <ListingStickyCta />
 
       <section className="relative min-h-[78vh] overflow-hidden bg-[#0f2e1f] text-white">
         <img
@@ -188,13 +200,25 @@ export function PropertyLanding() {
               </li>
             </ul>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#seta" className="rounded-md bg-[#e8b84a] px-5 py-3 text-center text-sm font-semibold text-[#241f18]">
+              <a
+                href="#seta"
+                onClick={() => trackListingCta("hero_tour")}
+                className="rounded-md bg-[#e8b84a] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
+              >
                 Bejárható 3D fotózás megtekintése
               </a>
-              <a href="#galeria" className="rounded-md border border-[#e8b84a]/80 bg-[#1a4530]/50 px-5 py-3 text-center text-sm font-semibold text-[#f7f1e6]">
+              <a
+                href="#galeria"
+                onClick={() => trackListingCta("hero_gallery")}
+                className="rounded-md border border-[#e8b84a]/80 bg-[#1a4530]/50 px-5 py-3 text-center text-sm font-semibold text-[#f7f1e6]"
+              >
                 Képgaléria
               </a>
-              <a href="#kapcsolat" className="rounded-md border border-[#e8b84a]/80 bg-[#1a4530]/50 px-5 py-3 text-center text-sm font-semibold text-[#f7f1e6]">
+              <a
+                href="#kapcsolat"
+                onClick={() => trackListingCta("hero_contact")}
+                className="rounded-md border border-[#e8b84a]/80 bg-[#1a4530]/50 px-5 py-3 text-center text-sm font-semibold text-[#f7f1e6]"
+              >
                 Kapcsolatfelvétel
               </a>
             </div>
@@ -263,9 +287,10 @@ export function PropertyLanding() {
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
               <h3 className="text-lg font-medium">Off-grid életvitel / önfenntartás</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                A helyszín ideális terep az off-grid életvitel kialakítására. A naposabb fekvés miatt a napelemek
-                sikeresen bevethetők — az utcában már máshol is van rá működő példa —, valamint hegyoldali veteményes
-                vagy wallipini-szerű, fedett kert is kialakítható.
+                A helyszín ideális terep az off-grid életvitel kialakítására. Bár a telek ősfás, a hegyoldali dőlésszög
+                és a tisztább, nyitottabb foltok biztosítják a napelemek számára a fénymennyiséget — az utcában már van
+                sikeres példa —, miközben a lombsátor nyáron hűvösebb mikroklímát ad. Hegyoldali veteményes vagy
+                wallipini-szerű, fedett kert is kialakítható.
               </p>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
@@ -326,9 +351,11 @@ export function PropertyLanding() {
               </p>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
-              <h3 className="text-lg font-medium">1046 m² telek + kb. 150 m² előtér</h3>
+              <h3 className="text-lg font-medium">1046 m² telek + kb. 150 m² beálló-sáv</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                A hivatalos telekterület 1046 m². A telek előtt, az utcáig kb. 150 m² önkormányzati/használati rész található, amely kényelmes helyet ad a kocsibeállónak és a kiskapuhoz vezető lépcsőnek.
+                A hivatalos telekterület 1046 m². Emellett a telek előtt, az utcáig kb. 150 m² önkormányzati/használati
+                sáv biztosítja a kényelmes, telken kívüli kocsibeállást és a kiskapuhoz vezető lépcsőt — így a parkolás
+                nem a beépíthető telekterületet terheli.
               </p>
             </article>
           </div>
@@ -339,7 +366,15 @@ export function PropertyLanding() {
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-medium">Övezeti besorolás (Lke-4) &amp; Változtatási tilalom</h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-            A környéken egyes hirdetések azért bizonytalanabbak, mert a helyi rendezési és változtatási korlátozások érintik őket. A rendelet mellékletén a kékkel jelölt telkek esnek ebbe a körbe. A sárga jelölés ez az ingatlan: a kék területen kívül van, változtatási tilalom nem érinti.
+            Kismaros Önkormányzat <strong className="font-semibold text-[#241f18]">8/2025. (IV. 14.)</strong> számú
+            rendelete — a HÉSZ teljes körű felülvizsgálata és a börzsönyligeti üdülőövezet beerdősödése miatt —
+            változtatási tilalmat rendelt el egyes ingatlanokra (várhatóan 2027 júniusáig). A rendelet mellékletén a
+            kékkel jelölt telkek esnek ebbe a körbe.
+          </p>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
+            <strong className="font-semibold text-[#241f18]">Ez az Lke-4 ingatlan nincs a tilalmi listán</strong> (sárga
+            jelölés a térképen): tiszta jogi státusz, azonnali mozgástér — miközben a környéken sok olcsóbbnak tűnő
+            portát épp ez a tilalom blokkol.
           </p>
           <ul className="mt-6 flex flex-wrap gap-3 text-sm" aria-label="Térkép jelmagyarázat">
             <li className="inline-flex items-center gap-2 rounded-md border border-[#d4c9b5] bg-[#efe8db] px-3 py-2">
@@ -393,9 +428,27 @@ export function PropertyLanding() {
               </figcaption>
             </figure>
           </MapFrame>
-          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-            Az Lke-4 kertvárosias lakóövezeti besorolás és a 30%-os beépíthetőség alkalmassá teszi a meglévő nyaraló felújítására vagy új lakóház építésére is, telken belüli autóbeállókkal.
-          </p>
+          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+            <article className="rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5">
+              <h3 className="text-lg font-medium">HÉSZ — Lke-4 keretek</h3>
+              <ul className="mt-3 space-y-2 text-sm leading-relaxed text-[#5a5146]">
+                <li>Szabadonálló beépítés, max. 30% beépíthetőség, legfeljebb 4,5 m építménymagasság.</li>
+                <li>
+                  Hivatalos telek 1046 m² (az övezeti 1200 m²-es minimum alatt): a meglévő állapot és a hatályos keretek
+                  érvényesek; a helyi szabályzat változásait érdemes követni.
+                </li>
+                <li>Részleges közmű / zárt szennyvíztároló a Börzsönyligetre vonatkozó HÉSZ 42. § szerint.</li>
+                <li>Telek előtt kb. 150 m² önkormányzati/használati sáv kocsibeállónak.</li>
+              </ul>
+            </article>
+            <article className="rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5">
+              <h3 className="text-lg font-medium">Neutrális megjegyzés</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
+                A helyi építési szabályzat és a településképi előírások idővel módosulhatnak. Az oldalon szereplő
+                övezeti adatok tájékoztató jellegűek; a hivatalos dokumentumok és az illetékes hatóság az irányadók.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -464,7 +517,9 @@ export function PropertyLanding() {
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-medium">Felépítmény és belső állapot</h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-            A hirdetési galéria a {PHOTO_STATE.replace(/\.$/, "")}-i alapállapotot mutatja. Az azóta elvégzett korszerűsítések a funkcionális élhetőséget szolgálják.
+            A felvonulási épület / hétvégi ház azonnal használható, az ingatlan-nyilvántartásban feltüntetve (épült kb.
+            1980 körül). A galéria a {PHOTO_STATE.replace(/\.$/, "")}-i alapállapotot mutatja; az azóta elvégzett
+            funkcionális korszerűsítések alább.
           </p>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             <article className="rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5">
@@ -533,43 +588,45 @@ export function PropertyLanding() {
           </li>
           <li className="rounded-lg border border-[#d4c9b5] border-t-4 border-t-[#e8b84a] bg-[#f7f1e6] p-5">
             <h3 className="text-lg font-medium">Hűvös és napos</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">Nyáron 4 °C-kal hűvösebb, mint a Duna-parton, mégis napos hegyoldal: napelemre, veteményesre vagy wallipinire — off-grid életvitelre is alkalmas terep.</p>
+            <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
+              Nyáron 4 °C-kal hűvösebb, mint a Duna-parton; a hegyoldali dőlésszög és a nyitottabb foltok mégis
+              biztosítják a napelemek fénymennyiségét (utcai példával), miközben a lombsátor hűvösebb mikroklímát ad.
+            </p>
           </li>
         </ul>
       </section>
 
       <section className="border-t border-[#d4c9b5] bg-[#f7f1e6] py-16" id="valtozatok">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-medium">Két adásvételi út</h2>
+          <h2 className="text-3xl font-medium">Két út — közös nyugalom vagy szabadabb keret</h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-            Magáncélú befektetésként adom el: a saját és a környékbeli lakosok nyugalma védelmében nem újabb börzsönyligeti vendégháznak szánom. Ugyanaz a telek, két szerződéses út — az oldalon ár, ársáv vagy belső számítás nem szerepel.
+            Ugyanaz a telek, két pozitív keret: a zsákutca csendjét őrző magáncélú út kedvezményes irányárral, vagy a
+            szabadabb / üzleti hasznosítás standard áron. {VARIANT_OFFER.premiumNote}
           </p>
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             <article className="flex flex-col rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-6">
-              <h3 className="text-xl font-medium">A út: aki a nyugalmat vállalja</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                Annak, aki magáncélra vesz, és szerződésben is vállalja: nem lesz belőle rövid távú szálláshely vagy kereskedelmi szállásadás. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad marad.
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                A vállalás megszegésének jogkövetkezményeit ügyvéddel rögzítjük. Az ajánlati feltételeket személyes egyeztetésen beszéljük meg.
-              </p>
+              <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">Kedvezményes irányár</p>
+              <h3 className="mt-1 text-xl font-medium">A út: magáncél · nyugalom</h3>
+              <p className="mt-2 text-3xl font-medium text-[#d4a017]">{VARIANT_OFFER.a.listPrice}</p>
+              <p className="mt-1 text-xs uppercase tracking-wide text-[#6b6154]">{VARIANT_OFFER.a.bandNote}</p>
+              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{VARIANT_OFFER.a.summary}</p>
               <Link
                 href="/hirdetes/erdeklodes/a"
+                onClick={() => trackListingCta("variant_a")}
                 className="mt-6 inline-flex rounded-md bg-[#e8b84a] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
               >
                 Érdeklődöm az A útra
               </Link>
             </article>
             <article className="flex flex-col rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#d4a017] bg-[#efe8db] p-6">
-              <h3 className="text-xl font-medium">B út: korlátozás nélkül</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                Ha a nyugalmi vállalást nem tudja magára venni, de ezt a telket szeretné: a B út eladói használati korlátozás nélkül zárható.
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                A hatályos jogszabályok és a helyi építési szabályzat ebben az esetben is érvényesek. Az Lke-4 övezetben megengedett használatot a helyi szabályzatban és az illetékes hatóságnál lehet ellenőrizni.
-              </p>
+              <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">Standard / magasabb irányár</p>
+              <h3 className="mt-1 text-xl font-medium">B út: üzleti hasznosítás</h3>
+              <p className="mt-2 text-3xl font-medium text-[#d4a017]">{VARIANT_OFFER.b.listPrice}</p>
+              <p className="mt-1 text-xs uppercase tracking-wide text-[#6b6154]">{VARIANT_OFFER.b.bandNote}</p>
+              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{VARIANT_OFFER.b.summary}</p>
               <Link
                 href="/hirdetes/erdeklodes/b"
+                onClick={() => trackListingCta("variant_b")}
                 className="mt-6 inline-flex rounded-md bg-[#d4a017] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
               >
                 Érdeklődöm a B útra
@@ -585,8 +642,10 @@ export function PropertyLanding() {
             <h2 className="text-3xl font-medium text-[#f7f1e6]">Kapcsolatfelvétel</h2>
             <p className="mt-3 text-lg font-medium text-[#e8b84a]">Keresem jövőbeni szomszédomat.</p>
             <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/90 sm:text-base">
-              Általános kérdéshez ez az űrlap. Ha már tudja, melyik utat nézi, válassza az A vagy B gombot: ott a konstrukció részletei és a kapcsolatfelvétel várja.
+              Általános kérdéshez ez az űrlap. Ha már tudja, melyik utat nézi, válassza az A vagy B gombot. Közvetlen
+              híváshoz / WhatsApphoz a szám megjelenítése után (spamvédelem).
             </p>
+            <ListingSellerCard tone="dark" />
           </div>
           <div className="rounded-lg bg-[#f7f1e6] p-5 text-[#241f18] border border-[#d4c9b5] sm:p-6">
             <EnquiryForm />
@@ -632,5 +691,6 @@ export function PropertyLanding() {
         </div>
       ) : null}
     </div>
+    </ListingPhoneProvider>
   );
 }

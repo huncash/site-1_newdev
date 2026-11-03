@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 export interface QuoteDelivery {
   subject: string;
   text: string;
-  replyTo: string;
+  replyTo?: string;
   /** Server-only env key for the inbox. Never pass a raw address from the client. */
   inboxEnv?: "QUOTE_INBOX_EMAIL" | "LISTING_INBOX_EMAIL";
 }
@@ -33,7 +33,7 @@ export async function sendQuoteEmail(delivery: QuoteDelivery): Promise<boolean> 
     await transporter.sendMail({
       from,
       to,
-      replyTo: delivery.replyTo,
+      ...(delivery.replyTo ? { replyTo: delivery.replyTo } : {}),
       subject: delivery.subject,
       text: delivery.text,
     });

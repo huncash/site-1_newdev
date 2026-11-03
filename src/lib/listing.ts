@@ -1,6 +1,6 @@
 /**
- * Nyilvános listing: tilos vételár, irányár, padlóár, Ft/m², kötbérösszeg,
- * felmentési díj, ársáv vagy belső határidő. Csak a kétágú elv és a termékértékek.
+ * Nyilvános listing: irányárak a komoly érdeklődők szűrésére.
+ * Belső padlóár / eladási kényszer / deadline soha nem szerepelhet szövegként.
  */
 
 export const TOUR_URL = "https://my.matterport.com/show/?m=92EPXPjr6gR&ts=1";
@@ -12,26 +12,49 @@ export const HERO_IMAGE = {
   alt: "Napos ősfás telekrész: lombkorona és tágas erdei részlet",
 } as const;
 
+/**
+ * Személyes kapcsolat — a telefonszám NEM itt van plain textben.
+ * Összerakás: ListingContact (csak „Nem vagyok robot” / megjelenítés után).
+ * Fotó: public/hirdetes/elado-portre.jpg
+ */
+export const LISTING_SELLER = {
+  name: "Patrik",
+  role: "Tulajdonos · közvetlen kapcsolat",
+  photoSrc: "/hirdetes/elado-portre.jpg",
+  whatsappPrefill:
+    "Szia Patrik! A börzsönyligeti telek (eladoingatlan.vrgo.hu) ügyében írok.",
+} as const;
+
 export type ListingVariant = "a" | "b";
 
 export const VARIANT_OFFER = {
   a: {
     code: "a" as const,
     title: "A változat: magáncél, nyugalom",
-    short: "Magáncél, nyugalom",
+    short: "Magáncél · nyugalom",
+    listPrice: "33 M Ft",
+    bandNote: "Kedvezményes irányár · kb. 10%-kal kedvezőbb a standard útnál",
+    perSqm: "kb. 31,5 ezer Ft/m² az irányárból",
     summary:
-      "Magáncélú használatra, a saját és a környékbeli lakosok nyugalma védelmében. Nem újabb börzsönyligeti vendégház létesítésére adom el, hanem annak, aki ezt szerződésben is vállalja: nincs rövid távú szálláshely-szolgáltatás és kereskedelmi szállásadás. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad marad. A vállalás megszegésének jogkövetkezményeit — beleértve a szerződéses szankciókat — ügyvéddel rögzítjük; a részletek nem ezen az oldalon szerepelnek.",
+      "Annak, aki a zsákutca csendjét őrizné: vállalja, hogy nem alakít ki rövid távú szálláshelyet, és nem indít a helyi lakosságot terhelő, forgalomhozó üzleti tevékenységet. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad. A kedvezményes irányár a békés szomszédságot támogatja — nem büntetés, hanem közös nyugalom.",
   },
   b: {
     code: "b" as const,
-    title: "B változat: korlátozás nélkül",
-    short: "Korlátozás nélkül",
+    title: "B változat: üzleti hasznosítás",
+    short: "Üzleti · szabadabb keret",
+    listPrice: "36,5 M Ft",
+    bandNote: "Standard irányár · +3,5 M Ft a szabadabb használatért",
+    perSqm: "kb. 34,9 ezer Ft/m² az irányárból",
     summary:
-      "Ha a nyugalmi vállalást nem tudja magára venni, de ezt a telket szeretné: a B út a szerződéses használati korlátozás nélkül zárható. A hatályos jogszabályok és a helyi építési szabályzat ebben az esetben is érvényesek; az Lke-4 övezetben megengedett használatot a helyi szabályzatban és az illetékes hatóságnál lehet ellenőrizni.",
+      "Ha üzleti hasznosítást és korlátlanabb szabadságot kér: a B út a standard, magasabb irányár. A +3,5 M Ft a szabad felhasználású, kereskedelmi célú konstrukció reális piaci ellenértéke — a vételár része, nem kártérítés. A hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek.",
   },
   plotSqm: 1046,
+  premiumDiff: "3,5 M Ft",
+  discountNote: "kb. 10%",
+  premiumNote:
+    "A két út pozitív keretben: a nyugalom-orientált A út kedvezményes irányárral támogatja a békés szomszédságot; a B út +3,5 M Ft-tal a szabadabb / üzleti hasznosítás standard piaci ára (a felár a vételár része).",
   marketNote:
-    "A Börzsöny–Dunakanyar térségében a kínálat gyakran a jogi státusz, a beépíthetőség és a közművesítettség szerint szóródik: a változtatási tilalommal érintett vagy bizonytalanabb státuszú porták másképp pozicionálódnak, mint a tiszta lakóövezeti, azonnal használható felépítménnyel rendelkező telkek. Ez az ingatlan Lke-4 lakóövezet, változtatási tilalom nem érinti, 1046 m² hivatalos telek, bekötött villany és vezetékes víz mellett meglévő felépítménnyel — a Duna–Ipoly Nemzeti Park vonzáskörzetében, ősfás tölgyesben.",
+    "A Börzsöny–Dunakanyar térségében a kínálat gyakran a jogi státusz, a beépíthetőség és a közművesítettség szerint szóródik. A változtatási tilalommal érintett porták másképp pozicionálódnak, mint a tiszta lakóövezeti, azonnal használható felépítménnyel rendelkező telkek. Ez az ingatlan Lke-4, a tilalmi listán kívül, 1046 m² hivatalos telekkel.",
 } as const;
 
 export const PHOTOS = [
