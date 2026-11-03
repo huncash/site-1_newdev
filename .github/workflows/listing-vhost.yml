@@ -1,0 +1,40 @@
+name: Route eladoingatlan.vrgo.hu to site-1
+
+on:
+  workflow_dispatch:
+
+jobs:
+  nginx:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add eladoingatlan.vrgo.hu to the live vhost if sudo allows it
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/vrgo
+          chmod 600 ~/.ssh/vrgo
+          ssh -i ~/.ssh/vrgo -o StrictHostKeyChecking=accept-new deploy@195.228.152.141 'bash -s' << 'EOF'
+          set -uo pipefail
+          echo "user=$(id)"
+          if ! sudo -n true; then
+            echo "sudo=no"
+            exit 1
+          fi
+          for f in /etc/nginx/sites-available/vrgo.hu /etc/nginx/sites-enabled/vrgo.hu; do
+            if [[ -f "$f" ]]; then
+              sudo -n sed -i.bak-listing '/^[[:space:]]*server_name /{ /eladoingatlan\.vrgo\.hu/! s/;/ eladoingatlan.vrgo.hu;/ }' "$f"
+              echo "edited $f"
+            fi
+          done
+          sudo -n nginx -t
+          sudo -n systemctl reload nginx
+          echo "===== TITLE ====="
+          curl -sk -m 15 --resolve eladoingatlan.vrgo.hu:443:127.0.0.1 https://eladoingatlan.vrgo.hu/ | grep -o '<title>[^<]*</title>' || true
+          echo "===== server_name lines ====="
+          grep -nE 'server_name' /etc/nginx/sites-enabled/vrgo.hu || true
+          EOF

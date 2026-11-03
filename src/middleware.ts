@@ -44,11 +44,9 @@ function listingRouting(request: NextRequest): NextResponse | null {
     return NextResponse.rewrite(url, { request: { headers: requestHeaders } });
   }
 
+  // Serve the private listing chrome on /hirdetes for any host.
+  // eladoingatlan.vrgo.hu is preferred once DNS + nginx are in place; until then vrgo.hu/hirdetes stays reachable.
   if (pathname === "/hirdetes" || pathname.startsWith("/hirdetes/")) {
-    if (!isLocalHost(host)) {
-      const clean = pathname === "/hirdetes" ? "/" : pathname.slice("/hirdetes".length);
-      return NextResponse.redirect(new URL(`https://eladoingatlan.vrgo.hu${clean || "/"}`));
-    }
     return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
