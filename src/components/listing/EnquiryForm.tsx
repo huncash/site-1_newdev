@@ -111,7 +111,8 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         </label>
       </div>
       <p className="text-xs leading-relaxed text-[#6b6154]">
-        Beküldéssel elfogadod, hogy az adataidat csak az érdeklődés miatti kapcsolattartásra használom (lásd az oldal alján).
+        Beküldéssel elfogadod, hogy az adataidat csak az érdeklődés miatti kapcsolattartásra használom, és legkésőbb 30
+        napon belül törlöm.
       </p>
       {status === "invalid" ? <p className="text-sm text-[#8a3a1a]">Kérlek, töltsd ki a nevet, az elérhetőséget és az üzenetet.</p> : null}
       {status === "error" ? <p className="text-sm text-[#8a3a1a]">Az üzenetet most nem sikerült elküldeni. Próbáld meg később, vagy hívj / írj emailt.</p> : null}

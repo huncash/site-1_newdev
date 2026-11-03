@@ -19,6 +19,7 @@ const NAV = [
   { href: "#kozmuvek-epulet", label: "Közművek & Épület" },
   { href: "#seta", label: "3D Séta" },
   { href: "#galeria", label: "Galéria" },
+  { href: "#azaras", label: "Árazás" },
   { href: "#kapcsolat", label: "Kapcsolat" },
 ] as const;
 
@@ -351,12 +352,13 @@ export function PropertyLanding() {
               </p>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
-              <h3 className="text-lg font-medium">Bőséges parkolási lehetőség (telken belül és kívül)</h3>
+              <h3 className="text-lg font-medium">Kényelmes parkolás telken belül és kívül</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                A hivatalos telekterület 1046 m², ahol telken belül 3 autó számára van kialakítva hely. Emellett a telek
-                előtt, a kiskapuhoz/lépcsőhöz vezető útnál egy kb. 150 m²-es önkormányzati/használati sáv is
-                rendelkezésre áll, ahol még egy további autó kényelmesen parkolhat — így a beállás és a parkolás
-                egyáltalán nem vesz el területet a beépíthető privát telekből.
+                A hivatalos telekterület 1046 m², amelyen{" "}
+                <strong className="font-semibold text-[#2f4a38]">telken belül bőségesen, 3 autó számára</strong> van
+                kialakítva parkolóhely. Ezen felül a telek előtt, a kiskapuhoz/lépcsőhöz vezető útnál lévő kb. 150
+                m²-es önkormányzati/használati sávban még egy további autó kényelmesen elfér — így a parkolás
+                elsősorban a privát telken belül történik, de extra hely is rendelkezésre áll.
               </p>
             </article>
           </div>
@@ -597,7 +599,7 @@ export function PropertyLanding() {
         </ul>
       </section>
 
-      <section className="border-t border-[#d4c9b5] bg-[#f7f1e6] py-16" id="valtozatok">
+      <section className="scroll-mt-24 border-t border-[#d4c9b5] bg-[#f7f1e6] py-16" id="azaras">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-medium">Két használati konstrukció</h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
@@ -648,7 +650,7 @@ export function PropertyLanding() {
             <p className="mt-3 text-lg font-medium text-[#e8b84a]">Keresem jövőbeni szomszédomat.</p>
             <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/90 sm:text-base">
               Általános kérdéshez ez az űrlap. Ha már tudja, melyik konstrukciót nézi, válassza az 1. vagy 2. opciót.
-              Közvetlen híváshoz a szám megjelenítése után (spamvédelem), vagy küldjön emailt.
+              Közvetlen telefon és email az adatkezelés elfogadása után érhető el.
             </p>
             <ListingSellerCard tone="dark" />
           </div>
@@ -659,11 +661,8 @@ export function PropertyLanding() {
       </section>
 
       <footer className="border-t border-[#d4c9b5] px-4 py-8">
-        <div className="mx-auto max-w-3xl space-y-3 text-center text-xs leading-relaxed text-[#6b6154]">
+        <div className="mx-auto max-w-3xl text-center text-xs leading-relaxed text-[#6b6154]">
           <p>Az oldalon szereplő adatok tájékoztató jellegűek, a hivatalos dokumentumok az irányadók.</p>
-          <p>
-            Adatvédelem: Semmihez sem gyűjtöm és nem adom át harmadik félnek a megismert adataidat. Azokat kizárólag az érdeklődésed miatti kapcsolattartásra használom a potenciális üzlet reményében. Sikeres vagy sikertelen kimenetel esetén is törlöm az érdeklődők adatait legkésőbb 30 napon belül, ahogy a hirdetésemet is törlöm.
-          </p>
         </div>
       </footer>
 

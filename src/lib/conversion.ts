@@ -10,7 +10,9 @@ export type ConversionEvent =
   | "listing_phone_reveal"
   | "listing_cta_click"
   | "listing_enquiry_submit_success"
-  | "listing_enquiry_submit_error";
+  | "listing_enquiry_submit_error"
+  | "listing_gdpr_accept"
+  | "listing_gdpr_decline";
 
 declare global {
   interface Window {

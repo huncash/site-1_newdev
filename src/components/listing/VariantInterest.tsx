@@ -4,9 +4,6 @@ import { EnquiryForm } from "@/components/listing/EnquiryForm";
 import { ListingPhoneProvider, ListingSellerCard } from "@/components/listing/ListingContact";
 import { VARIANT_OFFER, type ListingVariant } from "@/lib/listing";
 
-const GDPR =
-  "Adatvédelem: Semmihez sem gyűjtöm és nem adom át harmadik félnek a megismert adataidat. Azokat kizárólag az érdeklődésed miatti kapcsolattartásra használom a potenciális üzlet reményében. Sikeres vagy sikertelen kimenetel esetén is törlöm az érdeklődők adatait legkésőbb 30 napon belül, ahogy a hirdetésemet is törlöm.";
-
 export function VariantInterest({ variant }: { variant: ListingVariant }) {
   const selected = VARIANT_OFFER[variant];
   const other: ListingVariant = variant === "a" ? "b" : "a";
@@ -18,7 +15,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
         <header className="border-b border-[#d4c9b5] bg-[#efe8db]/95">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
             <p className="text-sm font-semibold tracking-wide">Kismaros · Börzsönyliget</p>
-            <Link href="/hirdetes#valtozatok" className="text-sm hover:underline">
+            <Link href="/hirdetes#azaras" className="text-sm hover:underline">
               Vissza a hirdetéshez
             </Link>
           </div>
@@ -131,8 +128,8 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
             <div>
               <h2 className="text-2xl font-medium">Kapcsolatfelvétel</h2>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
-                Az űrlap a {selected.optionLabel} ({selected.short.toLowerCase()}) érdeklődést jelöli. Vagy jelenítse meg
-                a telefonszámot spamvédelemmel, illetve írjon emailt.
+                Az űrlap a {selected.optionLabel} ({selected.short.toLowerCase()}) érdeklődést jelöli. Közvetlen telefon
+                és email az adatkezelés elfogadása után érhető el.
               </p>
               <ListingSellerCard />
             </div>
@@ -146,9 +143,8 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
         </main>
 
         <footer className="border-t border-[#d4c9b5] px-4 py-8">
-          <div className="mx-auto max-w-3xl space-y-3 text-center text-xs leading-relaxed text-[#6b6154]">
+          <div className="mx-auto max-w-3xl text-center text-xs leading-relaxed text-[#6b6154]">
             <p>Az oldalon szereplő adatok tájékoztató jellegűek, a hivatalos dokumentumok az irányadók.</p>
-            <p>{GDPR}</p>
           </div>
         </footer>
       </div>
