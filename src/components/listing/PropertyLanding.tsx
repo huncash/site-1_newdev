@@ -9,9 +9,9 @@ import { HERO_IMAGE, PHOTO_STATE, PHOTOS, TOUR_URL, UTILITY_PHOTOS } from "@/lib
 
 const NAV = [
   { href: "#elhelyezkedes", label: "Elhelyezkedés & Mikroklíma" },
-  { href: "#tilalom", label: "Övezeti besorolás (Lke-4) & Változtatási tilalom" },
+  { href: "#tilalom", label: "Övezeti besorolás & Változtatási tilalom" },
   { href: "#kozmuvek-epulet", label: "Közművek & Épület" },
-  { href: "#seta", label: "Bejárható 3D fotózás" },
+  { href: "#seta", label: "3D Séta" },
   { href: "#galeria", label: "Galéria" },
   { href: "#kapcsolat", label: "Kapcsolat" },
 ] as const;
@@ -21,7 +21,7 @@ const facts = [
   { icon: Trees, label: "Besorolás", value: "Lke-4, kertvárosias lakóterület. 30% beépíthetőség, új lakóház építésére alkalmas." },
   { icon: House, label: "Felépítmény", value: "Azonnal használható felvonulási épület, az ingatlan-nyilvántartásban feltüntetve. Épült 1980 körül. A belső burkolatok és a berendezés tiszta lapként az új tulajdonosra várnak." },
   { icon: Zap, label: "Infrastruktúra", value: "Bekötött villany, a mérőhely után a rendszer cserélve. Biztosított vízellátás. Szennyvíz: saját emésztő." },
-  { icon: MapPin, label: "Környezet", value: "Natura 2000, ősfás tölgyerdő. Nyáron 4 °C-kal hűvösebb, mint a Duna-parton, mégis a Börzsönyliget naposabb oldala: napelemre és veteményesre is alkalmas." },
+  { icon: MapPin, label: "Környezet", value: "Duna–Ipoly Nemzeti Park vonzáskörzete, Ipoly Erdő Zrt. gazdálkodása, ősfás tölgyerdő, gazdag vadállomány. Nyáron 4 °C-kal hűvösebb a Duna-partnál; napos hegyoldal: napelemre, veteményesre, wallipinire is alkalmas." },
   { icon: FileText, label: "Jogi helyzet", value: "Tiszta státusz: változtatási tilalom nem érinti. Tehermentes, birtokba adás megegyezés szerint." },
   { icon: Route, label: "Megközelítés", value: "Aszfaltozott főútról, szilárd burkolatú úton. Távol a zajos vasúttól." },
   { icon: Fence, label: "Telekhatár", value: "A 2026. szeptember 2-i képeken drótkerítés, kőkosaras támfal és kapuk látszanak." },
@@ -168,10 +168,10 @@ export function PropertyLanding() {
               Építési telek Börzsönyligeten, meglévő épülettel
             </h1>
             <p className="mt-4 text-base leading-relaxed text-[#f7f1e6]/95 sm:text-lg">
-              Lke-4 kertvárosias lakóövezet, Natura 2000-es ősfás tölgyesben. Nyáron 4 °C-kal hűvösebb,
-              mint a Duna-parton, mégis a Börzsönyliget naposabb oldala. Az elvonulni vágyóknak:
-              nyugodt telek, jó szomszédság, azonnal használható felépítmény. Meglévő nyaraló
-              felújítására, átépítésére vagy új lakóház építésére, telken belüli autóbeállókkal.
+              Lke-4 kertvárosias lakóövezet a Börzsöny kapujában, ősfás tölgyesben. Nyáron 4 °C-kal
+              hűvösebb, mint a Duna-parton, mégis a Börzsönyliget naposabb oldala. Az elvonulni
+              vágyóknak: nyugodt telek, jó szomszédság, azonnal használható felépítmény — felújításra,
+              átépítésre vagy új lakóházra, telken belüli autóbeállókkal.
             </p>
             <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
               <li>
@@ -205,7 +205,9 @@ export function PropertyLanding() {
       <section className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20" id="elhelyezkedes">
         <h2 className="text-3xl font-medium">Elhelyezkedés &amp; Mikroklíma</h2>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-          Kismaros-Börzsönyliget, Natura 2000-es ősfás tölgyes. A kettős előny: nyáron hűvösebb a Duna-partnál, mégis a Börzsönyliget naposabb oldala. Előbb az országban, aztán a térségben, végül az utcában.
+          Kismaros-Börzsönyliget, a Börzsöny kapuja: ősfás tölgyes, gazdag vadállomány, a Duna–Ipoly Nemzeti Park
+          vonzáskörzete. A kettős előny: nyáron hűvösebb a Duna-partnál, mégis a Börzsönyliget naposabb oldala.
+          Előbb az országban, aztán a térségben, végül az utcában.
         </p>
 
         <div className="mt-10">
@@ -236,19 +238,42 @@ export function PropertyLanding() {
           </p>
           <p className="mt-1 text-xs text-[#6b6154]">Térképadat: OpenStreetMap közreműködők.</p>
           <article className="mt-6 rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#f7f1e6] p-5 sm:p-6">
-            <h3 className="text-lg font-medium">A kettős előny: hűvösebb nyár, napos hegyoldal</h3>
+            <h3 className="text-lg font-medium">Klíma-előny: hűvösebb nyár, napos hegyoldal</h3>
             <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
-              Nyáron itt 4 °C-kal hűvösebb van, mint a Duna-parton vagy a betondzsungelben: a fokozódó hőségek idején ez a nyári pihenéshez felbecsülhetetlen. Ezzel párhuzamosan ez a Börzsönyliget naposabb oldala. A déli, naposabb fekvés kedvez a napelemeknek: az utcában már van rá működő példa. Ugyanez a hegyoldal veteményesre vagy wallipini-szerű, fedett kertre is alkalmas.
+              Nyáron itt 4 °C-kal hűvösebb van, mint a Duna-parton vagy a betondzsungelben: a fokozódó hőségek idején
+              ez a nyári pihenéshez felbecsülhetetlen. Ezzel párhuzamosan ez a Börzsönyliget naposabb oldala — a déli
+              fekvés kedvez a napelemeknek és a kertnek is.
             </p>
           </article>
-          <div className="mt-4 grid gap-4 lg:grid-cols-2">
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
-              <h3 className="text-lg font-medium">Ősfás tölgyes</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">Kismaros-Börzsönyliget, Natura 2000-es terület, ősfás tölgyerdő.</p>
+              <h3 className="text-lg font-medium">Ipoly Erdő &amp; Nemzeti Park</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
+                A környéken az Ipoly Erdő Zrt. gazdálkodik; a terület a Duna–Ipoly Nemzeti Park vonzáskörzetébe tartozik.
+                Natura 2000-es ősfás tölgyerdő: igazi béke a Börzsöny kapujában.
+              </p>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
-              <h3 className="text-lg font-medium">Csend és szomszédság</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">Távol a zajos vasútvonalaktól és a turisták tömegétől. Az elvonulni vágyóknak ajánlott, akik értékelik a jó szomszédsági viszonyokat, a nyugodt lakóövezeti telket: nyaraló felújítására, átépítésére vagy új lakóház építésére, telken belüli autóbeállókkal.</p>
+              <h3 className="text-lg font-medium">Vadállomány &amp; természet</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
+                Gazdag helyi vadállomány, ősfás tölgyerdő, csendes erdei környezet. Távol a zajos vasútvonalaktól és a
+                turisták tömegétől — az elvonulni vágyóknak, akik értékelik a jó szomszédságot és a nyugodt lakóövezeti telket.
+              </p>
+            </article>
+            <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
+              <h3 className="text-lg font-medium">Off-grid életvitel / önfenntartás</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
+                A helyszín ideális terep az off-grid életvitel kialakítására. A naposabb fekvés miatt a napelemek
+                sikeresen bevethetők — az utcában már máshol is van rá működő példa —, valamint hegyoldali veteményes
+                vagy wallipini-szerű, fedett kert is kialakítható.
+              </p>
+            </article>
+            <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
+              <h3 className="text-lg font-medium">Ősfás tölgyes &amp; lakóövezet</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
+                Kismaros-Börzsönyliget, Lke-4 kertvárosias lakóövezet meglévő felépítménnyel: nyaraló felújítására,
+                átépítésére vagy új lakóház építésére, telken belüli autóbeállókkal.
+              </p>
             </article>
           </div>
         </div>
@@ -297,7 +322,7 @@ export function PropertyLanding() {
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
               <h3 className="text-lg font-medium">Közvetlen természetkapcsolat</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                Az utca végén, a ház mellett egy árok fut, amely mellett ösvény vezet le a völgybe és fel a dombtetőre, a Kukorica utca melletti rétre. A kapun kilépve 500 méteren belül közvetlenül elérhetőek a Börzsöny kirándulóhelyei.
+                Az utca végén, a ház mellett egy árok fut, amely mellett ösvény vezet le a völgybe és fel a dombtetőre, a Kukorica utca melletti rétre. A kapun kilépve 500 méteren belül elérhetőek a Börzsöny túraútvonalai.
               </p>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
@@ -508,7 +533,7 @@ export function PropertyLanding() {
           </li>
           <li className="rounded-lg border border-[#d4c9b5] border-t-4 border-t-[#e8b84a] bg-[#f7f1e6] p-5">
             <h3 className="text-lg font-medium">Hűvös és napos</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">Nyáron 4 °C-kal hűvösebb, mint a Duna-parton, mégis a Börzsönyliget naposabb oldala: napelemre és veteményesre is alkalmas.</p>
+            <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">Nyáron 4 °C-kal hűvösebb, mint a Duna-parton, mégis napos hegyoldal: napelemre, veteményesre vagy wallipinire — off-grid életvitelre is alkalmas terep.</p>
           </li>
         </ul>
       </section>

@@ -31,7 +31,7 @@ export const VARIANT_OFFER = {
   },
   plotSqm: 1046,
   marketNote:
-    "A Börzsöny–Dunakanyar térségében a hirdetett árszintek gyakran a jogi státusz, a beépíthetőség és a közművesítettség szerint szóródnak: a változtatási tilalommal érintett vagy bizonytalanabb státuszú porták másképp pozicionálódnak, mint a tiszta lakóövezeti, azonnal használható felépítménnyel rendelkező telkek. Ez az ingatlan Lke-4 lakóövezet, változtatási tilalom nem érinti, 1046 m² hivatalos telek, bekötött villany és vezetékes víz mellett meglévő felépítménnyel.",
+    "A Börzsöny–Dunakanyar térségében a kínálat gyakran a jogi státusz, a beépíthetőség és a közművesítettség szerint szóródik: a változtatási tilalommal érintett vagy bizonytalanabb státuszú porták másképp pozicionálódnak, mint a tiszta lakóövezeti, azonnal használható felépítménnyel rendelkező telkek. Ez az ingatlan Lke-4 lakóövezet, változtatási tilalom nem érinti, 1046 m² hivatalos telek, bekötött villany és vezetékes víz mellett meglévő felépítménnyel — a Duna–Ipoly Nemzeti Park vonzáskörzetében, ősfás tölgyesben.",
 } as const;
 
 export const PHOTOS = [
