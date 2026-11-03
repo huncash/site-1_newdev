@@ -1,7 +1,16 @@
-/** Nyilvános oldal: csak irányár. A padlóár belső, nem jelenik meg. */
+/**
+ * Nyilvános listing: tilos vételár, irányár, padlóár, Ft/m², kötbérösszeg,
+ * felmentési díj, ársáv vagy belső határidő. Csak a kétágú elv és a termékértékek.
+ */
 
 export const TOUR_URL = "https://my.matterport.com/show/?m=92EPXPjr6gR&ts=1";
 export const PHOTO_STATE = "2026. szeptember 2.";
+
+/** Tiszta erdei panoráma / telekrész — nincs támfal, kocsibeálló, kémény. */
+export const HERO_IMAGE = {
+  src: "/hirdetes/20260902-29.jpg",
+  alt: "Napos ősfás telekrész: lombkorona és tágas erdei részlet",
+} as const;
 
 export type ListingVariant = "a" | "b";
 
@@ -10,26 +19,19 @@ export const VARIANT_OFFER = {
     code: "a" as const,
     title: "A változat: magáncél, nyugalom",
     short: "Magáncél, nyugalom",
-    listPrice: "33 M Ft",
-    perSqm: "kb. 31,5 ezer Ft/m² az irányárból",
     summary:
-      "Magáncélú használatra, a saját és a környékbeli lakosok nyugalma védelmében. Nem újabb börzsönyligeti vendégház létesítésére adom el, hanem annak, aki ezt szerződésben is vállalja: nincs rövid távú szálláshely-szolgáltatás és kereskedelmi szállásadás. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad. Megszegés: 4 M Ft/év kötbér; a megfizetés nem mentesít. Felmentés: egyszeri 4 M Ft.",
+      "Magáncélú használatra, a saját és a környékbeli lakosok nyugalma védelmében. Nem újabb börzsönyligeti vendégház létesítésére adom el, hanem annak, aki ezt szerződésben is vállalja: nincs rövid távú szálláshely-szolgáltatás és kereskedelmi szállásadás. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad marad. A vállalás megszegésének jogkövetkezményeit — beleértve a szerződéses szankciókat — ügyvéddel rögzítjük; a részletek nem ezen az oldalon szerepelnek.",
   },
   b: {
     code: "b" as const,
-    title: "B változat: magasabb piaci ár, szabad kéz",
-    short: "Magasabb piaci ár, szabad kéz",
-    listPrice: "36,5 M Ft",
-    perSqm: "kb. 34,9 ezer Ft/m² az irányárból",
+    title: "B változat: korlátozás nélkül",
+    short: "Korlátozás nélkül",
     summary:
-      "Ha a nyugalmi vállalást nem tudja magára venni, de ezt a telket szeretné: azonnali, magasabb, mégis piaci irányáron értékesítem, és nem foglalkozom azzal, hogy mit kezd vele az új tulajdonos. A 3,5 M Ft a két irányár különbsége. A hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek.",
+      "Ha a nyugalmi vállalást nem tudja magára venni, de ezt a telket szeretné: a B út a szerződéses használati korlátozás nélkül zárható. A hatályos jogszabályok és a helyi építési szabályzat ebben az esetben is érvényesek; az Lke-4 övezetben megengedett használatot a helyi szabályzatban és az illetékes hatóságnál lehet ellenőrizni.",
   },
   plotSqm: 1046,
-  premiumDiff: "3,5 M Ft",
-  penalty: "4 M Ft / érintett év",
-  releaseFee: "4 M Ft egyszeri",
   marketNote:
-    "A környéken gyakran találni olcsóbbnak tűnő portákat. Ezeknél gyakori a változtatási tilalom, a bizonytalanabb jogi státusz, vagy az, hogy nincs azonnal használható, közműves felépítmény. Ez az ingatlan Lke-4 lakóövezet, tiszta jogi státusz, 1046 m² hivatalos telek, bekötött villany és vezetékes víz mellett meglévő felépítménnyel.",
+    "A Börzsöny–Dunakanyar térségében a hirdetett árszintek gyakran a jogi státusz, a beépíthetőség és a közművesítettség szerint szóródnak: a változtatási tilalommal érintett vagy bizonytalanabb státuszú porták másképp pozicionálódnak, mint a tiszta lakóövezeti, azonnal használható felépítménnyel rendelkező telkek. Ez az ingatlan Lke-4 lakóövezet, változtatási tilalom nem érinti, 1046 m² hivatalos telek, bekötött villany és vezetékes víz mellett meglévő felépítménnyel.",
 } as const;
 
 export const PHOTOS = [

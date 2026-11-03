@@ -35,11 +35,59 @@
 }
 
 .listing-root {
+  /* Természetes paletta: erdei zöld · meleg bézs · napsárga */
+  --ls-forest: #0f2e1f;
+  --ls-forest-mid: #1a4530;
+  --ls-forest-soft: #243f30;
+  --ls-sand: #efe8db;
+  --ls-sand-mid: #e5dccb;
+  --ls-card: #f7f1e6;
+  --ls-border: #d4c9b5;
+  --ls-ink: #241f18;
+  --ls-muted: #5a5146;
+  --ls-sun: #e8b84a;
+  --ls-sun-deep: #d4a017;
+  --ls-on-sun: #241f18;
+  --ls-on-forest: #f7f1e6;
   font-family: "Listing Sans", system-ui, sans-serif;
+  color: var(--ls-ink);
+  background-color: var(--ls-sand);
 }
 
 .listing-root h1,
 .listing-root h2,
 .listing-root h3 {
   font-family: "Listing Display", Georgia, serif;
+}
+
+.listing-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background-color: var(--ls-sun);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ls-on-sun);
+  text-align: center;
+}
+
+.listing-cta:hover {
+  background-color: var(--ls-sun-deep);
+  color: var(--ls-on-sun);
+}
+
+.listing-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  border: 1px solid color-mix(in srgb, var(--ls-on-forest) 85%, transparent);
+  background-color: color-mix(in srgb, var(--ls-forest) 35%, transparent);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ls-on-forest);
+  text-align: center;
 }

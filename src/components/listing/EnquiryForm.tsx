@@ -5,7 +5,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import type { ListingVariant } from "@/lib/listing";
 
 const fieldClass =
-  "mt-1 w-full rounded-md border border-[#d9d2c5] bg-white px-3 py-2.5 text-sm text-[#1c1915] outline-none focus:border-[#1f4d3a]";
+  "mt-1 w-full rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-3 py-2.5 text-sm text-[#241f18] outline-none focus:border-[#e8b84a]";
 
 type EnquiryFormProps = {
   variant?: ListingVariant;
@@ -95,7 +95,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
 
   if (status === "sent") {
     return (
-      <p className="rounded-md border border-[#d9d2c5] bg-white px-5 py-6 text-sm leading-relaxed">
+      <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-5 py-6 text-sm leading-relaxed">
         Megkaptuk az érdeklődést{variant ? ` (${variant.toUpperCase()} változat)` : ""}. Az eladó a megadott elérhetőségen jelentkezik.
       </p>
     );
@@ -104,7 +104,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       {variant ? (
-        <p className="rounded-md border border-[#d9d2c5] bg-white px-3 py-2 text-sm">
+        <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-3 py-2 text-sm">
           Érdeklődés: <span className="font-semibold">{variant.toUpperCase()} változat</span>
         </p>
       ) : null}
@@ -166,7 +166,7 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
       <button
         type="submit"
         disabled={status === "sending" || !sumToken}
-        className="rounded-md bg-[#1f4d3a] px-5 py-3 text-sm font-semibold text-white disabled:opacity-60"
+        className="rounded-md bg-[#e8b84a] px-5 py-3 text-sm font-semibold text-[#241f18] disabled:opacity-60"
       >
         {status === "sending" ? "Küldés…" : "Érdeklődöm"}
       </button>
