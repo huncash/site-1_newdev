@@ -65,8 +65,8 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
     return (
       <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-5 py-6 text-sm leading-relaxed">
         Megkaptuk az érdeklődést
-        {variant ? ` (${variant === "a" ? "1. opció" : "2. opció"})` : ""}. Hamarosan jelentkezem a megadott
-        elérhetőségen.
+        {variant ? ` (${variant === "a" ? "2027-es birtokbaadás" : "2026 végéig tartó birtokbaadás"})` : ""}.
+        Hamarosan jelentkezem a megadott elérhetőségen.
       </p>
     );
   }
@@ -76,7 +76,9 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
       {variant ? (
         <p className="rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-3 py-2 text-sm">
           Érdeklődés:{" "}
-          <span className="font-semibold">{variant === "a" ? "1. opció — magáncélú, nyugalom" : "2. opció — szabad / üzleti"}</span>
+          <span className="font-semibold">
+            {variant === "a" ? "2027-es birtokbaadás — 32,2 M Ft" : "2026 végéig tartó birtokbaadás — 33 M Ft"}
+          </span>
         </p>
       ) : null}
       <label className="block text-sm">

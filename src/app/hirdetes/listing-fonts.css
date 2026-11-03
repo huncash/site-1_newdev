@@ -56,6 +56,25 @@ html:has(.listing-root) {
   font-family: "Listing Sans", system-ui, sans-serif;
   color: var(--ls-ink);
   background-color: var(--ls-sand);
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+.listing-root img,
+.listing-root iframe,
+.listing-root video {
+  max-width: 100%;
+}
+
+.listing-root table {
+  max-width: 100%;
+}
+
+/* Tablet: kényelmesebb érintési célok a menüpontokra */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .listing-root h1 {
+    letter-spacing: -0.01em;
+  }
 }
 
 .listing-root h1,

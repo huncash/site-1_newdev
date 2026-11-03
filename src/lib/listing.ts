@@ -1,15 +1,15 @@
 /**
- * Nyilvános listing: irányárak a komoly érdeklődők szűrésére.
+ * Nyilvános listing: fix vételárak birtokbaadási időzítés szerint.
  * Belső padlóár / eladási kényszer / deadline soha nem szerepelhet szövegként.
  */
 
 export const TOUR_URL = "https://my.matterport.com/show/?m=92EPXPjr6gR&ts=1";
 export const PHOTO_STATE = "2026. szeptember 2.";
 
-/** Hirdetett felépítmény — barna faház fehér ablakokkal a tölgyesben. */
+/** Barna faház, fehér ablakok, betonlépcső, középső beépítési szint. */
 export const HERO_IMAGE = {
-  src: "/hirdetes/20260902-01.jpg",
-  alt: "Barna faház fehér ablakokkal a Börzsönyliget ősfás tölgyesében",
+  src: "/hirdetes/20260902-02.jpg",
+  alt: "Barna faház fehér ablakokkal, betonlépcsővel és a középső beépítési szinttel a tölgyesben",
 } as const;
 
 export const LISTING_LOGO = {
@@ -28,37 +28,88 @@ export const LISTING_SELLER = {
 
 export type ListingVariant = "a" | "b";
 
+/** a = 2027-es birtokbaadás · b = 2026 végéig tartó birtokbaadás */
 export const VARIANT_OFFER = {
   a: {
     code: "a" as const,
-    optionLabel: "1. opció",
-    title: "1. opció: magáncélú, nyugalmat őrző használat",
-    short: "Magáncélú · nyugalom",
-    listPrice: "33 M Ft",
-    bandNote: "Kedvezményes irányár · kb. 10%-kal kedvezőbb a standard konstrukciónál",
-    perSqm: "kb. 31,5 ezer Ft/m² az irányárból",
+    optionLabel: "2027-es birtokbaadás",
+    title: "2027-es birtokbaadás — 32,2 M Ft",
+    short: "2027. január",
+    listPrice: "32,2 M Ft",
+    deposit: "10% (3,22 M Ft) a szerződéskötéskor",
+    possession: "2027. január",
+    bandNote: "2027-es birtokbaadással, 10% foglalóval a szerződéskötéskor",
+    perSqm: "kb. 30,8 ezer Ft/m² az irányárból",
     summary:
-      "Kedvezményes irányár azoknak, akik vállalják a zsákutca csendjének megőrzését: nem alakítanak ki rövid távú szálláshelyet, és nem indítanak a helyi lakosságot terhelő, forgalomhozó üzleti tevékenységet. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad. A kedvezmény a békés szomszédságot támogatja.",
+      "Ugyanaz az ingatlan, későbbi birtokbaadással. A kedvezményes ár a későbbi ütemezésért jár: ha nem sürgős a költözés, a tulajdonátruházás későbbre kerülhet.",
   },
   b: {
     code: "b" as const,
-    optionLabel: "2. opció",
-    title: "2. opció: szabad felhasználású / üzleti hasznosítás",
-    short: "Szabad felhasználás · üzleti",
-    listPrice: "36,5 M Ft",
-    bandNote: "Standard piaci ár · +3,5 M Ft felár az alapárhoz képest",
-    perSqm: "kb. 34,9 ezer Ft/m² az irányárból",
+    optionLabel: "2026 végéig tartó birtokbaadás",
+    title: "2026 végéig tartó birtokbaadás — 33 M Ft",
+    short: "2026. december 31-ig",
+    listPrice: "33 M Ft",
+    deposit: "Szerződés szerint",
+    possession: "2026. december 31-ig",
+    bandNote: "2026 végéig tartó birtokbaadással",
+    perSqm: "kb. 31,5 ezer Ft/m² az irányárból",
     summary:
-      "Standard piaci irányár korlátlanabb, szabad felhasználási kerettel. A +3,5 M Ft az alapárhoz képest a szabad felhasználású / kereskedelmi célú konstrukció reális piaci ellenértéke — a vételár része, nem kártérítés. A hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek.",
+      "Ugyanaz az ingatlan, korábbi birtokbaadással. A ház azonnal használható; a birtokbaadás 2026 végéig megtörténik.",
   },
   plotSqm: 1046,
-  premiumDiff: "3,5 M Ft",
-  discountNote: "kb. 10%",
+  priceDiff: "0,8 M Ft",
+  fixturesNote: "A jelenlegi egyszerű berendezéssel együtt",
   premiumNote:
-    "Két használati konstrukció: az 1. opció kedvezményes irányárral a zsákutca nyugalmát őrzi; a 2. opció +3,5 M Ft-tal a szabadabb / üzleti hasznosítás standard piaci ára (a felár a vételár része).",
+    "Az árak fixek, közvetítői jutalék nincs. A két ár közötti különbség nem alku tárgya: ugyanaz az ingatlan, a különbség kizárólag a birtokbaadás időpontja.",
   marketNote:
-    "A Börzsöny–Dunakanyar térségében a kínálat gyakran a jogi státusz, a beépíthetőség és a közművesítettség szerint szóródik. A változtatási tilalommal érintett porták másképp pozicionálódnak, mint a tiszta lakóövezeti, azonnal használható felépítménnyel rendelkező telkek. Ez az ingatlan Lke-4, a tilalmi listán kívül, 1046 m² hivatalos telekkel.",
+    "Ha nem sürgős a költözés, a tulajdonátruházás későbbi ütemezése a tulajdonosnak kedvezőbb — és ezt az előnyt az árban megosztja. A foglaló szabályait az adásvételi előszerződés rögzíti, ügyvéd közreműködésével.",
 } as const;
+
+export const FAQ_ITEMS = [
+  {
+    q: "Alkudható az ár?",
+    a: "Nem, az árak fixek. Ezért korrekt: nincs mesterségesen felfújt alkupuffer.",
+  },
+  {
+    q: "Mi marad a házban?",
+    a: "A jelenlegi egyszerű berendezés a házban marad. (A tárolókból a személyes tárgyak elszállításra kerülnek).",
+  },
+  {
+    q: "Miért olcsóbb a 2027-es opció?",
+    a: "Ha nem kell azonnal költöznöd, a tulajdonátruházás későbbre kerülhet, ami számomra kedvezőbb ütemezést jelent, és ezt az árban megosztom veled.",
+  },
+  {
+    q: "Azonnal beköltözhetek?",
+    a: "A ház azonnal használható. A 33 M Ft-os opciónál a birtokbaadás 2026 végéig megtörténik.",
+  },
+  {
+    q: "Van közvetítői jutalék?",
+    a: "Nincs, közvetlenül a tulajdonostól vásárolsz.",
+  },
+  {
+    q: "Honnan tudom, hogy a jogi háttér tiszta?",
+    a: "Az ingatlan Lke-4 övezeti besorolású, és a Kismaros 8/2025. önkormányzati rendelet szerinti változtatási tilalom nem érinti. Tulajdoni lap és igazolás kérésre elérhető, vagy a megtekintéskor áttekinthető.",
+  },
+] as const;
+
+export const PROCESS_STEPS = [
+  {
+    title: "Megtekintés",
+    body: "Egyeztetett időpontban személyesen megnézed a faházat és a telket.",
+  },
+  {
+    title: "Döntés",
+    body: "Kiválasztod az időzítést (2027-es kedvezményes vagy 2026 végéig tartó birtokbaadás).",
+  },
+  {
+    title: "Szerződéskötés",
+    body: "Ügyvéd előtt, a választott konstrukciónak megfelelő feltételekkel.",
+  },
+  {
+    title: "Fizetés és birtokbaadás",
+    body: "Az előszerződésben és adásvételiben rögzített ütemezés szerint.",
+  },
+] as const;
 
 export const PHOTOS = [
   { src: "/hirdetes/20260902-01.jpg", alt: "A meglévő épület a tölgyesben, 2026. szeptember 2.", tall: true },

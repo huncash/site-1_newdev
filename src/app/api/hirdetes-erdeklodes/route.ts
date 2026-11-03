@@ -47,7 +47,8 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "invalid" }, { status: 400 });
   }
 
-  const optionLabel = variant === "A" ? "1. opció" : variant === "B" ? "2. opció" : null;
+  const optionLabel =
+    variant === "A" ? "2027-es birtokbaadás (32,2 M Ft)" : variant === "B" ? "2026 végéig tartó birtokbaadás (33 M Ft)" : null;
   const variantLine = optionLabel ? `Konstrukció: ${optionLabel}` : "Konstrukció: nem jelölt";
   const replyTo = email ?? undefined;
   const sent = await sendQuoteEmail({

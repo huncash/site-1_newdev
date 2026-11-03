@@ -2,7 +2,7 @@
 
 ## Nyilvános szabály (kötelező)
 
-Nyilvános oldalon **megjelenhet** az irányár (A/B) a komoly érdeklődők szűrésére.
+Nyilvános oldalon **megjelenhet** a fix vételár (birtokbaadási időzítés szerint) a komoly érdeklődők szűrésére.
 
 **Tilos** továbbra is:
 
@@ -10,11 +10,11 @@ Nyilvános oldalon **megjelenhet** az irányár (A/B) a komoly érdeklődők sz�
 - kötbérösszeg, felmentési díj nyilvános kiírása
 - belső tárgyalási háttér és „csak az eladónak” számítás
 
-Kétágú konstrukció (publikus):
+Kétágú konstrukció (publikus, fix árak, jutalék nélkül):
 
-- **A:** korlátozással — irányár **33 M Ft** (tárgyalási sáv kb. 31,5 M Ft-tól)
-- **B:** korlátozás nélkül — **36,5 M Ft** (= A + **3,5 M Ft** felár)
-- A B felár **nem kártérítés**, hanem a szabad felhasználás ellenértéke (a vételár része)
+- **A:** 2027-es birtokbaadás — **32,2 M Ft** (10% foglaló a szerződéskötéskor)
+- **B:** 2026 végéig tartó birtokbaadás — **33 M Ft**
+- A különbség kizárólag a birtokbaadás időpontja; nem alku tárgya
 
 Hivatalos telek: 1046 m². A 4 °C, a Natura 2000 és a többi helyleírás a hirdetés szövege.
 
