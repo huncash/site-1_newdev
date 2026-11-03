@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-import { Fraunces, Outfit } from "next/font/google";
 
 import { PropertyLanding } from "@/components/listing/PropertyLanding";
-
-const display = Fraunces({ subsets: ["latin", "latin-ext"], weight: ["500", "600"], variable: "--font-listing-display" });
-const sans = Outfit({ subsets: ["latin", "latin-ext"], weight: ["400", "500", "600"], variable: "--font-listing-sans" });
 
 export const metadata: Metadata = {
   title: { absolute: "Építési telek Börzsönyligeten, Lke-4 övezet" },
@@ -14,9 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function ListingPage() {
-  return (
-    <div className={`${display.variable} ${sans.variable} font-[family-name:var(--font-listing-sans)] [&_h1]:font-[family-name:var(--font-listing-display)] [&_h2]:font-[family-name:var(--font-listing-display)] [&_h3]:font-[family-name:var(--font-listing-display)]`}>
-      <PropertyLanding />
-    </div>
-  );
+  return <PropertyLanding />;
 }
