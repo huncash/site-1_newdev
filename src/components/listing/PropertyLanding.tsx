@@ -23,7 +23,7 @@ const NAV = [
 ] as const;
 
 const facts = [
-  { icon: Ruler, label: "Hivatalos telek", value: "1046 m² (+ kb. 150 m² önkormányzati/használati sáv a telek előtt kocsibeállónak és a kiskapu lépcsőjének). A HÉSZ szerinti övezeti telekminimum 1200 m² — a meglévő állapot és a hatályos keretek érvényesek." },
+  { icon: Ruler, label: "Hivatalos telek & parkolás", value: "1046 m² beépíthető magántelek; telken belül 3 autó. Előtte kb. 150 m² önkormányzati/használati sáv (+ lépcsőút) még 1 autónak — a parkolás nem csökkenti a 1046 m²-t." },
   { icon: Trees, label: "Besorolás (Lke-4)", value: "Szabadonálló beépítés, max. 30% beépíthetőség, legfeljebb 4,5 m építménymagasság. Új lakóházra / felújításra / átépítésre alkalmas keret a helyi szabályzat szerint." },
   { icon: House, label: "Felépítmény", value: "Azonnal használható felvonulási épület / hétvégi ház, az ingatlan-nyilvántartásban feltüntetve (kb. 1980). Mellékhelyiség átalakítva (nem a konyhából nyílik); cserépkályha-fűtés előkészítve szakemberrel; belső burkolás és berendezés tiszta lap." },
   { icon: Zap, label: "Villany", value: "Bekötött villany. A mérőhely után a belső rendszer cserélve (új kismegszakítók a mérő felett — a fotón látható). A névleges szerződéses teljesítmény a szolgáltatónál / a mérőn ellenőrizhető." },
@@ -31,7 +31,7 @@ const facts = [
   { icon: MapPin, label: "Környezet", value: "Duna–Ipoly Nemzeti Park vonzáskörzete, Ipoly Erdő Zrt., ősfás tölgyerdő, gazdag vadállomány. Nyáron 4 °C-kal hűvösebb a Duna-partnál; napos hegyoldal: napelemre és veteményesre is alkalmas." },
   { icon: FileText, label: "Jogi helyzet", value: "Változtatási tilalom nem érinti (8/2025. rendelet tilalmi listáján kívül). Tehermentes, birtokba adás megegyezés szerint." },
   { icon: Route, label: "Megközelítés", value: "Aszfaltozott főútról, szilárd burkolatú úton. Távol a zajos vasúttól." },
-  { icon: Fence, label: "Telekhatár", value: "A 2026. szeptember 2-i képeken drótkerítés, kőkosaras támfal és kapuk látszanak." },
+  { icon: Fence, label: "Telekhatár", value: "A drótkerítés egy földmérő által kimért telekhatár vonalon húzódik." },
   { icon: Thermometer, label: "Fűtés", value: "A fűtési infrastruktúra előkészítve. A cserépkályha üzembe helyezésére megbeszélt szakember áll rendelkezésre." },
 ] as const;
 
@@ -347,15 +347,16 @@ export function PropertyLanding() {
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
               <h3 className="text-lg font-medium">Közvetlen természetkapcsolat</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                Az utca végén, a ház mellett egy árok fut, amely mellett ösvény vezet le a völgybe és fel a dombtetőre, a Kukorica utca melletti rétre. A kapun kilépve 500 méteren belül elérhetőek a Börzsöny túraútvonalai.
+                Az utca végén egy árok fut, amely mellett ösvény vezet le a völgybe és fel a dombtetőre, a Kukorica utca melletti rétre. A kapun kilépve 500 méteren belül elérhetőek a Börzsöny túraútvonalai.
               </p>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
-              <h3 className="text-lg font-medium">1046 m² telek + kb. 150 m² beálló-sáv</h3>
+              <h3 className="text-lg font-medium">Bőséges parkolási lehetőség (telken belül és kívül)</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                A hivatalos telekterület 1046 m². Emellett a telek előtt, az utcáig kb. 150 m² önkormányzati/használati
-                sáv biztosítja a kényelmes, telken kívüli kocsibeállást és a kiskapuhoz vezető lépcsőt — így a parkolás
-                nem a beépíthető telekterületet terheli.
+                A hivatalos telekterület 1046 m², ahol telken belül 3 autó számára van kialakítva hely. Emellett a telek
+                előtt, a kiskapuhoz/lépcsőhöz vezető útnál egy kb. 150 m²-es önkormányzati/használati sáv is
+                rendelkezésre áll, ahol még egy további autó kényelmesen parkolhat — így a beállás és a parkolás
+                egyáltalán nem vesz el területet a beépíthető privát telekből.
               </p>
             </article>
           </div>
@@ -433,12 +434,12 @@ export function PropertyLanding() {
               <h3 className="text-lg font-medium">HÉSZ — Lke-4 keretek</h3>
               <ul className="mt-3 space-y-2 text-sm leading-relaxed text-[#5a5146]">
                 <li>Szabadonálló beépítés, max. 30% beépíthetőség, legfeljebb 4,5 m építménymagasság.</li>
-                <li>
-                  Hivatalos telek 1046 m² (az övezeti 1200 m²-es minimum alatt): a meglévő állapot és a hatályos keretek
-                  érvényesek; a helyi szabályzat változásait érdemes követni.
-                </li>
+                <li>Hivatalos telek 1046 m²; a helyi szabályzat változásait érdemes követni.</li>
                 <li>Részleges közmű / zárt szennyvíztároló a Börzsönyligetre vonatkozó HÉSZ 42. § szerint.</li>
-                <li>Telek előtt kb. 150 m² önkormányzati/használati sáv kocsibeállónak.</li>
+                <li>
+                  Parkolás: telken belül 3 autó; előtte kb. 150 m² önkormányzati/használati sáv (+ lépcsőút) még 1
+                  autónak — nem terheli a 1046 m² beépíthető területet.
+                </li>
               </ul>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5">

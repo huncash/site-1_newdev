@@ -50,7 +50,8 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                 <div className="sm:col-span-2">
                   <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Telek</dt>
                   <dd className="mt-1 text-sm leading-relaxed text-[#5a5146]">
-                    {VARIANT_OFFER.plotSqm} m² hivatalos telekterület, plusz kb. 150 m² önkormányzati/használati sáv.
+                    {VARIANT_OFFER.plotSqm} m² hivatalos telek (belül 3 autó); előtte kb. 150 m² használati sáv még 1
+                    autónak — a parkolás nem csökkenti a beépíthető területet.
                   </dd>
                 </div>
               </dl>
