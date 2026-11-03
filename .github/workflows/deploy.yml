@@ -20,6 +20,8 @@ jobs:
 
       - name: Build and restart site-1 on VPS
         uses: appleboy/ssh-action@v1.2.0
+        env:
+          LISTING_INBOX_EMAIL: ${{ secrets.LISTING_INBOX_EMAIL }}
         with:
           host: 195.228.152.141
           username: vmvrgohu
@@ -27,6 +29,7 @@ jobs:
           port: 22
           script_stop: true
           command_timeout: 15m
+          envs: LISTING_INBOX_EMAIL
           script: |
             set -euo pipefail
             APP_DIR=/var/www/site-1
@@ -54,6 +57,17 @@ jobs:
             npm install
             if [[ ! -f .env.local ]] || ! grep -q '^QUOTE_INBOX_EMAIL=.' .env.local || ! grep -q '^SMTP_HOST=.' .env.local || ! grep -q '^RECAPTCHA_SECRET_KEY=.' .env.local || ! grep -q '^NEXT_PUBLIC_RECAPTCHA_SITE_KEY=.' .env.local; then
               echo "WARNING: quote mail or reCAPTCHA is not fully set in .env.local; quote emails will not be sent"
+            fi
+            if [[ -n "${LISTING_INBOX_EMAIL:-}" ]]; then
+              touch .env.local
+              if grep -q '^LISTING_INBOX_EMAIL=' .env.local; then
+                sed -i "s|^LISTING_INBOX_EMAIL=.*|LISTING_INBOX_EMAIL=${LISTING_INBOX_EMAIL}|" .env.local
+              else
+                printf '\nLISTING_INBOX_EMAIL=%s\n' "$LISTING_INBOX_EMAIL" >> .env.local
+              fi
+              echo "LISTING_INBOX_EMAIL synced from GitHub secret"
+            elif [[ ! -f .env.local ]] || ! grep -q '^LISTING_INBOX_EMAIL=.' .env.local; then
+              echo "WARNING: LISTING_INBOX_EMAIL is not set; listing enquiries fall back to QUOTE_INBOX_EMAIL if present"
             fi
             rm -rf .next
             npm run build

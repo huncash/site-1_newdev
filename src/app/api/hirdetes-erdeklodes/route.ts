@@ -52,6 +52,7 @@ export async function POST(request: Request): Promise<Response> {
 
   const variantLine = variant ? `Változat: ${variant}` : "Változat: nem jelölt";
   const sent = await sendQuoteEmail({
+    inboxEnv: "LISTING_INBOX_EMAIL",
     subject: variant
       ? `Érdeklődés (${variant}): Kismaros, Börzsönyliget`
       : "Érdeklődés: Kismaros, Börzsönyliget",

@@ -4,16 +4,19 @@ export interface QuoteDelivery {
   subject: string;
   text: string;
   replyTo: string;
+  /** Server-only env key for the inbox. Never pass a raw address from the client. */
+  inboxEnv?: "QUOTE_INBOX_EMAIL" | "LISTING_INBOX_EMAIL";
 }
 
 export async function sendQuoteEmail(delivery: QuoteDelivery): Promise<boolean> {
-  const to = process.env.QUOTE_INBOX_EMAIL?.trim();
+  const inboxKey = delivery.inboxEnv ?? "QUOTE_INBOX_EMAIL";
+  const to = process.env[inboxKey]?.trim() || process.env.QUOTE_INBOX_EMAIL?.trim();
   const host = process.env.SMTP_HOST?.trim();
   const user = process.env.SMTP_USER?.trim();
   const pass = process.env.SMTP_PASS;
   const from = process.env.SMTP_FROM?.trim() || user;
   if (!to || !host || !user || !pass || !from) {
-    console.error(JSON.stringify({ event: "quote_mail_not_configured" }));
+    console.error(JSON.stringify({ event: "quote_mail_not_configured", inboxKey }));
     return false;
   }
 
