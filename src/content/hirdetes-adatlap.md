@@ -1,6 +1,6 @@
 # Adatlap — Kismaros-Börzsönyliget, belterület 2705
 
-A fő hirdetésoldalon nincs vételár. Az A/B érdeklődő oldalakon megjelenik az irányár, a padló és az összehasonlítás. A kötbér és a felmentés (4 M Ft) a főoldalon is szerepel. A „Csak az eladónak” rész nem megy a vevőnek. Nem jogi tanács: a számokat és a szerződés szövegét ügyvéddel kell véglegesíteni.
+A fő hirdetésoldalon nincs vételár. Az A/B érdeklődő oldalakon csak az irányár és a környéki összevetés jelenik meg. A padlóár belső deadline, soha nem publikus. A kötbér és a felmentés (4 M Ft) a főoldalon is szerepel. A „Csak az eladónak” rész nem megy a vevőnek. Nem jogi tanács: a számokat és a szerződés szövegét ügyvéddel kell véglegesíteni.
 
 Hivatalos telek: 1046 m². A 4 °C, a Natura 2000 és a többi helyleírás a hirdetés szövege, nem ennek a lapnak a tárgya.
 

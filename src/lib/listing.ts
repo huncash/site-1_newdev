@@ -1,4 +1,4 @@
-/** Tulajdonosi adatlap. A főoldalon nincs vételár. Az A/B érdeklődő oldalon megjelenik az összehasonlítás. */
+/** Nyilvános oldal: csak irányár. A padlóár belső, nem jelenik meg. */
 
 export const TOUR_URL = "https://my.matterport.com/show/?m=92EPXPjr6gR&ts=1";
 export const PHOTO_STATE = "2026. szeptember 2.";
@@ -11,8 +11,7 @@ export const VARIANT_OFFER = {
     title: "A változat: korlátozással",
     short: "Korlátozással",
     listPrice: "33 M Ft",
-    floorPrice: "31,5 M Ft",
-    perSqm: "kb. 31,5 ezer Ft/m² irányáron, padlón kb. 30,1 ezer",
+    perSqm: "kb. 31,5 ezer Ft/m² az irányárból",
     summary:
       "A szerződés tiltja a rövid távú szálláshely-szolgáltatást és a kereskedelmi célú szállásadást. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad. Megszegés: 4 M Ft/év kötbér; a megfizetés nem mentesít. Felmentés: egyszeri 4 M Ft.",
   },
@@ -21,15 +20,16 @@ export const VARIANT_OFFER = {
     title: "B változat: korlátozás nélkül",
     short: "Korlátozás nélkül",
     listPrice: "36,5 M Ft",
-    floorPrice: "35 M Ft",
-    perSqm: "kb. 34,9 ezer Ft/m² irányáron, padlón kb. 33,5 ezer",
+    perSqm: "kb. 34,9 ezer Ft/m² az irányárból",
     summary:
-      "Teljes használati szabadság a szerződésben. A 3,5 M Ft felár a szabad felhasználás ellenértéke, a vételár része. A hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek.",
+      "Teljes használati szabadság a szerződésben. A 3,5 M Ft felár a szabad felhasználás ellenértéke, az irányár része. A hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek.",
   },
   plotSqm: 1046,
   premiumDiff: "3,5 M Ft",
   penalty: "4 M Ft / érintett év",
   releaseFee: "4 M Ft egyszeri",
+  marketNote:
+    "A környéken gyakran találni olcsóbbnak tűnő portákat. Ezeknél gyakori a változtatási tilalom, a bizonytalanabb jogi státusz, vagy az, hogy nincs azonnal használható, közműves felépítmény. Ez az ingatlan Lke-4 lakóövezet, tiszta jogi státusz, 1046 m² hivatalos telek, bekötött villany és vezetékes víz mellett meglévő felépítménnyel.",
 } as const;
 
 export const PHOTOS = [

@@ -26,7 +26,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
         <p className="text-sm uppercase tracking-[0.16em] text-[#6b6458]">Érdeklődés · {selected.short}</p>
         <h1 className="mt-2 max-w-3xl text-3xl font-medium sm:text-4xl">{selected.title}</h1>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#4a453c] sm:text-base">
-          Ugyanaz a telek (1046 m²) és ugyanaz a felépítmény. Az alábbi számok a kiválasztott változathoz tartoznak; az összehasonlítás a másik ágat is mutatja.
+          Ugyanaz a telek (1046 m²) és ugyanaz a felépítmény. Az oldalon csak az irányár és a környéki összevetés szerepel.
         </p>
 
         <section className="mt-10 grid gap-4 lg:grid-cols-3">
@@ -38,13 +38,13 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                 <dd className="mt-1 text-2xl font-medium">{selected.listPrice}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wide text-[#6b6458]">Padlóár</dt>
-                <dd className="mt-1 text-2xl font-medium">{selected.floorPrice}</dd>
+                <dt className="text-xs uppercase tracking-wide text-[#6b6458]">Irányár / m²</dt>
+                <dd className="mt-1 text-lg font-medium leading-snug">{selected.perSqm}</dd>
               </div>
               <div className="sm:col-span-2">
-                <dt className="text-xs uppercase tracking-wide text-[#6b6458]">Telek / négyzetméter</dt>
+                <dt className="text-xs uppercase tracking-wide text-[#6b6458]">Telek</dt>
                 <dd className="mt-1 text-sm leading-relaxed text-[#4a453c]">
-                  {VARIANT_OFFER.plotSqm} m² hivatalos telek. {selected.perSqm}.
+                  {VARIANT_OFFER.plotSqm} m² hivatalos telekterület, plusz kb. 150 m² használati rész a beállóhoz.
                 </dd>
               </div>
             </dl>
@@ -67,16 +67,16 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
           <div className="border-b border-[#e4dfd4] px-5 py-4">
             <h2 className="text-xl font-medium">Árösszehasonlítás</h2>
             <p className="mt-1 text-sm text-[#4a453c]">
-              A két változat közötti különbség irányáron és padlón is {VARIANT_OFFER.premiumDiff}.
+              A két változat irányára közötti különbség {VARIANT_OFFER.premiumDiff} — ez a szabad használat ellenértéke.
             </p>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[520px] text-left text-sm">
+            <table className="w-full min-w-[480px] text-left text-sm">
               <thead className="bg-[#f3f0e8] text-xs uppercase tracking-wide text-[#6b6458]">
                 <tr>
                   <th className="px-5 py-3 font-medium">Változat</th>
                   <th className="px-5 py-3 font-medium">Irányár</th>
-                  <th className="px-5 py-3 font-medium">Padló</th>
+                  <th className="px-5 py-3 font-medium">Irányár / m²</th>
                   <th className="px-5 py-3 font-medium">Használat</th>
                 </tr>
               </thead>
@@ -86,7 +86,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                     A) korlátozással{variant === "a" ? " · Ön ezt nézi" : ""}
                   </td>
                   <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.a.listPrice}</td>
-                  <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.a.floorPrice}</td>
+                  <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.a.perSqm}</td>
                   <td className="border-t border-[#e4dfd4] px-5 py-3 text-[#4a453c]">
                     Rövid távú szállás tilos · kötbér {VARIANT_OFFER.penalty}
                   </td>
@@ -96,15 +96,20 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                     B) korlátozás nélkül{variant === "b" ? " · Ön ezt nézi" : ""}
                   </td>
                   <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.b.listPrice}</td>
-                  <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.b.floorPrice}</td>
+                  <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.b.perSqm}</td>
                   <td className="border-t border-[#e4dfd4] px-5 py-3 text-[#4a453c]">Teljes szerződéses szabadság</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p className="border-t border-[#e4dfd4] px-5 py-3 text-xs leading-relaxed text-[#6b6458]">
-            Tájékoztató jellegű számok. A végleges feltételeket ügyvéddel rögzítjük. Felmentés az A változatból: {VARIANT_OFFER.releaseFee}.
+            Tájékoztató jellegű irányárak. A végleges feltételeket ügyvéddel rögzítjük. Felmentés az A változatból: {VARIANT_OFFER.releaseFee}.
           </p>
+        </section>
+
+        <section className="mt-8 rounded-lg border border-[#e4dfd4] bg-white p-5 sm:p-6">
+          <h2 className="text-xl font-medium">Környéki összevetés</h2>
+          <p className="mt-3 text-sm leading-relaxed text-[#4a453c] sm:text-base">{VARIANT_OFFER.marketNote}</p>
         </section>
 
         <p className="mt-4 text-sm text-[#4a453c]">
