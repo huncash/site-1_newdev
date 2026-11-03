@@ -6,10 +6,15 @@
 export const TOUR_URL = "https://my.matterport.com/show/?m=92EPXPjr6gR&ts=1";
 export const PHOTO_STATE = "2026. szeptember 2.";
 
-/** Tiszta erdei panoráma / telekrész — nincs támfal, kocsibeálló, kémény. */
+/** Hirdetett felépítmény — barna faház fehér ablakokkal a tölgyesben. */
 export const HERO_IMAGE = {
-  src: "/hirdetes/20260902-29.jpg",
-  alt: "Napos ősfás telekrész: lombkorona és tágas erdei részlet",
+  src: "/hirdetes/20260902-01.jpg",
+  alt: "Barna faház fehér ablakokkal a Börzsönyliget ősfás tölgyesében",
+} as const;
+
+export const LISTING_LOGO = {
+  src: "/hirdetes/logo-tolgyes.png",
+  alt: "Kismaros–Börzsönyliget — ősfás tölgyes és kabin sziluett",
 } as const;
 
 /**

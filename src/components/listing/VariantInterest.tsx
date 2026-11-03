@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { EnquiryForm } from "@/components/listing/EnquiryForm";
 import { ListingPhoneProvider, ListingSellerCard } from "@/components/listing/ListingContact";
-import { VARIANT_OFFER, type ListingVariant } from "@/lib/listing";
+import { LISTING_LOGO, VARIANT_OFFER, type ListingVariant } from "@/lib/listing";
 
 export function VariantInterest({ variant }: { variant: ListingVariant }) {
   const selected = VARIANT_OFFER[variant];
@@ -14,7 +14,20 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
       <div className="min-h-screen bg-[#efe8db] text-[#241f18]">
         <header className="border-b border-[#d4c9b5] bg-[#efe8db]/95">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-            <p className="text-sm font-semibold tracking-wide">Kismaros · Börzsönyliget</p>
+            <Link
+              href="/hirdetes#teteje"
+              className="inline-flex min-w-0 items-center gap-2.5 text-sm font-semibold tracking-wide text-[#0f2e1f] hover:opacity-90"
+            >
+              <img
+                src={LISTING_LOGO.src}
+                alt=""
+                width={36}
+                height={36}
+                className="h-9 w-9 shrink-0 object-contain"
+                decoding="async"
+              />
+              <span className="truncate">Kismaros · Börzsönyliget</span>
+            </Link>
             <Link href="/hirdetes#azaras" className="text-sm hover:underline">
               Vissza a hirdetéshez
             </Link>

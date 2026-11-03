@@ -2,7 +2,7 @@
 
 import { Droplets, Fence, FileText, House, MapPin, Menu, Route, Ruler, Thermometer, Trees, X, Zap } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
 
 import { EnquiryForm } from "@/components/listing/EnquiryForm";
 import {
@@ -11,7 +11,15 @@ import {
   ListingSellerCard,
   trackListingCta,
 } from "@/components/listing/ListingContact";
-import { HERO_IMAGE, PHOTO_STATE, PHOTOS, TOUR_URL, UTILITY_PHOTOS, VARIANT_OFFER } from "@/lib/listing";
+import {
+  HERO_IMAGE,
+  LISTING_LOGO,
+  PHOTO_STATE,
+  PHOTOS,
+  TOUR_URL,
+  UTILITY_PHOTOS,
+  VARIANT_OFFER,
+} from "@/lib/listing";
 
 const NAV = [
   { href: "#elhelyezkedes", label: "Elhelyezkedés & Mikroklíma" },
@@ -93,12 +101,33 @@ export function PropertyLanding() {
     setMenuOpen(false);
   }
 
+  function scrollToTop(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    closeMenu();
+  }
+
   return (
     <ListingPhoneProvider>
-    <div className="bg-[#efe8db] text-[#241f18]">
+    <div id="teteje" className="bg-[#efe8db] text-[#241f18]">
       <header className="sticky top-0 z-40 border-b border-[#d4c9b5] bg-[#efe8db]/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-          <p className="text-sm font-semibold tracking-wide">Kismaros · Börzsönyliget</p>
+          <a
+            href="#teteje"
+            onClick={scrollToTop}
+            className="inline-flex min-w-0 items-center gap-2.5 text-sm font-semibold tracking-wide text-[#0f2e1f] hover:opacity-90"
+            aria-label="Vissza az oldal tetejére"
+          >
+            <img
+              src={LISTING_LOGO.src}
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9 shrink-0 object-contain"
+              decoding="async"
+            />
+            <span className="truncate">Kismaros · Börzsönyliget</span>
+          </a>
           <nav className="hidden max-w-4xl flex-wrap items-center justify-end gap-x-3 gap-y-2 text-sm lg:flex" aria-label="Főmenü">
             {NAV.map((item) => (
               <a
@@ -157,7 +186,7 @@ export function PropertyLanding() {
         <img
           src={HERO_IMAGE.src}
           alt={HERO_IMAGE.alt}
-          className="absolute inset-0 h-full w-full scale-105 object-cover object-[center_35%]"
+          className="absolute inset-0 h-full w-full scale-105 object-cover object-[42%_38%]"
           fetchPriority="high"
           decoding="async"
         />
