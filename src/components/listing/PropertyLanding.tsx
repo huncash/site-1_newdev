@@ -380,39 +380,39 @@ export function PropertyLanding() {
 
       <section className="border-t border-[#e4dfd4] bg-white py-16" id="valtozatok">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-medium">Két adásvételi változat</h2>
+          <h2 className="text-3xl font-medium">Két adásvételi út</h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#4a453c] sm:text-base">
-            Ugyanaz a telek és ugyanaz az épület, két szerződéses változatban. A vételár a választott ág érdeklődő oldalán jelenik meg, árösszehasonlítással. A különbség a használatban van.
+            Magáncélú befektetésként adom el: a saját és a környékbeli lakosok nyugalma védelmében nem újabb börzsönyligeti vendégháznak szánom. Ugyanaz a telek, két út — az irányár a választott ág érdeklődő oldalán jelenik meg.
           </p>
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             <article className="flex flex-col rounded-lg border border-[#e4dfd4] border-l-4 border-l-[#6d8a5a] bg-[#f3f0e8] p-6">
-              <h3 className="text-xl font-medium">A változat: korlátozással</h3>
+              <h3 className="text-xl font-medium">A út: aki a nyugalmat vállalja</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#4a453c]">
-                A lakóövezeti nyugalom védelmét szolgálja. A szerződés tiltja a rövid távú szálláshely-szolgáltatást és a kereskedelmi célú szállásadást. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad marad.
+                Annak, aki magáncélra vesz, és szerződésben is vállalja: nem lesz belőle rövid távú szálláshely vagy kereskedelmi szállásadás. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad marad.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[#4a453c]">
-                Megszegés esetén minden érintett évre 4 millió forint kötbér jár. A kötbér megfizetése nem mentesít a tilalom alól: a tevékenység abbahagyása továbbra is követelhető. Felmentés egyszeri 4 millió forintért kérhető.
+                Ha mégis megszegné: minden érintett évre 4 millió forint kötbér, és a megfizetés nem mentesít — a tevékenység abbahagyása továbbra is követelhető. Felmentés egyszeri 4 millió forintért kérhető.
               </p>
               <Link
                 href="/hirdetes/erdeklodes/a"
                 className="mt-6 inline-flex rounded-md bg-[#1f4d3a] px-5 py-3 text-center text-sm font-semibold text-white"
               >
-                Érdeklődöm az A változatra
+                Érdeklődöm az A útra
               </Link>
             </article>
             <article className="flex flex-col rounded-lg border border-[#e4dfd4] border-l-4 border-l-[#7a5a3c] bg-[#f3f0e8] p-6">
-              <h3 className="text-xl font-medium">B változat: korlátozás nélkül</h3>
+              <h3 className="text-xl font-medium">B út: ha ezt nem vállalja, de a telek kell</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#4a453c]">
-                Teljes használati szabadságot biztosít a vevőnek. A magasabb vételár a szabad felhasználás ellenértéke, a vételár része. Aki a használatot szabadon akarja, ezt a változatot választja a vételkor.
+                Van megoldási javaslatom: azonnali, magasabb, mégis piaci irányáron értékesítem, és nem foglalkozom azzal, hogy mit kezd vele az új tulajdonos.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[#4a453c]">
-                A hatályos jogszabályok és a helyi építési szabályzat mindkét változatban érvényesek. Az Lke-4 övezetben megengedett használatot a helyi szabályzatban és az illetékes hatóságnál lehet ellenőrizni.
+                A hatályos jogszabályok és a helyi építési szabályzat ebben az esetben is érvényesek. Az Lke-4 övezetben megengedett használatot a helyi szabályzatban és az illetékes hatóságnál lehet ellenőrizni.
               </p>
               <Link
                 href="/hirdetes/erdeklodes/b"
                 className="mt-6 inline-flex rounded-md bg-[#7a5a3c] px-5 py-3 text-center text-sm font-semibold text-white"
               >
-                Érdeklődöm a B változatra
+                Érdeklődöm a B útra
               </Link>
             </article>
           </div>
@@ -425,7 +425,7 @@ export function PropertyLanding() {
             <h2 className="text-3xl font-medium text-white">Kapcsolatfelvétel</h2>
             <p className="mt-3 text-lg font-medium text-white">Keresem jövőbeni szomszédomat.</p>
             <p className="mt-3 text-sm leading-relaxed text-white/90 sm:text-base">
-              Általános kérdéshez ez az űrlap. Ha már tudja, melyik szerződéses ágat nézi, válassza az A vagy B gombot a változatoknál: ott megjelenik az ajánlat és az árösszehasonlítás is.
+              Általános kérdéshez ez az űrlap. Ha már tudja, melyik utat nézi, válassza az A vagy B gombot: ott megjelenik az irányár és az összehasonlítás is.
             </p>
           </div>
           <div className="rounded-lg bg-[#f3f0e8] p-5 text-[#1c1915] sm:p-6">

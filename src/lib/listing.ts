@@ -8,21 +8,21 @@ export type ListingVariant = "a" | "b";
 export const VARIANT_OFFER = {
   a: {
     code: "a" as const,
-    title: "A változat: korlátozással",
-    short: "Korlátozással",
+    title: "A változat: magáncél, nyugalom",
+    short: "Magáncél, nyugalom",
     listPrice: "33 M Ft",
     perSqm: "kb. 31,5 ezer Ft/m² az irányárból",
     summary:
-      "A szerződés tiltja a rövid távú szálláshely-szolgáltatást és a kereskedelmi célú szállásadást. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad. Megszegés: 4 M Ft/év kötbér; a megfizetés nem mentesít. Felmentés: egyszeri 4 M Ft.",
+      "Magáncélú használatra, a saját és a környékbeli lakosok nyugalma védelmében. Nem újabb börzsönyligeti vendégház létesítésére adom el, hanem annak, aki ezt szerződésben is vállalja: nincs rövid távú szálláshely-szolgáltatás és kereskedelmi szállásadás. A lakhatás, a pihenés, a home office és a hosszú távú bérbeadás szabad. Megszegés: 4 M Ft/év kötbér; a megfizetés nem mentesít. Felmentés: egyszeri 4 M Ft.",
   },
   b: {
     code: "b" as const,
-    title: "B változat: korlátozás nélkül",
-    short: "Korlátozás nélkül",
+    title: "B változat: magasabb piaci ár, szabad kéz",
+    short: "Magasabb piaci ár, szabad kéz",
     listPrice: "36,5 M Ft",
     perSqm: "kb. 34,9 ezer Ft/m² az irányárból",
     summary:
-      "Teljes használati szabadság a szerződésben. A 3,5 M Ft felár a szabad felhasználás ellenértéke, az irányár része. A hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek.",
+      "Ha a nyugalmi vállalást nem tudja magára venni, de ezt a telket szeretné: azonnali, magasabb, mégis piaci irányáron értékesítem, és nem foglalkozom azzal, hogy mit kezd vele az új tulajdonos. A 3,5 M Ft a két irányár különbsége. A hatályos jogszabályok és a helyi építési szabályzat továbbra is érvényesek.",
   },
   plotSqm: 1046,
   premiumDiff: "3,5 M Ft",

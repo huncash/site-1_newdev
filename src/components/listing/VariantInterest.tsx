@@ -26,7 +26,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
         <p className="text-sm uppercase tracking-[0.16em] text-[#6b6458]">Érdeklődés · {selected.short}</p>
         <h1 className="mt-2 max-w-3xl text-3xl font-medium sm:text-4xl">{selected.title}</h1>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#4a453c] sm:text-base">
-          Ugyanaz a telek (1046 m²) és ugyanaz a felépítmény. Az oldalon csak az irányár és a környéki összevetés szerepel.
+          Ugyanaz a telek (1046 m²) és ugyanaz a felépítmény. Az oldalon csak az irányár és a környéki összevetés szerepel — padlóár nincs.
         </p>
 
         <section className="mt-10 grid gap-4 lg:grid-cols-3">
@@ -67,43 +67,45 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
           <div className="border-b border-[#e4dfd4] px-5 py-4">
             <h2 className="text-xl font-medium">Árösszehasonlítás</h2>
             <p className="mt-1 text-sm text-[#4a453c]">
-              A két változat irányára közötti különbség {VARIANT_OFFER.premiumDiff} — ez a szabad használat ellenértéke.
+              A két út irányára közötti különbség {VARIANT_OFFER.premiumDiff}: a B út azonnali, magasabb piaci ára, ha a nyugalmi vállalást nem veszi magára.
             </p>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[480px] text-left text-sm">
               <thead className="bg-[#f3f0e8] text-xs uppercase tracking-wide text-[#6b6458]">
                 <tr>
-                  <th className="px-5 py-3 font-medium">Változat</th>
+                  <th className="px-5 py-3 font-medium">Út</th>
                   <th className="px-5 py-3 font-medium">Irányár</th>
                   <th className="px-5 py-3 font-medium">Irányár / m²</th>
-                  <th className="px-5 py-3 font-medium">Használat</th>
+                  <th className="px-5 py-3 font-medium">Lényeg</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className={variant === "a" ? "bg-[#eef3ea]" : ""}>
                   <td className="border-t border-[#e4dfd4] px-5 py-3 font-medium">
-                    A) korlátozással{variant === "a" ? " · Ön ezt nézi" : ""}
+                    A) magáncél, nyugalom{variant === "a" ? " · Ön ezt nézi" : ""}
                   </td>
                   <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.a.listPrice}</td>
                   <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.a.perSqm}</td>
                   <td className="border-t border-[#e4dfd4] px-5 py-3 text-[#4a453c]">
-                    Rövid távú szállás tilos · kötbér {VARIANT_OFFER.penalty}
+                    Nem vendégház · szerződéses vállalás · kötbér {VARIANT_OFFER.penalty}
                   </td>
                 </tr>
                 <tr className={variant === "b" ? "bg-[#eef3ea]" : ""}>
                   <td className="border-t border-[#e4dfd4] px-5 py-3 font-medium">
-                    B) korlátozás nélkül{variant === "b" ? " · Ön ezt nézi" : ""}
+                    B) magasabb piaci ár{variant === "b" ? " · Ön ezt nézi" : ""}
                   </td>
                   <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.b.listPrice}</td>
                   <td className="border-t border-[#e4dfd4] px-5 py-3">{VARIANT_OFFER.b.perSqm}</td>
-                  <td className="border-t border-[#e4dfd4] px-5 py-3 text-[#4a453c]">Teljes szerződéses szabadság</td>
+                  <td className="border-t border-[#e4dfd4] px-5 py-3 text-[#4a453c]">
+                    Azonnali magasabb ár · a további használatot nem követelem
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p className="border-t border-[#e4dfd4] px-5 py-3 text-xs leading-relaxed text-[#6b6458]">
-            Tájékoztató jellegű irányárak. A végleges feltételeket ügyvéddel rögzítjük. Felmentés az A változatból: {VARIANT_OFFER.releaseFee}.
+            Tájékoztató jellegű irányárak. A végleges feltételeket ügyvéddel rögzítjük. Felmentés az A útból: {VARIANT_OFFER.releaseFee}.
           </p>
         </section>
 
