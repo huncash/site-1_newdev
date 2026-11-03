@@ -9,7 +9,8 @@ on:
       - "scripts/ensure-eladoingatlan-vhost.sh"
 
 concurrency:
-  group: listing-vhost
+  # Share the deploy lock so we do not race git/npm with deploy.yml
+  group: vps-deploy-site-1
   cancel-in-progress: false
 
 jobs:
@@ -21,34 +22,7 @@ jobs:
         run: |
           test -n "${{ secrets.VPS_SSH_KEY }}" || (echo "Missing VPS_SSH_KEY secret" && exit 1)
 
-      - uses: actions/checkout@v4
-
-      # Inline SSH scripts as vmvrgohu are overridden by the site-1 deploy
-      # ForceCommand on this key. Drop the script, then invoke it by path
-      # (same pattern as poka-yoke-vmvrgo.yml).
-      - name: Drop ensure-eladoingatlan-vhost.sh on the VPS
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: 195.228.152.141
-          username: deploy
-          key: ${{ secrets.VPS_SSH_KEY }}
-          source: scripts/ensure-eladoingatlan-vhost.sh
-          target: /tmp
-          strip_components: 1
-
-      - name: Make dropped script executable
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: 195.228.152.141
-          username: deploy
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script_stop: true
-          script: |
-            sed -i 's/\r$//' /tmp/ensure-eladoingatlan-vhost.sh || true
-            chmod 755 /tmp/ensure-eladoingatlan-vhost.sh
-            ls -la /tmp/ensure-eladoingatlan-vhost.sh
-
-      - name: Install dedicated eladoingatlan.vrgo.hu Nginx block as vmvrgohu
+      - name: Install dedicated eladoingatlan.vrgo.hu Nginx block
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: 195.228.152.141
@@ -58,6 +32,11 @@ jobs:
           script_stop: true
           command_timeout: 10m
           script: |
+            echo LISTING_VHOST_MARKER_START
             set -euo pipefail
-            test -x /tmp/ensure-eladoingatlan-vhost.sh
-            bash /tmp/ensure-eladoingatlan-vhost.sh
+            SCRIPT=/var/www/site-1/scripts/ensure-eladoingatlan-vhost.sh
+            test -f "$SCRIPT"
+            sed -i 's/\r$//' "$SCRIPT" || true
+            chmod 755 "$SCRIPT"
+            bash "$SCRIPT"
+            echo LISTING_VHOST_MARKER_DONE
