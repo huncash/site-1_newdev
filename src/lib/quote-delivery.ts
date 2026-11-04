@@ -1,5 +1,8 @@
 import nodemailer from "nodemailer";
 
+/** Private listing (eladoingatlan) fallback if LISTING_INBOX_EMAIL is unset on the server. */
+const LISTING_INBOX_DEFAULT = "kisspatrikpetervr@gmail.com";
+
 export interface QuoteDelivery {
   subject: string;
   text: string;
@@ -10,7 +13,11 @@ export interface QuoteDelivery {
 
 export async function sendQuoteEmail(delivery: QuoteDelivery): Promise<boolean> {
   const inboxKey = delivery.inboxEnv ?? "QUOTE_INBOX_EMAIL";
-  const to = process.env[inboxKey]?.trim() || process.env.QUOTE_INBOX_EMAIL?.trim();
+  const fromEnv = process.env[inboxKey]?.trim();
+  const to =
+    fromEnv ||
+    (inboxKey === "LISTING_INBOX_EMAIL" ? LISTING_INBOX_DEFAULT : undefined) ||
+    process.env.QUOTE_INBOX_EMAIL?.trim();
   const host = process.env.SMTP_HOST?.trim();
   const user = process.env.SMTP_USER?.trim();
   const pass = process.env.SMTP_PASS;
