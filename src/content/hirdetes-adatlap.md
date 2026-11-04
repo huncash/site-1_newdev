@@ -10,11 +10,11 @@ Nyilvános oldalon **megjelenhet** a fix vételár (birtokbaadási időzítés s
 - kötbérösszeg, felmentési díj nyilvános kiírása
 - belső tárgyalási háttér és „csak az eladónak” számítás
 
-Kétágú konstrukció (publikus, fix árak, jutalék nélkül):
+Kétágú árazás (publikus, fix árak, jutalék nélkül, 1/1 tulajdonos):
 
-- **A:** 2027-es birtokbaadás — **32,2 M Ft** (10% foglaló a szerződéskötéskor)
-- **B:** azonnali birtokbaadás — **33 M Ft** (legkorábban **2026. november 10.**)
-- A különbség kizárólag a birtokbaadás időpontja; nem alku tárgya
+- **Alapár:** **33 M Ft**
+- **Novemberi szerződéskötési kedvezmény:** **−800.000 Ft** → **32,2 M Ft** (novemberi szerződés + első részlet)
+- Birtokbaadás legkorábban **2026. november 10.**
 
 Hivatalos telek: 1046 m². A 4 °C, a Natura 2000 és a többi helyleírás a hirdetés szövege.
 

@@ -35,13 +35,11 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
         </header>
 
         <main className="mx-auto max-w-6xl px-4 py-12">
-          <p className="text-sm uppercase tracking-[0.16em] text-[#6b6154]">
-            Érdeklődés · {selected.optionLabel}
-          </p>
+          <p className="text-sm uppercase tracking-[0.16em] text-[#6b6154]">Érdeklődés · {selected.optionLabel}</p>
           <h1 className="mt-2 max-w-3xl text-3xl font-medium sm:text-4xl">{selected.title}</h1>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-            Ugyanaz a telek ({VARIANT_OFFER.plotSqm} m²) és ugyanaz a felépítmény. A két ár közötti különbség kizárólag
-            a birtokbaadás időpontja — az árak fixek, jutalék nincs.
+            Ugyanaz a telek ({VARIANT_OFFER.plotSqm} m²) és ugyanaz a felépítmény. Közvetlenül tőlem, 1/1 tulajdonostól —
+            jutalék nélkül. Az árak fixek.
           </p>
 
           <section className="mt-10 grid gap-4 lg:grid-cols-3">
@@ -54,7 +52,7 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                   <dd className="mt-1 text-xs text-[#6b6154]">{selected.bandNote}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Foglaló</dt>
+                  <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Foglaló / ütemezés</dt>
                   <dd className="mt-1 text-sm font-medium leading-snug text-[#241f18]">{selected.deposit}</dd>
                   <dd className="mt-2 text-xs uppercase tracking-wide text-[#6b6154]">Birtokbaadás</dd>
                   <dd className="mt-1 text-sm text-[#5a5146]">{selected.possession}</dd>
@@ -62,8 +60,8 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                 <div className="sm:col-span-2">
                   <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Telek</dt>
                   <dd className="mt-1 text-sm leading-relaxed text-[#5a5146]">
-                    {VARIANT_OFFER.plotSqm} m² hivatalos telek (belül 3 autó); előtte kb. 150 m² használati sáv még 1
-                    autónak — a parkolás nem csökkenti a beépíthető területet.
+                    {VARIANT_OFFER.plotSqm} m² belterületi Lke-4 telek (belül 3 autó); előtte kb. 150 m² használati sáv
+                    még 1 autónak.
                   </dd>
                 </div>
               </dl>
@@ -74,19 +72,18 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
               <h2 className="text-lg font-medium">Rövid adatok</h2>
               <ul className="mt-3 space-y-2 text-sm leading-relaxed text-[#5a5146]">
-                <li>Lke-4 · max. 30% · max. 4,5 m</li>
-                <li>Változtatási tilalom nem érinti (8/2025.)</li>
-                <li>Részleges közmű / zárt szennyvíztároló</li>
-                <li>Bekötött villany, vezetékes víz</li>
-                <li>Azonnal használható felépítmény</li>
-                <li>Fix ár · nincs jutalék</li>
+                <li>Belterület · Lke-4 · max. 30% · max. 4,5 m</li>
+                <li>Változtatási tilalom alól mentes (8/2025.)</li>
+                <li>Zárt szennyvíztároló · villany · cserépkályha</li>
+                <li>Azonnal használható / kiadható felépítmény</li>
+                <li>Fix ár · nincs jutalék · 1/1 tulajdonos</li>
               </ul>
             </article>
           </section>
 
           <section className="mt-8 overflow-hidden rounded-lg border border-[#d4c9b5] bg-[#f7f1e6]">
             <div className="border-b border-[#d4c9b5] px-5 py-4">
-              <h2 className="text-xl font-medium">A két birtokbaadási konstrukció</h2>
+              <h2 className="text-xl font-medium">A két ár</h2>
               <p className="mt-1 text-sm text-[#5a5146]">{VARIANT_OFFER.premiumNote}</p>
             </div>
             <div className="overflow-x-auto">
@@ -95,24 +92,24 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                   <tr>
                     <th className="px-5 py-3 font-medium">Opció</th>
                     <th className="px-5 py-3 font-medium">Vételár</th>
-                    <th className="px-5 py-3 font-medium">Birtokbaadás</th>
+                    <th className="px-5 py-3 font-medium">Megjegyzés</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className={variant === "a" ? "bg-[#f5edd4]" : ""}>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium">
-                      2027-es{variant === "a" ? " · Ön ezt nézi" : ""}
+                      Novemberi kedvezmény{variant === "a" ? " · ezt nézed" : ""}
                     </td>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium text-[#d4a017]">
                       {VARIANT_OFFER.a.listPrice}
                     </td>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 text-[#5a5146]">
-                      {VARIANT_OFFER.a.possession} · 10% foglaló
+                      −{VARIANT_OFFER.discountAmount} az alapárból
                     </td>
                   </tr>
                   <tr className={variant === "b" ? "bg-[#f5edd4]" : ""}>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium">
-                      Azonnali{variant === "b" ? " · Ön ezt nézi" : ""}
+                      Alapár{variant === "b" ? " · ezt nézed" : ""}
                     </td>
                     <td className="border-t border-[#d4c9b5] px-5 py-3 font-medium text-[#d4a017]">
                       {VARIANT_OFFER.b.listPrice}
@@ -124,13 +121,10 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
                 </tbody>
               </table>
             </div>
-            <p className="border-t border-[#d4c9b5] px-5 py-3 text-xs leading-relaxed text-[#6b6154]">
-              {VARIANT_OFFER.marketNote}
-            </p>
           </section>
 
           <p className="mt-4 text-sm text-[#5a5146]">
-            A másik konstrukció:{" "}
+            A másik opció:{" "}
             <Link href={`/hirdetes/erdeklodes/${other}`} className="font-semibold underline">
               {otherOffer.title}
             </Link>
@@ -140,15 +134,15 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
             <div>
               <h2 className="text-2xl font-medium">Kapcsolatfelvétel</h2>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
-                Az űrlap a {selected.optionLabel} ({selected.listPrice}) érdeklődést jelöli. Közvetlen telefon az
-                adatkezelés elfogadása után érhető el; üzenetet ide az űrlapon tudsz küldeni.
+                Az űrlap a {selected.optionLabel} ({selected.listPrice}) érdeklődést jelöli. Közvetlen telefon és email
+                az adatkezelés elfogadása után érhető el; üzenetet ide is tudsz küldeni.
               </p>
               <ListingSellerCard />
             </div>
             <div className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5 sm:p-6">
               <EnquiryForm
                 variant={variant}
-                defaultMessage={`Érdeklődöm a ${selected.optionLabel} konstrukcióra (vételár ${selected.listPrice}, birtokbaadás: ${selected.possession}).`}
+                defaultMessage={`Érdeklődöm a ${selected.optionLabel} konstrukcióra (vételár ${selected.listPrice}).`}
               />
             </div>
           </section>

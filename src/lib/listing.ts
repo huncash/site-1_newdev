@@ -1,5 +1,5 @@
 /**
- * Nyilvános listing: fix vételárak birtokbaadási időzítés szerint.
+ * Nyilvános listing — 1/1 tulajdonos, tegező egyes szám.
  * Belső padlóár / eladási kényszer / deadline soha nem szerepelhet szövegként.
  */
 
@@ -17,78 +17,89 @@ export const LISTING_LOGO = {
   alt: "Kismaros–Börzsönyliget — ősfás tölgyes és kabin sziluett",
 } as const;
 
+export const LISTING_COORDS = {
+  lat: 47.844736,
+  lng: 19.000447,
+} as const;
+
 /**
  * Személyes kapcsolat — a telefonszám NEM itt van plain textben.
  * Összerakás: ListingContact (csak megjelenítés után). Nincs avatar / WhatsApp.
  */
 export const LISTING_SELLER = {
   name: "Patrik",
-  role: "Tulajdonos · közvetlen kapcsolat",
+  role: "1/1 tulajdonos · közvetlen kapcsolat",
 } as const;
 
 export type ListingVariant = "a" | "b";
 
-/** a = 2027-es birtokbaadás · b = azonnali birtokbaadás (legkorábban nov. 10.) */
+/** a = novemberi kedvezmény 32,2 M · b = alapár 33 M (azonnali) */
 export const VARIANT_OFFER = {
   a: {
     code: "a" as const,
-    optionLabel: "2027-es birtokbaadás",
-    title: "2027-es birtokbaadás — 32,2 M Ft",
-    short: "2027. január",
+    optionLabel: "Novemberi szerződéskötési kedvezmény",
+    title: "Novemberi kedvezmény — 32,2 M Ft",
+    short: "−800 ezer Ft",
     listPrice: "32,2 M Ft",
-    deposit: "10% (3,22 M Ft) a szerződéskötéskor",
-    possession: "2027. január",
-    bandNote: "2027-es birtokbaadással, 10% foglalóval a szerződéskötéskor",
-    perSqm: "kb. 30,8 ezer Ft/m² az irányárból",
+    deposit: "Első részlet a novemberi szerződéskötéskor (szerződés szerint)",
+    possession: "Egyeztetés szerint (azonnali is lehetséges, legkorábban nov. 10.)",
+    bandNote: "Alapár 33 M Ft − 800.000 Ft novemberi szerződéskötéssel és első részlettel",
+    perSqm: "kb. 30,8 ezer Ft/m²",
     summary:
-      "Ugyanaz az ingatlan, későbbi birtokbaadással. A kedvezményes ár a későbbi ütemezésért jár: ha nem sürgős a költözés, a tulajdonátruházás későbbre kerülhet.",
+      "Ha novemberben kötünk szerződést és az első részlet is ekkor érkezik, a vételár 32,2 M Ft. Ugyanaz az ingatlan, közvetlenül tőlem — jutalék nélkül.",
   },
   b: {
     code: "b" as const,
-    optionLabel: "Azonnali birtokbaadás",
-    title: "Azonnali birtokbaadás — 33 M Ft",
-    short: "Legkorábban 2026. november 10.",
+    optionLabel: "Alapár",
+    title: "Alapár — 33 M Ft",
+    short: "33 M Ft",
     listPrice: "33 M Ft",
     deposit: "Szerződés szerint",
     possession: "Azonnali — legkorábban 2026. november 10.",
-    bandNote: "Azonnali birtokbaadással (legkorábban 2026. november 10.)",
-    perSqm: "kb. 31,5 ezer Ft/m² az irányárból",
+    bandNote: "Fix alapár, jutalék nélkül, közvetlenül tőlem",
+    perSqm: "kb. 31,5 ezer Ft/m²",
     summary:
-      "Ugyanaz az ingatlan, azonnali birtokbaadással. A ház azonnal használható; a birtokbaadás legkorábban 2026. november 10-től lehetséges.",
+      "A fix alapár 33 M Ft. A ház azonnal használható; a birtokbaadás legkorábban 2026. november 10-től lehetséges.",
   },
   plotSqm: 1046,
-  priceDiff: "0,8 M Ft",
-  fixturesNote: "A jelenlegi egyszerű berendezéssel együtt",
+  basePrice: "33 M Ft",
+  discountPrice: "32,2 M Ft",
+  discountAmount: "800.000 Ft",
+  fixturesNote: "A jelenlegi egyszerű berendezés a házban marad",
   premiumNote:
-    "Az árak fixek, közvetítői jutalék nincs. A két ár közötti különbség nem alku tárgya: ugyanaz az ingatlan, a különbség kizárólag a birtokbaadás időpontja.",
+    "Az árak fixek, közvetítői jutalék nincs — közvetlenül tőlem, 1/1 tulajdonostól veszed. Novemberi szerződéskötéssel és első részlettel −800.000 Ft kedvezményt adok (32,2 M Ft).",
   marketNote:
-    "Ha nem sürgős a költözés, a tulajdonátruházás későbbi ütemezése a tulajdonosnak kedvezőbb — és ezt az előnyt az árban megosztja. A foglaló szabályait az adásvételi előszerződés rögzíti, ügyvéd közreműködésével.",
+    "A foglaló és az ütemezés szabályait az adásvételi előszerződés rögzíti, ügyvéd közreműködésével.",
 } as const;
 
 export const FAQ_ITEMS = [
   {
     q: "Alkudható az ár?",
-    a: "Nem, az árak fixek. Ezért korrekt: nincs mesterségesen felfújt alkupuffer.",
+    a: "Nem, az ár fix, közvetítői jutalék nincsen — közvetlenül tőlem, 1/1 tulajdonostól veszed. Nincs mesterségesen felfújt alkupuffer.",
   },
   {
     q: "Mi marad a házban?",
-    a: "A jelenlegi egyszerű berendezés a házban marad. (A tárolókból a személyes tárgyak elszállításra kerülnek).",
+    a: "A jelenlegi egyszerű berendezés a házban marad. (A tárolókból a személyes tárgyaimat elszállítom.)",
   },
   {
-    q: "Miért olcsóbb a 2027-es opció?",
-    a: "Ha nem kell azonnal költöznöd, a tulajdonátruházás későbbre kerülhet, ami számomra kedvezőbb ütemezést jelent, és ezt az árban megosztom veled.",
+    q: "Mi az a novemberi kedvezmény?",
+    a: "Az alapár 33 M Ft. Ha novemberben kötünk szerződést és az első részlet is ekkor érkezik, −800.000 Ft kedvezményt adok: így a vételár 32,2 M Ft.",
   },
   {
-    q: "Azonnal beköltözhetek?",
-    a: "A ház azonnal használható. A 33 M Ft-os opciónál a birtokbaadás azonnali; legkorábban 2026. november 10-től lehetséges.",
+    q: "Azonnal beköltözhetek / kiadható a ház?",
+    a: "Igen: a ház azonnal használható és lakható. A jelenlegi piaci helyzetben az eklektikus berendezés ellenére is azonnal kiadható hosszú távú albérlőnek — így elkerülheted az üresjáratot. Birtokbaadás legkorábban 2026. november 10-től.",
+  },
+  {
+    q: "Hitelezhető a telek?",
+    a: "Mivel belterületi építési telek, a kereskedelmi bankok lakáshitel-gyakorlata (az MNB hitelfedezeti arányokat szabályozó 32/2014. (IX. 10.) rendelete alapján) engedélyezi a telekvásárlási hitelt, de a beépítetlen jelleg miatt magasabb önerővel (jellemzően 30–50%) érdemes számolnod. Ha később lakóházat építesz rá, a telken lévő tulajdonod és annak értéke a lakóház-építési hitelnél teljes mértékben beszámítható a banki önerőbe.",
   },
   {
     q: "Van közvetítői jutalék?",
-    a: "Nincs, közvetlenül a tulajdonostól vásárolsz.",
+    a: "Nincs. Közvetlenül tőlem vásárolsz.",
   },
   {
     q: "Honnan tudom, hogy a jogi háttér tiszta?",
-    a: "Az ingatlan Lke-4 övezeti besorolású, és a Kismaros 8/2025. önkormányzati rendelet szerinti változtatási tilalom nem érinti. Tulajdoni lap és igazolás kérésre elérhető, vagy a megtekintéskor áttekinthető.",
+    a: "Az ingatlan Lke-4 övezeti besorolású, és a Kismaros 8/2025. önkormányzati rendelet szerinti változtatási tilalom nem érinti. Tulajdoni lapot és igazolást kérésre megmutatok, vagy a megtekintéskor átnézzük.",
   },
 ] as const;
 
@@ -99,22 +110,30 @@ export const PROCESS_STEPS = [
   },
   {
     title: "Döntés",
-    body: "Kiválasztod az időzítést (2027-es kedvezményes vagy azonnali birtokbaadás, legkorábban november 10-től).",
+    body: "Ha novemberben szerződünk (és az első részlet is ekkor érkezik), a 32,2 M Ft-os kedvezményes ár érvényes; különben a 33 M Ft-os alapár.",
   },
   {
     title: "Szerződéskötés",
-    body: "Ügyvéd előtt, a választott konstrukciónak megfelelő feltételekkel.",
+    body: "Ügyvéd előtt, a választott feltételekkel — közvetlenül velem.",
   },
   {
     title: "Fizetés és birtokbaadás",
-    body: "Az előszerződésben és adásvételiben rögzített ütemezés szerint.",
+    body: "Az előszerződésben és adásvételiben rögzített ütemezés szerint (legkorábban nov. 10.).",
   },
+] as const;
+
+export const COMMUTE_TIMES = [
+  { label: "Budapest XIII. kerület", value: "35–38 perc" },
+  { label: "Budapest XI. kerület (csúcs)", value: "1:15–1:30 óra" },
+  { label: "Budapest XI. kerület (nem csúcs)", value: "0:50–1:00 óra" },
+  { label: "Vác (Nagy Lidl)", value: "15–20 perc" },
+  { label: "Esztergom", value: "45 perc" },
 ] as const;
 
 export const PHOTOS = [
   { src: "/hirdetes/20260902-01.jpg", alt: "A meglévő épület a tölgyesben, 2026. szeptember 2.", tall: true },
   { src: "/hirdetes/20260902-02.jpg", alt: "Lépcső a felépítményhez", tall: false },
-  { src: "/hirdetes/20260902-03.jpg", alt: "A kocsibejáró kapuja", tall: true },
+  { src: "/hirdetes/20260902-03.jpg", alt: "Y-alakú telken belüli kavicsos parkoló és kapuk", tall: true },
   { src: "/hirdetes/20260902-04.jpg", alt: "Kőkosaras támfal és drótkerítés", tall: false },
   { src: "/hirdetes/20260902-05.jpg", alt: "Kapu a kerítésben", tall: false },
   { src: "/hirdetes/20260902-06.jpg", alt: "Kavicsos kocsibeálló a telek előtt", tall: true },

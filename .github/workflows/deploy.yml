@@ -21,6 +21,8 @@ jobs:
       - name: Build and restart site-1 on VPS
         uses: appleboy/ssh-action@v1.2.0
         env:
+          RECIPIENT_ELADOINGATLAN: ${{ secrets.RECIPIENT_ELADOINGATLAN }}
+          RECIPIENT_MAIN: ${{ secrets.RECIPIENT_MAIN }}
           LISTING_INBOX_EMAIL: ${{ secrets.LISTING_INBOX_EMAIL }}
         with:
           host: 195.228.152.141
@@ -29,7 +31,7 @@ jobs:
           port: 22
           script_stop: true
           command_timeout: 15m
-          envs: LISTING_INBOX_EMAIL
+          envs: RECIPIENT_ELADOINGATLAN,RECIPIENT_MAIN,LISTING_INBOX_EMAIL
           script: |
             set -euo pipefail
             APP_DIR=/var/www/site-1
@@ -55,19 +57,28 @@ jobs:
             git fetch origin
             git reset --hard origin/main
             npm install
-            if [[ ! -f .env.local ]] || ! grep -q '^QUOTE_INBOX_EMAIL=.' .env.local || ! grep -q '^SMTP_HOST=.' .env.local || ! grep -q '^RECAPTCHA_SECRET_KEY=.' .env.local || ! grep -q '^NEXT_PUBLIC_RECAPTCHA_SITE_KEY=.' .env.local; then
+            upsert_env() {
+              local key="$1"
+              local val="$2"
+              [[ -z "$val" ]] && return 0
+              touch .env.local
+              if grep -q "^${key}=" .env.local; then
+                sed -i "s|^${key}=.*|${key}=${val}|" .env.local
+              else
+                printf '\n%s=%s\n' "$key" "$val" >> .env.local
+              fi
+              echo "${key} synced from GitHub secret"
+            }
+            # Prefer RECIPIENT_*; fall back to legacy LISTING_INBOX_EMAIL secret for listing.
+            LISTING_TO="${RECIPIENT_ELADOINGATLAN:-${LISTING_INBOX_EMAIL:-}}"
+            upsert_env RECIPIENT_ELADOINGATLAN "$LISTING_TO"
+            upsert_env LISTING_INBOX_EMAIL "$LISTING_TO"
+            upsert_env RECIPIENT_MAIN "${RECIPIENT_MAIN:-}"
+            if [[ ! -f .env.local ]] || { ! grep -q '^RECIPIENT_MAIN=.' .env.local && ! grep -q '^QUOTE_INBOX_EMAIL=.' .env.local; } || ! grep -q '^SMTP_HOST=.' .env.local || ! grep -q '^RECAPTCHA_SECRET_KEY=.' .env.local || ! grep -q '^NEXT_PUBLIC_RECAPTCHA_SITE_KEY=.' .env.local; then
               echo "WARNING: quote mail or reCAPTCHA is not fully set in .env.local; quote emails will not be sent"
             fi
-            if [[ -n "${LISTING_INBOX_EMAIL:-}" ]]; then
-              touch .env.local
-              if grep -q '^LISTING_INBOX_EMAIL=' .env.local; then
-                sed -i "s|^LISTING_INBOX_EMAIL=.*|LISTING_INBOX_EMAIL=${LISTING_INBOX_EMAIL}|" .env.local
-              else
-                printf '\nLISTING_INBOX_EMAIL=%s\n' "$LISTING_INBOX_EMAIL" >> .env.local
-              fi
-              echo "LISTING_INBOX_EMAIL synced from GitHub secret"
-            elif [[ ! -f .env.local ]] || ! grep -q '^LISTING_INBOX_EMAIL=.' .env.local; then
-              echo "WARNING: LISTING_INBOX_EMAIL is not set; listing enquiries fall back to QUOTE_INBOX_EMAIL if present"
+            if [[ ! -f .env.local ]] || { ! grep -q '^RECIPIENT_ELADOINGATLAN=.' .env.local && ! grep -q '^LISTING_INBOX_EMAIL=.' .env.local; }; then
+              echo "WARNING: RECIPIENT_ELADOINGATLAN is not set; listing enquiries will fail until env is configured"
             fi
             rm -rf .next
             npm run build

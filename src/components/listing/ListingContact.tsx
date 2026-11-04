@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Phone, ShieldCheck, X } from "lucide-react";
+import { Phone, ShieldCheck, X } from "lucide-react";
 import {
   createContext,
   useCallback,
@@ -49,7 +49,6 @@ function assemblePhone(): PhoneLinks {
 function track(
   event:
     | "listing_phone_click"
-    | "listing_email_click"
     | "listing_cta_click"
     | "listing_phone_reveal"
     | "listing_gdpr_accept"
@@ -168,24 +167,6 @@ function RevealButton({ place, className }: { place: string; className?: string 
   );
 }
 
-/** Nincs nyilvános mailto — az érdeklődés az űrlapon landol (szerver oldali inbox). */
-function EmailButton({ place, dark }: { place: string; dark?: boolean }) {
-  return (
-    <a
-      href="#kapcsolat"
-      onClick={() => track("listing_email_click", place)}
-      className={
-        dark
-          ? "inline-flex items-center gap-1.5 rounded-md border border-[#e8b84a]/80 bg-[#1a4530]/50 px-3 py-2 text-sm font-semibold text-[#f7f1e6]"
-          : "inline-flex items-center gap-1.5 rounded-md border border-[#d4c9b5] bg-[#efe8db] px-3 py-2 text-sm font-semibold text-[#241f18]"
-      }
-    >
-      <Mail className="h-4 w-4 text-[#e8b84a]" aria-hidden />
-      Üzenet az űrlapon
-    </a>
-  );
-}
-
 function PhoneAction({ place }: { place: string }) {
   const { links } = usePhoneReveal();
   if (!links) return null;
@@ -212,11 +193,12 @@ function DirectContactGate({
 }) {
   const allowed = useDirectContactAllowed();
   const { revealed, reopenConsent } = usePhoneReveal();
+  const toneDark = Boolean(dark);
 
   if (!allowed) {
     return (
       <div className="space-y-2">
-        <p className={`text-sm leading-relaxed ${dark ? "text-[#f7f1e6]/90" : "text-[#5a5146]"}`}>
+        <p className={`text-sm leading-relaxed ${toneDark ? "text-[#f7f1e6]/90" : "text-[#5a5146]"}`}>
           A közvetlen telefon az adatkezelés elfogadása után érhető el. Addig az űrlapot használd.
         </p>
         <button
@@ -226,7 +208,7 @@ function DirectContactGate({
             onNavigate?.();
           }}
           className={
-            dark
+            toneDark
               ? "inline-flex items-center rounded-md border border-[#e8b84a]/80 bg-[#1a4530]/50 px-3 py-2 text-sm font-semibold text-[#f7f1e6]"
               : "inline-flex items-center rounded-md border border-[#d4c9b5] bg-[#efe8db] px-3 py-2 text-sm font-semibold text-[#241f18]"
           }
@@ -240,7 +222,6 @@ function DirectContactGate({
   return (
     <div className="flex flex-wrap items-center gap-2">
       {revealed ? <PhoneAction place={place} /> : <RevealButton place={place} />}
-      <EmailButton place={place} dark={dark} />
     </div>
   );
 }
@@ -292,8 +273,8 @@ function ListingGdprModal() {
         <div className="space-y-4 px-5 py-5 text-sm leading-relaxed text-[#5a5146]">
           <p>{GDPR_BODY}</p>
           <p>
-            Elfogadás után elérhető a védett telefonszám megjelenítése. Elutasítás esetén továbbra is írhatsz az
-            űrlapon — az üzeneteket az űrlap továbbítja.
+            Elfogadás után elérhető a védett telefonszám. Elutasítás esetén továbbra is írhatsz az űrlapon — az
+            üzeneteket a szerver továbbítja, e-mail címem nem jelenik meg az oldalon.
           </p>
         </div>
         <div className="flex flex-col-reverse gap-2 border-t border-[#d4c9b5] bg-[#efe8db] px-5 py-4 sm:flex-row sm:justify-end">
@@ -356,7 +337,7 @@ export function ListingSellerCard({ tone = "light" }: { tone?: "light" | "dark" 
       <p className={`text-sm ${dark ? "text-[#e8b84a]" : "text-[#6b6154]"}`}>{LISTING_SELLER.role}</p>
       <p className={`mt-3 text-sm leading-relaxed ${dark ? "text-[#f7f1e6]/90" : "text-[#5a5146]"}`}>
         {allowed
-          ? "A telefonszám csak kattintás után jelenik meg (botvédelem). Üzenetet az űrlapon tudsz küldeni."
+          ? "A telefonszám csak kattintás után jelenik meg (botvédelem). Üzenetet az űrlapon küldhetsz — a címem nincs a böngészőben."
           : "Közvetlen hívás az adatkezelés elfogadása után. Addig az űrlap a biztos út."}
       </p>
       <div className="mt-3 flex flex-col gap-2">

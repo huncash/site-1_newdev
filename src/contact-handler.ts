@@ -97,6 +97,7 @@ export function processContactPayload(body: unknown): ContactResult {
     status: 200,
     body: { status: "ok" },
     delivery: {
+      recipient: "main",
       subject: `Ajánlatkérés – ${name.replace(/[\r\n]+/g, " ").slice(0, 120)}`,
       text,
       replyTo: email,

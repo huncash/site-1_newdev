@@ -97,6 +97,7 @@ export async function POST(request: Request): Promise<Response> {
   );
 
   const sent = await sendQuoteEmail({
+    recipient: "main",
     subject: `BIM ajánlatkérés – ${name.replace(/[\r\n]+/g, " ").slice(0, 120)}`,
     replyTo: email,
     text: [

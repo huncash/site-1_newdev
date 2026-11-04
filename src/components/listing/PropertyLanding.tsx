@@ -1,6 +1,21 @@
 "use client";
 
-import { ChevronDown, ChevronLeft, ChevronRight, FileText, House, MapPin, Menu, Ruler, Thermometer, X } from "lucide-react";
+import {
+  Car,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Droplets,
+  FileText,
+  House,
+  MapPin,
+  Menu,
+  Ruler,
+  Thermometer,
+  Trees,
+  X,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useId, useState, type MouseEvent, type ReactNode } from "react";
 
@@ -11,7 +26,9 @@ import {
   ListingSellerCard,
   trackListingCta,
 } from "@/components/listing/ListingContact";
+import { ListingTopoMap } from "@/components/listing/ListingTopoMap";
 import {
+  COMMUTE_TIMES,
   FAQ_ITEMS,
   HERO_IMAGE,
   LISTING_LOGO,
@@ -25,7 +42,7 @@ import {
 
 const NAV = [
   { href: "#elhelyezkedes", label: "Elhelyezkedés & Mikroklíma" },
-  { href: "#tilalom", label: "Övezeti besorolás & Változtatási tilalom" },
+  { href: "#tilalom", label: "Övezeti besorolás" },
   { href: "#kozmuvek-epulet", label: "Közművek & Épület" },
   { href: "#seta", label: "3D Séta" },
   { href: "#galeria", label: "Galéria" },
@@ -77,8 +94,6 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 
 export function PropertyLanding() {
   const [open, setOpen] = useState<Lightbox>(null);
-  const [macro, setMacro] = useState<"orszag" | "duna">("orszag");
-  const [micro, setMicro] = useState<"utca" | "foldhivatal">("utca");
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -222,31 +237,20 @@ export function PropertyLanding() {
           />
           <div className="relative mx-auto flex min-h-[70vh] max-w-6xl flex-col justify-end px-4 py-12 md:min-h-[75vh] md:px-6 md:py-16 lg:min-h-[78vh]">
             <div className="max-w-3xl rounded-lg bg-[#0f2e1f]/88 p-5 shadow-[0_8px_40px_rgba(15,46,31,0.45)] md:p-7">
-              <h1 className="text-3xl font-medium leading-tight text-[#f7f1e6] md:text-4xl lg:text-5xl">
+              <p className="inline-flex rounded-md border border-[#e8b84a]/70 bg-[#1a4530]/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-[#e8b84a] sm:text-sm">
+                Novemberi szerződéskötési kedvezmény: −{VARIANT_OFFER.discountAmount}
+              </p>
+              <h1 className="mt-4 text-3xl font-medium leading-tight text-[#f7f1e6] md:text-4xl lg:text-5xl">
                 Erdei faház a Börzsönyben, 1046&nbsp;m² privát telken
               </h1>
               <p className="mt-4 text-base leading-relaxed text-[#f7f1e6]/95 sm:text-lg">
                 Kismaros-Börzsönyliget, zsákutca vége, a Duna–Ipoly Nemzeti Park szélén. Csend, árnyék, nyugalom, fix
                 áron, jutalék nélkül.
               </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <a
-                  href="#azaras"
-                  onClick={() => trackListingCta("hero_price_2027")}
-                  className="rounded-md border border-[#e8b84a]/70 bg-[#1a4530]/55 px-4 py-3 text-left"
-                >
-                  <p className="text-xl font-medium text-[#e8b84a]">{VARIANT_OFFER.a.listPrice}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-[#f7f1e6]/90">{VARIANT_OFFER.a.bandNote}</p>
-                </a>
-                <a
-                  href="#azaras"
-                  onClick={() => trackListingCta("hero_price_immediate")}
-                  className="rounded-md border border-[#e8b84a]/70 bg-[#1a4530]/55 px-4 py-3 text-left"
-                >
-                  <p className="text-xl font-medium text-[#e8b84a]">{VARIANT_OFFER.b.listPrice}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-[#f7f1e6]/90">{VARIANT_OFFER.b.bandNote}</p>
-                </a>
-              </div>
+              <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/85">
+                Alapár: {VARIANT_OFFER.basePrice}. Novemberi szerződéskötéssel és első részlettel:{" "}
+                <strong className="font-semibold text-[#e8b84a]">{VARIANT_OFFER.discountPrice}</strong>.
+              </p>
               <a
                 href="#kapcsolat"
                 onClick={() => trackListingCta("hero_viewing")}
@@ -263,8 +267,8 @@ export function PropertyLanding() {
           <p className="mt-2 text-sm uppercase tracking-[0.14em] text-[#6b6154]">Mikroklíma &amp; szomszédság</p>
           <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-[#5a5146] sm:text-base">
             <p>
-              Itt nincs szomszéd az ablakban és nincs átmenő forgalom. A telek a Hörcsög utca végén áll, az erdő
-              szélén. Nyáron az erdei mikroklíma átlagosan 4&nbsp;°C-kal hűvösebb, mint a Duna-parton, télen a
+              Itt nincs szomszéd az ablakodban, és nincs átmenő forgalom. A telek a Hörcsög utca végén áll, az erdő
+              szélén. Nyáron az erdei mikroklíma átlagosan 4&nbsp;°C-kal hűvösebb, mint a Duna-parton; télen a
               cserépkályha tölti be a házat melegével.
             </p>
             <p>
@@ -274,156 +278,144 @@ export function PropertyLanding() {
             </p>
             <p>
               A ház egyszerű és szerényen berendezett felvonulási épület / hétvégi ház. Azonnal használható, de nem
-              kész luxuslakás: a belső hangulatot te alakítod ki saját ízlésedre.
+              kész luxuslakás: a belső hangulatot te alakítod ki a saját ízlésedre.
             </p>
           </div>
 
           <div className="mt-12">
-            <h3 className="text-2xl font-medium">Ország, régió és mikroklíma</h3>
-            <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Térségi térkép">
-              <button
-                type="button"
-                role="tab"
-                aria-selected={macro === "orszag"}
-                onClick={() => setMacro("orszag")}
-                className={`rounded-md px-4 py-2 text-sm font-medium ${macro === "orszag" ? "bg-[#1a4530] text-[#f7f1e6]" : "border border-[#d4c9b5] bg-[#f7f1e6] text-[#241f18]"}`}
-              >
-                Magyarország
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={macro === "duna"}
-                onClick={() => setMacro("duna")}
-                className={`rounded-md px-4 py-2 text-sm font-medium ${macro === "duna" ? "bg-[#1a4530] text-[#f7f1e6]" : "border border-[#d4c9b5] bg-[#f7f1e6] text-[#241f18]"}`}
-              >
-                Dunakanyar
-              </button>
-            </div>
-            <MapFrame>
-              <img
-                src={macro === "orszag" ? "/hirdetes/makro-orszag.jpg" : "/hirdetes/makro-duna.jpg"}
-                alt={
-                  macro === "orszag"
-                    ? "Magyarország térképe. A jelölés Kismarost mutatja, Budapesttől északra."
-                    : "A Dunakanyar térképe. A jelölés Kismarost mutatja, a Börzsöny lábánál, a Duna-parttól beljebb."
-                }
-                className="mx-auto max-h-[450px] w-full object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </MapFrame>
-            <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-              {macro === "orszag"
-                ? "Kismaros a Dunakanyarban van, Budapesttől északra, a Börzsöny lábánál."
-                : "A Dunakanyar térsége. Kismaros a folyókanyar Börzsöny felőli oldalán fekszik, a Duna-parttól beljebb."}
+            <h3 className="text-2xl font-medium">Turistatérkép — telek és túraútvonalak</h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
+              OpenTopoMap: a telek helye és a Börzsöny sűrű túraútvonal-hálózata. A kapun kilépve 500 méteren belül
+              elérhetők a völgy és a dombtető ösvényei.
             </p>
-            <p className="mt-1 text-xs text-[#6b6154]">Térképadat: OpenStreetMap közreműködők.</p>
+            <ListingTopoMap
+              mode="local"
+              caption="Hörcsög utca vége, Kismaros-Börzsönyliget. A jelölés a hirdetett telket mutatja; a környező vonalak a turistaútvonalakat."
+            />
           </div>
 
-          <div className="mt-16">
-            <h3 className="text-2xl font-medium">Az utca és a telek</h3>
-            <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Helyi térkép">
-              <button
-                type="button"
-                role="tab"
-                aria-selected={micro === "utca"}
-                onClick={() => setMicro("utca")}
-                className={`rounded-md px-4 py-2 text-sm font-medium ${micro === "utca" ? "bg-[#1a4530] text-[#f7f1e6]" : "border border-[#d4c9b5] bg-[#f7f1e6] text-[#241f18]"}`}
-              >
-                Hörcsög utca
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={micro === "foldhivatal"}
-                onClick={() => setMicro("foldhivatal")}
-                className={`rounded-md px-4 py-2 text-sm font-medium ${micro === "foldhivatal" ? "bg-[#1a4530] text-[#f7f1e6]" : "border border-[#d4c9b5] bg-[#f7f1e6] text-[#241f18]"}`}
-              >
-                Földhivatali térkép
-              </button>
+          <div className="mt-12">
+            <h3 className="text-2xl font-medium">Regionális kép — Dunakanyar &amp; Börzsöny</h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
+              A Duna–Ipoly Nemzeti Park és a Börzsöny összefüggő erdei védettsége (Natura 2000) keretezi a helyet. A
+              megyehatárok és a folyókanyar a tágabb kontextust adják — Budapesttől északra, a Duna-parttól beljebb.
+            </p>
+            <ListingTopoMap
+              mode="regional"
+              caption="Dunakanyar–Börzsöny áttekintő: a jelölés Kismarost mutatja a nemzeti parki és erdei tájban."
+            />
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
+                <h3 className="text-lg font-medium">Ipoly Erdő &amp; Nemzeti Park</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
+                  A környéken az Ipoly Erdő Zrt. gazdálkodik; a terület a Duna–Ipoly Nemzeti Park vonzáskörzetébe
+                  tartozik. Natura 2000-es ősfás tölgyerdő: igazi béke a Börzsöny kapujában.
+                </p>
+              </article>
+              <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
+                <h3 className="text-lg font-medium">Klíma-előny</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
+                  Nyáron 4&nbsp;°C-kal hűvösebb, mint a Duna-parton; a hegyoldal naposabb foltjai mégis alkalmasak
+                  napelemre és veteményesre.
+                </p>
+              </article>
             </div>
-            <MapFrame>
-              {micro === "utca" ? (
-                <iframe
-                  title="Hörcsög utca közepe, Kismaros"
-                  src="https://maps.google.com/maps?q=47.844736,19.000447&z=17&hl=hu&output=embed"
-                  className="aspect-[16/10] h-auto max-h-[450px] min-h-[280px] w-full"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              ) : (
-                <figure>
-                  <img
-                    src="/hirdetes/foldhivatal.jpg"
-                    alt="Földhivatali térkép: Kismaros belterület 2705, a telken álló épülettel és a szomszédos telkekkel"
-                    className="mx-auto max-h-[450px] w-full bg-white object-contain"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption className="border-t border-[#d4c9b5] px-4 py-3 text-sm leading-relaxed text-[#5a5146]">
-                    Földhivatali térképmásolat, Kismaros belterület 2705, méretarány 1:1000, kiadva 2024. május 8-án.
-                  </figcaption>
-                </figure>
-              )}
-            </MapFrame>
           </div>
         </section>
 
         <section className="scroll-mt-24 border-t border-[#d4c9b5] bg-[#f7f1e6] py-14 md:py-16 lg:py-20" id="tilalom">
           <div className="mx-auto max-w-6xl px-4 md:px-6">
-            <h2 className="text-3xl font-medium">Ingatlan adatai &amp; jogi tisztaság</h2>
+            <h2 className="text-3xl font-medium">Ingatlan adatai &amp; övezeti besorolás</h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-              Röviden a helyszínről, a telekről, a tilalom alóli mentességről és a közművekről — majd a rendelet
-              térképei.
+              Belterület, Lke-4, tiszta jogi státusz, parkolás, közművek és menetidők — közvetlenül tőlem, 1/1
+              tulajdonostól.
             </p>
 
             <ul className="mt-8 grid gap-4 md:grid-cols-2">
               <li className="rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5">
                 <MapPin className="h-5 w-5 text-[#e8b84a]" aria-hidden />
-                <h3 className="mt-3 text-lg font-medium">Helyszín &amp; besorolás</h3>
+                <h3 className="mt-3 text-lg font-medium">Belterület &amp; besorolás</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                  Kismaros-Börzsönyliget, Lke-4 övezet (max. 30% beépíthetőség, 4,5&nbsp;m építménymagasság). Mivel a
-                  telek 1046&nbsp;m², a hatályos HÉSZ keretei érvényesek.
+                  Kismaros <strong className="font-semibold text-[#2f4a38]">belterület</strong>, Lke-4 övezet (
+                  {VARIANT_OFFER.plotSqm}&nbsp;m² saját telek, max. 30% beépíthetőség, 4,5&nbsp;m építménymagasság).
                 </p>
               </li>
               <li className="rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5">
-                <Ruler className="h-5 w-5 text-[#e8b84a]" aria-hidden />
-                <h3 className="mt-3 text-lg font-medium">Telek &amp; parkolás</h3>
+                <Car className="h-5 w-5 text-[#e8b84a]" aria-hidden />
+                <h3 className="mt-3 text-lg font-medium">Parkolás</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                  1046&nbsp;m² saját, rendezett telek Y-alakú beállóval.{" "}
-                  <strong className="font-semibold text-[#2f4a38]">Telken belül bőségesen 3 autó számára</strong> van
-                  hely, emellett a telek előtt lévő kb. 150&nbsp;m²-es önkormányzati/használati sávban még 1 autó
-                  kényelmesen megállhat — így a beállás egyáltalán nem vesz el helyet a beépíthető privát telekből.
+                  Telken belül bőségesen <strong className="font-semibold text-[#2f4a38]">3 autó számára</strong> van
+                  hely (Y-alakú beálló), plusz a telek előtt lévő kb. 150&nbsp;m²-es önkormányzati/használati sávban
+                  még 1 autó kényelmesen megállhat — nem veszi el a helyet a beépíthető telekből.
                 </p>
               </li>
               <li className="rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5">
                 <FileText className="h-5 w-5 text-[#e8b84a]" aria-hidden />
                 <h3 className="mt-3 text-lg font-medium">Jogi státusz — változtatási tilalom alól mentes</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                  Kismaros Önkormányzata a 8/2025. (IV. 14.) számú rendeletével a HÉSZ felülvizsgálata miatt
-                  változtatási tilalmat rendelt el Börzsönyliget egyes ingatlanaira (várhatóan 2027 júniusáig).{" "}
-                  <strong className="font-semibold text-[#2f4a38]">
-                    Ez az ingatlan nincs a tilalmi listán
-                  </strong>
-                  , így tiszta jogi státusszal azonnal mozgásteret és biztonságot nyújt.
+                  Kismaros Önkormányzata a 8/2025. (IV. 14.) számú rendeletével elrendelt változtatási tilalom alól{" "}
+                  <strong className="font-semibold text-[#2f4a38]">ez az ingatlan mentes</strong>, így tiszta jogi
+                  státusszal azonnal biztonságot nyújt.
                 </p>
-                <a href="#tilalom-terkepek" className="mt-3 inline-flex text-sm font-semibold text-[#0f2e1f] underline-offset-2 hover:underline">
-                  Önkormányzati rendelet / térképek megtekintése
+                <a
+                  href="#tilalom-terkepek"
+                  className="mt-3 inline-flex text-sm font-semibold text-[#0f2e1f] underline-offset-2 hover:underline"
+                >
+                  Önkormányzati rendelet / térképek
                 </a>
               </li>
               <li className="rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5">
-                <Thermometer className="h-5 w-5 text-[#e8b84a]" aria-hidden />
-                <h3 className="mt-3 text-lg font-medium">Fűtés &amp; közmű</h3>
+                <Droplets className="h-5 w-5 text-[#e8b84a]" aria-hidden />
+                <h3 className="mt-3 text-lg font-medium">Közművek &amp; szolgáltatások</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                  Cserépkályha (szakemberrel előkészített fűtési infrastruktúra), HÉSZ 42. § szerinti zárt
-                  szennyvíztároló, villany.
+                  Villany, cserépkályha fűtési infrastruktúra, HÉSZ 42. § szerinti zárt szennyvíztároló. Kommunális
+                  szemétszállítás heti rendszerességgel, szelektív hulladék elvitel 2 hetente. Jó közbiztonság. 1,5
+                  km-en belül 2 természetes erdei forrás is elérhető (változó vízhozammal/minőséggel).
                 </p>
               </li>
             </ul>
 
+            <div className="mt-8 rounded-lg border border-[#d4c9b5] bg-[#efe8db] p-5">
+              <div className="flex items-center gap-2">
+                <Clock className="h-5 w-5 text-[#e8b84a]" aria-hidden />
+                <h3 className="text-lg font-medium">Megközelíthetőség — menetidők</h3>
+              </div>
+              <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {COMMUTE_TIMES.map((row) => (
+                  <li
+                    key={row.label}
+                    className="flex flex-col rounded-md border border-[#d4c9b5] bg-[#f7f1e6] px-3 py-3 text-sm"
+                  >
+                    <span className="text-xs uppercase tracking-wide text-[#6b6154]">{row.label}</span>
+                    <span className="mt-1 font-semibold text-[#241f18]">{row.value}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <article className="mt-8 rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#0f2e1f] bg-[#efe8db] p-5 sm:p-6">
+              <div className="flex items-center gap-2">
+                <Trees className="h-5 w-5 text-[#e8b84a]" aria-hidden />
+                <h3 className="text-xl font-medium">Erdei életérzés &amp; csendkódex</h3>
+              </div>
+              <div className="mt-4 space-y-4 text-sm leading-relaxed text-[#5a5146] sm:text-base">
+                <p>
+                  Ez a hely a befelé fordulásról, a lelassulásról és a valódi elvonulásról szól. Nem való mindenkinek —
+                  és ezt büszkén vállalom.
+                </p>
+                <p>
+                  A hirdetett telek átlós alsó szomszédja én leszek (több mint 50 méter távolság van a házaink között, a
+                  magánszféra teljes). Hétfőtől péntekig (07:00–19:00) természetes a háztartási és munkavégzési zaj, de
+                  mivel ez a terület csaknem egy évszázadon át üdülőövezet volt — és ma is Natura 2000-es erdők veszik
+                  körül —, a hétvége a pihenés szent ideje. A völgynek tiszta, egyedi akusztikája van, a szemközti oldal
+                  nem beépített. Az erdei csend és a madárcsicsergés közös kincs. Tisztelettel kérem azokat, akik
+                  hétvégente a kertben tábortűz körül hangos zenét keresnek, hogy válasszanak másik helyet.
+                </p>
+              </div>
+            </article>
+
             <div id="tilalom-terkepek" className="scroll-mt-28 mt-12">
-              <h3 className="text-2xl font-medium">Övezeti besorolás &amp; változtatási tilalom — bizonyíték</h3>
+              <h3 className="text-2xl font-medium">Övezeti bizonyíték — rendelet &amp; térképek</h3>
               <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
                 A rendelet mellékletén a kékkel jelölt telkek esnek a tilalom alá.{" "}
                 <strong className="font-semibold text-[#241f18]">Ez az Lke-4 ingatlan nincs a listán</strong> (sárga
@@ -449,7 +441,7 @@ export function PropertyLanding() {
                     decoding="async"
                   />
                   <figcaption className="border-t border-[#d4c9b5] px-4 py-3 text-sm leading-relaxed text-[#5a5146]">
-                    Kinagyított részlet: a sárga telek a kék tömbök mellett, azokon kívül áll — tiszta jogi státusz.
+                    Kinagyított részlet: a sárga telek a kék tömbökön kívül áll — tiszta jogi státusz.
                   </figcaption>
                 </figure>
               </MapFrame>
@@ -457,14 +449,13 @@ export function PropertyLanding() {
                 <figure>
                   <img
                     src="/hirdetes/tilalom.jpg"
-                    alt="Az önkormányzati rendelet 1. számú melléklete. A kékkel jelölt telkek a melléklet területe. A sárga jelölés a hirdetett telek."
+                    alt="Az önkormányzati rendelet 1. számú melléklete. A sárga jelölés a hirdetett telek."
                     className="mx-auto max-h-[450px] w-full bg-white object-contain"
                     loading="lazy"
                     decoding="async"
                   />
                   <figcaption className="border-t border-[#d4c9b5] px-4 py-3 text-sm leading-relaxed text-[#5a5146]">
-                    Az önkormányzati rendelet 1. számú melléklete. A sárga jelölés a hirdetett telek, a kék területen
-                    kívül.
+                    8/2025. rendelet 1. számú melléklete. A sárga a hirdetett telek, a kék területen kívül.
                   </figcaption>
                 </figure>
               </MapFrame>
@@ -472,20 +463,19 @@ export function PropertyLanding() {
                 <figure>
                   <img
                     src="/hirdetes/szabalyozas.jpg"
-                    alt="Kismaros szabályozási térképe. A kiemelt telek a hirdetett ingatlan, Hörcsög utca, belterület 2705, Lke-4 övezet."
+                    alt="Kismaros szabályozási térképe, belterület 2705, Lke-4."
                     className="mx-auto max-h-[450px] w-full bg-white object-contain"
                     loading="lazy"
                     decoding="async"
                   />
                   <figcaption className="border-t border-[#d4c9b5] px-4 py-3 text-sm leading-relaxed text-[#5a5146]">
-                    Kismaros szabályozási térképe: belterület 2705, Hörcsög utca, Lke-4 kertvárosias lakóövezet.
+                    Szabályozási térkép: belterület 2705, Hörcsög utca, Lke-4.
                   </figcaption>
                 </figure>
               </MapFrame>
               <p className="mt-6 max-w-3xl text-sm leading-relaxed text-[#5a5146]">
-                A helyi építési szabályzat és a településképi előírások idővel módosulhatnak. Az oldalon szereplő
-                övezeti adatok tájékoztató jellegűek; a hivatalos dokumentumok és az illetékes hatóság az irányadók.
-                Tulajdoni lap kérésre vagy megtekintéskor áttekinthető.
+                Az övezeti adatok tájékoztató jellegűek; a hivatalos dokumentumok az irányadók. Tulajdoni lapot
+                megtekintéskor átnézzük.
               </p>
             </div>
           </div>
@@ -494,10 +484,9 @@ export function PropertyLanding() {
         <section className="mx-auto max-w-6xl scroll-mt-24 px-4 py-14 md:px-6 md:py-16" id="kozmuvek-epulet">
           <h2 className="text-3xl font-medium">Őszintén az állapotról</h2>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-            A belső terek egyszerűek és eklektikusak. A ház azonnal használható és lakható, de ha szeretnéd a saját
-            hangulatodra formálni, számolj kisebb ráfordítással: festés, burkolat, berendezés. Nem kész, igényesen
-            berendezett luxusházat kínálunk, hanem egy tiszta jogi háttérrel rendelkező, kivételes adottságú erdei
-            alapot.
+            A belső terek egyszerűek és eklektikusak. A ház azonnal használható és lakható, sőt, a jelenlegi piaci
+            helyzetben eklektikus berendezése ellenére is azonnal kiadható hosszú távú albérlőnek — így elkerülheted az
+            üresjáratot. Nem kész luxusházat kínálok, hanem tiszta jogi hátterű, kivételes adottságú erdei alapot.
           </p>
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
@@ -510,16 +499,17 @@ export function PropertyLanding() {
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
               <Thermometer className="h-5 w-5 text-[#e8b84a]" aria-hidden />
-              <h3 className="mt-3 text-lg font-medium">Fűtés előkészítve</h3>
+              <h3 className="mt-3 text-lg font-medium">Fűtés</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                Cserépkályha-üzembe helyezésre megbeszélt szakember áll rendelkezésre. A belső burkolás és berendezés
-                tiszta lap.
+                Cserépkályha; a fűtési infrastruktúra szakemberrel előkészítve. A belső burkolás és berendezés tiszta
+                lap, ha saját hangulatot szeretnél.
               </p>
             </article>
             <article className="rounded-lg border border-[#d4c9b5] bg-[#f7f1e6] p-5">
-              <h3 className="text-lg font-medium">Közműfotók</h3>
+              <Ruler className="h-5 w-5 text-[#e8b84a]" aria-hidden />
+              <h3 className="mt-3 text-lg font-medium">Közműfotók</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">
-                Villany, víz, fürdő — kis méretben; kattintásra nagyítódnak. Galéria alapállapot: {PHOTO_STATE}
+                Villany, víz, fürdő — kattintásra nagyítódnak. Galéria alapállapot: {PHOTO_STATE}
               </p>
             </article>
           </div>
@@ -553,7 +543,7 @@ export function PropertyLanding() {
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <h2 className="text-3xl font-medium">Bejárható 3D fotózás</h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-              Járja körbe az ingatlant és a felépítményt lépésről lépésre, közvetlenül a böngészőből.
+              Járd körbe az ingatlant és a felépítményt a böngésződből — így előre látod, mire kérsz megtekintést.
             </p>
             <div className="mt-6 overflow-hidden rounded-lg border border-[#d4c9b5] bg-[#0f2e1f]">
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
@@ -601,115 +591,41 @@ export function PropertyLanding() {
 
         <section className="scroll-mt-24 border-t border-[#d4c9b5] bg-[#f7f1e6] py-14 md:py-16" id="azaras">
           <div className="mx-auto max-w-6xl px-4 md:px-6">
-            <h2 className="text-3xl font-medium">Árazás és birtokbaadási konstrukciók</h2>
+            <h2 className="text-3xl font-medium">Árazás</h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
               {VARIANT_OFFER.premiumNote}
-            </p>
-
-            {/* Tablet+: összehasonlító tábla; keskenyebb nézetben a kártyák elég */}
-            <div className="mt-8 hidden overflow-hidden rounded-lg border border-[#d4c9b5] bg-[#efe8db] md:block">
-              <div className="overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
-                <table className="w-full min-w-[520px] text-left text-sm">
-                  <thead className="bg-[#0f2e1f] text-xs uppercase tracking-wide text-[#e8b84a]">
-                    <tr>
-                      <th className="px-4 py-3 font-medium md:px-5">Paraméter</th>
-                      <th className="px-4 py-3 font-medium md:px-5">{VARIANT_OFFER.a.optionLabel}</th>
-                      <th className="px-4 py-3 font-medium md:px-5">{VARIANT_OFFER.b.optionLabel}</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-[#5a5146]">
-                    <tr>
-                      <th className="border-t border-[#d4c9b5] px-4 py-3 font-semibold text-[#241f18] md:px-5">Vételár</th>
-                      <td className="border-t border-[#d4c9b5] px-4 py-3 text-lg font-medium text-[#d4a017] md:px-5">
-                        {VARIANT_OFFER.a.listPrice}
-                      </td>
-                      <td className="border-t border-[#d4c9b5] px-4 py-3 text-lg font-medium text-[#d4a017] md:px-5">
-                        {VARIANT_OFFER.b.listPrice}
-                      </td>
-                    </tr>
-                    <tr className="bg-[#f7f1e6]/60">
-                      <th className="border-t border-[#d4c9b5] px-4 py-3 font-semibold text-[#241f18] md:px-5">Foglaló</th>
-                      <td className="border-t border-[#d4c9b5] px-4 py-3 md:px-5">{VARIANT_OFFER.a.deposit}</td>
-                      <td className="border-t border-[#d4c9b5] px-4 py-3 md:px-5">{VARIANT_OFFER.b.deposit}</td>
-                    </tr>
-                    <tr>
-                      <th className="border-t border-[#d4c9b5] px-4 py-3 font-semibold text-[#241f18] md:px-5">
-                        Birtokbaadás
-                      </th>
-                      <td className="border-t border-[#d4c9b5] px-4 py-3 md:px-5">{VARIANT_OFFER.a.possession}</td>
-                      <td className="border-t border-[#d4c9b5] px-4 py-3 md:px-5">{VARIANT_OFFER.b.possession}</td>
-                    </tr>
-                    <tr className="bg-[#f7f1e6]/60">
-                      <th className="border-t border-[#d4c9b5] px-4 py-3 font-semibold text-[#241f18] md:px-5">
-                        Berendezés
-                      </th>
-                      <td className="border-t border-[#d4c9b5] px-4 py-3 md:px-5" colSpan={2}>
-                        {VARIANT_OFFER.fixturesNote}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <p className="mt-5 max-w-3xl text-sm leading-relaxed text-[#5a5146] sm:text-base">
-              {VARIANT_OFFER.marketNote}
             </p>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               <article className="flex flex-col rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#e8b84a] bg-[#efe8db] p-5 md:p-6">
                 <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">{VARIANT_OFFER.a.optionLabel}</p>
                 <p className="mt-2 text-3xl font-medium text-[#d4a017]">{VARIANT_OFFER.a.listPrice}</p>
-                <dl className="mt-3 space-y-2 text-sm text-[#5a5146] md:hidden">
-                  <div>
-                    <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Foglaló</dt>
-                    <dd>{VARIANT_OFFER.a.deposit}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Birtokbaadás</dt>
-                    <dd>{VARIANT_OFFER.a.possession}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Berendezés</dt>
-                    <dd>{VARIANT_OFFER.fixturesNote}</dd>
-                  </div>
-                </dl>
+                <p className="mt-1 text-xs text-[#6b6154]">{VARIANT_OFFER.a.bandNote}</p>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{VARIANT_OFFER.a.summary}</p>
                 <Link
                   href="/hirdetes/erdeklodes/a"
                   onClick={() => trackListingCta("variant_a")}
                   className="mt-6 inline-flex justify-center rounded-md bg-[#e8b84a] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
                 >
-                  Érdeklődöm a 2027-es opcióra
+                  Érdeklődöm a novemberi kedvezményre
                 </Link>
               </article>
               <article className="flex flex-col rounded-lg border border-[#d4c9b5] border-l-4 border-l-[#d4a017] bg-[#efe8db] p-5 md:p-6">
                 <p className="text-xs uppercase tracking-[0.14em] text-[#6b6154]">{VARIANT_OFFER.b.optionLabel}</p>
                 <p className="mt-2 text-3xl font-medium text-[#d4a017]">{VARIANT_OFFER.b.listPrice}</p>
-                <dl className="mt-3 space-y-2 text-sm text-[#5a5146] md:hidden">
-                  <div>
-                    <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Foglaló</dt>
-                    <dd>{VARIANT_OFFER.b.deposit}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Birtokbaadás</dt>
-                    <dd>{VARIANT_OFFER.b.possession}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-wide text-[#6b6154]">Berendezés</dt>
-                    <dd>{VARIANT_OFFER.fixturesNote}</dd>
-                  </div>
-                </dl>
+                <p className="mt-1 text-xs text-[#6b6154]">{VARIANT_OFFER.b.bandNote}</p>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146]">{VARIANT_OFFER.b.summary}</p>
                 <Link
                   href="/hirdetes/erdeklodes/b"
                   onClick={() => trackListingCta("variant_b")}
                   className="mt-6 inline-flex justify-center rounded-md bg-[#d4a017] px-5 py-3 text-center text-sm font-semibold text-[#241f18]"
                 >
-                  Érdeklődöm az azonnali birtokbaadásra
+                  Érdeklődöm az alapárra
                 </Link>
               </article>
             </div>
+            <p className="mt-5 max-w-3xl text-sm leading-relaxed text-[#5a5146]">{VARIANT_OFFER.marketNote}</p>
+            <p className="mt-2 text-sm text-[#5a5146]">{VARIANT_OFFER.fixturesNote}.</p>
           </div>
         </section>
 
@@ -735,15 +651,15 @@ export function PropertyLanding() {
               <article className="rounded-lg border border-[#d4c9b5] border-t-4 border-t-[#e8b84a] bg-[#efe8db] p-6">
                 <h3 className="text-xl font-medium">Neked szól</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
-                  Ha erdei nyugalmat szeretnél korrekt áron, örülsz a saját ízlésedre alakítható belső tereknek,
-                  fontos a tiszta jogi háttér, és értékelted a transzparens felállást.
+                  Ha erdei nyugalmat szeretnél korrekt, fix áron, örülsz a saját ízlésedre alakítható belső tereknek,
+                  fontos a tiszta jogi háttér, és értékeld a transzparens, 1/1 tulajdonosi felállást.
                 </p>
               </article>
               <article className="rounded-lg border border-[#d4c9b5] border-t-4 border-t-[#6b6154] bg-[#efe8db] p-6">
                 <h3 className="text-xl font-medium">Nem neked szól</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
-                  Ha kulcsrakész, berendezett luxusingatlant vársz, vagy az alku számodra a fő szempont (az árak
-                  fixek, nem tartalmaznak alkupuffert).
+                  Ha kulcsrakész luxusingatlant vársz, vagy az alku a fő szempontod — az árak fixek, nincs alkupuffer. A
+                  hétvégi hangos zenés tábortűz sem ide való (lásd a csendkódexet).
                 </p>
               </article>
             </div>
@@ -763,10 +679,10 @@ export function PropertyLanding() {
           <div className="mx-auto grid max-w-6xl gap-8 px-4 md:gap-10 md:px-6 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <h2 className="text-3xl font-medium text-[#f7f1e6]">Kapcsolatfelvétel</h2>
-              <p className="mt-3 text-lg font-medium text-[#e8b84a]">Megtekintést egyeztetünk.</p>
+              <p className="mt-3 text-lg font-medium text-[#e8b84a]">Írj nekem — megtekintést egyeztetünk.</p>
               <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/90 sm:text-base">
-                Írj az űrlapon, vagy — adatkezelés elfogadása után — hívd a védett számot. Ha már tudod az időzítést,
-                válaszd a 2027-es vagy az azonnali birtokbaadást az árazásnál.
+                Használd az űrlapot, vagy — adatkezelés elfogadása után — hívd a védett számot, illetve írj közvetlen
+                emailt. Ha a novemberi kedvezmény érdekel, jelezd az üzenetben.
               </p>
               <ListingSellerCard tone="dark" />
             </div>
@@ -791,9 +707,7 @@ export function PropertyLanding() {
           >
             <div className="flex shrink-0 items-center justify-between gap-3 border-b border-[#e8b84a]/35 px-3 py-3 md:px-5">
               <p className="truncate text-sm font-medium text-[#f7f1e6]/90">
-                {open?.kind === "gallery"
-                  ? `${(open.index ?? 0) + 1} / ${PHOTOS.length}`
-                  : lightboxSrc.alt}
+                {open?.kind === "gallery" ? `${(open.index ?? 0) + 1} / ${PHOTOS.length}` : lightboxSrc.alt}
               </p>
               <button
                 type="button"
@@ -805,7 +719,6 @@ export function PropertyLanding() {
                 Bezárás
               </button>
             </div>
-
             <div className="relative flex min-h-0 flex-1 items-center justify-center gap-1 px-1 py-3 sm:gap-2 sm:px-3 md:px-4">
               {open?.kind === "gallery" ? (
                 <button
@@ -821,13 +734,11 @@ export function PropertyLanding() {
               ) : (
                 <span className="w-11 shrink-0 md:w-12" aria-hidden />
               )}
-
               <img
                 src={lightboxSrc.src}
                 alt={lightboxSrc.alt}
                 className="max-h-[calc(100dvh-7.5rem)] max-w-[min(100%,calc(100vw-6.5rem))] object-contain md:max-w-[min(100%,calc(100vw-8rem))]"
               />
-
               {open?.kind === "gallery" ? (
                 <button
                   type="button"
