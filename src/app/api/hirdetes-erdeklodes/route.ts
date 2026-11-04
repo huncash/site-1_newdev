@@ -1,4 +1,4 @@
-import { deliverQuoteEmail } from "@/lib/quote-delivery";
+import { sendQuoteEmail } from "@/lib/quote-delivery";
 
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
@@ -55,7 +55,7 @@ export async function POST(request: Request): Promise<Response> {
         : null;
   const variantLine = optionLabel ? `Konstrukció: ${optionLabel}` : "Konstrukció: nem jelölt";
   const replyTo = email ?? undefined;
-  const delivery = await deliverQuoteEmail({
+  const sent = await sendQuoteEmail({
     inboxEnv: "LISTING_INBOX_EMAIL",
     subject: optionLabel
       ? `Érdeklődés (${optionLabel}): Kismaros, Börzsönyliget`
@@ -73,18 +73,10 @@ export async function POST(request: Request): Promise<Response> {
       .join("\n"),
   });
 
-  if (!delivery.ok) {
+  if (!sent) {
     return Response.json({ error: "mail" }, { status: 503 });
   }
 
-  console.log(
-    JSON.stringify({
-      event: "listing_enquiry",
-      via: delivery.via ?? null,
-      hasName: true,
-      hasEmail: Boolean(email),
-      hasPhone: Boolean(phone),
-    })
-  );
+  console.log(JSON.stringify({ event: "listing_enquiry", hasName: true, hasEmail: Boolean(email), hasPhone: Boolean(phone) }));
   return Response.json({ ok: true });
 }

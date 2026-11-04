@@ -140,8 +140,8 @@ export function VariantInterest({ variant }: { variant: ListingVariant }) {
             <div>
               <h2 className="text-2xl font-medium">Kapcsolatfelvétel</h2>
               <p className="mt-3 text-sm leading-relaxed text-[#5a5146] sm:text-base">
-                Az űrlap a {selected.optionLabel} ({selected.listPrice}) érdeklődést jelöli. Közvetlen telefon és email
-                az adatkezelés elfogadása után érhető el.
+                Az űrlap a {selected.optionLabel} ({selected.listPrice}) érdeklődést jelöli. Közvetlen telefon az
+                adatkezelés elfogadása után érhető el; üzenetet ide az űrlapon tudsz küldeni.
               </p>
               <ListingSellerCard />
             </div>

@@ -60,7 +60,7 @@ export const ASZF_BLOCKS: AszfBlock[] = [
   },
   {
     "kind": "p",
-    "text": "Általános információ, ügyfélszolgálat: info@vrgo.hu"
+    "text": "Általános információ, ügyfélszolgálat: az ajánlatkérő űrlapon (vrgo.hu/ajanlat)"
   },
   {
     "kind": "p",

@@ -14,7 +14,7 @@ const SECTIONS = [
     title: "1. Adatkezelő",
     body: [
       "Az adatkezelő / üzemeltető teljes cégadatai az Általános Szerződési Feltételekben (ÁSZF) szerepelnek.",
-      `Kapcsolat: ${SITE_CONFIG.publicEmail}`,
+      `Kapcsolat: ${SITE_CONFIG.contactPath} (${SITE_CONFIG.contactLabel}).`,
     ],
   },
   {
@@ -69,7 +69,7 @@ const SECTIONS = [
     title: "8. Az érintett jogai",
     body: [
       "Hozzáférés, helyesbítés, törlés, korlátozás, adathordozhatóság, tiltakozás, valamint a hozzájárulás bármikori visszavonása (a visszavonás nem érinti a korábbi jogszerű adatkezelést).",
-      `Joggyakorlás: ${SITE_CONFIG.publicEmail}`,
+      `Joggyakorlás: ${SITE_CONFIG.contactPath} (${SITE_CONFIG.contactLabel}).`,
       "Panasz: Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH) — https://www.naih.hu",
     ],
   },

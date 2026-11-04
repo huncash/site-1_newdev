@@ -54,10 +54,10 @@ export function AszfTemplate({ companyInfo, siteSpecificInfo }: AszfTemplateProp
               <td className="py-2 text-muted-foreground">{companyInfo.companyRegistrationNumber}</td>
             </tr>
             <tr className="border-b">
-              <td className="py-2 pr-6 font-medium">Email</td>
+              <td className="py-2 pr-6 font-medium">Kapcsolat</td>
               <td className="py-2 text-muted-foreground">
-                <a href={`mailto:${SITE_CONFIG.publicEmail}`} className="underline">
-                  {SITE_CONFIG.publicEmail}
+                <a href={SITE_CONFIG.contactPath} className="underline">
+                  {SITE_CONFIG.contactLabel}
                 </a>
               </td>
             </tr>
@@ -102,7 +102,11 @@ export function AszfTemplate({ companyInfo, siteSpecificInfo }: AszfTemplateProp
         <p className="text-muted-foreground">
           A fogyasztó az áru átvételétől számított 14 napon belül indokolás nélkül elállhat a szerződéstől
           a 45/2014. (II.26.) Korm. rendelet alapján. Az elállási szándékot írásban szükséges jelezni
-          a következő e-mail címen: <a href={`mailto:${SITE_CONFIG.publicEmail}`} className="underline">{SITE_CONFIG.publicEmail}</a>.
+          a weboldal kapcsolatfelvételi űrlapján:{" "}
+          <a href={SITE_CONFIG.contactPath} className="underline">
+            {SITE_CONFIG.contactLabel}
+          </a>
+          .
         </p>
       </section>
 
@@ -125,7 +129,11 @@ export function AszfTemplate({ companyInfo, siteSpecificInfo }: AszfTemplateProp
       <section className="mb-8">
         <h2 className="mb-3 text-lg font-semibold">8. Panaszkezelés és jogvita</h2>
         <p className="text-muted-foreground">
-          Panasz esetén először a szolgáltatóhoz forduljon: <a href={`mailto:${SITE_CONFIG.publicEmail}`} className="underline">{SITE_CONFIG.publicEmail}</a>.
+          Panasz esetén először a szolgáltatóhoz forduljon{" "}
+          <a href={SITE_CONFIG.contactPath} className="underline">
+            {SITE_CONFIG.contactLabel}
+          </a>
+          .
           Eredménytelen panaszkezelés esetén a fogyasztó a lakóhelye szerint illetékes Békéltető Testülethez
           fordulhat, illetve igénybe veheti az EU online vitarendezési platformját:{" "}
           <a href="https://ec.europa.eu/consumers/odr" className="underline" target="_blank" rel="noreferrer">

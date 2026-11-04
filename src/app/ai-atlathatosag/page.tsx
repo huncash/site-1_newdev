@@ -165,12 +165,9 @@ export default function AiAtlathatosagPage() {
         <h2 className="mb-3 text-lg font-semibold">6. Kapcsolat</h2>
         <p className="text-muted-foreground">
           Kérdés az AI-jelöléssel vagy tartalom eredetével kapcsolatban:{" "}
-          <a
-            href={`mailto:${SITE_CONFIG.publicEmail}`}
-            className="underline underline-offset-2"
-          >
-            {SITE_CONFIG.publicEmail}
-          </a>
+          <Link href={SITE_CONFIG.contactPath} className="underline underline-offset-2">
+            {SITE_CONFIG.contactLabel}
+          </Link>
           . Lásd még:{" "}
           <Link href="/adatvedelem" className="underline underline-offset-2">
             Adatvédelmi tájékoztató

@@ -46,13 +46,6 @@ function assemblePhone(): PhoneLinks {
   return { display, telHref: `tel:+${digits}` };
 }
 
-/** Email char-kódból — mailto csak kattintáskor. */
-function assembleMailto(): string {
-  const addr = String.fromCharCode(105, 110, 102, 111, 64, 118, 114, 103, 111, 46, 104, 117);
-  const subject = encodeURIComponent("Érdeklődés — Börzsönyliget telek");
-  return `mailto:${addr}?subject=${subject}`;
-}
-
 function track(
   event:
     | "listing_phone_click"
@@ -175,10 +168,11 @@ function RevealButton({ place, className }: { place: string; className?: string 
   );
 }
 
+/** Nincs nyilvános mailto — az érdeklődés az űrlapon landol (szerver oldali inbox). */
 function EmailButton({ place, dark }: { place: string; dark?: boolean }) {
   return (
     <a
-      href={assembleMailto()}
+      href="#kapcsolat"
       onClick={() => track("listing_email_click", place)}
       className={
         dark
@@ -187,7 +181,7 @@ function EmailButton({ place, dark }: { place: string; dark?: boolean }) {
       }
     >
       <Mail className="h-4 w-4 text-[#e8b84a]" aria-hidden />
-      Email küldése
+      Üzenet az űrlapon
     </a>
   );
 }
@@ -223,7 +217,7 @@ function DirectContactGate({
     return (
       <div className="space-y-2">
         <p className={`text-sm leading-relaxed ${dark ? "text-[#f7f1e6]/90" : "text-[#5a5146]"}`}>
-          A közvetlen telefon és email az adatkezelés elfogadása után érhető el. Addig az űrlapot használd.
+          A közvetlen telefon az adatkezelés elfogadása után érhető el. Addig az űrlapot használd.
         </p>
         <button
           type="button"
@@ -298,8 +292,8 @@ function ListingGdprModal() {
         <div className="space-y-4 px-5 py-5 text-sm leading-relaxed text-[#5a5146]">
           <p>{GDPR_BODY}</p>
           <p>
-            Elfogadás után elérhető a védett telefonszám megjelenítése és a közvetlen email. Elutasítás esetén
-            továbbra is írhatsz az űrlapon.
+            Elfogadás után elérhető a védett telefonszám megjelenítése. Elutasítás esetén továbbra is írhatsz az
+            űrlapon — az üzeneteket az űrlap továbbítja.
           </p>
         </div>
         <div className="flex flex-col-reverse gap-2 border-t border-[#d4c9b5] bg-[#efe8db] px-5 py-4 sm:flex-row sm:justify-end">
@@ -362,8 +356,8 @@ export function ListingSellerCard({ tone = "light" }: { tone?: "light" | "dark" 
       <p className={`text-sm ${dark ? "text-[#e8b84a]" : "text-[#6b6154]"}`}>{LISTING_SELLER.role}</p>
       <p className={`mt-3 text-sm leading-relaxed ${dark ? "text-[#f7f1e6]/90" : "text-[#5a5146]"}`}>
         {allowed
-          ? "A telefonszám csak kattintás után jelenik meg (botvédelem). Írhatsz közvetlen emailt, vagy használd az űrlapot."
-          : "Közvetlen hívás és email az adatkezelés elfogadása után. Addig az űrlap a biztos út."}
+          ? "A telefonszám csak kattintás után jelenik meg (botvédelem). Üzenetet az űrlapon tudsz küldeni."
+          : "Közvetlen hívás az adatkezelés elfogadása után. Addig az űrlap a biztos út."}
       </p>
       <div className="mt-3 flex flex-col gap-2">
         <DirectContactGate place="contact_card" dark={dark} />

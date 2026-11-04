@@ -119,7 +119,11 @@ export function EnquiryForm({ variant, defaultMessage = "" }: EnquiryFormProps) 
         napon belül törlöm.
       </p>
       {status === "invalid" ? <p className="text-sm text-[#8a3a1a]">Kérlek, töltsd ki a nevet, az elérhetőséget és az üzenetet.</p> : null}
-      {status === "error" ? <p className="text-sm text-[#8a3a1a]">Az üzenetet most nem sikerült elküldeni. Próbáld meg később, vagy hívj / írj emailt.</p> : null}
+      {status === "error" ? (
+        <p className="text-sm text-[#8a3a1a]">
+          Az üzenetet most nem sikerült elküldeni. Próbáld meg később, vagy hívd a megjelenített telefonszámot.
+        </p>
+      ) : null}
       <button
         type="submit"
         disabled={status === "sending"}

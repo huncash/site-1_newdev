@@ -3,7 +3,7 @@ import { dirname, extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "blog", "bim");
-const ua = "VRGO-site-editorial/1.0 (vrgo.hu; contact info@vrgo.hu)";
+const ua = "VRGO-site-editorial/1.0 (vrgo.hu; contact via /ajanlat form)";
 
 const jobs = [
   ["epiteszeti-bim-modell", "File:Architectural BIM 3D Modeling.jpg"],

@@ -765,8 +765,8 @@ export function PropertyLanding() {
               <h2 className="text-3xl font-medium text-[#f7f1e6]">Kapcsolatfelvétel</h2>
               <p className="mt-3 text-lg font-medium text-[#e8b84a]">Megtekintést egyeztetünk.</p>
               <p className="mt-3 text-sm leading-relaxed text-[#f7f1e6]/90 sm:text-base">
-                Írj az űrlapon, vagy — adatkezelés elfogadása után — hívd a védett számot, illetve küldj közvetlen
-                emailt. Ha már tudod az időzítést, válaszd a 2027-es vagy az azonnali birtokbaadást az árazásnál.
+                Írj az űrlapon, vagy — adatkezelés elfogadása után — hívd a védett számot. Ha már tudod az időzítést,
+                válaszd a 2027-es vagy az azonnali birtokbaadást az árazásnál.
               </p>
               <ListingSellerCard tone="dark" />
             </div>
