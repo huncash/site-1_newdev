@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Ensure vrgo.hu / www / bim / eladoingatlan.vrgo.hu proxy to site-1 on :3000.
+# Ensure vrgo.hu / www / bim.vrgo.hu proxy to site-1 on :3000.
 set -euo pipefail
 
 AVAILABLE=/etc/nginx/sites-available
@@ -29,7 +29,7 @@ write_conf() {
 server {
     listen 80;
     listen [::]:80;
-    server_name vrgo.hu www.vrgo.hu bim.vrgo.hu eladoingatlan.vrgo.hu;
+    server_name vrgo.hu www.vrgo.hu bim.vrgo.hu;
 
     location ^~ /.well-known/acme-challenge/ {
         root /var/www/letsencrypt;
@@ -45,7 +45,7 @@ server {
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name vrgo.hu www.vrgo.hu bim.vrgo.hu eladoingatlan.vrgo.hu;
+    server_name vrgo.hu www.vrgo.hu bim.vrgo.hu;
 
     ssl_certificate     /etc/letsencrypt/live/vrgo.hu/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/vrgo.hu/privkey.pem;
@@ -79,7 +79,6 @@ fi
 rm -f "$TMP"
 echo "wrote $CONF_PATH"
 
-# Enable symlink
 if [[ -L "$ENABLED/$CONF_NAME" ]] || [[ -e "$ENABLED/$CONF_NAME" ]]; then
   echo "enabled link already present: $ENABLED/$CONF_NAME"
 else
@@ -91,21 +90,17 @@ else
   echo "linked $ENABLED/$CONF_NAME -> $CONF_PATH"
 fi
 
-# Park conflicting enabled vhosts that also claim these hostnames (keep files, drop symlink/copy).
 for f in "$ENABLED"/*; do
   [[ -e "$f" || -L "$f" ]] || continue
   base=$(basename "$f")
   [[ "$base" == "$CONF_NAME" ]] && continue
-  if grep -Eq 'server_name[[:space:]].*(^|[[:space:];])(www\.)?vrgo\.hu|(^|[[:space:];])bim\.vrgo\.hu|(^|[[:space:];])eladoingatlan\.vrgo\.hu' "$f" 2>/dev/null \
-    || grep -Eq 'server_name.*(vrgo\.hu|bim\.vrgo\.hu|eladoingatlan\.vrgo\.hu)' "$f" 2>/dev/null; then
-    bak="$AVAILABLE/${base}.disabled-by-site1-$(date +%Y%m%d%H%M%S)"
-    echo "Disabling conflicting enabled vhost: $f → $bak"
+  if grep -Eq 'server_name.*(vrgo\.hu|bim\.vrgo\.hu)' "$f" 2>/dev/null; then
+    echo "Disabling conflicting enabled vhost: $f"
     if [[ -w "$ENABLED" ]]; then
       rm -f "$f"
     else
       sudo -n rm -f "$f"
     fi
-    # Keep original available copy if this was a real file under available
     if [[ -f "$AVAILABLE/$base" ]]; then
       echo "left available original: $AVAILABLE/$base"
     fi
@@ -120,7 +115,7 @@ ls -la "$ENABLED" || true
 echo "===== AFTER: conf ====="
 sed -n '1,120p' "$CONF_PATH"
 echo "===== local curls ====="
-for h in vrgo.hu www.vrgo.hu bim.vrgo.hu eladoingatlan.vrgo.hu; do
+for h in vrgo.hu www.vrgo.hu bim.vrgo.hu; do
   code=$(curl -sk -o /dev/null -w '%{http_code}' -m 8 --resolve "${h}:443:127.0.0.1" "https://${h}/" || echo fail)
   echo "$h -> $code"
 done

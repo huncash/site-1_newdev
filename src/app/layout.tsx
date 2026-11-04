@@ -19,28 +19,23 @@ export default async function RootLayout({
 }>) {
   const headerList = await headers();
   const isBim = headerList.get("x-vrgo-site") === "bim";
-  const isListing = headerList.get("x-listing-site") === "1";
 
   return (
     <html lang="hu">
       <head>
-        {isListing ? null : (
-          <>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-            <link
-              href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-              rel="stylesheet"
-            />
-          </>
-        )}
-        <meta name="theme-color" content={isListing ? "#14221b" : "#6cb9f1"} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <meta name="theme-color" content="#6cb9f1" />
       </head>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
-        {isBim || isListing ? null : <Navbar />}
+        {isBim ? null : <Navbar />}
         <main className="flex-1">{children}</main>
-        {isBim || isListing ? null : <Footer />}
-        {isListing ? null : <ConsentBanner />}
+        {isBim ? null : <Footer />}
+        <ConsentBanner />
       </body>
     </html>
   );

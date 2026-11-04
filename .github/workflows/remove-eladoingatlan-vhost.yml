@@ -1,0 +1,31 @@
+name: Remove eladoingatlan.vrgo.hu Nginx + Certbot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  remove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Delete vhost, cert, reload nginx (deploy sudo)
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/vrgo
+          chmod 600 ~/.ssh/vrgo
+          scp -i ~/.ssh/vrgo -o StrictHostKeyChecking=accept-new \
+            scripts/remove-eladoingatlan-vhost.sh deploy@195.228.152.141:/tmp/remove-eladoingatlan-vhost.sh
+          ssh -i ~/.ssh/vrgo -o StrictHostKeyChecking=accept-new deploy@195.228.152.141 'bash -s' << 'EOF'
+          set -euo pipefail
+          sed -i 's/\r$//' /tmp/remove-eladoingatlan-vhost.sh
+          chmod 755 /tmp/remove-eladoingatlan-vhost.sh
+          if ! sudo -n true; then
+            echo "sudo=no for deploy; trying vmvrgohu path via readable dirs only"
+          fi
+          bash /tmp/remove-eladoingatlan-vhost.sh
+          EOF

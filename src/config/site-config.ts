@@ -1,6 +1,6 @@
 /**
  * Public site chrome — do not put real inbox addresses here.
- * Enquiries go through /ajanlat (and BIM / listing forms); inboxes live only in server env / quote-delivery.
+ * Enquiries go through /ajanlat (and BIM forms); inboxes live only in server env / quote-delivery.
  */
 export const SITE_CONFIG = {
   name: "VRGO",

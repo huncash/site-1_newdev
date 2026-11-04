@@ -17,42 +17,6 @@ function isLocalHost(host: string): boolean {
   return hostname === "localhost" || hostname === "127.0.0.1";
 }
 
-function isListingHost(host: string): boolean {
-  const hostname = hostnameOf(host);
-  return hostname === "eladoingatlan.vrgo.hu" || hostname === "eladoingatlan.localhost";
-}
-
-function listingRouting(request: NextRequest): NextResponse | null {
-  const host = request.headers.get("host") ?? "";
-  const { pathname } = request.nextUrl;
-
-  if (pathname.startsWith("/api") || pathname.startsWith("/_next") || pathname.startsWith("/admin")) {
-    return null;
-  }
-
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-admin-pathname", pathname);
-  requestHeaders.set("x-listing-site", "1");
-
-  if (isListingHost(host)) {
-    if (pathname === "/hirdetes" || pathname.startsWith("/hirdetes/")) {
-      const clean = pathname === "/hirdetes" ? "/" : pathname.slice("/hirdetes".length);
-      return NextResponse.redirect(new URL(clean || "/", request.url));
-    }
-    const url = request.nextUrl.clone();
-    url.pathname = pathname === "/" ? "/hirdetes" : `/hirdetes${pathname}`;
-    return NextResponse.rewrite(url, { request: { headers: requestHeaders } });
-  }
-
-  // Serve the private listing chrome on /hirdetes for any host.
-  // eladoingatlan.vrgo.hu is preferred once DNS + nginx are in place; until then vrgo.hu/hirdetes stays reachable.
-  if (pathname === "/hirdetes" || pathname.startsWith("/hirdetes/")) {
-    return NextResponse.next({ request: { headers: requestHeaders } });
-  }
-
-  return null;
-}
-
 function withSiteHeaders(request: NextRequest, site: "bim" | "main", prefix: boolean) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-admin-pathname", request.nextUrl.pathname);
@@ -101,9 +65,6 @@ function bimRouting(request: NextRequest): NextResponse | null {
 }
 
 export function middleware(request: NextRequest) {
-  const listing = listingRouting(request);
-  if (listing) return listing;
-
   const routed = bimRouting(request);
   if (routed) return routed;
 
