@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   // Parent-folder package-lock.json otherwise hijacks the workspace root
   // and breaks CSS / Tailwind resolution in dev.
   outputFileTracingRoot: projectRoot,
+  // VPS CPU lacks x86-64-v2; sharp prebuilds fail. Skip Next image optimizer.
+  images: {
+    unoptimized: true,
+  },
   env: {
     NEXT_PUBLIC_SITE_ID: "site-1",
   },
