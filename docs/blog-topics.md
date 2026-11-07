@@ -1,34 +1,21 @@
-# BIM blog tartalomterv (nem publikált)
+# vrgo.hu — tervezett blogtémák (nem publikált)
 
-Üres / placeholder cikket ne publikálj. URL-ek majd a megjelenéskor.
+Csak tématerv. Ne publikáld addig, amíg a tények (ár, konverzió, határidő) ellenőrizve nincsenek.
 
-## Lakossági felmérés
-- Lakásfelmérés ára — miből áll a díj (ár nélkül, ha nincs config)
-- Lézerszkenner vs lézeres távolságmérő vs rulett
-- Tetőtér-beépítés előtti felmérés
-- Régi ház terv nélkül
-- Matterport 3D túra vagy lézerszkenner
-- Telek és kert drónnal
-- Régi és védett épületek felmérése
+1. **Mennyibe kerül egy bejárható 3D túra?**  
+   Árak csak konfigurációból / ajánlatból; ne találj ki számot.
 
-## Tervezőknek
-- Felmérési megrendelés ellenőrzőlista
-- E57 / RCP / XYZ / IFC — mire jó
-- Miért kell EOV-bekötés
-- Pontosság ellenőrzése
-- Drón vs lézerszkenner homlokzatra
-- Kézi (SLAM) vs állványos szkenner
+2. **Hogyan jelenik meg az üzleted a Google Térképen és Utcaképen belső nézettel?**  
+   Óvatos megfogalmazás; szolgáltatási feltételek: `VRGO_CONFIG.googleStreetViewNote` (TODO).
 
-## Beruházóknak / rendelet
-- EIR-ből felmérési specifikáció
-- Állami épületek BIM-je 2035-ig
-- As-built dokumentáció pontfelhővel
-- Éves digitális iker frissítés
+3. **Bejárható 3D túra vagy fotók? Ingatlan eladásnál**  
+   Előnyök: bejárhatóság, megoszthatóság, méretezett alaprajz — szám nélküli összevetés.
 
-## Ipar
-- Csarnok- és gépészeti felmérés ütközésvizsgálathoz
-- Tető- és napelempark-felmérés drónnal
-- Kivitelezés ellenőrzése pontfelhővel
+4. **Galéria vagy kiállítótér online: mit érdemes felvenni?**  
+   Gyakorlati checklist a felvételhez (helyiségek, fény, Mattertag).
 
-## Megjelenési szabály
-Minden cikk végén: egy mondatos CTA, belső link a releváns szolgáltatásra, kapcsolódó cikkek.
+5. **Szállás foglalási konverziója 3D túrával**  
+   Csak ellenőrizhető állításokkal; nincs kitalált % vagy „X-szeres” növekedés.
+
+6. **Matterport vagy lézerszkennelés: mikor melyik?**  
+   Online marketing / gyors dokumentálás → vrgo.hu; mérnöki pontosság → bim.vrgo.hu (UTM).

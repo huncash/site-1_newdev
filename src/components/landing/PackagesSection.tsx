@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 
+import { BimOutboundLink } from "@/components/BimOutboundLink";
 import { cn } from "@/lib/utils";
+
 
 export interface PackageItem {
   tier: string;
@@ -73,12 +75,13 @@ export function PackagesSection({
                 {item.cta}
               </a>
               {item.secondaryHref ? (
-                <a
+                <BimOutboundLink
                   href={item.secondaryHref}
+                  forras={`csomag-${item.tier.toLowerCase()}`}
                   className="mt-2 inline-flex items-center justify-center rounded-md border border-brand px-4 py-2.5 text-xs font-semibold text-brand transition hover:bg-brand/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                 >
                   {item.secondaryCta}
-                </a>
+                </BimOutboundLink>
               ) : null}
             </article>
           ))}

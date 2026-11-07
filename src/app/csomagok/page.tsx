@@ -2,10 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Term } from "@/components/Term";
 import { bimLink } from "@/lib/links";
+import {
+  VRGO_CONFIG,
+  vrgoHasClassicFromPrice,
+} from "@/config/vrgo";
 
 export const metadata: Metadata = {
-  title: 'B2B csomagok — digitális iker és BIM-alapadat, ENTERPRISE | VRGO',
-  description: 'CLASSIC és TWIN bemutató és üzemeltetés. ENTERPRISE: E57/OBJ/XYZ export, BIM-modellezés partnerrel (IFC), kampusz és ipari terület.',
+  title: "B2B csomagok — bejárható 3D túra | VRGO",
+  description:
+    "CLASSIC, TWIN és ENTERPRISE csomagok: bejárható 3D túra, portfólió-iker és kampusz-léptékű felvétel. Google Térkép / Utcakép opcióval.",
+  alternates: { canonical: "https://vrgo.hu/csomagok" },
 };
 
 type Package = {
@@ -58,6 +64,7 @@ const packages: Package[] = [
       "Homlokzat, látható gépészet és alaprajz egy nézetben, ESG-mellékletnek. Energetikai tanúsítványt nem állítunk ki",
       "A térponthoz hivatkozás köthető. Élő szenzor-adatfolyamot nem szállítunk",
       "Jogosultsági szintek a Matterport-fiók beállításai szerint",
+      "Mérnöki pontosságú felméréshez: bim.vrgo.hu",
     ],
     cta: "TWIN igénylése",
   },
@@ -68,17 +75,18 @@ const packages: Package[] = [
     audience:
       "Egyetemek és kutatóhelyek, gyártó- és logisztikai vállalatok, energetikai és infrastruktúra-üzemeltetők, generálkivitelezők.",
     problem:
-      "A több épületből, csarnokból, külső területből álló telephely egyetlen szkenneléssel lefedhetetlen. A BIM-tervek és a megvalósult állapot között gyakran jelentős eltérés van.",
+      "A több épületből, csarnokból, külső területből álló telephely egyetlen szkenneléssel lefedhetetlen. A tervek és a megvalósult állapot között gyakran jelentős eltérés van.",
     outcome:
       "A kampusz vagy ipari terület — homlokzat, parkoló, napelempark látható felülete — egy összefüggő, bejárható túraként, a megrendelt exportokkal.",
     benefits: [
       "Több épület és külső terület egyetlen, folytonosan bejárható túrába illesztve",
-      "E57/OBJ/XYZ export, BIM-modellezés partnerrel (IFC); geodéziai ellenőrző mérés földmérő ajánlásával, ha nincs saját földmérő",
+      "E57/OBJ/XYZ export, ha a csomag tartalmazza; mérnöki pontosságú felméréshez: bim.vrgo.hu",
       "Kivitelezési állapot időbélyegzett szkennelése, hibák kézi jelölése a modellen",
       "Mutatólista a megrendelő saját adataiból. Közzétett KPI-eredmény nincs",
       "Kampusz digitalizáció — felvételi, akkreditációs, befektetői és sajtóanyag egyetlen URL-ről",
       "Napelempark és látható gépészet képi rögzítése. Energetikai számítást és környezetvédelmi dokumentációt nem készítünk",
       "Referencia: Pannon Egyetem, Zalaegerszeg — egyetemi kampusz szkennelt részei egy modellben, 4 munkanap",
+      "Mérnöki pontosságú felméréshez: bim.vrgo.hu",
     ],
     cta: "ENTERPRISE igénylése",
   },
@@ -104,8 +112,8 @@ const niches = [
     desc: (
       <>
         Felvételi marketing, akkreditáció, <Term k="FM">létesítménygazdálkodás</Term> egy linken.{" "}
-        <a href={bimLink("/meglevo-allami-epuletek", "csomagok-felsooktatas")} className="font-semibold text-brand underline">
-          Meglévő állami épületek felmérése →
+        <a href={bimLink("/", "csomagok-felsooktatas")} className="font-semibold text-brand underline">
+          Mérnöki pontosságú felmérés: bim.vrgo.hu →
         </a>
       </>
     ),
@@ -115,10 +123,9 @@ const niches = [
     title: "Gyár, raktár, logisztikai központ",
     desc: (
       <>
-        <Term k="BIM" moreHref={bimLink("/mi-az-a-bim", "fogalom")}>BIM</Term> <Term k="as-built">as-built</Term>, beüzemelés, karbantartás,
-        biztosítási dokumentáció.{" "}
-        <a href={bimLink("/kivitelezes", "csomagok-ipar")} className="font-semibold text-brand underline">
-          As-built rögzítés és hibakövetés →
+        Bejárható dokumentáció, beüzemelés, karbantartás, biztosítási melléklet.{" "}
+        <a href={bimLink("/", "csomagok-ipar")} className="font-semibold text-brand underline">
+          Mérnöki pontosságú felmérés: bim.vrgo.hu →
         </a>
       </>
     ),
@@ -134,8 +141,8 @@ const niches = [
     desc: (
       <>
         Akadálymentesítési melléklet, betegtájékoztatás.{" "}
-        <a href={bimLink("/meglevo-allami-epuletek", "csomagok-egeszsegugy")} className="font-semibold text-brand underline">
-          Meglévő állami épületek →
+        <a href={bimLink("/", "csomagok-egeszsegugy")} className="font-semibold text-brand underline">
+          Mérnöki pontosságú felmérés: bim.vrgo.hu →
         </a>
       </>
     ),
@@ -184,6 +191,11 @@ export default function PackagesPage() {
                 className="mx-auto mt-4 h-auto w-[200px] sm:w-[240px]"
               />
               <h2 className="mt-4 text-center text-xl font-semibold">{p.title}</h2>
+              {p.tier === "CLASSIC" && vrgoHasClassicFromPrice() ? (
+                <p className="mt-2 text-center text-sm font-semibold text-brand">
+                  {VRGO_CONFIG.classicFromPriceHuf!.toLocaleString("hu-HU")} Ft-tól
+                </p>
+              ) : null}
 
               <div className="mt-5 space-y-4 text-sm">
                 <div>
@@ -225,20 +237,12 @@ export default function PackagesPage() {
               >
                 {p.cta}
               </Link>
-              {p.tier === "TWIN" ? (
+              {p.tier === "TWIN" || p.tier === "ENTERPRISE" ? (
                 <a
-                  href={bimLink("/uzemeltetes", "csomagok-twin")}
+                  href={bimLink("/", p.tier === "TWIN" ? "csomagok-twin" : "enterprise")}
                   className="mt-2 inline-flex items-center justify-center rounded-md border border-brand px-4 py-2.5 text-sm font-semibold text-brand hover:bg-brand/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                 >
-                  Állami üzemeltetés: éves BIM-mentés →
-                </a>
-              ) : null}
-              {p.tier === "ENTERPRISE" ? (
-                <a
-                  href={bimLink("/", "enterprise")}
-                  className="mt-2 inline-flex items-center justify-center rounded-md border border-brand px-4 py-2.5 text-sm font-semibold text-brand hover:bg-brand/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-                >
-                  BIM és állami projektek
+                  Mérnöki pontosságú felméréshez: bim.vrgo.hu
                 </a>
               ) : null}
             </article>
@@ -246,9 +250,8 @@ export default function PackagesPage() {
         </div>
 
         <p className="mx-auto mt-8 max-w-3xl px-4 text-center text-sm text-muted-foreground">
-          Árajánlatot az űrlap alapján 1 munkanapon belül küldünk. A digitális iker átadási
-          határidejét az ajánlat tartalmazza; ha külön határidő nincs benne, az ÁSZF szerinti
-          határidő érvényes.
+          {VRGO_CONFIG.replySlaText} A digitális iker átadási határidejét az ajánlat tartalmazza;
+          ha külön határidő nincs benne, az ÁSZF szerinti határidő érvényes.
         </p>
       </section>
 

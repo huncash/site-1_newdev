@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 
 import { SumCheckField } from "@/components/SumCheckField";
+import { VRGO_CONFIG } from "@/config/vrgo";
 import { trackConversion } from "@/lib/conversion";
 import { cn } from "@/lib/utils";
 
@@ -101,7 +102,16 @@ export function QuoteOrderForm({
   const startPkg = PACKAGES.some((p) => p.id === initialPkg)
     ? (initialPkg as "CLASSIC" | "TWIN" | "ENTERPRISE")
     : "CLASSIC";
-  const source = searchParams.get("forras") || defaultSource;
+  const source = useMemo(() => {
+    const forras = searchParams.get("forras") || defaultSource;
+    const utmParts = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]
+      .map((key) => {
+        const v = searchParams.get(key);
+        return v ? `${key}=${v}` : null;
+      })
+      .filter(Boolean);
+    return utmParts.length ? `${forras}|${utmParts.join("&")}` : forras;
+  }, [searchParams, defaultSource]);
 
   const [pkg, setPkg] = useState<"CLASSIC" | "TWIN" | "ENTERPRISE">(startPkg);
   const [area, setArea] = useState("");
@@ -229,8 +239,8 @@ export function QuoteOrderForm({
         <div className="rounded-lg border border-brand/40 bg-brand/5 p-8">
           <h2 className="text-2xl font-bold sm:text-3xl">Köszönjük, megkaptuk a kérelmedet!</h2>
           <p className="mt-4 text-foreground/85">
-            1 munkanapon belül a megadott e-mail címre küldünk ajánlatot. A helyszíni szkennelés
-            időpontját a folyamat szükségletei és egyeztetés alapján rögzítjük.
+            {VRGO_CONFIG.replySlaText || "Hamarosan a megadott e-mail címre küldünk ajánlatot."} A
+            helyszíni felvétel időpontját egyeztetjük.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
@@ -258,6 +268,9 @@ export function QuoteOrderForm({
       className={cn("space-y-8", className)}
       data-conversion="quote-order"
     >
+      <p className="rounded-md border border-border bg-secondary/50 px-4 py-3 text-sm text-muted-foreground">
+        Nem biztos benne, melyik csomag kell? Mondja el röviden, és segítünk.
+      </p>
       <fieldset className="space-y-3">
         <legend className="text-sm font-semibold uppercase tracking-wider text-brand">
           1. Csomag

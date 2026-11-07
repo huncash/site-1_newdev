@@ -10,16 +10,8 @@ export type MenuItem =
       children: readonly MenuLink[];
     };
 
-/** Primary nav — Szegmensek almenüvel. */
+/** Primary nav — vrgo.hu (Matterport 3D túra). */
 export const MENU_ITEMS: readonly MenuItem[] = [
-  {
-    label: "Szegmensek",
-    children: [
-      { label: "Oktatás", href: "/megoldasok/oktatas" },
-      { label: "Ipar / IoT", href: "/megoldasok/ipari-iot" },
-      { label: "Facility", href: "/megoldasok/facility" },
-    ],
-  },
   { label: "Csomagok", href: "/csomagok" },
   { label: "Blog", href: "/blog" },
   { label: "GYIK", href: "/gyik" },

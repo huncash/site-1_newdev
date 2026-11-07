@@ -2,6 +2,7 @@
 
 import { bimLink } from "@/lib/links";
 import { SITE_CONFIG } from "@/config/site-config";
+import { trackConversion } from "@/lib/conversion";
 import { cn } from "@/lib/utils";
 
 export interface FooterLink {
@@ -30,7 +31,10 @@ const DEFAULT_LINKS: FooterLink[] = [
   { label: "Blog", href: "/blog" },
   { label: "Kapcsolat", href: "/ajanlat" },
   { label: "Partner belépés", href: "/partner/login" },
-  { label: "BIM (állami projektek)", href: bimLink("/", "footer") },
+  {
+    label: "Mérnöki lézerszkennelés és BIM (bim.vrgo.hu)",
+    href: bimLink("/", "footer"),
+  },
 ];
 
 const LEGAL_LINKS: FooterLink[] = [
@@ -86,7 +90,8 @@ function PinterestIcon({ className }: { className?: string }) {
 
 export function Footer({
   className,
-  description = "Bejárható 3D fotózás, virtuális túra, Google Utcakép, VR és 360° panoráma — üzleti felhasználásra.",
+  description =
+    "Bejárható 3D túra, méretezett alaprajz és megjelenés a Google Térképen és Utcaképen — üzleteknek, szállásoknak, irodáknak, ingatlanoknak.",
   brandName = SITE_CONFIG.name,
   brandTagline,
   brandSubline,
@@ -129,6 +134,11 @@ export function Footer({
                   className="hover:underline"
                   target={item.newTab ? "_blank" : undefined}
                   rel={item.newTab ? "noopener noreferrer" : undefined}
+                  onClick={() => {
+                    if (item.href.includes("bim.vrgo.hu")) {
+                      trackConversion("bim_cta_click", { forras: "footer" });
+                    }
+                  }}
                 >
                   {item.label}
                 </a>

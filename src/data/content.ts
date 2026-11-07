@@ -1,4 +1,5 @@
 import { bimLink } from "@/lib/links";
+import { VRGO_CONFIG } from "@/config/vrgo";
 
 export interface ContentLink {
   label: string;
@@ -39,89 +40,103 @@ export interface ContentPackage {
   image: string;
   secondaryCta?: string;
   secondaryHref?: string;
+  footnote?: string;
 }
 
-/** Lovable / vrgo-main elfogadott főoldal-tartalom. */
+/** vrgo.hu főoldal — bejárható 3D túra + Google Térkép / Utcakép. */
 export const CONTENT = {
   hero: {
-    badge: "Enterprise Digital Twin",
-    title: "Kampuszok és telephelyek egyetlen bejárható digitális ikerben",
+    title: "Bejárható 3D túra, amit a Google Térképen is megtalálnak",
     subtitle:
-      "Kampuszok, gyártócsarnokok és portfóliók digitális ikre — Matterport alapú bejárható 3D. Georeferált lézerszkennelés és pontfelhő: bim.vrgo.hu",
-    proof:
-      "Bizonyított: a Pannon Egyetem kampuszának szkennelt részei egyetlen összefüggő túrában, 4 munkanap alatt.",
-    ctaPrimary: { label: "Ajánlatkérés", href: "/ajanlat" },
+      "Gyors helyszíni felvétel, megosztható és beágyazható 3D túra, méretezett alaprajz, és megjelenés a Google Térképen és Utcaképen, belső gömbpanorámákkal. 2016 óta csináljuk, Magyarországon az elsők között.",
+    ctaPrimary: { label: "Ajánlatot kérek", href: "/ajanlat?forras=hero" },
     ctaSecondary: { label: "Csomagok megnézése", href: "/csomagok" },
   },
 
-  segments: {
-    heading: "Célszegmens-megoldások",
-    items: [
-      {
-        title: "Oktatás · Kampusz",
-        description: "Egyetem, iskola, labor — a teljes kampusz bejárható digitális ikerként.",
-        href: "/megoldasok/oktatas",
-        asideLabel: "Georeferált felmérés →",
-        asideHref: bimLink("/", "szegmens-oktatas"),
-      },
-      {
-        title: "Ipar · IoT · lézerszkennelés",
-        description: "As-built rögzítés, pontfelhő, layout és ütközésvizsgálati alapadat.",
-        href: bimLink("/szolgaltatasok/ipari-letesitmenyek", "szegmens-ipar-href"),
-        asideLabel: "Ipari felmérés →",
-        asideHref: bimLink("/szolgaltatasok/ipari-letesitmenyek", "szegmens-ipar"),
-      },
-      {
-        title: "Facility Management",
-        description: "Bérbeadás, karbantartás, ESG, biztosítás portfólió-szinten.",
-        href: "/megoldasok/facility",
-        asideLabel: "Digitális iker / üzemeltetés →",
-        asideHref: bimLink("/megoldasok#uzemeltetes", "szegmens-facility"),
-      },
-    ] satisfies ContentSegment[],
-  },
-
   services: {
-    heading: "Hatékony üzleti megoldás a virtuális túra segítségével",
+    heading: "Mit kap a bejárható 3D túrával",
     items: [
       {
-        title: "Valódi 3D túrázás",
+        title: "Valódi 3D séta",
         description: "Tükrözd a valóságot egy 3D sétával, akár külső és belső helyszínekről is.",
         image: "/icons/3d-valoban.png",
         icon: "3D",
       },
       {
-        title: "Virtuális valóság (VR)",
+        title: "Google-ból is bejárható",
         description:
-          "Rekonstruáljuk a környezeteket az augmentált és virtuális valóság használatához, bármilyen eszközön.",
-        image: "/icons/vr-mode.svg",
-        icon: "VR",
-      },
-      {
-        title: "Google Utcakép",
-        description: "Az ingatlanod a Google keresőjéből és térképéből is bejárható lesz.",
+          "A felvételből a Google Térképen és az Utcaképen is bejárható túra készül, belső gömbpanorámákkal.",
         image: "/icons/gsv.png",
         icon: "GSV",
       },
       {
-        title: "2D-s sematikus alaprajzok",
+        title: "Méretezett alaprajz",
         description: "A 3D modellből méretezett alaprajz is kérhető, ha a csomag tartalmazza.",
         image: "/icons/alaprajz.png",
         icon: "2D",
       },
       {
-        title: "360° panoráma képek",
-        description: "A 360° panoráma a túrán belül nagyítható.",
-        image: "/icons/360.svg",
-        icon: "360",
-      },
-      {
-        title: "Beágyazható",
-        description: "Online elérhető, könnyedén megosztható, vagy beágyazható honlapodra.",
+        title: "Beágyazható a honlapra",
+        description: "Online elérhető, könnyedén megosztható, vagy beágyazható a honlapodra.",
         image: "/icons/embed.svg",
         icon: "EMBED",
       },
+      {
+        title: "Bármilyen eszközön, VR-ban is",
+        description:
+          "Asztalon, mobilon és virtuális valóságban is megnyitható — a környezetet a megrendelés szerint rekonstruáljuk.",
+        image: "/icons/vr-mode.svg",
+        icon: "VR",
+      },
+      {
+        title: "Gyors felvétel, kedvező ár",
+        description:
+          "Helyszíni felvétel Matterport-alapú eszközzel — ebben a kategóriában kedvező ár/érték arány.",
+        image: "/icons/360.svg",
+        icon: "360",
+      },
     ] satisfies ContentService[],
+  },
+
+  audiences: {
+    heading: "Kinek?",
+    items: [
+      {
+        title: "Ingatlan eladás és bérbeadás",
+        description: "A potenciális vevő vagy bérlő a találkozó előtt bejárhatja a teret.",
+        href: "/csomagok",
+      },
+      {
+        title: "Üzlet, szalon, galéria, kiállítótér",
+        description: "Online bemutató, amit a Google-ből is megtalálnak.",
+        href: "/csomagok",
+      },
+      {
+        title: "Szálloda, apartman, panzió",
+        description: "Valódi bejárás a foglalás előtt — fotók helyett.",
+        href: "/csomagok",
+      },
+      {
+        title: "Iroda, coworking, retail",
+        description: "Megosztható túra a helyszíni mutatás előtt.",
+        href: "/csomagok",
+      },
+      {
+        title: "Oktatás és kampusz",
+        description: "Több épület egy összefüggő, bejárható túrában.",
+        href: "/megoldasok/oktatas",
+      },
+      {
+        title: "Üzemeltetés és portfólió",
+        description: "Portfólió-szintű digitális iker facility célokra.",
+        href: "/megoldasok/facility",
+      },
+    ] satisfies ContentSegment[],
+  },
+
+  experience: {
+    heading: "Tapasztalat",
+    text: "2016-ban, két másik magyar céggel egyidejűleg elsőként hoztuk be Magyarországra a Matterport technológiát. Azóta a gyors, kedvező árú, nem ipari projektekre specializálódtunk: üzletekre, galériákra, szállásokra, irodákra, ingatlanokra. Ebben a kategóriában ma is ez a legjobb ár/érték arányú megoldás.",
   },
 
   testimonials: {
@@ -166,8 +181,9 @@ export const CONTENT = {
 
   packages: {
     heading: "Három csomag — három üzleti probléma, megoldva",
-    disclaimer:
-      "Árajánlatot az űrlap alapján 1 munkanapon belül küldünk. A digitális iker átadási határidejét az ajánlat tartalmazza; ha külön határidő nincs benne, az ÁSZF szerinti határidő érvényes.",
+    disclaimer: VRGO_CONFIG.replySlaText
+      ? `${VRGO_CONFIG.replySlaText} A digitális iker átadási határidejét az ajánlat tartalmazza; ha külön határidő nincs benne, az ÁSZF szerinti határidő érvényes.`
+      : "A digitális iker átadási határidejét az ajánlat tartalmazza; ha külön határidő nincs benne, az ÁSZF szerinti határidő érvényes.",
     items: [
       {
         tier: "CLASSIC",
@@ -192,9 +208,28 @@ export const CONTENT = {
           "Egyetemek és kutatóhelyek, gyártó- és logisztikai vállalatok, energetikai és infrastruktúra-üzemeltetők, generálkivitelezők.",
         cta: "ENTERPRISE igénylése",
         image: "/packages/csomag-c.jpg",
-        secondaryCta: "BIM és állami projektek",
+        secondaryCta: "Mérnöki pontosságú felmérés kell? → bim.vrgo.hu",
         secondaryHref: bimLink("/", "enterprise"),
       },
     ] satisfies ContentPackage[],
   },
+
+  homeFaqs: [
+    {
+      q: "Hogyan tudok időpontot kérni — kell telefonálni?",
+      a: "Nem. Az ajánlatkérő űrlap kitöltése után e-mailben küldünk árajánlatot. A helyszíni felvétel időpontját egyeztetjük.",
+    },
+    {
+      q: "Hogyan jelenik meg a túra a Google-ben?",
+      a: "A felvételből a Google Térképen és az Utcaképen is bejárható túra készül. Az érdeklődő az utcáról indul, és a belső terekben tovább sétál gömbpanorámákon.",
+    },
+    {
+      q: "Matterport 3D túra vagy lézerszkennelés: mikor melyik?",
+      a: "Online bemutatásra, marketingre, gyors dokumentálásra a bejárható 3D túra. Mérnöki pontossághoz, nagy területekhez, tervezéshez vagy hatósági adatátadáshoz: bim.vrgo.hu.",
+    },
+    {
+      q: "Mennyire pontos a méretezett alaprajz?",
+      a: "A modellből tájékoztató méretek mérhetők. Geodéziai tanúsítványt vagy mérnöki pontosságot a bim.vrgo.hu lézerszkennelése nyújt.",
+    },
+  ],
 } as const;

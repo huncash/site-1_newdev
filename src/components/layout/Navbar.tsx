@@ -13,7 +13,12 @@ import {
   type MenuItem,
 } from "@/config/menu";
 import { SITE_CONFIG } from "@/config/site-config";
+import { trackConversion } from "@/lib/conversion";
 import { cn } from "@/lib/utils";
+
+function isBimOutbound(href: string): boolean {
+  return href.includes("bim.vrgo.hu");
+}
 
 function DesktopDropdown({
   label,
@@ -198,12 +203,17 @@ export function Navbar({
             )
           )}
           {cta ? (
-            <Link
+            <a
               href={ctaHref}
               className="inline-flex items-center whitespace-nowrap rounded-md border border-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-brand-foreground transition hover:bg-white hover:text-section-dark"
+              onClick={() => {
+                if (isBimOutbound(ctaHref)) {
+                  trackConversion("bim_cta_click", { forras: "header" });
+                }
+              }}
             >
               {cta.label}
-            </Link>
+            </a>
           ) : null}
           {quietLink ? (
             <a
@@ -302,13 +312,18 @@ export function Navbar({
             })}
             {cta ? (
               <li>
-                <Link
+                <a
                   href={ctaHref}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    setOpen(false);
+                    if (isBimOutbound(ctaHref)) {
+                      trackConversion("bim_cta_click", { forras: "header" });
+                    }
+                  }}
                   className="my-2 inline-flex items-center rounded-md border border-white px-3 py-2 text-sm font-semibold uppercase tracking-wider"
                 >
                   {cta.label}
-                </Link>
+                </a>
               </li>
             ) : null}
             {quietLink ? (

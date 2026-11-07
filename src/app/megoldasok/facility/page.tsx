@@ -41,7 +41,7 @@ const usecases = [
   {
     title: "BIM-koordináció as-built",
     desc: "MatterPak export (E57, OBJ, XYZ, alaprajz), ha a csomag tartalmazza. A tervező akkor olvassa be, ha a szoftvere ezt a formátumot fogadja.",
-    href: bimLink("/", "csempe"),
+    href: bimLink("/", "megoldasok-facility"),
   },
 ];
 

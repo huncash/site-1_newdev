@@ -8,9 +8,9 @@ import { bimLink } from "@/lib/links";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "VRGO — Bejárható 3D fotózás és virtuális túra üzleti felhasználásra",
+  title: "Bejárható 3D fotózás és Google Utcakép | VRGO",
   description:
-    "Tükrözd a valóságot egy 3D sétával. Virtuális túra, Google Utcakép, VR és 360° panoráma. Az átadási határidő az ajánlatban szerepel.",
+    "Bejárható 3D túra, méretezett alaprajz és megjelenés a Google Térképen és Utcaképen. Üzleteknek, szállásoknak, irodáknak, ingatlanoknak. Gyors felvétel, kedvező ár. Kérjen ajánlatot.",
 };
 
 export default async function RootLayout({
@@ -34,7 +34,12 @@ export default async function RootLayout({
       </head>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
         {isBim ? null : (
-          <Navbar cta={{ label: "bim.vrgo.hu", href: bimLink("/", "header") }} />
+          <Navbar
+            cta={{
+              label: "Mérnöki 3D felmérés",
+              href: bimLink("/", "header"),
+            }}
+          />
         )}
         <main className="flex-1">{children}</main>
         {isBim ? null : <Footer />}

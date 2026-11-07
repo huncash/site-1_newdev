@@ -12,7 +12,7 @@ const usecases = [
   {
     title: "BIM koordináció és as-built dokumentáció",
     desc: "E57, OBJ, XYZ pontfelhő export — Revit, ArchiCAD, Navisworks workflow. Tervezett és a megvalósult állapot összehasonlítása.",
-    href: bimLink("/", "ipar-csempe"),
+    href: bimLink("/", "megoldasok-ipar"),
   },
   {
     title: "Állapot és hibajelölés",

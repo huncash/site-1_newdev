@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { VRGO_CONFIG } from "@/config/vrgo";
 import { bimLink } from "@/lib/links";
 
 export const metadata: Metadata = {
-  title: 'GYIK — digitális iker, BIM-export, Property Intelligence | VRGO',
-  description: 'Gyakori kérdések a Matterport-alapú digitális ikerről: kampusz-túra, BIM-export, kézi hibajelölés, ESG-melléklet és káresemény előtti állapotrögzítés.',
+  title: "GYIK — bejárható 3D túra és Google Utcakép | VRGO",
+  description:
+    "Gyakori kérdések a bejárható 3D túráról: Google megjelenés, méretezett alaprajz, Matterport vs. lézerszkennelés, csomagok és ajánlatkérés.",
+  alternates: { canonical: "https://vrgo.hu/gyik" },
 };
 
 type Faq = { q: string; a: string };
@@ -53,7 +56,19 @@ const faqs: Faq[] = [
   },
   {
     q: "Hogyan tudok időpontot kérni — kell telefonálni?",
-    a: "Nem. Az ajánlatkérő űrlap kitöltése (csomag, helyszín, terület, igények) után 1 munkanapon belül e-mailben küldünk árajánlatot. A helyszíni szkennelés időpontját a folyamat szükségletei és egyeztetés alapján rögzítjük.",
+    a: "Nem. Az ajánlatkérő űrlap kitöltése (csomag, helyszín, terület, igények) után e-mailben küldünk árajánlatot. A helyszíni felvétel időpontját egyeztetjük.",
+  },
+  {
+    q: "Matterport 3D túra vagy lézerszkennelés: mikor melyik?",
+    a: "Online bemutatásra, marketingre, ingatlanhirdetésre vagy gyors dokumentálásra a bejárható 3D túra a megfelelő választás. Mérnöki pontossághoz, nagy területekhez, tervezéshez, kivitelezéshez, hatósági vagy üzemeltetési adatátadáshoz lézerszkennelést ajánlunk: bim.vrgo.hu.",
+  },
+  {
+    q: "Mennyire pontos a méretezett alaprajz?",
+    a: "A 3D modellből tájékoztató méretek mérhetők. Geodéziai tanúsítványt vagy mérnöki pontosságot igénylő feladathoz a lézerszkennelés a megoldás: bim.vrgo.hu.",
+  },
+  {
+    q: "Hogyan jelenik meg a túra a Google-ben?",
+    a: "A felvételből a Google Térképen és az Utcaképen is bejárható túra készül. Az érdeklődő az utcáról indul, és a belső terekben tovább sétál gömbpanorámákon.",
   },
 ];
 
@@ -85,8 +100,8 @@ export default function FaqPage() {
             Gyakori kérdések
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base opacity-90 sm:text-lg">
-            Digitális iker, BIM-export, kézi hibajelölés, ESG-melléklet és káresemény előtti
-            állapotrögzítés — a leggyakoribb kérdések.
+            Bejárható 3D túra, Google megjelenés, alaprajz és a lézerszkennelés határa — a
+            leggyakoribb kérdések.
           </p>
         </div>
       </section>
@@ -128,6 +143,18 @@ export default function FaqPage() {
                     </a>
                   </>
                 ) : null}
+                {f.q.startsWith("Matterport 3D túra vagy") ||
+                f.q.startsWith("Mennyire pontos") ? (
+                  <>
+                    {" "}
+                    <a
+                      href={bimLink("/", "gyik")}
+                      className="font-semibold text-brand underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                    >
+                      bim.vrgo.hu →
+                    </a>
+                  </>
+                ) : null}
               </p>
             </details>
           ))}
@@ -138,8 +165,8 @@ export default function FaqPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Nem találtad a választ?</h2>
           <p className="mt-3 opacity-90">
-            Töltsd ki az ajánlatkérő űrlapot — 1 munkanapon belül személyre szabott ajánlattal
-            válaszolunk.
+            Töltsd ki az ajánlatkérő űrlapot.
+            {VRGO_CONFIG.replySlaText ? ` ${VRGO_CONFIG.replySlaText}` : ""}
           </p>
           <Link
             href="/ajanlat"

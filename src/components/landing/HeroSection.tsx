@@ -19,14 +19,14 @@ export interface HeroSectionProps {
 }
 
 export function HeroSection({
-  badge = "Enterprise Digital Twin",
+  badge,
   title,
   subtitle,
   proof,
-  ctaLabel = "Csomag és időpont igénylése",
+  ctaLabel = "Ajánlatot kérek",
   ctaHref = "/ajanlat?forras=hero",
   secondaryLabel = "Csomagok megnézése",
-  secondaryHref = "/#csomagok",
+  secondaryHref = "/csomagok",
   noteLabel,
   noteHref,
   className,

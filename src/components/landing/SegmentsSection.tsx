@@ -33,7 +33,7 @@ export function SegmentsSection({
           {heading}
         </h2>
         <div className="section-rule" />
-        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
           {items.map((item) => {
             const external = item.href.startsWith("http");
             return (

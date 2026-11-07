@@ -2,11 +2,13 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 
 import { QuoteOrderForm } from "@/components/QuoteOrderForm";
+import { VRGO_CONFIG } from "@/config/vrgo";
 
 export const metadata: Metadata = {
-  title: "Ajánlatkérés — VRGO",
+  title: "Ajánlatkérés — bejárható 3D túra | VRGO",
   description:
-    "Strukturált ajánlatkérő űrlap: csomag, helyszín, igények. Visszajelzés 1 munkanapon belül.",
+    "Nem biztos benne, melyik csomag kell? Mondja el röviden a helyszínt, és segítünk. Bejárható 3D túra ajánlatkérés.",
+  alternates: { canonical: "https://vrgo.hu/ajanlat" },
 };
 
 export default function AjanlatPage() {
@@ -19,8 +21,8 @@ export default function AjanlatPage() {
           </span>
           <h1 className="mt-4 text-2xl font-bold sm:text-3xl md:text-4xl">Ajánlatkérés</h1>
           <p className="mx-auto mt-3 max-w-xl text-sm opacity-90 sm:text-base">
-            Csomag, helyszín és igények — az ajánlat 1 munkanapon belül megérkezik. A helyszíni
-            szkennelés időpontját egyeztetjük.
+            Nem biztos benne, melyik csomag kell? Mondja el röviden, és segítünk.
+            {VRGO_CONFIG.replySlaText ? ` ${VRGO_CONFIG.replySlaText}` : ""}
           </p>
         </div>
       </section>
