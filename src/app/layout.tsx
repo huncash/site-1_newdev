@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { ConsentBanner } from "@/components/legal/ConsentBanner";
+import { bimLink } from "@/lib/links";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -32,7 +33,9 @@ export default async function RootLayout({
         <meta name="theme-color" content="#6cb9f1" />
       </head>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
-        {isBim ? null : <Navbar />}
+        {isBim ? null : (
+          <Navbar cta={{ label: "bim.vrgo.hu", href: bimLink("/", "header") }} />
+        )}
         <main className="flex-1">{children}</main>
         {isBim ? null : <Footer />}
         <ConsentBanner />

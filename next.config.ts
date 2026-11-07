@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/szolgaltatasok/allami-bim-megfeleles",
+        destination: "/megoldasok/allami-beruhazasok-es-bim-eloirasok",
+        statusCode: 301,
+      },
+      {
+        source: "/bim/szolgaltatasok/allami-bim-megfeleles",
+        destination: "/bim/megoldasok/allami-beruhazasok-es-bim-eloirasok",
+        statusCode: 301,
+      },
+      {
         source: "/cikkek/matterport-bim-alapadat-pontossag",
         destination: "/cikkek/leica-3d-lezerszkenneles-bim-alapadat",
         permanent: true,

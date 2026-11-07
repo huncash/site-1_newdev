@@ -5,7 +5,7 @@ description: "A rendelet 150, 170 és 180-as felhasználási esetei a kivitelez�
 date: 2026-10-27
 time: "09:00"
 author: VRGO
-category: "Kivitelezők, lebonyolítók"
+category: "Rendelet és megfelelés"
 keywords: "kivitelezés BIM dokumentálás, felhasználási eset 150, felhasználási eset 170, felhasználási eset 180"
 image: /blog/bim/as-built-gepeszet.webp
 imageAlt: "Gépészeti helyiség megvalósulási állapotának scan-to-BIM modellje."

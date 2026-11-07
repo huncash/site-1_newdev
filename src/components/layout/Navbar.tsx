@@ -5,16 +5,24 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
-import { isMenuGroup, MENU_ITEMS, type MenuItem } from "@/config/menu";
+import {
+  isBimMegoldasokPath,
+  isBimSzolgaltatasokPath,
+  isMenuGroup,
+  MENU_ITEMS,
+  type MenuItem,
+} from "@/config/menu";
 import { SITE_CONFIG } from "@/config/site-config";
 import { cn } from "@/lib/utils";
 
 function DesktopDropdown({
   label,
   items,
+  active = false,
 }: {
   label: string;
   items: readonly { label: string; href: string }[];
+  active?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -49,7 +57,11 @@ function DesktopDropdown({
         aria-expanded={open}
         aria-controls={menuId}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-brand-foreground/95 transition hover:underline hover:underline-offset-4 xl:text-xs"
+        className={cn(
+          "inline-flex items-center gap-1 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-brand-foreground/95 transition hover:underline hover:underline-offset-4 xl:text-xs",
+          active && "underline underline-offset-4"
+        )}
+        aria-current={active ? "true" : undefined}
       >
         {label}
         <svg
@@ -87,6 +99,12 @@ function DesktopDropdown({
   );
 }
 
+function groupIsActive(label: string, pathname: string): boolean {
+  if (label === "Megoldások") return isBimMegoldasokPath(pathname);
+  if (label === "Szolgáltatások") return isBimSzolgaltatasokPath(pathname);
+  return false;
+}
+
 function hrefOf(href: string, linkPrefix: string) {
   if (!linkPrefix || /^(https?:|mailto:|tel:|#)/.test(href)) return href;
   return href === "/" ? linkPrefix : `${linkPrefix}${href}`;
@@ -99,6 +117,7 @@ export function Navbar({
   linkPrefix = "",
   cta,
   quietLink,
+  trailingLink,
   logoLabel,
   logoSrc = "/vrgo-logo.jpg",
   logoWidth = 412,
@@ -110,6 +129,8 @@ export function Navbar({
   linkPrefix?: string;
   cta?: { label: string; href: string };
   quietLink?: { label: string; href: string; newTab?: boolean };
+  /** Pl. ← vrgo.hu — a CTA után. */
+  trailingLink?: { label: string; href: string; newTab?: boolean };
   logoLabel?: string;
   logoSrc?: string;
   logoWidth?: number;
@@ -160,7 +181,12 @@ export function Navbar({
         >
           {navItems.map((item) =>
             isMenuGroup(item) ? (
-              <DesktopDropdown key={item.label} label={item.label} items={item.children} />
+              <DesktopDropdown
+                key={item.label}
+                label={item.label}
+                items={item.children}
+                active={groupIsActive(item.label, pathname)}
+              />
             ) : (
               <Link
                 key={`${item.href}-${item.label}`}
@@ -189,6 +215,16 @@ export function Navbar({
               {quietLink.label}
             </a>
           ) : null}
+          {trailingLink ? (
+            <a
+              href={trailingLink.href}
+              target={trailingLink.newTab ? "_blank" : undefined}
+              rel={trailingLink.newTab ? "noopener noreferrer" : undefined}
+              className="whitespace-nowrap text-[11px] font-medium normal-case tracking-normal text-brand-foreground/70 hover:underline"
+            >
+              {trailingLink.label}
+            </a>
+          ) : null}
         </nav>
 
         <button
@@ -215,10 +251,14 @@ export function Navbar({
                     <button
                       type="button"
                       aria-expanded={expanded}
+                      aria-current={groupIsActive(item.label, pathname) ? "true" : undefined}
                       onClick={() =>
                         setMobileGroupOpen((cur) => (cur === item.label ? null : item.label))
                       }
-                      className="flex w-full items-center justify-between py-3 text-sm font-semibold uppercase tracking-wider"
+                      className={cn(
+                        "flex w-full items-center justify-between py-3 text-sm font-semibold uppercase tracking-wider",
+                        groupIsActive(item.label, pathname) && "underline underline-offset-4"
+                      )}
                     >
                       {item.label}
                       <svg
@@ -280,6 +320,18 @@ export function Navbar({
                   className="block py-3 text-sm font-medium normal-case tracking-normal text-brand-foreground/70"
                 >
                   {quietLink.label}
+                </a>
+              </li>
+            ) : null}
+            {trailingLink ? (
+              <li>
+                <a
+                  href={trailingLink.href}
+                  target={trailingLink.newTab ? "_blank" : undefined}
+                  rel={trailingLink.newTab ? "noopener noreferrer" : undefined}
+                  className="block py-3 text-sm font-medium normal-case tracking-normal text-brand-foreground/70"
+                >
+                  {trailingLink.label}
                 </a>
               </li>
             ) : null}

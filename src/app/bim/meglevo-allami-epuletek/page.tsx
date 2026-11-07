@@ -1,6 +1,9 @@
+import { BimBreadcrumb } from "@/components/bim/BimBreadcrumb";
+import { BimDeliverableBlock } from "@/components/bim/BimDeliverableBlock";
 import { BimLink } from "@/components/bim/BimChrome";
 import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { BimUseCaseList } from "@/components/bim/BimUseCaseList";
+import { BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
@@ -14,9 +17,25 @@ export default function ExistingBuildingsPage() {
     <article className="bg-background">
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
+          <BimBreadcrumb
+            tone="dark"
+            items={[
+              { href: "/", label: "Kezdőlap" },
+              { href: "/megoldasok", label: "Megoldások" },
+              { href: BIM_STATE_HUB_HREF, label: BIM_STATE_HUB_LABEL },
+              { label: "Állami épületek" },
+            ]}
+          />
           <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
             Meglévő állami épületek: pontfelhő és BIM a 2035. december 31-i határidőhöz
           </h1>
+          <p className="mt-3 text-sm opacity-90">
+            A georeferált felmérés a hub egyik területe —{" "}
+            <BimLink href={BIM_STATE_HUB_HREF} className="underline">
+              {BIM_STATE_HUB_LABEL}
+            </BimLink>
+            .
+          </p>
         </div>
       </section>
       <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 text-sm text-muted-foreground sm:text-base">
@@ -73,6 +92,11 @@ export default function ExistingBuildingsPage() {
             </BimLink>
           </p>
         </section>
+        <BimDeliverableBlock
+          deliverables="E57 / XYZ pontfelhő, georeferált alaprajz és metszet; IFC/natív modell külön tételként."
+          timeline="A 2035-ös határidőhöz igazított ütemterv az ajánlatban; a helyszíni napok a létesítmény méretétől függnek."
+          fromYou="EIR, épületlista, hozzáférés, koordináta-rendszer elvárás."
+        />
         <BimLink
           href="/ajanlatkeres"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"

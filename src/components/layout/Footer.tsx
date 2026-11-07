@@ -56,12 +56,17 @@ function prefixed(path: string, linkPrefix: string) {
 
 function BIM_PAGE_LINKS(linkPrefix: string, quoteHref: string): FooterLink[] {
   return [
-    { label: "Csomagok", href: "https://vrgo.hu/csomagok" },
+    { label: "Megoldások", href: prefixed("/megoldasok", linkPrefix) },
+    {
+      label: "Állami beruházások és BIM-előírások",
+      href: prefixed("/megoldasok/allami-beruhazasok-es-bim-eloirasok", linkPrefix),
+    },
+    { label: "Szolgáltatások", href: prefixed("/szolgaltatasok", linkPrefix) },
+    { label: "Lakás- és házfelmérés", href: prefixed("/szolgaltatasok/lakas-es-hazfelmeres", linkPrefix) },
+    { label: "Árak és folyamat", href: prefixed("/arak-es-folyamat", linkPrefix) },
     { label: "GYIK", href: prefixed("/gyik", linkPrefix) },
-    { label: "Blog", href: "https://vrgo.hu/blog", newTab: true },
-    { label: "Kapcsolat", href: quoteHref },
+    { label: "Ajánlatkérés", href: quoteHref },
     { label: "Partner belépés", href: "https://vrgo.hu/partner/login" },
-    { label: "vrgo.hu főoldal", href: "https://vrgo.hu", newTab: true },
   ];
 }
 

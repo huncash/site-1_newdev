@@ -5,7 +5,7 @@ description: "A 31/2024. ÉKM rendelet szabályait vasútépítésnél 2026. jú
 date: 2026-10-31
 time: "18:00"
 author: VRGO
-category: "Infra-szektor"
+category: "Rendelet és megfelelés"
 keywords: "BIM vasútépítés 2026, vízépítés BIM, közműépítés BIM, 22. §"
 image: /blog/bim/viztisztito-telep.jpg
 imageAlt: "Nagy szennyvíztisztító telep tartályai és üzemi épületei a vízparton."

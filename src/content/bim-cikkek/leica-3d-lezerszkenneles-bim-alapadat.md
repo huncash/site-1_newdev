@@ -5,7 +5,7 @@ description: "A nagy tömegű 3D lézerszkennelés és a hivatalos geodéziai hi
 date: 2026-10-24
 time: "18:00"
 author: VRGO
-category: "Tervezők, BIM-esek"
+category: "Technológia"
 keywords: "Leica 3D lézerszkennelés, E57, IFC, geodéziai ellenőrző mérés"
 image: /blog/bim/scan-to-bim-gepeszet.jpg
 imageAlt: "Gépészeti helyiség pontfelhőből készült háromdimenziós modellje."

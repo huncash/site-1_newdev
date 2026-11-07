@@ -1,12 +1,14 @@
+import { BimBreadcrumb } from "@/components/bim/BimBreadcrumb";
 import { BimLink } from "@/components/bim/BimChrome";
 import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { BimUseCaseList } from "@/components/bim/BimUseCaseList";
+import { BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
 import { DECREE_CHECKED, NJT_URL, USE_CASES, bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/ekm-rendelet",
-  "A 31/2024. ÉKM rendelet egy oldalon | VRGO BIM",
-  "Kire vonatkozik a 31/2024. ÉKM rendelet, mikor kell BIM, mit kell átadni, és melyek a felhasználási esetek. Tájékoztató, nem jogi tanácsadás."
+  "Állami BIM-előírások egy oldalon (31/2024. ÉKM rendelet) | VRGO BIM",
+  "Állami BIM-előírások összefoglalója (31/2024. ÉKM rendelet): kire vonatkozik, mikor kell BIM, mit kell átadni. Tájékoztató, nem jogi tanácsadás."
 );
 
 const deadlines = [
@@ -25,11 +27,26 @@ export default function EkmPage() {
     <article className="bg-background">
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">A 31/2024. ÉKM rendelet egy oldalon</h1>
+          <BimBreadcrumb
+            tone="dark"
+            items={[
+              { href: "/", label: "Kezdőlap" },
+              { href: "/megoldasok", label: "Megoldások" },
+              { href: BIM_STATE_HUB_HREF, label: BIM_STATE_HUB_LABEL },
+              { label: "Az előírások egy oldalon" },
+            ]}
+          />
+          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
+            Állami BIM-előírások egy oldalon (31/2024. ÉKM rendelet)
+          </h1>
           <p className="mt-4 opacity-90">
             Az építményinformációs modell (BIM) alapú tervezés és műszaki megvalósítás
             feltételrendszeréről. Az összefoglaló a Nemzeti Jogszabálytár 2026. január 1-jén
-            hatályos szövegét követi.
+            hatályos szövegét követi. Ez az összefoglaló a{" "}
+            <BimLink href={BIM_STATE_HUB_HREF} className="underline">
+              {BIM_STATE_HUB_LABEL}
+            </BimLink>{" "}
+            hub része — a fő szolgáltatásunk a georeferált téradat-rögzítés.
           </p>
         </div>
       </section>

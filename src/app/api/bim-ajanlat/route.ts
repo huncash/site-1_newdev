@@ -1,6 +1,13 @@
+import {
+  BIM_QUOTE_SERVICE_OPTIONS,
+  BIM_RESIDENTIAL_SERVICE_OPTIONS,
+} from "@/lib/bim-catalog";
 import { QUOTE_USE_CASE_CODES } from "@/lib/bim-site";
 import { sendQuoteEmail } from "@/lib/quote-delivery";
 import { verifySumAnswer } from "@/lib/sum-check";
+
+const RESIDENTIAL_SERVICES = new Set<string>(BIM_RESIDENTIAL_SERVICE_OPTIONS);
+const QUOTE_SERVICES = new Set<string>(BIM_QUOTE_SERVICE_OPTIONS);
 
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
@@ -12,6 +19,66 @@ function text(value: unknown, max: number): string | null {
   const trimmed = value.trim();
   if (!trimmed || trimmed.length > max) return null;
   return trimmed;
+}
+
+async function handleResidential(data: Record<string, unknown>): Promise<Response> {
+  const location = text(data.location, MAX_SHORT);
+  const goal = text(data.goal, MAX_SHORT);
+  const serviceInterest = text(data.serviceInterest, MAX_SHORT);
+  const area = text(data.area, 80);
+  const contact = text(data.contact, MAX_SHORT);
+  const source = data.source == null || data.source === "" ? "" : text(data.source, 240);
+  if (
+    !location ||
+    !goal ||
+    !serviceInterest ||
+    !RESIDENTIAL_SERVICES.has(serviceInterest) ||
+    !area ||
+    !contact ||
+    source === null ||
+    data.consent !== true
+  ) {
+    return Response.json({ error: "Invalid fields" }, { status: 400 });
+  }
+  if (!verifySumAnswer(data.sumToken, data.sumAnswer)) {
+    return Response.json({ error: "sum" }, { status: 400 });
+  }
+
+  const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+  const email = isEmail ? contact : undefined;
+  const phone = isEmail ? "" : contact;
+
+  console.log(
+    JSON.stringify({
+      event: "bim_residential_received",
+      siteId: "bim.vrgo.hu",
+      hasLocation: true,
+      hasGoal: true,
+      serviceInterest,
+      hasArea: true,
+      hasEmail: isEmail,
+      hasPhone: !isEmail,
+    })
+  );
+
+  const sent = await sendQuoteEmail({
+    subject: `BIM lakossági érdeklődés – ${location.replace(/[\r\n]+/g, " ").slice(0, 80)}`,
+    replyTo: email,
+    text: [
+      "Lakossági BIM / lézerszkennelés érdeklődés.",
+      "",
+      `Település: ${location}`,
+      `Cél: ${goal}`,
+      `Szolgáltatás: ${serviceInterest}`,
+      `Méret: ${area}`,
+      `Kapcsolat: ${contact}`,
+      `Forrás: ${source || "lakossagnak"}`,
+    ].join("\n"),
+  });
+  if (!sent) {
+    return Response.json({ error: "unavailable" }, { status: 503 });
+  }
+  return Response.json({ status: "ok" });
 }
 
 export async function POST(request: Request): Promise<Response> {
@@ -27,9 +94,14 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   const data = body as Record<string, unknown>;
+  if (data.mode === "residential") {
+    return handleResidential(data);
+  }
+
   const name = text(data.name, MAX_NAME);
   const email = text(data.email, MAX_EMAIL);
   const organizationType = text(data.organizationType, MAX_SHORT);
+  const serviceInterest = text(data.serviceInterest, MAX_SHORT);
   const buildingType = text(data.buildingType, MAX_SHORT);
   const area = text(data.area, 80);
   const location = text(data.location, MAX_SHORT);
@@ -39,8 +111,9 @@ export async function POST(request: Request): Promise<Response> {
   const spaces = data.spaces == null || data.spaces === "" ? "" : text(data.spaces, 40);
   const survey = data.survey == null || data.survey === "" ? "" : text(data.survey, 20);
   const eirLevel = data.eirLevel == null || data.eirLevel === "" ? "" : text(data.eirLevel, 160);
-  const source = data.source == null || data.source === "" ? "" : text(data.source, 80);
-  const organization = data.organization == null || data.organization === "" ? "" : text(data.organization, MAX_SHORT);
+  const source = data.source == null || data.source === "" ? "" : text(data.source, 240);
+  const organization =
+    data.organization == null || data.organization === "" ? "" : text(data.organization, MAX_SHORT);
   const formatAllowed = new Set(["E57", "OBJ", "XYZ", "alaprajz", "IFC"]);
   const formats = Array.isArray(data.formats)
     ? data.formats.filter((item): item is string => typeof item === "string" && formatAllowed.has(item))
@@ -53,6 +126,8 @@ export async function POST(request: Request): Promise<Response> {
     !email ||
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
     !organizationType ||
+    !serviceInterest ||
+    !QUOTE_SERVICES.has(serviceInterest) ||
     !buildingType ||
     !area ||
     !location ||
@@ -86,6 +161,7 @@ export async function POST(request: Request): Promise<Response> {
       hasName: true,
       hasEmail: true,
       organizationType,
+      serviceInterest,
       hasBuildingType: true,
       hasArea: true,
       hasLocation: true,
@@ -107,6 +183,7 @@ export async function POST(request: Request): Promise<Response> {
       `Telefon: ${phone || "—"}`,
       `Szervezet: ${organization || "—"}`,
       `Szervezet típusa: ${organizationType}`,
+      `Szolgáltatás: ${serviceInterest}`,
       `Épület vagy létesítmény: ${buildingType}`,
       `Alapterület: ${area}`,
       `Helyszín: ${location}`,

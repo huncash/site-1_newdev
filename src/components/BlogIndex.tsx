@@ -49,8 +49,8 @@ export function BlogIndex({
           <p className="max-w-xl text-muted-foreground">{subtitle}</p>
         ) : null}
         <p className="mt-4 max-w-xl text-sm text-muted-foreground">
-          A 2016–2017-es bejegyzések archív anyagok. Az állami BIM-rendeletről szóló
-          cikkek:{" "}
+          A 2016–2017-es bejegyzések archív anyagok. Lézerszkennelés, pontfelhő és
+          georeferálás:{" "}
           <a
             href="https://bim.vrgo.hu/cikkek"
             className="font-semibold text-brand underline underline-offset-2"
@@ -62,7 +62,7 @@ export function BlogIndex({
           href={bimLink("/cikkek", "blog")}
           className="mt-6 block max-w-xl rounded-md border border-brand/40 bg-brand/5 px-4 py-3 text-sm font-semibold text-brand underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
         >
-          BIM-cikkek az állami szabályozásról →
+          Cikkek a bim.vrgo.hu oldalon →
         </a>
       </header>
 

@@ -5,7 +5,7 @@ description: "Az EIR a megbízó követelményei, a pre-BEP és a BEP a vállalk
 date: 2026-10-20
 time: "09:00"
 author: VRGO
-category: "Tervezők, kivitelezők"
+category: "Rendelet és megfelelés"
 keywords: "EIR BEP magyarul, pre-BEP, információcsere-követelmények, 17. §, 18. §"
 image: /blog/bim/szakagi-bim-koordinacio.webp
 imageAlt: "Szakági BIM-modell gépészeti és villamos vezetékekkel egy épületben."

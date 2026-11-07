@@ -4,7 +4,10 @@ export type ConversionEvent =
   | "quote_form_view"
   | "quote_form_submit_success"
   | "quote_form_submit_error"
-  | "quote_cta_click";
+  | "quote_cta_click"
+  | "phone_click"
+  | "bim_cta_click"
+  | "sample_download";
 
 declare global {
   interface Window {

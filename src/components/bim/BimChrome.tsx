@@ -5,8 +5,9 @@ import Link from "next/link";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { BIM_CONFIG, bimPhoneVisible } from "@/config/bim";
 import { BIM_MENU } from "@/config/menu";
-import { MAIN_ORIGIN } from "@/lib/bim-site";
+import { trackConversion } from "@/lib/conversion";
 
 const PrefixContext = createContext(false);
 
@@ -36,6 +37,28 @@ export function BimLink({
   );
 }
 
+/** Kattintható telefon — üres config esetén null. */
+export function BimPhoneLink({
+  className,
+  forras = "inline",
+  children,
+}: {
+  className?: string;
+  forras?: string;
+  children?: ReactNode;
+}) {
+  if (!bimPhoneVisible()) return null;
+  return (
+    <a
+      href={BIM_CONFIG.phoneTel}
+      className={className}
+      onClick={() => trackConversion("phone_click", { forras })}
+    >
+      {children ?? BIM_CONFIG.phoneDisplay}
+    </a>
+  );
+}
+
 export function BimChrome({
   prefix,
   children,
@@ -44,6 +67,10 @@ export function BimChrome({
   children: ReactNode;
 }) {
   const linkPrefix = prefix ? "/bim" : "";
+  const phone = bimPhoneVisible()
+    ? { label: BIM_CONFIG.phoneDisplay, href: BIM_CONFIG.phoneTel }
+    : undefined;
+
   return (
     <PrefixContext.Provider value={prefix}>
       <Navbar
@@ -55,13 +82,14 @@ export function BimChrome({
         items={BIM_MENU}
         linkPrefix={linkPrefix}
         cta={{ label: "Ajánlatkérés", href: "/ajanlatkeres" }}
-        quietLink={{ label: "← vrgo.hu", href: MAIN_ORIGIN, newTab: true }}
+        quietLink={phone}
       />
       <div className="flex-1">{children}</div>
       <Footer
         variant="bim"
         linkPrefix={linkPrefix}
-        description="Professzionális Leica 3D lézerszkennelés, pontfelhő és BIM-modell az építőipar és az ipari létesítmények számára."
+        description="Georeferált 3D lézerszkennelés, pontfelhő és — igény szerint — BIM-modell. EOV-kötés, jogosult földmérő közreműködésével."
+        brandTagline={bimPhoneVisible() ? `Telefon: ${BIM_CONFIG.phoneDisplay}` : undefined}
       />
     </PrefixContext.Provider>
   );

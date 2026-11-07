@@ -1,4 +1,5 @@
 import { BimQuoteForm } from "@/components/bim/BimQuoteForm";
+import { BIM_CONFIG } from "@/config/bim";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
@@ -14,8 +15,12 @@ export default function BimQuotePage() {
         <div className="mx-auto max-w-3xl px-4">
           <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">Ajánlatkérés</h1>
           <p className="mt-4 opacity-90">
-            Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.
+            Válassza ki a szolgáltatást, küldje el a feladat leírását vagy az EIR-t — módszertant
+            és árajánlatot adunk.
           </p>
+          {BIM_CONFIG.replySlaText ? (
+            <p className="mt-3 text-sm opacity-80">{BIM_CONFIG.replySlaText}</p>
+          ) : null}
         </div>
       </section>
       <div className="mx-auto max-w-3xl px-4 py-12">

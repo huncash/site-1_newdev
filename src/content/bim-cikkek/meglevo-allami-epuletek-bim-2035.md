@@ -5,7 +5,7 @@ description: "A 31/2024. ÉKM rendelet szerint a BIM nélküli állami létesít
 date: 2026-10-17
 time: "18:00"
 author: VRGO
-category: "Vagyonkezelők, üzemeltetők"
+category: "Rendelet és megfelelés"
 keywords: "meglévő épület BIM 2035, állami létesítmény BIM, vagyonkezelés, 22. §"
 image: /blog/bim/kozepulet-homlokzat.jpg
 imageAlt: "Egy történelmi középület téglahomlokzata és óratornya."

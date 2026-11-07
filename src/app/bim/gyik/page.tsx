@@ -1,31 +1,48 @@
+import { BimLink } from "@/components/bim/BimChrome";
 import { DECREE_CHECKED, MAIN_ORIGIN, NJT_URL, bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/gyik",
-  "GYIK — 31/2024. ÉKM rendelet és rögzítés | VRGO BIM",
-  "Kell-e BIM meglévő állami épületre, ki végzi a geodéziai ellenőrző mérést, és hogyan készül az IFC. A válaszok a rendelet 2026.01.01-i szövegére hivatkoznak."
+  "GYIK — lézerszkennelés, rendelet és lakossági felmérés | VRGO BIM",
+  "Mennyibe kerül, mennyi idő, kell-e BIM állami épületre, mit kap a tervező. Lakossági és B2B válaszok."
 );
 
 const faqs = [
+  {
+    q: "Mennyibe kerül egy lakás vagy ház felmérése?",
+    a: "A díj a mérettől, a terek bonyolultságától, a kiszállástól és a leadott anyagtól függ. Nyilvánosan a díjszerkezetet mutatjuk; a végleges összeget az ajánlat tartalmazza. Részletek: Árak és folyamat.",
+  },
+  {
+    q: "Mennyi idő alatt készül el?",
+    a: "A helyszínen jellemzően egy bejárás elég. A feldolgozás határidejét az ajánlat rögzíti; általános napra szóló vállalást nem teszünk — csak olyat, amit tartani tudunk.",
+  },
+  {
+    q: "Be kell-e menni a lakásba többször?",
+    a: "Általában nem. Ha a terek zárva vannak, vagy később derül ki hiányzó zóna, egyeztetünk pótló bejárást.",
+  },
+  {
+    q: "Mit kapok a felmérés végén?",
+    a: "Alaprajz és metszet (PDF, DWG), kérésre pontfelhő-nézet. 3D modell külön tétel. Tervezői átadáshoz E57/RCP és jegyzőkönyv is kérhető.",
+  },
+  {
+    q: "Használható-e hatósági eljáráshoz?",
+    a: "A felhasználási céltól és a földmérői közreműködéstől függ. Ha földhivatali vagy hatósági ügyintézés a cél, jelezze előre — ezt külön egyeztetjük.",
+  },
   {
     q: "Kell-e BIM egy meglévő állami épületre?",
     a: "Új állami beruházásnál, valamint meglévő létesítmény állami beruházás keretében történő átépítésénél, bővítésénél, felújításánál vagy bontásánál igen, és a magyar állam tulajdonában álló vagy tulajdonába kerülő létesítmény üzemeltetésénél is (9. §). A rendelet hatálybalépésekor már állami tulajdonú, BIM nélküli létesítménynél a modellt legkésőbb 2035. december 31-ig kell létrehozni (22. § (2)).",
   },
   {
-    q: "Ki végzi a geodéziai ellenőrző mérést?",
-    a: "A tervezési, kivitelezési és üzemeltetési folyamatokat szigorú tűrési határok (EIR konformitás) és szabványos geodéziai ellenőrző mérések mellett támogatjuk. A nagytömegű 3D lézerszkennelés és a hivatalos EOV georeferálás kombinációjával biztosítjuk, hogy a pontfelhő ne csak vizuális illúzió, hanem jogilag és metrikailag is hiteles mérnöki alapanyag legyen. Optimalizált munkafolyamatunk ötvözi a gyors, nagy pontosságú lézerszkennelést a jogosult földmérő partnerünk által végzett hivatalos alappont-meghatározással és bekötéssel (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2) szerinti megfelelés). A terepi méréstől a pontfelhő feldolgozáson át a szabványos BIM modellalkotásig egy kézből szállítjuk az eredményt. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is.",
+    q: "Ki végzi a geodéziai ellenőrző mérést és a bekötést?",
+    a: "A hivatalos alappont-meghatározást és EOV-bekötést jogosult földmérő partnerünk végzi (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2)). Ha a megrendelő saját földmérővel rendelkezik, együttműködünk vele. A terepi szkenneléstől az átadásig egy szerződéssel, egy felelőssel dolgozunk.",
   },
   {
     q: "Tudtok IFC-t adni?",
-    a: "Igen. A szabványos BIM-modell (IFC és natív formátum) a pontfelhőből, precíz modellezéssel készül, az EIR szerinti részletezettségben. A helyszíni felmérésből E57 és XYZ pontfelhő, valamint georeferált CAD alaprajz és metszet készül.",
-  },
-  {
-    q: "Mennyi idő alatt készül el?",
-    a: "A helyszíni munkaidőt a feladat méretéhez és a megkövetelt pontossági szinthez igazítjuk. A határidőt az ajánlat rögzíti; általános napra szóló vállalást nem teszünk.",
+    a: "Igen. A szabványos BIM-modell (IFC és natív formátum) a pontfelhőből, precíz modellezéssel készül, az EIR szerinti részletezettségben — külön tételként. A helyszíni felmérésből E57 és XYZ pontfelhő, valamint georeferált CAD alaprajz és metszet készül.",
   },
   {
     q: "Mi az az EIR?",
-    a: "Az információcsere-követelmények dokumentuma (Employer's Information Requirements): a megbízó elvárásai a BIM-mel szemben (3. § 8. pont, 17–18. §, 1. melléklet). A pontossági szintet minden projektnél szigorúan az EIR követelményeihez mérjük. Előre egyeztetett, transzparens mérnöki szintekkel és dedikált feldolgozási ütemezéssel dolgozunk.",
+    a: "Az információcsere-követelmények dokumentuma (Employer's Information Requirements): a megbízó elvárásai a BIM-mel szemben (3. § 8. pont, 17–18. §, 1. melléklet). A pontossági szintet minden projektnél az EIR-hez mérjük.",
   },
   {
     q: "Dolgoztok közbeszerzésben?",
@@ -33,15 +50,11 @@ const faqs = [
   },
   {
     q: "Hogyan kezelitek az adatokat?",
-    a: "Az ajánlatkérés adatait az adatvédelmi tájékoztató szerint kezeljük. A felvételek tulajdonjogát és tárolását a szerződés rögzíti.",
-  },
-  {
-    q: "Ki végzi a bekötést és a geodéziai ellenőrző mérést?",
-    a: "Optimalizált munkafolyamatunk ötvözi a gyors, nagy pontosságú lézerszkennelést a jogosult földmérő partnerünk által végzett hivatalos alappont-meghatározással és bekötéssel (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2) szerinti megfelelés). A terepi méréstől a pontfelhő feldolgozáson át a szabványos BIM modellalkotásig egy kézből szállítjuk az eredményt. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is.",
+    a: "Az ajánlatkérés adatait az adatvédelmi tájékoztató szerint kezeljük. Lakások belső terének szkennelése személyes adatot is rögzíthet; a felvételek tulajdonjogát és tárolását a szerződés rögzíti.",
   },
   {
     q: "Milyen állományokat adnak át?",
-    a: "Pontfelhő exportot (E57, XYZ), georeferált CAD alaprajzot és metszetet, valamint szabványos BIM-modellt (IFC és natív formátum) pontfelhő alapú precíz modellezéssel.",
+    a: "Pontfelhő exportot (E57, XYZ), georeferált CAD alaprajzot és metszetet, valamint — ha megrendelték — szabványos BIM-modellt (IFC és natív formátum).",
   },
 ];
 
@@ -73,16 +86,27 @@ export default function BimFaqPage() {
             <p className="mt-2 text-sm text-muted-foreground sm:text-base">{item.a}</p>
           </section>
         ))}
+        <p className="text-sm text-muted-foreground">
+          Lakossági belépő:{" "}
+          <BimLink href="/lakossagnak" className="font-semibold text-brand">
+            /lakossagnak
+          </BimLink>
+          . Díjszerkezet:{" "}
+          <BimLink href="/arak-es-folyamat" className="font-semibold text-brand">
+            /arak-es-folyamat
+          </BimLink>
+          .
+        </p>
         <p className="text-xs text-muted-foreground">
           Jogforrás:{" "}
           <a href={NJT_URL} className="underline" target="_blank" rel="noopener noreferrer">
             Nemzeti Jogszabálytár
           </a>
-          , 2026.01.01. Utolsó ellenőrzés: {DECREE_CHECKED}. Adatkezelés:{" "}
+          . Ellenőrizve: {DECREE_CHECKED}. Adatvédelem:{" "}
           <a href={`${MAIN_ORIGIN}/adatvedelem`} className="underline">
             vrgo.hu/adatvedelem
           </a>
-          . Az oldal tájékoztató, nem jogi tanácsadás.
+          .
         </p>
       </div>
     </article>

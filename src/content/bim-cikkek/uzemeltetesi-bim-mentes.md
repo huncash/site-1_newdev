@@ -5,7 +5,7 @@ description: "A 31/2024. ÉKM rendelet évente kér mentést az üzemeltetett á
 date: 2026-11-03
 time: "09:00"
 author: VRGO
-category: "Üzemeltetők"
+category: "Rendelet és megfelelés"
 keywords: "BIM mentés üzemeltetés, december 31, március 15, 14. §"
 image: /blog/bim/tetoi-gepeszet.jpg
 imageAlt: "Tetőre telepített légtechnikai és gépészeti berendezések."

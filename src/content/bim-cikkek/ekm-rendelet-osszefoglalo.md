@@ -4,7 +4,7 @@ seoTitle: "ÉKM rendelet BIM: mit ír elő a 31/2024.?"
 description: "A 31/2024. ÉKM rendelet lényege: kire vonatkozik, mikor kell BIM-et létrehozni, mit kell átadni, és melyek a fontos határidők."
 date: 2026-10-12
 author: VRGO
-category: "Mindenki"
+category: "Rendelet és megfelelés"
 keywords: "ÉKM rendelet BIM, 31/2024. ÉKM rendelet, BIM határidő, IFC, EIR"
 image: /blog/bim/epiteszeti-bim-modell.jpg
 imageAlt: "Színes építészeti BIM-modell, metszetben látszanak a szintek és a szerkezet."

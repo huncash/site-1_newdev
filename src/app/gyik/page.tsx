@@ -21,11 +21,11 @@ const faqs: Faq[] = [
   },
   {
     q: "Milyen BIM-export formátumokat tudtok adni a Matterport-modellből?",
-    a: "MatterPak csomagban E57 pontfelhőt, OBJ mesh-t, XYZ-t és méretezett 2D alaprajzot szállítunk. Ezekből modellezéssel készülhet IFC; ezt partnerrel végezzük (https://bim.vrgo.hu).",
+    a: "MatterPak csomagban E57 pontfelhőt, OBJ mesh-t, XYZ-t és méretezett 2D alaprajzot szállítunk. Georeferált lézerszkennelés, EOV-bekötés és — igény szerint — IFC-modellezés: https://bim.vrgo.hu.",
   },
   {
     q: "Mi az a BIM?",
-    a: "A BIM (építményinformációs modellezés) az épület adatokkal ellátott digitális modellje. A 3D szkennelés ennek a modellnek az alapadata, nem maga a BIM. A részletes magyarázat a bim.vrgo.hu Mi az a BIM? oldalán van.",
+    a: "A BIM (építményinformációs modellezés) az épület adatokkal ellátott digitális modellje. A 3D / lézerszkennelés ennek az alapadata, nem maga a BIM. A georeferált felmérés és a modellezés részletei: bim.vrgo.hu.",
   },
   {
     q: "Mi az a Property Intelligence, és vannak közzétett KPI-eredményeink?",

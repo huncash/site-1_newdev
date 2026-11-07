@@ -11,9 +11,9 @@ import { CONTENT } from "../data/content";
 import { bimLink } from "@/lib/links";
 
 export const metadata: Metadata = {
-  title: "VRGO — Bejárható 3D, virtuális túra és BIM-alapadat",
+  title: "VRGO — Bejárható 3D, virtuális túra és lézerszkennelés",
   description:
-    "Kampuszok és portfóliók bejárható 3D-je, E57/OBJ-export és BIM-alapadat. Állami létesítmények BIM-felmérése a 31/2024. ÉKM rendelet szerint: bim.vrgo.hu.",
+    "Kampuszok és portfóliók bejárható 3D-je. Georeferált lézerszkennelés, EOV-bekötés és pontfelhő: bim.vrgo.hu.",
 };
 
 export default function HomePage() {
@@ -26,8 +26,8 @@ export default function HomePage() {
         title={hero.title}
         subtitle={
           <>
-            Kampuszok, gyártócsarnokok és portfóliók digitális ikre — Matterport alapú
-            bejárható 3D, E57/OBJ-export és BIM-alapadat. BIM- és állami projektekhez:{" "}
+            Kampuszok, gyártócsarnokok és portfóliók digitális ikre — Matterport alapú bejárható
+            3D. Georeferált lézerszkennelés, EOV-bekötés és pontfelhő:{" "}
             <a href={bimLink("/", "hero-alcim")} className="underline underline-offset-2">
               bim.vrgo.hu
             </a>
@@ -38,7 +38,7 @@ export default function HomePage() {
         ctaHref={hero.ctaPrimary.href}
         secondaryLabel={hero.ctaSecondary.label}
         secondaryHref={hero.ctaSecondary.href}
-        noteLabel="Állami BIM-projekt? Nézd a BIM-oldalt →"
+        noteLabel="Lézerszkennelés és EOV georeferálás →"
         noteHref={bimLink("/", "hero")}
       />
 
@@ -47,7 +47,7 @@ export default function HomePage() {
       <section className="bg-secondary py-8 sm:py-10">
         <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-4 px-4 sm:flex-row sm:items-center sm:px-6">
           <p className="text-sm text-foreground sm:text-base">
-            Állami létesítmények BIM-határidői: 31/2024. ÉKM rendelet.
+            Georeferált 3D lézerszkennelés, pontfelhő és — igény szerint — BIM-modell.
           </p>
           <a
             href={bimLink("/", "sav-fooldal")}
@@ -72,12 +72,15 @@ export default function HomePage() {
       />
 
       <section className="bg-secondary py-8 sm:py-10">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-4 px-4 sm:flex-row sm:items-center sm:px-6">
+          <p className="text-sm text-foreground sm:text-base">
+            Lakásfelmérés, tervezői pontfelhő, ipari csarnok — EOV-ban, földmérői közreműködéssel.
+          </p>
           <a
-            href={bimLink("/ekm-rendelet", "sav")}
-            className="text-sm font-semibold text-foreground underline underline-offset-2 hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:text-base"
+            href={bimLink("/szolgaltatasok", "sav")}
+            className="inline-flex items-center justify-center rounded-md bg-brand px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
           >
-            Állami létesítmények BIM-határidői: 31/2024. ÉKM rendelet → bim.vrgo.hu/ekm-rendelet
+            bim.vrgo.hu — szolgáltatások
           </a>
         </div>
       </section>

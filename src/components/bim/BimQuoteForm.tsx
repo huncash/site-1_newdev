@@ -3,7 +3,11 @@
 import { useState, type FormEvent } from "react";
 
 import { SumCheckField } from "@/components/SumCheckField";
+import { BIM_CONFIG } from "@/config/bim";
+import { BIM_QUOTE_SERVICE_OPTIONS } from "@/lib/bim-catalog";
+import { collectBimLeadSource } from "@/lib/bim-utm";
 import { QUOTE_USE_CASE_CODES, USE_CASES } from "@/lib/bim-site";
+import { trackConversion } from "@/lib/conversion";
 
 const ORG_TYPES = [
   "Egyetem vagy kutatóhely",
@@ -48,7 +52,7 @@ export function BimQuoteForm() {
     const formats = ["E57", "OBJ", "XYZ", "alaprajz", "IFC"].filter(
       (code) => data.get(`format-${code}`) === "on"
     );
-    const source = new URLSearchParams(window.location.search).get("forras") ?? "";
+    const source = collectBimLeadSource("");
 
     const payload = {
       name: String(data.get("name") ?? ""),
@@ -56,6 +60,7 @@ export function BimQuoteForm() {
       phone: String(data.get("phone") ?? ""),
       organization: String(data.get("organization") ?? ""),
       organizationType: String(data.get("organizationType") ?? ""),
+      serviceInterest: String(data.get("serviceInterest") ?? ""),
       buildingType: String(data.get("buildingType") ?? ""),
       area: String(data.get("area") ?? ""),
       location: String(data.get("location") ?? ""),
@@ -83,6 +88,7 @@ export function BimQuoteForm() {
       if (!response.ok) {
         if (result.error === "sum") setSumReset((value) => value + 1);
         setStatus("error");
+        trackConversion("quote_form_submit_error", { forras: source, mode: "b2b" });
         setError(
           result.error === "sum"
             ? "Az eredmény nem helyes. Új kérdést kaptál, írd be az eredményt."
@@ -90,11 +96,13 @@ export function BimQuoteForm() {
         );
         return;
       }
+      trackConversion("quote_form_submit_success", { forras: source, mode: "b2b" });
       setStatus("ok");
       form.reset();
     } catch {
       setSumReset((value) => value + 1);
       setStatus("error");
+      trackConversion("quote_form_submit_error", { forras: source, mode: "b2b" });
       setError("Az űrlapot nem sikerült elküldeni. Írd be újra az eredményt.");
     }
   }
@@ -102,7 +110,10 @@ export function BimQuoteForm() {
   if (status === "ok") {
     return (
       <p className="rounded-md border border-border bg-card p-6 text-sm">
-        Megkaptuk az ajánlatkérést. 1 munkanapon belül jelentkezünk a megadott e-mail-címen.
+        Megkaptuk az ajánlatkérést.
+        {BIM_CONFIG.replySlaText
+          ? ` ${BIM_CONFIG.replySlaText}`
+          : " Jelentkezünk a megadott e-mail-címen; a válaszidejét csak akkor közöljük előre, ha a konfigurációban rögzítettük."}
       </p>
     );
   }
@@ -130,6 +141,24 @@ export function BimQuoteForm() {
         <select name="organizationType" required className="mt-1 w-full rounded-md border border-border px-3 py-2">
           <option value="">Válassz</option>
           {ORG_TYPES.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className="block text-sm">
+        Melyik szolgáltatás iránt érdeklődik?
+        <select
+          name="serviceInterest"
+          required
+          className="mt-1 w-full rounded-md border border-border px-3 py-2"
+          defaultValue=""
+        >
+          <option value="" disabled>
+            Válasszon
+          </option>
+          {BIM_QUOTE_SERVICE_OPTIONS.map((item) => (
             <option key={item} value={item}>
               {item}
             </option>
@@ -255,7 +284,10 @@ export function BimQuoteForm() {
       >
         {status === "sending" ? "Küldés…" : "Ajánlatot kérek"}
       </button>
-      <p className="text-xs text-muted-foreground">A helyszíni időpontot egyeztetjük.</p>
+      <p className="text-xs text-muted-foreground">
+        A helyszíni időpontot egyeztetjük.
+        {BIM_CONFIG.replySlaText ? ` ${BIM_CONFIG.replySlaText}` : ""}
+      </p>
     </form>
   );
 }
