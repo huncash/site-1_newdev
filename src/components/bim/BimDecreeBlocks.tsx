@@ -1,10 +1,10 @@
 import { BimLink } from "@/components/bim/BimChrome";
 
-/** A főoldalról a megfelelési hubra költözött „Miért most?” tartalom — törlés nélkül. */
+/** A főoldalról a megfelelési hubra költözött „Határidők röviden” tartalom — törlés nélkül. */
 export function BimDecreeWhyNow() {
   return (
     <section id="miert-most">
-      <h2 className="text-xl font-semibold text-foreground sm:text-2xl">Miért most?</h2>
+      <h2 className="text-xl font-semibold text-foreground sm:text-2xl">Határidők röviden</h2>
       <ul className="mt-4 list-disc space-y-3 pl-5 text-sm text-muted-foreground sm:text-base">
         <li>
           A BIM létrehozása szükséges új állami építési beruházásnál, valamint meglévő létesítmény
@@ -30,7 +30,7 @@ const FOUR_AREAS = [
   { href: "/meglevo-allami-epuletek", title: "Meglévő állami épületek felmérése" },
   { href: "/kivitelezes", title: "Kivitelezés dokumentálása" },
   { href: "/uzemeltetes", title: "Üzemeltetés, éves digitális iker" },
-  { href: "/tervezoknek", title: "Partnerség tervezőknek" },
+  { href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek", title: "Helyszíni rögzítés tervezőknek" },
 ] as const;
 
 /** A főoldalról a hubra költözött „Négy terület” blokk — törlés nélkül. */

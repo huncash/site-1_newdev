@@ -1,7 +1,8 @@
+import { bimReplySlaSentence } from "@/config/response-time";
+
 /**
  * bim.vrgo.hu nyilvános konfiguráció.
  * Üres string / null → a kapcsolódó UI elem rejtve marad.
- * TODO- értékeket ne jelenítse meg a felület.
  */
 
 export const BIM_CONFIG = {
@@ -9,11 +10,10 @@ export const BIM_CONFIG = {
   phoneDisplay: "+36 30 667 2510",
   phoneTel: "tel:+36306672510",
 
-  /**
-   * Válaszidő szöveg az űrlap után és a CTA-knál. Üres = ne írj határidőt.
-   */
-  replySlaText:
-    "Átlagosan 24 órán belül válaszolunk e-mailben a megkeresésekre.",
+  /** Egyetlen időígéret — lásd response-time.ts */
+  get replySlaText() {
+    return bimReplySlaSentence();
+  },
 
   /**
    * Lakossági „-tól” árak (HUF). Üres = ne mutass árblokkot.

@@ -1,7 +1,6 @@
 import { BimBreadcrumb } from "@/components/bim/BimBreadcrumb";
 import { BimDeliverableBlock } from "@/components/bim/BimDeliverableBlock";
 import { BimLink } from "@/components/bim/BimChrome";
-import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
 import { bimMetadata } from "@/lib/bim-site";
 
@@ -89,9 +88,13 @@ export default function ConstructionPage() {
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
-          <div className="mt-2">
-            <BimScopeNote />
-          </div>
+          <p className="mt-2">
+            A pontossági szintet az EIR vagy a megrendelés határozza meg. Részletek:{" "}
+            <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
+              pontosság és formátumok
+            </BimLink>
+            .
+          </p>
         </section>
 
         <section className="rounded-md border border-border bg-secondary/60 p-5">

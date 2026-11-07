@@ -47,39 +47,6 @@ export function bimArticleJsonLd(article: BimArticle) {
   };
 }
 
-export function BimArticleUpcoming({
-  title,
-  date,
-  time = "00:00",
-}: {
-  title: string;
-  date: string;
-  time?: string;
-}) {
-  return (
-    <article className="bg-background">
-      <section className="bg-section-dark py-14 text-section-dark-foreground">
-        <div className="mx-auto max-w-3xl px-4">
-          <p className="text-xs font-semibold uppercase tracking-widest opacity-80">Cikk</p>
-          <h1 className="mt-3 text-3xl font-bold leading-tight text-section-dark-foreground sm:text-4xl">
-            {title}
-          </h1>
-        </div>
-      </section>
-      <div className="mx-auto max-w-3xl px-4 py-12 text-sm text-muted-foreground sm:text-base">
-        <p>
-          Ez a cikk <time dateTime={time === "00:00" ? date : `${date}T${time}`}>{formatHuDate(date, time)}</time>{"-kor jelenik meg. A szöveg addig nem olvasható."}
-        </p>
-        <p className="mt-6">
-          <BimLink href="/cikkek" className="font-semibold text-brand underline">
-            Vissza a cikkekhez
-          </BimLink>
-        </p>
-      </div>
-    </article>
-  );
-}
-
 export function BimArticleView({
   article,
   prefix,

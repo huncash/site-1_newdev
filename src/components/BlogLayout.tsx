@@ -33,7 +33,7 @@ export function BlogLayout({ post, className }: BlogLayoutProps) {
       <header className="mb-8">
         {isArchivePost(post.date) ? (
           <p className="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-            Archív · 2016–2017
+            Archív (2016–2017)
           </p>
         ) : null}
         <h1 className="mb-3 text-3xl font-extrabold leading-tight tracking-tight">
@@ -44,7 +44,6 @@ export function BlogLayout({ post, className }: BlogLayoutProps) {
         ) : null}
         <div className="flex gap-4 text-xs text-muted-foreground">
           {post.date ? <time dateTime={post.date}>{post.date}</time> : null}
-          {post.author ? <span>{post.author}</span> : null}
         </div>
       </header>
 
@@ -71,7 +70,7 @@ export function BlogLayout({ post, className }: BlogLayoutProps) {
 
       <div className="mt-12 rounded-md border border-border bg-muted/40 p-6 text-center">
         <p className="text-sm font-medium text-foreground">
-          Bejárható 3D túra kell a projektedhez?
+          Bejárható 3D túra kell a projektjéhez?
         </p>
         <a
           href={`/ajanlat?forras=blog-${encodeURIComponent(post.slug)}`}

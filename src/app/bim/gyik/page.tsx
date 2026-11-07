@@ -46,7 +46,7 @@ const faqs = [
   },
   {
     q: "Dolgoztok közbeszerzésben?",
-    a: "A szerepet — alvállalkozó vagy közvetlen megbízott — az adott ajánlat rögzíti. Ezen az oldalon nem állítjuk, hogy önálló ajánlattevőként indulunk közbeszerzésen.",
+    a: "A szerepet — közvetlen megbízott vagy a megrendelő által meghatározott együttműködési forma — az adott ajánlat rögzíti. Ezen az oldalon nem állítjuk, hogy önálló ajánlattevőként indulunk közbeszerzésen.",
   },
   {
     q: "Hogyan kezelitek az adatokat?",

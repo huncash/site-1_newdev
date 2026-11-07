@@ -162,6 +162,8 @@ export function listPublishedBimArticles(now = budapestNow()): BimArticleMeta[] 
   return listBimArticles().filter((article) => isBimArticlePublished(article, now));
 }
 
+export const getPublishedArticles = listPublishedBimArticles;
+
 function holdUnpublishedArticleLinks(html: string, now = budapestNow()): string {
   return html.replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi, (full, attrs: string, inner: string) => {
     const href = /\bhref="([^"]+)"/i.exec(attrs)?.[1] ?? "";

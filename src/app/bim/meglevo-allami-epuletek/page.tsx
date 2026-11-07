@@ -1,7 +1,6 @@
 import { BimBreadcrumb } from "@/components/bim/BimBreadcrumb";
 import { BimDeliverableBlock } from "@/components/bim/BimDeliverableBlock";
 import { BimLink } from "@/components/bim/BimChrome";
-import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { BimUseCaseList } from "@/components/bim/BimUseCaseList";
 import { BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
 import { bimMetadata } from "@/lib/bim-site";
@@ -61,7 +60,7 @@ export default function ExistingBuildingsPage() {
           <ul className="mt-2 list-disc space-y-2 pl-5">
             <li>Pontfelhő export (E57, XYZ) belső és külső terekről, ha a helyszíni rögzítés mindkettőt magában foglalja.</li>
             <li>E57 pontfelhő, OBJ, XYZ, méretezett alaprajz, ha a csomag tartalmazza.</li>
-            <li>IFC és BCF a modellezési partnerünktől, az EIR szerinti részletezettségben.</li>
+            <li>BIM-modell külön tételként, a feladat és az LOD szerint.</li>
           </ul>
         </section>
         <section>
@@ -79,9 +78,13 @@ export default function ExistingBuildingsPage() {
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
-          <div className="mt-2">
-            <BimScopeNote />
-          </div>
+          <p className="mt-2">
+            A pontossági szintet az EIR vagy a megrendelés határozza meg. Részletek:{" "}
+            <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
+              pontosság és formátumok
+            </BimLink>
+            .
+          </p>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Referencia</h2>

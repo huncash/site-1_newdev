@@ -34,12 +34,12 @@ export function BimQuoteForm() {
     setError("");
     if (!sumToken) {
       setStatus("error");
-      setError("Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbáld újra.");
+      setError("Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbálja újra.");
       return;
     }
     if (!/^\d{1,3}$/.test(sumAnswer.trim())) {
       setStatus("error");
-      setError("Írd be az eredményt számmal a kérdés alatti sorba.");
+      setError("Írja be az eredményt számmal a kérdés alatti sorba.");
       return;
     }
     setStatus("sending");
@@ -91,8 +91,8 @@ export function BimQuoteForm() {
         trackConversion("quote_form_submit_error", { forras: source, mode: "b2b" });
         setError(
           result.error === "sum"
-            ? "Az eredmény nem helyes. Új kérdést kaptál, írd be az eredményt."
-            : "Az űrlapot nem sikerült elküldeni. Ellenőrizd a mezőket, majd írd be újra az eredményt."
+            ? "Az eredmény nem helyes. Új kérdést kapott, írja be az eredményt."
+            : "Az űrlapot nem sikerült elküldeni. Ellenőrizze a mezőket, majd írja be újra az eredményt."
         );
         return;
       }
@@ -103,7 +103,7 @@ export function BimQuoteForm() {
       setSumReset((value) => value + 1);
       setStatus("error");
       trackConversion("quote_form_submit_error", { forras: source, mode: "b2b" });
-      setError("Az űrlapot nem sikerült elküldeni. Írd be újra az eredményt.");
+      setError("Az űrlapot nem sikerült elküldeni. Írja be újra az eredményt.");
     }
   }
 
@@ -111,9 +111,7 @@ export function BimQuoteForm() {
     return (
       <p className="rounded-md border border-border bg-card p-6 text-sm">
         Megkaptuk az ajánlatkérést.
-        {BIM_CONFIG.replySlaText
-          ? ` ${BIM_CONFIG.replySlaText}`
-          : " Jelentkezünk a megadott e-mail-címen; a válaszidejét csak akkor közöljük előre, ha a konfigurációban rögzítettük."}
+        {BIM_CONFIG.replySlaText ? ` ${BIM_CONFIG.replySlaText}` : null}
       </p>
     );
   }

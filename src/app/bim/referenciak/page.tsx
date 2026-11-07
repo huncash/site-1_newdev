@@ -1,11 +1,10 @@
 import { BimLink } from "@/components/bim/BimChrome";
-import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { bimMetadata } from "@/lib/bim-site";
 
 const deliverables = [
   ["Pontfelhő", "E57, OBJ és XYZ, a megrendelés szerint."],
   ["2D állomány", "Alaprajz és metszet a feldolgozott pontfelhőből."],
-  ["BIM", "Az IFC-modell a pontfelhőből precíz modellezéssel készül, az EIR szerint."],
+  ["BIM", "BIM-modell külön tételként, a feladat és az LOD szerint."],
   ["Geodézia", "A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja."],
 ] as const;
 
@@ -32,8 +31,24 @@ export default function ReferencesPage() {
       <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 text-sm text-muted-foreground sm:text-base">
         <p>
           A helyszíni adatgyűjtést a feladat pontossági igényéhez választjuk. A feldolgozás
-          georeferált pontfelhőt ad, a modellezési partnerünk ebből szabványos BIM-állományt készít.
+          georeferált pontfelhőt ad. BIM-modell külön tételként, a feladat és az LOD szerint.
         </p>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">
+            Kiemelt referencia: Pannon Egyetem – Zalaegerszegi Kampusz (bejárható 3D rögzítés)
+          </h2>
+          <p className="mt-2">
+            <a
+              href="https://my.matterport.com/show/?m=pruUjt76nQU&ts=1"
+              className="font-semibold text-brand underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Bejárható 3D túra megnyitása
+            </a>
+          </p>
+        </section>
 
         <section>
           <h2 className="text-xl font-semibold text-foreground">Mit adunk át</h2>
@@ -61,11 +76,17 @@ export default function ReferencesPage() {
           <h2 className="text-xl font-semibold text-foreground">Kapcsolat a 31/2024. ÉKM rendelettel</h2>
           <p className="mt-2">
             A felvétel a 010 – Meglévő állapot és környezet rögzítése felhasználási esethez ad
-            mérnöki alapadatot. Az IFC-modell a pontfelhőből precíz modellezéssel készül.
+            mérnöki alapadatot. BIM-modell külön tételként, a feladat és az LOD szerint.
           </p>
         </section>
 
-        <BimScopeNote />
+        <p>
+          A pontossági szintről és az átadott formátumokról:{" "}
+          <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
+            pontosság és formátumok
+          </BimLink>
+          .
+        </p>
 
         <BimLink
           href="/ajanlatkeres"

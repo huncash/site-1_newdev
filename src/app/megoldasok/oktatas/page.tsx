@@ -3,7 +3,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: 'Egyetem és kampusz digitális ikre — VRGO Matterport megoldás',
-  description: 'Teljes kampusz egyetlen virtuális túrában az összefűzés kiegészítő szolgáltatással. Pannon Egyetem Zalaegerszeg: a szkennelt részek egy modellben, 4 munkanap.',
+  description:
+    "Teljes kampusz egyetlen virtuális túrában. Pannon Egyetem – Zalaegerszegi Kampusz: kiemelt referencia.",
 };
 
 const usecases = [
@@ -34,8 +35,10 @@ const usecases = [
 ];
 
 const proof = [
-  { metric: "4 nap", label: "Pannon Egyetem, Zalaegerszeg: a szkennelt részek helyszíni munkája, 2024 ősz" },
-  { metric: "8 → 1", label: "Nyolc különálló szken egy hivatkozásra fűzve. Független mérés nem készült." },
+  {
+    metric: "Pannon",
+    label: "Pannon Egyetem – Zalaegerszegi Kampusz: bejárható 3D rögzítés",
+  },
 ];
 
 export default function OktatasPage() {
@@ -119,15 +122,12 @@ export default function OktatasPage() {
 
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Saját projekt: szkennelt részek, egy hivatkozás</h2>
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            Kiemelt referencia: Pannon Egyetem – Zalaegerszegi Kampusz
+          </h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            A Pannon Egyetem Zalaegerszegi Kampuszán 2024 őszén, 4 munkanap alatt 8 külön modell
-            készült. Ezeket egyetlen összefüggő túrává fűztük össze. A több mint 7 hektár a kampusz
-            területe, nem a modell alapterülete.
-          </p>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            A túra egy linken érhető el felvételi bemutatóra és üzemeltetési mellékletnek, amíg
-            a tárhely előfizetése él.
+            Megrendelő: Pannon Egyetem. Felvétel típusa: bejárható 3D rögzítés. A túra egy linken
+            érhető el, amíg a tárhely előfizetése él.
           </p>
         </div>
       </section>
@@ -136,7 +136,7 @@ export default function OktatasPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Kérje árajánlatát</h2>
           <p className="mt-3 opacity-90">
-            Töltse ki a strukturált ajánlatkérő űrlapot. 1 munkanapon belül visszajelzünk.
+            Töltse ki a strukturált ajánlatkérő űrlapot.
           </p>
           <Link
             href="/csomagok/megrendeles"

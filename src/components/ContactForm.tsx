@@ -79,11 +79,11 @@ export function ContactForm({
     e.preventDefault();
     setError(null);
     if (!sumToken) {
-      setError("Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbáld újra.");
+      setError("Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbálja újra.");
       return;
     }
     if (!/^\d{1,3}$/.test(sumAnswer.trim())) {
-      setError("Írd be az eredményt számmal a kérdés alatti sorba.");
+      setError("Írja be az eredményt számmal a kérdés alatti sorba.");
       return;
     }
     setPending(true);
@@ -112,8 +112,8 @@ export function ContactForm({
           data.error === "Invalid email"
             ? "Érvénytelen e-mail cím."
             : data.error === "sum"
-              ? "Az eredmény nem helyes. Új kérdést kaptál, írd be az eredményt."
-              : "Küldés sikertelen. Írd be újra az eredményt, majd próbáld meg még egyszer."
+              ? "Az eredmény nem helyes. Új kérdést kaptál, Írja be az eredményt."
+              : "Küldés sikertelen. Írja be újra az eredményt, majd próbálja meg még egyszer."
         );
         return;
       }
@@ -126,7 +126,7 @@ export function ContactForm({
     } catch {
       trackConversion("quote_form_submit_error", { reason: "network" });
       setSumReset((value) => value + 1);
-      setError("Hálózati hiba. Írd be újra az eredményt, majd próbáld meg még egyszer.");
+      setError("Hálózati hiba. Írja be újra az eredményt, majd próbálja meg még egyszer.");
     } finally {
       setPending(false);
     }
@@ -143,7 +143,7 @@ export function ContactForm({
       >
         <p className="text-base font-semibold text-foreground">Köszönjük az ajánlatkérést.</p>
         <p className="mt-2 text-muted-foreground">
-          Hamarosan felvesszük veled a kapcsolatot — 1 munkanapon belül.
+          Felvesszük Önnel a kapcsolatot.
         </p>
       </div>
     );

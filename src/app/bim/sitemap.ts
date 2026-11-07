@@ -17,7 +17,6 @@ const STATIC_PATHS = [
   "/arak-es-folyamat",
   "/pontossag-es-formatumok",
   "/lakossagnak",
-  "/tervezoknek",
   "/ipari-letesitmenyek",
   "/kivitelezes",
   "/uzemeltetes",

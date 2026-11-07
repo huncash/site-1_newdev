@@ -76,15 +76,16 @@ export function BlogIndex({
             <li key={href} className="py-8">
               <article>
                 <div className="mb-2 flex flex-wrap items-center gap-2">
-                  {isArchivePost(post.date) ? (
-                    <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                      Archív
-                    </span>
-                  ) : null}
                   {post.category ? (
                     <p className="text-xs font-semibold uppercase tracking-widest text-brand">
-                      {post.category}
+                      {post.category === "News" || post.category.startsWith("Archív")
+                        ? "Archív (2016–2017)"
+                        : post.category}
                     </p>
+                  ) : isArchivePost(post.date) ? (
+                    <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                      Archív (2016–2017)
+                    </span>
                   ) : null}
                   {post.aiDisclosure === "generated" ||
                   post.aiDisclosure === "modified" ? (

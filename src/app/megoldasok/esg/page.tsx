@@ -121,7 +121,7 @@ export default function EsgPage() {
           <h2 className="text-2xl font-semibold sm:text-3xl">ESG-felmérés űrlap</h2>
           <p className="mt-3 opacity-90">
             Épület(ek) száma, terület, jelenlegi tanúsítvány (BREEAM / LEED / DGNB),
-            jelentési kötelezettség típusa. 1 munkanapon belül visszajelzés.
+            jelentési kötelezettség típusa.
           </p>
           <Link
             href="/csomagok/megrendeles"

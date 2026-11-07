@@ -94,7 +94,7 @@ export default function FaqPage() {
       <section className="bg-section-dark py-14 text-section-dark-foreground sm:py-20">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <span className="inline-block rounded-full border border-brand/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
-            GYIK · 2016 óta
+            GYIK
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">
             Gyakori kérdések
@@ -165,7 +165,7 @@ export default function FaqPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Nem találtad a választ?</h2>
           <p className="mt-3 opacity-90">
-            Töltsd ki az ajánlatkérő űrlapot.
+            Töltse ki az ajánlatkérő űrlapot.
             {VRGO_CONFIG.replySlaText ? ` ${VRGO_CONFIG.replySlaText}` : ""}
           </p>
           <Link

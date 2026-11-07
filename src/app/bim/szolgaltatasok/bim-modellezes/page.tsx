@@ -1,11 +1,10 @@
-import { BimLink } from "@/components/bim/BimChrome";
 import { BimServiceLayout, ServiceSection } from "@/components/bim/BimServiceLayout";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/szolgaltatasok/bim-modellezes",
   "BIM-modellezés és 2D tervek | VRGO BIM",
-  "BIM-modell és 2D tervek a pontfelhőből — kiegészítő tétel, a feladat és az LOD szerint. Órabér nincs közzétéve."
+  "BIM-modell és 2D tervek a pontfelhőből, külön tételként, a feladat és az LOD szerint."
 );
 
 export default function ModelingServicePage() {
@@ -17,7 +16,7 @@ export default function ModelingServicePage() {
         { label: "BIM-modellezés" },
       ]}
       title="BIM-modellezés és 2D tervek"
-      lead="A modellezés kiegészítő, külön tételként kérhető szolgáltatás — nem a főcím. A részletezettség a feladat és az LOD szerint."
+      lead="A modellezés külön tételként kérhető szolgáltatás. A részletezettség a feladat és az LOD szerint."
       ctaHref="/ajanlatkeres?forras=bim-modellezes"
     >
       <ServiceSection title="Kinek">
@@ -38,9 +37,7 @@ export default function ModelingServicePage() {
           <li>2D: DWG / PDF alaprajz, metszet, homlokzat — a megrendelés szerint</li>
           <li>3D: RVT / PLN / IFC — LOD és EIR szerint, külön tétel</li>
         </ul>
-        <p className="mt-2">
-          Nyilvános órabéret és szoftvercsomag-listát nem közlünk; az árat az ajánlat tartalmazza.
-        </p>
+        <p className="mt-2">Az árat az ajánlat tartalmazza.</p>
       </ServiceSection>
       <ServiceSection title="Hogyan zajlik">
         <p>
@@ -63,11 +60,8 @@ export default function ModelingServicePage() {
           <div>
             <dt className="font-semibold text-foreground">Mi a kapcsolat a felméréssel?</dt>
             <dd>
-              A húzóágazat a georeferált rögzítés — lásd{" "}
-              <BimLink href="/szolgaltatasok" className="font-semibold text-brand">
-                szolgáltatások
-              </BimLink>
-              .
+              A modellezés a georeferált helyszíni rögzítésre épül. Ha a felmérés nálunk készül,
+              egy ajánlatban kérheti a kettőt.
             </dd>
           </div>
         </dl>

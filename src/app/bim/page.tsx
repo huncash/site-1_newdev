@@ -4,19 +4,19 @@ import { BIM_CONFIG } from "@/config/bim";
 import { BIM_STATE_HUB_HREF } from "@/config/menu";
 import { BIM_AUDIENCES, BIM_SERVICES, BIM_SOLUTIONS } from "@/lib/bim-catalog";
 import { normalizeBimArticleCategory } from "@/lib/bim-article-categories";
-import { listPublishedBimArticles } from "@/lib/bim-articles";
+import { getPublishedArticles } from "@/lib/bim-articles";
 import { BIM_ORIGIN, bimMetadata } from "@/lib/bim-site";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = bimMetadata(
   "/",
-  "3D lézerszkennelés és EOV georeferálás | VRGO BIM",
-  "Georeferált lézerszkennelés Trimble és Leica szkennerekkel, DJI drónnal és terepi műszerekkel. Alaprajz, pontfelhő, BIM-modell. Kérjen ajánlatot."
+  "Georeferált 3D lézerszkennelés és EOV-bekötés | VRGO BIM",
+  "Georeferált lézerszkennelés, épületfelmérés és drónos fotogrammetria földmérői hitelesítéssel. Alaprajz, pontfelhő, BIM-modell. Kérjen ajánlatot."
 );
 
-const workflow = [
-  ["Igényfelmérés", "Cél: pontfelhő, CAD, dokumentáció vagy BIM-modell — a workflow-t az Ön kéréséhez igazítjuk."],
+const processSteps = [
+  ["Igényfelmérés", "Cél: pontfelhő, CAD, dokumentáció vagy BIM-modell — a munkamenetet az Ön kéréséhez igazítjuk."],
   [
     "Helyszíni adatgyűjtés",
     "Trimble és Leica 3D lézerszkennerek, DJI drón, Trimble GNSS és terepi mérőműszerek (EOV-bekötés).",
@@ -47,21 +47,35 @@ const homeFaqs = [
   },
 ] as const;
 
-function pickLatestDiverse(articles: ReturnType<typeof listPublishedBimArticles>) {
+const DECREE_CATEGORY = "Rendelet és megfelelés";
+
+/** Legfeljebb 3 legfrissebb cikk, kategóriánként változatosan; rendelet-cikkből legfeljebb 1, ha van más kategória. */
+function pickLatestDiverse(articles: ReturnType<typeof getPublishedArticles>) {
   const sorted = [...articles].reverse();
+  const isDecree = (article: (typeof sorted)[number]) =>
+    normalizeBimArticleCategory(article.category) === DECREE_CATEGORY;
+  const hasOtherCategories = sorted.some((article) => !isDecree(article));
   const picked: typeof sorted = [];
   const usedCats = new Set<string>();
+  let decreeCount = 0;
+
+  const tryPick = (article: (typeof sorted)[number]) => {
+    if (hasOtherCategories && isDecree(article) && decreeCount >= 1) return;
+    picked.push(article);
+    if (isDecree(article)) decreeCount += 1;
+  };
+
   for (const article of sorted) {
     if (picked.length >= 3) break;
     const cat = normalizeBimArticleCategory(article.category);
     if (!usedCats.has(cat)) {
-      picked.push(article);
       usedCats.add(cat);
+      tryPick(article);
     }
   }
   for (const article of sorted) {
     if (picked.length >= 3) break;
-    if (!picked.some((item) => item.slug === article.slug)) picked.push(article);
+    if (!picked.some((item) => item.slug === article.slug)) tryPick(article);
   }
   return picked;
 }
@@ -84,7 +98,7 @@ function orgSchema() {
 }
 
 export default function BimHomePage() {
-  const latest = pickLatestDiverse(listPublishedBimArticles());
+  const latest = pickLatestDiverse(getPublishedArticles());
 
   return (
     <>
@@ -101,7 +115,7 @@ export default function BimHomePage() {
           <p className="mt-4 text-base opacity-90 sm:text-lg">
             Épületek, telkek és ipari létesítmények pontos, mérhető digitális mása. DJI drónnal,
             Leica és Trimble 3D lézerszkennerekkel, valamint terepi mérőműszerekkel (EOV-bekötés)
-            optimalizáljuk a workflow-t az ügyfél kérésének megfelelően. Alaprajz, pontfelhő és –
+            a feladathoz illő módszert választjuk. Alaprajz, pontfelhő és –
             igény szerint – BIM-modell, egyetlen ajánlatban.
           </p>
           <p className="mt-3 text-sm opacity-80">
@@ -212,7 +226,7 @@ export default function BimHomePage() {
           <h2 className="text-2xl font-semibold">Technológia</h2>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             DJI drón, Leica és Trimble 3D lézerszkennerek, valamint terepi mérőműszerek
-            (EOV-bekötés) segítségével állítjuk össze a feladatnak megfelelő workflow-t.
+            (EOV-bekötés) segítségével a feladatnak megfelelő módszert választjuk.
           </p>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground sm:text-base">
             <li>
@@ -239,7 +253,7 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Munkafolyamat</h2>
           <ol className="mt-6 space-y-4 text-sm text-muted-foreground sm:text-base">
-            {workflow.map(([title, text], index) => (
+            {processSteps.map(([title, text], index) => (
               <li key={title}>
                 <strong className="text-foreground">
                   {index + 1}. {title}.
@@ -282,11 +296,11 @@ export default function BimHomePage() {
         </div>
       </section>
 
+      {latest.length > 0 ? (
       <section className="bg-background py-12">
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-2xl font-semibold">Cikkek</h2>
-          {latest.length > 0 ? (
-            <ul className="mt-4 space-y-3 text-sm sm:text-base">
+          <ul className="mt-4 space-y-3 text-sm sm:text-base">
               {latest.map((article) => (
                 <li key={article.slug}>
                   <BimLink href={`/cikkek/${article.slug}`} className="font-semibold text-brand">
@@ -297,15 +311,13 @@ export default function BimHomePage() {
                   </span>
                 </li>
               ))}
-            </ul>
-          ) : (
-            <p className="mt-4 text-sm text-muted-foreground">Hamarosan új cikkek jelennek meg.</p>
-          )}
+          </ul>
           <BimLink href="/cikkek" className="mt-4 inline-block text-sm font-semibold text-brand">
             Összes cikk →
           </BimLink>
         </div>
       </section>
+      ) : null}
 
       <section className="bg-secondary py-10">
         <div className="mx-auto max-w-3xl px-4">

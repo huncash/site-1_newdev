@@ -40,7 +40,7 @@ export const BIM_SERVICES: readonly CatalogItem[] = [
   {
     href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
     title: "Tervezőknek és kivitelezőknek",
-    summary: "Georeferált pontfelhő és DWG; modellezés opcionális vagy Önöknél.",
+    summary: "Georeferált pontfelhő és DWG a tervezéshez.",
   },
   {
     href: "/szolgaltatasok/ipari-letesitmenyek",
@@ -107,7 +107,7 @@ export const BIM_AUDIENCES = [
   {
     href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
     title: "Tervezőknek és kivitelezőknek",
-    text: "Georeferált pontfelhő, DWG. Csak a terepi munkát is megrendelheti; a modellezés külön tétel vagy Önöknél.",
+    text: "Georeferált pontfelhő, DWG. Csak a terepi munkát is megrendelheti; a modellezést Ön vagy a csapata végzi.",
     cta: "Tervezőknek",
   },
   {

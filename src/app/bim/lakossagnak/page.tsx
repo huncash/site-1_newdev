@@ -99,7 +99,7 @@ export default function ResidentialLegacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Érdeklődés — 4 mező</h2>
+          <h2 className="text-xl font-semibold text-foreground">Kérjen ajánlatot</h2>
           <p className="mt-2 mb-4">
             Mondja el, melyik ingatlanról van szó, és megmondjuk, mit érdemes felmérni, mennyiért.
           </p>

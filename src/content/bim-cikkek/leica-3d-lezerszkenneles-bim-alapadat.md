@@ -39,7 +39,7 @@ A helyszíni felmérés professzionális Leica 3D lézerszkenner eszközökkel k
 | Kivitelezési előrehaladás követése (150) | VRGO | ismételt felvételekkel |
 | Üzemeltetési digitális iker, hibajegyek (200) | VRGO | kézi jelölés, hozzáférési szintek |
 | Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | Dedikált földmérő partner | szabványos georeferálás és hivatalos ellenőrző mérés; a megrendelő saját földmérőjével is együttműködünk |
-| IFC-modell | Modellezési partnerünk | a pontfelhőből precíz modellezéssel, az EIR szerint |
+| BIM-modell | VRGO BIM, külön tételként | a feladat és az LOD szerint |
 
 ## Hogyan lesz belőle az EIR által kért adatállomány?
 

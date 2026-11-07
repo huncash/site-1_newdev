@@ -12,10 +12,17 @@ const GOALS = ["Felújítás", "Tetőtér-beépítés", "Eladás / bérbeadás",
 
 type BimResidentialFormProps = {
   sourceDefault?: string;
+  /** Rejtett, előre kitöltött szolgáltatás-érdeklődés (pl. a lakás- és házfelmérés oldalon). */
+  hideServiceInterest?: boolean;
 };
 
-/** 4 mezős lakossági űrlap — település, cél, méret, telefon/e-mail. */
-export function BimResidentialForm({ sourceDefault = "lakossagnak" }: BimResidentialFormProps) {
+const PREFILLED_SERVICE_INTEREST = "Lakás- és házfelmérés";
+
+/** Lakossági űrlap — település, cél, méret, telefon/e-mail. */
+export function BimResidentialForm({
+  sourceDefault = "lakossagnak",
+  hideServiceInterest = false,
+}: BimResidentialFormProps) {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
   const [error, setError] = useState("");
   const [sumAnswer, setSumAnswer] = useState("");
@@ -133,27 +140,31 @@ export function BimResidentialForm({ sourceDefault = "lakossagnak" }: BimResiden
           ))}
         </select>
       </div>
-      <div>
-        <label className="text-sm font-semibold text-foreground" htmlFor="res-service">
-          Melyik szolgáltatás iránt érdeklődik?
-        </label>
-        <select
-          id="res-service"
-          name="serviceInterest"
-          required
-          className="mt-1 w-full rounded-md border border-border px-3 py-2"
-          defaultValue=""
-        >
-          <option value="" disabled>
-            Válasszon
-          </option>
-          {BIM_RESIDENTIAL_SERVICE_OPTIONS.map((item) => (
-            <option key={item} value={item}>
-              {item}
+      {hideServiceInterest ? (
+        <input type="hidden" name="serviceInterest" value={PREFILLED_SERVICE_INTEREST} />
+      ) : (
+        <div>
+          <label className="text-sm font-semibold text-foreground" htmlFor="res-service">
+            Melyik szolgáltatás iránt érdeklődik?
+          </label>
+          <select
+            id="res-service"
+            name="serviceInterest"
+            required
+            className="mt-1 w-full rounded-md border border-border px-3 py-2"
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Válasszon
             </option>
-          ))}
-        </select>
-      </div>
+            {BIM_RESIDENTIAL_SERVICE_OPTIONS.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
       <div>
         <label className="text-sm font-semibold text-foreground" htmlFor="res-area">
           Kb. mekkora (m²)

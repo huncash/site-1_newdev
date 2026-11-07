@@ -91,7 +91,7 @@ export function AszfTemplate({ companyInfo, siteSpecificInfo }: AszfTemplateProp
       <section className="mb-8">
         <h2 className="mb-3 text-lg font-semibold">4. Árak</h2>
         <p className="text-muted-foreground">
-          Nyilvános árlistát a weboldalon nem közlünk. A szolgáltatás ellenértéke egyedi ajánlat
+          A weboldalon nincs nyilvános árlista. A szolgáltatás ellenértéke egyedi ajánlat
           alapján, forintban (HUF) kerül meghatározásra. A pontos díjazást az ajánlat és a
           megrendelés visszaigazolása tartalmazza.
         </p>

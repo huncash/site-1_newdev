@@ -48,7 +48,7 @@ export const CONTENT = {
   hero: {
     title: "Bejárható 3D túra, amit a Google Térképen is megtalálnak",
     subtitle:
-      "Gyors helyszíni felvétel, megosztható és beágyazható 3D túra, méretezett alaprajz, és megjelenés a Google Térképen és Utcaképen, belső gömbpanorámákkal. 2016 óta csináljuk, Magyarországon az elsők között.",
+      "Gyors helyszíni felvétel, megosztható és beágyazható 3D túra, méretezett alaprajz – kedvező áron.",
     ctaPrimary: { label: "Ajánlatot kérek", href: "/ajanlat?forras=hero" },
     ctaSecondary: { label: "Csomagok megnézése", href: "/csomagok" },
   },
@@ -58,40 +58,37 @@ export const CONTENT = {
     items: [
       {
         title: "Valódi 3D séta",
-        description: "Tükrözd a valóságot egy 3D sétával, akár külső és belső helyszínekről is.",
+        description: "Járja be a helyszínt 3D-ben, belső és külső terekben is.",
         image: "/icons/3d-valoban.png",
         icon: "3D",
       },
       {
-        title: "Google-ból is bejárható",
-        description:
-          "A felvételből a Google Térképen és az Utcaképen is bejárható túra készül, belső gömbpanorámákkal.",
+        title: "Google Térkép és Utcakép",
+        description: "Az utcáról indulva a belső terekig bejárható.",
         image: "/icons/gsv.png",
         icon: "GSV",
       },
       {
         title: "Méretezett alaprajz",
-        description: "A 3D modellből méretezett alaprajz is kérhető, ha a csomag tartalmazza.",
+        description: "A modellből méretezett alaprajz is kérhető, ha a csomag tartalmazza.",
         image: "/icons/alaprajz.png",
         icon: "2D",
       },
       {
-        title: "Beágyazható a honlapra",
-        description: "Online elérhető, könnyedén megosztható, vagy beágyazható a honlapodra.",
+        title: "Megosztható és beágyazható",
+        description: "Egy linkkel elküldhető, a honlapjába beágyazható.",
         image: "/icons/embed.svg",
         icon: "EMBED",
       },
       {
-        title: "Bármilyen eszközön, VR-ban is",
-        description:
-          "Asztalon, mobilon és virtuális valóságban is megnyitható — a környezetet a megrendelés szerint rekonstruáljuk.",
+        title: "Minden eszközön",
+        description: "Asztalon, mobilon és VR-ban is megnyitható.",
         image: "/icons/vr-mode.svg",
         icon: "VR",
       },
       {
-        title: "Gyors felvétel, kedvező ár",
-        description:
-          "Helyszíni felvétel Matterport-alapú eszközzel — ebben a kategóriában kedvező ár/érték arány.",
+        title: "Gyors felvétel",
+        description: "Egy helyszín felvétele rövid helyszíni munka.",
         image: "/icons/360.svg",
         icon: "360",
       },
@@ -103,32 +100,32 @@ export const CONTENT = {
     items: [
       {
         title: "Ingatlan eladás és bérbeadás",
-        description: "A potenciális vevő vagy bérlő a találkozó előtt bejárhatja a teret.",
-        href: "/csomagok",
+        description: "Az érdeklődő már a találkozó előtt végigjárhatja a teret.",
+        href: "/csomagok#classic",
       },
       {
         title: "Üzlet, szalon, galéria, kiállítótér",
-        description: "Online bemutató, amit a Google-ből is megtalálnak.",
-        href: "/csomagok",
+        description: "Online bemutatkozás a valódi térről, nem csak fotókról.",
+        href: "/csomagok#classic",
       },
       {
         title: "Szálloda, apartman, panzió",
-        description: "Valódi bejárás a foglalás előtt — fotók helyett.",
-        href: "/csomagok",
+        description: "A vendég foglalás előtt látja, mit kap.",
+        href: "/csomagok#classic",
       },
       {
         title: "Iroda, coworking, retail",
-        description: "Megosztható túra a helyszíni mutatás előtt.",
-        href: "/csomagok",
+        description: "Egy megosztható link a helyszíni mutatás előtt vagy helyett.",
+        href: "/csomagok#classic",
       },
       {
         title: "Oktatás és kampusz",
-        description: "Több épület egy összefüggő, bejárható túrában.",
+        description: "Több épület és külső terület egyetlen túrában.",
         href: "/megoldasok/oktatas",
       },
       {
         title: "Üzemeltetés és portfólió",
-        description: "Portfólió-szintű digitális iker facility célokra.",
+        description: "Több telephely digitális mása egy helyen, üzemeltetési célra.",
         href: "/megoldasok/facility",
       },
     ] satisfies ContentSegment[],
@@ -136,7 +133,7 @@ export const CONTENT = {
 
   experience: {
     heading: "Tapasztalat",
-    text: "2016-ban, két másik magyar céggel egyidejűleg elsőként hoztuk be Magyarországra a Matterport technológiát. Azóta a gyors, kedvező árú, nem ipari projektekre specializálódtunk: üzletekre, galériákra, szállásokra, irodákra, ingatlanokra. Ebben a kategóriában ma is ez a legjobb ár/érték arányú megoldás.",
+    text: "2016-ban, két másik magyar céggel egyidejűleg elsőként hoztuk be Magyarországra a Matterport technológiát. Azóta a gyors, kedvező árú, nem ipari felhasználásra szakosodtunk: üzletekre, galériákra, szállásokra, irodákra, ingatlanokra.",
   },
 
   testimonials: {
@@ -181,9 +178,7 @@ export const CONTENT = {
 
   packages: {
     heading: "Három csomag — három üzleti probléma, megoldva",
-    disclaimer: VRGO_CONFIG.replySlaText
-      ? `${VRGO_CONFIG.replySlaText} A digitális iker átadási határidejét az ajánlat tartalmazza; ha külön határidő nincs benne, az ÁSZF szerinti határidő érvényes.`
-      : "A digitális iker átadási határidejét az ajánlat tartalmazza; ha külön határidő nincs benne, az ÁSZF szerinti határidő érvényes.",
+    disclaimer: `${VRGO_CONFIG.replySlaText} A digitális iker átadási határidejét az ajánlat tartalmazza; ha külön határidő nincs benne, az ÁSZF szerinti határidő érvényes.`,
     items: [
       {
         tier: "CLASSIC",
@@ -213,23 +208,4 @@ export const CONTENT = {
       },
     ] satisfies ContentPackage[],
   },
-
-  homeFaqs: [
-    {
-      q: "Hogyan tudok időpontot kérni — kell telefonálni?",
-      a: "Nem. Az ajánlatkérő űrlap kitöltése után e-mailben küldünk árajánlatot. A helyszíni felvétel időpontját egyeztetjük.",
-    },
-    {
-      q: "Hogyan jelenik meg a túra a Google-ben?",
-      a: "A felvételből a Google Térképen és az Utcaképen is bejárható túra készül. Az érdeklődő az utcáról indul, és a belső terekben tovább sétál gömbpanorámákon.",
-    },
-    {
-      q: "Matterport 3D túra vagy lézerszkennelés: mikor melyik?",
-      a: "Online bemutatásra, marketingre, gyors dokumentálásra a bejárható 3D túra. Mérnöki pontossághoz, nagy területekhez, tervezéshez vagy hatósági adatátadáshoz: bim.vrgo.hu.",
-    },
-    {
-      q: "Mennyire pontos a méretezett alaprajz?",
-      a: "A modellből tájékoztató méretek mérhetők. Geodéziai tanúsítványt vagy mérnöki pontosságot a bim.vrgo.hu lézerszkennelése nyújt.",
-    },
-  ],
 } as const;

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const usecases = [
   {
     title: "BIM koordináció és as-built dokumentáció",
-    desc: "E57, OBJ, XYZ pontfelhő export — Revit, ArchiCAD, Navisworks workflow. Tervezett és a megvalósult állapot összehasonlítása.",
+    desc: "E57, OBJ, XYZ pontfelhő export — Revit, ArchiCAD, Navisworks munkamenet. Tervezett és a megvalósult állapot összehasonlítása.",
     href: bimLink("/", "megoldasok-ipar"),
   },
   {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
-import { BimArticleUpcoming, BimArticleView } from "@/components/bim/BimArticle";
+import { BimArticleView } from "@/components/bim/BimArticle";
 import {
   formatHuDate,
   getBimArticle,
@@ -11,7 +11,7 @@ import {
 } from "@/lib/bim-articles";
 import { BIM_ORIGIN } from "@/lib/bim-site";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 900;
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -30,6 +30,8 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const canonical = `${BIM_ORIGIN}/cikkek/${article.slug}`;
   const preview = isDevPreview((await searchParams).elonezet);
   const published = isBimArticlePublished(article);
+
+  if (!published && !preview) return {};
 
   if (!published || preview) {
     return {
@@ -65,9 +67,7 @@ export default async function BimArticlePage({ params, searchParams }: Props) {
   if (!meta) notFound();
 
   const published = isBimArticlePublished(meta);
-  if (!published && !preview) {
-    return <BimArticleUpcoming title={meta.title} date={meta.date} time={meta.time} />;
-  }
+  if (!published && !preview) notFound();
 
   const article = await getBimArticle(slug);
   if (!article) notFound();

@@ -133,7 +133,7 @@ export default function BimAsBuiltPage() {
           <h2 className="text-2xl font-semibold sm:text-3xl">BIM-export rendelés</h2>
           <p className="mt-3 opacity-90">
             Épülettípus, négyzetméter, megrendelő (építész / generálkivitelező / FM), kívánt
-            export-formátumok. 1 munkanapon belül visszaigazolás és határidő.
+            export-formátumok. A helyszíni időpontot egyeztetjük.
           </p>
           <Link
             href="/csomagok/megrendeles"

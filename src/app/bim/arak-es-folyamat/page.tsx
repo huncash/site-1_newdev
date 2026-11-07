@@ -5,7 +5,7 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/arak-es-folyamat",
   "Árak és folyamat — díjszerkezet | VRGO BIM",
-  "Miből áll a felmérési díj: terepi munka, georeferálás, feldolgozás, modellezés. Konkrét számok csak ha a konfigurációban meg vannak adva."
+  "Miből áll a felmérési díj: terepi munka, georeferálás, feldolgozás, modellezés. Az ajánlat a méret és a feladat alapján készül."
 );
 
 const factors = [
@@ -23,7 +23,7 @@ const factors = [
   },
   {
     title: "Modellezés (opcionális)",
-    text: "BIM-modell Revitben vagy ArchiCAD-ben, IFC — külön tétel, a feladat és az LOD szerint. Órabér nincs közzétéve.",
+    text: "BIM-modell Revitben vagy ArchiCAD-ben, IFC — külön tétel, a feladat és az LOD szerint.",
   },
 ] as const;
 
@@ -63,20 +63,20 @@ export default function PricingProcessPage() {
           <h2 className="text-xl font-semibold text-foreground">Folyamat</h2>
           <ol className="mt-3 list-decimal space-y-2 pl-5">
             <li>Rövid igényfelmérés (űrlap, telefon vagy EIR).</li>
-            <li>Módszertan és árajánlat — csak olyan határidőt írunk, ami a konfigurációban / ajánlatban rögzített.</li>
+            <li>Módszertan és árajánlat.</li>
             <li>Helyszíni rögzítés, majd feldolgozás és átadás a megbeszélt formátumban.</li>
           </ol>
         </section>
         <section className="rounded-md border border-border bg-card p-5">
           <h2 className="text-xl font-semibold text-foreground">Következő lépés</h2>
           <p className="mt-2">
-            Magánszemély:{" "}
+            Magánszemélyként:{" "}
             <BimLink href="/szolgaltatasok/lakas-es-hazfelmeres" className="font-semibold text-brand">
               lakás- és házfelmérés
             </BimLink>
             {" · "}
             <BimPhoneLink forras="arak" className="font-semibold text-brand" />
-            . B2B / EIR:{" "}
+            . Cégként vagy EIR alapján:{" "}
             <BimLink href="/ajanlatkeres" className="font-semibold text-brand">
               ajánlatkérés
             </BimLink>

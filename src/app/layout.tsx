@@ -10,7 +10,7 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: "Bejárható 3D fotózás és Google Utcakép | VRGO",
   description:
-    "Bejárható 3D túra, méretezett alaprajz és megjelenés a Google Térképen és Utcaképen. Üzleteknek, szállásoknak, irodáknak, ingatlanoknak. Gyors felvétel, kedvező ár. Kérjen ajánlatot.",
+    "Bejárható 3D túra, méretezett alaprajz és megjelenés a Google Térképen és Utcaképen. Üzleteknek, szállásoknak, irodáknak, ingatlanoknak. Kedvező áron. Kérjen ajánlatot.",
 };
 
 export default async function RootLayout({

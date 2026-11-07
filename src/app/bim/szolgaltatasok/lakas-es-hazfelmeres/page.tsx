@@ -68,8 +68,7 @@ export default function ResidentialServicePage() {
 
       <ServiceSection title="Mennyi időt vesz igénybe">
         <p>
-          A helyszíni munka általában egy bejárás. A feldolgozás határidejét az ajánlat rögzíti —
-          általános napra szóló ígéretet nem teszünk.
+          A helyszíni munka általában egy bejárás. A feldolgozás határidejét az ajánlat rögzíti.
         </p>
       </ServiceSection>
 
@@ -85,8 +84,8 @@ export default function ResidentialServicePage() {
           </p>
         ) : (
           <p>
-            Kérjen ajánlatot a méret, a terek bonyolultsága és a leadott anyag alapján. Nyilvános
-            árlistát nem közlünk; a díjszerkezet magyarázata:{" "}
+            Az ajánlat a méret, a terek bonyolultsága és a leadott anyag alapján készül. A díjszerkezet
+            magyarázata:{" "}
             <BimLink href="/arak-es-folyamat" className="font-semibold text-brand">
               Árak és folyamat
             </BimLink>
@@ -119,8 +118,8 @@ export default function ResidentialServicePage() {
         </dl>
       </ServiceSection>
 
-      <ServiceSection title="Érdeklődés — 4 mező" id="ajanlat">
-        <BimResidentialForm sourceDefault="lakas-es-hazfelmeres" />
+      <ServiceSection title="Kérjen ajánlatot" id="ajanlat">
+        <BimResidentialForm sourceDefault="lakas-es-hazfelmeres" hideServiceInterest />
       </ServiceSection>
     </BimServiceLayout>
   );

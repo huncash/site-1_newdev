@@ -28,6 +28,17 @@ const nextConfig: NextConfig = {
         statusCode: 301,
       },
       {
+        source: "/tervezoknek",
+        has: [{ type: "host", value: "(bim\\.vrgo\\.hu|bim\\.localhost)" }],
+        destination: "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
+        statusCode: 301,
+      },
+      {
+        source: "/bim/tervezoknek",
+        destination: "/bim/szolgaltatasok/tervezoknek-es-kivitelezoknek",
+        statusCode: 301,
+      },
+      {
         source: "/cikkek/matterport-bim-alapadat-pontossag",
         destination: "/cikkek/leica-3d-lezerszkenneles-bim-alapadat",
         permanent: true,

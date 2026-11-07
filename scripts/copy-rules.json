@@ -1,0 +1,123 @@
+{
+  "forbiddenSubstrings": [
+    "nem a főcím",
+    "órabér",
+    "nem közlünk",
+    "húzóágazat",
+    "konfigur",
+    "TODO",
+    "[X]",
+    "lorem",
+    "4 mező",
+    "Frissebb szolgáltatáslap",
+    "ígéretet nem teszünk",
+    "hamarosan",
+    "workflow",
+    "még nincsenek közzétéve",
+    "Hetente kétszer",
+    "YouTube",
+    "alvállalkoz",
+    "white-label",
+    "szakági partner",
+    "Pro3",
+    "akár 48 órás",
+    "Átlagosan 24 órán belül",
+    "2016 óta csináljuk",
+    "← vrgo.hu",
+    "vrgo.hu főoldal",
+    "A vrgo.hu blog"
+  ],
+  "forbiddenRegex": [
+    "(IFC|modellez)[\\s\\S]{0,40}partner",
+    "(7\\+? ?(ha|hektár)|több mint 7|891|8 külön modell|8 szken|4 munkanap)"
+  ],
+  "tegezoWords": [
+    "kérdésed",
+    "honlapodra",
+    "tükrözd",
+    "vállalkozásod",
+    "ingatlanod",
+    "nálad",
+    "veled",
+    "szükséged",
+    "találhatsz",
+    "kérhetsz",
+    "hívj",
+    "írj",
+    "tudnod",
+    "nektek",
+    "töltsd",
+    "próbáld",
+    "írd be"
+  ],
+  "onokFamily": ["Önök", "Önöket", "Önöknek", "Önöknél", "Önökkel", "Önökre"],
+  "whitelistExactSentences": [
+    {
+      "text": "Kérjen ajánlatot",
+      "reason": "CTA gombfelirat"
+    },
+    {
+      "text": "Ajánlatot kérek",
+      "reason": "CTA gombfelirat"
+    },
+    {
+      "text": "Csomagok megnézése",
+      "reason": "CTA gombfelirat"
+    }
+  ],
+  "scopeParagraphMustAppearOnce": "Három dolgot vállalunk: mért, ellenőrzött adatot",
+  "exceptionPaths": [
+    "private_data/posts/",
+    "src/content/bim-cikkek/",
+    "docs/",
+    "scripts/",
+    "node_modules/",
+    ".next/",
+    "src/app/admin/"
+  ],
+  "exceptionQuoteFiles": [
+    "src/data/content.ts"
+  ],
+  "quoteFieldMarkers": ["testimonials", "text:"],
+  "hosts": {
+    "vrgo": {
+      "routes": [
+        "/",
+        "/csomagok",
+        "/csomagok/megrendeles",
+        "/ajanlat",
+        "/gyik",
+        "/blog",
+        "/megoldasok/oktatas",
+        "/megoldasok/facility",
+        "/megoldasok/kampusz",
+        "/megoldasok/ipari-iot",
+        "/partner/login",
+        "/aszf",
+        "/adatvedelem",
+        "/ai-atlathatosag"
+      ]
+    },
+    "bim": {
+      "routes": [
+        "/",
+        "/szolgaltatasok",
+        "/szolgaltatasok/lakas-es-hazfelmeres",
+        "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
+        "/szolgaltatasok/bim-modellezes",
+        "/szolgaltatasok/georeferalas-eov",
+        "/szolgaltatasok/dronos-felmeres",
+        "/szolgaltatasok/ipari-letesitmenyek",
+        "/megoldasok",
+        "/megoldasok/allami-beruhazasok-es-bim-eloirasok",
+        "/arak-es-folyamat",
+        "/gyik",
+        "/cikkek",
+        "/referenciak",
+        "/ajanlatkeres",
+        "/pontossag-es-formatumok",
+        "/mi-az-a-bim"
+      ]
+    }
+  }
+}

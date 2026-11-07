@@ -1,6 +1,6 @@
 import { BimBreadcrumb } from "@/components/bim/BimBreadcrumb";
 import { BimLink } from "@/components/bim/BimChrome";
-import { BimDecreeFourAreas, BimDecreeWhyNow } from "@/components/bim/BimDecreeBlocks";
+import { BimDecreeWhyNow } from "@/components/bim/BimDecreeBlocks";
 import { BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
 import { listPublishedBimArticles } from "@/lib/bim-articles";
 import { bimMetadata } from "@/lib/bim-site";
@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata = bimMetadata(
   BIM_STATE_HUB_HREF,
   `${BIM_STATE_HUB_LABEL} | VRGO BIM`,
-  "Állami beruházásnál vagy üzemeltetésnél a BIM-előírásoknak megfelelő felmérés: kapcsolódó szolgáltatásaink, négy terület, előírás-összefoglaló."
+  "Állami beruházásnál vagy üzemeltetésnél a BIM-előírásoknak megfelelő felmérés: kapcsolódó szolgáltatásaink, határidők, előírás-összefoglaló."
 );
 
 export default function StateProjectsHubPage() {
@@ -47,8 +47,7 @@ export default function StateProjectsHubPage() {
           <h2 className="text-xl font-semibold text-foreground">Kinek releváns?</h2>
           <p className="mt-3">
             Állami beruházások, állami tulajdonú vagy tulajdonba kerülő létesítmények üzemeltetői,
-            vagyonkezelők, és a szabályozás szerinti tervezői / kivitelezői szereplők. Ha magán
-            lakásfelmérést vagy ipari layoutot rendel, ez a megoldás jellemzően nem az Ön belépője.
+            vagyonkezelők, és a szabályozás szerinti tervezői / kivitelezői szereplők.
           </p>
         </section>
 
@@ -92,7 +91,7 @@ export default function StateProjectsHubPage() {
               </BimLink>
             </li>
             <li>
-              Tervezői partnerség, pontfelhő átadás →{" "}
+              Pontfelhő átadás tervezőknek →{" "}
               <BimLink
                 href="/szolgaltatasok/tervezoknek-es-kivitelezoknek"
                 className="font-semibold text-brand"
@@ -110,7 +109,6 @@ export default function StateProjectsHubPage() {
         </section>
 
         <BimDecreeWhyNow />
-        <BimDecreeFourAreas />
 
         <section>
           <h2 className="text-xl font-semibold text-foreground">Az előírások egy oldalon</h2>

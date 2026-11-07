@@ -39,9 +39,9 @@ export default function ServicesPage() {
           />
           <h1 className="text-3xl font-bold sm:text-4xl">Szolgáltatásaink</h1>
           <p className="mt-3 max-w-2xl text-sm opacity-90 sm:text-base">
-            Georeferált 3D téradat-rögzítés DJI drónnal, Leica és Trimble 3D lézerszkennerekkel,
-            valamint terepi mérőműszerekkel (EOV-bekötés) — a workflow-t az ügyfél kéréséhez
-            igazítjuk. A BIM-modell kiegészítő tétel.
+            Lézerszkennelés, mobil szkennelés, drónos fotogrammetria és GNSS-mérés egy
+            koordináta-rendszerben, a feladathoz választott módszerrel. Eszközeink: Trimble X9,
+            Leica BLK2GO, DJI drón, Trimble GNSS. A BIM-modell külön tétel.
           </p>
         </div>
       </section>

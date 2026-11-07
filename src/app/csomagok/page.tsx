@@ -85,7 +85,7 @@ const packages: Package[] = [
       "Mutatólista a megrendelő saját adataiból. Közzétett KPI-eredmény nincs",
       "Kampusz digitalizáció — felvételi, akkreditációs, befektetői és sajtóanyag egyetlen URL-ről",
       "Napelempark és látható gépészet képi rögzítése. Energetikai számítást és környezetvédelmi dokumentációt nem készítünk",
-      "Referencia: Pannon Egyetem, Zalaegerszeg — egyetemi kampusz szkennelt részei egy modellben, 4 munkanap",
+      "Referencia: Pannon Egyetem – Zalaegerszegi Kampusz",
       "Mérnöki pontosságú felméréshez: bim.vrgo.hu",
     ],
     cta: "ENTERPRISE igénylése",
@@ -157,14 +157,14 @@ export default function PackagesPage() {
       <section className="bg-section-dark py-14 text-section-dark-foreground sm:py-20">
         <div className="mx-auto max-w-5xl px-4 text-center">
           <span className="inline-block rounded-full border border-brand/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
-            B2B csomagok · 2016 óta
+            B2B csomagok
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">
             Három csomag — három üzleti probléma, megoldva
           </h1>
           <p className="mx-auto mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
             Bejárható 3D túrát, portfólió-ikret és kampusz-léptékű, összefűzött túrát szállítunk.
-            Válaszd a feladathoz illő csomagot.
+            Válassza a feladathoz illő csomagot.
           </p>
         </div>
       </section>
@@ -175,7 +175,8 @@ export default function PackagesPage() {
           {packages.map((p) => (
             <article
               key={p.tier}
-              className="flex flex-col rounded-lg border border-border bg-card p-6 shadow-sm"
+              id={p.tier.toLowerCase()}
+              className="flex flex-col rounded-lg border border-border bg-card p-6 shadow-sm scroll-mt-20"
             >
               <div className="flex items-center justify-between">
                 <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
@@ -283,7 +284,7 @@ export default function PackagesPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Ajánlatkérés</h2>
           <p className="mt-3 opacity-90">
-            Egyetlen űrlap: csomag, terület, kiegészítők. 1 munkanapon belül visszajelzés és konkrét
+            Egyetlen űrlap: csomag, terület, kiegészítők. Konkrét
             ajánlat — a helyszíni szkennelés időpontját egyeztetjük.
           </p>
           <Link

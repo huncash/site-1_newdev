@@ -127,8 +127,8 @@ export default function QmPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">QM csomag igénylése</h2>
           <p className="mt-3 opacity-90">
-            Projekttípus, négyzetméter, kivitelezési szakasz, kívánt szken-körök száma. 1 munkanapon
-            belül visszajelzés és QM-tervezet.
+            Projekttípus, négyzetméter, kivitelezési szakasz, kívánt szken-körök száma. A helyszíni
+            időpontot egyeztetjük.
           </p>
           <Link
             href="/csomagok/megrendeles"

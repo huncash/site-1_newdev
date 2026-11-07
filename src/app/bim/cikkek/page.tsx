@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 
 import { BimArticleIndex } from "@/components/bim/BimArticleIndex";
 import { BimLink } from "@/components/bim/BimChrome";
-import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import {
   formatHuDate,
   isBimArticlePublished,
   listBimArticles,
 } from "@/lib/bim-articles";
-import { BIM_PUBLISH_RHYTHM_NOTE } from "@/lib/bim-publish-rhythm";
-import { bimMetadata, MAIN_ORIGIN } from "@/lib/bim-site";
+import { bimMetadata } from "@/lib/bim-site";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 900;
 
 export async function generateMetadata(): Promise<Metadata> {
   const articles = listBimArticles();
@@ -46,7 +44,6 @@ export default function ArticlesPage() {
           <p className="mt-4 opacity-90">
             Felmérés, formátumok, gyakorlat — és ha érintett: az állami BIM-szabályozás.
           </p>
-          <p className="mt-3 text-sm opacity-80">{BIM_PUBLISH_RHYTHM_NOTE}</p>
         </div>
       </section>
       <div className="mx-auto max-w-3xl px-4 py-12">
@@ -72,10 +69,7 @@ export default function ArticlesPage() {
           </p>
         ) : null}
 
-        <div className="mt-10 text-sm text-muted-foreground sm:text-base">
-          <BimScopeNote />
-        </div>
-        <p className="mt-6 text-sm text-muted-foreground">
+        <p className="mt-10 text-sm text-muted-foreground">
           Állami beruházások:{" "}
           <BimLink
             href="/megoldasok/allami-beruhazasok-es-bim-eloirasok"
@@ -84,17 +78,6 @@ export default function ArticlesPage() {
             Állami beruházások és BIM-előírások
           </BimLink>
           .
-        </p>
-        <p className="mt-8 text-sm text-muted-foreground">
-          A vrgo.hu blog 2016–2017-es anyagai archívak:{" "}
-          <a
-            href={`${MAIN_ORIGIN}/blog`}
-            className="font-semibold text-brand underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            vrgo.hu/blog
-          </a>
         </p>
       </div>
     </article>

@@ -65,7 +65,7 @@ export function ProductDetail({
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center gap-2">
                 <p className="text-sm font-medium text-muted-foreground">Feltöltés alatt</p>
-                <p className="text-xs text-muted-foreground">A kép hamarosan elérhető lesz</p>
+                <p className="text-xs text-muted-foreground">A kép jelenleg nem érhető el</p>
               </div>
             )}
           </div>

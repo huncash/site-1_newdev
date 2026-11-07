@@ -1,3 +1,5 @@
+import { vrgoReplySlaSentence } from "@/config/response-time";
+
 /**
  * vrgo.hu nyilvános konfiguráció.
  * Üres string / null → a kapcsolódó UI rejtve marad.
@@ -7,21 +9,19 @@ export const VRGO_CONFIG = {
   organizationName: "VRGO",
   organizationUrl: "https://vrgo.hu",
 
-  /**
-   * Ajánlatkérés válaszideje. Üres = ne írj konkrét napot.
-   * TODO-reply-sla: csak ellenőrzött vállalás.
-   */
-  replySlaText: "Árajánlatot az űrlap alapján 1 munkanapon belül küldünk.",
+  /** Egyetlen időígéret-forrás — lásd response-time.ts */
+  get replySlaText() {
+    return vrgoReplySlaSentence();
+  },
 
   /**
    * CLASSIC „-tól” ár (HUF). Üres = ne mutass árat.
-   * TODO-classic-from-price
    */
   classicFromPriceHuf: null as number | null,
 
   /**
-   * Google Térkép / Utcakép megjelenés feltételei (rövid megjegyzés).
-   * TODO-google-streetview-terms: a szolgáltatási feltételek ide kerülnek.
+   * Google Térkép / Utcakép megjelenés feltételei.
+   * Üres = ne jelenjen meg.
    */
   googleStreetViewNote: "",
 } as const;

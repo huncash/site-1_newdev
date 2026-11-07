@@ -154,9 +154,9 @@ export function QuoteOrderForm({
       next.email = "Érvénytelen e-mail cím";
     }
     if (!sumToken) {
-      next.sum = "Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbáld újra.";
+      next.sum = "Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbálja újra.";
     } else if (!/^\d{1,3}$/.test(sumAnswer.trim())) {
-      next.sum = "Írd be az eredményt számmal a kérdés alatti sorba.";
+      next.sum = "Írja be az eredményt számmal a kérdés alatti sorba.";
     }
     if (Object.keys(next).length) {
       setErrors(next);
@@ -211,11 +211,11 @@ export function QuoteOrderForm({
         trackConversion("quote_form_submit_error", { reason: data.error ?? "http" });
         if (data.error === "sum") {
           setSumReset((value) => value + 1);
-          setErrors({ sum: "Az eredmény nem helyes. Új kérdést kaptál, írd be az eredményt." });
+          setErrors({ sum: "Az eredmény nem helyes. Új kérdést kaptál, Írja be az eredményt." });
           document.getElementById("sum-check")?.scrollIntoView({ behavior: "smooth", block: "center" });
           return;
         }
-        setServerError("Sajnos a beküldés most nem sikerült. Kérjük, próbáld újra néhány perc múlva.");
+        setServerError("Sajnos a beküldés most nem sikerült. Kérjük, próbálja újra néhány perc múlva.");
         return;
       }
       trackConversion("quote_form_submit_success", {
@@ -227,7 +227,7 @@ export function QuoteOrderForm({
     } catch {
       trackConversion("quote_form_submit_error", { reason: "network" });
       setSumReset((value) => value + 1);
-      setServerError("Hálózati hiba. Írd be újra az eredményt, majd próbáld meg még egyszer.");
+      setServerError("Hálózati hiba. Írja be újra az eredményt, majd próbálja meg még egyszer.");
     } finally {
       setPending(false);
     }
@@ -239,7 +239,7 @@ export function QuoteOrderForm({
         <div className="rounded-lg border border-brand/40 bg-brand/5 p-8">
           <h2 className="text-2xl font-bold sm:text-3xl">Köszönjük, megkaptuk a kérelmedet!</h2>
           <p className="mt-4 text-foreground/85">
-            {VRGO_CONFIG.replySlaText || "Hamarosan a megadott e-mail címre küldünk ajánlatot."} A
+            {VRGO_CONFIG.replySlaText || "A megadott e-mail címre küldünk ajánlatot."} A
             helyszíni felvétel időpontját egyeztetjük.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -420,7 +420,7 @@ export function QuoteOrderForm({
             className={inputCls}
           />
         </Field>
-        <Field label="Telefon (opcionális — csak ha te kérsz visszahívást)">
+        <Field label="Telefon (opcionális — csak ha visszahívást kér)">
           <input
             type="tel"
             autoComplete="tel"
@@ -479,8 +479,8 @@ export function QuoteOrderForm({
         ) : null}
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
-            A beküldéssel hozzájárulsz ahhoz, hogy az ajánlatadás céljából felvegyük veled a
-            kapcsolatot e-mailben. Adataidat nem osztjuk meg harmadik féllel.
+            A beküldéssel hozzájárul ahhoz, hogy az ajánlatadás céljából felvegyük Önnel a
+            kapcsolatot e-mailben. Adatait nem osztjuk meg harmadik féllel.
           </p>
           <button
             type="submit"

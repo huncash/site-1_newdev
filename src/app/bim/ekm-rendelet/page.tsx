@@ -1,6 +1,5 @@
 import { BimBreadcrumb } from "@/components/bim/BimBreadcrumb";
 import { BimLink } from "@/components/bim/BimChrome";
-import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { BimUseCaseList } from "@/components/bim/BimUseCaseList";
 import { BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
 import { DECREE_CHECKED, NJT_URL, USE_CASES, bimMetadata } from "@/lib/bim-site";
@@ -119,9 +118,13 @@ export default function EkmPage() {
             <li>A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja.</li>
             <li>IFC, BCF és natív formátum: a pontfelhőből precíz modellezéssel, az EIR szerinti részletezettségben.</li>
           </ul>
-          <div className="mt-4">
-            <BimScopeNote />
-          </div>
+          <p className="mt-4">
+            A pontossági szintet az EIR vagy a megrendelés határozza meg. Részletek:{" "}
+            <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
+              pontosság és formátumok
+            </BimLink>
+            .
+          </p>
           <BimLink
             href="/ajanlatkeres"
             className="mt-6 inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"

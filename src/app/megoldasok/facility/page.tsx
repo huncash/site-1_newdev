@@ -28,7 +28,7 @@ const usecases = [
   },
   {
     title: "Biztosítási kárrendezés 3D-ben",
-    desc: "Időbélyegzett állapotrögzítés káresemény előtt. A kárrendezés idejét a biztosító eljárása határozza meg; összesített átfutást nem közlünk.",
+    desc: "Időbélyegzett állapotrögzítés káresemény előtt. A kárrendezés idejét a biztosító eljárása határozza meg; összesített átfutást nem állítunk.",
   },
   {
     title: "Vizuális melléklet jelentéshez",
@@ -172,7 +172,7 @@ export default function FacilityPage() {
         <div className="mx-auto max-w-6xl px-4">
           <PropertyKpiLeaderboard
             title="Property Intelligence — milyen mutatók férnek egy nézetbe"
-            subtitle="A számokat a megrendelő saját nyilvántartása adja. Összesített ügyféleredményt nem közlünk."
+            subtitle="A számokat a megrendelő saját nyilvántartása adja. Összesített ügyféleredmény nincs a nyilvános anyagainkban."
           />
           <div className="mt-6 text-center">
             <Link
@@ -189,7 +189,7 @@ export default function FacilityPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Strukturált igénylés</h2>
           <p className="mt-3 opacity-90">
-            Egyetlen űrlap: csomag, terület, BIM/IoT igények. 1 munkanapon belül visszajelzés — a
+            Egyetlen űrlap: csomag, terület és igények. A helyszíni időpontot
             helyszíni időpontot egyeztetjük.
           </p>
           <Link

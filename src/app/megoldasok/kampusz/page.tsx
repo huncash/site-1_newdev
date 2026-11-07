@@ -139,17 +139,19 @@ export default function KampuszPage() {
 
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Saját projekt: Pannon Egyetem Zalaegerszeg</h2>
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            Kiemelt referencia: Pannon Egyetem – Zalaegerszegi Kampusz
+          </h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            2024 ősz, 4 munkanap, 8 külön modell, egy összefüggő túra. A kampusz területe több mint
-            7 hektár; a modell a szkennelt részeket fedi le. A túra egy URL-ről bejárható.
+            Megrendelő: Pannon Egyetem. Felvétel típusa: bejárható 3D rögzítés, több épület és
+            külső terület egy túrában.
           </p>
-          <Link
-            href="/#esettanulmany"
+          <a
+            href="https://my.matterport.com/show/?m=pruUjt76nQU&ts=1"
             className="mt-6 inline-flex items-center justify-center rounded-md border-2 border-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand hover:bg-brand hover:text-brand-foreground"
           >
-            Pannon esettanulmány
-          </Link>
+            Túra megnyitása
+          </a>
         </div>
       </section>
 
@@ -157,8 +159,7 @@ export default function KampuszPage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Strukturált kampusz-igénylés</h2>
           <p className="mt-3 opacity-90">
-            Egyetlen űrlap: épületszám, terület, BIM-export és infópont igények. 1 munkanapon belül
-            visszaigazolás és konkrét projekttervezet — a helyszíni időpontot egyeztetjük.
+            Egyetlen űrlap: épületszám, terület és igények. A helyszíni időpontot egyeztetjük.
           </p>
           <Link
             href="/csomagok/megrendeles"

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const usecases = [
   {
     title: "Portfólió-szintű KPI-vezérlés",
-    desc: "Több épület, több bérlő, több alvállalkozó — egyetlen nézet, amelyből az ingatlanportfólió-vezető napi szinten dolgozik.",
+    desc: "Több épület, több bérlő, több külső partner — egyetlen nézet, amelyből az ingatlanportfólió-vezető napi szinten dolgozik.",
   },
   {
     title: (
@@ -23,7 +23,7 @@ const usecases = [
   },
   {
     title: "Bérbeadási adatok a túra mellett",
-    desc: "Ha a bérbeadó megadja a saját látogatási és szerződéskötési adatait, azok a túra mellé tehetők. Konverziós százalékot nem közlünk.",
+    desc: "Ha a bérbeadó megadja a saját látogatási és szerződéskötési adatait, azok a túra mellé tehetők. Konverziós százalékot a nyilvános anyagainkban nem szerepeltetünk.",
   },
   {
     title: "Káresemény-állapot időbélyegzéssel",
@@ -106,7 +106,7 @@ export default function PropertyIntelligencePage() {
             Portfólió-szintű digitális iker — egy űrlapon
           </h2>
           <p className="mt-3 opacity-90">
-            Ingatlanszám, terület, hivatkozási igények. 1 munkanapon belül
+            Ingatlanszám, terület, hivatkozási igények.
             visszajelzés és KPI-tervezet.
           </p>
           <Link

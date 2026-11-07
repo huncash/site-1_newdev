@@ -1,5 +1,4 @@
 import { BimLink } from "@/components/bim/BimChrome";
-import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
@@ -81,9 +80,13 @@ export default function MiAzABimPage() {
             A meglévő épületek modellezése mért állapotból indul. Az IFC-modell a pontfelhőből,
             precíz modellezéssel készül.
           </p>
-          <div className="mt-3">
-            <BimScopeNote />
-          </div>
+          <p className="mt-3">
+            A pontossági szintet az EIR vagy a megrendelés határozza meg. Részletek:{" "}
+            <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
+              pontosság és formátumok
+            </BimLink>
+            .
+          </p>
           <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold">
             <BimLink href="/ekm-rendelet" className="text-brand underline underline-offset-2">
               ÉKM rendelet

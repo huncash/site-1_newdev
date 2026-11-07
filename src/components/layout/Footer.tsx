@@ -177,7 +177,7 @@ export function Footer({
             <a href={quoteHref} className="hover:underline">
               {bim
                 ? "Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk."
-                : "Kérdésed van? Ajánlatot kérek"}
+                : "Kérdése van? Ajánlatot kérek"}
             </a>
           </div>
           <div className="flex items-center gap-3">
