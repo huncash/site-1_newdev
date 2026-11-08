@@ -42,3 +42,10 @@ Sorrend: rövid H1 + bevezető → űrlap → telefon csak az űrlap után.
 Nincs sötét hero, nincs „Elérhetőségek” blokk az űrlap előtt.
 Űrlap első kérdés: „Miben segíthetünk?” (Felmérés / Alvállalkozói együttműködés / Egyéb).
 Nyilvános szövegben tilos: útvonal, tölcsér, konverzió, routing, lead, szegmens.
+
+## Blog
+
+- A Blog önálló főmenüpont; URL: `/cikkek` (meglévő rendszer, ne cseréld /blog-ra).
+- Ne töröld a cikkeket a főoldal rövidítése miatt; ne hozz létre párhuzamos blogot.
+- Főoldalon nem kötelező cikklista; ha van ajánló, max 2–3 rövid tétel.
+- Bloglistán, cikkben, cikkvégi CTA-ban tilos a telefonszám — Kapcsolat vagy megoldásoldal link OK.

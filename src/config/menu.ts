@@ -29,7 +29,8 @@ export const BIM_MODELER_HREF = "/scan-to-bim-kapacitas";
 export const BIM_INDUSTRIAL_HREF = "/ipari-felmeres";
 
 /**
- * bim.vrgo.hu menü — rövid B2B tölcsér.
+ * bim.vrgo.hu menü — rövid B2B tölcsér + Blog (meglévő /cikkek).
+ * Célpiaci oldalak a Megoldások alatt; Ajánlatkérés a Navbar CTA.
  */
 export const BIM_MENU: readonly MenuItem[] = [
   {
@@ -46,9 +47,8 @@ export const BIM_MENU: readonly MenuItem[] = [
       { label: "Lakossági felmérés", href: "/lakossagi-felmeres" },
     ],
   },
-  { label: "Ipari felmérés", href: BIM_INDUSTRIAL_HREF },
-  { label: "BIM-modellezőknek", href: BIM_MODELER_HREF },
   { label: "Munkafolyamat", href: "/munkafolyamat" },
+  { label: "Blog", href: "/cikkek" },
   { label: "GYIK", href: "/gyik" },
   { label: "Kapcsolat", href: "/kapcsolat" },
 ];

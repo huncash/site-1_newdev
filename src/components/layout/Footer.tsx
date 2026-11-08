@@ -63,6 +63,7 @@ function BIM_PAGE_LINKS(linkPrefix: string, quoteHref: string): FooterLink[] {
     { label: "Ipari felmérés", href: prefixed("/ipari-felmeres", linkPrefix) },
     { label: "BIM-modellezőknek", href: prefixed("/scan-to-bim-kapacitas", linkPrefix) },
     { label: "Munkafolyamat", href: prefixed("/munkafolyamat", linkPrefix) },
+    { label: "Blog", href: prefixed("/cikkek", linkPrefix) },
     { label: "GYIK", href: prefixed("/gyik", linkPrefix) },
     { label: "Kapcsolat", href: quoteHref },
     { label: "Partner belépés", href: "https://vrgo.hu/partner/login" },

@@ -20,14 +20,14 @@ export async function generateMetadata(): Promise<Metadata> {
       : "2026. október 12.";
     return bimMetadata(
       "/cikkek",
-      "Cikkek | VRGO BIM",
-      `Georeferált felmérés, technológia és szabályozás — a cikksorozat ${start} napon indul.`
+      "Blog | VRGO BIM",
+      `Felmérés, technológia és szabályozás — a cikksorozat ${start} napon indul.`
     );
   }
   return bimMetadata(
     "/cikkek",
-    "Cikkek — lézerszkennelés, BIM, rendelet | VRGO BIM",
-    "Lakossági felmérés, tervezői gyakorlat, technológia, ipar és állami BIM-megfelelés. Tájékoztató cikkek."
+    "Blog — lézerszkennelés, BIM, rendelet | VRGO BIM",
+    "Lakossági felmérés, tervezői gyakorlat, technológia, ipar és állami BIM-megfelelés. Szakmai cikkek."
   );
 }
 
@@ -40,9 +40,9 @@ export default function ArticlesPage() {
     <article className="bg-background">
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-3xl px-4">
-          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">Cikkek</h1>
+          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">Blog</h1>
           <p className="mt-4 opacity-90">
-            Felmérés, formátumok, gyakorlat — és ha érintett: az állami BIM-szabályozás.
+            Szakmai cikkek: felmérés, formátumok, gyakorlat — és ha érintett: az állami BIM-szabályozás.
           </p>
         </div>
       </section>
