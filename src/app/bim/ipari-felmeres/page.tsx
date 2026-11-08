@@ -83,10 +83,6 @@ export default function IndustrialSurveyPage() {
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             Az objektum mérete és elérhetősége alapján álló, mobil vagy drónos felmérést alkalmazunk.
           </p>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Akár 1 hektár fölötti kültéri felületek mellett napi több ezer négyzetméter belső tér
-            kapacitással dolgozunk.
-          </p>
         </section>
 
         <section>

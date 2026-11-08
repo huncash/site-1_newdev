@@ -46,11 +46,22 @@
     "kapacitás útvonal",
     "Melyik útvonalról",
     "útvonalat",
-    "útvonalról van szó"
+    "útvonalról van szó",
+    "napi több ezer",
+    "napi 5000",
+    "napi 5 000",
+    "napi 5.000",
+    "m²/nap",
+    "m2/nap",
+    "négyzetméter naponta",
+    "napi szkennelési kapacitás",
+    "napi felmérési teljesítmény"
   ],
   "forbiddenRegex": [
     "(IFC|modellez)[\\s\\S]{0,40}partner",
-    "(7\\+? ?(ha|hektár)|több mint 7|891|8 külön modell|8 szken|4 munkanap)"
+    "(7\\+? ?(ha|hektár)|több mint 7|891|8 külön modell|8 szken|4 munkanap)",
+    "napi[\\s\\S]{0,40}(négyzetméter|m²|m2)",
+    "(5000|5[ .]000)\\s*m"
   ],
   "tegezoWords": [
     "kérdésed",
