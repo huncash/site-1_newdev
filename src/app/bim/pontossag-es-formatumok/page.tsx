@@ -1,4 +1,5 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimScopeNote } from "@/components/bim/BimScopeNote";
 import { DECREE_CHECKED, NJT_URL, bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
@@ -35,8 +36,12 @@ export default function AccuracyPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Technológiai alapok</h2>
           <p className="mt-2">
-            Ipari szintű 3D lézerszkennelés professzionális Leica 3D lézerszkenner eszközökkel.
+            Trimble X9, Leica BLK2GO, DJI drón, Trimble GNSS és terepi mérőműszerek — a feladathoz
+            illő módszerrel.
           </p>
+          <div className="mt-4">
+            <BimScopeNote />
+          </div>
           <ul className="mt-4 list-disc space-y-2 pl-5">
             <li>Komplex ipari létesítmények, épülethomlokzatok és nagyméretű belső terek milliméter pontos rögzítése.</li>
             <li>Szűkebb terek és gyorsabb átfutású építészeti felmérések ugyanazzal az eszközparkkal.</li>

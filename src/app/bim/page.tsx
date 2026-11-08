@@ -1,84 +1,129 @@
-import { BimLink, BimPhoneLink } from "@/components/bim/BimChrome";
-import { BimScopeNote, BimSurveyorNote } from "@/components/bim/BimScopeNote";
-import { BIM_CONFIG } from "@/config/bim";
-import { BIM_STATE_HUB_HREF } from "@/config/menu";
-import { BIM_AUDIENCES, BIM_SERVICES, BIM_SOLUTIONS } from "@/lib/bim-catalog";
-import { normalizeBimArticleCategory } from "@/lib/bim-article-categories";
-import { getPublishedArticles } from "@/lib/bim-articles";
-import { BIM_ORIGIN, bimMetadata } from "@/lib/bim-site";
+import { BimLink } from "@/components/bim/BimChrome";
+import { BIM_CONFIG, bimHasSamplePack } from "@/config/bim";
+import { BIM_MODELER_HREF, BIM_STATE_HUB_HREF } from "@/config/menu";
+import { bimMetadata } from "@/lib/bim-site";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = bimMetadata(
   "/",
-  "Georeferált 3D lézerszkennelés és EOV-bekötés | VRGO BIM",
-  "Georeferált lézerszkennelés, épületfelmérés és drónos fotogrammetria földmérői hitelesítéssel. Alaprajz, pontfelhő, BIM-modell. Kérjen ajánlatot."
+  "Ipari és épületfelmérés, georeferált pontfelhő és Scan-to-BIM | VRGO BIM",
+  "Országosan gyors lézeres állapotfelmérés, georeferált pontfelhő és tervezésre kész Scan-to-BIM alap ipari létesítményekhez, rekonstrukciókhoz és BIM-modellezéshez."
 );
 
-const processSteps = [
-  ["Igényfelmérés", "Cél: pontfelhő, CAD, dokumentáció vagy BIM-modell — a munkamenetet az Ön kéréséhez igazítjuk."],
-  [
-    "Helyszíni adatgyűjtés",
-    "Trimble és Leica 3D lézerszkennerek, DJI drón, Trimble GNSS és terepi mérőműszerek (EOV-bekötés).",
-  ],
-  [
-    "Feldolgozás",
-    "Pontfelhő regisztrációja és tisztítása, 2D alaprajz és metszet. BIM-modell Revitben vagy ArchiCAD-ben külön tételként, a feladat igénye szerint.",
-  ],
-  ["Átadás", "Szabványos formátumok: E57, DWG, IFC — a megrendelés szerint."],
-] as const;
-
-const homeFaqs = [
+const PROCESS = [
   {
-    q: "Mennyibe kerül egy lakás vagy ház felmérése?",
-    a: "A díj a mérettől, a bonyolultságtól, a kiszállástól és a leadott anyagtól függ. A végleges összeget az ajánlat tartalmazza.",
+    title: "Igény és EIR tisztázása",
+    text: "Felhasználási cél, pontossági szint, kimeneti formátumok és helyszíni korlátok egyeztetése.",
   },
   {
-    q: "Mit kapok a felmérés végén?",
-    a: "Alaprajz és metszet (PDF, DWG), kérésre pontfelhő. BIM-modell külön tétel.",
+    title: "Helyszíni lézeres felmérés",
+    text: "Álló és mobil szkennelés, szükség szerint drón és GNSS — a feladathoz illő módszerrel.",
   },
   {
-    q: "Kell-e georeferálás EOV-ban?",
-    a: "Tervezői és beruházási feladatoknál gyakran igen. A bekötést jogosult földmérő közreműködésével végezzük.",
+    title: "Pontfelhő regisztráció és feldolgozás",
+    text: "Regisztráció, tisztítás, ellenőrzés — mérhető, átadható pontfelhő.",
   },
   {
-    q: "Érint engem az állami beruházások témája?",
-    a: "Csak meghatározott állami beruházásoknál és üzemeltetésnél. Ha igen, lásd a kapcsolódó megoldást — a fő szolgáltatásunk ettől függetlenül a georeferált felmérés.",
+    title: "Georeferált CAD és referenciaanyag",
+    text: "Alaprajz, metszet, homlokzat és egyéb CAD-dokumentáció a megrendelés szerint.",
+  },
+  {
+    title: "Scan-to-BIM modell, igény szerint",
+    text: "Revit, ArchiCAD vagy IFC — külön tételként, a feladat és az LOD szerint.",
+  },
+  {
+    title: "Minőség-ellenőrzés és dokumentált átadás",
+    text: "Ellenőrzött kimenetek, átadási lista és — ha releváns — BCF hibajegyzék.",
   },
 ] as const;
 
-const DECREE_CATEGORY = "Rendelet és megfelelés";
+const AUDIENCES = [
+  {
+    title: "Termelés közben is mérhető állapot",
+    audience: "Ipari létesítményeknek",
+    text: "Gyártóüzemek, raktárak, technológiai csarnokok és üzemek állapotfelmérése — a lehető legkisebb megszakítással.",
+    cta: "Ipari felmérés kérése",
+    href: "/ajanlatkeres?utvonal=ipar&forras=fooldal-routing",
+  },
+  {
+    title: "Tervezés megbízható meglévő állapotra",
+    audience: "Tervezőknek és rekonstrukcióhoz",
+    text: "Georeferált pontfelhő, alaprajz, metszet és Revit/ArchiCAD/IFC-kompatibilis as-built alap.",
+    cta: "As-built alap kérése",
+    href: "/ajanlatkeres?utvonal=tervezo&forras=fooldal-routing",
+  },
+  {
+    title: "Kapacitás és hiteles terepi adat",
+    audience: "BIM-modellezőknek",
+    text: "Terepi felmérés, pontfelhő, regisztráció és Scan-to-BIM modell a saját munkafolyamatába illesztve.",
+    cta: "Kapacitásajánlat kérése",
+    href: `${BIM_MODELER_HREF}?forras=fooldal-routing`,
+  },
+  {
+    title: "Felújítás vagy átépítés előtti pontos alaprajz",
+    audience: "Lakossági felmérés",
+    text: "Lakások és családi házak pontos, tervezésre használható felmérése.",
+    cta: "Lakossági felmérés kérése",
+    href: "/szolgaltatasok/lakas-es-hazfelmeres?forras=fooldal-routing",
+  },
+] as const;
 
-/** Legfeljebb 3 legfrissebb cikk, kategóriánként változatosan; rendelet-cikkből legfeljebb 1, ha van más kategória. */
-function pickLatestDiverse(articles: ReturnType<typeof getPublishedArticles>) {
-  const sorted = [...articles].reverse();
-  const isDecree = (article: (typeof sorted)[number]) =>
-    normalizeBimArticleCategory(article.category) === DECREE_CATEGORY;
-  const hasOtherCategories = sorted.some((article) => !isDecree(article));
-  const picked: typeof sorted = [];
-  const usedCats = new Set<string>();
-  let decreeCount = 0;
+const TECH = [
+  {
+    name: "Trimble X9",
+    text: "Nagy terek, homlokzatok, ipari csarnokok gyors, nagy pontosságú álló lézeres felmérése.",
+  },
+  {
+    name: "Leica BLK2GO",
+    text: "Mobil felmérés szűk terekben, folyosókon, gépészeti és nehezen megközelíthető részeknél.",
+  },
+  {
+    name: "DJI drón",
+    text: "Homlokzat, tető és telek fotogrammetria.",
+  },
+  {
+    name: "Trimble GNSS és terepi műszerek",
+    text: "EOV-bekötés és georeferálás jogosult földmérő közreműködésével.",
+  },
+] as const;
 
-  const tryPick = (article: (typeof sorted)[number]) => {
-    if (hasOtherCategories && isDecree(article) && decreeCount >= 1) return;
-    picked.push(article);
-    if (isDecree(article)) decreeCount += 1;
-  };
+const DELIVERABLES = [
+  "E57 pontfelhő",
+  "DWG alaprajz, metszet, homlokzat",
+  "IFC",
+  "Revit",
+  "ArchiCAD",
+  "BCF hibajegyzék, ha releváns",
+  "Fotódokumentáció",
+] as const;
 
-  for (const article of sorted) {
-    if (picked.length >= 3) break;
-    const cat = normalizeBimArticleCategory(article.category);
-    if (!usedCats.has(cat)) {
-      usedCats.add(cat);
-      tryPick(article);
-    }
-  }
-  for (const article of sorted) {
-    if (picked.length >= 3) break;
-    if (!picked.some((item) => item.slug === article.slug)) tryPick(article);
-  }
-  return picked;
-}
+const HOME_FAQS = [
+  {
+    q: "Milyen projekteket érdemes lézeres felméréssel rögzíteni?",
+    a: "Ipari létesítményeket, rekonstrukciókat, felújításokat, as-built dokumentációt és minden olyan feladatot, ahol a meglévő állapot a tervezés kiindulópontja.",
+  },
+  {
+    q: "Milyen formátumban kapom meg a pontfelhőt?",
+    a: "A megrendelés szerint tipikusan E57 formátumban. További formátumokat az ajánlat rögzít.",
+  },
+  {
+    q: "Kell-e EOV-bekötés?",
+    a: "Ha a felhasználási cél vagy az EIR georeferálást kér, igen. A bekötést jogosult földmérő közreműködésével végezzük; a megrendelő saját földmérőjével is együttműködünk.",
+  },
+  {
+    q: "Milyen modellformátumban készül a Scan-to-BIM modell?",
+    a: "Igény szerint Revit, ArchiCAD vagy IFC — külön tételként, a feladat és az LOD szerint.",
+  },
+  {
+    q: "Hogyan minimalizálják az ipari üzem megszakítását?",
+    a: "A helyszíni munkát a termelési és üzemeltetési korlátokhoz igazítjuk. Nagyobb projektnél helyszíni tartózkodással csökkentjük az ismételt kiszállások miatti zavarokat.",
+  },
+  {
+    q: "Hogyan lehet kapacitást kérni BIM-modellezőként?",
+    a: "Az ajánlatkérő űrlapon válassza a „BIM-modellező kapacitás” útvonalat, vagy nyissa meg a Scan-to-BIM kapacitás oldalt.",
+  },
+] as const;
 
 function orgSchema() {
   return {
@@ -86,9 +131,9 @@ function orgSchema() {
     "@type": "Organization",
     name: BIM_CONFIG.organizationName,
     url: BIM_CONFIG.organizationUrl,
-    ...(BIM_CONFIG.phoneDisplay
-      ? { telephone: BIM_CONFIG.phoneDisplay }
-      : {}),
+    description:
+      "Ipari és épületfelmérési specialisták: lézeres felmérés, georeferált pontfelhő és Scan-to-BIM alap.",
+    ...(BIM_CONFIG.phoneDisplay ? { telephone: BIM_CONFIG.phoneDisplay } : {}),
     parentOrganization: {
       "@type": "Organization",
       name: "VRGO",
@@ -98,8 +143,6 @@ function orgSchema() {
 }
 
 export default function BimHomePage() {
-  const latest = pickLatestDiverse(getPublishedArticles());
-
   return (
     <>
       <script
@@ -107,285 +150,356 @@ export default function BimHomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema()) }}
       />
 
+      {/* 1. Hero */}
       <section className="bg-section-dark text-section-dark-foreground">
-        <div className="mx-auto max-w-4xl px-4 py-16">
-          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Georeferált 3D lézerszkennelés – EOV-ban, földmérői hitelesítéssel
+        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
+          <h1 className="text-3xl font-bold sm:text-4xl md:text-[2.5rem] md:leading-tight">
+            Ipari és épületfelmérés, amelyből tervezni lehet
           </h1>
-          <p className="mt-4 text-base opacity-90 sm:text-lg">
-            Épületek, telkek és ipari létesítmények pontos, mérhető digitális mása. DJI drónnal,
-            Leica és Trimble 3D lézerszkennerekkel, valamint terepi mérőműszerekkel (EOV-bekötés)
-            a feladathoz illő módszert választjuk. Alaprajz, pontfelhő és –
-            igény szerint – BIM-modell, egyetlen ajánlatban.
+          <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
+            Országosan gyors lézeres állapotfelmérés, georeferált pontfelhő és Scan-to-BIM alap
+            ipari létesítményekhez, rekonstrukciókhoz és BIM-modellezéshez.
           </p>
-          <p className="mt-3 text-sm opacity-80">
-            10+ év térszkennelés · EOV-ba kötött adat · jogosult földmérő közreműködésével · E57,
-            DWG, IFC átadás (modellezés esetén)
-            {BIM_CONFIG.replySlaText ? ` · ${BIM_CONFIG.replySlaText}` : ""}
-          </p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <BimLink
-              href="/ajanlatkeres"
-              className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
+              href="/ajanlatkeres?utvonal=ipar&forras=hero"
+              className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
             >
-              Ajánlatot kérek
+              Kérjen helyszíni felmérési ajánlatot
             </BimLink>
             <BimLink
-              href="/szolgaltatasok"
-              className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold uppercase tracking-wider"
+              href={`${BIM_MODELER_HREF}?forras=hero`}
+              className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-section-dark"
             >
-              Szolgáltatásaink
+              BIM-modellezőknek: kapacitás és együttműködés
             </BimLink>
           </div>
-          <p className="mt-4 text-sm opacity-90">
-            <BimLink
-              href="/szolgaltatasok/lakas-es-hazfelmeres"
-              className="underline underline-offset-2"
-            >
-              Lakást vagy házat szeretne felmérni? →
-            </BimLink>
+          <p className="mt-6 text-xs opacity-75 sm:text-sm">
+            10+ év térszkennelési tapasztalat · napi több ezer négyzetméternyi tér szkennelési
+            kapacitás · georeferált EOV-adat · jogosult földmérő közreműködésével
           </p>
+          <ol className="mt-8 grid gap-3 sm:grid-cols-4">
+            {["Lézeres felmérés", "Pontfelhő", "CAD / szelvény", "Revit · ArchiCAD · IFC"].map(
+              (step, i) => (
+                <li
+                  key={step}
+                  className="rounded-md border border-white/15 bg-white/5 px-3 py-3 text-center text-xs font-semibold uppercase tracking-wider"
+                >
+                  <span className="block text-brand">{i + 1}</span>
+                  {step}
+                </li>
+              )
+            )}
+          </ol>
         </div>
       </section>
 
-      <section className="bg-secondary py-12">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-semibold">Kinek dolgozunk</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {BIM_AUDIENCES.map((item) => (
-              <div key={item.href} className="rounded-md border border-border bg-card p-5">
-                <h3 className="font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.text}</p>
-                <BimLink href={item.href} className="mt-3 inline-block text-sm font-semibold text-brand">
-                  {item.cta} →
-                </BimLink>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-background py-12" id="megoldasaink">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <h2 className="text-2xl font-semibold">Megoldásaink</h2>
-              <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-                Felhasználási eset szerint — felújítástól az üzemeltetésig.
-              </p>
-            </div>
-            <BimLink href="/megoldasok" className="text-sm font-semibold text-brand">
-              Összes megoldás →
-            </BimLink>
-          </div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {BIM_SOLUTIONS.map((item) => (
-              <BimLink
-                key={item.href + item.title}
-                href={item.href}
-                className="rounded-md border border-border bg-card p-5 hover:border-brand"
-              >
-                <h3 className="font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.summary}</p>
-              </BimLink>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-secondary py-12" id="szolgaltatasaink">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <h2 className="text-2xl font-semibold">Szolgáltatásaink</h2>
-              <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-                Georeferált rögzítés, drón, EOV-bekötés és — igény szerint — modellezés.
-              </p>
-            </div>
-            <BimLink href="/szolgaltatasok" className="text-sm font-semibold text-brand">
-              Összes szolgáltatás →
-            </BimLink>
-          </div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {BIM_SERVICES.map((item) => (
-              <BimLink
-                key={item.href}
-                href={item.href}
-                className="rounded-md border border-border bg-card p-5 hover:border-brand"
-              >
-                <h3 className="font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.summary}</p>
-              </BimLink>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-background py-12">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Technológia</h2>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            DJI drón, Leica és Trimble 3D lézerszkennerek, valamint terepi mérőműszerek
-            (EOV-bekötés) segítségével a feladatnak megfelelő módszert választjuk.
-          </p>
-          <ul className="mt-4 space-y-3 text-sm text-muted-foreground sm:text-base">
+      {/* 2. Probléma */}
+      <section className="bg-background py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            A pontatlan meglévő állapot drága tervezési hibákat okoz
+          </h2>
+          <ul className="mt-6 space-y-3 text-sm text-muted-foreground sm:text-base">
+            <li>A meglévő dokumentáció gyakran nem tükrözi a valós épületet.</li>
+            <li>A hibás kiindulási adat később ütközésekhez, visszaméréshez és módosításhoz vezet.</li>
             <li>
-              <strong className="text-foreground">Trimble X9</strong> állványos szkenner — nagy
-              terek, homlokzatok.
+              A modellező csapatnak nem szabad találgatnia: a tervnek a tényleges állapotra kell
+              épülnie.
             </li>
             <li>
-              <strong className="text-foreground">Leica BLK2GO</strong> mobil szkenner — szűk terek,
-              lépcsőház, pince.
-            </li>
-            <li>
-              <strong className="text-foreground">DJI drón</strong> — tető, homlokzat, telek
-              fotogrammetria.
-            </li>
-            <li>
-              <strong className="text-foreground">Trimble GNSS</strong> és terepi mérőműszerek —
-              EOV-bekötés.
+              Ipari környezetben a felmérésnek a termelési és üzemeltetési korlátokhoz kell
+              alkalmazkodnia.
             </li>
           </ul>
         </div>
       </section>
 
-      <section className="bg-secondary py-12">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Munkafolyamat</h2>
-          <ol className="mt-6 space-y-4 text-sm text-muted-foreground sm:text-base">
-            {processSteps.map(([title, text], index) => (
-              <li key={title}>
-                <strong className="text-foreground">
-                  {index + 1}. {title}.
-                </strong>{" "}
-                {text}
+      {/* 3. Megoldás / folyamat */}
+      <section className="bg-secondary py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            A valós állapottól a tervezésre kész modellig
+          </h2>
+          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {PROCESS.map((step, i) => (
+              <li key={step.title} className="rounded-md border border-border bg-card p-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand">
+                  {i + 1}. lépés
+                </p>
+                <h3 className="mt-2 text-base font-semibold">{step.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{step.text}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className="bg-background py-12">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Pontosság és hitelesség</h2>
-          <div className="mt-4 space-y-3 text-sm text-muted-foreground sm:text-base">
-            <BimScopeNote />
-            <div className="text-sm">
-              <BimSurveyorNote />
-            </div>
+      {/* 4. Célcsoport routing */}
+      <section className="bg-background py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">Kinek dolgozunk</h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {AUDIENCES.map((item) => (
+              <article
+                key={item.audience}
+                className="flex flex-col rounded-md border border-border bg-card p-6 shadow-sm"
+              >
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand">
+                  {item.audience}
+                </p>
+                <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
+                <p className="mt-2 flex-1 text-sm text-muted-foreground">{item.text}</p>
+                <BimLink
+                  href={item.href}
+                  className="mt-4 inline-flex text-sm font-semibold text-brand underline-offset-2 hover:underline"
+                >
+                  {item.cta} →
+                </BimLink>
+              </article>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* 5. Ipari blokk — legerősebb */}
+      <section className="bg-section-dark py-12 text-section-dark-foreground sm:py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            Ipari létesítmények felmérése, ahol a pontosság és az üzemfolytonosság számít
+          </h2>
+          <p className="mt-4 max-w-3xl text-base font-medium text-brand">
+            Ahol a leállás drága, a felmérésnek a termeléshez kell alkalmazkodnia.
+          </p>
+          <ul className="mt-6 grid gap-3 text-sm opacity-90 sm:grid-cols-2 sm:text-base">
+            <li>Gyártóüzemek, raktárak, technológiai csarnokok és üzemek állapotfelmérése.</li>
+            <li>Új gép vagy technológia beépítéséhez szükséges térbeli alap.</li>
+            <li>Csővezeték-, gépészeti és szerkezeti állapot rögzítése.</li>
+            <li>Layout-tervezéshez és ütközésvizsgálathoz használható pontfelhő.</li>
+            <li>Átépítések, bővítések és átadások as-built alapja.</li>
+            <li>
+              Nagyobb projektnél helyszíni tartózkodás, a termelési megszakítás minimalizálására
+              optimalizált munkavégzés.
+            </li>
+            <li>Országos kiszállás és gyors helyszíni reakció.</li>
+            <li>Akár 1 ha fölötti kültéri felületek, napi több ezer m² belső tér kapacitással.</li>
+          </ul>
+          <BimLink
+            href="/szolgaltatasok/ipari-letesitmenyek"
+            className="mt-8 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
+          >
+            Ipari felmérés részletei
+          </BimLink>
+        </div>
+      </section>
+
+      {/* 6. Modellezők */}
+      <section className="bg-background py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            Scan-to-BIM kapacitás és hiteles terepi adat
+          </h2>
+          <p className="mt-4 max-w-3xl text-sm text-muted-foreground sm:text-base">
+            BIM-modellező cégek, tervezőirodák és kivitelezők számára vállaljuk a terepi lézeres
+            felmérést, georeferált pontfelhő készítését, CAD-dokumentációt és igény szerint a
+            Scan-to-BIM modellezést. Nem vesszük el az ügyfelét: Ön tartja az ügyfélkapcsolatot, mi
+            a hiteles terepi adatot biztosítjuk.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <BimLink
+              href={`/ajanlatkeres?utvonal=kapacitas&forras=fooldal-modellezo`}
+              className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
+            >
+              Kérjen kapacitás- vagy projektajánlatot
+            </BimLink>
+            <BimLink
+              href={BIM_MODELER_HREF}
+              className="inline-flex items-center justify-center rounded-md border border-brand px-6 py-3 text-sm font-semibold text-brand hover:bg-brand/10"
+            >
+              Tovább a modellezőknek szóló oldalra
+            </BimLink>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Technológia */}
+      <section className="bg-secondary py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            A feladathoz illő technológia, nem egységes módszer
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {TECH.map((item) => (
+              <article key={item.name} className="rounded-md border border-border bg-card p-5">
+                <h3 className="font-semibold">{item.name}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-muted-foreground">
+            Napi több ezer négyzetméter szkennelési kapacitás. 10+ év fotogrammetriás és ipari
+            térszkennelési tapasztalat. Két fős terepi mérnöki csapat, Duna-kanyari kiindulópontból —
+            Budapest és a Duna-kanyar környékén akár azonos napi kiszállás.
+          </p>
+        </div>
+      </section>
+
+      {/* 8. Kimenetek */}
+      <section className="bg-background py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">Mérhető alap, dokumentált folyamat</h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            A folyamat végén a megrendelés szerinti kimeneteket adjuk át:
+          </p>
+          <ul className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {DELIVERABLES.map((item) => (
+              <li
+                key={item}
+                className="rounded-md border border-border bg-card px-4 py-3 text-sm font-medium"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 9. Pontosság */}
+      <section className="bg-secondary py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            Mérhető, ellenőrzött és georeferált alap
+          </h2>
+          <ul className="mt-6 space-y-2 text-sm text-muted-foreground sm:text-base">
+            <li>
+              A pontossági követelményt az EIR, a felhasználási cél vagy a megrendelés határozza meg.
+            </li>
+            <li>A georeferálás jogosult földmérő közreműködésével történik.</li>
+            <li>EOV-bekötés és dokumentált geodéziai kontroll.</li>
+            <li>A megrendelő saját földmérőjével is együttműködünk.</li>
+            <li>A módszert és a pontossági szintet előre egyeztetjük.</li>
+          </ul>
           <BimLink
             href="/pontossag-es-formatumok"
-            className="mt-4 inline-block text-sm font-semibold text-brand"
+            className="mt-6 inline-flex text-sm font-semibold text-brand underline-offset-2 hover:underline"
           >
             Pontosság és formátumok →
           </BimLink>
         </div>
       </section>
 
-      <section className="bg-secondary py-12">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Referencia</h2>
-          <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése. A helyszíni adat
-            georeferált pontfelhővé és — igény szerint — BIM-kompatibilis modellé áll össze.
-          </p>
-          <BimLink href="/referenciak" className="mt-4 inline-block text-sm font-semibold text-brand">
-            Referenciák
-          </BimLink>
-        </div>
-      </section>
-
-      {latest.length > 0 ? (
-      <section className="bg-background py-12">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Cikkek</h2>
-          <ul className="mt-4 space-y-3 text-sm sm:text-base">
-              {latest.map((article) => (
-                <li key={article.slug}>
-                  <BimLink href={`/cikkek/${article.slug}`} className="font-semibold text-brand">
-                    {article.title}
-                  </BimLink>
-                  <span className="ml-2 text-xs text-muted-foreground">
-                    {normalizeBimArticleCategory(article.category)}
-                  </span>
-                </li>
-              ))}
+      {/* 10. Bizonyíték — referencia nélkül */}
+      <section className="bg-background py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            Nem csak szkennelünk — mérnöki alapot adunk a tervezéshez
+          </h2>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            <li className="rounded-md border border-border bg-card p-4 text-sm">
+              Terepi felmérés, regisztráció és minőség-ellenőrzés.
+            </li>
+            <li className="rounded-md border border-border bg-card p-4 text-sm">
+              Georeferált, tervezésre kész pontfelhő.
+            </li>
+            <li className="rounded-md border border-border bg-card p-4 text-sm">
+              Revit, ArchiCAD és IFC kompatibilis átadás.
+            </li>
+            <li className="rounded-md border border-border bg-card p-4 text-sm">
+              Ipari környezetben optimalizált munkavégzés.
+            </li>
+            <li className="rounded-md border border-border bg-card p-4 text-sm">
+              Országos kiszállás és helyszíni tartózkodás nagyobb projektek esetén.
+            </li>
+            <li className="rounded-md border border-border bg-card p-4 text-sm">
+              Élelmiszeripari és folyamatfejlesztési mérnöki háttér.
+            </li>
           </ul>
-          <BimLink href="/cikkek" className="mt-4 inline-block text-sm font-semibold text-brand">
-            Összes cikk →
-          </BimLink>
-        </div>
-      </section>
-      ) : null}
-
-      <section className="bg-secondary py-10">
-        <div className="mx-auto max-w-3xl px-4">
-          <div className="rounded-md border border-border bg-card p-5 text-sm sm:text-base">
-            <p className="font-semibold text-foreground">Állami beruházás vagy üzemeltetés?</p>
-            <p className="mt-2 text-muted-foreground">
-              Mit jelent Önnek az állami BIM-szabályozás →
-            </p>
-            <BimLink
-              href={BIM_STATE_HUB_HREF}
-              className="mt-3 inline-block text-sm font-semibold text-brand"
+          {bimHasSamplePack() ? (
+            <a
+              href={BIM_CONFIG.samplePackUrl}
+              className="mt-6 inline-flex text-sm font-semibold text-brand underline-offset-2 hover:underline"
             >
-              Állami beruházások és BIM-előírások →
-            </BimLink>
-          </div>
+              Minta átadási standard letöltése →
+            </a>
+          ) : null}
         </div>
       </section>
 
-      <section className="bg-background py-12">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Gyakori kérdések</h2>
-          <dl className="mt-6 space-y-5">
-            {homeFaqs.map((item) => (
-              <div key={item.q}>
-                <dt className="font-semibold text-foreground">{item.q}</dt>
-                <dd className="mt-1 text-sm text-muted-foreground sm:text-base">{item.a}</dd>
-              </div>
+      {/* 11. Rövid GYIK */}
+      <section className="bg-secondary py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl px-4">
+          <h2 className="text-2xl font-semibold sm:text-3xl">Gyakori kérdések</h2>
+          <div className="mt-6 space-y-3">
+            {HOME_FAQS.map((item) => (
+              <details
+                key={item.q}
+                className="group rounded-md border border-border bg-card p-5 open:border-brand/50"
+              >
+                <summary className="cursor-pointer list-none font-semibold marker:hidden">
+                  <span className="mr-2 text-brand transition group-open:rotate-90">›</span>
+                  {item.q}
+                </summary>
+                <p className="mt-3 pl-5 text-sm text-muted-foreground">{item.a}</p>
+              </details>
             ))}
-          </dl>
-          <BimLink href="/gyik" className="mt-4 inline-block text-sm font-semibold text-brand">
+          </div>
+          <BimLink
+            href="/gyik"
+            className="mt-6 inline-flex text-sm font-semibold text-brand underline-offset-2 hover:underline"
+          >
             Teljes GYIK →
           </BimLink>
         </div>
       </section>
 
-      <section className="bg-section-dark py-12 text-section-dark-foreground">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="text-2xl font-semibold text-section-dark-foreground">
-            Mondja el, melyik épületről vagy ingatlanról van szó.
+      {/* Mellék: állami hub — nem domináns */}
+      <section className="bg-background py-8">
+        <div className="mx-auto flex max-w-5xl flex-col gap-3 px-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-muted-foreground">
+            Állami beruházás vagy üzemeltetés? Összefoglaló a kapcsolódó előírásokról.
+          </p>
+          <BimLink
+            href={BIM_STATE_HUB_HREF}
+            className="text-sm font-semibold text-brand underline-offset-2 hover:underline"
+          >
+            Állami BIM-előírások →
+          </BimLink>
+        </div>
+      </section>
+
+      {/* 12. Záró CTA — két útvonal */}
+      <section className="bg-section-dark py-12 text-section-dark-foreground sm:py-16">
+        <div className="mx-auto max-w-4xl px-4 text-center">
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            Kérjen helyszíni felmérési vagy Scan-to-BIM kapacitásajánlatot
           </h2>
-          <p className="mt-3 opacity-90">
-            Magánszemély: rövid űrlap vagy telefon. Vállalkozás: teljes ajánlatkérés, EIR
-            feltöltéssel.
-            {BIM_CONFIG.replySlaText ? ` ${BIM_CONFIG.replySlaText}` : null}
+          <p className="mx-auto mt-3 max-w-2xl text-sm opacity-90">
+            {BIM_CONFIG.replySlaText}
           </p>
-          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <BimLink
-              href="/szolgaltatasok/lakas-es-hazfelmeres#ajanlat"
-              className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold"
+              href="/ajanlatkeres?utvonal=ipar&forras=fooldal-cta"
+              className="rounded-md border border-white/20 bg-white/5 px-5 py-6 text-left transition hover:border-brand"
             >
-              Magánszemély — rövid űrlap
+              <p className="text-sm font-semibold uppercase tracking-wider text-brand">
+                Ipari vagy épületfelmérési projekt
+              </p>
+              <p className="mt-2 text-sm opacity-90">
+                Helyszíni lézeres felmérés, pontfelhő, CAD és igény szerinti Scan-to-BIM.
+              </p>
             </BimLink>
             <BimLink
-              href="/ajanlatkeres"
-              className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground"
+              href="/ajanlatkeres?utvonal=kapacitas&forras=fooldal-cta"
+              className="rounded-md border border-white/20 bg-white/5 px-5 py-6 text-left transition hover:border-brand"
             >
-              Vállalkozás — ajánlatkérés
+              <p className="text-sm font-semibold uppercase tracking-wider text-brand">
+                BIM-modellezőknek: kapacitás
+              </p>
+              <p className="mt-2 text-sm opacity-90">
+                Terepi adat és Scan-to-BIM kapacitás a saját munkafolyamatába illesztve.
+              </p>
             </BimLink>
-            <BimPhoneLink
-              forras="home-cta"
-              className="inline-flex items-center justify-center rounded-md border-2 border-white/70 px-6 py-3 text-sm font-semibold"
-            />
           </div>
-          <p className="mt-4 text-xs opacity-70">
-            <a href={BIM_ORIGIN} className="underline">
-              bim.vrgo.hu
-            </a>
-          </p>
         </div>
       </section>
     </>

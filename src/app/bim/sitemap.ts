@@ -9,6 +9,7 @@ const STATIC_PATHS = [
   "/szolgaltatasok/lakas-es-hazfelmeres",
   "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
   "/szolgaltatasok/ipari-letesitmenyek",
+  "/scan-to-bim-kapacitas",
   "/szolgaltatasok/dronos-felmeres",
   "/szolgaltatasok/georeferalas-eov",
   "/szolgaltatasok/bim-modellezes",

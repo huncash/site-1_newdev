@@ -1,99 +1,70 @@
 import { BimLink } from "@/components/bim/BimChrome";
 import { bimMetadata } from "@/lib/bim-site";
 
-const deliverables = [
-  ["Pontfelhő", "E57, OBJ és XYZ, a megrendelés szerint."],
-  ["2D állomány", "Alaprajz és metszet a feldolgozott pontfelhőből."],
-  ["BIM", "BIM-modell külön tételként, a feladat és az LOD szerint."],
-  ["Geodézia", "A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja."],
-] as const;
-
 export const metadata = bimMetadata(
   "/referenciak",
-  "Geodéziai lézerszkennelés és BIM-pontfelhő | VRGO BIM",
-  "Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése professzionális Leica 3D lézerszkenner eszközökkel. Georeferált pontfelhő és szabványos BIM-állomány."
+  "Módszer és átadási alap | VRGO BIM",
+  "Nem csak szkennelünk — mérnöki alapot adunk a tervezéshez: georeferált pontfelhő, CAD és igény szerinti Scan-to-BIM."
 );
+
+const pillars = [
+  "Terepi felmérés, regisztráció és minőség-ellenőrzés",
+  "Georeferált, tervezésre kész pontfelhő",
+  "Revit, ArchiCAD és IFC kompatibilis átadás",
+  "Ipari környezetben optimalizált munkavégzés",
+  "Országos kiszállás és helyszíni tartózkodás nagyobb projektek esetén",
+] as const;
 
 export default function ReferencesPage() {
   return (
     <article className="bg-background">
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Geodéziai lézerszkennelés és BIM-pontfelhő
+          <h1 className="text-3xl font-bold sm:text-4xl">
+            Nem csak szkennelünk — mérnöki alapot adunk a tervezéshez
           </h1>
-          <p className="mt-4 opacity-90">
-            Ipari létesítmények, homlokzatok és nagyméretű belső terek felmérése professzionális
-            Leica 3D lézerszkenner eszközökkel.
+          <p className="mt-4 max-w-3xl opacity-90">
+            Publikus ügyféllogók helyett a módszert, a kimeneteket és a minőségbiztosítást
+            mutatjuk. Konkrét referenciaanyagot az ajánlatkérés után, a megrendelő engedélyével
+            adunk át.
           </p>
         </div>
       </section>
-      <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 text-sm text-muted-foreground sm:text-base">
-        <p>
-          A helyszíni adatgyűjtést a feladat pontossági igényéhez választjuk. A feldolgozás
-          georeferált pontfelhőt ad. BIM-modell külön tételként, a feladat és az LOD szerint.
-        </p>
+
+      <div className="mx-auto max-w-4xl space-y-10 px-4 py-12">
+        <ul className="grid gap-3 sm:grid-cols-2">
+          {pillars.map((item) => (
+            <li key={item} className="rounded-md border border-border bg-card px-4 py-3 text-sm">
+              {item}
+            </li>
+          ))}
+        </ul>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">
-            Kiemelt referencia: Pannon Egyetem – Zalaegerszegi Kampusz (bejárható 3D rögzítés)
-          </h2>
-          <p className="mt-2">
-            <a
-              href="https://my.matterport.com/show/?m=pruUjt76nQU&ts=1"
-              className="font-semibold text-brand underline"
-              target="_blank"
-              rel="noopener noreferrer"
+          <h2 className="text-xl font-semibold text-foreground">Technológia</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Trimble X9, Leica BLK2GO, DJI drón, Trimble GNSS és terepi mérőműszerek — a feladathoz
+            illő módszerrel, nem egységes sablonnal.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Következő lépés</h2>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+            <BimLink
+              href="/ajanlatkeres?utvonal=ipar&forras=referenciak"
+              className="inline-flex rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground"
             >
-              Bejárható 3D túra megnyitása
-            </a>
-          </p>
+              Helyszíni felmérési ajánlat
+            </BimLink>
+            <BimLink
+              href="/scan-to-bim-kapacitas"
+              className="inline-flex rounded-md border border-brand px-5 py-2.5 text-sm font-semibold text-brand"
+            >
+              Scan-to-BIM kapacitás
+            </BimLink>
+          </div>
         </section>
-
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Mit adunk át</h2>
-          <dl className="mt-4 grid gap-4 sm:grid-cols-2">
-            {deliverables.map(([label, value]) => (
-              <div key={label} className="rounded-md border border-border bg-card p-4">
-                <dt className="text-xs font-semibold uppercase tracking-wider text-foreground">{label}</dt>
-                <dd className="mt-2">{value}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Munkafolyamat</h2>
-          <ol className="mt-4 list-decimal space-y-2 pl-5">
-            <li>A cél tisztázása: BIM, CAD, dokumentáció vagy megvalósulási állapot.</li>
-            <li>Helyszíni lézerszkennelés professzionális Leica 3D lézerszkenner eszközökkel, geodéziai kontrollal.</li>
-            <li>Pontfelhő regisztrációja és tisztítása, majd 2D állomány vagy BIM-modell.</li>
-            <li>Szabványos formátumok átadása a tervezőnek, a kivitelezőnek és az üzemeltetőnek.</li>
-          </ol>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Kapcsolat a 31/2024. ÉKM rendelettel</h2>
-          <p className="mt-2">
-            A felvétel a 010 – Meglévő állapot és környezet rögzítése felhasználási esethez ad
-            mérnöki alapadatot. BIM-modell külön tételként, a feladat és az LOD szerint.
-          </p>
-        </section>
-
-        <p>
-          A pontossági szintről és az átadott formátumokról:{" "}
-          <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
-            pontosság és formátumok
-          </BimLink>
-          .
-        </p>
-
-        <BimLink
-          href="/ajanlatkeres"
-          className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
-        >
-          Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.
-        </BimLink>
       </div>
     </article>
   );

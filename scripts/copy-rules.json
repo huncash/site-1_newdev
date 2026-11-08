@@ -16,7 +16,6 @@
     "még nincsenek közzétéve",
     "Hetente kétszer",
     "YouTube",
-    "alvállalkoz",
     "white-label",
     "szakági partner",
     "Pro3",
@@ -25,7 +24,8 @@
     "2016 óta csináljuk",
     "← vrgo.hu",
     "vrgo.hu főoldal",
-    "A vrgo.hu blog"
+    "A vrgo.hu blog",
+    "váltott műszak"
   ],
   "forbiddenRegex": [
     "(IFC|modellez)[\\s\\S]{0,40}partner",
@@ -115,6 +115,7 @@
         "/cikkek",
         "/referenciak",
         "/ajanlatkeres",
+        "/scan-to-bim-kapacitas",
         "/pontossag-es-formatumok",
         "/mi-az-a-bim"
       ]

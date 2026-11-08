@@ -67,9 +67,6 @@ export function BimChrome({
   children: ReactNode;
 }) {
   const linkPrefix = prefix ? "/bim" : "";
-  const phone = bimPhoneVisible()
-    ? { label: BIM_CONFIG.phoneDisplay, href: BIM_CONFIG.phoneTel }
-    : undefined;
 
   return (
     <PrefixContext.Provider value={prefix}>
@@ -82,14 +79,17 @@ export function BimChrome({
         items={BIM_MENU}
         linkPrefix={linkPrefix}
         cta={{ label: "Ajánlatkérés", href: "/ajanlatkeres" }}
-        quietLink={phone}
       />
       <div className="flex-1">{children}</div>
       <Footer
         variant="bim"
         linkPrefix={linkPrefix}
-        description="Georeferált 3D lézerszkennelés, pontfelhő és — igény szerint — BIM-modell. EOV-kötés, jogosult földmérő közreműködésével."
-        brandTagline={bimPhoneVisible() ? `Telefon: ${BIM_CONFIG.phoneDisplay}` : undefined}
+        description="Ipari és épületfelmérési specialisták: országosan gyors helyszíni lézeres felmérés, mérnöki pontosságú pontfelhő és tervezésre kész Scan-to-BIM alap."
+        brandTagline={
+          bimPhoneVisible()
+            ? `Telefon (másodlagos): ${BIM_CONFIG.phoneDisplay}`
+            : undefined
+        }
       />
     </PrefixContext.Provider>
   );

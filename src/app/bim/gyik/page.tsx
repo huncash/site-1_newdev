@@ -1,60 +1,57 @@
 import { BimLink } from "@/components/bim/BimChrome";
-import { DECREE_CHECKED, MAIN_ORIGIN, NJT_URL, bimMetadata } from "@/lib/bim-site";
+import { BIM_MODELER_HREF } from "@/config/menu";
+import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/gyik",
-  "GYIK — lézerszkennelés, rendelet és lakossági felmérés | VRGO BIM",
-  "Mennyibe kerül, mennyi idő, kell-e BIM állami épületre, mit kap a tervező. Lakossági és B2B válaszok."
+  "GYIK — ipari felmérés, pontfelhő és Scan-to-BIM | VRGO BIM",
+  "Gyakori kérdések a lézeres állapotfelmérésről, EOV-bekötésről, Scan-to-BIM formátumokról és a kapacitás-együttműködésről."
 );
 
 const faqs = [
   {
-    q: "Mennyibe kerül egy lakás vagy ház felmérése?",
-    a: "A díj a mérettől, a terek bonyolultságától, a kiszállástól és a leadott anyagtól függ. Nyilvánosan a díjszerkezetet mutatjuk; a végleges összeget az ajánlat tartalmazza. Részletek: Árak és folyamat.",
+    q: "Milyen projekteket érdemes lézeres felméréssel rögzíteni?",
+    a: "Ipari létesítményeket, rekonstrukciókat, felújításokat, as-built dokumentációt, layout- és ütközésvizsgálati alapot — minden olyan feladatot, ahol a meglévő állapot a tervezés kiindulópontja.",
   },
   {
-    q: "Mennyi idő alatt készül el?",
-    a: "A helyszínen jellemzően egy bejárás elég. A feldolgozás határidejét az ajánlat rögzíti; általános napra szóló vállalást nem teszünk — csak olyat, amit tartani tudunk.",
+    q: "Milyen formátumban kapom meg a pontfelhőt?",
+    a: "Tipikusan E57 formátumban. További formátumokat az ajánlat rögzít.",
   },
   {
-    q: "Be kell-e menni a lakásba többször?",
-    a: "Általában nem. Ha a terek zárva vannak, vagy később derül ki hiányzó zóna, egyeztetünk pótló bejárást.",
+    q: "Kell-e EOV-bekötés?",
+    a: "Ha a felhasználási cél vagy az EIR georeferálást kér, igen. A bekötést jogosult földmérő közreműködésével végezzük; a megrendelő saját földmérőjével is együttműködünk.",
   },
   {
-    q: "Mit kapok a felmérés végén?",
-    a: "Alaprajz és metszet (PDF, DWG), kérésre pontfelhő-nézet. 3D modell külön tétel. Tervezői átadáshoz E57/RCP és jegyzőkönyv is kérhető.",
+    q: "Milyen modellformátumban készül a Scan-to-BIM modell?",
+    a: "Igény szerint Revit, ArchiCAD vagy IFC — külön tételként, a feladat és az LOD szerint.",
   },
   {
-    q: "Használható-e hatósági eljáráshoz?",
-    a: "A felhasználási céltól és a földmérői közreműködéstől függ. Ha földhivatali vagy hatósági ügyintézés a cél, jelezze előre — ezt külön egyeztetjük.",
+    q: "Milyen LOD-szintig modelleznek?",
+    a: "A részletezettséget az EIR vagy a megrendelés határozza meg. Az ajánlatban rögzítjük a vállalt LOD-szintet.",
   },
   {
-    q: "Kell-e BIM egy meglévő állami épületre?",
-    a: "Új állami beruházásnál, valamint meglévő létesítmény állami beruházás keretében történő átépítésénél, bővítésénél, felújításánál vagy bontásánál igen, és a magyar állam tulajdonában álló vagy tulajdonába kerülő létesítmény üzemeltetésénél is (9. §). A rendelet hatálybalépésekor már állami tulajdonú, BIM nélküli létesítménynél a modellt legkésőbb 2035. december 31-ig kell létrehozni (22. § (2)).",
+    q: "Hogyan zajlik a minőség-ellenőrzés?",
+    a: "Regisztráció után ellenőrző pontokkal és dokumentált átadási listával dolgozunk. Ha releváns, BCF hibajegyzéket is adunk.",
   },
   {
-    q: "Ki végzi a geodéziai ellenőrző mérést és a bekötést?",
-    a: "A hivatalos alappont-meghatározást és EOV-bekötést jogosult földmérő partnerünk végzi (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2)). Ha a megrendelő saját földmérővel rendelkezik, együttműködünk vele. A terepi szkenneléstől az átadásig egy szerződéssel, egy felelőssel dolgozunk.",
+    q: "Vállalnak országos kiszállást?",
+    a: "Igen. Kiindulópontunk a Duna-kanyar; Budapest és a Duna-kanyar környékén akár azonos napi kiszállás is lehetséges.",
   },
   {
-    q: "Tudtok IFC-t adni?",
-    a: "Igen. A szabványos BIM-modell (IFC és natív formátum) a pontfelhőből, precíz modellezéssel készül, az EIR szerinti részletezettségben — külön tételként. A helyszíni felmérésből E57 és XYZ pontfelhő, valamint georeferált CAD alaprajz és metszet készül.",
+    q: "Hogyan minimalizálják az ipari üzem megszakítását?",
+    a: "A helyszíni munkát a termelési és üzemeltetési korlátokhoz igazítjuk. Nagyobb projektnél helyszíni tartózkodással csökkentjük az ismételt kiszállások miatti zavarokat.",
   },
   {
-    q: "Mi az az EIR?",
-    a: "Az információcsere-követelmények dokumentuma (Employer's Information Requirements): a megbízó elvárásai a BIM-mel szemben (3. § 8. pont, 17–18. §, 1. melléklet). A pontossági szintet minden projektnél az EIR-hez mérjük.",
+    q: "Vállalnak többnapos helyszíni munkát?",
+    a: "Igen, ha a projekt mérete vagy a termelési ütemezés ezt indokolja.",
   },
   {
-    q: "Dolgoztok közbeszerzésben?",
-    a: "A szerepet — közvetlen megbízott vagy a megrendelő által meghatározott együttműködési forma — az adott ajánlat rögzíti. Ezen az oldalon nem állítjuk, hogy önálló ajánlattevőként indulunk közbeszerzésen.",
+    q: "Csak teljes modellt készítenek, vagy csak terepi adatot is?",
+    a: "Vállaljuk a csak helyszíni rögzítést és georeferálást is: a pontfelhőt és a georeferált alaprajzot átadjuk, a modellezést Ön vagy a csapata végzi. A Scan-to-BIM külön tétel.",
   },
   {
-    q: "Hogyan kezelitek az adatokat?",
-    a: "Az ajánlatkérés adatait az adatvédelmi tájékoztató szerint kezeljük. Lakások belső terének szkennelése személyes adatot is rögzíthet; a felvételek tulajdonjogát és tárolását a szerződés rögzíti.",
-  },
-  {
-    q: "Milyen állományokat adnak át?",
-    a: "Pontfelhő exportot (E57, XYZ), georeferált CAD alaprajzot és metszetet, valamint — ha megrendelték — szabványos BIM-modellt (IFC és natív formátum).",
+    q: "Hogyan lehet kapacitást kérni BIM-modellezőként?",
+    a: "Az ajánlatkérő űrlapon válassza a kapacitás útvonalat, vagy nyissa meg a Scan-to-BIM kapacitás oldalt. Ön tartja az ügyfélkapcsolatot; mi a terepi adatot és szükség szerint a modellezési kapacitást biztosítjuk.",
   },
 ];
 
@@ -73,42 +70,57 @@ function faqSchema() {
 export default function BimFaqPage() {
   return (
     <article className="bg-background">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema()) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema()) }}
+      />
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">Gyakori kérdések</h1>
+          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
+            Gyakori kérdések
+          </h1>
+          <p className="mt-4 max-w-2xl opacity-90">
+            Ipari felmérés, georeferálás, Scan-to-BIM és kapacitás-együttműködés.
+          </p>
         </div>
       </section>
-      <div className="mx-auto max-w-4xl space-y-6 px-4 py-12">
-        {faqs.map((item) => (
-          <section key={item.q} className="rounded-md border border-border bg-card p-5">
-            <h2 className="text-lg font-semibold">{item.q}</h2>
-            <p className="mt-2 text-sm text-muted-foreground sm:text-base">{item.a}</p>
-          </section>
-        ))}
-        <p className="text-sm text-muted-foreground">
-          Lakossági belépő:{" "}
-          <BimLink href="/lakossagnak" className="font-semibold text-brand">
-            /lakossagnak
+      <section className="py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl space-y-3 px-4">
+          {faqs.map((item) => (
+            <details
+              key={item.q}
+              className="group rounded-md border border-border bg-card p-5 open:border-brand/50"
+            >
+              <summary className="cursor-pointer list-none font-semibold marker:hidden">
+                <span className="mr-2 text-brand transition group-open:rotate-90">›</span>
+                {item.q}
+              </summary>
+              <p className="mt-3 pl-5 text-sm text-muted-foreground">
+                {item.a}
+                {item.q.includes("kapacitást kérni") ? (
+                  <>
+                    {" "}
+                    <BimLink href={BIM_MODELER_HREF} className="font-semibold text-brand underline">
+                      Scan-to-BIM kapacitás →
+                    </BimLink>
+                  </>
+                ) : null}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+      <section className="bg-section-dark py-12 text-section-dark-foreground">
+        <div className="mx-auto max-w-3xl px-4 text-center">
+          <h2 className="text-2xl font-semibold">Nem találta a választ?</h2>
+          <BimLink
+            href="/ajanlatkeres?forras=gyik"
+            className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
+          >
+            Ajánlatkérés
           </BimLink>
-          . Díjszerkezet:{" "}
-          <BimLink href="/arak-es-folyamat" className="font-semibold text-brand">
-            /arak-es-folyamat
-          </BimLink>
-          .
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Jogforrás:{" "}
-          <a href={NJT_URL} className="underline" target="_blank" rel="noopener noreferrer">
-            Nemzeti Jogszabálytár
-          </a>
-          . Ellenőrizve: {DECREE_CHECKED}. Adatvédelem:{" "}
-          <a href={`${MAIN_ORIGIN}/adatvedelem`} className="underline">
-            vrgo.hu/adatvedelem
-          </a>
-          .
-        </p>
-      </div>
+        </div>
+      </section>
     </article>
   );
 }

@@ -6,23 +6,26 @@ import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/szolgaltatasok",
-  "Szolgáltatásaink — lézerszkennelés, georeferálás, BIM | VRGO BIM",
-  "Lakásfelméréstől az ipari projektekig: pontfelhő, DWG, drón, EOV-bekötés. BIM-modell külön tételként."
+  "Szolgáltatásaink — ipari felmérés, pontfelhő, Scan-to-BIM | VRGO BIM",
+  "Ipari és épületfelmérés, georeferált pontfelhő, CAD és igény szerinti Scan-to-BIM. Trimble X9, Leica BLK2GO, DJI, GNSS."
 );
 
 const groups = [
   {
-    title: "Épület- és telekfelmérés",
+    title: "Ipari és tervezői felmérés",
     hrefs: [
-      "/szolgaltatasok/lakas-es-hazfelmeres",
-      "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
       "/szolgaltatasok/ipari-letesitmenyek",
+      "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
       "/szolgaltatasok/dronos-felmeres",
     ],
   },
   {
     title: "Geodézia és modellezés",
     hrefs: ["/szolgaltatasok/georeferalas-eov", "/szolgaltatasok/bim-modellezes"],
+  },
+  {
+    title: "Lakossági felmérés",
+    hrefs: ["/szolgaltatasok/lakas-es-hazfelmeres"],
   },
 ] as const;
 
