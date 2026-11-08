@@ -41,7 +41,9 @@ B2B-nek ne magyarázd alapfokon a BIM-et/IFC-t; lakosságinak legyen közérthet
 Sorrend: rövid H1 + bevezető → űrlap → telefon csak az űrlap után.
 Nincs sötét hero, nincs „Elérhetőségek” blokk az űrlap előtt.
 Űrlap első kérdés: „Miben segíthetünk?” (Felmérés / Alvállalkozói együttműködés / Egyéb).
-Nyilvános szövegben tilos: útvonal, tölcsér, konverzió, routing, lead, szegmens.
+Nyilvános szövegben tilos a marketinges „útvonal” (pl. kapacitás útvonal) — helyette: opció, lehetőség, változat, megoldás, kapacitásbővítési lehetőség.
+Tilos továbbá ügyfélnek szóló szövegben: tölcsér, konverzió, routing, lead, szegmens.
+(Query param `utvonal=` és belső változónevek maradhatnak.)
 
 ## Blog
 

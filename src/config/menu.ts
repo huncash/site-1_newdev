@@ -29,7 +29,7 @@ export const BIM_MODELER_HREF = "/scan-to-bim-kapacitas";
 export const BIM_INDUSTRIAL_HREF = "/ipari-felmeres";
 
 /**
- * bim.vrgo.hu menü — rövid B2B tölcsér + Blog (meglévő /cikkek).
+ * bim.vrgo.hu menü — rövid B2B szerkezet + Blog (meglévő /cikkek).
  * Célpiaci oldalak a Megoldások alatt; Ajánlatkérés a Navbar CTA.
  */
 export const BIM_MENU: readonly MenuItem[] = [

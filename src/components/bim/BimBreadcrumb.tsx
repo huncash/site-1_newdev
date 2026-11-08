@@ -32,7 +32,7 @@ export function BimBreadcrumb({
 
   return (
     <nav
-      aria-label="Morzsaútvonal"
+      aria-label="Morzsamenü"
       className={
         tone === "dark"
           ? "mb-6 text-xs text-white/70 sm:text-sm"

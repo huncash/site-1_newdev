@@ -72,7 +72,7 @@ const CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Hogyan lehet alvállalkozói kapacitást kérni?",
-        a: "Az ajánlatkérő űrlapon válassza a kapacitás útvonalat, vagy nyissa meg a BIM-modellezőknek szóló oldalt. Ön tartja az ügyfélkapcsolatot; mi a terepi adatot és szükség szerint a modellezési kapacitást biztosítjuk.",
+        a: "Az ajánlatkérő űrlapon válassza a kapacitásbővítési lehetőséget, vagy nyissa meg a BIM-modellezőknek szóló oldalt. Ön tartja az ügyfélkapcsolatot; mi a terepi adatot és szükség szerint a modellezési kapacitást biztosítjuk.",
       },
     ],
   },

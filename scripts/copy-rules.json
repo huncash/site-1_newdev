@@ -42,7 +42,11 @@
     "innovatív megoldás",
     "teljes körű szolgáltatás",
     "integrált megoldás",
-    "komplex megoldás"
+    "komplex megoldás",
+    "kapacitás útvonal",
+    "Melyik útvonalról",
+    "útvonalat",
+    "útvonalról van szó"
   ],
   "forbiddenRegex": [
     "(IFC|modellez)[\\s\\S]{0,40}partner",
