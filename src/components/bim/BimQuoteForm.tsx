@@ -15,15 +15,7 @@ const PATHS = [
   },
   {
     id: "kapacitas",
-    label: "BIM-modellezőknek: kapacitás vagy együttműködés",
-  },
-  {
-    id: "tervezo",
-    label: "Tervezés / rekonstrukció (as-built alap)",
-  },
-  {
-    id: "lakossagi",
-    label: "Lakossági felmérés",
+    label: "BIM-modellezőknek: kapacitás vagy alvállalkozói együttműködés",
   },
 ] as const;
 
@@ -35,8 +27,8 @@ const PROJECT_TYPES = [
 ] as const;
 
 const OUTPUTS = [
-  ["pontfelho", "Pontfelhő (E57)"],
-  ["cad", "CAD (DWG)"],
+  ["pontfelho", "Pontfelhő"],
+  ["cad", "CAD"],
   ["revit", "Revit"],
   ["archicad", "ArchiCAD"],
   ["ifc", "IFC"],
@@ -46,10 +38,15 @@ const OUTPUTS = [
 type PathId = (typeof PATHS)[number]["id"];
 
 function resolvePath(raw: string | null): PathId {
-  if (raw === "kapacitas" || raw === "tervezo" || raw === "lakossagi" || raw === "ipar") {
-    return raw;
-  }
+  if (raw === "kapacitas") return "kapacitas";
   return "ipar";
+}
+
+function resolveProjectType(raw: string | null, path: PathId): (typeof PROJECT_TYPES)[number] {
+  if (raw === "lakossagi") return "Lakossági felmérés";
+  if (raw === "tervezo") return "Épület vagy rekonstrukció";
+  if (path === "kapacitas" || raw === "kapacitas") return "BIM-modellező kapacitás";
+  return "Ipari létesítmény";
 }
 
 export function BimQuoteForm() {
@@ -62,12 +59,10 @@ export function BimQuoteForm() {
   const [sumToken, setSumToken] = useState("");
   const [sumReset, setSumReset] = useState(0);
 
-  const defaultProjectType = useMemo(() => {
-    if (path === "kapacitas") return "BIM-modellező kapacitás";
-    if (path === "lakossagi") return "Lakossági felmérés";
-    if (path === "tervezo") return "Épület vagy rekonstrukció";
-    return "Ipari létesítmény";
-  }, [path]);
+  const defaultProjectType = useMemo(
+    () => resolveProjectType(searchParams.get("utvonal"), path),
+    [path, searchParams]
+  );
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -314,9 +309,7 @@ export function BimQuoteForm() {
       >
         {status === "sending" ? "Küldés…" : "Ajánlatot kérek"}
       </button>
-      <p className="text-xs text-muted-foreground">
-        {BIM_CONFIG.replySlaText}
-      </p>
+      <p className="text-xs text-muted-foreground">{BIM_CONFIG.replySlaText}</p>
     </form>
   );
 }

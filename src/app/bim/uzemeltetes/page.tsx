@@ -102,7 +102,7 @@ export default function OperationsPage() {
           fromYou="Üzemeltetési prioritások, hozzáférés, előző átadás anyagai, specifikáció vagy EIR."
         />
         <BimLink
-          href="/ajanlatkeres?forras=uzemeltetes"
+          href="/kapcsolat?forras=uzemeltetes"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
         >
           Küldje el a feladat leírását, módszertant és árajánlatot adunk.

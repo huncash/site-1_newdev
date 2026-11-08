@@ -8,7 +8,7 @@ export function BimServiceLayout({
   title,
   lead,
   children,
-  ctaHref = "/ajanlatkeres",
+  ctaHref = "/kapcsolat",
   ctaLabel = "Ajánlatot kérek",
 }: {
   crumbs: readonly Crumb[];

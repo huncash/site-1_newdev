@@ -4,7 +4,7 @@ import { BimServiceLayout, ServiceSection } from "@/components/bim/BimServiceLay
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
-  "/szolgaltatasok/ipari-letesitmenyek",
+  "/ipari-felmeres",
   "Ipari létesítmények felmérése | VRGO BIM",
   "Gyártóüzemek, raktárak és technológiai csarnokok lézeres állapotfelmérése — a termelési megszakítás minimalizálásával. Georeferált pontfelhő és as-built alap."
 );
@@ -19,7 +19,7 @@ export default function IndustrialServicePage() {
       ]}
       title="Ipari létesítmények felmérése, ahol a pontosság és az üzemfolytonosság számít"
       lead="Gyártóüzemek, raktárak, technológiai csarnokok és üzemek állapotfelmérése. Ahol a leállás drága, a felmérésnek a termeléshez kell alkalmazkodnia."
-      ctaHref="/ajanlatkeres?utvonal=ipar&forras=ipari-szolgaltatas"
+      ctaHref="/kapcsolat?utvonal=ipar&forras=ipari-szolgaltatas"
       ctaLabel="Ipari felmérés kérése"
     >
       <ServiceSection title="Mit vállalunk">
@@ -32,7 +32,7 @@ export default function IndustrialServicePage() {
             Nagyobb projektnél helyszíni tartózkodás, a termelési megszakítás minimalizálására
             optimalizált munkavégzés
           </li>
-          <li>Országos kiszállás; Budapest és a Duna-kanyar környékén akár azonos napi kiszállás</li>
+          <li>Országos kiszállás; Budapesten belül kiszállási díj felszámítása nélkül</li>
         </ul>
       </ServiceSection>
 
@@ -74,7 +74,7 @@ export default function IndustrialServicePage() {
         deliverables="Pontfelhő, 2D layout, igény szerint ütközésvizsgálati alapadat és Scan-to-BIM."
         timeline="A helyszíni napok száma a létesítmény méretétől és a zónák hozzáférhetőségétől függ; a határidőt az ajánlat rögzíti."
         fromYou="Helyszíni hozzáférés, biztonsági előírások, felmérendő zónák; ha van: meglévő layout vagy EIR."
-        ctaHref="/ajanlatkeres?utvonal=ipar&forras=ipari-szolgaltatas"
+        ctaHref="/kapcsolat?utvonal=ipar&forras=ipari-szolgaltatas"
       />
 
       <p className="text-sm text-muted-foreground">

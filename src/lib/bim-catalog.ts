@@ -1,4 +1,4 @@
-import { BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
+import { BIM_INDUSTRIAL_HREF, BIM_MODELER_HREF, BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
 
 /** Szolgáltatás- és megoldáskatalógus — menü, főoldal, áttekintő oldalak. */
 
@@ -33,19 +33,24 @@ export const BIM_RESIDENTIAL_SERVICE_OPTIONS = [
 
 export const BIM_SERVICES: readonly CatalogItem[] = [
   {
-    href: "/szolgaltatasok/lakas-es-hazfelmeres",
-    title: "Lakás- és házfelmérés",
-    summary: "Pontos alaprajz és metszet felújításhoz, tervezéshez — egy bejárással.",
-  },
-  {
-    href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
-    title: "Tervezőknek és kivitelezőknek",
-    summary: "Georeferált pontfelhő és DWG a tervezéshez.",
-  },
-  {
-    href: "/szolgaltatasok/ipari-letesitmenyek",
+    href: BIM_INDUSTRIAL_HREF,
     title: "Ipari létesítmények és csarnokok",
     summary: "Layout, géptelepítés és ütközésvizsgálati alapadat nagy terekben.",
+  },
+  {
+    href: "/tervezoknek",
+    title: "Tervezőknek és kivitelezőknek",
+    summary: "Pontfelhő, CAD és szükség szerint Scan-to-BIM alap a tervezéshez.",
+  },
+  {
+    href: BIM_MODELER_HREF,
+    title: "BIM-modellezőknek",
+    summary: "Terepi felmérés és modellezési kapacitás a saját munkafolyamatába.",
+  },
+  {
+    href: "/lakossagi-felmeres",
+    title: "Lakás- és házfelmérés",
+    summary: "Pontos alaprajz és metszet felújításhoz, tervezéshez — egy bejárással.",
   },
   {
     href: "/szolgaltatasok/dronos-felmeres",
@@ -68,21 +73,21 @@ export const BIM_SOLUTIONS: readonly CatalogItem[] = [
   {
     href: "/megoldasok#felujitas",
     title: "Felújítás és tervezés előtti felmérés",
-    summary: "Hiányzó vagy pontatlan terv helyett mérhető digitális másolat.",
+    summary: "Hiányzó vagy pontatlan terv helyett mért alaprajz és pontfelhő.",
   },
   {
     href: "/megoldasok#as-built",
     title: "Megvalósulási (as-built) dokumentáció",
-    summary: "A kész állapot rögzítése pontfelhővel és georeferált rajzzal.",
+    summary: "A kész állapot rögzítése pontfelhővel és rajzzal.",
   },
   {
     href: "/megoldasok#kivitelezes",
     title: "Kivitelezés követése",
-    summary: "Előrehaladás, hibakövetés, ellenőrzés a helyszíni állapothoz képest.",
+    summary: "Előrehaladás és hibakövetés a helyszíni állapothoz képest.",
   },
   {
     href: "/megoldasok#uzemeltetes",
-    title: "Üzemeltetés és éves digitális iker",
+    title: "Üzemeltetési frissítés",
     summary: "Időszakos frissítés és változáskövetés üzemeltetéshez.",
   },
   {
@@ -94,32 +99,5 @@ export const BIM_SOLUTIONS: readonly CatalogItem[] = [
     href: BIM_STATE_HUB_HREF,
     title: BIM_STATE_HUB_LABEL,
     summary: "Állami beruházásnál vagy üzemeltetésnél a szabályozásnak megfelelő felmérés.",
-  },
-] as const;
-
-export const BIM_AUDIENCES = [
-  {
-    href: "/szolgaltatasok/lakas-es-hazfelmeres",
-    title: "Lakás- és háztulajdonosoknak",
-    text: "Felújítás, tetőtér-beépítés vagy átépítés előtt pontos alaprajz — a tervezőnek is használható anyag.",
-    cta: "Lakossági felmérés",
-  },
-  {
-    href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
-    title: "Tervezőknek és kivitelezőknek",
-    text: "Georeferált pontfelhő, DWG. Csak a terepi munkát is megrendelheti; a modellezést Ön vagy a csapata végzi.",
-    cta: "Tervezőknek",
-  },
-  {
-    href: "/megoldasok#uzemeltetes",
-    title: "Beruházóknak és üzemeltetőknek",
-    text: "Megvalósulási állapot, éves frissítés, specifikáció szerinti átadás.",
-    cta: "Üzemeltetés",
-  },
-  {
-    href: "/szolgaltatasok/ipari-letesitmenyek",
-    title: "Ipari létesítményeknek",
-    text: "Csarnok- és gépészeti felmérés layout-tervezéshez és ütközésvizsgálathoz.",
-    cta: "Ipari felmérés",
   },
 ] as const;

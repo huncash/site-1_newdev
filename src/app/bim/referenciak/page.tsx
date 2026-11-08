@@ -52,7 +52,7 @@ export default function ReferencesPage() {
           <h2 className="text-xl font-semibold text-foreground">Következő lépés</h2>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row">
             <BimLink
-              href="/ajanlatkeres?utvonal=ipar&forras=referenciak"
+              href="/kapcsolat?utvonal=ipar&forras=referenciak"
               className="inline-flex rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground"
             >
               Helyszíni felmérési ajánlat

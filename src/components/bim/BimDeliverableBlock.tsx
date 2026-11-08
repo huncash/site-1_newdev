@@ -13,7 +13,7 @@ export function BimDeliverableBlock({
   deliverables,
   timeline,
   fromYou,
-  ctaHref = "/ajanlatkeres",
+  ctaHref = "/kapcsolat",
   ctaLabel = "Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.",
 }: BimDeliverableBlockProps) {
   return (

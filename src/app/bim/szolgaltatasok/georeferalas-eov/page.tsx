@@ -20,7 +20,7 @@ export default function GeorefServicePage() {
       ]}
       title="Georeferálás és EOV-bekötés"
       lead="A pontfelhő és a rajzok hivatalos magyarországi koordináta-rendszerbe kötése Trimble GNSS és terepi méréssel, jogosult földmérő közreműködésével."
-      ctaHref="/ajanlatkeres?forras=georeferalas-eov"
+      ctaHref="/kapcsolat?forras=georeferalas-eov"
     >
       <ServiceSection title="Kinek">
         <p>Tervezők, beruházók, üzemeltetők — ahol EOV-kötött adat az elvárás.</p>

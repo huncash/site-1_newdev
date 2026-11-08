@@ -4,7 +4,7 @@ import { bimHasSamplePack, BIM_CONFIG } from "@/config/bim";
 import { MAIN_ORIGIN, bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
-  "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
+  "/tervezoknek",
   "Tervezőknek és kivitelezőknek — georeferált pontfelhő | VRGO BIM",
   "Georeferált pontfelhő és DWG alaprajz tervezőirodáknak, akár csak terepi munkára."
 );
@@ -19,7 +19,7 @@ export default function DesignersServicePage() {
       ]}
       title="Helyszíni rögzítés tervezőknek és kivitelezőknek"
       lead="Georeferált pontfelhő és DWG alaprajz a terepi munkától az átadásig. Egy szerződéssel, egy felelőssel."
-      ctaHref="/ajanlatkeres?forras=tervezoknek-szolgaltatas"
+      ctaHref="/kapcsolat?forras=tervezoknek-szolgaltatas"
       ctaLabel="Küldje el a feladat leírását vagy az EIR-t"
     >
       <ServiceSection title="Kinek">

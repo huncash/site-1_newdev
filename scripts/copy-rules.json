@@ -25,7 +25,11 @@
     "← vrgo.hu",
     "vrgo.hu főoldal",
     "A vrgo.hu blog",
-    "váltott műszak"
+    "váltott műszak",
+    "1 munkanapon belül",
+    "RTC360",
+    "mérhető digitális más",
+    "Telefon (másodlagos)"
   ],
   "forbiddenRegex": [
     "(IFC|modellez)[\\s\\S]{0,40}partner",
@@ -101,22 +105,22 @@
     "bim": {
       "routes": [
         "/",
+        "/ipari-felmeres",
+        "/tervezoknek",
+        "/scan-to-bim-kapacitas",
+        "/lakossagi-felmeres",
+        "/munkafolyamat",
+        "/kapcsolat",
+        "/gyik",
+        "/megoldasok",
+        "/megoldasok/allami-beruhazasok-es-bim-eloirasok",
         "/szolgaltatasok",
-        "/szolgaltatasok/lakas-es-hazfelmeres",
-        "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
         "/szolgaltatasok/bim-modellezes",
         "/szolgaltatasok/georeferalas-eov",
         "/szolgaltatasok/dronos-felmeres",
-        "/szolgaltatasok/ipari-letesitmenyek",
-        "/megoldasok",
-        "/megoldasok/allami-beruhazasok-es-bim-eloirasok",
-        "/arak-es-folyamat",
-        "/gyik",
+        "/pontossag-es-formatumok",
         "/cikkek",
         "/referenciak",
-        "/ajanlatkeres",
-        "/scan-to-bim-kapacitas",
-        "/pontossag-es-formatumok",
         "/mi-az-a-bim"
       ]
     }

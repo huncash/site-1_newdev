@@ -129,7 +129,7 @@ export function BimArticleView({
             Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.
           </p>
           <BimLink
-            href="/ajanlatkeres"
+            href="/kapcsolat"
             className="mt-4 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground transition hover:bg-brand-dark"
           >
             Ajánlatot kérek

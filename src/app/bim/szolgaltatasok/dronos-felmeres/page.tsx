@@ -17,7 +17,7 @@ export default function DroneServicePage() {
       ]}
       title="Drónos felmérés — homlokzat, tető, telek"
       lead="Fotogrammetriás rögzítés a nehezen elérhető külső felületekről és területekről, a lézerszkenneléssel közös koordináta-rendszerben."
-      ctaHref="/ajanlatkeres?forras=dronos-felmeres"
+      ctaHref="/kapcsolat?forras=dronos-felmeres"
     >
       <ServiceSection title="Kinek">
         <p>Magánszemélyek, tervezők, kivitelezők, fejlesztők — tető, homlokzat vagy telek esetén.</p>

@@ -94,7 +94,7 @@ export default function MiAzABimPage() {
             <BimLink href="/pontossag-es-formatumok" className="text-brand underline underline-offset-2">
               Pontosság és formátumok
             </BimLink>
-            <BimLink href="/ajanlatkeres" className="text-brand underline underline-offset-2">
+            <BimLink href="/kapcsolat" className="text-brand underline underline-offset-2">
               Ajánlatkérés
             </BimLink>
           </p>

@@ -1,5 +1,5 @@
 import { BimResidentialForm } from "@/components/bim/BimResidentialForm";
-import { BimLink, BimPhoneLink } from "@/components/bim/BimChrome";
+import { BimLink } from "@/components/bim/BimChrome";
 import { BimServiceLayout, ServiceSection } from "@/components/bim/BimServiceLayout";
 import { bimHasFromPrices, BIM_CONFIG } from "@/config/bim";
 import { bimMetadata } from "@/lib/bim-site";
@@ -32,11 +32,6 @@ export default function ResidentialServicePage() {
       ctaHref="#ajanlat"
       ctaLabel="Rövid érdeklődés"
     >
-      <BimPhoneLink
-        forras="lakas-hazfelmeres"
-        className="inline-flex rounded-md border border-brand px-5 py-2.5 text-sm font-semibold text-brand"
-      />
-
       <ServiceSection title="Kinek">
         <p>Magánszemélyeknek, háztulajdonosoknak, és a tervezőjüknek, akik pontos alaprajzot kérnek.</p>
       </ServiceSection>

@@ -8,25 +8,25 @@ export const MAIN_ORIGIN = "https://vrgo.hu";
 
 /** Footer / belső listák — a főmenü a BIM_MENU. */
 export const BIM_NAV = [
-  { href: "/szolgaltatasok", label: "Szolgáltatások" },
   { href: "/megoldasok", label: "Megoldások" },
-  { href: "/szolgaltatasok/lakas-es-hazfelmeres", label: "Lakás- és házfelmérés" },
-  { href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek", label: "Tervezőknek" },
-  { href: "/arak-es-folyamat", label: "Árak" },
-  { href: "/szolgaltatasok/ipari-letesitmenyek", label: "Ipari" },
+  { href: "/ipari-felmeres", label: "Ipari felmérés" },
+  { href: "/scan-to-bim-kapacitas", label: "BIM-modellezőknek" },
+  { href: "/tervezoknek", label: "Tervezőknek" },
+  { href: "/lakossagi-felmeres", label: "Lakás- és házfelmérés" },
+  { href: "/munkafolyamat", label: "Munkafolyamat" },
   { href: "/kivitelezes", label: "Kivitelezés" },
   { href: "/uzemeltetes", label: "Üzemeltetés" },
   { href: "/meglevo-allami-epuletek", label: "Állami épületek" },
   {
     href: "/megoldasok/allami-beruhazasok-es-bim-eloirasok",
-    label: "Állami beruházások és BIM-előírások",
+    label: "Állami BIM",
   },
   { href: "/ekm-rendelet", label: "Állami BIM-előírások egy oldalon" },
   { href: "/pontossag-es-formatumok", label: "Pontosság" },
   { href: "/referenciak", label: "Referenciák" },
   { href: "/cikkek", label: "Cikkek" },
   { href: "/gyik", label: "GYIK" },
-  { href: "/ajanlatkeres", label: "Ajánlat" },
+  { href: "/kapcsolat", label: "Kapcsolat" },
 ] as const;
 
 /** 2. melléklet, 2026.01.01. hatályos szöveg. */

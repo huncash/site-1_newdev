@@ -17,7 +17,7 @@ export default function ModelingServicePage() {
       ]}
       title="BIM-modellezés és 2D tervek"
       lead="A modellezés külön tételként kérhető szolgáltatás. A részletezettség a feladat és az LOD szerint."
-      ctaHref="/ajanlatkeres?forras=bim-modellezes"
+      ctaHref="/kapcsolat?forras=bim-modellezes"
     >
       <ServiceSection title="Kinek">
         <p>

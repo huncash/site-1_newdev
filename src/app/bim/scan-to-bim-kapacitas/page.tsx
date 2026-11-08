@@ -1,20 +1,35 @@
+import { Suspense } from "react";
+
+import { BimQuoteForm } from "@/components/bim/BimQuoteForm";
 import { BimLink } from "@/components/bim/BimChrome";
 import { BIM_CONFIG, bimHasSamplePack } from "@/config/bim";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/scan-to-bim-kapacitas",
-  "BIM-modellezőknek: terepi adat és Scan-to-BIM kapacitás | VRGO BIM",
-  "Georeferált pontfelhő, mérnöki állapotfelmérés és Revit/ArchiCAD/IFC-kompatibilis Scan-to-BIM alap a saját munkafolyamatába illesztve."
+  "BIM-modellezőknek: kapacitás és együttműködés | VRGO BIM",
+  "Ha a felmérés, a nagyobb modellgyártás vagy a szoros átadási határidő miatt nincs elég belső kapacitás, mi betársulunk a munkafolyamatába."
 );
 
-const POINTS = [
+const WHEN = [
+  "Nagyobb terepi felmérés, amelyre nincs belső kapacitás",
+  "Több párhuzamos modellgyártás szoros átadási határidővel",
+  "Ipari vagy nehezen hozzáférhető helyszín",
+  "Hiteles terepi adat kell a saját modellező csapatához",
+] as const;
+
+const WE_DO = [
+  "Helyszíni lézeres felmérés",
+  "Pontfelhő regisztráció és tisztítás",
+  "CAD-alap a megrendelés szerint",
+  "Scan-to-BIM modellezés szükség szerint",
+] as const;
+
+const YOU_GET = [
   "Saját név-, réteg- és LOD-konvenció szerinti munka",
-  "BCF és minőség-ellenőrzés",
-  "E57 / DWG / IFC / Revit / ArchiCAD átadás",
-  "Országos kiszállás",
-  "Ipari környezetben való jártasság",
-  "Gyors reakció és mérnöki hitelesítés",
+  "E57, DWG, IFC, Revit vagy ArchiCAD átadás",
+  "BCF és minőség-ellenőrzés, ha releváns",
+  "Országos kiszállás; Budapesten belül kiszállási díj nélkül",
 ] as const;
 
 export default function ScanToBimCapacityPage() {
@@ -26,18 +41,18 @@ export default function ScanToBimCapacityPage() {
             BIM-modellezőknek
           </p>
           <h1 className="mt-3 text-3xl font-bold sm:text-4xl">
-            BIM-modellezőknek: terepi adat és Scan-to-BIM kapacitás
+            BIM-modellezőknek: kapacitás és együttműködés
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
-            Georeferált pontfelhő, mérnöki állapotfelmérés és Revit/ArchiCAD/IFC-kompatibilis
-            Scan-to-BIM alap a saját munkafolyamatába illesztve.
+            Ha a felmérés, a nagyobb modellgyártás vagy a szoros átadási határidő miatt nincs elég
+            belső kapacitás, mi betársulunk a munkafolyamatába.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <BimLink
-              href="/ajanlatkeres?utvonal=kapacitas&forras=scan-to-bim"
+              href="/kapcsolat?utvonal=kapacitas&forras=scan-to-bim"
               className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
             >
-              Kérjen kapacitás- vagy projektajánlatot
+              Kapacitásajánlat kérése
             </BimLink>
             {bimHasSamplePack() ? (
               <a
@@ -51,52 +66,77 @@ export default function ScanToBimCapacityPage() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-3xl px-4">
-          <h2 className="text-2xl font-semibold">Nem vesszük el az ügyfelét</h2>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Ön tartja az ügyfélkapcsolatot. Mi a hiteles terepi adatot, a Scan-to-BIM alapot és
-            szükség esetén a modellezési kapacitást biztosítjuk. Ha egy felmérés, nagyobb
-            modellgyártás vagy szoros átadási határidő miatt nincs elég belső kapacitás, mi
-            betársulunk a munkafolyamatába.
+      <div className="mx-auto max-w-4xl space-y-12 px-4 py-12 text-sm text-muted-foreground sm:text-base">
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Nem vesszük el az ügyfelét</h2>
+          <p className="mt-3">
+            Ön tartja az ügyfélkapcsolatot, mi a mérési és modellezési kapacitást biztosítjuk.
           </p>
-        </div>
-      </section>
+        </section>
 
-      <section className="bg-secondary py-12 sm:py-16">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-2xl font-semibold">Mit kap az együttműködéssel</h2>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {POINTS.map((item) => (
-              <li key={item} className="rounded-md border border-border bg-card px-4 py-3 text-sm">
-                {item}
-              </li>
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Mikor hasznos a külső kapacitás</h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5">
+            {WHEN.map((item) => (
+              <li key={item}>{item}</li>
             ))}
           </ul>
-          <p className="mt-6 text-sm text-muted-foreground">
-            Nagyobb projektnél helyszíni tartózkodással dolgozunk, a termelési megszakítás
-            minimalizálására optimalizált ütemezéssel.
-          </p>
-        </div>
-      </section>
+        </section>
 
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="text-2xl font-semibold">Következő lépés</h2>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Kérjen helyszíni felmérési vagy Scan-to-BIM kapacitásajánlatot.
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5">
+            {WE_DO.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Mit kap a partner</h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5">
+            {YOU_GET.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">
+            Hogyan illeszkedünk a saját munkafolyamatába
+          </h2>
+          <p className="mt-3">
+            A konvenciókat, a részletezettséget és az átadási formátumot a projektje szerint
+            követjük. Név-, réteg- és LOD-szabályait a munka megkezdése előtt egyeztetjük.
           </p>
-          {BIM_CONFIG.replySlaText ? (
-            <p className="mt-2 text-sm text-muted-foreground">{BIM_CONFIG.replySlaText}</p>
-          ) : null}
-          <BimLink
-            href="/ajanlatkeres?utvonal=kapacitas&forras=scan-to-bim-cta"
-            className="mt-6 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
-          >
-            Kapacitásajánlat kérése
-          </BimLink>
-        </div>
-      </section>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Formátumok és ellenőrzés</h2>
+          <p className="mt-3">
+            E57, DWG, IFC, Revit és ArchiCAD átadás a megrendelés szerint. Ha releváns, BCF
+            hibajegyzéket és ellenőrző pontokat adunk.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Országos kiszállás</h2>
+          <p className="mt-3">
+            Országosan vállalunk helyszíni munkát. Budapesten belül a kiszállási díjat nem számítjuk
+            fel.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Kapacitásajánlat űrlap</h2>
+          <p className="mt-3">Kérjen helyszíni felmérési vagy Scan-to-BIM kapacitásajánlatot.</p>
+          <div className="mt-6">
+            <Suspense fallback={<p className="text-sm text-muted-foreground">Űrlap betöltése…</p>}>
+              <BimQuoteForm />
+            </Suspense>
+          </div>
+        </section>
+      </div>
     </article>
   );
 }

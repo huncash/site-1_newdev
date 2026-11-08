@@ -5,20 +5,20 @@ import { BIM_ORIGIN } from "@/lib/bim-site";
 
 const STATIC_PATHS = [
   "/",
-  "/szolgaltatasok",
-  "/szolgaltatasok/lakas-es-hazfelmeres",
-  "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
-  "/szolgaltatasok/ipari-letesitmenyek",
+  "/ipari-felmeres",
+  "/tervezoknek",
   "/scan-to-bim-kapacitas",
+  "/lakossagi-felmeres",
+  "/munkafolyamat",
+  "/kapcsolat",
+  "/gyik",
+  "/megoldasok",
+  "/megoldasok/allami-beruhazasok-es-bim-eloirasok",
+  "/szolgaltatasok",
   "/szolgaltatasok/dronos-felmeres",
   "/szolgaltatasok/georeferalas-eov",
   "/szolgaltatasok/bim-modellezes",
-  "/megoldasok",
-  "/megoldasok/allami-beruhazasok-es-bim-eloirasok",
-  "/arak-es-folyamat",
   "/pontossag-es-formatumok",
-  "/lakossagnak",
-  "/ipari-letesitmenyek",
   "/kivitelezes",
   "/uzemeltetes",
   "/meglevo-allami-epuletek",
@@ -26,8 +26,6 @@ const STATIC_PATHS = [
   "/mi-az-a-bim",
   "/referenciak",
   "/cikkek",
-  "/gyik",
-  "/ajanlatkeres",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -36,7 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: path === "/" ? `${BIM_ORIGIN}/` : `${BIM_ORIGIN}${path}`,
     lastModified: now,
     changeFrequency: path === "/" ? "weekly" : "monthly",
-    priority: path === "/" ? 1 : 0.7,
+    priority:
+      path === "/"
+        ? 1
+        : path === "/ipari-felmeres" || path === "/scan-to-bim-kapacitas" || path === "/kapcsolat"
+          ? 0.9
+          : 0.7,
   }));
 
   const articles = listPublishedBimArticles().map((article) => ({

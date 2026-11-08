@@ -30,7 +30,7 @@ const FOUR_AREAS = [
   { href: "/meglevo-allami-epuletek", title: "Meglévő állami épületek felmérése" },
   { href: "/kivitelezes", title: "Kivitelezés dokumentálása" },
   { href: "/uzemeltetes", title: "Üzemeltetés, éves digitális iker" },
-  { href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek", title: "Helyszíni rögzítés tervezőknek" },
+  { href: "/tervezoknek", title: "Helyszíni rögzítés tervezőknek" },
 ] as const;
 
 /** A főoldalról a hubra költözött „Négy terület” blokk — törlés nélkül. */

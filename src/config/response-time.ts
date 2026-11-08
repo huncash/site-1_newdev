@@ -5,8 +5,8 @@
 export const RESPONSE_TIME = {
   /** vrgo.hu — feladat záró megkötés */
   vrgo: "48 órán belül",
-  /** bim.vrgo.hu */
-  bim: "1 munkanapon belül",
+  /** bim.vrgo.hu — nem garantált naptári nap */
+  bim: "rövid határidőn belül",
 } as const;
 
 export function vrgoReplySlaSentence(): string {
@@ -14,5 +14,5 @@ export function vrgoReplySlaSentence(): string {
 }
 
 export function bimReplySlaSentence(): string {
-  return `Árajánlatot az űrlap alapján ${RESPONSE_TIME.bim} küldünk.`;
+  return `A szükséges módszert és árajánlatot ${RESPONSE_TIME.bim} egyeztetjük.`;
 }

@@ -1,23 +1,19 @@
 import { BimBreadcrumb } from "@/components/bim/BimBreadcrumb";
 import { BimLink } from "@/components/bim/BimChrome";
-import { BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
+import { BIM_INDUSTRIAL_HREF, BIM_MODELER_HREF, BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
 import { BIM_SERVICES } from "@/lib/bim-catalog";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/szolgaltatasok",
   "Szolgáltatásaink — ipari felmérés, pontfelhő, Scan-to-BIM | VRGO BIM",
-  "Ipari és épületfelmérés, georeferált pontfelhő, CAD és igény szerinti Scan-to-BIM. Trimble X9, Leica BLK2GO, DJI, GNSS."
+  "Ipari és épületfelmérés, pontfelhő, CAD és igény szerinti Scan-to-BIM."
 );
 
 const groups = [
   {
     title: "Ipari és tervezői felmérés",
-    hrefs: [
-      "/szolgaltatasok/ipari-letesitmenyek",
-      "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
-      "/szolgaltatasok/dronos-felmeres",
-    ],
+    hrefs: [BIM_INDUSTRIAL_HREF, "/tervezoknek", BIM_MODELER_HREF, "/szolgaltatasok/dronos-felmeres"],
   },
   {
     title: "Geodézia és modellezés",
@@ -25,7 +21,7 @@ const groups = [
   },
   {
     title: "Lakossági felmérés",
-    hrefs: ["/szolgaltatasok/lakas-es-hazfelmeres"],
+    hrefs: ["/lakossagi-felmeres"],
   },
 ] as const;
 
@@ -42,9 +38,8 @@ export default function ServicesPage() {
           />
           <h1 className="text-3xl font-bold sm:text-4xl">Szolgáltatásaink</h1>
           <p className="mt-3 max-w-2xl text-sm opacity-90 sm:text-base">
-            Lézerszkennelés, mobil szkennelés, drónos fotogrammetria és GNSS-mérés egy
-            koordináta-rendszerben, a feladathoz választott módszerrel. Eszközeink: Trimble X9,
-            Leica BLK2GO, DJI drón, Trimble GNSS. A BIM-modell külön tétel.
+            Lézerszkennelés, mobil szkennelés, drónos fotogrammetria és GNSS-mérés. Eszközeink:
+            Trimble X9, Leica BLK2GO, DJI drón, Trimble GNSS. A BIM-modell külön tétel.
           </p>
         </div>
       </section>
@@ -71,9 +66,9 @@ export default function ServicesPage() {
           </section>
         ))}
         <p className="text-sm text-muted-foreground">
-          Díjszerkezet:{" "}
-          <BimLink href="/arak-es-folyamat" className="font-semibold text-brand">
-            Árak és folyamat
+          Folyamat:{" "}
+          <BimLink href="/munkafolyamat" className="font-semibold text-brand">
+            hogyan dolgozunk
           </BimLink>
           . Pontosság:{" "}
           <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">

@@ -4,6 +4,8 @@ import type { NextConfig } from "next";
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
+const bimHost = { type: "host" as const, value: "(bim\\.vrgo\\.hu|bim\\.localhost)" };
+
 const nextConfig: NextConfig = {
   // Parent-folder package-lock.json otherwise hijacks the workspace root
   // and breaks CSS / Tailwind resolution in dev.
@@ -28,19 +30,85 @@ const nextConfig: NextConfig = {
         statusCode: 301,
       },
       {
-        source: "/tervezoknek",
-        has: [{ type: "host", value: "(bim\\.vrgo\\.hu|bim\\.localhost)" }],
-        destination: "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
+        source: "/szolgaltatasok/tervezoknek-es-kivitelezoknek",
+        has: [bimHost],
+        destination: "/tervezoknek",
         statusCode: 301,
       },
       {
-        source: "/bim/tervezoknek",
-        destination: "/bim/szolgaltatasok/tervezoknek-es-kivitelezoknek",
+        source: "/bim/szolgaltatasok/tervezoknek-es-kivitelezoknek",
+        destination: "/bim/tervezoknek",
+        statusCode: 301,
+      },
+      {
+        source: "/szolgaltatasok/ipari-letesitmenyek",
+        has: [bimHost],
+        destination: "/ipari-felmeres",
+        statusCode: 301,
+      },
+      {
+        source: "/bim/szolgaltatasok/ipari-letesitmenyek",
+        destination: "/bim/ipari-felmeres",
+        statusCode: 301,
+      },
+      {
+        source: "/ipari-letesitmenyek",
+        has: [bimHost],
+        destination: "/ipari-felmeres",
+        statusCode: 301,
+      },
+      {
+        source: "/bim/ipari-letesitmenyek",
+        destination: "/bim/ipari-felmeres",
+        statusCode: 301,
+      },
+      {
+        source: "/szolgaltatasok/lakas-es-hazfelmeres",
+        has: [bimHost],
+        destination: "/lakossagi-felmeres",
+        statusCode: 301,
+      },
+      {
+        source: "/bim/szolgaltatasok/lakas-es-hazfelmeres",
+        destination: "/bim/lakossagi-felmeres",
+        statusCode: 301,
+      },
+      {
+        source: "/lakossagnak",
+        has: [bimHost],
+        destination: "/lakossagi-felmeres",
+        statusCode: 301,
+      },
+      {
+        source: "/bim/lakossagnak",
+        destination: "/bim/lakossagi-felmeres",
+        statusCode: 301,
+      },
+      {
+        source: "/arak-es-folyamat",
+        has: [bimHost],
+        destination: "/munkafolyamat",
+        statusCode: 301,
+      },
+      {
+        source: "/bim/arak-es-folyamat",
+        destination: "/bim/munkafolyamat",
+        statusCode: 301,
+      },
+      {
+        source: "/ajanlatkeres",
+        has: [bimHost],
+        destination: "/kapcsolat",
+        statusCode: 301,
+      },
+      {
+        source: "/bim/ajanlatkeres",
+        destination: "/bim/kapcsolat",
         statusCode: 301,
       },
       {
         source: "/alvallalkozoi-egyuttmukodes",
-        has: [{ type: "host", value: "(bim\\.vrgo\\.hu|bim\\.localhost)" }],
+        has: [bimHost],
         destination: "/scan-to-bim-kapacitas",
         statusCode: 301,
       },

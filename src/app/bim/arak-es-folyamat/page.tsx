@@ -1,4 +1,4 @@
-import { BimLink, BimPhoneLink } from "@/components/bim/BimChrome";
+import { BimLink } from "@/components/bim/BimChrome";
 import { bimHasFromPrices, BIM_CONFIG } from "@/config/bim";
 import { bimMetadata } from "@/lib/bim-site";
 
@@ -71,13 +71,11 @@ export default function PricingProcessPage() {
           <h2 className="text-xl font-semibold text-foreground">Következő lépés</h2>
           <p className="mt-2">
             Magánszemélyként:{" "}
-            <BimLink href="/szolgaltatasok/lakas-es-hazfelmeres" className="font-semibold text-brand">
+            <BimLink href="/lakossagi-felmeres" className="font-semibold text-brand">
               lakás- és házfelmérés
             </BimLink>
-            {" · "}
-            <BimPhoneLink forras="arak" className="font-semibold text-brand" />
             . Cégként vagy EIR alapján:{" "}
-            <BimLink href="/ajanlatkeres" className="font-semibold text-brand">
+            <BimLink href="/kapcsolat" className="font-semibold text-brand">
               ajánlatkérés
             </BimLink>
             .

@@ -93,7 +93,7 @@ export default function StateProjectsHubPage() {
             <li>
               Pontfelhő átadás tervezőknek →{" "}
               <BimLink
-                href="/szolgaltatasok/tervezoknek-es-kivitelezoknek"
+                href="/tervezoknek"
                 className="font-semibold text-brand"
               >
                 tervezőknek
@@ -141,7 +141,7 @@ export default function StateProjectsHubPage() {
             Küldje el az EIR-t vagy a feladat leírását, módszertant és árajánlatot adunk.
           </p>
           <BimLink
-            href="/ajanlatkeres?forras=allami-beruhazasok-hub"
+            href="/kapcsolat?forras=allami-beruhazasok-hub"
             className="mt-4 inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
           >
             Ajánlatkérés

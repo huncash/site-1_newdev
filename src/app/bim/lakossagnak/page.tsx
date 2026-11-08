@@ -1,5 +1,5 @@
 import { BimBreadcrumb } from "@/components/bim/BimBreadcrumb";
-import { BimLink, BimPhoneLink } from "@/components/bim/BimChrome";
+import { BimLink } from "@/components/bim/BimChrome";
 import { BimResidentialForm } from "@/components/bim/BimResidentialForm";
 import { bimMetadata } from "@/lib/bim-site";
 
@@ -32,18 +32,17 @@ export default function ResidentialLegacyPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-sm opacity-90 sm:text-base">
             A részletes szolgáltatáslap:{" "}
-            <BimLink
-              href="/szolgaltatasok/lakas-es-hazfelmeres"
-              className="underline underline-offset-2"
-            >
+            <BimLink href="/lakossagi-felmeres" className="underline underline-offset-2">
               Lakás- és házfelmérés
             </BimLink>
             .
           </p>
-          <BimPhoneLink
-            forras="lakossagnak"
+          <BimLink
+            href="/kapcsolat?utvonal=ipar&forras=lakossagnak"
             className="mt-5 inline-flex rounded-md border-2 border-white px-5 py-2.5 text-sm font-semibold"
-          />
+          >
+            Ajánlatot kérek
+          </BimLink>
         </div>
       </section>
 

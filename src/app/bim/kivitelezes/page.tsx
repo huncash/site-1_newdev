@@ -123,7 +123,7 @@ export default function ConstructionPage() {
           fromYou="Ütemterv, hozzáférés a szakaszokhoz, felmérési specifikáció vagy EIR."
         />
         <BimLink
-          href="/ajanlatkeres?forras=kivitelezes"
+          href="/kapcsolat?forras=kivitelezes"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
         >
           Küldje el a feladat leírását, módszertant és árajánlatot adunk.

@@ -16,17 +16,17 @@ const details: Record<
 > = {
   "/megoldasok#felujitas": {
     id: "felujitas",
-    body: "Hiányzó vagy pontatlan terv helyett mérhető digitális másolat — alaprajz, metszet, igény szerint pontfelhő.",
+    body: "Hiányzó vagy pontatlan terv helyett mért alaprajz, metszet és igény szerint pontfelhő.",
     links: [
-      { href: "/szolgaltatasok/lakas-es-hazfelmeres", label: "Lakás- és házfelmérés" },
-      { href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek", label: "Tervezőknek" },
+      { href: "/lakossagi-felmeres", label: "Lakás- és házfelmérés" },
+      { href: "/tervezoknek", label: "Tervezőknek" },
     ],
   },
   "/megoldasok#as-built": {
     id: "as-built",
-    body: "A kész vagy átadandó állapot rögzítése georeferált pontfelhővel és rajzzal — ellenőrzéshez és dokumentációhoz.",
+    body: "A kész vagy átadandó állapot rögzítése pontfelhővel és rajzzal — ellenőrzéshez és dokumentációhoz.",
     links: [
-      { href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek", label: "Helyszíni rögzítés" },
+      { href: "/tervezoknek", label: "Helyszíni rögzítés" },
       { href: "/szolgaltatasok/georeferalas-eov", label: "EOV-bekötés" },
     ],
   },
@@ -43,7 +43,7 @@ const details: Record<
   "/megoldasok#ipar": {
     id: "ipar",
     body: "Csarnok- és gépészeti téradat layout-tervezéshez és ütközésvizsgálathoz.",
-    links: [{ href: "/szolgaltatasok/ipari-letesitmenyek", label: "Ipari felmérés" }],
+    links: [{ href: "/ipari-felmeres", label: "Ipari felmérés" }],
   },
   [BIM_STATE_HUB_HREF]: {
     id: "allami",

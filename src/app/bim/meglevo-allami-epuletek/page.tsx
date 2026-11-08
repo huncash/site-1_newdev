@@ -101,7 +101,7 @@ export default function ExistingBuildingsPage() {
           fromYou="EIR, épületlista, hozzáférés, koordináta-rendszer elvárás."
         />
         <BimLink
-          href="/ajanlatkeres"
+          href="/kapcsolat"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
         >
           Küldje el a feladat leírását vagy az EIR-t, módszertant és árajánlatot adunk.

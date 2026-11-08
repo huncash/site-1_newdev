@@ -20,42 +20,37 @@ export const MENU_ITEMS: readonly MenuItem[] = [
 
 /** Állami BIM-hub — egyetlen menübejegyzés a Megoldások alatt. */
 export const BIM_STATE_HUB_HREF = "/megoldasok/allami-beruhazasok-es-bim-eloirasok";
-export const BIM_STATE_HUB_LABEL = "Állami beruházások és BIM-előírások";
+export const BIM_STATE_HUB_LABEL = "Állami BIM";
 
 /** BIM-modellezők kapacitás-landing. */
 export const BIM_MODELER_HREF = "/scan-to-bim-kapacitas";
 
+/** Ipari felmérés fő landing. */
+export const BIM_INDUSTRIAL_HREF = "/ipari-felmeres";
+
 /**
- * bim.vrgo.hu menü — ipari/épületfelmérés + Scan-to-BIM kapacitás.
+ * bim.vrgo.hu menü — rövid B2B tölcsér.
  */
 export const BIM_MENU: readonly MenuItem[] = [
-  { label: "Ipari felmérés", href: "/szolgaltatasok/ipari-letesitmenyek" },
-  { label: "Scan-to-BIM kapacitás", href: BIM_MODELER_HREF },
-  {
-    label: "Szolgáltatások",
-    children: [
-      { label: "Összes szolgáltatás", href: "/szolgaltatasok" },
-      { label: "Tervezőknek és kivitelezőknek", href: "/szolgaltatasok/tervezoknek-es-kivitelezoknek" },
-      { label: "Georeferálás és EOV-bekötés", href: "/szolgaltatasok/georeferalas-eov" },
-      { label: "BIM-modellezés", href: "/szolgaltatasok/bim-modellezes" },
-      { label: "Drónos felmérés", href: "/szolgaltatasok/dronos-felmeres" },
-      { label: "Lakás- és házfelmérés", href: "/szolgaltatasok/lakas-es-hazfelmeres" },
-      { label: "Árak és folyamat", href: "/arak-es-folyamat" },
-      { label: "Pontosság és formátumok", href: "/pontossag-es-formatumok" },
-    ],
-  },
   {
     label: "Megoldások",
     children: [
-      { label: "Felújítás és tervezés előtti felmérés", href: "/megoldasok#felujitas" },
-      { label: "Megvalósulási (as-built) dokumentáció", href: "/megoldasok#as-built" },
-      { label: "Kivitelezés követése", href: "/megoldasok#kivitelezes" },
-      { label: "Ipari layout és ütközésvizsgálat", href: "/megoldasok#ipar" },
+      { label: "Ipari felmérés", href: BIM_INDUSTRIAL_HREF },
+      { label: "Tervezőknek", href: "/tervezoknek" },
+      { label: "BIM-modellezőknek", href: BIM_MODELER_HREF },
+      { label: "Felújítás előtt", href: "/megoldasok#felujitas" },
+      { label: "Kivitelezés követése", href: "/kivitelezes" },
+      { label: "Átadási dokumentáció", href: "/megoldasok#as-built" },
+      { label: "Üzemeltetési frissítés", href: "/uzemeltetes" },
       { label: BIM_STATE_HUB_LABEL, href: BIM_STATE_HUB_HREF },
+      { label: "Lakossági felmérés", href: "/lakossagi-felmeres" },
     ],
   },
+  { label: "Ipari felmérés", href: BIM_INDUSTRIAL_HREF },
+  { label: "BIM-modellezőknek", href: BIM_MODELER_HREF },
+  { label: "Munkafolyamat", href: "/munkafolyamat" },
   { label: "GYIK", href: "/gyik" },
-  { label: "Kapcsolat", href: "/ajanlatkeres" },
+  { label: "Kapcsolat", href: "/kapcsolat" },
 ];
 
 export function isMenuGroup(
@@ -73,21 +68,18 @@ export function isBimMegoldasokPath(pathname: string): boolean {
     p === "/ekm-rendelet" ||
     p === "/kivitelezes" ||
     p === "/uzemeltetes" ||
-    p === "/meglevo-allami-epuletek"
+    p === "/meglevo-allami-epuletek" ||
+    p === BIM_INDUSTRIAL_HREF ||
+    p === "/tervezoknek" ||
+    p === BIM_MODELER_HREF ||
+    p === "/lakossagi-felmeres" ||
+    p === "/szolgaltatasok" ||
+    p.startsWith("/szolgaltatasok/") ||
+    p === "/ipari-letesitmenyek" ||
+    p === "/lakossagnak"
   );
 }
 
 export function isBimSzolgaltatasokPath(pathname: string): boolean {
-  const p = pathname.replace(/^\/bim/, "") || "/";
-  return (
-    p === "/szolgaltatasok" ||
-    p.startsWith("/szolgaltatasok/") ||
-    p === "/arak-es-folyamat" ||
-    p === "/pontossag-es-formatumok" ||
-    p === "/tervezoknek" ||
-    p === "/lakossagnak" ||
-    p === "/ipari-letesitmenyek" ||
-    p === BIM_MODELER_HREF ||
-    p === "/alvallalkozoi-egyuttmukodes"
-  );
+  return isBimMegoldasokPath(pathname);
 }

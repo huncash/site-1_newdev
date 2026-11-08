@@ -9,6 +9,8 @@ import { BIM_CONFIG, bimPhoneVisible } from "@/config/bim";
 import { BIM_MENU } from "@/config/menu";
 import { trackConversion } from "@/lib/conversion";
 
+/** Telefonszám csak Kapcsolat és ÁSZF oldalon — a BimPhoneLink-et csak ott hívd. */
+
 const PrefixContext = createContext(false);
 
 export function useBimPrefix(): boolean {
@@ -78,18 +80,13 @@ export function BimChrome({
         logoHeight={103}
         items={BIM_MENU}
         linkPrefix={linkPrefix}
-        cta={{ label: "Ajánlatkérés", href: "/ajanlatkeres" }}
+        cta={{ label: "Ajánlatkérés", href: "/kapcsolat" }}
       />
       <div className="flex-1">{children}</div>
       <Footer
         variant="bim"
         linkPrefix={linkPrefix}
-        description="Ipari és épületfelmérési specialisták: országosan gyors helyszíni lézeres felmérés, mérnöki pontosságú pontfelhő és tervezésre kész Scan-to-BIM alap."
-        brandTagline={
-          bimPhoneVisible()
-            ? `Telefon (másodlagos): ${BIM_CONFIG.phoneDisplay}`
-            : undefined
-        }
+        description="Ipari és épületfelmérési specialisták: országosan gyors helyszíni lézeres felmérés, mérnöki pontosságú pontfelhő és szükség szerint Scan-to-BIM alap."
       />
     </PrefixContext.Provider>
   );

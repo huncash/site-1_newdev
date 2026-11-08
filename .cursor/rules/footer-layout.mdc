@@ -1,0 +1,19 @@
+---
+description: Footer social icons and link-column layout for vrgo / bim
+globs: src/components/layout/Footer.tsx
+alwaysApply: true
+---
+
+# Footer layout (site-1 / VRGO)
+
+## Social icons
+
+- Do **not** put Facebook or Pinterest icons (or links) in the footer.
+- LinkedIn may remain as the only social icon.
+- Do not re-add FB/Pinterest “for completeness” or marketing parity.
+
+## Oldalak + Jogi columns
+
+- The footer link block (**Oldalak** and **Jogi szekció**) must **always** sit in **at least two side-by-side columns** (e.g. `grid grid-cols-2`), including on narrow viewports.
+- Goal: keep this section short in height; do not stack Oldalak above Jogi in a single column.
+- Do not collapse them to one column at any breakpoint.
