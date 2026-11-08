@@ -21,7 +21,7 @@ export default function StateProjectsHubPage() {
 
   return (
     <article className="bg-background">
-      <section className="bg-section-dark py-14 text-section-dark-foreground">
+      <section className="bg-section-dark py-10 text-section-dark-foreground sm:py-12">
         <div className="mx-auto max-w-4xl px-4">
           <BimBreadcrumb
             tone="dark"
@@ -31,10 +31,8 @@ export default function StateProjectsHubPage() {
               { label: BIM_STATE_HUB_LABEL },
             ]}
           />
-          <h1 className="text-3xl font-bold sm:text-4xl">
-            Állami beruházások és üzemeltetés: BIM-előírásoknak megfelelő felmérés
-          </h1>
-          <p className="mt-4 max-w-3xl text-sm opacity-90 sm:text-base">
+          <h1 className="text-3xl font-bold leading-tight sm:text-4xl">Állami BIM</h1>
+          <p className="mt-3 max-w-3xl text-sm opacity-90 sm:text-base">
             Állami beruházásnál, állami tulajdonú épület átépítésénél vagy üzemeltetésénél az állami
             BIM-szabályozás (31/2024. (VIII. 22.) ÉKM rendelet) meghatározott adatátadást és
             pontosságot kér. Az alábbi szolgáltatásainkkal ennek tudunk megfelelni.

@@ -1,6 +1,10 @@
-import { BIM_INDUSTRIAL_HREF, BIM_MODELER_HREF, BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
+import {
+  BIM_INDUSTRIAL_HREF,
+  BIM_MODELER_HREF,
+  BIM_STATE_HUB_LABEL,
+} from "@/config/menu";
 
-/** Szolgáltatás- és megoldáskatalógus — menü, főoldal, áttekintő oldalak. */
+/** Szolgáltatáskatalógus — űrlapok és legacy szolgáltatáslisták. */
 
 export type CatalogItem = {
   href: string;
@@ -45,7 +49,7 @@ export const BIM_SERVICES: readonly CatalogItem[] = [
   {
     href: BIM_MODELER_HREF,
     title: "BIM-modellezőknek",
-    summary: "Terepi felmérés és modellezési kapacitás a saját munkafolyamatába.",
+    summary: "Terepi felmérés a saját modellező munkafolyamatába illesztve.",
   },
   {
     href: "/lakossagi-felmeres",
@@ -66,38 +70,5 @@ export const BIM_SERVICES: readonly CatalogItem[] = [
     href: "/szolgaltatasok/bim-modellezes",
     title: "BIM-modellezés és 2D tervek",
     summary: "Kiegészítő tétel: Revit, ArchiCAD, IFC — a feladat és az LOD szerint.",
-  },
-] as const;
-
-export const BIM_SOLUTIONS: readonly CatalogItem[] = [
-  {
-    href: "/megoldasok#felujitas",
-    title: "Felújítás és tervezés előtti felmérés",
-    summary: "Hiányzó vagy pontatlan terv helyett mért alaprajz és pontfelhő.",
-  },
-  {
-    href: "/megoldasok#as-built",
-    title: "Megvalósulási (as-built) dokumentáció",
-    summary: "A kész állapot rögzítése pontfelhővel és rajzzal.",
-  },
-  {
-    href: "/megoldasok#kivitelezes",
-    title: "Kivitelezés követése",
-    summary: "Előrehaladás és hibakövetés a helyszíni állapothoz képest.",
-  },
-  {
-    href: "/megoldasok#uzemeltetes",
-    title: "Üzemeltetési frissítés",
-    summary: "Időszakos frissítés és változáskövetés üzemeltetéshez.",
-  },
-  {
-    href: "/megoldasok#ipar",
-    title: "Ipari layout és ütközésvizsgálat",
-    summary: "Csarnok- és gépészeti téradat layout-tervezéshez.",
-  },
-  {
-    href: BIM_STATE_HUB_HREF,
-    title: BIM_STATE_HUB_LABEL,
-    summary: "Állami beruházásnál vagy üzemeltetésnél a szabályozásnak megfelelő felmérés.",
   },
 ] as const;

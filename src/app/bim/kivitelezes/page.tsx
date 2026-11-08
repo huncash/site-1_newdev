@@ -28,7 +28,7 @@ const packages = [
 export default function ConstructionPage() {
   return (
     <article className="bg-background">
-      <section className="bg-section-dark py-14 text-section-dark-foreground">
+      <section className="bg-section-dark py-10 text-section-dark-foreground sm:py-12">
         <div className="mx-auto max-w-4xl px-4">
           <BimBreadcrumb
             tone="dark"
@@ -38,8 +38,8 @@ export default function ConstructionPage() {
               { label: "Kivitelezés követése" },
             ]}
           />
-          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Kivitelezés dokumentálása: előrehaladás, hibakövetés, megvalósulási állapot
+          <h1 className="text-3xl font-bold leading-tight text-section-dark-foreground sm:text-4xl">
+            Kivitelezés követése
           </h1>
           <p className="mt-3 text-sm opacity-90 sm:text-base">
             Magán- és vállalati projektekre egyaránt: időbélyegzett pontfelhő a helyszíni állapotról.

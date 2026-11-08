@@ -7,17 +7,17 @@ import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/tervezoknek",
-  "Tervezőknek és kivitelezőknek — pontfelhő és CAD | VRGO BIM",
+  "Felmérés tervezőknek — pontfelhő és CAD | VRGO BIM",
   "Pontfelhő, CAD és szükség szerint modellalap a tervezéshez. Felújítás, rekonstrukció, bővítés és meglévő állapot rögzítése."
 );
 
 export default function DesignersPage() {
   return (
     <article className="bg-background">
-      <section className="bg-section-dark py-14 text-section-dark-foreground sm:py-20">
+      <section className="bg-section-dark py-10 text-section-dark-foreground sm:py-12">
         <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold sm:text-4xl">Tervezőknek és kivitelezőknek</h1>
-          <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
+          <h1 className="text-3xl font-bold leading-tight sm:text-4xl">Felmérés tervezőknek</h1>
+          <p className="mt-3 max-w-3xl text-base opacity-90 sm:text-lg">
             Pontfelhő, CAD és szükség szerint modellalap a tervezéshez.
           </p>
           <BimLink

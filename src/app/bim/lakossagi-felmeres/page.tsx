@@ -13,10 +13,10 @@ export const metadata = bimMetadata(
 export default function ResidentialSurveyPage() {
   return (
     <article className="bg-background">
-      <section className="bg-section-dark py-14 text-section-dark-foreground sm:py-20">
+      <section className="bg-section-dark py-10 text-section-dark-foreground sm:py-12">
         <div className="mx-auto max-w-3xl px-4">
-          <h1 className="text-3xl font-bold sm:text-4xl">Lakás- és házfelmérés</h1>
-          <p className="mt-4 text-base opacity-90 sm:text-lg">
+          <h1 className="text-3xl font-bold leading-tight sm:text-4xl">Lakás- és házfelmérés</h1>
+          <p className="mt-3 text-base opacity-90 sm:text-lg">
             Felújítás, tetőtér-beépítés vagy átépítés előtti pontos alaprajz.
           </p>
           <BimLink

@@ -1,14 +1,25 @@
+import {
+  BIM_INDUSTRIAL_HREF,
+  BIM_MODELER_HREF,
+  BIM_SOLUTIONS,
+  BIM_SOLUTIONS_HUB_HREF,
+  BIM_STATE_HUB_HREF,
+  BIM_STATE_HUB_LABEL,
+} from "@/lib/bim-solutions";
+
 export type MenuLink = {
   label: string;
   href: string;
 };
 
-export type MenuItem =
-  | MenuLink
-  | {
-      label: string;
-      children: readonly MenuLink[];
-    };
+export type MenuGroup = {
+  label: string;
+  /** Gyűjtőoldal — a felirat erre navigál; a nyíl nyitja az almenüt. */
+  href: string;
+  children: readonly MenuLink[];
+};
+
+export type MenuItem = MenuLink | MenuGroup;
 
 /** Primary nav — vrgo.hu (Matterport 3D túra). */
 export const MENU_ITEMS: readonly MenuItem[] = [
@@ -18,15 +29,13 @@ export const MENU_ITEMS: readonly MenuItem[] = [
   { label: "Kapcsolat", href: "/ajanlat" },
 ];
 
-/** Állami BIM-hub — egyetlen menübejegyzés a Megoldások alatt. */
-export const BIM_STATE_HUB_HREF = "/megoldasok/allami-beruhazasok-es-bim-eloirasok";
-export const BIM_STATE_HUB_LABEL = "Állami BIM";
-
-/** BIM-modellezők kapacitás-landing. */
-export const BIM_MODELER_HREF = "/scan-to-bim-kapacitas";
-
-/** Ipari felmérés fő landing. */
-export const BIM_INDUSTRIAL_HREF = "/ipari-felmeres";
+export {
+  BIM_INDUSTRIAL_HREF,
+  BIM_MODELER_HREF,
+  BIM_SOLUTIONS_HUB_HREF,
+  BIM_STATE_HUB_HREF,
+  BIM_STATE_HUB_LABEL,
+};
 
 /**
  * bim.vrgo.hu menü — rövid B2B szerkezet + Blog (meglévő /cikkek).
@@ -35,17 +44,11 @@ export const BIM_INDUSTRIAL_HREF = "/ipari-felmeres";
 export const BIM_MENU: readonly MenuItem[] = [
   {
     label: "Megoldások",
-    children: [
-      { label: "Ipari felmérés", href: BIM_INDUSTRIAL_HREF },
-      { label: "Tervezőknek", href: "/tervezoknek" },
-      { label: "BIM-modellezőknek", href: BIM_MODELER_HREF },
-      { label: "Felújítás előtt", href: "/megoldasok#felujitas" },
-      { label: "Kivitelezés követése", href: "/kivitelezes" },
-      { label: "Átadási dokumentáció", href: "/megoldasok#as-built" },
-      { label: "Üzemeltetési frissítés", href: "/uzemeltetes" },
-      { label: BIM_STATE_HUB_LABEL, href: BIM_STATE_HUB_HREF },
-      { label: "Lakossági felmérés", href: "/lakossagi-felmeres" },
-    ],
+    href: BIM_SOLUTIONS_HUB_HREF,
+    children: BIM_SOLUTIONS.map((item) => ({
+      label: item.menuLabel ?? item.title,
+      href: item.href,
+    })),
   },
   { label: "Munkafolyamat", href: "/munkafolyamat" },
   { label: "Rólunk", href: "/rolunk" },
@@ -54,9 +57,7 @@ export const BIM_MENU: readonly MenuItem[] = [
   { label: "Kapcsolat", href: "/kapcsolat" },
 ];
 
-export function isMenuGroup(
-  item: MenuItem
-): item is { label: string; children: readonly MenuLink[] } {
+export function isMenuGroup(item: MenuItem): item is MenuGroup {
   return "children" in item;
 }
 

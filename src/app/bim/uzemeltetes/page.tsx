@@ -13,18 +13,18 @@ export const metadata = bimMetadata(
 export default function OperationsPage() {
   return (
     <article className="bg-background">
-      <section className="bg-section-dark py-14 text-section-dark-foreground">
+      <section className="bg-section-dark py-10 text-section-dark-foreground sm:py-12">
         <div className="mx-auto max-w-4xl px-4">
           <BimBreadcrumb
             tone="dark"
             items={[
               { href: "/", label: "Kezdőlap" },
               { href: "/megoldasok", label: "Megoldások" },
-              { label: "Üzemeltetés és éves digitális iker" },
+              { label: "Üzemeltetési frissítés" },
             ]}
           />
-          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
-            Üzemeltetés: éves digitális iker és állapotkövetés
+          <h1 className="text-3xl font-bold leading-tight text-section-dark-foreground sm:text-4xl">
+            Üzemeltetési frissítés
           </h1>
           <p className="mt-3 text-sm opacity-90 sm:text-base">
             Időszakos felmérés és változáskövetés — hogy az üzemeltetés mindig a tényleges

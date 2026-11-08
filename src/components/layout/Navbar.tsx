@@ -22,10 +22,12 @@ function isBimOutbound(href: string): boolean {
 
 function DesktopDropdown({
   label,
+  href,
   items,
   active = false,
 }: {
   label: string;
+  href: string;
   items: readonly { label: string; href: string }[];
   active?: boolean;
 }) {
@@ -56,28 +58,38 @@ function DesktopDropdown({
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button
-        type="button"
-        aria-haspopup="menu"
-        aria-expanded={open}
-        aria-controls={menuId}
-        onClick={() => setOpen((v) => !v)}
+      <div
         className={cn(
-          "inline-flex items-center gap-1 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-brand-foreground/95 transition hover:underline hover:underline-offset-4 xl:text-xs",
+          "inline-flex items-center whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-brand-foreground/95 xl:text-xs",
           active && "underline underline-offset-4"
         )}
-        aria-current={active ? "true" : undefined}
       >
-        {label}
-        <svg
-          viewBox="0 0 20 20"
-          className={cn("h-3.5 w-3.5 transition", open && "rotate-180")}
-          fill="currentColor"
-          aria-hidden="true"
+        <Link
+          href={href}
+          className="transition hover:underline hover:underline-offset-4"
+          aria-current={active ? "page" : undefined}
         >
-          <path d="M5.25 7.5L10 12.25 14.75 7.5" />
-        </svg>
-      </button>
+          {label}
+        </Link>
+        <button
+          type="button"
+          aria-label={`${label} almenü`}
+          aria-haspopup="menu"
+          aria-expanded={open}
+          aria-controls={menuId}
+          onClick={() => setOpen((v) => !v)}
+          className="ml-0.5 inline-flex h-7 w-7 items-center justify-center rounded-sm transition hover:bg-white/10"
+        >
+          <svg
+            viewBox="0 0 20 20"
+            className={cn("h-3.5 w-3.5 transition", open && "rotate-180")}
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M5.25 7.5L10 12.25 14.75 7.5" />
+          </svg>
+        </button>
+      </div>
       {open ? (
         <div
           id={menuId}
@@ -148,7 +160,14 @@ export function Navbar({
   const homeInNewTab = onBlog && (logoHref === "/" || logoHref === "https://vrgo.hu" || logoHref === "https://vrgo.hu/");
   const navItems = items.map((item) =>
     isMenuGroup(item)
-      ? { ...item, children: item.children.map((child) => ({ ...child, href: hrefOf(child.href, linkPrefix) })) }
+      ? {
+          ...item,
+          href: hrefOf(item.href, linkPrefix),
+          children: item.children.map((child) => ({
+            ...child,
+            href: hrefOf(child.href, linkPrefix),
+          })),
+        }
       : { ...item, href: hrefOf(item.href, linkPrefix) }
   );
   const ctaHref = cta ? hrefOf(cta.href, linkPrefix) : "";
@@ -189,6 +208,7 @@ export function Navbar({
               <DesktopDropdown
                 key={item.label}
                 label={item.label}
+                href={item.href}
                 items={item.children}
                 active={groupIsActive(item.label, pathname)}
               />
@@ -258,28 +278,37 @@ export function Navbar({
                 const expanded = mobileGroupOpen === item.label;
                 return (
                   <li key={item.label}>
-                    <button
-                      type="button"
-                      aria-expanded={expanded}
-                      aria-current={groupIsActive(item.label, pathname) ? "true" : undefined}
-                      onClick={() =>
-                        setMobileGroupOpen((cur) => (cur === item.label ? null : item.label))
-                      }
-                      className={cn(
-                        "flex w-full items-center justify-between py-3 text-sm font-semibold uppercase tracking-wider",
-                        groupIsActive(item.label, pathname) && "underline underline-offset-4"
-                      )}
-                    >
-                      {item.label}
-                      <svg
-                        viewBox="0 0 20 20"
-                        className={cn("h-4 w-4 transition", expanded && "rotate-180")}
-                        fill="currentColor"
-                        aria-hidden="true"
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        aria-current={groupIsActive(item.label, pathname) ? "page" : undefined}
+                        className={cn(
+                          "flex-1 py-3 text-sm font-semibold uppercase tracking-wider",
+                          groupIsActive(item.label, pathname) && "underline underline-offset-4"
+                        )}
                       >
-                        <path d="M5.25 7.5L10 12.25 14.75 7.5" />
-                      </svg>
-                    </button>
+                        {item.label}
+                      </Link>
+                      <button
+                        type="button"
+                        aria-label={`${item.label} almenü`}
+                        aria-expanded={expanded}
+                        onClick={() =>
+                          setMobileGroupOpen((cur) => (cur === item.label ? null : item.label))
+                        }
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-sm"
+                      >
+                        <svg
+                          viewBox="0 0 20 20"
+                          className={cn("h-4 w-4 transition", expanded && "rotate-180")}
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path d="M5.25 7.5L10 12.25 14.75 7.5" />
+                        </svg>
+                      </button>
+                    </div>
                     {expanded ? (
                       <ul className="mb-2 border-l border-white/25 pl-3">
                         {item.children.map((child) => (
