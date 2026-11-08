@@ -31,6 +31,7 @@ export default function BimContactPage() {
           <p className="mt-8 text-sm text-muted-foreground">
             Telefonos elérhetőség:{" "}
             <BimPhoneLink forras="kapcsolat" className="underline underline-offset-2" />
+            . Munkanapokon 10:00 - 18:00 óra közt kereshető üzleti ügyben.
           </p>
         ) : null}
       </div>

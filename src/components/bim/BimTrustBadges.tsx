@@ -11,7 +11,8 @@ const BADGES = [
 
 const SIZE_CLASS = {
   hero: "h-[5rem] w-[5rem] sm:h-[5.25rem] sm:w-[5.25rem]",
-  footer: "h-12 w-12 sm:h-14 sm:w-14",
+  /** 4× text-sm link row + 3× space-y-2 gap (Oldalak oszlop) → négyzet */
+  footer: "h-[6.5rem] w-[6.5rem]",
 } as const;
 
 type BimTrustBadgesProps = {
@@ -19,15 +20,15 @@ type BimTrustBadgesProps = {
   className?: string;
 };
 
-/** Compact trust seals — hero or smaller footer. */
+/** Compact trust seals — hero or footer under Jogi. */
 export function BimTrustBadges({ size = "hero", className }: BimTrustBadgesProps) {
-  const dim = size === "footer" ? 56 : 96;
+  const dim = size === "footer" ? 104 : 96;
   return (
     <ul
       className={
         className ??
         (size === "footer"
-          ? "mt-4 flex list-none flex-wrap items-center gap-2.5 p-0"
+          ? "mt-3 flex list-none flex-wrap items-start gap-3 p-0"
           : "mt-5 flex list-none flex-wrap items-center gap-3 p-0 sm:gap-4")
       }
       aria-label="Bizalmi jelzések"

@@ -132,7 +132,6 @@ export function Footer({
           <p className="mt-2 text-sm opacity-80">{description}</p>
           {brandTagline ? <p className="mt-2 text-sm opacity-70">{brandTagline}</p> : null}
           {brandSubline ? <p className="mt-1 text-xs opacity-60">{brandSubline}</p> : null}
-          {bim ? <BimTrustBadges size="footer" /> : null}
         </div>
 
         {/* Oldalak + Jogi: mindig legalább 2 oszlop — kisebb magasság */}
@@ -144,6 +143,7 @@ export function Footer({
           <div>
             <div className="text-sm font-semibold uppercase tracking-wider">Jogi szekció</div>
             <FooterLinkList items={legal} />
+            {bim ? <BimTrustBadges size="footer" /> : null}
           </div>
         </div>
       </div>
