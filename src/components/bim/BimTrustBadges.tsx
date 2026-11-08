@@ -30,6 +30,23 @@ function ScallopRim() {
   );
 }
 
+/** Hungary outline from border lon/lat points, fitted above the label. */
+function HungaryMap() {
+  return (
+    <g transform="translate(80 58) scale(0.88) translate(-80 -64)">
+      <path
+        fill="#4a4f55"
+        d="M35.4 69.4 L35.4 61.8 L37.8 60.7 L39.9 56.8 L41.6 55.8 L46.9 56.3 L48.5 54.4 L54.4 54.8 L58.8 55.3 L61.5 56.1 L65.5 53.9 L70.1 53.4 L73.4 55 L76.1 51.5 L80.7 47.6 L86.6 45.2 L92.5 42.8 L99.1 43.6 L105 42.8 L110.9 45.2 L115.5 45.2 L122.1 49.1 L124.7 52.3 L120.1 55.5 L122.1 60.2 L114.8 66.6 L108.9 72.1 L102.3 79.3 L95.8 80.9 L89.2 80.1 L82.6 80.9 L73.4 86.4 L65.5 86.4 L59 84.8 L52.4 76.9 L45.8 75.3 L40.6 74.5 L36.6 69.8 Z"
+      />
+      <path
+        fill="#ffffff"
+        d="M80 48c-5.5 0-10 4.5-10 10 0 7.5 10 18 10 18s10-10.5 10-18c0-5.5-4.5-10-10-10z"
+      />
+      <circle cx="80" cy="57.5" r="3.2" fill="#4a4f55" />
+    </g>
+  );
+}
+
 function BadgeTenYears() {
   return (
     <svg
@@ -43,38 +60,38 @@ function BadgeTenYears() {
       <circle cx="80" cy="80" r="55" fill="none" stroke="#4a4f55" strokeWidth="1.75" />
       <text
         x="80"
-        y="78"
+        y="68"
         textAnchor="middle"
         fill="#4a4f55"
         fontFamily="Open Sans, Segoe UI, system-ui, sans-serif"
-        fontSize="34"
+        fontSize="30"
         fontWeight="800"
       >
         10
       </text>
       <text
         x="80"
-        y="96"
+        y="88"
         textAnchor="middle"
         fill="#4a4f55"
         fontFamily="Open Sans, Segoe UI, system-ui, sans-serif"
-        fontSize="10"
+        fontSize="8"
         fontWeight="700"
-        letterSpacing="0.2em"
+        letterSpacing="0.06em"
       >
-        ÉV
+        ÉV TEREPI
       </text>
       <text
         x="80"
-        y="118"
+        y="102"
         textAnchor="middle"
         fill="#4a4f55"
         fontFamily="Open Sans, Segoe UI, system-ui, sans-serif"
-        fontSize="7.2"
+        fontSize="8"
         fontWeight="700"
         letterSpacing="0.04em"
       >
-        TEREPI TAPASZTALAT
+        TAPASZTALAT
       </text>
     </svg>
   );
@@ -91,26 +108,30 @@ function BadgeNationwide() {
       <ScallopRim />
       <circle cx="80" cy="80" r="58" fill="#ffffff" />
       <circle cx="80" cy="80" r="55" fill="none" stroke="#4a4f55" strokeWidth="1.75" />
-      <path
-        fill="#4a4f55"
-        d="M28 68c4-3 9-5 14-6 6-1 11 1 17 0 5-1 8-4 13-4 6 0 10 2 15 1 5-1 9-4 14-3 5 1 9 3 13 1 3-1 6-1 8 2 2 3 1 7 0 10-1 4-4 6-5 9-1 4 1 7 1 10 0 4-2 7-5 9-4 2-8 0-12 1-4 1-7 5-12 6-5 1-9-2-14-1-4 1-7 4-12 3-5-1-9-3-12-7-3-4-5-8-4-13 0-3 2-6 1-9-1-2-2-5 0-7 1-2 4-2 7-3z"
-      />
-      <path
-        fill="#ffffff"
-        d="M80 54c-6.5 0-11.8 5.3-11.8 11.8 0 8.9 11.8 21.2 11.8 21.2s11.8-12.3 11.8-21.2C91.8 59.3 86.5 54 80 54z"
-      />
-      <circle cx="80" cy="65.2" r="3.8" fill="#4a4f55" />
+      <HungaryMap />
       <text
         x="80"
-        y="118"
+        y="112"
         textAnchor="middle"
         fill="#4a4f55"
         fontFamily="Open Sans, Segoe UI, system-ui, sans-serif"
         fontSize="7.5"
         fontWeight="700"
-        letterSpacing="0.07em"
+        letterSpacing="0.08em"
       >
-        ORSZÁGOS KISZÁLLÁS
+        ORSZÁGOS
+      </text>
+      <text
+        x="80"
+        y="124"
+        textAnchor="middle"
+        fill="#4a4f55"
+        fontFamily="Open Sans, Segoe UI, system-ui, sans-serif"
+        fontSize="7.5"
+        fontWeight="700"
+        letterSpacing="0.06em"
+      >
+        KISZÁLLÁS
       </text>
     </svg>
   );
