@@ -15,6 +15,9 @@ export type BimSolution = {
   menuLabel?: string;
   /** Opcionális piktogram; hiányában a kártya placeholdert mutat. */
   iconSrc?: string;
+  /** Opcionális kártyakép (megoldások rács); a részoldal saját nagy képet használhat. */
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 export const BIM_SOLUTIONS: readonly BimSolution[] = [
@@ -46,6 +49,8 @@ export const BIM_SOLUTIONS: readonly BimSolution[] = [
     title: "Kivitelezés követése",
     summary: "Helyszíni állapot rögzítése előrehaladás-követéshez és ellenőrzéshez.",
     cta: "A kivitelezés követése részletei",
+    imageSrc: "/bim/megoldasok/kivitelezes-card.jpg",
+    imageAlt: "Lézerszkennelés kivitelezésen: pontfelhő-felvétel vasbeton szerkezet között",
   },
   {
     href: "/uzemeltetes",

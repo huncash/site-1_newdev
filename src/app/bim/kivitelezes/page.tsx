@@ -47,6 +47,17 @@ export default function ConstructionPage() {
         </div>
       </section>
       <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 text-sm text-muted-foreground sm:text-base">
+        <figure className="overflow-hidden rounded-md border border-border">
+          <img
+            src="/bim/megoldasok/kivitelezes.jpg"
+            alt="Lézerszkennelés kivitelezésen: pontfelhő-felvétel vasbeton szerkezet között"
+            width={1280}
+            height={720}
+            className="aspect-video w-full object-cover"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </figure>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Kinek</h2>
           <p className="mt-2">Generálkivitelezők, vállalkozó kivitelezők, lebonyolítók, építtetők.</p>
