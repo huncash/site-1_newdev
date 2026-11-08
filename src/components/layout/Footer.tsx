@@ -1,5 +1,6 @@
 "use client";
 
+import { BimTrustBadges } from "@/components/bim/BimTrustBadges";
 import { bimLink } from "@/lib/links";
 import { SITE_CONFIG } from "@/config/site-config";
 import { trackConversion } from "@/lib/conversion";
@@ -131,6 +132,7 @@ export function Footer({
           <p className="mt-2 text-sm opacity-80">{description}</p>
           {brandTagline ? <p className="mt-2 text-sm opacity-70">{brandTagline}</p> : null}
           {brandSubline ? <p className="mt-1 text-xs opacity-60">{brandSubline}</p> : null}
+          {bim ? <BimTrustBadges size="footer" /> : null}
         </div>
 
         {/* Oldalak + Jogi: mindig legalább 2 oszlop — kisebb magasság */}

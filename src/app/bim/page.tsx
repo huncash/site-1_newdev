@@ -71,7 +71,7 @@ export default function BimHomePage() {
       />
 
       <section className="bg-section-dark text-section-dark-foreground">
-        <div className="mx-auto max-w-5xl px-4 pb-10 pt-14 sm:pb-12 sm:pt-20">
+        <div className="mx-auto max-w-5xl px-4 pb-6 pt-14 sm:pb-8 sm:pt-20">
           <h1 className="text-3xl font-bold sm:text-4xl md:text-[2.5rem] md:leading-tight">
             Ipari és épületfelmérés, amelyből tervezni lehet
           </h1>
@@ -79,16 +79,16 @@ export default function BimHomePage() {
             Országosan gyors lézeres állapotfelmérés, pontfelhő és szükség szerint Scan-to-BIM alap
             ipari létesítményekhez, rekonstrukciókhoz és BIM-modellezéshez.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <BimLink
               href="/kapcsolat?utvonal=ipar&forras=hero"
-              className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
+              className="inline-flex w-full items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark sm:w-auto"
             >
               Kérjen ajánlatot
             </BimLink>
             <BimLink
               href={`${BIM_MODELER_HREF}?forras=hero`}
-              className="inline-flex items-center justify-center rounded-md border-2 border-white px-5 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-section-dark sm:px-6"
+              className="inline-flex w-full items-center justify-center rounded-md border-2 border-white px-5 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-section-dark sm:w-auto sm:px-6"
             >
               Terepi felmérés modellezőknek
             </BimLink>
