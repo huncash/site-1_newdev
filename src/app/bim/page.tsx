@@ -71,7 +71,7 @@ export default function BimHomePage() {
       />
 
       <section className="bg-section-dark text-section-dark-foreground">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:py-20">
+        <div className="mx-auto max-w-5xl px-4 pb-10 pt-14 sm:pb-12 sm:pt-20">
           <h1 className="text-3xl font-bold sm:text-4xl md:text-[2.5rem] md:leading-tight">
             Ipari és épületfelmérés, amelyből tervezni lehet
           </h1>
