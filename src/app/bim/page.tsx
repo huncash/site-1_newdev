@@ -88,9 +88,9 @@ export default function BimHomePage() {
             </BimLink>
             <BimLink
               href={`${BIM_MODELER_HREF}?forras=hero`}
-              className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-section-dark"
+              className="inline-flex items-center justify-center rounded-md border-2 border-white px-5 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-section-dark sm:px-6"
             >
-              BIM-modellezőknek: kapacitás és együttműködés
+              Terepi felmérés modellezőknek
             </BimLink>
           </div>
           <BimTrustBadges />
@@ -99,7 +99,7 @@ export default function BimHomePage() {
 
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Melyik munkája van?</h2>
+          <h2 className="text-2xl font-semibold sm:text-3xl">Milyen felmérésre van szüksége?</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {AUDIENCES.map((item) => (
               <article

@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="tapasztalatTitle">
-  <title id="tapasztalatTitle">10 év terepi tapasztalat</title>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="10 ev terepi tapasztalat">
   <g fill="#6cb9f1">
     <circle cx="80" cy="80" r="62"/>
     <circle cx="80" cy="18" r="11"/><circle cx="111.4" cy="26.4" r="11"/>
@@ -17,12 +17,7 @@
   </g>
   <circle cx="80" cy="80" r="58" fill="#ffffff"/>
   <circle cx="80" cy="80" r="55" fill="none" stroke="#4a4f55" stroke-width="1.75"/>
-  <text x="80" y="78" text-anchor="middle" fill="#4a4f55"
-    font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="800">10</text>
-  <text x="80" y="96" text-anchor="middle" fill="#4a4f55"
-    font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700"
-    letter-spacing="0.2em">ÉV</text>
-  <text x="80" y="118" text-anchor="middle" fill="#4a4f55"
-    font-family="Segoe UI, system-ui, sans-serif" font-size="7.2" font-weight="700"
-    letter-spacing="0.04em">TEREPI TAPASZTALAT</text>
+  <text x="80" y="78" text-anchor="middle" fill="#4a4f55" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="800">10</text>
+  <text x="80" y="96" text-anchor="middle" fill="#4a4f55" font-family="Segoe UI, system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="0.2em">EV</text>
+  <text x="80" y="118" text-anchor="middle" fill="#4a4f55" font-family="Segoe UI, system-ui, sans-serif" font-size="7.2" font-weight="700" letter-spacing="0.04em">TEREPI TAPASZTALAT</text>
 </svg>
