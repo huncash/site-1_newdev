@@ -1,4 +1,5 @@
 import { BimLink } from "@/components/bim/BimChrome";
+import { BimTrustBadges } from "@/components/bim/BimTrustBadges";
 import { BIM_CONFIG } from "@/config/bim";
 import { BIM_INDUSTRIAL_HREF, BIM_MODELER_HREF } from "@/config/menu";
 import { bimMetadata } from "@/lib/bim-site";
@@ -92,10 +93,7 @@ export default function BimHomePage() {
               BIM-modellezőknek: kapacitás és együttműködés
             </BimLink>
           </div>
-          <p className="mt-6 text-xs opacity-75 sm:text-sm">
-            10+ év térszkennelési tapasztalat · napi több ezer négyzetméternyi tér szkennelési
-            kapacitás · Budapesten belül kiszállási díj nélkül
-          </p>
+          <BimTrustBadges />
         </div>
       </section>
 
