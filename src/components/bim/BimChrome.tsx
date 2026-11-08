@@ -86,7 +86,7 @@ export function BimChrome({
       <Footer
         variant="bim"
         linkPrefix={linkPrefix}
-        description="Ipari és épületfelmérési specialisták: országosan gyors helyszíni lézeres felmérés, mérnöki pontosságú pontfelhő és szükség szerint Scan-to-BIM alap."
+        description="Ipari és épületfelmérési specialisták: országosan gyors helyszíni lézeres felmérés, pontfelhő és szükség szerint modellalap."
       />
     </PrefixContext.Provider>
   );

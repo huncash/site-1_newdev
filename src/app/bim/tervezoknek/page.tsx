@@ -7,8 +7,8 @@ import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/tervezoknek",
-  "Tervezőknek és kivitelezőknek — pontfelhő és Scan-to-BIM alap | VRGO BIM",
-  "Pontfelhő, CAD és szükség szerint Scan-to-BIM alap a tervezéshez. Felújítás, rekonstrukció, bővítés és meglévő állapot rögzítése."
+  "Tervezőknek és kivitelezőknek — pontfelhő és CAD | VRGO BIM",
+  "Pontfelhő, CAD és szükség szerint modellalap a tervezéshez. Felújítás, rekonstrukció, bővítés és meglévő állapot rögzítése."
 );
 
 export default function DesignersPage() {
@@ -18,7 +18,7 @@ export default function DesignersPage() {
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="text-3xl font-bold sm:text-4xl">Tervezőknek és kivitelezőknek</h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
-            Pontfelhő, CAD és szükség szerint Scan-to-BIM alap a tervezéshez.
+            Pontfelhő, CAD és szükség szerint modellalap a tervezéshez.
           </p>
           <BimLink
             href="/kapcsolat?utvonal=tervezo&forras=tervezoknek"
@@ -69,7 +69,7 @@ export default function DesignersPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Scan-to-BIM modell</h2>
+          <h2 className="text-xl font-semibold text-foreground">Modell, ha kéri</h2>
           <p className="mt-3">
             Revit, ArchiCAD vagy IFC — külön tételként, a feladat és a részletezettség szerint.
             Vállaljuk a csak terepi adat átadását is, ha a modellezést Ön végzi.
@@ -79,8 +79,8 @@ export default function DesignersPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">EOV és georeferálás</h2>
           <p className="mt-3">
-            Ha a felhasználási cél vagy az EIR bekötést kér, a georeferálást jogosult földmérő
-            közreműködésével végezzük. A megrendelő saját földmérőjével is együttműködünk.
+            Ha az EIR bekötést kér, a lézeres felmérést geodéziai ellenőrzéssel és EOV-bekötéssel
+            egészítjük ki. A megrendelő saját földmérőjével is együttműködünk.
           </p>
         </section>
 
@@ -97,7 +97,7 @@ export default function DesignersPage() {
 
         <section>
           <h2 className="text-xl font-semibold text-foreground">Űrlap</h2>
-          <p className="mt-3">Kérjen helyszíni felmérési vagy Scan-to-BIM kapacitásajánlatot.</p>
+          <p className="mt-3">Kérjen helyszíni felmérési vagy kapacitásajánlatot.</p>
           <div className="mt-6">
             <Suspense fallback={<p className="text-sm text-muted-foreground">Űrlap betöltése…</p>}>
               <BimQuoteForm />

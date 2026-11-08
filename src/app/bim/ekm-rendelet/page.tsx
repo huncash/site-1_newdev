@@ -45,7 +45,8 @@ export default function EkmPage() {
             <BimLink href={BIM_STATE_HUB_HREF} className="underline">
               {BIM_STATE_HUB_LABEL}
             </BimLink>{" "}
-            hub része — a fő szolgáltatásunk a georeferált téradat-rögzítés.
+            hub része. A georeferált felmérés a fő szolgáltatásunk; az állami BIM-szabályozás külön
+            felhasználási terület.
           </p>
         </div>
       </section>
@@ -115,7 +116,7 @@ export default function EkmPage() {
           <h2 className="text-xl font-semibold text-foreground">Amit ebből a VRGO vállal</h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li>Ipari 3D lézerszkennelés, E57 és XYZ pontfelhő, georeferált CAD alaprajz és metszet.</li>
-            <li>A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja.</li>
+            <li>A lézeres felmérést geodéziai ellenőrzéssel és EOV-bekötéssel egészítjük ki.</li>
             <li>IFC, BCF és natív formátum: a pontfelhőből precíz modellezéssel, az EIR szerinti részletezettségben.</li>
           </ul>
           <p className="mt-4">

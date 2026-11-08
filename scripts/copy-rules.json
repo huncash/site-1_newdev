@@ -29,7 +29,20 @@
     "1 munkanapon belül",
     "RTC360",
     "mérhető digitális más",
-    "Telefon (másodlagos)"
+    "Telefon (másodlagos)",
+    "optimalizált munkafolyamat",
+    "optimalizált ütemezés",
+    "optimalizált munkavégzés",
+    "a feladathoz illő módszer",
+    "helyszíni tartózkodással dolgozunk",
+    "rugalmasan együttműködünk",
+    "illeszkedő átadás",
+    "szabványos formátumok",
+    "prémium minőség",
+    "innovatív megoldás",
+    "teljes körű szolgáltatás",
+    "integrált megoldás",
+    "komplex megoldás"
   ],
   "forbiddenRegex": [
     "(IFC|modellez)[\\s\\S]{0,40}partner",

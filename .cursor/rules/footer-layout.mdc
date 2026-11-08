@@ -12,6 +12,11 @@ alwaysApply: true
 - LinkedIn may remain as the only social icon.
 - Do not re-add FB/Pinterest “for completeness” or marketing parity.
 
+## Phone number
+
+- Business phone appears **only** on Kapcsolat and ÁSZF.
+- Footer may link to Kapcsolat as text; **never** show the phone number in footer, header, homepage, or other pages.
+
 ## Oldalak + Jogi columns
 
 - The footer link block (**Oldalak** and **Jogi szekció**) must **always** sit in **at least two side-by-side columns** (e.g. `grid grid-cols-2`), including on narrow viewports.

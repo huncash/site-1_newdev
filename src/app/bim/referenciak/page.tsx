@@ -4,15 +4,15 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/referenciak",
   "Módszer és átadási alap | VRGO BIM",
-  "Nem csak szkennelünk — mérnöki alapot adunk a tervezéshez: georeferált pontfelhő, CAD és igény szerinti Scan-to-BIM."
+  "Nem csak szkennelünk — mérnöki alapot adunk a tervezéshez: pontfelhő, CAD és igény szerinti modell."
 );
 
 const pillars = [
   "Terepi felmérés, regisztráció és minőség-ellenőrzés",
-  "Georeferált, tervezésre kész pontfelhő",
-  "Revit, ArchiCAD és IFC kompatibilis átadás",
-  "Ipari környezetben optimalizált munkavégzés",
-  "Országos kiszállás és helyszíni tartózkodás nagyobb projektek esetén",
+  "Tervezésre használható pontfelhő",
+  "Revit, ArchiCAD és IFC átadás, ha kéri",
+  "Ipari környezetben a termelési ütemtervhez igazodó helyszíni munka",
+  "Országos kiszállás; nagyobb projektnél többnapos helyszíni munka",
 ] as const;
 
 export default function ReferencesPage() {
@@ -43,8 +43,8 @@ export default function ReferencesPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Technológia</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Trimble X9, Leica BLK2GO, DJI drón, Trimble GNSS és terepi mérőműszerek — a feladathoz
-            illő módszerrel, nem egységes sablonnal.
+            Az objektum mérete és elérhetősége alapján álló, mobil vagy drónos felmérést alkalmazunk
+            (Trimble X9, Leica BLK2GO, DJI, Trimble GNSS).
           </p>
         </section>
 
@@ -61,7 +61,7 @@ export default function ReferencesPage() {
               href="/scan-to-bim-kapacitas"
               className="inline-flex rounded-md border border-brand px-5 py-2.5 text-sm font-semibold text-brand"
             >
-              Scan-to-BIM kapacitás
+              BIM-modellezőknek
             </BimLink>
           </div>
         </section>

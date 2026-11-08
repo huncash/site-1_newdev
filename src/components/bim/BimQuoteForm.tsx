@@ -8,68 +8,68 @@ import { BIM_CONFIG } from "@/config/bim";
 import { collectBimLeadSource } from "@/lib/bim-utm";
 import { trackConversion } from "@/lib/conversion";
 
-const PATHS = [
-  {
-    id: "ipar",
-    label: "Ipari vagy épületfelmérési projekt",
-  },
-  {
-    id: "kapacitas",
-    label: "BIM-modellezőknek: kapacitás vagy alvállalkozói együttműködés",
-  },
+const INTENTS = [
+  { id: "felmeres", label: "Felmérést szeretnék kérni" },
+  { id: "alvallalkozo", label: "Alvállalkozói együttműködés érdekel" },
+  { id: "egyeb", label: "Egyéb kérdésem van" },
 ] as const;
 
-const PROJECT_TYPES = [
+const SITE_TYPES = [
   "Ipari létesítmény",
   "Épület vagy rekonstrukció",
-  "BIM-modellező kapacitás",
-  "Lakossági felmérés",
+  "Lakás vagy családi ház",
 ] as const;
 
 const OUTPUTS = [
   ["pontfelho", "Pontfelhő"],
-  ["cad", "CAD"],
+  ["cad", "CAD / alaprajz"],
   ["revit", "Revit"],
   ["archicad", "ArchiCAD"],
   ["ifc", "IFC"],
   ["egyeb", "Egyéb"],
 ] as const;
 
-type PathId = (typeof PATHS)[number]["id"];
+type IntentId = (typeof INTENTS)[number]["id"];
 
-function resolvePath(raw: string | null): PathId {
-  if (raw === "kapacitas") return "kapacitas";
-  return "ipar";
+function resolveIntent(raw: string | null): IntentId {
+  if (raw === "kapacitas") return "alvallalkozo";
+  if (raw === "egyeb") return "egyeb";
+  if (raw === "ipar" || raw === "tervezo" || raw === "lakossagi" || raw === "felmeres") {
+    return "felmeres";
+  }
+  return "felmeres";
 }
 
-function resolveProjectType(raw: string | null, path: PathId): (typeof PROJECT_TYPES)[number] {
-  if (raw === "lakossagi") return "Lakossági felmérés";
+function resolveSiteType(raw: string | null): (typeof SITE_TYPES)[number] {
+  if (raw === "lakossagi") return "Lakás vagy családi ház";
   if (raw === "tervezo") return "Épület vagy rekonstrukció";
-  if (path === "kapacitas" || raw === "kapacitas") return "BIM-modellező kapacitás";
   return "Ipari létesítmény";
 }
 
 export function BimQuoteForm() {
   const searchParams = useSearchParams();
-  const initialPath = resolvePath(searchParams.get("utvonal"));
-  const [path, setPath] = useState<PathId>(initialPath);
+  const initialIntent = resolveIntent(searchParams.get("utvonal"));
+  const [intent, setIntent] = useState<IntentId>(initialIntent);
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
   const [error, setError] = useState("");
   const [sumAnswer, setSumAnswer] = useState("");
   const [sumToken, setSumToken] = useState("");
   const [sumReset, setSumReset] = useState(0);
 
-  const defaultProjectType = useMemo(
-    () => resolveProjectType(searchParams.get("utvonal"), path),
-    [path, searchParams]
+  const defaultSiteType = useMemo(
+    () => resolveSiteType(searchParams.get("utvonal")),
+    [searchParams]
   );
+
+  const needsSurveyFields = intent === "felmeres";
+  const needsPartnerFields = intent === "alvallalkozo";
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
     if (!sumToken) {
       setStatus("error");
-      setError("Az ellenőrző kérdés még töltődik. Pár másodperc, majd próbálja újra.");
+      setError("Az ellenőrző kérdés még töltődik. Pár másodperc múlva próbálja újra.");
       return;
     }
     if (!/^\d{1,3}$/.test(sumAnswer.trim())) {
@@ -83,16 +83,18 @@ export function BimQuoteForm() {
     const formats = OUTPUTS.map(([code]) => code).filter(
       (code) => data.get(`format-${code}`) === "on"
     );
-    const source = collectBimLeadSource(searchParams.get("forras") || path);
+    const intentLabel = INTENTS.find((item) => item.id === intent)?.label ?? intent;
+    const siteType = String(data.get("siteType") ?? "");
+    const source = collectBimLeadSource(searchParams.get("forras") || intent);
 
     const payload = {
       name: String(data.get("name") ?? ""),
       email: String(data.get("email") ?? ""),
       phone: String(data.get("phone") ?? ""),
       organization: String(data.get("organization") ?? ""),
-      organizationType: String(data.get("projectType") ?? ""),
-      serviceInterest: PATHS.find((item) => item.id === path)?.label ?? path,
-      buildingType: String(data.get("projectType") ?? ""),
+      organizationType: siteType || intentLabel,
+      serviceInterest: intentLabel,
+      buildingType: siteType || intentLabel,
       area: String(data.get("area") ?? ""),
       location: String(data.get("location") ?? ""),
       spaces: "—",
@@ -101,13 +103,13 @@ export function BimQuoteForm() {
       eirLevel: "",
       survey: "nem tudom",
       formats,
-      useCases: [path],
+      useCases: [intent],
       source,
       consent: data.get("consent") === "on",
       message: [
-        `Útvonal: ${path}`,
-        `Projekt típusa: ${String(data.get("projectType") ?? "")}`,
-        `Kért kimenetek: ${formats.join(", ") || "—"}`,
+        `Érdeklődés: ${intentLabel}`,
+        siteType ? `Helyszín típusa: ${siteType}` : null,
+        formats.length ? `Kért kimenetek: ${formats.join(", ")}` : null,
         String(data.get("message") ?? ""),
       ]
         .filter(Boolean)
@@ -129,7 +131,7 @@ export function BimQuoteForm() {
         trackConversion("quote_form_submit_error", { forras: source, mode: "b2b" });
         setError(
           result.error === "sum"
-            ? "Az eredmény nem helyes. Új kérdést kapott, írja be az eredményt."
+            ? "Az eredmény nem helyes. Új kérdést kapott; írja be újra az eredményt."
             : "Az űrlapot nem sikerült elküldeni. Ellenőrizze a mezőket, majd írja be újra az eredményt."
         );
         return;
@@ -148,7 +150,7 @@ export function BimQuoteForm() {
   if (status === "ok") {
     return (
       <p className="rounded-md border border-border bg-card p-6 text-sm">
-        Megkaptuk az ajánlatkérést.
+        Megkaptuk az üzenetét.
         {BIM_CONFIG.replySlaText ? ` ${BIM_CONFIG.replySlaText}` : null}
       </p>
     );
@@ -157,22 +159,41 @@ export function BimQuoteForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-4 rounded-md border border-border bg-card p-6">
       <fieldset className="text-sm">
-        <legend className="font-medium">Melyik útvonalról van szó?</legend>
+        <legend className="font-medium">Miben segíthetünk?</legend>
         <div className="mt-2 space-y-2">
-          {PATHS.map((item) => (
+          {INTENTS.map((item) => (
             <label key={item.id} className="flex gap-2">
               <input
                 type="radio"
-                name="utvonal"
+                name="intent"
                 value={item.id}
-                checked={path === item.id}
-                onChange={() => setPath(item.id)}
+                checked={intent === item.id}
+                onChange={() => setIntent(item.id)}
               />
               <span>{item.label}</span>
             </label>
           ))}
         </div>
       </fieldset>
+
+      {needsSurveyFields ? (
+        <label className="block text-sm">
+          Milyen helyszínt kell felmérni?
+          <select
+            name="siteType"
+            required
+            defaultValue={defaultSiteType}
+            key={`${intent}-${defaultSiteType}`}
+            className="mt-1 w-full rounded-md border border-border px-3 py-2"
+          >
+            {SITE_TYPES.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </label>
+      ) : null}
 
       <label className="block text-sm">
         Név
@@ -184,9 +205,10 @@ export function BimQuoteForm() {
         />
       </label>
       <label className="block text-sm">
-        Cégnév (ha vállalkozás)
+        Cégnév {needsPartnerFields ? "" : "(ha vállalkozás)"}
         <input
           name="organization"
+          required={needsPartnerFields}
           maxLength={160}
           className="mt-1 w-full rounded-md border border-border px-3 py-2"
         />
@@ -202,7 +224,7 @@ export function BimQuoteForm() {
         />
       </label>
       <label className="block text-sm">
-        Telefon (opcionális)
+        Telefonszám (nem kötelező)
         <input
           name="phone"
           type="tel"
@@ -210,79 +232,83 @@ export function BimQuoteForm() {
           className="mt-1 w-full rounded-md border border-border px-3 py-2"
         />
       </label>
+
+      {needsSurveyFields || needsPartnerFields ? (
+        <>
+          <label className="block text-sm">
+            Helyszín
+            <input
+              name="location"
+              required={needsSurveyFields}
+              maxLength={160}
+              placeholder="Település vagy cím"
+              className="mt-1 w-full rounded-md border border-border px-3 py-2"
+            />
+          </label>
+          <label className="block text-sm">
+            Hozzávetőleges alapterület vagy projektnagyság
+            <input
+              name="area"
+              maxLength={120}
+              placeholder="Pl. kb. 2000 m²"
+              className="mt-1 w-full rounded-md border border-border px-3 py-2"
+            />
+          </label>
+        </>
+      ) : null}
+
+      {needsSurveyFields || needsPartnerFields ? (
+        <fieldset className="text-sm">
+          <legend className="font-medium">Milyen anyagot szeretne kapni? (opcionális)</legend>
+          <div className="mt-2 space-y-2">
+            {OUTPUTS.map(([code, label]) => (
+              <label key={code} className="flex gap-2">
+                <input type="checkbox" name={`format-${code}`} />
+                <span>{label}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      ) : null}
+
+      {needsSurveyFields || needsPartnerFields ? (
+        <label className="block text-sm">
+          Határidő (ha van)
+          <input
+            name="deadline"
+            maxLength={80}
+            placeholder="Pl. május végéig"
+            className="mt-1 w-full rounded-md border border-border px-3 py-2"
+          />
+        </label>
+      ) : null}
+
       <label className="block text-sm">
-        Projekt típusa
-        <select
-          name="projectType"
-          required
-          defaultValue={defaultProjectType}
-          key={defaultProjectType}
-          className="mt-1 w-full rounded-md border border-border px-3 py-2"
-        >
-          {PROJECT_TYPES.map((item) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="block text-sm">
-        Helyszín
-        <input
-          name="location"
-          required
-          maxLength={160}
-          className="mt-1 w-full rounded-md border border-border px-3 py-2"
-        />
-      </label>
-      <label className="block text-sm">
-        Hozzávetőleges alapterület vagy projektnagyság
-        <input
-          name="area"
-          maxLength={120}
-          className="mt-1 w-full rounded-md border border-border px-3 py-2"
-        />
-      </label>
-      <fieldset className="text-sm">
-        <legend className="font-medium">Kért kimenet</legend>
-        <div className="mt-2 space-y-2">
-          {OUTPUTS.map(([code, label]) => (
-            <label key={code} className="flex gap-2">
-              <input type="checkbox" name={`format-${code}`} />
-              <span>{label}</span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
-      <label className="block text-sm">
-        Határidő
-        <input
-          name="deadline"
-          maxLength={80}
-          className="mt-1 w-full rounded-md border border-border px-3 py-2"
-        />
-      </label>
-      <label className="block text-sm">
-        Rövid feladatleírás
+        Rövid leírás
         <textarea
           name="message"
           required
           maxLength={2000}
           rows={4}
+          placeholder="Írja le röviden, miben tudunk segíteni."
           className="mt-1 w-full rounded-md border border-border px-3 py-2"
         />
       </label>
-      <label className="block text-sm">
-        EIR vagy dokumentum (opcionális megjegyzés a feltöltésről)
-        <input
-          name="eirFileNote"
-          maxLength={200}
-          placeholder="Pl. EIR-t e-mailben küldöm"
-          className="mt-1 w-full rounded-md border border-border px-3 py-2"
-        />
-      </label>
+
+      {needsSurveyFields || needsPartnerFields ? (
+        <label className="block text-sm">
+          Dokumentum vagy EIR (opcionális)
+          <input
+            name="eirFileNote"
+            maxLength={200}
+            placeholder="Pl. az EIR-t e-mailben küldöm"
+            className="mt-1 w-full rounded-md border border-border px-3 py-2"
+          />
+        </label>
+      ) : null}
+
       <fieldset className="space-y-2 text-sm">
-        <legend className="font-medium">Ellenőrzés</legend>
+        <legend className="font-medium">Ellenőrző kérdés</legend>
         <SumCheckField
           resetKey={sumReset}
           answer={sumAnswer}
@@ -291,6 +317,7 @@ export function BimQuoteForm() {
           inputClassName="mt-1 w-full rounded-md border border-border px-3 py-2"
         />
       </fieldset>
+
       <label className="flex gap-2 text-sm">
         <input type="checkbox" name="consent" required />
         <span>
@@ -298,18 +325,23 @@ export function BimQuoteForm() {
           <a href="https://vrgo.hu/adatvedelem" className="text-brand underline">
             adatvédelmi tájékoztatót
           </a>
-          , és hozzájárulok, hogy az ajánlatkéréshez megadott adataimat a VRGO kezelje.
+          , és hozzájárulok, hogy a megadott adataimat a VRGO a megkereséshez kezelje.
         </span>
       </label>
+
       {error ? <p className="text-sm text-red-700">{error}</p> : null}
+
       <button
         type="submit"
         disabled={status === "sending"}
-        className="rounded-md bg-brand px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark disabled:opacity-60"
+        className="rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground hover:bg-brand-dark disabled:opacity-60"
       >
-        {status === "sending" ? "Küldés…" : "Ajánlatot kérek"}
+        {status === "sending" ? "Küldés…" : "Üzenet küldése"}
       </button>
-      <p className="text-xs text-muted-foreground">{BIM_CONFIG.replySlaText}</p>
+
+      {BIM_CONFIG.replySlaText ? (
+        <p className="text-xs text-muted-foreground">{BIM_CONFIG.replySlaText}</p>
+      ) : null}
     </form>
   );
 }

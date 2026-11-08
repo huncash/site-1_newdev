@@ -6,7 +6,7 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/ipari-felmeres",
   "Ipari létesítmények felmérése | VRGO BIM",
-  "Gyártóüzemek, raktárak és technológiai csarnokok lézeres állapotfelmérése — a termelési megszakítás minimalizálásával. Georeferált pontfelhő és as-built alap."
+  "Gyártóüzemek, raktárak és technológiai csarnokok lézeres állapotfelmérése. Pontfelhő és as-built alap a termelési ütemtervhez igazítva."
 );
 
 export default function IndustrialServicePage() {
@@ -29,8 +29,8 @@ export default function IndustrialServicePage() {
           <li>Layout-tervezéshez és ütközésvizsgálathoz használható pontfelhő</li>
           <li>Átépítések, bővítések és átadások as-built alapja</li>
           <li>
-            Nagyobb projektnél helyszíni tartózkodás, a termelési megszakítás minimalizálására
-            optimalizált munkavégzés
+            Nagyobb ipari projektnél több napig a helyszínen dolgozunk, hogy a felmérés a termelési
+            ütemtervhez igazodjon
           </li>
           <li>Országos kiszállás; Budapesten belül kiszállási díj felszámítása nélkül</li>
         </ul>

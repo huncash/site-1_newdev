@@ -5,17 +5,17 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/munkafolyamat",
   "Hogyan dolgozunk — felmérés, feldolgozás, átadás | VRGO BIM",
-  "Igény tisztázása, helyszíni felmérés, feldolgozás, minőség-ellenőrzés és dokumentált átadás. Formátumok, EOV és georeferálás egy helyen."
+  "Igény tisztázása, helyszíni felmérés, feldolgozás, minőség-ellenőrzés és dokumentált átadás. Formátumok és EOV egy helyen."
 );
 
 const STEPS = [
   {
     title: "Igény tisztázása",
-    text: "Felhasználási cél, helyszín, kimenetek, határidő és helyszíni korlátok egyeztetése. Ha van EIR, abból indulunk.",
+    text: "A felmérés előtt egyeztetjük a kívánt kimenetet, a helyszínt és a határidőt. Ha van EIR, abból indulunk.",
   },
   {
     title: "Helyszíni felmérés",
-    text: "Lézeres rögzítés a helyszínhez igazítva. Nagyabb projektnél helyszíni tartózkodással dolgozunk.",
+    text: "Lézeres rögzítés a helyszín korlátaihoz igazítva. Nagyobb ipari projektnél több napig a helyszínen dolgozunk.",
   },
   {
     title: "Feldolgozás",
@@ -27,7 +27,7 @@ const STEPS = [
   },
   {
     title: "Átadás",
-    text: "A megrendelt kimenetek dokumentált átadása a megállapított formátumokban.",
+    text: "A kimenetet a megrendelő által kért formátumban adjuk át.",
   },
 ] as const;
 
@@ -67,13 +67,13 @@ export default function ProcessPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">EOV és georeferálás</h2>
           <p className="mt-3">
-            Ha a felhasználási cél vagy az EIR bekötést kér, a georeferálást jogosult földmérő
-            közreműködésével végezzük. A megrendelő saját földmérőjével is együttműködünk. A
-            részletes szolgáltatásleírás a{" "}
+            Ha az EIR vagy a felhasználási cél bekötést kér, a lézeres felmérést geodéziai
+            ellenőrzéssel és EOV-bekötéssel egészítjük ki. A megrendelő saját földmérőjével is
+            együttműködünk. Részletek a{" "}
             <BimLink href="/szolgaltatasok/georeferalas-eov" className="font-semibold text-brand">
               georeferálás
             </BimLink>{" "}
-            oldalon található.
+            oldalon.
           </p>
         </section>
 

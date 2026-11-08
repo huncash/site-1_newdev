@@ -29,7 +29,8 @@ export default function ExistingBuildingsPage() {
             Meglévő állami épületek: pontfelhő és BIM a 2035. december 31-i határidőhöz
           </h1>
           <p className="mt-3 text-sm opacity-90">
-            A georeferált felmérés a hub egyik területe —{" "}
+            A georeferált felmérés a fő szolgáltatásunk; az állami BIM-szabályozás külön felhasználási
+            terület. Lásd:{" "}
             <BimLink href={BIM_STATE_HUB_HREF} className="underline">
               {BIM_STATE_HUB_LABEL}
             </BimLink>
@@ -50,9 +51,8 @@ export default function ExistingBuildingsPage() {
           <p className="mt-2">
             Meglévő épületről a dokumentáció gyakran hiányos. A rendelet hatálybalépésekor már
             állami tulajdonú, BIM nélküli létesítménynél a modellt legkésőbb 2035. december 31-ig
-            kell létrehozni (22. § (2)). A részletes téradatot 3D lézerszkenneléssel gyűjtjük, a
-            szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult
-            földmérő partnerünk biztosítja.
+            kell létrehozni (22. § (2)). A téradatot lézerszkenneléssel gyűjtjük, és geodéziai
+            ellenőrzéssel, EOV-bekötéssel egészítjük ki.
           </p>
         </section>
         <section>
@@ -70,7 +70,7 @@ export default function ExistingBuildingsPage() {
               { code: "010" },
               {
                 code: "190",
-                note: "A szabványos georeferálást és a hivatalos ellenőrző mérést dedikált, eljárásra jogosult földmérő partnerünk biztosítja.",
+                note: "A lézeres felmérést geodéziai ellenőrzéssel és EOV-bekötéssel egészítjük ki.",
               },
               { code: "200" },
             ]}
@@ -89,14 +89,14 @@ export default function ExistingBuildingsPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Referencia</h2>
           <p className="mt-2">
-            Meglévő állami létesítmény felmérése georeferált pontfelhővé és BIM-modellé.{" "}
+            Meglévő állami létesítményről pontfelhőt és szükség szerint BIM-modellt készítünk.{" "}
             <BimLink href="/referenciak" className="font-semibold text-brand">
               Részletek
             </BimLink>
           </p>
         </section>
         <BimDeliverableBlock
-          deliverables="E57 / XYZ pontfelhő, georeferált alaprajz és metszet; IFC/natív modell külön tételként."
+          deliverables="E57 / XYZ pontfelhő, alaprajz és metszet; IFC/natív modell külön tételként."
           timeline="A 2035-ös határidőhöz igazított ütemterv az ajánlatban; a helyszíni napok a létesítmény méretétől függnek."
           fromYou="EIR, épületlista, hozzáférés, koordináta-rendszer elvárás."
         />

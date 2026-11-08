@@ -20,7 +20,7 @@ const AUDIENCES = [
   },
   {
     title: "Tervezőiroda vagy kivitelező",
-    text: "Pontfelhő, CAD és szükség szerint Scan-to-BIM alap.",
+    text: "Pontfelhő, CAD és szükség szerint modellalap a tervezéshez.",
     cta: "Tervezőknek",
     href: "/tervezoknek",
   },
@@ -52,7 +52,7 @@ function orgSchema() {
     name: BIM_CONFIG.organizationName,
     url: BIM_CONFIG.organizationUrl,
     description:
-      "Ipari és épületfelmérési specialisták: országosan gyors helyszíni lézeres felmérés, mérnöki pontosságú pontfelhő és szükség szerint Scan-to-BIM alap.",
+      "Ipari és épületfelmérési specialisták: országosan gyors helyszíni lézeres felmérés, mérnöki pontosságú pontfelhő és szükség szerint modellalap.",
     parentOrganization: {
       "@type": "Organization",
       name: "VRGO",
@@ -129,8 +129,8 @@ export default function BimHomePage() {
           </h2>
           <p className="mt-4 max-w-3xl text-sm opacity-90 sm:text-base">
             Gyártóüzemek, raktárak, technológiai csarnokok és üzemek felmérése layout-tervezéshez,
-            gépbeépítéshez, átépítéshez vagy átadáshoz. Nagyobb projektnél helyszíni tartózkodással,
-            a termelési megszakítás minimalizálására optimalizált munkavégzéssel.
+            gépbeépítéshez, átépítéshez vagy átadáshoz. Nagyobb ipari projektnél több napig a
+            helyszínen dolgozunk, hogy a felmérés a termelési ütemtervhez igazodjon.
           </p>
           <BimLink
             href={`${BIM_INDUSTRIAL_HREF}?forras=fooldal-ipar`}
@@ -144,12 +144,12 @@ export default function BimHomePage() {
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-2xl font-semibold sm:text-3xl">
-            Scan-to-BIM kapacitás modellezőknek
+            Kapacitás BIM-modellezőknek
           </h2>
           <p className="mt-4 max-w-3xl text-sm text-muted-foreground sm:text-base">
-            Terepi felmérést, pontfelhőt, CAD-alapot és szükség szerint Scan-to-BIM modellezést
-            vállalunk a saját munkafolyamatába illesztve. A projektben Ön tartja az ügyfélkapcsolatot;
-            mi a mérési és modellezési kapacitást biztosítjuk.
+            Terepi felmérést, pontfelhőt, CAD-alapot és szükség szerint modellezést vállalunk a saját
+            munkafolyamatába illesztve. Ön tartja az ügyfélkapcsolatot; mi a mérési és modellezési
+            kapacitást biztosítjuk.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <BimLink
@@ -195,8 +195,8 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-2xl font-semibold sm:text-3xl">Nem csak szkennelünk</h2>
           <p className="mt-4 max-w-3xl text-sm text-muted-foreground sm:text-base">
-            Terepi felmérést, feldolgozást és szükség szerint Scan-to-BIM modellezést végzünk. A
-            kimenet a megrendelő munkafolyamatához és formátumigényéhez igazodik.
+            Helyszíni felmérést, feldolgozást és szükség szerint modellezést végzünk. A kimenetet a
+            megrendelő által kért formátumban adjuk át.
           </p>
         </div>
       </section>
@@ -205,8 +205,8 @@ export default function BimHomePage() {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Kérjen ajánlatot</h2>
           <p className="mt-4 text-sm opacity-90 sm:text-base">
-            Írja le röviden a feladatot, vagy töltse fel a rendelkezésre álló dokumentumokat. A
-            szükséges módszert és árajánlatot utána egyeztetjük.
+            Írja le röviden a feladatot, vagy küldje el a rendelkezésre álló dokumentumokat. A
+            módszert és az árajánlatot utána egyeztetjük.
           </p>
           <BimLink
             href="/kapcsolat?forras=fooldal-zaras"

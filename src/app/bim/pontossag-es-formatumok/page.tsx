@@ -4,13 +4,13 @@ import { DECREE_CHECKED, NJT_URL, bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/pontossag-es-formatumok",
   "Pontosság és formátumok | VRGO BIM",
-  "Pontfelhő (E57, XYZ), georeferált CAD és szabványos BIM (IFC, natív). A pontossági szintet az EIR-hez mérjük."
+  "Pontfelhő (E57, XYZ), CAD és BIM (IFC, natív). A pontossági szintet az EIR-hez mérjük."
 );
 
 const formats = [
   ["Pontfelhő exportok", "E57, XYZ."],
-  ["CAD", "Georeferált alaprajzok és metszetek."],
-  ["BIM", "IFC és natív formátumok, pontfelhő alapú precíz modellezéssel."],
+  ["CAD", "Alaprajzok és metszetek, bekötéssel ha a feladat kéri."],
+  ["BIM", "IFC és natív formátumok, a pontfelhőből modellezve."],
 ];
 
 export default function AccuracyPage() {
@@ -46,33 +46,27 @@ export default function AccuracyPage() {
           <h2 className="text-xl font-semibold text-foreground">Geodéziai háttér</h2>
           <div className="mt-2 space-y-3">
             <p>
-              A tervezési, kivitelezési és üzemeltetési folyamatokat szigorú tűrési határok (EIR
-              konformitás) és szabványos geodéziai ellenőrző mérések mellett támogatjuk. A
-              nagytömegű 3D lézerszkennelés és a hivatalos EOV georeferálás kombinációjával
-              biztosítjuk, hogy a pontfelhő ne csak vizuális illúzió, hanem jogilag és metrikailag
-              is hiteles mérnöki alapanyag legyen.
+              A lézeres felmérést geodéziai ellenőrzéssel és EOV-bekötéssel egészítjük ki, hogy a
+              pontfelhő jogilag és metrikailag is használható mérnöki alap legyen (31/2024. (VIII.
+              22.) ÉKM rendelet 11. § (2)).
             </p>
             <p>
-              Optimalizált munkafolyamatunk ötvözi a gyors, nagy pontosságú lézerszkennelést a
-              jogosult földmérő partnerünk által végzett hivatalos alappont-meghatározással és
-              bekötéssel (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2) szerinti megfelelés). A terepi
-              méréstől a pontfelhő feldolgozáson át a szabványos BIM modellalkotásig egy kézből
-              szállítjuk az eredményt. Természetesen, amennyiben a megrendelő saját földmérővel
-              rendelkezik, készséggel és rugalmasan együttműködünk vele is.
+              A terepi méréstől a feldolgozásig — és igény szerint a BIM-modellalkotásig — egy
+              szerződéssel dolgozunk. Ha a megrendelőnek saját földmérője van, vele is
+              együttműködünk.
             </p>
           </div>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Ajánlati szintek és EIR</h2>
           <p className="mt-2">
-            A pontossági szintet minden projektnél szigorúan az EIR (Employer&apos;s Information
-            Requirements) követelményeihez mérjük. Előre egyeztetett, transzparens mérnöki szintekkel
-            és dedikált feldolgozási ütemezéssel dolgozunk.
+            A pontossági szintet az EIR vagy a megrendelés határozza meg. A vállalt szintet az
+            ajánlatban rögzítjük.
           </p>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Adatok és formátumok</h2>
-          <p className="mt-2">A projekthez igazodó, szabványos kimeneti formátumok.</p>
+          <p className="mt-2">A kimenetet a megrendelő által kért formátumban adjuk át.</p>
           <table className="mt-4 w-full border-collapse text-left text-sm">
             <tbody>
               {formats.map(([name, note]) => (

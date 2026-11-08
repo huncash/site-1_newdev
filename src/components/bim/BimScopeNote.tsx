@@ -6,12 +6,11 @@ export function BimScopeNote() {
     <div className="space-y-3">
       <p>
         Három dolgot vállalunk: <strong className="text-foreground">mért, ellenőrzött adatot</strong>{" "}
-        (szabványos geodéziai kontrollal),{" "}
-        <strong className="text-foreground">hivatalos EOV-kötést</strong> a jogosult földmérő
+        geodéziai kontrollal,{" "}
+        <strong className="text-foreground">hivatalos EOV-kötést</strong> jogosult földmérő
         közreműködésével, és{" "}
-        <strong className="text-foreground">a megrendelő felhasználási céljához illeszkedő átadást</strong>{" "}
-        (E57, DWG, IFC). A pontossági szintet az EIR vagy a megrendelés határozza meg, és előre
-        jelezzük, ha a feladathoz más módszer kell.{" "}
+        <strong className="text-foreground">a kimenetet a megrendelő által kért formátumban</strong>{" "}
+        (E57, DWG, IFC). A pontossági szintet az EIR vagy a megrendelés határozza meg.{" "}
         <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
           Pontosság és formátumok
         </BimLink>
@@ -24,12 +23,10 @@ export function BimScopeNote() {
 export function BimSurveyorNote() {
   return (
     <p>
-      Optimalizált munkafolyamatunk ötvözi a gyors, nagy pontosságú lézerszkennelést a jogosult
-      földmérő partnerünk által végzett hivatalos alappont-meghatározással és bekötéssel (31/2024.
-      (VIII. 22.) ÉKM rendelet 11. § (2) szerinti megfelelés). A terepi méréstől a pontfelhő
-      feldolgozáson át — és igény szerint — a szabványos BIM modellalkotásig egy szerződéssel, egy
-      felelőssel szállítjuk az eredményt. Természetesen, amennyiben a megrendelő saját földmérővel
-      rendelkezik, készséggel és rugalmasan együttműködünk vele is.
+      A lézeres felmérést geodéziai ellenőrzéssel és EOV-bekötéssel egészítjük ki jogosult földmérő
+      közreműködésével (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2)). A terepi méréstől a pontfelhő
+      feldolgozásig — és igény szerint a BIM-modellalkotásig — egy szerződéssel dolgozunk. Ha a
+      megrendelőnek saját földmérője van, vele is együttműködünk.
     </p>
   );
 }

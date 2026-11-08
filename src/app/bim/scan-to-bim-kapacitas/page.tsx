@@ -27,7 +27,7 @@ const WE_DO = [
 
 const YOU_GET = [
   "Saját név-, réteg- és LOD-konvenció szerinti munka",
-  "E57, DWG, IFC, Revit vagy ArchiCAD átadás",
+  "A kimenetet a megrendelő által kért formátumban adjuk át",
   "BCF és minőség-ellenőrzés, ha releváns",
   "Országos kiszállás; Budapesten belül kiszállási díj nélkül",
 ] as const;
@@ -114,8 +114,8 @@ export default function ScanToBimCapacityPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Formátumok és ellenőrzés</h2>
           <p className="mt-3">
-            E57, DWG, IFC, Revit és ArchiCAD átadás a megrendelés szerint. Ha releváns, BCF
-            hibajegyzéket és ellenőrző pontokat adunk.
+            Tipikus átadás: E57, DWG, IFC, Revit vagy ArchiCAD. Ha releváns, BCF hibajegyzéket és
+            ellenőrző pontokat adunk.
           </p>
         </section>
 

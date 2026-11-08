@@ -5,8 +5,8 @@ import { MAIN_ORIGIN, bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/tervezoknek",
-  "Tervezőknek és kivitelezőknek — georeferált pontfelhő | VRGO BIM",
-  "Georeferált pontfelhő és DWG alaprajz tervezőirodáknak, akár csak terepi munkára."
+  "Tervezőknek és kivitelezőknek — pontfelhő és CAD | VRGO BIM",
+  "Pontfelhő és DWG alaprajz tervezőirodáknak, akár csak terepi munkára."
 );
 
 export default function DesignersServicePage() {
@@ -18,7 +18,7 @@ export default function DesignersServicePage() {
         { label: "Tervezőknek és kivitelezőknek" },
       ]}
       title="Helyszíni rögzítés tervezőknek és kivitelezőknek"
-      lead="Georeferált pontfelhő és DWG alaprajz a terepi munkától az átadásig. Egy szerződéssel, egy felelőssel."
+      lead="Pontfelhő és DWG alaprajz a terepi munkától az átadásig. Egy szerződéssel, egy felelőssel."
       ctaHref="/kapcsolat?forras=tervezoknek-szolgaltatas"
       ctaLabel="Küldje el a feladat leírását vagy az EIR-t"
     >
@@ -32,7 +32,7 @@ export default function DesignersServicePage() {
       <ServiceSection title="Mikor érdemes">
         <ul className="list-disc space-y-1 pl-5">
           <li>Felmérési alapadat EIR vagy saját specifikáció szerint</li>
-          <li>Csak helyszíni rögzítés és georeferálás, modellezés nélkül</li>
+          <li>Csak helyszíni rögzítés és bekötés, modellezés nélkül</li>
           <li>As-built ellenőrzés a tervezéshez vagy átadáshoz</li>
         </ul>
       </ServiceSection>
@@ -40,13 +40,13 @@ export default function DesignersServicePage() {
       <ServiceSection title="Mit kap egy átadás?">
         <ul className="list-disc space-y-1 pl-5">
           <li>E57 / RCP pontfelhő</li>
-          <li>Georeferált alaprajz DWG</li>
+          <li>Alaprajz DWG, bekötéssel ha a feladat kéri</li>
           <li>Pontossági jegyzőkönyv</li>
           <li>Koordináta-rendszer leírás</li>
         </ul>
         <p className="mt-3">
-          Vállaljuk a csak helyszíni rögzítést és georeferálást is: a pontfelhőt és a georeferált
-          alaprajzot átadjuk, a modellezést Ön vagy a csapata végzi.
+          Vállaljuk a csak helyszíni rögzítést is: a pontfelhőt és az alaprajzot átadjuk, a
+          modellezést Ön vagy a csapata végzi.
         </p>
         {bimHasSamplePack() ? (
           <p className="mt-3">
@@ -59,11 +59,9 @@ export default function DesignersServicePage() {
 
       <ServiceSection title="Hogyan zajlik">
         <p>
-          EIR vagy felmérési specifikáció áttekintése, helyszíni rögzítés, regisztráció és
-          georeferálás, átadás a megbeszélt formátumokban. Ha az EIR tartalmazza, a
-          koordináta-rendszert és a fájlnevezést az 1. melléklet 3.3–3.4 pontjai szerint vesszük
-          figyelembe. A pontossági szintet az EIR-hez mérjük, és előre jelezzük, ha a feladathoz
-          más módszer szükséges. Részletek:{" "}
+          A felmérés előtt egyeztetjük a kívánt kimenetet és a határidőt. Helyszíni rögzítés,
+          regisztráció, majd átadás a megbeszélt formátumokban. Ha az EIR bekötést kér, a lézeres
+          felmérést geodéziai ellenőrzéssel egészítjük ki. Részletek:{" "}
           <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
             pontosság és formátumok
           </BimLink>

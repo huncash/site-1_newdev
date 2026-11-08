@@ -20,7 +20,7 @@ const USES = [
 const OUTPUTS = [
   "Pontfelhő a megrendelés szerinti formátumban",
   "2D layout / CAD a szükséges szelvényekkel",
-  "Scan-to-BIM modell külön tételként, ha kéri",
+  "Modell külön tételként, ha kéri",
 ] as const;
 
 const FAQ = [
@@ -33,7 +33,7 @@ const FAQ = [
     a: "Nem. A pontfelhő és a 2D layout gyakran elegendő. A modell külön tétel.",
   },
   {
-    q: "Vállalnak többnapos helyszíni tartózkodást?",
+    q: "Vállalnak többnapos helyszíni munkát?",
     a: "Igen, ha a projekt mérete vagy az üzemeltetési ütemezés ezt indokolja.",
   },
 ] as const;
@@ -81,9 +81,7 @@ export default function IndustrialSurveyPage() {
         <section>
           <h2 className="text-xl font-semibold">Nagy terek és ipari környezet</h2>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Nagy csarnokokhoz álló lézerszkennert, szűk és gépészeti részekhez mobil felmérést, tetőhöz
-            és kültérhez szükség szerint drónt használunk. A módszert a helyszín és a cél határozza
-            meg.
+            Az objektum mérete és elérhetősége alapján álló, mobil vagy drónos felmérést alkalmazunk.
           </p>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             Akár 1 hektár fölötti kültéri felületek mellett napi több ezer négyzetméter belső tér
@@ -92,11 +90,10 @@ export default function IndustrialSurveyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold">Helyszíni tartózkodás nagyobb projektnél</h2>
+          <h2 className="text-xl font-semibold">Többnapos helyszíni munka</h2>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Nagyobb projektnél helyszíni tartózkodással csökkentjük az ismételt kiszállásokat. A
-            termelési megszakítást a zónák és az üzemeltetési ütemezés egyeztetésével tartjuk
-            minimálisan.
+            Nagyobb ipari projektnél több napig a helyszínen dolgozunk, hogy a felmérés a termelési
+            ütemtervhez igazodjon.
           </p>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             Országosan vállalunk kiszállást. Budapesten belül a kiszállási díjat nem számítjuk fel.
@@ -143,7 +140,7 @@ export default function IndustrialSurveyPage() {
         <section>
           <h2 className="text-xl font-semibold">Űrlap</h2>
           <p className="mt-3 text-sm text-muted-foreground">
-            Kérjen helyszíni felmérési vagy Scan-to-BIM kapacitásajánlatot.
+            Kérjen helyszíni felmérési vagy kapacitásajánlatot.
           </p>
           <div className="mt-6">
             <Suspense fallback={<p className="text-sm text-muted-foreground">Űrlap betöltése…</p>}>

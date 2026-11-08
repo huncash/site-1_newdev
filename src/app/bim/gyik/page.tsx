@@ -55,7 +55,7 @@ const CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Hogyan minimalizálják az ipari üzem megszakítását?",
-        a: "A helyszíni munkát a termelési és üzemeltetési korlátokhoz igazítjuk. Nagyobb projektnél helyszíni tartózkodással csökkentjük az ismételt kiszállásokat.",
+        a: "A helyszíni munkát a termelési és üzemeltetési korlátokhoz igazítjuk. Nagyobb ipari projektnél több napig a helyszínen dolgozunk, hogy kevesebb legyen az ismételt kiszállás.",
       },
       {
         q: "Vállalnak többnapos helyszíni munkát?",

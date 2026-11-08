@@ -70,9 +70,8 @@ export default function ConstructionPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Hogyan zajlik</h2>
           <p className="mt-2">
-            A kivitelezési ütemtervhez igazítjuk a helyszíni napokat. A téradatot 3D
-            lézerszkenneléssel gyűjtjük; a hivatalos ellenőrző mérést és EOV-bekötést jogosult
-            földmérő közreműködésével biztosítjuk, ha a feladat ezt kéri.
+            A kivitelezési ütemtervhez igazítjuk a helyszíni napokat. A téradatot lézerszkenneléssel
+            gyűjtjük; ha a feladat kéri, geodéziai ellenőrzéssel és EOV-bekötéssel egészítjük ki.
           </p>
         </section>
         <section>

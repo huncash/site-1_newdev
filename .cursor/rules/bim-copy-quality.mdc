@@ -1,0 +1,44 @@
+---
+description: BIM copy poka-yoke — natural Hungarian, no AI-marketing filler
+globs: src/app/bim/**/*.{tsx,ts,md}; src/components/bim/**/*.{tsx,ts}
+alwaysApply: true
+---
+
+# BIM nyelvi minőség (poka-yoke)
+
+## Mondatlogika
+
+Minden mondat válaszoljon: ki csinálja? mit pontosan? miért hasznos az ügyfélnek?
+Ha nem, írd át vagy töröld. Kevesebb, konkrétabb szöveg.
+
+## Tiltott AI-marketing szerkezetek
+
+Ne használd / írd át:
+- „optimalizált munkafolyamat / ütemezés / munkavégzés”
+- „a feladathoz illő módszer”
+- „mérhető digitális más / másolat”
+- „illeszkedő átadás”, „a munkamenetet az Ön kéréséhez igazítjuk”
+- „helyszíni tartózkodással dolgozunk” → helyette: „több napig a helyszínen dolgozunk…”
+- „rugalmasan együttműködünk”, üres „szabványos / komplex / integrált / teljes körű / prémium / innovatív”
+
+Példa jó: „Nagyobb ipari projektnél több napig a helyszínen dolgozunk, hogy a felmérés a termelési ütemtervhez igazodjon.”
+
+## Ismétlés (oldalanként)
+
+- georeferált ≤ 1–2
+- jogosult földmérő közreműködésével ≤ 1
+- EOV-bekötés ≤ 1–2
+- E57/DWG/IFC listázás ≤ 1–2
+- pontfelhő / Scan-to-BIM csak ha más kontextus
+
+## Rövidség
+
+Bekezdés ≤ 2–3 mondat. Kártya ≤ 2–3 rövid mondat. Listaelem ≤ 1 rövid mondat.
+B2B-nek ne magyarázd alapfokon a BIM-et/IFC-t; lakosságinak legyen közérthető.
+
+## Kapcsolat oldal
+
+Sorrend: rövid H1 + bevezető → űrlap → telefon csak az űrlap után.
+Nincs sötét hero, nincs „Elérhetőségek” blokk az űrlap előtt.
+Űrlap első kérdés: „Miben segíthetünk?” (Felmérés / Alvállalkozói együttműködés / Egyéb).
+Nyilvános szövegben tilos: útvonal, tölcsér, konverzió, routing, lead, szegmens.

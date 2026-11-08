@@ -7,7 +7,7 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/szolgaltatasok/georeferalas-eov",
   "Georeferálás és EOV-bekötés | VRGO BIM",
-  "Hivatalos EOV-bekötés jogosult földmérő közreműködésével — pontfelhő és CAD átadáshoz."
+  "Hivatalos EOV-bekötés — pontfelhő és CAD átadáshoz."
 );
 
 export default function GeorefServicePage() {
@@ -19,7 +19,7 @@ export default function GeorefServicePage() {
         { label: "Georeferálás és EOV" },
       ]}
       title="Georeferálás és EOV-bekötés"
-      lead="A pontfelhő és a rajzok hivatalos magyarországi koordináta-rendszerbe kötése Trimble GNSS és terepi méréssel, jogosult földmérő közreműködésével."
+      lead="A pontfelhő és a rajzok hivatalos magyarországi koordináta-rendszerbe kötése Trimble GNSS és terepi méréssel."
       ctaHref="/kapcsolat?forras=georeferalas-eov"
     >
       <ServiceSection title="Kinek">
@@ -54,7 +54,7 @@ export default function GeorefServicePage() {
         <dl className="space-y-3">
           <div>
             <dt className="font-semibold text-foreground">Saját földmérővel is megy?</dt>
-            <dd>Igen, készséggel együttműködünk a megrendelő földmérőjével.</dd>
+            <dd>Igen, a megrendelő saját földmérőjével is együttműködünk.</dd>
           </div>
           <div>
             <dt className="font-semibold text-foreground">Részletek a pontosságról?</dt>
