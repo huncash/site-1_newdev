@@ -7,26 +7,26 @@ import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/scan-to-bim-kapacitas",
-  "BIM-modellezőknek: kapacitás és együttműködés | VRGO BIM",
-  "Ha a felmérés, a nagyobb modellgyártás vagy a szoros átadási határidő miatt nincs elég belső kapacitás, mi betársulunk a munkafolyamatába."
+  "BIM-modellezőknek: terepi felmérés együttműködés | VRGO BIM",
+  "Ha a helyszíni felmérésre nincs elég belső kapacitás, mi a terepi mérést végezzük. A felmérési adatot a saját modellező csapata dolgozza fel."
 );
 
 const WHEN = [
   "Nagyobb terepi felmérés, amelyre nincs belső kapacitás",
-  "Több párhuzamos modellgyártás szoros átadási határidővel",
   "Ipari vagy nehezen hozzáférhető helyszín",
   "Hiteles terepi adat kell a saját modellező csapatához",
+  "Szoros átadási határidő mellett a helyszíni munkát szeretné kiszervezni",
 ] as const;
 
 const WE_DO = [
   "Helyszíni lézeres felmérés",
   "Pontfelhő regisztráció és tisztítás",
   "CAD-alap a megrendelés szerint",
-  "Scan-to-BIM modellezés szükség szerint",
+  "A kimenetet a modellezéshez használható formában adjuk át",
 ] as const;
 
 const YOU_GET = [
-  "Saját név-, réteg- és LOD-konvenció szerinti munka",
+  "A helyszíni mérést mi vállaljuk",
   "A kimenetet a megrendelő által kért formátumban adjuk át",
   "BCF és minőség-ellenőrzés, ha releváns",
   "Országos kiszállás; Budapesten belül kiszállási díj nélkül",
@@ -41,18 +41,18 @@ export default function ScanToBimCapacityPage() {
             BIM-modellezőknek
           </p>
           <h1 className="mt-3 text-3xl font-bold sm:text-4xl">
-            BIM-modellezőknek: kapacitás és együttműködés
+            Terepi felmérés a saját modellező munkafolyamatához
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
-            Ha a felmérés, a nagyobb modellgyártás vagy a szoros átadási határidő miatt nincs elég
-            belső kapacitás, mi betársulunk a munkafolyamatába.
+            Ha a helyszíni felmérésre nincs elég belső kapacitás, mi a terepi mérést végezzük. Ön
+            tartja az ügyfélkapcsolatot és a modellezést; mi a felmérési adatot adjuk át.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <BimLink
               href="/kapcsolat?utvonal=kapacitas&forras=scan-to-bim"
               className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
             >
-              Kapacitásajánlat kérése
+              Felmérési ajánlat kérése
             </BimLink>
             {bimHasSamplePack() ? (
               <a
@@ -70,12 +70,13 @@ export default function ScanToBimCapacityPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Nem vesszük el az ügyfelét</h2>
           <p className="mt-3">
-            Ön tartja az ügyfélkapcsolatot, mi a mérési és modellezési kapacitást biztosítjuk.
+            Ön tartja az ügyfélkapcsolatot és a modellezést. Mi a helyszíni felmérést és a
+            megrendelt felmérési kimenetet biztosítjuk.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Mikor hasznos a külső kapacitás</h2>
+          <h2 className="text-xl font-semibold text-foreground">Mikor hasznos a külső felmérés</h2>
           <ul className="mt-4 list-disc space-y-2 pl-5">
             {WHEN.map((item) => (
               <li key={item}>{item}</li>
@@ -93,7 +94,7 @@ export default function ScanToBimCapacityPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Mit kap a partner</h2>
+          <h2 className="text-xl font-semibold text-foreground">Mit kap a megrendelő partner</h2>
           <ul className="mt-4 list-disc space-y-2 pl-5">
             {YOU_GET.map((item) => (
               <li key={item}>{item}</li>
@@ -106,16 +107,16 @@ export default function ScanToBimCapacityPage() {
             Hogyan illeszkedünk a saját munkafolyamatába
           </h2>
           <p className="mt-3">
-            A konvenciókat, a részletezettséget és az átadási formátumot a projektje szerint
-            követjük. Név-, réteg- és LOD-szabályait a munka megkezdése előtt egyeztetjük.
+            A részletezettséget és az átadási formátumot a projektje szerint követjük. A
+            követelményeket a munka megkezdése előtt egyeztetjük.
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-foreground">Formátumok és ellenőrzés</h2>
           <p className="mt-3">
-            Tipikus átadás: E57, DWG, IFC, Revit vagy ArchiCAD. Ha releváns, BCF hibajegyzéket és
-            ellenőrző pontokat adunk.
+            Tipikus átadás: E57, DWG, IFC. Ha releváns, BCF hibajegyzéket és ellenőrző pontokat
+            adunk.
           </p>
         </section>
 
@@ -128,8 +129,8 @@ export default function ScanToBimCapacityPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Kapacitásajánlat űrlap</h2>
-          <p className="mt-3">Kérjen helyszíni felmérési vagy Scan-to-BIM kapacitásajánlatot.</p>
+          <h2 className="text-xl font-semibold text-foreground">Felmérési ajánlat űrlap</h2>
+          <p className="mt-3">Kérjen helyszíni felmérési ajánlatot a saját munkafolyamatához.</p>
           <div className="mt-6">
             <Suspense fallback={<p className="text-sm text-muted-foreground">Űrlap betöltése…</p>}>
               <BimQuoteForm />

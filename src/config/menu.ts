@@ -48,6 +48,7 @@ export const BIM_MENU: readonly MenuItem[] = [
     ],
   },
   { label: "Munkafolyamat", href: "/munkafolyamat" },
+  { label: "Rólunk", href: "/rolunk" },
   { label: "Blog", href: "/cikkek" },
   { label: "GYIK", href: "/gyik" },
   { label: "Kapcsolat", href: "/kapcsolat" },

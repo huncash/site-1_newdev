@@ -14,26 +14,26 @@ export const metadata = bimMetadata(
 
 const AUDIENCES = [
   {
-    title: "Ipari létesítmény",
-    text: "Csarnok, üzem, raktár vagy technológiai tér állapotfelmérése.",
+    title: "Ipari átépítéshez vagy géptelepítéshez",
+    text: "Üzemek, csarnokok és gépészeti terek meglévő állapotának felmérése.",
     cta: "Ipari felmérés",
     href: BIM_INDUSTRIAL_HREF,
   },
   {
-    title: "Tervezőiroda vagy kivitelező",
-    text: "Pontfelhő, CAD és szükség szerint modellalap a tervezéshez.",
-    cta: "Tervezőknek",
+    title: "Épülettervezéshez vagy rekonstrukcióhoz",
+    text: "Meglévő épületek felmérése a tervezőcsapattal egyeztetett követelmények szerint.",
+    cta: "Felmérés tervezőknek",
     href: "/tervezoknek",
   },
   {
-    title: "BIM-modellező cég",
-    text: "Terepi felmérés és modellezési kapacitás a saját munkafolyamatába.",
-    cta: "BIM-modellezőknek",
+    title: "BIM-modellezés előkészítéséhez",
+    text: "A terepi mérést mi végezzük, a felmérési adatot a modellezőcsapat dolgozza fel.",
+    cta: "Felmérés modellezőknek",
     href: BIM_MODELER_HREF,
   },
   {
-    title: "Lakás vagy családi ház",
-    text: "Felújítás vagy átépítés előtti pontos alaprajz.",
+    title: "Lakás vagy ház felújításához",
+    text: "A meglévő állapot felmérése a felújítás vagy átépítés megtervezéséhez.",
     cta: "Lakossági felmérés",
     href: "/lakossagi-felmeres",
   },
@@ -99,14 +99,14 @@ export default function BimHomePage() {
 
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Milyen felmérésre van szüksége?</h2>
+          <h2 className="text-2xl font-semibold sm:text-3xl">Milyen feladathoz keres felmérést?</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {AUDIENCES.map((item) => (
               <article
                 key={item.title}
                 className="flex flex-col rounded-md border border-border bg-card p-5"
               >
-                <h3 className="text-base font-semibold">{item.title}</h3>
+                <h3 className="text-base font-semibold leading-snug">{item.title}</h3>
                 <p className="mt-2 flex-1 text-sm text-muted-foreground">{item.text}</p>
                 <BimLink
                   href={item.href}
@@ -145,9 +145,8 @@ export default function BimHomePage() {
             Kapacitás BIM-modellezőknek
           </h2>
           <p className="mt-4 max-w-3xl text-sm text-muted-foreground sm:text-base">
-            Terepi felmérést, pontfelhőt, CAD-alapot és szükség szerint modellezést vállalunk a saját
-            munkafolyamatába illesztve. Ön tartja az ügyfélkapcsolatot; mi a mérési és modellezési
-            kapacitást biztosítjuk.
+            Terepi felmérést és pontfelhőt végzünk a saját munkafolyamatába illesztve. Ön tartja az
+            ügyfélkapcsolatot és a modellezést; mi a helyszíni mérést biztosítjuk.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <BimLink

@@ -10,6 +10,7 @@ const STATIC_PATHS = [
   "/scan-to-bim-kapacitas",
   "/lakossagi-felmeres",
   "/munkafolyamat",
+  "/rolunk",
   "/kapcsolat",
   "/gyik",
   "/megoldasok",

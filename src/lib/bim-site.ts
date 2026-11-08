@@ -14,6 +14,7 @@ export const BIM_NAV = [
   { href: "/tervezoknek", label: "Tervezőknek" },
   { href: "/lakossagi-felmeres", label: "Lakás- és házfelmérés" },
   { href: "/munkafolyamat", label: "Munkafolyamat" },
+  { href: "/rolunk", label: "Rólunk" },
   { href: "/kivitelezes", label: "Kivitelezés" },
   { href: "/uzemeltetes", label: "Üzemeltetés" },
   { href: "/meglevo-allami-epuletek", label: "Állami épületek" },
