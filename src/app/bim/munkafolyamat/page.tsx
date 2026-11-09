@@ -19,7 +19,7 @@ const STEPS = [
   },
   {
     title: "Feldolgozás",
-    text: "Pontfelhő regisztráció, tisztítás, majd a megrendelt CAD vagy modell előkészítése.",
+    text: "Pontfelhő regisztráció, tisztítás, majd a megrendelt CAD vagy egyéb kimenet előkészítése.",
   },
   {
     title: "Minőség-ellenőrzés",
@@ -58,7 +58,8 @@ export default function ProcessPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground">Formátumok</h2>
           <p className="mt-3">
-            Tipikus kimenetek: pontfelhő, DWG, IFC, Revit vagy ArchiCAD — a megrendelés szerint. A
+            A mérések eredménye pontfelhő, EOV-ban illesztett modell vagy az ezekből készített
+            3D-vetületi modell lehet, a megrendelő előzetesen rögzített követelménye szerint. A
             vállalt formátumokat az ajánlat rögzíti.
           </p>
           <BimScopeNote />

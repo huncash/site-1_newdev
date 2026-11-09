@@ -6,7 +6,7 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/ipari-letesitmenyek",
   "Ipari létesítmények 3D felmérése | VRGO BIM",
-  "Gyártócsarnokok, raktárak és technológiai terek pontos 3D felmérése layout-tervezéshez és ütközésvizsgálathoz."
+  "Csarnokok és ipari létesítmények felmérése átépítéshez, géptelepítéshez és tervezéshez."
 );
 
 export default function IndustrialPage() {
@@ -34,13 +34,12 @@ export default function IndustrialPage() {
       </section>
       <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 text-sm text-muted-foreground sm:text-base">
         <p>
-          Gyártócsarnokok, raktárak és technológiai terek pontos 3D felmérése layout-tervezéshez,
-          géptelepítéshez, gépészeti ütközésvizsgálathoz és átalakítás előkészítéséhez. Álló
-          szkennerrel a nagy terek, mobil szkennerrel a zsúfolt, szűk részek, drónnal a tető és a
-          külső terület kerül rögzítésre, egyetlen koordináta-rendszerben.
+          Csarnokok és ipari létesítmények felmérése átépítéshez, géptelepítéshez és tervezéshez. A
+          terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával végezzük. A
+          konkrét feladathoz tartozó lézerszkennelési kapacitást a megrendelés előtt egyeztetjük.
         </p>
         <BimDeliverableBlock
-          deliverables="Pontfelhő, 2D layout, igény szerint ütközésvizsgálati alapadat és CAD rajzok."
+          deliverables="Pontfelhő, 2D layout; EOV-illesztett modell vagy 3D-vetület a megrendelés szerint."
           timeline="A helyszíni napok száma a csarnok méretétől és a zónák hozzáférhetőségétől függ; a határidőt az ajánlat rögzíti."
           fromYou="Helyszíni hozzáférés, biztonsági előírások, a felmérendő zónák listája, és ha van: meglévő layout / EIR."
         />

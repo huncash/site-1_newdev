@@ -11,16 +11,16 @@ export const metadata = bimMetadata(
 );
 
 const USES = [
-  "Layout-tervezés és ütközésvizsgálati alap",
-  "Új gép vagy technológia beépítése",
+  "Átépítés, bővítés és géptelepítés előkészítése",
+  "Új gép vagy technológia beépítéséhez szükséges térbeli alap",
   "Csővezeték-, gépészeti és szerkezeti állapot rögzítése",
-  "Átépítés, bővítés és átadási as-built",
+  "Átadási as-built dokumentáció a megrendelés szerint",
 ] as const;
 
 const OUTPUTS = [
   "Pontfelhő a megrendelés szerinti formátumban",
   "2D layout / CAD a szükséges szelvényekkel",
-  "Modell külön tételként, ha kéri",
+  "EOV-ban illesztett adat vagy 3D-vetületi modell, ha a megrendelés ezt kéri",
 ] as const;
 
 const FAQ = [
@@ -30,7 +30,7 @@ const FAQ = [
   },
   {
     q: "Kell-e mindig BIM-modell?",
-    a: "Nem. A pontfelhő és a 2D layout gyakran elegendő. A modell külön tétel.",
+    a: "Nem. A pontfelhő és a 2D layout gyakran elegendő. Modellátadás csak a megrendelő előzetesen rögzített követelménye szerint, egyeztetve.",
   },
   {
     q: "Vállalnak többnapos helyszíni munkát?",
@@ -79,31 +79,17 @@ export default function IndustrialSurveyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold">Nagy terek és ipari környezet</h2>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Az objektum mérete és elérhetősége alapján álló, mobil vagy drónos felmérést alkalmazunk.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Többnapos helyszíni munka</h2>
+          <h2 className="text-xl font-semibold">Helyszíni munka és módszer</h2>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             Nagyobb ipari projektnél több napig a helyszínen dolgozunk, hogy a felmérés a termelési
-            ütemtervhez igazodjon.
+            ütemtervhez igazodjon. Országosan vállalunk kiszállást; Budapesten belül a kiszállási
+            díjat nem számítjuk fel.
           </p>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Országosan vállalunk kiszállást. Budapesten belül a kiszállási díjat nem számítjuk fel.
+            A terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával
+            végezzük. A konkrét feladathoz tartozó lézerszkennelési kapacitást a megrendelés előtt
+            egyeztetjük.
           </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Technológiai lehetőségek</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground sm:text-base">
-            <li>Trimble X9 — nagy terek és csarnokok</li>
-            <li>Leica BLK2GO — szűk és gépészeti részek</li>
-            <li>DJI drón — tető és kültér</li>
-            <li>Trimble GNSS — bekötés, ha a feladat kéri</li>
-          </ul>
         </section>
 
         <section>

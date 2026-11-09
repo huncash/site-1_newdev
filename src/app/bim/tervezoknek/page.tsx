@@ -8,7 +8,7 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/tervezoknek",
   "Felmérés tervezőknek — pontfelhő és CAD | VRGO BIM",
-  "Pontfelhő, CAD és szükség szerint modellalap a tervezéshez. Felújítás, rekonstrukció, bővítés és meglévő állapot rögzítése."
+  "Meglévő épületek felmérése a tervezőcsapattal egyeztetett követelmények szerint, EOV-rendszerbe illesztett adattal."
 );
 
 export default function DesignersPage() {
@@ -16,9 +16,12 @@ export default function DesignersPage() {
     <article className="bg-background">
       <section className="bg-section-dark py-10 text-section-dark-foreground sm:py-12">
         <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold leading-tight sm:text-4xl">Felmérés tervezőknek</h1>
+          <h1 className="text-3xl font-bold leading-tight sm:text-4xl">
+            Meglévő épület felmérése EOV-ban
+          </h1>
           <p className="mt-3 max-w-3xl text-base opacity-90 sm:text-lg">
-            Pontfelhő, CAD és szükség szerint modellalap a tervezéshez.
+            Meglévő épületek felmérése a tervezőcsapattal egyeztetett követelmények szerint,
+            EOV-rendszerbe illesztett adattal.
           </p>
           <BimLink
             href="/kapcsolat?utvonal=tervezo&forras=tervezoknek"
@@ -69,9 +72,10 @@ export default function DesignersPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Modell, ha kéri</h2>
+          <h2 className="text-xl font-semibold text-foreground">Átadási lehetőségek</h2>
           <p className="mt-3">
-            Revit, ArchiCAD vagy IFC — külön tételként, a feladat és a részletezettség szerint.
+            A mérések eredménye pontfelhő, EOV-ban illesztett modell vagy az ezekből készített
+            3D-vetületi modell lehet, a megrendelő előzetesen rögzített követelménye szerint.
             Vállaljuk a csak terepi adat átadását is, ha a modellezést Ön végzi.
           </p>
         </section>

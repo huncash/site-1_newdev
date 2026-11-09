@@ -85,7 +85,7 @@ export default function StateProjectsHubPage() {
             <li>
               Üzemeltetés, éves állapot →{" "}
               <BimLink href="/uzemeltetes" className="font-semibold text-brand">
-                digitális iker
+                üzemeltetési frissítés
               </BimLink>
             </li>
             <li>

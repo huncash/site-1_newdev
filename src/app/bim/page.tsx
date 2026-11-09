@@ -1,47 +1,53 @@
 import { BimLink } from "@/components/bim/BimChrome";
 import { BimTrustBadges } from "@/components/bim/BimTrustBadges";
 import { BIM_CONFIG } from "@/config/bim";
-import { BIM_INDUSTRIAL_HREF, BIM_MODELER_HREF } from "@/config/menu";
+import { BIM_INDUSTRIAL_HREF, BIM_MODELER_HREF, BIM_STATE_HUB_HREF } from "@/config/menu";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = bimMetadata(
   "/",
-  "Ipari és épületfelmérés, pontfelhő és Scan-to-BIM | VRGO BIM",
-  "Országosan gyors lézeres állapotfelmérés, pontfelhő és szükség szerint Scan-to-BIM alap ipari létesítményekhez, rekonstrukciókhoz és BIM-modellezéshez."
+  "Felmérés: pontfelhő, EOV és terepi adat | VRGO BIM",
+  "Terepi felmérés robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával. Pontfelhő és EOV-illesztett adat a megrendelő követelménye szerint."
 );
 
-const AUDIENCES = [
+const WORK_AREAS = [
   {
-    title: "Ipari átépítéshez vagy géptelepítéshez",
-    text: "Üzemek, csarnokok és gépészeti terek meglévő állapotának felmérése.",
-    cta: "Ipari felmérés",
-    href: BIM_INDUSTRIAL_HREF,
-  },
-  {
-    title: "Épülettervezéshez vagy rekonstrukcióhoz",
-    text: "Meglévő épületek felmérése a tervezőcsapattal egyeztetett követelmények szerint.",
-    cta: "Felmérés tervezőknek",
+    title: "Meglévő épület felmérése EOV-ban",
+    text: "Meglévő épületek felmérése a tervezőcsapattal egyeztetett követelmények szerint, EOV-rendszerbe illesztett adattal.",
     href: "/tervezoknek",
   },
   {
-    title: "BIM-modellezés előkészítéséhez",
-    text: "A terepi mérést mi végezzük, a felmérési adatot a modellezőcsapat dolgozza fel.",
-    cta: "Felmérés modellezőknek",
-    href: BIM_MODELER_HREF,
+    title: "Műemlék és örökségvédelem",
+    text: "Műemléki és örökségvédelmi felmérés a hatósági és szakmai elvárásokhoz igazítva, a restaurációs tervezéshez szükséges adattal.",
+    href: "/tervezoknek",
   },
   {
-    title: "Lakás vagy ház felújításához",
-    text: "A meglévő állapot felmérése a felújítás vagy átépítés megtervezéséhez.",
-    cta: "Lakossági felmérés",
-    href: "/lakossagi-felmeres",
+    title: "Állami BIM",
+    text: "Az állami BIM-rendszerekhez illeszkedő felmérési adat, a projekt előre egyeztetett modellkövetelményeivel összhangban.",
+    href: BIM_STATE_HUB_HREF,
+  },
+  {
+    title: "Építés és ellenőrzés",
+    text: "Építési folyamat és állapotellenőrzés felmérése, a meglévő terv szerinti állapot és a tényleges helyzet összehasonlításához.",
+    href: "/kivitelezes",
+  },
+  {
+    title: "Csarnokok és ipari létesítmények",
+    text: "Csarnokok és ipari létesítmények felmérése átépítéshez, géptelepítéshez és tervezéshez.",
+    href: BIM_INDUSTRIAL_HREF,
+  },
+  {
+    title: "Terepmodell és kubatúra",
+    text: "Terepmodell és kubatúra meghatározása meglévő és tervezett állapothoz.",
+    href: "/szolgaltatasok/dronos-felmeres",
   },
 ] as const;
 
 const PROCESS = [
   { title: "Igény tisztázása", text: "Feladat, helyszín, kimenet és határidő egyeztetése." },
-  { title: "Helyszíni felmérés", text: "Lézeres rögzítés a helyszín korlátaihoz igazítva." },
+  { title: "Helyszíni felmérés", text: "Mérés a helyszín korlátaihoz igazítva." },
   { title: "Feldolgozás és ellenőrzés", text: "Regisztráció, tisztítás és minőség-ellenőrzés." },
   { title: "Átadás", text: "A megrendelt kimenetek dokumentált átadása." },
 ] as const;
@@ -53,7 +59,7 @@ function orgSchema() {
     name: BIM_CONFIG.organizationName,
     url: BIM_CONFIG.organizationUrl,
     description:
-      "Ipari és épületfelmérési specialisták: országosan gyors helyszíni lézeres felmérés, mérnöki pontosságú pontfelhő és szükség szerint modellalap.",
+      "Terepi felmérés: pontfelhő, EOV-illesztés és a megrendelő követelménye szerinti átadás.",
     parentOrganization: {
       "@type": "Organization",
       name: "VRGO",
@@ -73,11 +79,12 @@ export default function BimHomePage() {
       <section className="bg-section-dark text-section-dark-foreground">
         <div className="mx-auto max-w-5xl px-4 pb-6 pt-14 sm:pb-8 sm:pt-20">
           <h1 className="text-3xl font-bold sm:text-4xl md:text-[2.5rem] md:leading-tight">
-            Ipari és épületfelmérés, amelyből tervezni lehet
+            Felmérés, amelyből tervezni lehet
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
-            Országosan gyors lézeres állapotfelmérés, pontfelhő és szükség szerint Scan-to-BIM alap
-            ipari létesítményekhez, rekonstrukciókhoz és BIM-modellezéshez.
+            A terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával
+            végezzük. A konkrét feladathoz tartozó lézerszkennelési kapacitást a megrendelés előtt
+            egyeztetjük.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <BimLink
@@ -99,9 +106,9 @@ export default function BimHomePage() {
 
       <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Milyen feladathoz keres felmérést?</h2>
+          <h2 className="text-2xl font-semibold sm:text-3xl">Munkaterületek</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {AUDIENCES.map((item) => (
+            {WORK_AREAS.map((item) => (
               <article
                 key={item.title}
                 className="flex flex-col rounded-md border border-border bg-card p-5"
@@ -112,7 +119,7 @@ export default function BimHomePage() {
                   href={item.href}
                   className="mt-4 text-sm font-semibold text-brand hover:underline"
                 >
-                  {item.cta} →
+                  Részletek →
                 </BimLink>
               </article>
             ))}
@@ -123,12 +130,11 @@ export default function BimHomePage() {
       <section className="bg-section-dark py-12 text-section-dark-foreground sm:py-16">
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-2xl font-semibold sm:text-3xl">
-            Ipari létesítmények állapotfelmérése
+            Csarnokok és ipari létesítmények
           </h2>
           <p className="mt-4 max-w-3xl text-sm opacity-90 sm:text-base">
-            Gyártóüzemek, raktárak, technológiai csarnokok és üzemek felmérése layout-tervezéshez,
-            gépbeépítéshez, átépítéshez vagy átadáshoz. Nagyobb ipari projektnél több napig a
-            helyszínen dolgozunk, hogy a felmérés a termelési ütemtervhez igazodjon.
+            Átépítéshez, géptelepítéshez és tervezéshez. Nagyobb projektnél több napig a helyszínen
+            dolgozunk, hogy a felmérés a termelési ütemtervhez igazodjon.
           </p>
           <BimLink
             href={`${BIM_INDUSTRIAL_HREF}?forras=fooldal-ipar`}
@@ -185,16 +191,6 @@ export default function BimHomePage() {
           >
             Részletes munkafolyamat →
           </BimLink>
-        </div>
-      </section>
-
-      <section className="bg-background py-12 sm:py-16">
-        <div className="mx-auto max-w-5xl px-4">
-          <h2 className="text-2xl font-semibold sm:text-3xl">Nem csak szkennelünk</h2>
-          <p className="mt-4 max-w-3xl text-sm text-muted-foreground sm:text-base">
-            Helyszíni felmérést, feldolgozást és szükség szerint modellezést végzünk. A kimenetet a
-            megrendelő által kért formátumban adjuk át.
-          </p>
         </div>
       </section>
 

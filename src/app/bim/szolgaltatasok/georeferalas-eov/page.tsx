@@ -19,7 +19,7 @@ export default function GeorefServicePage() {
         { label: "Georeferálás és EOV" },
       ]}
       title="Georeferálás és EOV-bekötés"
-      lead="A pontfelhő és a rajzok hivatalos magyarországi koordináta-rendszerbe kötése Trimble GNSS és terepi méréssel."
+      lead="A pontfelhő és a rajzok hivatalos magyarországi koordináta-rendszerbe kötése GNSS-geodéziai és terepi méréssel."
       ctaHref="/kapcsolat?forras=georeferalas-eov"
     >
       <ServiceSection title="Kinek">

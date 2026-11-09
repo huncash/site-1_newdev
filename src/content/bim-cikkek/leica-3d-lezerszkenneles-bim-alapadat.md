@@ -1,12 +1,12 @@
 ---
 title: "Lézerszkennelés BIM-alapadatként: pontosság, E57, IFC és a geodéziai ellenőrző mérés"
-seoTitle: "Leica 3D lézerszkennelés: pontosság, E57 és IFC"
-description: "A nagy tömegű 3D lézerszkennelés és a hivatalos geodéziai hitelesítés együtt adja a mérnöki pontosságot. Az IFC-modell a pontfelhőből precíz modellezéssel készül."
+seoTitle: "3D lézerszkennelés: pontosság, E57 és IFC"
+description: "A 3D lézerszkennelés és a hivatalos geodéziai hitelesítés együtt adja a mérnöki alapot. Az IFC-modell a pontfelhőből, a megrendelő követelménye szerint készül."
 date: 2026-10-24
 time: "18:00"
 author: VRGO
 category: "Technológia"
-keywords: "Leica 3D lézerszkennelés, E57, IFC, geodéziai ellenőrző mérés"
+keywords: "3D lézerszkennelés, E57, IFC, geodéziai ellenőrző mérés"
 image: /blog/bim/scan-to-bim-gepeszet.jpg
 imageAlt: "Gépészeti helyiség pontfelhőből készült háromdimenziós modellje."
 imageCaption: "Pontfelhőből modellezett gépészeti helyiség. Illusztráció egy egyetemi kutatási példáról, nem magyar közbeszerzési projektről."
@@ -16,7 +16,7 @@ imageLicense: CC BY-SA 2.0
 imageLicenseUrl: https://creativecommons.org/licenses/by-sa/2.0
 ---
 
-A helyszíni felmérés professzionális Leica 3D lézerszkenner eszközökkel készül, a feladat pontossági igényéhez illesztve. Az állami BIM-projekteknél a pontossági osztályt az EIR rögzíti. A meglévő épületek 2035-ös határidejéről a [2. cikk](/cikkek/meglevo-allami-epuletek-bim-2035), az EIR pontossági szintjéről a [3. cikk](/cikkek/eir-pre-bep-bep) szól. A gyakorlati lépések: [pontosság és formátumok](/pontossag-es-formatumok).
+A helyszíni felmérést a feladat pontossági igényéhez igazítjuk. A terepi munkát robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával végezzük; a lézerszkennelési kapacitást a megrendelés előtt egyeztetjük. Az állami BIM-projekteknél a pontossági osztályt az EIR rögzíti. A meglévő épületek 2035-ös határidejéről a [2. cikk](/cikkek/meglevo-allami-epuletek-bim-2035), az EIR pontossági szintjéről a [3. cikk](/cikkek/eir-pre-bep-bep) szól. A gyakorlati lépések: [pontosság és formátumok](/pontossag-es-formatumok).
 
 ## Amit a rendelet kér
 
@@ -26,9 +26,9 @@ A helyszíni felmérés professzionális Leica 3D lézerszkenner eszközökkel k
 
 ## Amit a felmérés ad
 
-- Milliméter pontos pontfelhőt professzionális Leica 3D lézerszkenner eszközökkel.
-- Pontfelhő exportot (E57, XYZ), valamint georeferált CAD alaprajzot és metszetet.
-- Szabványos BIM-modellt (IFC és natív formátum) pontfelhő alapú precíz modellezéssel, az EIR szerint.
+- Pontfelhőt a megrendelés szerinti formátumban és pontossági elvárás szerint.
+- Pontfelhő exportot (E57, XYZ), valamint georeferált CAD alaprajzot és metszetet, ha a csomag tartalmazza.
+- EOV-ban illesztett modell vagy 3D-vetületi modell a megrendelő előzetesen rögzített követelménye szerint — egyeztetve, nem automatikus modell-előállításként.
 
 ## Melyik feladatot ki végzi?
 
@@ -37,28 +37,28 @@ A helyszíni felmérés professzionális Leica 3D lézerszkenner eszközökkel k
 | Meglévő állapot gyors rögzítése (010) | VRGO | a pontossági osztályt az EIR rögzíti |
 | Falzárás előtti dokumentálás | VRGO | időbélyegzett felvétel |
 | Kivitelezési előrehaladás követése (150) | VRGO | ismételt felvételekkel |
-| Üzemeltetési digitális iker, hibajegyek (200) | VRGO | kézi jelölés, hozzáférési szintek |
-| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | Dedikált földmérő partner | szabványos georeferálás és hivatalos ellenőrző mérés; a megrendelő saját földmérőjével is együttműködünk |
-| BIM-modell | VRGO BIM, külön tételként | a feladat és az LOD szerint |
+| Üzemeltetési állapotfrissítés, hibajegyek (200) | VRGO | kézi jelölés, hozzáférési szintek |
+| Geodéziai ellenőrző mérés (ellenőrzőpontok, bekötés) | Dedikált földmérő partner | georeferálás és hivatalos ellenőrző mérés; a megrendelő saját földmérőjével is együttműködünk |
+| BIM-modell | Egyeztetve | a megrendelő követelménye szerint; nem házon belüli, általános modellezési kapacitás |
 
 ## Hogyan lesz belőle az EIR által kért adatállomány?
 
-1. Helyszíni adatgyűjtés professzionális Leica 3D lézerszkenner eszközökkel. A szabványos georeferálást és a hivatalos ellenőrző méréseket dedikált, eljárásra jogosult földmérő partnerünk biztosítja. Amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is.
+1. Helyszíni adatgyűjtés a feladathoz illesztett módszerrel. A georeferálást és a hivatalos ellenőrző méréseket jogosult földmérő közreműködésével biztosítjuk. Ha a megrendelő saját földmérővel rendelkezik, vele is együttműködünk.
 2. Pontfelhő (E57) feldolgozása.
-3. Szakági modellezés Revitben vagy ArchiCAD-ben.
-4. IFC, BCF és natív formátum leadása az EIR szerint.
+3. Modell- vagy 3D-vetületi átadás a megrendelő követelménye szerint, egyeztetve.
+4. IFC, BCF és natív formátum leadása az EIR szerint, ha a megrendelés ezt kéri.
 
 A kivitelezés közbeni rögzítésről a [dokumentálási cikk](/cikkek/kivitelezes-dokumentalasa-bim) ír.
 
 ## Ajánlati szintek
 
-A pontossági szintet minden projektnél szigorúan az EIR (Employer's Information Requirements) követelményeihez mérjük. Előre egyeztetett, transzparens mérnöki szintekkel és dedikált feldolgozási ütemezéssel dolgozunk.
+A pontossági szintet minden projektnél az EIR (Employer's Information Requirements) követelményeihez mérjük. A vállalt szintet az ajánlat rögzíti.
 
 ## Geodéziai ellenőrző mérés
 
-A tervezési, kivitelezési és üzemeltetési folyamatokat szigorú tűrési határok (EIR konformitás) és szabványos geodéziai ellenőrző mérések mellett támogatjuk. A nagytömegű 3D lézerszkennelés és a hivatalos EOV georeferálás kombinációjával biztosítjuk, hogy a pontfelhő ne csak vizuális illúzió, hanem jogilag és metrikailag is hiteles mérnöki alapanyag legyen.
+A tervezési, kivitelezési és üzemeltetési folyamatokat az EIR szerinti tűrések és geodéziai ellenőrző mérések mellett támogatjuk. A lézerszkennelés és az EOV-georeferálás kombinációjával a pontfelhő mérnöki alapanyag lehet — a pontossági követelményt a feladat és a partner elvárása szerint egyeztetjük.
 
-Optimalizált munkafolyamatunk ötvözi a gyors, nagy pontosságú lézerszkennelést a jogosult földmérő partnerünk által végzett hivatalos alappont-meghatározással és bekötéssel (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2) szerinti megfelelés). A terepi méréstől a pontfelhő feldolgozáson át a szabványos BIM modellalkotásig egy kézből szállítjuk az eredményt. Természetesen, amennyiben a megrendelő saját földmérővel rendelkezik, készséggel és rugalmasan együttműködünk vele is. A részletes vállalási keret a [pontosság és formátumok](/pontossag-es-formatumok) oldalon van.
+A lézeres felmérést jogosult földmérő közreműködésével végzett alappont-meghatározással és bekötéssel egészítjük ki (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2)). A terepi méréstől a pontfelhő feldolgozásig dolgozunk; a modellátadást a megrendelő követelménye szerint, egyeztetve biztosítjuk. A részletes vállalási keret a [pontosság és formátumok](/pontossag-es-formatumok) oldalon van.
 
 ## Kapcsolódó
 

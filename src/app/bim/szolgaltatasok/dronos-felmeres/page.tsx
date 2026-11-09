@@ -52,8 +52,8 @@ export default function DroneServicePage() {
           <div>
             <dt className="font-semibold text-foreground">Helyettesíti a lézerszkennert?</dt>
             <dd>
-              Nem — kiegészíti. Beltérben és nagy pontosságú épületfelmérésnél a lézerszkenner a
-              fő eszköz.
+              Nem — kiegészíti. Beltérben és épületfelmérésnél a lézerszkennelés a jellemző fő
+              módszer, ha a feladat ezt kéri; a kapacitást a megrendelés előtt egyeztetjük.
             </dd>
           </div>
           <div>

@@ -4,13 +4,13 @@ import { bimMetadata } from "@/lib/bim-site";
 export const metadata = bimMetadata(
   "/referenciak",
   "Módszer és átadási alap | VRGO BIM",
-  "Nem csak szkennelünk — mérnöki alapot adunk a tervezéshez: pontfelhő, CAD és igény szerinti modell."
+  "Terepi felmérés, pontfelhő és a megrendelés szerinti átadás — módszer és minőségbiztosítás."
 );
 
 const pillars = [
   "Terepi felmérés, regisztráció és minőség-ellenőrzés",
   "Tervezésre használható pontfelhő",
-  "Revit, ArchiCAD és IFC átadás, ha kéri",
+  "EOV-illesztés és a megrendelés szerinti kimenet",
   "Ipari környezetben a termelési ütemtervhez igazodó helyszíni munka",
   "Országos kiszállás; nagyobb projektnél többnapos helyszíni munka",
 ] as const;
@@ -21,7 +21,7 @@ export default function ReferencesPage() {
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="text-3xl font-bold sm:text-4xl">
-            Nem csak szkennelünk — mérnöki alapot adunk a tervezéshez
+            Módszer és átadási alap a tervezéshez
           </h1>
           <p className="mt-4 max-w-3xl opacity-90">
             Publikus ügyféllogók helyett a módszert, a kimeneteket és a minőségbiztosítást
@@ -41,10 +41,11 @@ export default function ReferencesPage() {
         </ul>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Technológia</h2>
+          <h2 className="text-xl font-semibold text-foreground">Módszer</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Az objektum mérete és elérhetősége alapján álló, mobil vagy drónos felmérést alkalmazunk
-            (Trimble X9, Leica BLK2GO, DJI, Trimble GNSS).
+            A terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával
+            végezzük. A konkrét feladathoz tartozó lézerszkennelési kapacitást a megrendelés előtt
+            egyeztetjük.
           </p>
         </section>
 

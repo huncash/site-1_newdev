@@ -29,7 +29,7 @@ export function BimDecreeWhyNow() {
 const FOUR_AREAS = [
   { href: "/meglevo-allami-epuletek", title: "Meglévő állami épületek felmérése" },
   { href: "/kivitelezes", title: "Kivitelezés dokumentálása" },
-  { href: "/uzemeltetes", title: "Üzemeltetés, éves digitális iker" },
+  { href: "/uzemeltetes", title: "Üzemeltetés, időszakos állapotfrissítés" },
   { href: "/tervezoknek", title: "Helyszíni rögzítés tervezőknek" },
 ] as const;
 

@@ -39,12 +39,12 @@ export const BIM_SERVICES: readonly CatalogItem[] = [
   {
     href: BIM_INDUSTRIAL_HREF,
     title: "Ipari létesítmények és csarnokok",
-    summary: "Layout, géptelepítés és ütközésvizsgálati alapadat nagy terekben.",
+    summary: "Csarnokok és ipari létesítmények felmérése átépítéshez, géptelepítéshez és tervezéshez.",
   },
   {
     href: "/tervezoknek",
     title: "Tervezőknek és kivitelezőknek",
-    summary: "Pontfelhő, CAD és szükség szerint Scan-to-BIM alap a tervezéshez.",
+    summary: "Pontfelhő, CAD és a megrendelés szerinti átadás a tervezéshez.",
   },
   {
     href: BIM_MODELER_HREF,
@@ -69,6 +69,7 @@ export const BIM_SERVICES: readonly CatalogItem[] = [
   {
     href: "/szolgaltatasok/bim-modellezes",
     title: "BIM-modellezés és 2D tervek",
-    summary: "Kiegészítő tétel: Revit, ArchiCAD, IFC — a feladat és az LOD szerint.",
+    summary:
+      "Pontfelhőből készülő modell vagy 3D-vetület a megrendelő követelménye szerint, egyeztetve.",
   },
 ] as const;

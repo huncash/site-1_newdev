@@ -23,9 +23,10 @@ export type BimSolution = {
 export const BIM_SOLUTIONS: readonly BimSolution[] = [
   {
     href: BIM_INDUSTRIAL_HREF,
-    title: "Ipari felmérés",
+    title: "Csarnokok és ipari létesítmények",
+    menuLabel: "Ipari felmérés",
     summary:
-      "Üzemek, csarnokok és gépészeti terek felmérése átépítéshez, géptelepítéshez és tervezéshez.",
+      "Csarnokok és ipari létesítmények felmérése átépítéshez, géptelepítéshez és tervezéshez.",
     cta: "Az ipari felmérés részletei",
   },
   {
@@ -62,7 +63,7 @@ export const BIM_SOLUTIONS: readonly BimSolution[] = [
     href: BIM_STATE_HUB_HREF,
     title: BIM_STATE_HUB_LABEL,
     summary:
-      "Állami beruházáshoz vagy üzemeltetéshez kapcsolódó felmérés a szabályozási keretek figyelembevételével.",
+      "Az állami BIM-rendszerekhez illeszkedő felmérési adat, a projekt előre egyeztetett modellkövetelményeivel összhangban.",
     cta: "Az állami BIM megoldás részletei",
   },
   {

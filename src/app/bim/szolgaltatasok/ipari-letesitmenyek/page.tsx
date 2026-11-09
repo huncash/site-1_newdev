@@ -26,7 +26,7 @@ export default function IndustrialServicePage() {
         <ul className="list-disc space-y-1 pl-5">
           <li>Új gép vagy technológia beépítéséhez szükséges térbeli alap</li>
           <li>Csővezeték-, gépészeti és szerkezeti állapot rögzítése</li>
-          <li>Layout-tervezéshez és ütközésvizsgálathoz használható pontfelhő</li>
+          <li>Layout-tervezéshez használható pontfelhő</li>
           <li>Átépítések, bővítések és átadások as-built alapja</li>
           <li>
             Nagyobb ipari projektnél több napig a helyszínen dolgozunk, hogy a felmérés a termelési
@@ -36,19 +36,22 @@ export default function IndustrialServicePage() {
         </ul>
       </ServiceSection>
 
-      <ServiceSection title="Technológia">
+      <ServiceSection title="Módszer">
         <p>
-          Trimble X9 a nagy terekhez és csarnokokhoz, Leica BLK2GO a szűk és gépészeti részekhez,
-          DJI drón a tetőhöz és külső területhez, Trimble GNSS a georeferáláshoz — egy
-          koordináta-rendszerben.
+          A terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával
+          végezzük. A konkrét feladathoz tartozó lézerszkennelési kapacitást a megrendelés előtt
+          egyeztetjük. A módszert a projekt feladata és a partner követelményei határozzák meg.
         </p>
       </ServiceSection>
 
       <ServiceSection title="Mit kap">
         <ul className="list-disc space-y-1 pl-5">
-          <li>Pontfelhő (E57)</li>
+          <li>Pontfelhő a megrendelés szerinti formátumban</li>
           <li>2D layout / CAD rajzok a megrendelés szerint</li>
-          <li>Igény szerint Scan-to-BIM (Revit, ArchiCAD, IFC) — külön tétel</li>
+          <li>
+            EOV-ban illesztett modell vagy 3D-vetületi modell a megrendelő előzetesen rögzített
+            követelménye szerint — egyeztetve
+          </li>
         </ul>
       </ServiceSection>
 
@@ -64,14 +67,15 @@ export default function IndustrialServicePage() {
           <div>
             <dt className="font-semibold text-foreground">Kell-e BIM-modell?</dt>
             <dd className="text-sm text-muted-foreground">
-              Nem kötelező — a pontfelhő és a 2D layout gyakran elegendő. A modell külön tétel.
+              Nem kötelező — a pontfelhő és a 2D layout gyakran elegendő. Modellátadás a megrendelő
+              követelménye szerint, egyeztetve.
             </dd>
           </div>
         </dl>
       </ServiceSection>
 
       <BimDeliverableBlock
-        deliverables="Pontfelhő, 2D layout, igény szerint ütközésvizsgálati alapadat és Scan-to-BIM."
+        deliverables="Pontfelhő, 2D layout; EOV-illesztett modell vagy 3D-vetület a megrendelés szerint."
         timeline="A helyszíni napok száma a létesítmény méretétől és a zónák hozzáférhetőségétől függ; a határidőt az ajánlat rögzíti."
         fromYou="Helyszíni hozzáférés, biztonsági előírások, felmérendő zónák; ha van: meglévő layout vagy EIR."
         ctaHref="/kapcsolat?utvonal=ipar&forras=ipari-szolgaltatas"
@@ -80,7 +84,7 @@ export default function IndustrialServicePage() {
       <p className="text-sm text-muted-foreground">
         Kapacitás BIM-modellezőként?{" "}
         <BimLink href="/scan-to-bim-kapacitas" className="font-semibold text-brand">
-          Scan-to-BIM kapacitás →
+          Terepi felmérés modellezőknek →
         </BimLink>
       </p>
     </BimServiceLayout>

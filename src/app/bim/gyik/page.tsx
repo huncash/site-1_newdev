@@ -4,7 +4,7 @@ import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/gyik",
-  "GYIK — ipari felmérés, pontfelhő és Scan-to-BIM | VRGO BIM",
+  "GYIK — felmérés, pontfelhő és EOV | VRGO BIM",
   "Gyakori kérdések lakossági, tervezői, ipari, BIM-modellezői és állami BIM témákban."
 );
 
@@ -33,12 +33,12 @@ const CATEGORIES: FaqCategory[] = [
         a: "Ha a felhasználási cél vagy az EIR georeferálást kér, igen. A bekötést jogosult földmérő közreműködésével végezzük; a megrendelő saját földmérőjével is együttműködünk.",
       },
       {
-        q: "Milyen modellformátumban készül a Scan-to-BIM modell?",
-        a: "Igény szerint Revit, ArchiCAD vagy IFC — külön tételként, a feladat és a részletezettség szerint.",
+        q: "Milyen formában kaphatok modellt a pontfelhőből?",
+        a: "A mérések eredménye pontfelhő, EOV-ban illesztett modell vagy az ezekből készített 3D-vetületi modell lehet, a megrendelő előzetesen rögzített követelménye szerint. A modellezést a projektben egyeztetve biztosítjuk.",
       },
       {
-        q: "Milyen LOD-szintig modelleznek?",
-        a: "A részletezettséget az EIR vagy a megrendelés határozza meg. Az ajánlatban rögzítjük a vállalt szintet.",
+        q: "Milyen LOD-szintet vállalnak?",
+        a: "A részletezettséget az EIR vagy a megrendelés határozza meg. A vállalt szintet az ajánlatban rögzítjük; házon belüli modellezési kapacitást nem ígérünk általános szolgáltatásként.",
       },
       {
         q: "Hogyan zajlik a minőség-ellenőrzés?",
@@ -67,12 +67,12 @@ const CATEGORIES: FaqCategory[] = [
     title: "BIM-modellezői kérdések",
     items: [
       {
-        q: "Csak teljes modellt készítenek, vagy csak terepi adatot is?",
-        a: "Vállaljuk a csak helyszíni rögzítést is: a pontfelhőt és a CAD-alapot átadjuk, a modellezést Ön vagy a csapata végzi. A Scan-to-BIM külön tétel.",
+        q: "Csak terepi adatot is átadnak, modell nélkül?",
+        a: "Igen. Vállaljuk a csak helyszíni rögzítést: a pontfelhőt és a CAD-alapot átadjuk, a modellezést Ön vagy a csapata végzi.",
       },
       {
-        q: "Hogyan lehet alvállalkozói kapacitást kérni?",
-        a: "Az ajánlatkérő űrlapon válassza a kapacitásbővítési lehetőséget, vagy nyissa meg a BIM-modellezőknek szóló oldalt. Ön tartja az ügyfélkapcsolatot; mi a terepi adatot és szükség szerint a modellezési kapacitást biztosítjuk.",
+        q: "Hogyan lehet alvállalkozói terepi kapacitást kérni?",
+        a: "Az ajánlatkérő űrlapon válassza a kapacitásbővítési lehetőséget, vagy nyissa meg a BIM-modellezőknek szóló oldalt. Ön tartja az ügyfélkapcsolatot és a modellezést; mi a terepi adatot biztosítjuk.",
       },
     ],
   },

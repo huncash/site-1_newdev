@@ -8,9 +8,12 @@ export const metadata = bimMetadata(
 );
 
 const formats = [
-  ["Pontfelhő exportok", "E57, XYZ."],
-  ["CAD", "Alaprajzok és metszetek, bekötéssel ha a feladat kéri."],
-  ["BIM", "IFC és natív formátumok, a pontfelhőből modellezve."],
+  ["Pontfelhő exportok", "E57, XYZ — a megrendelés szerint."],
+  ["CAD", "Alaprajzok és metszetek, EOV-bekötéssel ha a feladat kéri."],
+  [
+    "Modell / 3D-vetület",
+    "EOV-ban illesztett modell vagy 3D-vetületi modell a megrendelő előzetesen rögzített követelménye szerint; modellezés egyeztetve.",
+  ],
 ];
 
 export default function AccuracyPage() {
@@ -33,27 +36,30 @@ export default function AccuracyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Technológiai alapok</h2>
+          <h2 className="text-xl font-semibold text-foreground">Módszerek</h2>
           <p className="mt-2">
-            Trimble X9, Leica BLK2GO, DJI drón, Trimble GNSS és terepi mérőműszerek.
+            A terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával
+            végezzük. Lézerszkennelést a feladat igénye szerint, a megrendelés előtt egyeztetve
+            biztosítunk. A konkrét módszert a projekt feladata és a partner követelményei
+            határozzák meg.
           </p>
           <ul className="mt-4 list-disc space-y-2 pl-5">
-            <li>Komplex ipari létesítmények, épülethomlokzatok és nagyméretű belső terek milliméter pontos rögzítése.</li>
-            <li>Szűkebb terek és gyorsabb átfutású építészeti felmérések ugyanazzal az eszközparkkal.</li>
+            <li>Lézerszkennelés, drónos fotogrammetria, GNSS-geodéziai és robotmérőállomásos mérés</li>
+            <li>Utófeldolgozás és EOV-illesztés a megrendelés szerint</li>
           </ul>
         </section>
         <section>
           <h2 className="text-xl font-semibold text-foreground">Geodéziai háttér</h2>
           <div className="mt-2 space-y-3">
             <p>
-              A lézeres felmérést geodéziai ellenőrzéssel és EOV-bekötéssel egészítjük ki, hogy a
-              pontfelhő jogilag és metrikailag is használható mérnöki alap legyen (31/2024. (VIII.
-              22.) ÉKM rendelet 11. § (2)).
+              A felmérést geodéziai ellenőrzéssel és EOV-bekötéssel egészítjük ki, ha a feladat ezt
+              kéri, hogy a pontfelhő jogilag és metrikailag is használható mérnöki alap legyen
+              (31/2024. (VIII. 22.) ÉKM rendelet 11. § (2)).
             </p>
             <p>
-              A terepi méréstől a feldolgozásig — és igény szerint a BIM-modellalkotásig — egy
-              szerződéssel dolgozunk. Ha a megrendelőnek saját földmérője van, vele is
-              együttműködünk.
+              A terepi méréstől a feldolgozásig egy szerződéssel dolgozunk. Ha a megrendelőnek saját
+              földmérője van, vele is együttműködünk. Modellátadás a megrendelő előzetesen rögzített
+              követelménye szerint, egyeztetve.
             </p>
           </div>
         </section>

@@ -6,8 +6,8 @@ import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/uzemeltetes",
-  "Üzemeltetés: éves digitális iker | VRGO BIM",
-  "Éves újrafelvétel, változáskövetés és digitális iker üzemeltetőknek."
+  "Üzemeltetés: időszakos állapotfrissítés | VRGO BIM",
+  "Éves vagy mérföldkő szerinti újrafelvétel és változáskövetés üzemeltetőknek."
 );
 
 export default function OperationsPage() {

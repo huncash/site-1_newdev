@@ -6,8 +6,8 @@ import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/szolgaltatasok",
-  "Szolgáltatásaink — ipari felmérés, pontfelhő, Scan-to-BIM | VRGO BIM",
-  "Ipari és épületfelmérés, pontfelhő, CAD és igény szerinti Scan-to-BIM."
+  "Szolgáltatásaink — felmérés, pontfelhő, EOV | VRGO BIM",
+  "Ipari és épületfelmérés, pontfelhő, CAD és a megrendelés szerinti átadás."
 );
 
 const groups = [
@@ -16,7 +16,7 @@ const groups = [
     hrefs: [BIM_INDUSTRIAL_HREF, "/tervezoknek", BIM_MODELER_HREF, "/szolgaltatasok/dronos-felmeres"],
   },
   {
-    title: "Geodézia és modellezés",
+    title: "Geodézia és adatátadás",
     hrefs: ["/szolgaltatasok/georeferalas-eov", "/szolgaltatasok/bim-modellezes"],
   },
   {
@@ -38,8 +38,9 @@ export default function ServicesPage() {
           />
           <h1 className="text-3xl font-bold sm:text-4xl">Szolgáltatásaink</h1>
           <p className="mt-3 max-w-2xl text-sm opacity-90 sm:text-base">
-            Lézerszkennelés, mobil szkennelés, drónos fotogrammetria és GNSS-mérés. Eszközeink:
-            Trimble X9, Leica BLK2GO, DJI drón, Trimble GNSS. A BIM-modell külön tétel.
+            A terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával
+            végezzük. A konkrét feladathoz tartozó lézerszkennelési kapacitást a megrendelés előtt
+            egyeztetjük. Modellátadás a megrendelő követelménye szerint.
           </p>
         </div>
       </section>
