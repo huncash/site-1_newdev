@@ -1,0 +1,7 @@
+# Trust badges — grey ring poka-yoke
+
+- Országos seal source: `assets/badges/orszagos-kiszallas.source.png` (**plecsni2uj** with grey inner ring).
+- Never replace it with the old ringless `plecsni2`.
+- Public files: `public/badges/orszagos-kiszallas-v2.png` and `10-ev-terepi-tapasztalat-v2.png` (versioned for cache-bust).
+- `npm run lint:badges` / `prebuild` fails if the grey ring is missing or the forbidden ringless hash appears.
+- After regenerating from source, keep `BimTrustBadges` on the `*-v2.png` paths (or bump version) so browsers do not keep a cached old PNG.

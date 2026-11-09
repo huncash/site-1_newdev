@@ -1,10 +1,10 @@
 const BADGES = [
   {
-    src: "/badges/10-ev-terepi-tapasztalat.png",
+    src: "/badges/10-ev-terepi-tapasztalat-v2.png",
     alt: "10 év terepi tapasztalat",
   },
   {
-    src: "/badges/orszagos-kiszallas.png",
+    src: "/badges/orszagos-kiszallas-v2.png",
     alt: "Országos kiszállás",
   },
 ] as const;

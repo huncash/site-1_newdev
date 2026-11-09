@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
-    "prebuild": "npm run lint:copy",
+    "prebuild": "npm run lint:copy && npm run lint:badges",
     "start": "next start --port 3000",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint:copy": "node scripts/lint-copy.mjs",
+    "lint:badges": "python scripts/check-trust-badges.py",
     "test:articles": "node --test scripts/test-published-articles.mjs",
     "deploy": "git add . && git commit -m \"Auto deploy\" & git push origin HEAD:main && ssh vmvrgohu@195.228.152.141 \"cd /var/www/site-1 && git remote set-url origin https://github.com/huncash/site-1_newdev.git && git fetch origin && git reset --hard origin/main && npm install && rm -rf .next && npm run build && pm2 delete site-1 || true && pm2 start npm --name site-1 -- start && pm2 save\""
   },
