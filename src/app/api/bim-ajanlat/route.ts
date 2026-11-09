@@ -19,6 +19,15 @@ const PARTNER_SERVICES = new Set<string>([
   "Egyéb kérdésem van",
 ]);
 const PARTNER_FORMATS = new Set(["pontfelho", "eov", "dron", "egyeb"]);
+const SOLUTION_INTERESTS = new Set([
+  "Kivitelezés követési felmérés megrendelése",
+  "Ipari felmérés ajánlatkérése",
+  "Terepi felmérés modellezőknek — megkeresés",
+  "Felmérés tervezőknek — ajánlatkérés",
+  "Üzemeltetési frissítés — ajánlatkérés",
+  "Állami BIM felmérés — ajánlatkérés",
+  "Lakossági felmérés — ajánlatkérés",
+]);
 
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
@@ -30,6 +39,82 @@ function text(value: unknown, max: number): string | null {
   const trimmed = value.trim();
   if (!trimmed || trimmed.length > max) return null;
   return trimmed;
+}
+
+async function handleSolution(data: Record<string, unknown>): Promise<Response> {
+  const name = text(data.name, MAX_NAME);
+  const email = text(data.email, MAX_EMAIL);
+  const organization =
+    data.organization == null || data.organization === "" ? "" : text(data.organization, MAX_SHORT);
+  const serviceInterest = text(data.serviceInterest, MAX_SHORT);
+  const phone = data.phone == null || data.phone === "" ? "" : text(data.phone, 40);
+  const projectType = text(data.projectType, MAX_SHORT);
+  const dataNeed = text(data.dataNeed, MAX_SHORT);
+  const surveyWindow =
+    data.surveyWindow == null || data.surveyWindow === "" ? "" : text(data.surveyWindow, MAX_SHORT);
+  const location = text(data.location, MAX_SHORT);
+  const deadline = data.deadline == null || data.deadline === "" ? "" : text(data.deadline, 80);
+  const source = data.source == null || data.source === "" ? "" : text(data.source, 240);
+  const forras = data.forras == null || data.forras === "" ? "" : text(data.forras, 120);
+  const topicId = data.topicId == null || data.topicId === "" ? "" : text(data.topicId, 80);
+  const message =
+    data.message == null || data.message === "" ? "" : text(data.message, MAX_MESSAGE);
+
+  const companyRequired = topicId !== "lakossagi";
+  if (
+    !name ||
+    !email ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+    !serviceInterest ||
+    !SOLUTION_INTERESTS.has(serviceInterest) ||
+    !projectType ||
+    !dataNeed ||
+    !location ||
+    organization === null ||
+    (companyRequired && !organization) ||
+    phone === null ||
+    surveyWindow === null ||
+    deadline === null ||
+    source === null ||
+    forras === null ||
+    topicId === null ||
+    message === null ||
+    data.consent !== true
+  ) {
+    return Response.json({ error: "Invalid fields" }, { status: 400 });
+  }
+
+  if (!verifySumAnswer(data.sumToken, data.sumAnswer)) {
+    return Response.json({ error: "sum" }, { status: 400 });
+  }
+
+  const sent = await sendQuoteEmail({
+    subject: `Megoldás — ${serviceInterest} — ${name.replace(/[\r\n]+/g, " ").slice(0, 80)}`,
+    replyTo: email,
+    text: [
+      "Megoldásoldali ajánlatkérés.",
+      "",
+      `Érdeklődés: ${serviceInterest}`,
+      `Téma: ${topicId || "—"}`,
+      `Név: ${name}`,
+      `E-mail: ${email}`,
+      `Telefon: ${phone || "—"}`,
+      `Cégnév: ${organization || "—"}`,
+      `Projekt típusa: ${projectType}`,
+      `Szükséges adat: ${dataNeed}`,
+      `Várható mérési időszak: ${surveyWindow || "—"}`,
+      `Helyszín: ${location}`,
+      `Határidő: ${deadline || "—"}`,
+      `Forrás: ${forras || source || "—"}`,
+      "",
+      "Megjegyzés:",
+      message || "—",
+    ].join("\n"),
+  });
+  if (!sent) {
+    return Response.json({ error: "unavailable" }, { status: 503 });
+  }
+  return Response.json({ status: "ok" });
 }
 
 async function handlePartner(data: Record<string, unknown>): Promise<Response> {
@@ -212,6 +297,9 @@ export async function POST(request: Request): Promise<Response> {
   }
   if (data.mode === "partner") {
     return handlePartner(data);
+  }
+  if (data.mode === "solution") {
+    return handleSolution(data);
   }
 
   const name = text(data.name, MAX_NAME);

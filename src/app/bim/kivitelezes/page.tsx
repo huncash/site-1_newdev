@@ -1,144 +1,59 @@
-import { BimBreadcrumb } from "@/components/bim/BimBreadcrumb";
-import { BimDeliverableBlock } from "@/components/bim/BimDeliverableBlock";
-import { BimLink } from "@/components/bim/BimChrome";
-import { BIM_STATE_HUB_HREF, BIM_STATE_HUB_LABEL } from "@/config/menu";
+import { BimSolutionLayout } from "@/components/bim/BimSolutionLayout";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/kivitelezes",
-  "Kivitelezés dokumentálása: előrehaladás és hibakövetés | VRGO BIM",
-  "Időbélyegzett dokumentáció kivitelezéshez. 3D lézerszkennelés, georeferálás, előrehaladás és hibakövetés."
+  "Kivitelezés követése | VRGO BIM",
+  "A felépülő állapot és a tervek egyezésének rendszeres ellenőrzése terepi méréssel."
 );
-
-const packages = [
-  {
-    title: "Falzárás előtti dokumentálás",
-    text: "A gépészet, a villamos szerelés és a vízvezeték lezárás előtti rögzítése.",
-  },
-  {
-    title: "Mérföldkő-felvételek",
-    text: "Szerkezetkész, szerelés vége, burkolás előtt, átadás-átvétel.",
-  },
-  {
-    title: "Hibakövetési felvétel",
-    text: "Időbélyegzett pontfelhő a kifogásolt területekről. A jelölést a modellen helyezzük el.",
-  },
-];
 
 export default function ConstructionPage() {
   return (
-    <article className="bg-background">
-      <section className="bg-section-dark py-10 text-section-dark-foreground sm:py-12">
-        <div className="mx-auto max-w-4xl px-4">
-          <BimBreadcrumb
-            tone="dark"
-            items={[
-              { href: "/", label: "Kezdőlap" },
-              { href: "/megoldasok", label: "Megoldások" },
-              { label: "Kivitelezés követése" },
-            ]}
-          />
-          <h1 className="text-3xl font-bold leading-tight text-section-dark-foreground sm:text-4xl">
-            Kivitelezés követése
-          </h1>
-          <p className="mt-3 text-sm opacity-90 sm:text-base">
-            Magán- és vállalati projektekre egyaránt: időbélyegzett pontfelhő a helyszíni állapotról.
-          </p>
-        </div>
-      </section>
-      <div className="mx-auto max-w-4xl space-y-8 px-4 py-12 text-sm text-muted-foreground sm:text-base">
-        <figure className="overflow-hidden rounded-md border border-border">
-          <img
-            src="/bim/megoldasok/kivitelezes.jpg"
-            alt="Lézerszkennelés kivitelezésen: pontfelhő-felvétel vasbeton szerkezet között"
-            width={1280}
-            height={720}
-            className="aspect-video w-full object-cover"
-            decoding="async"
-            fetchPriority="high"
-          />
-        </figure>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Kinek</h2>
-          <p className="mt-2">Generálkivitelezők, vállalkozó kivitelezők, lebonyolítók, építtetők.</p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Mikor érdemes</h2>
-          <ul className="mt-2 list-disc space-y-1 pl-5">
-            <li>Előrehaladás dokumentálása mérföldköveknél</li>
-            <li>Hibakövetés és vita esetén visszakereshető állapot</li>
-            <li>Megvalósulási (as-built) rögzítés átadáshoz</li>
-          </ul>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Mit kap</h2>
-          <ul className="mt-2 list-disc space-y-1 pl-5">
-            <li>Időbélyegzett pontfelhő</li>
-            <li>Előrehaladási / hibakövetési anyag a megrendelés szerint</li>
-            <li>Igény szerint megvalósulási dokumentáció és georeferálás</li>
-          </ul>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Hogyan zajlik</h2>
-          <p className="mt-2">
-            A kivitelezési ütemtervhez igazítjuk a helyszíni napokat. A téradatot lézerszkenneléssel
-            gyűjtjük; ha a feladat kéri, geodéziai ellenőrzéssel és EOV-bekötéssel egészítjük ki.
-          </p>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Csomagok</h2>
-          <div className="mt-4 grid gap-4">
-            {packages.map((item) => (
-              <div key={item.title} className="rounded-md border border-border bg-card p-5">
-                <h3 className="font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-2">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
-          <p className="mt-2">
-            A pontossági szintet az EIR vagy a megrendelés határozza meg. Részletek:{" "}
-            <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
-              pontosság és formátumok
-            </BimLink>
-            .
-          </p>
-        </section>
-
-        <section className="rounded-md border border-border bg-secondary/60 p-5">
-          <h2 className="text-lg font-semibold text-foreground">
-            Állami beruházásnál / a BIM-előírások szerint
-          </h2>
-          <p className="mt-2">
-            Ha a projekt állami beruházás vagy a szabályozás szerinti felhasználási eseteket
-            (előrehaladás, elszámolás, hibakövetés, megvalósulási dokumentáció) is érinti, a
-            részletek és a kapcsolódó szolgáltatások a hubon vannak.
-          </p>
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
-            <li>Előrehaladás követése (felhasználási eset 150)</li>
-            <li>Elszámolás dokumentálása (170) — a mennyiségi igazolás a szerződés szerint</li>
-            <li>Hibakövetés (180)</li>
-            <li>Megvalósulási dokumentáció (190), georeferálással</li>
-          </ul>
-          <BimLink href={BIM_STATE_HUB_HREF} className="mt-3 inline-block font-semibold text-brand">
-            {BIM_STATE_HUB_LABEL} →
-          </BimLink>
-        </section>
-
-        <BimDeliverableBlock
-          deliverables="Időbélyegzett pontfelhő, előrehaladási / hibakövetési anyag, igény szerint megvalósulási dokumentáció."
-          timeline="A mérföldkövek ütemezése a kivitelezési tervhez igazodik; a határidőt az ajánlat rögzíti."
-          fromYou="Ütemterv, hozzáférés a szakaszokhoz, felmérési specifikáció vagy EIR."
-        />
-        <BimLink
-          href="/kapcsolat?forras=kivitelezes"
-          className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
-        >
-          Küldje el a feladat leírását, módszertant és árajánlatot adunk.
-        </BimLink>
-      </div>
-    </article>
+    <BimSolutionLayout
+      title="Kivitelezés követése"
+      subtitle="A felépülő állapot és a tervek egyezésének rendszeres ellenőrzése terepi méréssel."
+      intro="A kivitelezés közben a tényleges állapot folyamatosan változik. A tervekkel való összhang ellenőrzéséhez ismételt terepi méréseket végzünk, hogy a tervezők, a kivitelezők és az üzemeltetők pontos adatot kapjanak a készülő állapotról."
+      imageSrc="/bim/megoldasok/kivitelezes.jpg"
+      imageAlt="Lézerszkennelés kivitelezésen: pontfelhő-felvétel vasbeton szerkezet között"
+      sections={[
+        {
+          question: "Miért van szükség a folyamatkövetésre?",
+          answer:
+            "A kivitelezés alatt könnyen előfordulhat, hogy a tényleges állapot eltér a tervektől. Az eltérések azonosítása később drágává válhat. A folyamatkövető felmérés segít ezek korai felismerésében, mielőtt a hiba beépülne a későbbi szakaszokba.",
+        },
+        {
+          question: "Milyen esetben érdemes külső felmérő partnert bevonni?",
+          answer:
+            "Ha a saját mérőcsapatkapacitás vagy a jelenlegi műszerek nem alkalmasak az adott típusú ellenőrző mérésekre, külső partnerként mi végezzük el a terepi mérést. A modellezés és a koordináció a megrendelő csapatánál marad.",
+        },
+        {
+          question: "Mit adunk át?",
+          answer:
+            "A felmérés eredménye pontfelhő vagy EOV-ba illesztett adat lehet, a megrendelés szerint. Az ellenőrző pontokat és az átadási formátumot a projekt előtti egyeztetés során rögzítjük.",
+        },
+        {
+          question: "Mikor érdemes a folyamatkövetést ütemezni?",
+          answer:
+            "A mérési időpontokat a tervezési fázissal és a tényleges építési menettel összhangban egyeztetjük. Nem minden projektnél van szükség folyamatos jelenlétre; a felmérési gyakoriságot a megrendelő dönti el.",
+        },
+        {
+          question: "Mi történik, ha eltérés mutatkozik?",
+          answer:
+            "A terepi adatok alapján az eltéréseket a megrendelő tervezőcsapata értékeli. Mi a mérési adatot adjuk át; a modellezést és a beavatkozási döntéseket a megrendelő végzi.",
+        },
+        {
+          question: "Milyen műszerekkel dolgozunk?",
+          answer:
+            "A mérést lézeres és geodéziai műszerekkel, drónos fotogrammetriával és robotmérőállomással végezzük, a feladat és a helyszín igénye szerint.",
+        },
+      ]}
+      form={{
+        heading: "Kivitelezés követési felmérés megrendelése",
+        topicId: "kivitelezes",
+        forras: "kivitelezes",
+        projectTypes: ["Épület", "Ipari létesítmény", "Terepmodell", "Egyéb"],
+        dataNeeds: ["Pontfelhő", "EOV-illesztett adat", "Ellenőrző pont", "Egyéb"],
+      }}
+    />
   );
 }

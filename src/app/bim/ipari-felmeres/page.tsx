@@ -1,136 +1,54 @@
-import { Suspense } from "react";
-
-import { BimQuoteForm } from "@/components/bim/BimQuoteForm";
-import { BimLink } from "@/components/bim/BimChrome";
+import { BimSolutionLayout } from "@/components/bim/BimSolutionLayout";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/ipari-felmeres",
-  "Ipari létesítmények felmérése | VRGO BIM",
-  "Gyártóüzemek, raktárak és technológiai csarnokok állapotfelmérése layout-tervezéshez, gépbeépítéshez, átépítéshez és átadáshoz."
+  "Ipari felmérés | VRGO BIM",
+  "Csarnokok és ipari létesítmények felmérése átépítéshez, géptelepítéshez és tervezéshez."
 );
-
-const USES = [
-  "Átépítés, bővítés és géptelepítés előkészítése",
-  "Új gép vagy technológia beépítéséhez szükséges térbeli alap",
-  "Csővezeték-, gépészeti és szerkezeti állapot rögzítése",
-  "Átadási as-built dokumentáció a megrendelés szerint",
-] as const;
-
-const OUTPUTS = [
-  "Pontfelhő a megrendelés szerinti formátumban",
-  "2D layout / CAD a szükséges szelvényekkel",
-  "EOV-ban illesztett adat vagy 3D-vetületi modell, ha a megrendelés ezt kéri",
-] as const;
-
-const FAQ = [
-  {
-    q: "Üzem közben is lehet felmérni?",
-    a: "Igen, a biztonsági előírások és a zónák egyeztetése után. A munkát a termelési korlátokhoz igazítjuk.",
-  },
-  {
-    q: "Kell-e mindig BIM-modell?",
-    a: "Nem. A pontfelhő és a 2D layout gyakran elegendő. Modellátadás csak a megrendelő előzetesen rögzített követelménye szerint, egyeztetve.",
-  },
-  {
-    q: "Vállalnak többnapos helyszíni munkát?",
-    a: "Igen, ha a projekt mérete vagy az üzemeltetési ütemezés ezt indokolja.",
-  },
-] as const;
 
 export default function IndustrialSurveyPage() {
   return (
-    <article className="bg-background">
-      <section className="bg-section-dark py-10 text-section-dark-foreground sm:py-12">
-        <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold leading-tight sm:text-4xl">
-            Ipari létesítmények felmérése
-          </h1>
-          <p className="mt-3 max-w-3xl text-base opacity-90 sm:text-lg">
-            Gyártóüzemek, raktárak és technológiai csarnokok állapotfelmérése layout-tervezéshez,
-            gépbeépítéshez, átépítéshez és átadáshoz.
-          </p>
-          <BimLink
-            href="/kapcsolat?utvonal=ipar&forras=ipari-felmeres"
-            className="mt-8 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
-          >
-            Ipari felmérés kérése
-          </BimLink>
-        </div>
-      </section>
-
-      <div className="mx-auto max-w-4xl space-y-12 px-4 py-12">
-        <section>
-          <h2 className="text-xl font-semibold">Milyen feladatokra jó</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground sm:text-base">
-            {USES.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Mit kap a megrendelő</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground sm:text-base">
-            {OUTPUTS.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Helyszíni munka és módszer</h2>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Nagyobb ipari projektnél több napig a helyszínen dolgozunk, hogy a felmérés a termelési
-            ütemtervhez igazodjon. Országosan vállalunk kiszállást; Budapesten belül a kiszállási
-            díjat nem számítjuk fel.
-          </p>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            A terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával
-            végezzük. A konkrét feladathoz tartozó lézerszkennelési kapacitást a megrendelés előtt
-            egyeztetjük.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Munkafolyamat</h2>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Igény tisztázása → helyszíni felmérés → feldolgozás és ellenőrzés → átadás. A részletes
-            lépéseket a{" "}
-            <BimLink href="/munkafolyamat" className="font-semibold text-brand">
-              munkafolyamat
-            </BimLink>{" "}
-            oldalon találja.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">GYIK</h2>
-          <dl className="mt-4 space-y-4">
-            {FAQ.map((item) => (
-              <div key={item.q}>
-                <dt className="font-semibold text-foreground">{item.q}</dt>
-                <dd className="mt-1 text-sm text-muted-foreground">{item.a}</dd>
-              </div>
-            ))}
-          </dl>
-          <BimLink href="/gyik" className="mt-4 inline-block text-sm font-semibold text-brand">
-            További kérdések →
-          </BimLink>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Űrlap</h2>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Kérjen helyszíni felmérési vagy kapacitásajánlatot.
-          </p>
-          <div className="mt-6">
-            <Suspense fallback={<p className="text-sm text-muted-foreground">Űrlap betöltése…</p>}>
-              <BimQuoteForm />
-            </Suspense>
-          </div>
-        </section>
-      </div>
-    </article>
+    <BimSolutionLayout
+      title="Ipari felmérés"
+      subtitle="Csarnokok, üzemek és technológiai terek terepi felmérése átépítéshez vagy géptelepítéshez."
+      intro="Ipari környezetben a felmérésnek a termeléshez és a biztonsági zónákhoz kell igazodnia. A helyszíni méréssel pontfelhőt és EOV-illesztett adatot adunk a tervezéshez vagy a layout-egyeztetéshez."
+      imageSrc="/blog/bim/viztisztito-telep.jpg"
+      imageAlt="Ipari létesítmény — illusztráció a felmérési környezethez"
+      sections={[
+        {
+          question: "Mikor érdemes ipari felmérést kérni?",
+          answer:
+            "Új gép beépítése, csarnokátalakítás, gépészeti átvezetés vagy átadási as-built előtt. A mérés a meglévő állapotot rögzíti, hogy a tervezés ne feltételezésekre épüljön.",
+        },
+        {
+          question: "Üzem közben is lehet mérni?",
+          answer:
+            "Igen, a biztonsági előírások és a zónák egyeztetése után. A helyszíni napokat a termelési korlátokhoz igazítjuk; nagyobb projektnél több napon át a helyszínen dolgozunk.",
+        },
+        {
+          question: "Milyen adatot kapunk az ellenőrzéshez?",
+          answer:
+            "Pontfelhőt a megrendelés szerinti formátumban, és ha kell, EOV-ba illesztett adatot. A layout vagy CAD kimenetet csak akkor vállaljuk, ha a megrendelés ezt külön rögzíti.",
+        },
+        {
+          question: "Mennyi ideig tart egy ipari felmérés?",
+          answer:
+            "A helyszín mérete, a zónák hozzáférhetősége és a kért kimenet határozza meg. A határidőt az ajánlat rögzíti; rövid határidejű kéréseknél a vállalhatóságot a kapacitásunk alapján jelezzük.",
+        },
+        {
+          question: "Mi a különbség az egyszeri és a többszöri ipari felvétel között?",
+          answer:
+            "Az egyszeri felvétel egy állapotot rögzít. Többszöri felvétel akkor kell, ha a berendezés vagy a szerkezet a projekt alatt változik, és az állapotokat össze kell vetni.",
+        },
+      ]}
+      form={{
+        heading: "Ipari felmérés ajánlatkérése",
+        topicId: "ipar",
+        forras: "ipari-felmeres",
+        projectTypes: ["Ipari létesítmény", "Csarnok", "Technológiai tér", "Egyéb"],
+        dataNeeds: ["Pontfelhő", "EOV-illesztett adat", "Layout / CAD (ha megrendelve)", "Egyéb"],
+      }}
+    />
   );
 }
