@@ -23,7 +23,7 @@ export function BimServiceLayout({
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
           <BimBreadcrumb items={crumbs} tone="dark" />
-          <h1 className="text-3xl font-bold sm:text-4xl">{title}</h1>
+          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">{title}</h1>
           {lead ? <p className="mt-4 max-w-3xl text-sm opacity-90 sm:text-base">{lead}</p> : null}
         </div>
       </section>

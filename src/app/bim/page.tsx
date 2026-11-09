@@ -78,7 +78,7 @@ export default function BimHomePage() {
 
       <section className="bg-section-dark text-section-dark-foreground">
         <div className="mx-auto max-w-5xl px-4 pb-6 pt-14 sm:pb-8 sm:pt-20">
-          <h1 className="text-3xl font-bold sm:text-4xl md:text-[2.5rem] md:leading-tight">
+          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl md:text-[2.5rem] md:leading-tight">
             Felmérés, amelyből tervezni lehet
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
