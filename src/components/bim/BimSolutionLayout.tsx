@@ -36,8 +36,12 @@ export function BimSolutionLayout({
               { label: title },
             ]}
           />
-          <h1 className="text-3xl font-bold leading-tight sm:text-4xl">{title}</h1>
-          <p className="mt-3 max-w-3xl text-base opacity-90 sm:text-lg">{subtitle}</p>
+          <h1 className="text-3xl font-bold leading-tight text-section-dark-foreground sm:text-4xl">
+            {title}
+          </h1>
+          <p className="mt-3 max-w-3xl text-base text-section-dark-foreground/90 sm:text-lg">
+            {subtitle}
+          </p>
         </div>
       </section>
 
