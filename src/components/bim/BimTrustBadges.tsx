@@ -1,28 +1,32 @@
-const BADGES = [
+type BadgeSet = {
+  alt: string;
+  src80: string;
+  src84: string;
+  src104: string;
+};
+
+const BADGES: readonly BadgeSet[] = [
   {
-    src: "/badges/10-ev-terepi-tapasztalat-v2.png",
     alt: "10 év terepi tapasztalat",
+    src80: "/badges/10-ev-terepi-tapasztalat-80.png",
+    src84: "/badges/10-ev-terepi-tapasztalat-84.png",
+    src104: "/badges/10-ev-terepi-tapasztalat-104.png",
   },
   {
-    src: "/badges/orszagos-kiszallas-v2.png",
     alt: "Országos kiszállás",
+    src80: "/badges/orszagos-kiszallas-80.png",
+    src84: "/badges/orszagos-kiszallas-84.png",
+    src104: "/badges/orszagos-kiszallas-104.png",
   },
 ] as const;
 
-const SIZE_CLASS = {
-  hero: "h-[5rem] w-[5rem] sm:h-[5.25rem] sm:w-[5.25rem]",
-  /** 4× text-sm link row + 3× space-y-2 gap (Oldalak oszlop) → négyzet */
-  footer: "h-[6.5rem] w-[6.5rem]",
-} as const;
-
 type BimTrustBadgesProps = {
-  size?: keyof typeof SIZE_CLASS;
+  size?: "hero" | "footer";
   className?: string;
 };
 
-/** Compact trust seals — hero or footer under Jogi. */
+/** Compact trust seals — 1:1 PNG sizes (80 / 84 / 104), no browser rescale of wrong assets. */
 export function BimTrustBadges({ size = "hero", className }: BimTrustBadgesProps) {
-  const dim = size === "footer" ? 104 : 96;
   return (
     <ul
       className={
@@ -34,16 +38,31 @@ export function BimTrustBadges({ size = "hero", className }: BimTrustBadgesProps
       aria-label="Bizalmi jelzések"
     >
       {BADGES.map((badge) => (
-        <li key={`${size}-${badge.src}`}>
-          <img
-            src={badge.src}
-            alt={badge.alt}
-            width={dim}
-            height={dim}
-            className={SIZE_CLASS[size]}
-            decoding="async"
-            loading={size === "footer" ? "lazy" : "eager"}
-          />
+        <li key={`${size}-${badge.alt}`}>
+          {size === "footer" ? (
+            <img
+              src={badge.src104}
+              alt={badge.alt}
+              width={104}
+              height={104}
+              className="h-[6.5rem] w-[6.5rem]"
+              decoding="async"
+              loading="lazy"
+            />
+          ) : (
+            <picture>
+              <source media="(min-width: 640px)" srcSet={badge.src84} width={84} height={84} />
+              <img
+                src={badge.src80}
+                alt={badge.alt}
+                width={80}
+                height={80}
+                className="h-[5rem] w-[5rem] sm:h-[5.25rem] sm:w-[5.25rem]"
+                decoding="async"
+                loading="eager"
+              />
+            </picture>
+          )}
         </li>
       ))}
     </ul>

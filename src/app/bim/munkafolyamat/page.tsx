@@ -4,30 +4,30 @@ import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/munkafolyamat",
-  "Hogyan dolgozunk — felmérés, feldolgozás, átadás | VRGO BIM",
-  "Igény tisztázása, helyszíni felmérés, feldolgozás, minőség-ellenőrzés és dokumentált átadás. Formátumok és EOV egy helyen."
+  "A felmérés menete | VRGO BIM",
+  "Rövid, követhető folyamat a felmérési igény tisztázásától az adatátadásig. Pontfelhő, EOV-illesztés, átadás a kért formátumban."
 );
 
 const STEPS = [
   {
     title: "Igény tisztázása",
-    text: "A felmérés előtt egyeztetjük a kívánt kimenetet, a helyszínt és a határidőt. Ha van EIR, abból indulunk.",
+    text: "A felmérés előtt írásban rögzítjük a feladat célját, a helyszínt, a pontossági követelményt és az átadási formátumot. Ha van EIR vagy felmérési specifikáció, abból indulunk ki.",
   },
   {
     title: "Helyszíni felmérés",
-    text: "Lézeres rögzítés a helyszín korlátaihoz igazítva. Nagyobb ipari projektnél több napig a helyszínen dolgozunk.",
+    text: "A lézeres és geodéziai mérést a helyszín hozzáférési és működési feltételeihez igazítjuk. Nagyobb ipari projekteknél több napon át a helyszínen dolgozunk, a tömbösített ütemezést a helyszínhez közelre tervezzük.",
   },
   {
     title: "Feldolgozás",
-    text: "Pontfelhő regisztráció, tisztítás, majd a megrendelt CAD vagy egyéb kimenet előkészítése.",
+    text: "A pontfelhőt regisztráljuk és tisztítjuk. A megrendelt kimenetet a megrendelő által kért formában állítjuk elő.",
   },
   {
     title: "Minőség-ellenőrzés",
-    text: "Ellenőrző pontok, átadási lista, és ha releváns, BCF hibajegyzék.",
+    text: "Az ellenőrző pontokat, az EOV-illesztést és az átadási listát az igények alapján rögzítjük. Ha a megrendelő modellezési ellenőrzést is kér, annak módját külön egyeztetjük.",
   },
   {
-    title: "Átadás",
-    text: "A kimenetet a megrendelő által kért formátumban adjuk át.",
+    title: "Adatátadás",
+    text: "A kimenetet a megrendelő által kért formátumban adjuk át. A részletes formátumokat az ajánlat rögzíti.",
   },
 ] as const;
 
@@ -36,9 +36,9 @@ export default function ProcessPage() {
     <article className="bg-background">
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold sm:text-4xl">Hogyan dolgozunk</h1>
+          <h1 className="text-3xl font-bold sm:text-4xl">A felmérés menete</h1>
           <p className="mt-4 max-w-3xl text-sm opacity-90 sm:text-base">
-            Rövid, követhető folyamat a terepi felméréstől az átadásig.
+            Rövid, követhető folyamat a felmérési igény tisztázásától az adatátadásig.
           </p>
         </div>
       </section>
@@ -56,21 +56,23 @@ export default function ProcessPage() {
         </ol>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Formátumok</h2>
+          <h2 className="text-xl font-semibold text-foreground">Kimenetek</h2>
           <p className="mt-3">
-            A mérések eredménye pontfelhő, EOV-ban illesztett modell vagy az ezekből készített
-            3D-vetületi modell lehet, a megrendelő előzetesen rögzített követelménye szerint. A
-            vállalt formátumokat az ajánlat rögzíti.
+            A felmérés eredménye pontfelhő (például E57), EOV-ba illesztett adat vagy a partnerrel
+            egyeztetett egyéb kimenet lehet. A megrendelésben rögzítjük, hogy mit adunk át és milyen
+            ellenőrzéssel.
           </p>
-          <BimScopeNote />
+          <div className="mt-3">
+            <BimScopeNote />
+          </div>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-foreground">EOV és georeferálás</h2>
           <p className="mt-3">
-            Ha az EIR vagy a felhasználási cél bekötést kér, a lézeres felmérést geodéziai
-            ellenőrzéssel és EOV-bekötéssel egészítjük ki. A megrendelő saját földmérőjével is
-            együttműködünk. Részletek a{" "}
+            Ha az EIR vagy a felhasználási cél EOV-illesztést kér, a lézeres felmérést geodéziai
+            ellenőrzéssel és EOV-bekötéssel egészítjük ki, jogosult földmérő közreműködésével. A
+            megrendelő saját földmérőjével is együttműködünk. Részletek a{" "}
             <BimLink href="/szolgaltatasok/georeferalas-eov" className="font-semibold text-brand">
               georeferálás
             </BimLink>{" "}
@@ -93,7 +95,7 @@ export default function ProcessPage() {
           href="/kapcsolat?forras=munkafolyamat"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
         >
-          Ajánlatot kérek
+          Ajánlat kérése
         </BimLink>
       </div>
     </article>

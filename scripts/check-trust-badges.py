@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Poka-yoke: trust badges must keep the grey inner ring (plecsni2uj), never the old ringless seal."""
+"""Poka-yoke: size-exact trust badges with grey ring; never ship old ringless plecsni2."""
 
 from __future__ import annotations
 
@@ -10,34 +10,63 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-# Canonical grey-ring source (plecsni2uj). Do not replace with ringless plecsni2.
-REQUIRED_ORSZAGOS_SOURCE_SHA256 = (
-    "e2001349b2c74c5f93482aefa537e1458a488186824c434346c4427c946d1ee7"
-)
-
-# Known-bad ringless országos seal (old plecsni2). Never ship this content.
+# Known-bad ringless országos seal (old large plecsni2). Never ship this content.
 FORBIDDEN_SHA256 = {
     "8388afe17cb2e25ea382117b73fbbb74fab515edfc55b34812a3c0439c113cd5",
 }
 
-CHECKS = [
+# Byte-identical copies of the owner-supplied web PNGs (no re-encode).
+REQUIRED = [
     {
-        "label": "orszagos source",
-        "path": ROOT / "assets" / "badges" / "orszagos-kiszallas.source.png",
-        "min_grey_frac": 0.15,
-        "required_sha256": REQUIRED_ORSZAGOS_SOURCE_SHA256,
+        "label": "10év 80",
+        "path": ROOT / "public" / "badges" / "10-ev-terepi-tapasztalat-80.png",
+        "size": (80, 80),
+        "sha256": "03708ed499a7a92d0072aa5bb234759c1773a63e60879ead489f486079f906be",
     },
     {
-        "label": "orszagos public v2",
-        "path": ROOT / "public" / "badges" / "orszagos-kiszallas-v2.png",
-        "min_grey_frac": 0.08,
+        "label": "10év 84",
+        "path": ROOT / "public" / "badges" / "10-ev-terepi-tapasztalat-84.png",
+        "size": (84, 84),
+        "sha256": "ea5c0675dfc70f622f940679d896dcde6d7caac71af7773460ecf594e3d78b1a",
     },
     {
-        "label": "10ev public v2",
-        "path": ROOT / "public" / "badges" / "10-ev-terepi-tapasztalat-v2.png",
-        "min_grey_frac": 0.08,
+        "label": "10év 104",
+        "path": ROOT / "public" / "badges" / "10-ev-terepi-tapasztalat-104.png",
+        "size": (104, 104),
+        "sha256": "dab303c5ba62593629231dd3f3d53a201d826fd3d4de6f9598bc6e4241504692",
+    },
+    {
+        "label": "orszagos 80",
+        "path": ROOT / "public" / "badges" / "orszagos-kiszallas-80.png",
+        "size": (80, 80),
+        "sha256": "08a6247af4d1b2f1f8b62c3825784c967664f9d5e1d9de6827dcc1696075ae9a",
+        "min_grey_frac": 0.05,
+    },
+    {
+        "label": "orszagos 84",
+        "path": ROOT / "public" / "badges" / "orszagos-kiszallas-84.png",
+        "size": (84, 84),
+        "sha256": "de53b9052c4b57851c8b04154f1d583652739c2d48d1f9d29f1fa0e466b4ff3b",
+        "min_grey_frac": 0.05,
+    },
+    {
+        "label": "orszagos 104",
+        "path": ROOT / "public" / "badges" / "orszagos-kiszallas-104.png",
+        "size": (104, 104),
+        "sha256": "94c2705614442cd351d9d7561f5f81b68d4f53dbd3507fd1134b1abdcc5c1e62",
+        "min_grey_frac": 0.05,
     },
 ]
+
+FORBIDDEN_NAMES = (
+    "orszagos-kiszallas.png",
+    "orszagos-kiszallas-v1.png",
+    "orszagos-kiszallas-v2.png",
+    "orszagos-kiszallas.source.png",
+    "10-ev-terepi-tapasztalat.png",
+    "10-ev-terepi-tapasztalat-v2.png",
+    "10-ev-terepi-tapasztalat.source.png",
+)
 
 
 def sha256(path: Path) -> str:
@@ -84,44 +113,49 @@ def grey_ring_frac(path: Path) -> float:
 def main() -> int:
     errors: list[str] = []
 
-    for item in CHECKS:
+    try:
+        from PIL import Image
+    except ImportError as exc:  # pragma: no cover
+        raise SystemExit("Pillow required: pip install Pillow") from exc
+
+    for item in REQUIRED:
         path: Path = item["path"]
         if not path.exists():
             errors.append(f"missing {item['label']}: {path.relative_to(ROOT)}")
             continue
         digest = sha256(path)
         if digest in FORBIDDEN_SHA256:
+            errors.append(f"{item['label']}: forbidden ringless plecsni2 hash")
+            continue
+        if digest != item["sha256"]:
             errors.append(
-                f"{item['label']}: forbidden ringless plecsni2 hash ({digest[:16]}…)"
+                f"{item['label']}: file changed (got {digest[:16]}…). "
+                "Replace only with the owner-supplied size-exact PNG; do not re-encode."
             )
             continue
-        required = item.get("required_sha256")
-        if required and digest != required:
-            errors.append(
-                f"{item['label']}: source hash mismatch "
-                f"(got {digest[:16]}…, want {required[:16]}…). "
-                "Use plecsni2uj (grey inner ring), not old plecsni2."
-            )
-            continue
-        frac = grey_ring_frac(path)
-        min_frac = float(item["min_grey_frac"])
-        if frac < min_frac:
-            errors.append(
-                f"{item['label']}: grey inner ring too weak "
-                f"(score={frac:.3f}, need ≥ {min_frac}). "
-                "Likely the old ringless plecsni2 — replace from "
-                "assets/badges/orszagos-kiszallas.source.png"
-            )
+        with Image.open(path) as im:
+            if im.size != item["size"]:
+                errors.append(f"{item['label']}: size {im.size}, want {item['size']}")
+                continue
+        min_grey = item.get("min_grey_frac")
+        if min_grey is not None:
+            frac = grey_ring_frac(path)
+            if frac < float(min_grey):
+                errors.append(
+                    f"{item['label']}: grey inner ring too weak (score={frac:.3f})"
+                )
+            else:
+                print(f"OK {item['label']}: {item['size'][0]}px grey_ring={frac:.3f}")
         else:
-            print(f"OK {item['label']}: grey_ring={frac:.3f} sha={digest[:12]}…")
+            print(f"OK {item['label']}: {item['size'][0]}px")
 
-    # Legacy unversioned paths must not reintroduce the bad seal.
-    for legacy in (
-        ROOT / "public" / "badges" / "orszagos-kiszallas.png",
-        ROOT / "public" / "badges" / "orszagos-kiszallas-v1.png",
-    ):
-        if legacy.exists() and sha256(legacy) in FORBIDDEN_SHA256:
-            errors.append(f"legacy file is forbidden ringless seal: {legacy.name}")
+    for name in FORBIDDEN_NAMES:
+        legacy = ROOT / "public" / "badges" / name
+        if legacy.exists():
+            errors.append(f"legacy badge must be deleted: public/badges/{name}")
+        legacy_src = ROOT / "assets" / "badges" / name
+        if legacy_src.exists():
+            errors.append(f"legacy badge must be deleted: assets/badges/{name}")
 
     if errors:
         print("check-trust-badges: FAILED", file=sys.stderr)

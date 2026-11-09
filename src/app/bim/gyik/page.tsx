@@ -42,7 +42,7 @@ const CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Hogyan zajlik a minőség-ellenőrzés?",
-        a: "Regisztráció után ellenőrző pontokkal és dokumentált átadási listával dolgozunk. Ha releváns, BCF hibajegyzéket is adunk.",
+        a: "Regisztráció után ellenőrző pontokkal és dokumentált átadási listával dolgozunk.",
       },
     ],
   },
@@ -68,7 +68,7 @@ const CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "Csak terepi adatot is átadnak, modell nélkül?",
-        a: "Igen. Vállaljuk a csak helyszíni rögzítést: a pontfelhőt és a CAD-alapot átadjuk, a modellezést Ön vagy a csapata végzi.",
+        a: "Igen. Vállaljuk a csak helyszíni rögzítést: a pontfelhőt és az egyeztetett felmérési kimenetet átadjuk, a modellezést Ön vagy a csapata végzi.",
       },
       {
         q: "Hogyan lehet alvállalkozói terepi kapacitást kérni?",

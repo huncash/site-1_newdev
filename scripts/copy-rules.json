@@ -38,6 +38,14 @@
     "bányafelmérés",
     "bányászati felmérés",
     "modellezési kapacitást biztosít",
+    "Nem vesszük el az ügyfelét",
+    "CAD-alap a megrendelés szerint",
+    "hiteles terepi adat",
+    "Tipikus átadás: E57, DWG, IFC",
+    "BCF és minőség-ellenőrzés",
+    "CAD vagy egyéb kimenet előkészítése",
+    "BCF hibajegyzék",
+    "hivatalos EOV-kötést",
     "mérhető digitális más",
     "Telefon (másodlagos)",
     "optimalizált munkafolyamat",
@@ -107,7 +115,7 @@
       "reason": "CTA gombfelirat"
     }
   ],
-  "scopeParagraphMustAppearOnce": "Három dolgot vállalunk: mért, ellenőrzött adatot",
+  "scopeParagraphMustAppearOnce": "Minden megbízásnál három dolgot rögzítünk: a mérést és az ellenőrző pontokat",
   "exceptionPaths": [
     "private_data/posts/",
     "src/content/bim-cikkek/",

@@ -7,7 +7,18 @@ import { sendQuoteEmail } from "@/lib/quote-delivery";
 import { verifySumAnswer } from "@/lib/sum-check";
 
 const RESIDENTIAL_SERVICES = new Set<string>(BIM_RESIDENTIAL_SERVICE_OPTIONS);
-const QUOTE_SERVICES = new Set<string>(BIM_QUOTE_SERVICE_OPTIONS);
+const QUOTE_SERVICES = new Set<string>([
+  ...BIM_QUOTE_SERVICE_OPTIONS,
+  "Felmérést szeretnék kérni",
+  "Alvállalkozói együttműködés érdekel",
+  "Egyéb kérdésem van",
+]);
+const PARTNER_SERVICES = new Set<string>([
+  "Terepi felmérési együttműködés",
+  "Konkrét felmérési ajánlatot kérek",
+  "Egyéb kérdésem van",
+]);
+const PARTNER_FORMATS = new Set(["pontfelho", "eov", "dron", "egyeb"]);
 
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
@@ -19,6 +30,108 @@ function text(value: unknown, max: number): string | null {
   const trimmed = value.trim();
   if (!trimmed || trimmed.length > max) return null;
   return trimmed;
+}
+
+async function handlePartner(data: Record<string, unknown>): Promise<Response> {
+  const name = text(data.name, MAX_NAME);
+  const email = text(data.email, MAX_EMAIL);
+  const organization = text(data.organization, MAX_SHORT);
+  const serviceInterest = text(data.serviceInterest, MAX_SHORT);
+  const phone = data.phone == null || data.phone === "" ? "" : text(data.phone, 40);
+  const projectType =
+    data.projectType == null || data.projectType === "" ? "" : text(data.projectType, MAX_SHORT);
+  const recurrence =
+    data.recurrence == null || data.recurrence === "" ? "" : text(data.recurrence, MAX_SHORT);
+  const modelingSoftware =
+    data.modelingSoftware == null || data.modelingSoftware === ""
+      ? ""
+      : text(data.modelingSoftware, MAX_SHORT);
+  const location = data.location == null || data.location === "" ? "" : text(data.location, MAX_SHORT);
+  const area = data.area == null || data.area === "" ? "" : text(data.area, 80);
+  const deadline = data.deadline == null || data.deadline === "" ? "" : text(data.deadline, 80);
+  const eirNote = data.eirNote == null || data.eirNote === "" ? "" : text(data.eirNote, 200);
+  const source = data.source == null || data.source === "" ? "" : text(data.source, 240);
+  const utvonal = data.utvonal == null || data.utvonal === "" ? "" : text(data.utvonal, 80);
+  const forras = data.forras == null || data.forras === "" ? "" : text(data.forras, 120);
+  const message =
+    data.message == null || data.message === "" ? "" : text(data.message, MAX_MESSAGE);
+  const formats = Array.isArray(data.formats)
+    ? data.formats.filter(
+        (item): item is string => typeof item === "string" && PARTNER_FORMATS.has(item)
+      )
+    : [];
+
+  if (
+    !name ||
+    !email ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+    !organization ||
+    !serviceInterest ||
+    !PARTNER_SERVICES.has(serviceInterest) ||
+    phone === null ||
+    projectType === null ||
+    recurrence === null ||
+    modelingSoftware === null ||
+    location === null ||
+    area === null ||
+    deadline === null ||
+    eirNote === null ||
+    source === null ||
+    utvonal === null ||
+    forras === null ||
+    message === null ||
+    data.consent !== true
+  ) {
+    return Response.json({ error: "Invalid fields" }, { status: 400 });
+  }
+
+  if (!verifySumAnswer(data.sumToken, data.sumAnswer)) {
+    return Response.json({ error: "sum" }, { status: 400 });
+  }
+
+  console.log(
+    JSON.stringify({
+      event: "bim_partner_received",
+      siteId: "bim.vrgo.hu",
+      serviceInterest,
+      hasOrganization: true,
+      hasProjectType: projectType.length > 0,
+      hasRecurrence: recurrence.length > 0,
+      hasModelingSoftware: modelingSoftware.length > 0,
+    })
+  );
+
+  const sent = await sendQuoteEmail({
+    subject: `Partneri együttműködés – ${serviceInterest} – ${name.replace(/[\r\n]+/g, " ").slice(0, 80)}`,
+    replyTo: email,
+    text: [
+      "Partneri együttműködés / terepi felmérési megkeresés.",
+      "",
+      `Érdeklődés típusa: ${serviceInterest}`,
+      `Név: ${name}`,
+      `E-mail: ${email}`,
+      `Telefon: ${phone || "—"}`,
+      `Cégnév: ${organization}`,
+      `Projekt típusa: ${projectType || "—"}`,
+      `Ismétlődés: ${recurrence || "—"}`,
+      `Modellező szoftver (tájékoztató): ${modelingSoftware || "—"}`,
+      `Helyszín: ${location || "—"}`,
+      `Méret / projektnagyság: ${area || "—"}`,
+      `Várható terepi munka ideje: ${deadline || "—"}`,
+      `Kimenetek: ${formats.join(", ") || "—"}`,
+      `Felmérési specifikáció / EIR: ${eirNote || "—"}`,
+      `Útvonal: ${utvonal || "kapacitas"}`,
+      `Forrás: ${forras || source || "—"}`,
+      `Source string: ${source || "—"}`,
+      "",
+      "Megjegyzés:",
+      message || "—",
+    ].join("\n"),
+  });
+  if (!sent) {
+    return Response.json({ error: "unavailable" }, { status: 503 });
+  }
+  return Response.json({ status: "ok" });
 }
 
 async function handleResidential(data: Record<string, unknown>): Promise<Response> {
@@ -96,6 +209,9 @@ export async function POST(request: Request): Promise<Response> {
   const data = body as Record<string, unknown>;
   if (data.mode === "residential") {
     return handleResidential(data);
+  }
+  if (data.mode === "partner") {
+    return handlePartner(data);
   }
 
   const name = text(data.name, MAX_NAME);

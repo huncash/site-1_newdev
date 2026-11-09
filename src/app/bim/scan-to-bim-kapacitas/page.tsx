@@ -1,35 +1,32 @@
 import { Suspense } from "react";
 
 import { BimQuoteForm } from "@/components/bim/BimQuoteForm";
-import { BimLink } from "@/components/bim/BimChrome";
-import { BIM_CONFIG, bimHasSamplePack } from "@/config/bim";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const metadata = bimMetadata(
   "/scan-to-bim-kapacitas",
-  "Terepi felmérés BIM-modellezőknek | VRGO BIM",
-  "Ha a helyszíni felmérésre nincs elég belső kapacitás, mi a terepi mérést végezzük. A felmérési adatot a saját modellező csapata dolgozza fel."
+  "Terepi felmérés modellezőknek | VRGO BIM",
+  "A helyszíni felmérést mi végezzük, az ügyfélkapcsolat és a modellezés az Önnél marad. A felmérési adatot az előre egyeztetett követelmények szerint adjuk át."
 );
 
 const WHEN = [
-  "Nagyobb terepi felmérés, amelyre nincs belső kapacitás",
-  "Ipari vagy nehezen hozzáférhető helyszín",
-  "Hiteles terepi adat kell a saját modellező csapatához",
-  "Szoros átadási határidő mellett a helyszíni munkát szeretné kiszervezni",
+  "Nagyobb terepi felmérésre nincs szabad belső kapacitás.",
+  "Ipari vagy nehezen megközelíthető helyszínen kell mérni.",
+  "A modellezőcsapat ellenőrzött terepi adatot vár.",
+  "Rövid határidejű feladatnál a vállalhatóságot a kapacitásunk alapján jelezzük.",
 ] as const;
 
 const WE_DO = [
-  "Helyszíni lézeres felmérés",
-  "Pontfelhő regisztráció és tisztítás",
-  "CAD-alap a megrendelés szerint",
-  "A kimenetet a modellezéshez használható formában adjuk át",
+  "Helyszíni lézeres és geodéziai felmérés, szükség szerint drónos fotogrammetriával kiegészítve.",
+  "Pontfelhő regisztrálása és tisztítása.",
+  "Illesztés EOV-rendszerbe, ha a feladat megköveteli.",
+  "Adatátadás a megrendelő által kért formátumban.",
 ] as const;
 
-const YOU_GET = [
-  "A helyszíni mérést mi vállaljuk",
-  "A kimenetet a megrendelő által kért formátumban adjuk át",
-  "BCF és minőség-ellenőrzés, ha releváns",
-  "Országos kiszállás; Budapesten belül kiszállási díj nélkül",
+const PARTNER_KEEPS = [
+  "Az ügyfélkapcsolat.",
+  "A modellezés és a modellezési részletezettség.",
+  "A végfelhasználói átadás.",
 ] as const;
 
 export default function ScanToBimCapacityPage() {
@@ -38,42 +35,26 @@ export default function ScanToBimCapacityPage() {
       <section className="bg-section-dark py-10 text-section-dark-foreground sm:py-12">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="text-3xl font-bold leading-tight sm:text-4xl">
-            Terepi felmérés BIM-modellezőknek
+            Terepi felmérés modellezőknek
           </h1>
           <p className="mt-3 max-w-3xl text-base opacity-90 sm:text-lg">
-            Ha a helyszíni felmérésre nincs elég belső kapacitás, mi a terepi mérést végezzük. Ön
-            tartja az ügyfélkapcsolatot és a modellezést; mi a felmérési adatot adjuk át.
+            A helyszíni felmérést mi végezzük, az ügyfélkapcsolat és a modellezés az Önnél marad. A
+            felmérési adatot az előre egyeztetett követelmények szerint adjuk át.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <BimLink
-              href="/kapcsolat?utvonal=kapacitas&forras=scan-to-bim"
+          <div className="mt-8">
+            <a
+              href="#egyuttmukodes"
               className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
             >
-              Felmérési ajánlat kérése
-            </BimLink>
-            {bimHasSamplePack() ? (
-              <a
-                href={BIM_CONFIG.samplePackUrl}
-                className="inline-flex items-center justify-center rounded-md border-2 border-white px-6 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-section-dark"
-              >
-                Minta átadási standard letöltése
-              </a>
-            ) : null}
+              Együttműködés egyeztetése
+            </a>
           </div>
         </div>
       </section>
 
       <div className="mx-auto max-w-4xl space-y-12 px-4 py-12 text-sm text-muted-foreground sm:text-base">
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Nem vesszük el az ügyfelét</h2>
-          <p className="mt-3">
-            Ön tartja az ügyfélkapcsolatot és a modellezést. Mi a helyszíni felmérést és a
-            megrendelt felmérési kimenetet biztosítjuk.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Mikor hasznos a külső felmérés</h2>
+          <h2 className="text-xl font-semibold text-foreground">Mikor lehet hasznos?</h2>
           <ul className="mt-4 list-disc space-y-2 pl-5">
             {WHEN.map((item) => (
               <li key={item}>{item}</li>
@@ -82,7 +63,7 @@ export default function ScanToBimCapacityPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk</h2>
+          <h2 className="text-xl font-semibold text-foreground">Mit vállalunk?</h2>
           <ul className="mt-4 list-disc space-y-2 pl-5">
             {WE_DO.map((item) => (
               <li key={item}>{item}</li>
@@ -91,46 +72,52 @@ export default function ScanToBimCapacityPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Mit kap a megrendelő partner</h2>
+          <h2 className="text-xl font-semibold text-foreground">Mi marad a partnernél?</h2>
           <ul className="mt-4 list-disc space-y-2 pl-5">
-            {YOU_GET.map((item) => (
+            {PARTNER_KEEPS.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">
-            Hogyan illeszkedünk a saját munkafolyamatába
-          </h2>
+          <h2 className="text-xl font-semibold text-foreground">Hogyan dolgozunk?</h2>
           <p className="mt-3">
-            A részletezettséget és az átadási formátumot a projektje szerint követjük. A
-            követelményeket a munka megkezdése előtt egyeztetjük.
+            A felmérés előtt írásban rögzítjük a terjedelmet, a koordináta-rendszert, az átadási
+            formátumot és az ellenőrzés módját. A pontossági követelményt a feladat és a megrendelő
+            elvárása szerint egyeztetjük. A munka alatt felmerülő kérdéseket írásban jelezzük.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Formátumok és ellenőrzés</h2>
+          <h2 className="text-xl font-semibold text-foreground">Átadás</h2>
           <p className="mt-3">
-            Tipikus átadás: E57, DWG, IFC. Ha releváns, BCF hibajegyzéket és ellenőrző pontokat
-            adunk.
+            Pontfelhő (például E57), EOV-ba illesztett adat vagy a partnerrel egyeztetett egyéb
+            kimenet.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-foreground">Országos kiszállás</h2>
+          <h2 className="text-xl font-semibold text-foreground">Országos kiszállás és ütemezés</h2>
           <p className="mt-3">
             Országosan vállalunk helyszíni munkát. Budapesten belül a kiszállási díjat nem számítjuk
             fel.
           </p>
+          <p className="mt-3">
+            Távolabbi vagy hosszabb feladatoknál a munkát igyekszünk tömbösítve végezni, hogy az
+            utazási idő ne csökkentse a tényleges mérési időt. Az esetleges szállási igényt a
+            projekt ütemezésével együtt egyeztetjük.
+          </p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-semibold text-foreground">Felmérési ajánlat űrlap</h2>
-          <p className="mt-3">Kérjen helyszíni felmérési ajánlatot a saját munkafolyamatához.</p>
+        <section id="egyuttmukodes">
+          <h2 className="text-xl font-semibold text-foreground">Együttműködés és ajánlatkérés</h2>
+          <p className="mt-3">
+            Írja meg a feladatot vagy az együttműködési igényt, írásban válaszolunk.
+          </p>
           <div className="mt-6">
             <Suspense fallback={<p className="text-sm text-muted-foreground">Űrlap betöltése…</p>}>
-              <BimQuoteForm />
+              <BimQuoteForm variant="partner" />
             </Suspense>
           </div>
         </section>
