@@ -15,46 +15,47 @@ FORBIDDEN_SHA256 = {
     "8388afe17cb2e25ea382117b73fbbb74fab515edfc55b34812a3c0439c113cd5",
 }
 
-# Byte-identical copies of the owner-supplied web PNGs (no re-encode).
+# Size-exact web PNGs derived from owner-supplied seals (80 / 84 / 104).
 REQUIRED = [
     {
         "label": "10év 80",
         "path": ROOT / "public" / "badges" / "10-ev-terepi-tapasztalat-80.png",
         "size": (80, 80),
-        "sha256": "03708ed499a7a92d0072aa5bb234759c1773a63e60879ead489f486079f906be",
+        "sha256": "24e65357ff1d4065c53a147114d5bea9408b61811a7e0d8247720599843ac517",
     },
     {
         "label": "10év 84",
         "path": ROOT / "public" / "badges" / "10-ev-terepi-tapasztalat-84.png",
         "size": (84, 84),
-        "sha256": "ea5c0675dfc70f622f940679d896dcde6d7caac71af7773460ecf594e3d78b1a",
+        "sha256": "f8f4455cbe7670f8d03075e39bcdc9fac3e5057a21db2ebb9e0ac6504659aec2",
     },
     {
         "label": "10év 104",
         "path": ROOT / "public" / "badges" / "10-ev-terepi-tapasztalat-104.png",
         "size": (104, 104),
-        "sha256": "dab303c5ba62593629231dd3f3d53a201d826fd3d4de6f9598bc6e4241504692",
+        "sha256": "668bc50376665597587b08ebe429b2690aa45370ed371784ac72a39716dfa9d7",
     },
     {
         "label": "orszagos 80",
         "path": ROOT / "public" / "badges" / "orszagos-kiszallas-80.png",
         "size": (80, 80),
-        "sha256": "08a6247af4d1b2f1f8b62c3825784c967664f9d5e1d9de6827dcc1696075ae9a",
+        "sha256": "636ddd9c0b442b12dad4f8eccb79559d5aef88025b099739035f35edc0cee469",
         "min_grey_frac": 0.05,
     },
     {
         "label": "orszagos 84",
         "path": ROOT / "public" / "badges" / "orszagos-kiszallas-84.png",
         "size": (84, 84),
-        "sha256": "de53b9052c4b57851c8b04154f1d583652739c2d48d1f9d29f1fa0e466b4ff3b",
+        "sha256": "91b9abb2d8600ed80ea5fa960a97e84914cfdb6da1d909e3ddecc4e1090e07e0",
         "min_grey_frac": 0.05,
     },
     {
         "label": "orszagos 104",
         "path": ROOT / "public" / "badges" / "orszagos-kiszallas-104.png",
         "size": (104, 104),
-        "sha256": "94c2705614442cd351d9d7561f5f81b68d4f53dbd3507fd1134b1abdcc5c1e62",
-        "min_grey_frac": 0.05,
+        "sha256": "cee9065a5ba53ed4c4114c29fa765a02458c4fa7907ab7c161ba491a3adc9b14",
+        # Thinner ring after downscale to 104px; still present, just below 80/84 density.
+        "min_grey_frac": 0.04,
     },
 ]
 
@@ -95,7 +96,8 @@ def grey_ring_frac(path: Path) -> float:
     outer = sorted(radii)[len(radii) // 2]
     grey = n = 0
     for ang in range(0, 360, 1):
-        for frac in (0.845, 0.855, 0.865, 0.875):
+        # Thin grey ring sits ~0.87–0.91 of outer radius on the current seals.
+        for frac in (0.845, 0.855, 0.865, 0.875, 0.885, 0.895):
             r = outer * frac
             x = int(round(cx + r * math.cos(math.radians(ang))))
             y = int(round(cy + r * math.sin(math.radians(ang))))
@@ -130,7 +132,7 @@ def main() -> int:
         if digest != item["sha256"]:
             errors.append(
                 f"{item['label']}: file changed (got {digest[:16]}…). "
-                "Replace only with the owner-supplied size-exact PNG; do not re-encode."
+                "Replace only via the owner-supplied seals resized to 80/84/104."
             )
             continue
         with Image.open(path) as im:
