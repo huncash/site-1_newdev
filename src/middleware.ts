@@ -109,6 +109,8 @@ export const config = {
   matcher: [
     "/admin/:path*",
     "/api/admin/:path*",
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|mp4|txt|xml)$).*)",
+    // robots.txt + sitemap.xml must hit App Router (bim rewrite → /bim/robots|/bim/sitemap).
+    // Other static assets under public/ stay excluded.
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|mp4)$).*)",
   ],
 };

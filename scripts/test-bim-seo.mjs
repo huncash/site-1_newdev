@@ -25,6 +25,7 @@ test("bim canonical builder uses constant origin, not Host header", () => {
 
 test("bim layout exports host-scoped icons and OG defaults", () => {
   const layout = read("src/app/bim/layout.tsx");
+  assert.match(layout, /generateMetadata/);
   assert.match(layout, /bimLayoutMetadata/);
   const lib = read("src/lib/bim-site.ts");
   const seo = read("src/config/bim-seo.ts");
@@ -32,6 +33,7 @@ test("bim layout exports host-scoped icons and OG defaults", () => {
   assert.match(seo, /\/bim\/og-default\.jpg/);
   assert.match(lib, /summary_large_image/);
   assert.match(lib, /bimOgImageAbsoluteUrl/);
+  assert.doesNotMatch(lib, /alternates: \{ canonical \},\s*robots,/);
 });
 
 test("root vrgo marketing metadata stays on vrgo.hu", () => {
@@ -105,8 +107,13 @@ test("bim and main robots stay host-separated", () => {
   const mainRobots = read("src/app/robots.ts");
   assert.match(bimRobots, /BIM_ORIGIN/);
   assert.match(bimRobots, /sitemap\.xml/);
+  assert.match(bimRobots, /force-dynamic/);
   assert.match(mainRobots, /https:\/\/vrgo\.hu\/api\/sitemap/);
   assert.doesNotMatch(mainRobots, /bim\.vrgo\.hu/);
+  assert.equal(existsSync(join(root, "public/robots.txt")), false);
+  const mw = read("src/middleware.ts");
+  assert.doesNotMatch(mw, /txt\|xml/);
+  assert.match(mw, /robots\.txt \+ sitemap\.xml/);
 });
 
 test("default OG image is 1200x630 landscape", async () => {

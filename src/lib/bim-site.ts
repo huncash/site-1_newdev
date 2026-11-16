@@ -92,14 +92,13 @@ export function bimMetadata(
   const imagePath = options?.ogImagePath ?? BIM_SEO.ogImagePath;
   const imageUrl = imagePath.startsWith("http") ? imagePath : `${BIM_ORIGIN}${imagePath}`;
   const imageAlt = options?.ogImageAlt ?? BIM_SEO.ogImageAlt;
-  const robots = bimRobotsMetadata();
+  // robots: a bim layout generateMetadata adja request-időben (ne build-time bake).
 
   return {
     metadataBase: new URL(BIM_ORIGIN),
     title: { absolute: title },
     description,
     alternates: { canonical },
-    robots,
     openGraph: {
       type: options?.type ?? "website",
       url: canonical,

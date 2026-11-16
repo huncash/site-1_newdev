@@ -4,7 +4,11 @@ import { headers } from "next/headers";
 import { BimChrome } from "@/components/bim/BimChrome";
 import { bimLayoutMetadata } from "@/lib/bim-site";
 
-export const metadata: Metadata = bimLayoutMetadata();
+/** robots/index gate request-időben — ne build-time ALLOW_PUBLIC_INDEXING bake. */
+export async function generateMetadata(): Promise<Metadata> {
+  await headers();
+  return bimLayoutMetadata();
+}
 
 export default async function BimLayout({ children }: { children: React.ReactNode }) {
   const prefix = (await headers()).get("x-bim-prefix") === "1";

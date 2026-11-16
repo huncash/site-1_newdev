@@ -4,6 +4,8 @@ import { BIM_SEO, bimPublicIndexingAllowed } from "@/config/bim-seo";
 import { listPublishedBimArticles } from "@/lib/bim-articles";
 import { BIM_ORIGIN } from "@/lib/bim-site";
 
+export const dynamic = "force-dynamic";
+
 const STATIC_PATHS = [
   "/",
   "/ipari-felmeres",

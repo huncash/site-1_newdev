@@ -40,7 +40,10 @@ export const BIM_SEO = {
   sitemapLastmod: "2026-11-16",
 } as const;
 
-/** Éles indexelés csak kifejezett env-nel (staging/localhost noindex). */
+/**
+ * Éles BIM-indexelés csak kifejezett env-nel (staging/localhost noindex).
+ * Csak bim robots/sitemap/metadata olvassa — vrgo.hu nem.
+ */
 export function bimPublicIndexingAllowed(): boolean {
   return process.env.ALLOW_PUBLIC_INDEXING === "1";
 }

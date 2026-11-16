@@ -1,0 +1,220 @@
+{
+  "generatedAt": "2026-11-16T19:07:50.527Z",
+  "results": [
+    {
+      "section": "scope-static",
+      "ok": true,
+      "detail": "ALLOW_PUBLIC_INDEXING only in bim-seo + bim robots/sitemap/metadata helpers"
+    },
+    {
+      "section": "scope-env-sim",
+      "ok": true,
+      "detail": "env unset => index=false; env=1 => index=true (BIM gate logic)"
+    },
+    {
+      "section": "scope-vrgo-robots-source",
+      "ok": true,
+      "detail": "vrgo.hu robots.ts has no indexing gate"
+    },
+    {
+      "section": "prod-bim-home",
+      "ok": true,
+      "detail": "status=200; meta robots=noindex, nofollow; X-Robots-Tag=null"
+    },
+    {
+      "section": "prod-vrgo-home",
+      "ok": true,
+      "detail": "status=200; meta robots=null; X-Robots-Tag=null"
+    },
+    {
+      "section": "prod-bim-index-gate",
+      "ok": true,
+      "detail": "BIM production noindex (noindex, nofollow) — gate off or not yet applied"
+    },
+    {
+      "section": "prod-bim-robots-conflict",
+      "ok": true,
+      "detail": "meta vs X-Robots conflict=false"
+    },
+    {
+      "section": "prod-vrgo-robots-conflict",
+      "ok": true,
+      "detail": "meta vs X-Robots conflict=false"
+    },
+    {
+      "section": "prod-bim-canonical",
+      "ok": true,
+      "detail": "canonical=https://bim.vrgo.hu"
+    },
+    {
+      "section": "prod-vrgo-canonical",
+      "ok": true,
+      "detail": "canonical=https://vrgo.hu/"
+    },
+    {
+      "section": "prod-og-no-localhost",
+      "ok": true,
+      "detail": "bim og=https://bim.vrgo.hu/bim/og-default.jpg; vrgo og=(none)"
+    },
+    {
+      "section": "prod-icon-separation",
+      "ok": true,
+      "detail": "bim icons=[\"/bim/favicon.ico\",\"/bim/favicon-32.png\",\"/bim/favicon-16.png\",\"/bim/icon.svg\",\"/bim/apple-touch-icon.png\"]; vrgo=[]"
+    },
+    {
+      "section": "prod-bim-robots-txt",
+      "ok": false,
+      "detail": "User-agent: * Allow: / Sitemap: https://vrgo.hu/api/sitemap # bim.vrgo.hu: /sitemap.xml (App Router src/app/bim/sitemap.ts) "
+    },
+    {
+      "section": "prod-vrgo-robots-txt",
+      "ok": true,
+      "detail": "User-agent: * Allow: / Sitemap: https://vrgo.hu/api/sitemap # bim.vrgo.hu: /sitemap.xml (App Router src/app/bim/sitemap.ts) "
+    },
+    {
+      "section": "prod-bim-sitemap",
+      "ok": false,
+      "detail": "status=404; xml=false; len=13231"
+    },
+    {
+      "section": "prod-bim-orgs",
+      "ok": true,
+      "detail": "[{\"id\":\"https://vrgo.hu/#organization\",\"name\":\"ADP-TOP Kft.\",\"url\":\"https://vrgo.hu\"},{\"id\":\"https://bim.vrgo.hu/#brand\",\"name\":\"VRGO BIM\",\"url\":\"https://bim.vrgo.hu\"},{\"id\":\"https://vrgo.hu/#organization\",\"name\":\"ADP-TOP Kft.\",\"url\":\"https://vrgo.hu\"},{\"id\":\"https://bim.vrgo.hu/#brand\",\"name\":\"VRGO BIM\",\"url\":\"https://bim.vrgo.hu\"}]"
+    },
+    {
+      "section": "prod-vrgo-orgs",
+      "ok": true,
+      "detail": "[{\"id\":\"https://vrgo.hu/#organization\",\"name\":\"VRGO\",\"url\":\"https://vrgo.hu\"},{\"id\":\"https://vrgo.hu/#organization\",\"name\":\"VRGO\",\"url\":\"https://vrgo.hu\"}]"
+    },
+    {
+      "section": "org-id-name-mismatch",
+      "ok": false,
+      "detail": "same @id, different name: bim=\"ADP-TOP Kft.\" vs vrgo=\"VRGO\" (flag only; homepage not changed)"
+    },
+    {
+      "section": "redirect /szolgaltatasok/ipari-letesitmenyek",
+      "ok": true,
+      "detail": "status=301; location=/ipari-felmeres; targetStatus=200; targetCanonical=https://bim.vrgo.hu/ipari-felmeres"
+    },
+    {
+      "section": "redirect /ipari-letesitmenyek",
+      "ok": true,
+      "detail": "status=301; location=/ipari-felmeres; targetStatus=200; targetCanonical=https://bim.vrgo.hu/ipari-felmeres"
+    },
+    {
+      "section": "redirect /szolgaltatasok/tervezoknek-es-kivitelezoknek",
+      "ok": true,
+      "detail": "status=301; location=/tervezoknek; targetStatus=200; targetCanonical=https://bim.vrgo.hu/tervezoknek"
+    },
+    {
+      "section": "redirect /lakossagnak",
+      "ok": true,
+      "detail": "status=301; location=/lakossagi-felmeres; targetStatus=200; targetCanonical=https://bim.vrgo.hu/lakossagi-felmeres"
+    },
+    {
+      "section": "redirect /szolgaltatasok/lakas-es-hazfelmeres",
+      "ok": true,
+      "detail": "status=301; location=/lakossagi-felmeres; targetStatus=200; targetCanonical=https://bim.vrgo.hu/lakossagi-felmeres"
+    },
+    {
+      "section": "redirect /szolgaltatasok/allami-bim-megfeleles",
+      "ok": true,
+      "detail": "status=301; location=/megoldasok/allami-beruhazasok-es-bim-eloirasok; targetStatus=200; targetCanonical=https://bim.vrgo.hu/megoldasok/allami-beruhazasok-es-bim-eloirasok"
+    },
+    {
+      "section": "og-disk-size",
+      "ok": true,
+      "detail": "1200x630"
+    },
+    {
+      "section": "asset /bim/og-default.jpg",
+      "ok": true,
+      "detail": "status=200; content-type=image/jpeg"
+    },
+    {
+      "section": "asset /bim/favicon.ico",
+      "ok": true,
+      "detail": "status=200; content-type=image/x-icon"
+    },
+    {
+      "section": "asset /bim/favicon-32.png",
+      "ok": true,
+      "detail": "status=200; content-type=image/png"
+    },
+    {
+      "section": "asset /bim/apple-touch-icon.png",
+      "ok": true,
+      "detail": "status=200; content-type=image/png"
+    },
+    {
+      "section": "asset /bim/icon.svg",
+      "ok": true,
+      "detail": "status=200; content-type=image/svg+xml"
+    },
+    {
+      "section": "og-live-size",
+      "ok": true,
+      "detail": "live 1200x630"
+    },
+    {
+      "section": "sitemap-excludes /szolgaltatasok/ipari-letesitmenyek",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "section": "sitemap-excludes /ipari-letesitmenyek",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "section": "sitemap-excludes /szolgaltatasok/tervezoknek-es-kivitelezoknek",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "section": "sitemap-excludes /lakossagnak",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "section": "sitemap-excludes /szolgaltatasok/lakas-es-hazfelmeres",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "section": "sitemap-excludes /szolgaltatasok/allami-bim-megfeleles",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "section": "sitemap-has /ipari-felmeres",
+      "ok": false,
+      "detail": ""
+    },
+    {
+      "section": "sitemap-has /tervezoknek",
+      "ok": false,
+      "detail": ""
+    },
+    {
+      "section": "sitemap-has /lakossagi-felmeres",
+      "ok": false,
+      "detail": ""
+    },
+    {
+      "section": "sitemap-has /megoldasok/allami-beruhazasok-es-bim-eloirasok",
+      "ok": false,
+      "detail": ""
+    },
+    {
+      "section": "internal-links-hubs",
+      "ok": true,
+      "detail": "megoldasok page links to final hubs"
+    },
+    {
+      "section": "internal-no-legacy-ipari",
+      "ok": true,
+      "detail": "no legacy industrial href on megoldasok"
+    }
+  ]
+}

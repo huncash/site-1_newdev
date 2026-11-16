@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://vrgo.hu/api/sitemap
-# bim.vrgo.hu: /sitemap.xml (App Router src/app/bim/sitemap.ts)
