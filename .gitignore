@@ -4,5 +4,6 @@ out
 .env
 .env*.local
 .bim-allow-public-indexing
+.bim-allow-public-indexing
 data/listing-enquiries.jsonl
 data/*.jsonl
