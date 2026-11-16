@@ -64,20 +64,26 @@ jobs:
               fi
               echo "RECIPIENT_MAIN synced from GitHub secret"
             fi
-            # Production VPS: explicit public indexing for bim.vrgo.hu / vrgo.hu.
+            # Production VPS: BIM public indexing — shell + .env.local + PM2 env.
+            export ALLOW_PUBLIC_INDEXING=1
             if grep -q '^ALLOW_PUBLIC_INDEXING=' .env.local; then
               sed -i 's|^ALLOW_PUBLIC_INDEXING=.*|ALLOW_PUBLIC_INDEXING=1|' .env.local
             else
               printf '\nALLOW_PUBLIC_INDEXING=1\n' >> .env.local
             fi
-            echo "ALLOW_PUBLIC_INDEXING=1 ensured on production"
+            grep -n '^ALLOW_PUBLIC_INDEXING=' .env.local
+            echo "ALLOW_PUBLIC_INDEXING=${ALLOW_PUBLIC_INDEXING} (shell)"
             if [[ ! -f .env.local ]] || { ! grep -q '^RECIPIENT_MAIN=.' .env.local && ! grep -q '^QUOTE_INBOX_EMAIL=.' .env.local; } || ! grep -q '^SMTP_HOST=.' .env.local || ! grep -q '^RECAPTCHA_SECRET_KEY=.' .env.local || ! grep -q '^NEXT_PUBLIC_RECAPTCHA_SITE_KEY=.' .env.local; then
               echo "WARNING: quote mail or reCAPTCHA is not fully set in .env.local; quote emails will not be sent"
             fi
             rm -rf .next
-            npm run build
+            ALLOW_PUBLIC_INDEXING=1 npm run build
             pm2 delete "$APP_NAME" || true
-            pm2 start npm --name "$APP_NAME" --cwd "$APP_DIR" -- start
+            ALLOW_PUBLIC_INDEXING=1 PORT=3000 pm2 start npm --name "$APP_NAME" --cwd "$APP_DIR" --update-env -- start
             pm2 save
             ss -lptn | grep -E ':3000\b' || true
             pm2 status
+            sleep 3
+            echo "=== smoke bim robots/sitemap (Host: bim.vrgo.hu) ==="
+            curl -sS -H 'Host: bim.vrgo.hu' "http://127.0.0.1:3000/robots.txt" | head -n 20
+            curl -sS -H 'Host: bim.vrgo.hu' "http://127.0.0.1:3000/sitemap.xml" | head -n 15

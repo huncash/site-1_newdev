@@ -43,9 +43,11 @@ export const BIM_SEO = {
 /**
  * Éles BIM-indexelés csak kifejezett env-nel (staging/localhost noindex).
  * Csak bim robots/sitemap/metadata olvassa — vrgo.hu nem.
+ * Dinamikus env-kulcs: ne legyen build-time `undefined` beégetés.
  */
 export function bimPublicIndexingAllowed(): boolean {
-  return process.env.ALLOW_PUBLIC_INDEXING === "1";
+  const key = "ALLOW_PUBLIC_INDEXING";
+  return process.env[key] === "1";
 }
 
 export function bimOgImageAbsoluteUrl(): string {
