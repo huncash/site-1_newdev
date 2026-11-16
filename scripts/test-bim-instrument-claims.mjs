@@ -97,10 +97,13 @@ test("technology page exists under bim app router and uses claim components", ()
 });
 
 test("bim metadata canonical stays on bim.vrgo.hu", () => {
+  const seo = readFileSync(join(root, "src/config/bim-seo.ts"), "utf8");
   const site = readFileSync(join(root, "src/lib/bim-site.ts"), "utf8");
-  assert.match(site, /export const BIM_ORIGIN = "https:\/\/bim\.vrgo\.hu"/);
-  assert.match(site, /export const MAIN_ORIGIN = "https:\/\/vrgo\.hu"/);
-  assert.match(site, /const canonical = path === "\/" \? `\$\{BIM_ORIGIN\}\/`/);
+  assert.match(seo, /export const BIM_ORIGIN = "https:\/\/bim\.vrgo\.hu"/);
+  assert.match(seo, /export const MAIN_ORIGIN = "https:\/\/vrgo\.hu"/);
+  assert.match(site, /export \{ BIM_ORIGIN, MAIN_ORIGIN \}/);
+  assert.match(site, /bimCanonical\(/);
+  assert.match(site, /const canonical = bimCanonical\(path\)/);
 });
 
 test("no public API route exposes instrument claim switches", () => {

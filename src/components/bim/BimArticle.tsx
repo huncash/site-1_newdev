@@ -5,6 +5,7 @@ import {
   splitAfterFirstParagraph,
   type BimArticle,
 } from "@/lib/bim-articles";
+import { BIM_SEO } from "@/config/bim-seo";
 import { BIM_ORIGIN } from "@/lib/bim-site";
 import { cn } from "@/lib/utils";
 
@@ -25,25 +26,29 @@ const bodyClass = cn(
 export function bimArticleJsonLd(article: BimArticle) {
   return {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": "Article",
     headline: article.title,
     description: article.description,
     datePublished: article.date,
     dateModified: article.date,
-    inLanguage: "hu",
+    inLanguage: "hu-HU",
     keywords: article.keywords.join(", "),
     image: `${BIM_ORIGIN}${article.image}`,
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: article.author,
-      url: "https://vrgo.hu",
     },
     publisher: {
       "@type": "Organization",
-      name: "VRGO",
-      url: BIM_ORIGIN,
+      "@id": BIM_SEO.legalOrganizationId,
+      name: BIM_SEO.legalOrganizationName,
+      url: "https://vrgo.hu",
     },
-    mainEntityOfPage: `${BIM_ORIGIN}/cikkek/${article.slug}`,
+    isPartOf: { "@id": BIM_SEO.websiteId },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BIM_ORIGIN}/cikkek/${article.slug}`,
+    },
   };
 }
 

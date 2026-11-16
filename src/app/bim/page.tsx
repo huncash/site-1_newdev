@@ -1,16 +1,13 @@
 import { BimLink } from "@/components/bim/BimChrome";
 import { BimTrustBadges } from "@/components/bim/BimTrustBadges";
-import { BIM_CONFIG } from "@/config/bim";
 import { BIM_INDUSTRIAL_HREF, BIM_MODELER_HREF, BIM_STATE_HUB_HREF } from "@/config/menu";
+import { BIM_SEO } from "@/config/bim-seo";
+import { bimHomeJsonLd } from "@/lib/bim-jsonld";
 import { bimMetadata } from "@/lib/bim-site";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = bimMetadata(
-  "/",
-  "Felmérés: pontfelhő, EOV és terepi adat | VRGO BIM",
-  "Meglévő épületek és ipari terek felmérése, pontfelhővel és egyeztetett dokumentációval. A modellkészítés nem automatikus része minden felmérésnek."
-);
+export const metadata = bimMetadata("/", BIM_SEO.defaultTitle, BIM_SEO.defaultDescription);
 
 const WORK_AREAS = [
   {
@@ -52,28 +49,12 @@ const PROCESS = [
   { title: "Átadás", text: "A megrendelt kimenetek dokumentált átadása." },
 ] as const;
 
-function orgSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: BIM_CONFIG.organizationName,
-    url: BIM_CONFIG.organizationUrl,
-    description:
-      "Terepi felmérés: pontfelhő, EOV-illesztés és a megrendelő követelménye szerinti átadás.",
-    parentOrganization: {
-      "@type": "Organization",
-      name: "VRGO",
-      url: "https://vrgo.hu",
-    },
-  };
-}
-
 export default function BimHomePage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bimHomeJsonLd()) }}
       />
 
       <section className="bg-section-dark text-section-dark-foreground">

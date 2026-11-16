@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { BIM_SEO, bimPublicIndexingAllowed } from "@/config/bim-seo";
 import { listPublishedBimArticles } from "@/lib/bim-articles";
 import { BIM_ORIGIN } from "@/lib/bim-site";
 
@@ -31,10 +32,14 @@ const STATIC_PATHS = [
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  if (!bimPublicIndexingAllowed()) {
+    return [];
+  }
+
+  const lastmod = new Date(`${BIM_SEO.sitemapLastmod}T12:00:00Z`);
   const staticEntries: MetadataRoute.Sitemap = STATIC_PATHS.map((path) => ({
     url: path === "/" ? `${BIM_ORIGIN}/` : `${BIM_ORIGIN}${path}`,
-    lastModified: now,
+    lastModified: lastmod,
     changeFrequency: path === "/" ? "weekly" : "monthly",
     priority:
       path === "/"

@@ -9,7 +9,8 @@ import {
   getBimArticleMeta,
   isBimArticlePublished,
 } from "@/lib/bim-articles";
-import { BIM_ORIGIN } from "@/lib/bim-site";
+import { bimRobotsMetadata } from "@/config/bim-seo";
+import { BIM_ORIGIN, bimCanonical } from "@/lib/bim-site";
 
 export const revalidate = 900;
 
@@ -27,7 +28,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const article = getBimArticleMeta(slug);
   if (!article) return {};
 
-  const canonical = `${BIM_ORIGIN}/cikkek/${article.slug}`;
+  const canonical = bimCanonical(`/cikkek/${article.slug}`);
   const preview = isDevPreview((await searchParams).elonezet);
   const published = isBimArticlePublished(article);
 
@@ -35,18 +36,23 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
   if (!published || preview) {
     return {
+      metadataBase: new URL(BIM_ORIGIN),
       title: { absolute: `${article.seoTitle} | VRGO BIM` },
       description: `Ez a cikk ${formatHuDate(article.date, article.time)}-kor jelenik meg a bim.vrgo.hu oldalon.`,
       robots: { index: false, follow: false },
     };
   }
 
+  const robots = bimRobotsMetadata();
+  const imageUrl = `${BIM_ORIGIN}${article.image}`;
+
   return {
+    metadataBase: new URL(BIM_ORIGIN),
     title: { absolute: `${article.seoTitle} | VRGO BIM` },
     description: article.description,
     keywords: article.keywords,
     alternates: { canonical },
-    robots: { index: true, follow: true },
+    robots,
     openGraph: {
       type: "article",
       url: canonical,
@@ -55,7 +61,20 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       locale: "hu_HU",
       siteName: "VRGO BIM",
       publishedTime: article.date,
-      images: [{ url: `${BIM_ORIGIN}${article.image}`, alt: article.imageAlt }],
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: article.imageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description,
+      images: [imageUrl],
     },
   };
 }
