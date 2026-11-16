@@ -23,12 +23,20 @@ const STEPS = [
   },
   {
     title: "Minőség-ellenőrzés",
-    text: "Az ellenőrző pontokat, az EOV-illesztést és az átadási listát az igények alapján rögzítjük. Ha a megrendelő modellezési ellenőrzést is kér, annak módját külön egyeztetjük.",
+    text: "Az ellenőrző pontokat, az EOV-illesztést és az átadási listát az igények alapján rögzítjük. Ha a megrendelő modellezési ellenőrzést is kér, annak módját külön egyeztetjük. Független tanúsítást vagy automatikus hibamentességet nem állítunk.",
   },
   {
     title: "Adatátadás",
-    text: "A kimenetet a megrendelő által kért formátumban adjuk át. A részletes formátumokat az ajánlat rögzíti.",
+    text: "A kimenetet a megrendelő által kért formátumban adjuk át. A részletes formátumokat az ajánlat rögzíti. A helyszíni és az irodai munka időigénye az ajánlatban külön szerepel.",
   },
+] as const;
+
+const DELIVERY = [
+  "Terepi adatfelvétel — a rögzített hatókör szerint",
+  "Regisztrált pontfelhő — illesztés és tisztítás",
+  "Optimalizált átadás — a kért állományformátum",
+  "Rajzkészítés — csak ha a megrendelés külön kéri",
+  "BIM-modellezés — nem automatikus része a felmérésnek",
 ] as const;
 
 export default function ProcessPage() {
@@ -36,7 +44,9 @@ export default function ProcessPage() {
     <article className="bg-background">
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold sm:text-4xl">A felmérés menete</h1>
+          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
+            A felmérés menete
+          </h1>
           <p className="mt-4 max-w-3xl text-sm opacity-90 sm:text-base">
             Rövid, követhető folyamat a felmérési igény tisztázásától az adatátadásig.
           </p>
@@ -62,6 +72,11 @@ export default function ProcessPage() {
             egyeztetett egyéb kimenet lehet. A megrendelésben rögzítjük, hogy mit adunk át és milyen
             ellenőrzéssel.
           </p>
+          <ul className="mt-4 list-disc space-y-2 pl-5">
+            {DELIVERY.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
           <div className="mt-3">
             <BimScopeNote />
           </div>
@@ -81,6 +96,17 @@ export default function ProcessPage() {
         </section>
 
         <section>
+          <h2 className="text-xl font-semibold text-foreground">Technológia és minőség</h2>
+          <p className="mt-3">
+            A gyártói képesség, a mérési beállítás és az átadott eredmény kapcsolatát a{" "}
+            <BimLink href="/technologia-es-minoseg" className="font-semibold text-brand">
+              technológia és átadási minőség
+            </BimLink>{" "}
+            oldalon magyarázzuk.
+          </p>
+        </section>
+
+        <section>
           <h2 className="text-xl font-semibold text-foreground">GYIK</h2>
           <p className="mt-3">
             Gyakori kérdések a{" "}
@@ -95,7 +121,7 @@ export default function ProcessPage() {
           href="/kapcsolat?forras=munkafolyamat"
           className="inline-flex rounded-md bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground"
         >
-          Ajánlat kérése
+          Projektet egyeztetek
         </BimLink>
       </div>
     </article>

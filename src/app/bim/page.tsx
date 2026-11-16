@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 export const metadata = bimMetadata(
   "/",
   "Felmérés: pontfelhő, EOV és terepi adat | VRGO BIM",
-  "Terepi felmérés robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával. Pontfelhő és EOV-illesztett adat a megrendelő követelménye szerint."
+  "Meglévő épületek és ipari terek felmérése, pontfelhővel és egyeztetett dokumentációval. A modellkészítés nem automatikus része minden felmérésnek."
 );
 
 const WORK_AREAS = [
@@ -82,16 +82,15 @@ export default function BimHomePage() {
             Felmérés, amelyből tervezni lehet
           </h1>
           <p className="mt-4 max-w-3xl text-base opacity-90 sm:text-lg">
-            A terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával
-            végezzük. A konkrét feladathoz tartozó lézerszkennelési kapacitást a megrendelés előtt
-            egyeztetjük.
+            Meglévő épületek és ipari terek felmérése, pontfelhővel és egyeztetett dokumentációval.
+            A modellkészítés nem automatikus része minden felmérésnek.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <BimLink
               href="/kapcsolat?utvonal=ipar&forras=hero"
               className="inline-flex w-full items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark sm:w-auto"
             >
-              Kérjen ajánlatot
+              Projektet egyeztetek
             </BimLink>
             <BimLink
               href={`${BIM_MODELER_HREF}?forras=hero`}
@@ -205,8 +204,13 @@ export default function BimHomePage() {
             href="/kapcsolat?forras=fooldal-zaras"
             className="mt-8 inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-brand-foreground hover:bg-brand-dark"
           >
-            Űrlap kitöltése
+            Projektet egyeztetek
           </BimLink>
+          <p className="mt-4 text-xs opacity-80">
+            <BimLink href="/technologia-es-minoseg" className="underline underline-offset-2">
+              Technológia és átadási minőség
+            </BimLink>
+          </p>
         </div>
       </section>
     </>

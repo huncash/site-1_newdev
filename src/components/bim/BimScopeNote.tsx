@@ -12,6 +12,10 @@ export function BimScopeNote() {
         <BimLink href="/pontossag-es-formatumok" className="font-semibold text-brand">
           Pontosság és formátumok
         </BimLink>
+        {" · "}
+        <BimLink href="/technologia-es-minoseg" className="font-semibold text-brand">
+          Technológia és minőség
+        </BimLink>
       </p>
     </div>
   );

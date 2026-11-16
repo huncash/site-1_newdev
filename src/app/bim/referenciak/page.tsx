@@ -8,11 +8,18 @@ export const metadata = bimMetadata(
 );
 
 const pillars = [
-  "Terepi felmérés, regisztráció és minőség-ellenőrzés",
+  "Terepi felmérés, regisztráció és a megrendelésben vállalt ellenőrzés",
   "Tervezésre használható pontfelhő",
   "EOV-illesztés és a megrendelés szerinti kimenet",
   "Ipari környezetben a termelési ütemtervhez igazodó helyszíni munka",
   "Országos kiszállás; nagyobb projektnél többnapos helyszíni munka",
+] as const;
+
+const SAMPLE_POLICY = [
+  "Publikus ügyféllogó vagy helyszínrészlet csak engedéllyel",
+  "Hiányzó méretet vagy terjedelmet nem pótolunk kitalált számmal",
+  "Személyes vagy partnerként szerzett tapasztalat nem jelenik meg automatikusan a VRGO önálló referenciájaként",
+  "Nincs színlelt mintaletöltés vagy viewer-gomb, amíg nincs engedélyezett mintaállomány",
 ] as const;
 
 export default function ReferencesPage() {
@@ -20,7 +27,7 @@ export default function ReferencesPage() {
     <article className="bg-background">
       <section className="bg-section-dark py-14 text-section-dark-foreground">
         <div className="mx-auto max-w-4xl px-4">
-          <h1 className="text-3xl font-bold sm:text-4xl">
+          <h1 className="text-3xl font-bold text-section-dark-foreground sm:text-4xl">
             Módszer és átadási alap a tervezéshez
           </h1>
           <p className="mt-4 max-w-3xl opacity-90">
@@ -45,8 +52,21 @@ export default function ReferencesPage() {
           <p className="mt-2 text-sm text-muted-foreground">
             A terepi felmérést robotmérőállomással, GNSS-vevővel és drónos fotogrammetriával
             végezzük. A konkrét feladathoz tartozó lézerszkennelési kapacitást a megrendelés előtt
-            egyeztetjük.
+            egyeztetjük. A gyártói maximum és az átadott eredmény kapcsolatát a{" "}
+            <BimLink href="/technologia-es-minoseg" className="font-semibold text-brand">
+              technológia és minőség
+            </BimLink>{" "}
+            oldalon tisztázzuk.
           </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-foreground">Minták és publikálás</h2>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
+            {SAMPLE_POLICY.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </section>
 
         <section>
@@ -56,7 +76,7 @@ export default function ReferencesPage() {
               href="/kapcsolat?utvonal=ipar&forras=referenciak"
               className="inline-flex rounded-md bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground"
             >
-              Helyszíni felmérési ajánlat
+              Projektet egyeztetek
             </BimLink>
             <BimLink
               href="/scan-to-bim-kapacitas"

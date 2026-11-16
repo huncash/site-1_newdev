@@ -24,6 +24,7 @@ export const BIM_NAV = [
   },
   { href: "/ekm-rendelet", label: "Állami BIM-előírások egy oldalon" },
   { href: "/pontossag-es-formatumok", label: "Pontosság" },
+  { href: "/technologia-es-minoseg", label: "Technológia és minőség" },
   { href: "/referenciak", label: "Referenciák" },
   { href: "/cikkek", label: "Blog" },
   { href: "/gyik", label: "GYIK" },

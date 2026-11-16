@@ -20,6 +20,7 @@ const STATIC_PATHS = [
   "/szolgaltatasok/georeferalas-eov",
   "/szolgaltatasok/bim-modellezes",
   "/pontossag-es-formatumok",
+  "/technologia-es-minoseg",
   "/kivitelezes",
   "/uzemeltetes",
   "/meglevo-allami-epuletek",

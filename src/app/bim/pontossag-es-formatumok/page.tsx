@@ -67,7 +67,12 @@ export default function AccuracyPage() {
           <h2 className="text-xl font-semibold text-foreground">Ajánlati szintek és EIR</h2>
           <p className="mt-2">
             A pontossági szintet az EIR vagy a megrendelés határozza meg. A vállalt szintet az
-            ajánlatban rögzítjük.
+            ajánlatban rögzítjük. A regisztrációs eltérés nem automatikusan a projekt abszolút
+            pontossága; a sűrűbb pontfelhő sem automatikusan pontosabb. Részletesebb magyarázat:{" "}
+            <BimLink href="/technologia-es-minoseg" className="font-semibold text-brand">
+              technológia és átadási minőség
+            </BimLink>
+            .
           </p>
         </section>
         <section>
