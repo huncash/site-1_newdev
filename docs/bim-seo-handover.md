@@ -1,7 +1,7 @@
 # bim.vrgo.hu — SEO / szervezeti azonosítás / megosztás átadás
 
-**Állapot (2026-11-16 lezáró ellenőrzés):** kódjavítások a repo working tree-ben; **új deploy most nincs**.  
-Éles (`cfd65c1`) HTTP-ellenőrizve; a robots/sitemap/indexing gate hibái ott még látszanak. A javítások a következő „mehet fel” után érvényesülnek.
+**Állapot (2026-11-16 éles):** `e5e5c7d` után sitemap + meta `index, follow` OK.  
+Robots: nested MetadataRoute CF alatt csak content-signals volt → `/bim/seo-robots` Node route + middleware rewrite.
 
 ---
 

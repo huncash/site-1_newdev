@@ -45,7 +45,12 @@ function bimRouting(request: NextRequest): NextResponse | null {
       return NextResponse.redirect(new URL(clean, request.url));
     }
     const url = request.nextUrl.clone();
-    url.pathname = pathname === "/" ? "/bim" : `/bim${pathname}`;
+    // Explicit Node route — nested MetadataRoute robots.txt CF alatt üres/signals-only volt.
+    if (pathname === "/robots.txt") {
+      url.pathname = "/bim/seo-robots";
+    } else {
+      url.pathname = pathname === "/" ? "/bim" : `/bim${pathname}`;
+    }
     return NextResponse.rewrite(url, {
       request: { headers: withSiteHeaders(request, "bim", false) },
     });

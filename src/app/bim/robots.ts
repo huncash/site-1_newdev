@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next";
 
-import { bimPublicIndexingAllowed } from "@/config/bim-seo";
-import { BIM_ORIGIN } from "@/lib/bim-site";
+import { bimPublicIndexingAllowed, BIM_ORIGIN } from "@/config/bim-seo";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-/** bim.vrgo.hu robots — rewrite: /robots.txt → /bim/robots.txt */
+/**
+ * Fallback MetadataRoute at /bim/robots.txt.
+ * Éles bim host: middleware → /bim/seo-robots (explicit text/plain).
+ */
 export default function robots(): MetadataRoute.Robots {
   const allowIndex = bimPublicIndexingAllowed();
 

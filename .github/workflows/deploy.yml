@@ -86,7 +86,16 @@ jobs:
             pm2 status
             sleep 3
             echo "=== smoke bim robots/sitemap (Host: bim.vrgo.hu) ==="
-            curl -sS -H 'Host: bim.vrgo.hu' "http://127.0.0.1:3000/robots.txt" | head -n 40
+            ROBOTS="$(curl -sS -H 'Host: bim.vrgo.hu' "http://127.0.0.1:3000/robots.txt")"
+            echo "$ROBOTS" | head -n 40
+            if ! echo "$ROBOTS" | grep -q 'Allow: /'; then
+              echo "ERROR: bim robots missing Allow: /"
+              exit 1
+            fi
+            if ! echo "$ROBOTS" | grep -q 'Sitemap: https://bim.vrgo.hu/sitemap.xml'; then
+              echo "ERROR: bim robots missing Sitemap line"
+              exit 1
+            fi
             SMAP="$(curl -sS -H 'Host: bim.vrgo.hu' "http://127.0.0.1:3000/sitemap.xml")"
             echo "$SMAP" | head -n 25
             if echo "$SMAP" | grep -qi '<html'; then

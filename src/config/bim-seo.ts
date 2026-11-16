@@ -45,13 +45,18 @@ export const BIM_SEO = {
  * BIM indexelés (csak bim robots/sitemap/metadata — vrgo.hu nem olvassa).
  * - DISALLOW_PUBLIC_INDEXING=1 → mindig noindex (staging)
  * - ALLOW_PUBLIC_INDEXING=1 vagy jelzőfájl → index
- * - next start / NODE_ENV=production → index (éles VPS)
+ * - Vercel production / next start (NODE_ENV=production, nem preview) → index
  * - next dev → noindex
  */
 export function bimPublicIndexingAllowed(): boolean {
   if (process.env.DISALLOW_PUBLIC_INDEXING === "1") return false;
   if (process.env.ALLOW_PUBLIC_INDEXING === "1") return true;
   if (bimIndexingFlagFileAllows()) return true;
+  // Vercel preview: NODE_ENV is production, but VERCEL_ENV=preview
+  if (process.env.VERCEL_ENV === "preview" || process.env.VERCEL_ENV === "development") {
+    return false;
+  }
+  if (process.env.VERCEL_ENV === "production") return true;
   return process.env.NODE_ENV === "production";
 }
 

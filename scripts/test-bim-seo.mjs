@@ -112,15 +112,18 @@ test("main sitemap route remains vrgo.hu-only", () => {
 test("bim and main robots stay host-separated", () => {
   const bimRobots = read("src/app/bim/robots.ts");
   const mainRobots = read("src/app/robots.ts");
+  const seoRobots = read("src/app/bim/seo-robots/route.ts");
   assert.match(bimRobots, /BIM_ORIGIN/);
   assert.match(bimRobots, /sitemap\.xml/);
   assert.match(bimRobots, /force-dynamic/);
+  assert.match(seoRobots, /runtime = "nodejs"/);
+  assert.match(seoRobots, /Sitemap: \$\{BIM_ORIGIN\}\/sitemap\.xml/);
   assert.match(mainRobots, /https:\/\/vrgo\.hu\/api\/sitemap/);
   assert.doesNotMatch(mainRobots, /bim\.vrgo\.hu/);
   assert.equal(existsSync(join(root, "public/robots.txt")), false);
   const mw = read("src/middleware.ts");
   assert.doesNotMatch(mw, /txt\|xml/);
-  assert.match(mw, /robots\.txt \+ sitemap\.xml/);
+  assert.match(mw, /\/bim\/seo-robots/);
 });
 
 test("default OG image is 1200x630 landscape", async () => {
