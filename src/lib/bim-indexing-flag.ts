@@ -3,15 +3,20 @@ import { join } from "node:path";
 
 /**
  * Éles index-gate pótló jelzőfájl — deploy írja, gitignore-olt.
- * Elkerüli a Next build-time env-beégetést.
+ * Több path: PM2 cwd eltérhet.
  */
-const FLAG_PATH = join(process.cwd(), ".bim-allow-public-indexing");
+const CANDIDATES = [
+  join(process.cwd(), ".bim-allow-public-indexing"),
+  "/var/www/site-1/.bim-allow-public-indexing",
+];
 
 export function bimIndexingFlagFileAllows(): boolean {
   try {
-    if (!existsSync(FLAG_PATH)) return false;
-    const raw = readFileSync(FLAG_PATH, "utf8").trim();
-    return raw === "1";
+    for (const path of CANDIDATES) {
+      if (!existsSync(path)) continue;
+      if (readFileSync(path, "utf8").trim() === "1") return true;
+    }
+    return false;
   } catch {
     return false;
   }

@@ -42,13 +42,17 @@ export const BIM_SEO = {
 } as const;
 
 /**
- * Éles BIM-indexelés: env VAGY deploy által írt jelzőfájl.
- * Csak bim robots/sitemap/metadata olvassa — vrgo.hu nem.
+ * BIM indexelés (csak bim robots/sitemap/metadata — vrgo.hu nem olvassa).
+ * - DISALLOW_PUBLIC_INDEXING=1 → mindig noindex (staging)
+ * - ALLOW_PUBLIC_INDEXING=1 vagy jelzőfájl → index
+ * - next start / NODE_ENV=production → index (éles VPS)
+ * - next dev → noindex
  */
 export function bimPublicIndexingAllowed(): boolean {
-  const key = "ALLOW_PUBLIC_INDEXING";
-  if (process.env[key] === "1") return true;
-  return bimIndexingFlagFileAllows();
+  if (process.env.DISALLOW_PUBLIC_INDEXING === "1") return false;
+  if (process.env.ALLOW_PUBLIC_INDEXING === "1") return true;
+  if (bimIndexingFlagFileAllows()) return true;
+  return process.env.NODE_ENV === "production";
 }
 
 export function bimOgImageAbsoluteUrl(): string {

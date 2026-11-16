@@ -87,16 +87,20 @@ test("bim robots and sitemap assets exist; OG and icons on disk", () => {
   }
 });
 
-test("indexing gate defaults off without ALLOW_PUBLIC_INDEXING", () => {
+test("indexing gate: production allow, staging disallow, bim-only", () => {
   const seo = read("src/config/bim-seo.ts");
-  assert.match(seo, /ALLOW_PUBLIC_INDEXING/);
+  assert.match(seo, /DISALLOW_PUBLIC_INDEXING/);
+  assert.match(seo, /NODE_ENV === "production"/);
   assert.match(seo, /bimIndexingFlagFileAllows/);
   assert.match(read("src/lib/bim-indexing-flag.ts"), /\.bim-allow-public-indexing/);
   const robots = read("src/app/bim/robots.ts");
   assert.match(robots, /bimPublicIndexingAllowed/);
+  assert.match(robots, /runtime = "nodejs"/);
   const sitemap = read("src/app/bim/sitemap.ts");
   assert.match(sitemap, /if \(!bimPublicIndexingAllowed\(\)\)/);
+  assert.match(sitemap, /runtime = "nodejs"/);
   assert.equal(existsSync(join(root, "ecosystem.config.cjs")), true);
+  assert.doesNotMatch(read("src/app/robots.ts"), /bimPublicIndexingAllowed|ALLOW_PUBLIC_INDEXING/);
 });
 
 test("main sitemap route remains vrgo.hu-only", () => {

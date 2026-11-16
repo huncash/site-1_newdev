@@ -5,6 +5,7 @@ import { listPublishedBimArticles } from "@/lib/bim-articles";
 import { BIM_ORIGIN } from "@/lib/bim-site";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 const STATIC_PATHS = [
   "/",

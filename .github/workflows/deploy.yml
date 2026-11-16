@@ -86,10 +86,19 @@ jobs:
             pm2 status
             sleep 3
             echo "=== smoke bim robots/sitemap (Host: bim.vrgo.hu) ==="
-            curl -sS -H 'Host: bim.vrgo.hu' "http://127.0.0.1:3000/robots.txt" | head -n 30
+            curl -sS -H 'Host: bim.vrgo.hu' "http://127.0.0.1:3000/robots.txt" | head -n 40
             SMAP="$(curl -sS -H 'Host: bim.vrgo.hu' "http://127.0.0.1:3000/sitemap.xml")"
-            echo "$SMAP" | head -n 20
-            if ! echo "$SMAP" | grep -q 'https://bim.vrgo.hu/'; then
+            echo "$SMAP" | head -n 25
+            if echo "$SMAP" | grep -qi '<html'; then
+              echo "ERROR: sitemap returned HTML (false-positive risk)"
+              exit 1
+            fi
+            if ! echo "$SMAP" | grep -q '<urlset'; then
+              echo "ERROR: sitemap missing urlset"
+              exit 1
+            fi
+            if ! echo "$SMAP" | grep -q 'https://bim.vrgo.hu/ipari-felmeres'; then
               echo "ERROR: bim sitemap empty — indexing gate still off"
               exit 1
             fi
+            echo "SMOKE_OK indexing gate on"
