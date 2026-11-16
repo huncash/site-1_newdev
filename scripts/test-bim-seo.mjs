@@ -90,11 +90,13 @@ test("bim robots and sitemap assets exist; OG and icons on disk", () => {
 test("indexing gate defaults off without ALLOW_PUBLIC_INDEXING", () => {
   const seo = read("src/config/bim-seo.ts");
   assert.match(seo, /ALLOW_PUBLIC_INDEXING/);
-  assert.match(seo, /process\.env\[key\] === "1"/);
+  assert.match(seo, /bimIndexingFlagFileAllows/);
+  assert.match(read("src/lib/bim-indexing-flag.ts"), /\.bim-allow-public-indexing/);
   const robots = read("src/app/bim/robots.ts");
   assert.match(robots, /bimPublicIndexingAllowed/);
   const sitemap = read("src/app/bim/sitemap.ts");
   assert.match(sitemap, /if \(!bimPublicIndexingAllowed\(\)\)/);
+  assert.equal(existsSync(join(root, "ecosystem.config.cjs")), true);
 });
 
 test("main sitemap route remains vrgo.hu-only", () => {

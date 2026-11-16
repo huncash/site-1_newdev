@@ -1,4 +1,5 @@
 import { COMPANY_INFO } from "@/config/company-data";
+import { bimIndexingFlagFileAllows } from "@/lib/bim-indexing-flag";
 
 /** Mindig konstans — soha ne Host headerből. */
 export const BIM_ORIGIN = "https://bim.vrgo.hu";
@@ -41,13 +42,13 @@ export const BIM_SEO = {
 } as const;
 
 /**
- * Éles BIM-indexelés csak kifejezett env-nel (staging/localhost noindex).
+ * Éles BIM-indexelés: env VAGY deploy által írt jelzőfájl.
  * Csak bim robots/sitemap/metadata olvassa — vrgo.hu nem.
- * Dinamikus env-kulcs: ne legyen build-time `undefined` beégetés.
  */
 export function bimPublicIndexingAllowed(): boolean {
   const key = "ALLOW_PUBLIC_INDEXING";
-  return process.env[key] === "1";
+  if (process.env[key] === "1") return true;
+  return bimIndexingFlagFileAllows();
 }
 
 export function bimOgImageAbsoluteUrl(): string {
